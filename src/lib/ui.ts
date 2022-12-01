@@ -13,12 +13,15 @@ const init = (thisObj: typeof globalThis) => {
   const illustrationBtn = btnsGrp.add('button', undefined, 'I');
   const formatLayerBtn = btnsGrp.add('button', undefined, 'F');
   const textReverseBtn = btnsGrp.add('button', undefined, 'R');
+  const bgBtn = btnsGrp.add('button', undefined, 'BG');
 
   tvaiBtn.onClick = createTvaiStroke;
   scaleBtn.onClick = scaleWithOvershoot;
   logosBtn.onClick = importLogos;
   illustrationBtn.onClick = createIllustrationText;
+  formatLayerBtn.onClick = formatLayerName;
   textReverseBtn.onClick = textReverse;
+  bgBtn.onClick = createBg;
 
   w.layout.layout(true);
   w.layout.resize();

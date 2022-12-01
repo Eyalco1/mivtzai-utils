@@ -208,3 +208,48 @@ const textReverse = (): void => {
     }
   }
 };
+
+const createBg = (): void => {
+  const comp = app.project.activeItem as CompItem;
+  const layer = comp.layers.addShape();
+  layer.name = 'BG';
+  layer.label = 16;
+  // layer.locked = true;
+
+  const contents = layer.property('ADBE Root Vectors Group') as PropertyGroup;
+  const grp = contents.addProperty('ADBE Vector Group') as PropertyGroup;
+  grp.name = 'Rectangle 1';
+  const recGrp = grp.property('ADBE Vectors Group') as PropertyGroup;
+
+  const recShape = recGrp.addProperty('ADBE Vector Shape - Rect');
+  const recSize = recShape.property('ADBE Vector Rect Size') as Property<
+    [number, number]
+  >;
+  recSize.setValue([comp.width, comp.height]);
+
+  const gFill = recGrp.addProperty(
+    'ADBE Vector Graphic - G-Fill'
+  ) as Property<any>;
+
+  const gradType = gFill.property('ADBE Vector Grad Type') as Property<number>;
+  gradType.setValue(2);
+
+  const endPoint = gFill.property('ADBE Vector Grad End Pt') as Property<
+    [number, number]
+  >;
+  endPoint.setValue([comp.width / 2, 0]);
+
+  // const colors = gFill.property('ADBE Vector Grad Colors') as Property<any>;
+  // colors.setValue([
+  //   [255, 0, 0],
+  //   [0, 0, 255]
+  // ]);
+
+  const fx = layer.property('ADBE Effect Parade') as PropertyGroup;
+  const tint = fx.addProperty('ADBE Tint');
+  const tintBlack = tint.property('ADBE Tint-0001') as Property<any>;
+  const tintWhite = tint.property('ADBE Tint-0002') as Property<any>;
+
+  tintWhite.setValue([118 / 255, 15 / 255, 15 / 255]);
+  tintBlack.setValue([25 / 255, 0, 0]);
+};
