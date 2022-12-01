@@ -98,3 +98,40 @@ const scaleWithOvershoot = () => {
     );
   });
 };
+
+const importLogos = () => {
+  const idfItem = app.project.importFile(
+    new ImportOptions(
+      File('C:/Users/eyalc/DevProjects/mivtzai-utils/src/assets/IDF_Logo.png')
+    )
+  ) as AVItem;
+  const dotzItem = app.project.importFile(
+    new ImportOptions(
+      File('C:/Users/eyalc/DevProjects/mivtzai-utils/src/assets/Dotz_Logo.png')
+    )
+  ) as AVItem;
+
+  const comp = app.project.activeItem as CompItem;
+  const idfLayer = comp.layers.add(idfItem);
+
+  const padding = 200;
+
+  const idfScale = idfLayer
+    .property('ADBE Transform Group')
+    .property('ADBE Scale') as Property<any>;
+  idfScale.setValue([4, 4]);
+  const idfPos = idfLayer
+    .property('ADBE Transform Group')
+    .property('ADBE Position') as Property<any>;
+  idfPos.setValue([comp.width - padding, 0 + padding]);
+
+  const dotzLayer = comp.layers.add(dotzItem);
+  const dotzScale = dotzLayer
+    .property('ADBE Transform Group')
+    .property('ADBE Scale') as Property<any>;
+  dotzScale.setValue([67, 67]);
+  const dotzPos = dotzLayer
+    .property('ADBE Transform Group')
+    .property('ADBE Position') as Property<any>;
+  dotzPos.setValue([0 + padding, 0 + padding]);
+};

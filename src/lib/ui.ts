@@ -9,9 +9,11 @@ const init = (thisObj: typeof globalThis) => {
   const btnsGrp = w.add('group');
   const tvaiBtn = btnsGrp.add('button', undefined, 'T');
   const scaleBtn = btnsGrp.add('button', undefined, 'S');
+  const logosBtn = btnsGrp.add('button', undefined, 'L');
 
   tvaiBtn.onClick = createTvaiStroke;
   scaleBtn.onClick = scaleWithOvershoot;
+  logosBtn.onClick = importLogos;
 
   w.layout.layout(true);
   w.layout.resize();
