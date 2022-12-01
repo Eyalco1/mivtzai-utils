@@ -189,3 +189,22 @@ const formatLayerName = (): void => {
     }
   }
 };
+
+const textReverse = (): void => {
+  const comp = app.project.activeItem as CompItem;
+  const selLayers = comp.selectedLayers;
+
+  for (let i = 0; i < selLayers.length; i++) {
+    const curLayer = selLayers[i];
+    if (curLayer instanceof TextLayer) {
+      const srcTextProp = curLayer
+        .property('ADBE Text Properties')
+        .property('ADBE Text Document') as Property<any>;
+
+      const srcValue = srcTextProp.value.toString();
+      const srcValueReverse = srcValue.split('').reverse().join('');
+
+      srcTextProp.setValue(srcValueReverse.toString());
+    }
+  }
+};
