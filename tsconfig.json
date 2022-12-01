@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ES3",
+    "module": "none",
+    "lib": ["ES2020"],
+    "types": ["types-for-adobe/AfterEffects/2018"],
+    "outFile": "./dist/MivtzaiUtils.jsx",
+    "jsx": "preserve",
+    "removeComments": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "src/lib/polyfills.ts",
+    "src/lib/utils.ts",
+    "src/lib/ui.ts",
+    "src/index.ts"
+  ]
+}

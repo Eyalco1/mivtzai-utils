@@ -1,0 +1,13 @@
+{
+  "name": "mivtzai-utils",
+  "version": "1.0.0",
+  "description": "Utilites for operative projects",
+  "main": "./src/index.jsx",
+  "author": "Eyal Cohen",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "jsxbin": "^2.2.0",
+    "types-for-adobe": "^6.0.1"
+  }
+}
