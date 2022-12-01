@@ -135,3 +135,29 @@ const importLogos = () => {
     .property('ADBE Position') as Property<any>;
   dotzPos.setValue([0 + padding, 0 + padding]);
 };
+
+const createIllustrationText = () => {
+  const comp = app.project.activeItem as CompItem;
+  const textLayer = comp.layers.addText();
+  const srcText = textLayer
+    .property('ADBE Text Properties')
+    .property('ADBE Text Document') as Property<any>;
+
+  srcText.setValue('אילוסטרציה');
+  const textDoc = srcText.value;
+  textDoc.font = 'NarkisBlockCondensedMF-Bold';
+  textDoc.fontSize = 100;
+  textDoc.applyFill = true;
+  textDoc.fillColor = [1, 1, 1];
+  textDoc.applyStroke = false;
+  textDoc.tracking = 0;
+  srcText.setValue(textDoc);
+
+  const boundingBox = textLayer.sourceRectAtTime(comp.time, false);
+  const layerPos = textLayer
+    .property('ADBE Transform Group')
+    .property('ADBE Position') as Property<any>;
+
+  const padding = 40;
+  layerPos.setValue([-boundingBox.left + padding, comp.height - padding]);
+};
