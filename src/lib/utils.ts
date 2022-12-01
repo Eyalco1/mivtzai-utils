@@ -1,4 +1,4 @@
-const createTvaiStroke = () => {
+const createTvaiStroke = (): void => {
   const comp = app.project.activeItem as CompItem;
   const layer = comp.layers.addShape();
 
@@ -56,9 +56,11 @@ const createTvaiStroke = () => {
     .property('ADBE Vector Shape - Group').selected = true;
 };
 
-const scaleWithOvershoot = () => {
+const scaleWithOvershoot = (): void => {
   const comp = app.project.activeItem as CompItem;
   const selectedLayers = comp.selectedLayers;
+  if (selectedLayers.length === 0) return;
+
   selectedLayers.forEach(sl => {
     const scaleProp = sl
       .property('ADBE Transform Group')
@@ -99,7 +101,7 @@ const scaleWithOvershoot = () => {
   });
 };
 
-const importLogos = () => {
+const importLogos = (): void => {
   const idfItem = app.project.importFile(
     new ImportOptions(
       File('C:/Users/eyalc/DevProjects/mivtzai-utils/src/assets/IDF_Logo.png')
@@ -136,7 +138,7 @@ const importLogos = () => {
   dotzPos.setValue([0 + padding, 0 + padding]);
 };
 
-const createIllustrationText = () => {
+const createIllustrationText = (): void => {
   const comp = app.project.activeItem as CompItem;
   const textLayer = comp.layers.addText();
   const srcText = textLayer
@@ -160,4 +162,30 @@ const createIllustrationText = () => {
 
   const padding = 40;
   layerPos.setValue([-boundingBox.left + padding, comp.height - padding]);
+};
+
+const formatLayerName = (): void => {
+  const comp = app.project.activeItem as CompItem;
+
+  const selLayers = comp.selectedLayers;
+  if (selLayers.length === 0) return;
+
+  for (let i = 0; i < selLayers.length; i++) {
+    const cur = selLayers[i];
+    const name = cur.name;
+
+    const capitalize = (str: string) => {
+      return str
+        .split(' ')
+        .map(function (word) {
+          return word.charAt(0).toUpperCase() + word.slice(1);
+        })
+        .join(' ');
+    };
+
+    cur.name = capitalize(name).replace(/ /g, '_');
+    if (cur instanceof AVLayer) {
+      cur.source.name = cur.name;
+    }
+  }
 };

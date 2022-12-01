@@ -11,11 +11,13 @@ const init = (thisObj: typeof globalThis) => {
   const scaleBtn = btnsGrp.add('button', undefined, 'S');
   const logosBtn = btnsGrp.add('button', undefined, 'L');
   const illustrationBtn = btnsGrp.add('button', undefined, 'I');
+  const formatLayerBtn = btnsGrp.add('button', undefined, 'F');
 
   tvaiBtn.onClick = createTvaiStroke;
   scaleBtn.onClick = scaleWithOvershoot;
   logosBtn.onClick = importLogos;
   illustrationBtn.onClick = createIllustrationText;
+  formatLayerBtn.onClick = formatLayerName;
 
   w.layout.layout(true);
   w.layout.resize();
