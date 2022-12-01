@@ -8,8 +8,10 @@ const init = (thisObj: typeof globalThis) => {
 
   const btnsGrp = w.add('group');
   const tvaiBtn = btnsGrp.add('button', undefined, 'T');
+  const scaleBtn = btnsGrp.add('button', undefined, 'S');
 
   tvaiBtn.onClick = createTvaiStroke;
+  scaleBtn.onClick = scaleWithOvershoot;
 
   w.layout.layout(true);
   w.layout.resize();
