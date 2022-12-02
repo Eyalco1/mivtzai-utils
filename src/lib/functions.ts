@@ -343,8 +343,7 @@ const createILMap = () => {
       [103.375, 129.375],
       [108.375, 123.125],
       [109.875, 97.75],
-      [116.75, 66.25],
-      [116.875, 81],
+      [112.625, 74.2498779296875],
       [104.875, 46.75],
       [104.125, 38.6246948242188],
       [120.125, 2.375],
@@ -373,7 +372,7 @@ const createILMap = () => {
       [202, -491.25],
       [196, -506.875],
       [189.125, -516],
-      [194.375, -526.25]
+      [188.375, -531.375]
     ],
     [
       [0, 0],
@@ -417,7 +416,6 @@ const createILMap = () => {
       [-0.74998474121094, -3],
       [0, 0],
       [0.70169067382812, 7.48382568359375],
-      [0, 0],
       [0, 0],
       [0, 0],
       [0, 0],
@@ -578,7 +576,6 @@ const createILMap = () => {
       [0, 0],
       [0, 0],
       [0, 0],
-      [0, 0],
       [0, -0.375],
       [0, 0],
       [0, 0]
@@ -586,4 +583,12 @@ const createILMap = () => {
     true,
     [0, 0]
   );
+
+  const fillOpacity = contents
+    .property('ADBE Vector Group')
+    .property('ADBE Vectors Group')
+    .property('ADBE Vector Graphic - Fill')
+    .property('ADBE Vector Fill Opacity') as Property<number>;
+
+  fillOpacity.setValue(50);
 };
