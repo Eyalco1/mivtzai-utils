@@ -255,13 +255,10 @@ const createBg = (): void => {
 };
 
 const createILMap = () => {
-  const comp = app.project.activeItem as CompItem;
-
-  comp.openInViewer();
-
-  const shapeLayer = comp.layers.addShape();
-  shapeLayer.name = 'Israel_Map';
-  const contents = shapeLayer.property('Contents') as PropertyGroup;
+  // const comp = app.project.activeItem as CompItem;
+  // const shapeLayer = comp.layers.addShape();
+  // shapeLayer.name = 'Israel_Map';
+  // const contents = shapeLayer.property('Contents') as PropertyGroup;
 
   const vertices: [number, number][] = [
     [163.25, -515.875],
@@ -416,104 +413,106 @@ const createILMap = () => {
     [0, 0]
   ];
 
-  createPathGrp(
-    contents,
-    'Israel_Map_Stroke',
-    false,
-    true,
-    [0, 0, 0],
-    [255, 255, 255],
-    10,
-    vertices,
-    inTangents,
-    outTangents,
-    true,
-    [0, 0]
-  );
+  // createPathGrp(
+  //   contents,
+  //   'Israel_Map_Stroke',
+  //   false,
+  //   true,
+  //   [0, 0, 0],
+  //   [255, 255, 255],
+  //   10,
+  //   vertices,
+  //   inTangents,
+  //   outTangents,
+  //   true,
+  //   [0, 0]
+  // );
 
-  createPathGrp(
-    contents,
-    'Israel_Map_Fill',
-    true,
-    false,
-    [202, 5, 5],
-    [0, 0, 0],
-    0,
-    vertices,
-    inTangents,
-    outTangents,
-    true,
-    [0, 0]
-  );
+  // createPathGrp(
+  //   contents,
+  //   'Israel_Map_Fill',
+  //   true,
+  //   false,
+  //   [202, 5, 5],
+  //   [0, 0, 0],
+  //   0,
+  //   vertices,
+  //   inTangents,
+  //   outTangents,
+  //   true,
+  //   [0, 0]
+  // );
 
-  const fillOpacity = contents
-    .property('Israel_Map_Fill')
-    .property('ADBE Vectors Group')
-    .property('ADBE Vector Graphic - Fill')
-    .property('ADBE Vector Fill Opacity') as Property<number>;
+  // const fillOpacity = contents
+  //   .property('Israel_Map_Fill')
+  //   .property('ADBE Vectors Group')
+  //   .property('ADBE Vector Graphic - Fill')
+  //   .property('ADBE Vector Fill Opacity') as Property<number>;
 
-  fillOpacity.setValueAtTime(0, 0);
-  fillOpacity.setValueAtTime((1 / 24) * 14, 50);
+  // fillOpacity.setValueAtTime(0, 0);
+  // fillOpacity.setValueAtTime((1 / 24) * 14, 50);
 
-  fillOpacity.setTemporalEaseAtKey(
-    1,
-    [new KeyframeEase(0.5, 33)],
-    [new KeyframeEase(0.5, 33)]
-  );
-  fillOpacity.setTemporalEaseAtKey(
-    2,
-    [new KeyframeEase(0.5, 33)],
-    [new KeyframeEase(0.5, 33)]
-  );
+  // fillOpacity.setTemporalEaseAtKey(
+  //   1,
+  //   [new KeyframeEase(0.5, 33)],
+  //   [new KeyframeEase(0.5, 33)]
+  // );
+  // fillOpacity.setTemporalEaseAtKey(
+  //   2,
+  //   [new KeyframeEase(0.5, 33)],
+  //   [new KeyframeEase(0.5, 33)]
+  // );
 
-  const myStroke = contents
-    .property('Israel_Map_Stroke')
-    .property('ADBE Vectors Group')
-    .property('ADBE Vector Graphic - Stroke') as Property<number>;
-  const dashesProp = myStroke.property(
-    'ADBE Vector Stroke Dashes'
-  ) as PropertyGroup;
-  const dashOne = dashesProp.addProperty(
-    'ADBE Vector Stroke Dash 1'
-  ) as Property<number>;
-  dashOne.setValue(60);
-  const gapOne = dashesProp.addProperty(
-    'ADBE Vector Stroke Gap 1'
-  ) as Property<number>;
-  gapOne.setValue(25);
-  const dashOffset = dashesProp.addProperty(
-    'ADBE Vector Stroke Offset'
-  ) as Property<number>;
-  dashOffset.expression = 'time * -50';
+  // const myStroke = contents
+  //   .property('Israel_Map_Stroke')
+  //   .property('ADBE Vectors Group')
+  //   .property('ADBE Vector Graphic - Stroke') as Property<number>;
+  // const dashesProp = myStroke.property(
+  //   'ADBE Vector Stroke Dashes'
+  // ) as PropertyGroup;
+  // const dashOne = dashesProp.addProperty(
+  //   'ADBE Vector Stroke Dash 1'
+  // ) as Property<number>;
+  // dashOne.setValue(60);
+  // const gapOne = dashesProp.addProperty(
+  //   'ADBE Vector Stroke Gap 1'
+  // ) as Property<number>;
+  // gapOne.setValue(25);
+  // const dashOffset = dashesProp.addProperty(
+  //   'ADBE Vector Stroke Offset'
+  // ) as Property<number>;
+  // dashOffset.expression = 'time * -50';
 
-  const lineCapProp = myStroke.property(
-    'ADBE Vector Stroke Line Cap'
-  ) as Property<number>;
-  lineCapProp.setValue(2);
+  // const lineCapProp = myStroke.property(
+  //   'ADBE Vector Stroke Line Cap'
+  // ) as Property<number>;
+  // lineCapProp.setValue(2);
 
-  const lineJoinProp = myStroke.property(
-    'ADBE Vector Stroke Line Join'
-  ) as Property<number>;
-  lineJoinProp.setValue(2);
+  // const lineJoinProp = myStroke.property(
+  //   'ADBE Vector Stroke Line Join'
+  // ) as Property<number>;
+  // lineJoinProp.setValue(2);
 
-  const parentGrp = contents
-    .property('Israel_Map_Stroke')
-    .property('ADBE Vectors Group') as PropertyGroup;
-  const trimPathsGrp = parentGrp.addProperty('ADBE Vector Filter - Trim');
-  const trimPathsEnd = trimPathsGrp.property(
-    'ADBE Vector Trim End'
-  ) as Property<number>;
-  trimPathsEnd.setValueAtTime(0, 0);
-  trimPathsEnd.setValueAtTime((1 / 24) * 30, 100);
+  // const parentGrp = contents
+  //   .property('Israel_Map_Stroke')
+  //   .property('ADBE Vectors Group') as PropertyGroup;
+  // const trimPathsGrp = parentGrp.addProperty('ADBE Vector Filter - Trim');
+  // const trimPathsEnd = trimPathsGrp.property(
+  //   'ADBE Vector Trim End'
+  // ) as Property<number>;
+  // trimPathsEnd.setValueAtTime(0, 0);
+  // trimPathsEnd.setValueAtTime((1 / 24) * 30, 100);
 
-  trimPathsEnd.setTemporalEaseAtKey(
-    1,
-    [new KeyframeEase(0.5, 33)],
-    [new KeyframeEase(0.5, 33)]
-  );
-  trimPathsEnd.setTemporalEaseAtKey(
-    2,
-    [new KeyframeEase(0.5, 66)],
-    [new KeyframeEase(0.5, 66)]
-  );
+  // trimPathsEnd.setTemporalEaseAtKey(
+  //   1,
+  //   [new KeyframeEase(0.5, 33)],
+  //   [new KeyframeEase(0.5, 33)]
+  // );
+  // trimPathsEnd.setTemporalEaseAtKey(
+  //   2,
+  //   [new KeyframeEase(0.5, 66)],
+  //   [new KeyframeEase(0.5, 66)]
+  // );
+
+  createAnimatedMap('Israel_Map', vertices, inTangents, outTangents);
 };
