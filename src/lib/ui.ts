@@ -10,21 +10,25 @@ const init = (thisObj: typeof globalThis) => {
 
   const quickActionsTab = tpanel.add('tab', undefined, ['Quick Actions']);
 
-  const btnsGrp = quickActionsTab.add('group');
-  const tvaiBtn = btnsGrp.add('button', undefined, 'T');
-  const scaleBtn = btnsGrp.add('button', undefined, 'S');
-  const logosBtn = btnsGrp.add('button', undefined, 'L');
-  const illustrationBtn = btnsGrp.add('button', undefined, 'I');
-  const formatLayerBtn = btnsGrp.add('button', undefined, 'F');
-  const textReverseBtn = btnsGrp.add('button', undefined, 'R');
-  const bgBtn = btnsGrp.add('button', undefined, 'BG');
-  const IsraelMapBtn = btnsGrp.add('button', undefined, 'IL');
-  const GazaMapBtn = btnsGrp.add('button', undefined, 'GA');
-  const numCountBtn = btnsGrp.add('button', undefined, 'N');
+  const QABtnsGrp = quickActionsTab.add('group');
+  const tvaiBtn = QABtnsGrp.add('button', undefined, 'T');
+  const scaleBtn = QABtnsGrp.add('button', undefined, 'S');
+  const logosBtn = QABtnsGrp.add('button', undefined, 'L');
+  const illustrationBtn = QABtnsGrp.add('button', undefined, 'I');
+  const formatLayerBtn = QABtnsGrp.add('button', undefined, 'F');
+  const textReverseBtn = QABtnsGrp.add('button', undefined, 'R');
+  const bgBtn = QABtnsGrp.add('button', undefined, 'BG');
+  const IsraelMapBtn = QABtnsGrp.add('button', undefined, 'IL');
+  const GazaMapBtn = QABtnsGrp.add('button', undefined, 'GA');
+  const numCountBtn = QABtnsGrp.add('button', undefined, 'N');
 
   const iconsTab = tpanel.add('tab', undefined, ['Icons']);
   const texturesTab = tpanel.add('tab', undefined, ['Textures']);
 
+  const TexBtnsGrp = texturesTab.add('group');
+  const kylePaperBtn = TexBtnsGrp.add('button', undefined, 'Kyle');
+
+  // Quick Actions
   tvaiBtn.onClick = createTvaiStroke;
   scaleBtn.onClick = scaleWithOvershoot;
   logosBtn.onClick = importLogos;
@@ -35,6 +39,12 @@ const init = (thisObj: typeof globalThis) => {
   IsraelMapBtn.onClick = createIsraelMap;
   GazaMapBtn.onClick = createGazaMap;
   numCountBtn.onClick = createCountingText;
+  // Textures
+  kylePaperBtn.onClick = () => {
+    importAndLoopTexture(
+      'C:/Users/eyalc/DevProjects/mivtzai-utils/src/assets/Kyle_Paper_Dark.jpg'
+    );
+  };
 
   w.layout.layout(true);
   w.layout.resize();
