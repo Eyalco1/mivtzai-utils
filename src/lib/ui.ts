@@ -14,6 +14,7 @@ const init = (thisObj: typeof globalThis) => {
   const formatLayerBtn = btnsGrp.add('button', undefined, 'F');
   const textReverseBtn = btnsGrp.add('button', undefined, 'R');
   const bgBtn = btnsGrp.add('button', undefined, 'BG');
+  const ILMapBtn = btnsGrp.add('button', undefined, 'IL');
 
   tvaiBtn.onClick = createTvaiStroke;
   scaleBtn.onClick = scaleWithOvershoot;
@@ -22,6 +23,7 @@ const init = (thisObj: typeof globalThis) => {
   formatLayerBtn.onClick = formatLayerName;
   textReverseBtn.onClick = textReverse;
   bgBtn.onClick = createBg;
+  ILMapBtn.onClick = createILMap;
 
   w.layout.layout(true);
   w.layout.resize();
