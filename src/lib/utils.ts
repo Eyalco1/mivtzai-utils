@@ -237,3 +237,13 @@ const importAndLoopTexture = (path: string): void => {
 
   loopTexture(textureLayer);
 };
+
+const openFs = (path: string): void => {
+  const folder = File(path).parent;
+  const cmd =
+    $.os.indexOf('Win') != -1
+      ? 'explorer ' + Folder.decode(folder.fsName)
+      : // @ts-ignore
+        'open "' + Folder.execute(folder.fsName) + '"';
+  system.callSystem(cmd);
+};

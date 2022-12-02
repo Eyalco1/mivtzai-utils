@@ -21,8 +21,16 @@ const init = (thisObj: typeof globalThis) => {
   const IsraelMapBtn = QABtnsGrp.add('button', undefined, 'IL');
   const GazaMapBtn = QABtnsGrp.add('button', undefined, 'GA');
   const numCountBtn = QABtnsGrp.add('button', undefined, 'N');
+  const testBtn = QABtnsGrp.add('button', undefined, '!TEST!');
+
+  testBtn.onClick = () => {
+    openFs(
+      'C:/Users/eyalc/DevProjects/mivtzai-utils/src/assets/Kyle_Paper_Dark.jpg'
+    );
+  };
 
   const iconsTab = tpanel.add('tab', undefined, ['Icons']);
+  const locationsTab = tpanel.add('tab', undefined, ['Locations']);
   const texturesTab = tpanel.add('tab', undefined, ['Textures']);
 
   const TexBtnsGrp = texturesTab.add('group');
