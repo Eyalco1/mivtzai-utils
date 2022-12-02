@@ -254,12 +254,7 @@ const createBg = (): void => {
   tintBlack.setValue([25 / 255, 0, 0]);
 };
 
-const createILMap = () => {
-  // const comp = app.project.activeItem as CompItem;
-  // const shapeLayer = comp.layers.addShape();
-  // shapeLayer.name = 'Israel_Map';
-  // const contents = shapeLayer.property('Contents') as PropertyGroup;
-
+const createIsraelMap = (): void => {
   const vertices: [number, number][] = [
     [163.25, -515.875],
     [150.375, -508.625],
@@ -310,7 +305,6 @@ const createILMap = () => {
     [192.625, -515.5],
     [185.75, -531.75]
   ];
-
   const inTangents: [number, number][] = [
     [0, 0],
     [0, 0],
@@ -361,7 +355,6 @@ const createILMap = () => {
     [0, 0],
     [0, 0]
   ];
-
   const outTangents: [number, number][] = [
     [0, 0],
     [0, 0],
@@ -413,106 +406,136 @@ const createILMap = () => {
     [0, 0]
   ];
 
-  // createPathGrp(
-  //   contents,
-  //   'Israel_Map_Stroke',
-  //   false,
-  //   true,
-  //   [0, 0, 0],
-  //   [255, 255, 255],
-  //   10,
-  //   vertices,
-  //   inTangents,
-  //   outTangents,
-  //   true,
-  //   [0, 0]
-  // );
-
-  // createPathGrp(
-  //   contents,
-  //   'Israel_Map_Fill',
-  //   true,
-  //   false,
-  //   [202, 5, 5],
-  //   [0, 0, 0],
-  //   0,
-  //   vertices,
-  //   inTangents,
-  //   outTangents,
-  //   true,
-  //   [0, 0]
-  // );
-
-  // const fillOpacity = contents
-  //   .property('Israel_Map_Fill')
-  //   .property('ADBE Vectors Group')
-  //   .property('ADBE Vector Graphic - Fill')
-  //   .property('ADBE Vector Fill Opacity') as Property<number>;
-
-  // fillOpacity.setValueAtTime(0, 0);
-  // fillOpacity.setValueAtTime((1 / 24) * 14, 50);
-
-  // fillOpacity.setTemporalEaseAtKey(
-  //   1,
-  //   [new KeyframeEase(0.5, 33)],
-  //   [new KeyframeEase(0.5, 33)]
-  // );
-  // fillOpacity.setTemporalEaseAtKey(
-  //   2,
-  //   [new KeyframeEase(0.5, 33)],
-  //   [new KeyframeEase(0.5, 33)]
-  // );
-
-  // const myStroke = contents
-  //   .property('Israel_Map_Stroke')
-  //   .property('ADBE Vectors Group')
-  //   .property('ADBE Vector Graphic - Stroke') as Property<number>;
-  // const dashesProp = myStroke.property(
-  //   'ADBE Vector Stroke Dashes'
-  // ) as PropertyGroup;
-  // const dashOne = dashesProp.addProperty(
-  //   'ADBE Vector Stroke Dash 1'
-  // ) as Property<number>;
-  // dashOne.setValue(60);
-  // const gapOne = dashesProp.addProperty(
-  //   'ADBE Vector Stroke Gap 1'
-  // ) as Property<number>;
-  // gapOne.setValue(25);
-  // const dashOffset = dashesProp.addProperty(
-  //   'ADBE Vector Stroke Offset'
-  // ) as Property<number>;
-  // dashOffset.expression = 'time * -50';
-
-  // const lineCapProp = myStroke.property(
-  //   'ADBE Vector Stroke Line Cap'
-  // ) as Property<number>;
-  // lineCapProp.setValue(2);
-
-  // const lineJoinProp = myStroke.property(
-  //   'ADBE Vector Stroke Line Join'
-  // ) as Property<number>;
-  // lineJoinProp.setValue(2);
-
-  // const parentGrp = contents
-  //   .property('Israel_Map_Stroke')
-  //   .property('ADBE Vectors Group') as PropertyGroup;
-  // const trimPathsGrp = parentGrp.addProperty('ADBE Vector Filter - Trim');
-  // const trimPathsEnd = trimPathsGrp.property(
-  //   'ADBE Vector Trim End'
-  // ) as Property<number>;
-  // trimPathsEnd.setValueAtTime(0, 0);
-  // trimPathsEnd.setValueAtTime((1 / 24) * 30, 100);
-
-  // trimPathsEnd.setTemporalEaseAtKey(
-  //   1,
-  //   [new KeyframeEase(0.5, 33)],
-  //   [new KeyframeEase(0.5, 33)]
-  // );
-  // trimPathsEnd.setTemporalEaseAtKey(
-  //   2,
-  //   [new KeyframeEase(0.5, 66)],
-  //   [new KeyframeEase(0.5, 66)]
-  // );
-
   createAnimatedMap('Israel_Map', vertices, inTangents, outTangents);
+};
+
+const createGazaMap = (): void => {
+  const vertices: [number, number][] = [
+    [209.749725341797, -480.25],
+    [128.999969482422, -358],
+    [34.9997253417969, -236.500030517578],
+    [-200.499862670898, 27.0000915527344],
+    [-384.75, 215.25],
+    [-348.75, 282],
+    [-339.25, 283.25],
+    [-279.75, 480.25],
+    [-229.25, 427.25],
+    [-166.25, 394],
+    [-113.000061035156, 327],
+    [-61.4999694824219, 297.75],
+    [-46.7499084472656, 256.5],
+    [-65.5000915527344, 111.25],
+    [-51.7500610351562, 94.25],
+    [-40.7499694824219, 63.5],
+    [-32.4999389648438, 42.5],
+    [-7.5, 19.4994812011719],
+    [21.7500915527344, -17.2499084472656],
+    [41.2499694824219, -34.7502746582031],
+    [78.0000915527344, -63.2501831054688],
+    [87.5, -81.9997863769531],
+    [110.499786376953, -95.9999694824219],
+    [185.999847412109, -183.250061035156],
+    [255.250091552734, -241.000427246094],
+    [286.500091552734, -246.750015258789],
+    [305.749969482422, -261.75],
+    [334.749969482422, -272.75],
+    [361.249969482422, -315],
+    [376.999969482422, -342.75]
+  ];
+  const inTangents: [number, number][] = [
+    [0, 0],
+    [16, -17],
+    [20.0003051757812, -24.9999694824219],
+    [26.1709289550781, -21.6585388183594],
+    [-0.00003051757812, 0],
+    [-0.00003051757812, 0],
+    [-0.00003051757812, 0],
+    [-3, -10.75],
+    [-6.25, 7],
+    [-32.25, 16],
+    [-4.99993896484375, 4.5],
+    [-4.75006103515625, 2.75],
+    [-1.75006103515625, 9.5],
+    [0.7501220703125, 10.75],
+    [-5.24990844726562, 2.5],
+    [-8.00003051757812, 7],
+    [-1.00006103515625, 3],
+    [-6.25, 6.50033569335938],
+    [-11.5, 7.50003051757812],
+    [-5.74993896484375, 5.750244140625],
+    [-5.25009155273438, 4.50042724609375],
+    [-4.75021362304688, 5.99954223632812],
+    [-13.4996948242188, 4.75009155273438],
+    [-19.249755859375, 11.0000915527344],
+    [-8.25, 4.25041198730469],
+    [-3.5001220703125, 1.49983215332031],
+    [-7.2498779296875, 5.25],
+    [-3.5, 5],
+    [-11.5, 8.5],
+    [0, 0]
+  ];
+  const outTangents: [number, number][] = [
+    [0, 0],
+    [-14.5387573242188, 15.4473876953125],
+    [-19.9996643066406, 25.0000305175781],
+    [-29.0001373291016, 23.9999084472656],
+    [-0.00003051757812, 0],
+    [-0.00003051757812, 0],
+    [-0.00003051757812, 0],
+    [5.75, -3.5],
+    [6.25, -7],
+    [32.2499694824219, -16],
+    [4.99996948242188, -4.5],
+    [4.75, -2.75],
+    [-0.74993896484375, -10.75],
+    [1.74981689453125, -9.5],
+    [5.25003051757812, -2.5],
+    [7.9998779296875, -7],
+    [1.00003051757812, -3],
+    [6.24990844726562, -6.49966430664062],
+    [11.4999694824219, -7.50054931640625],
+    [5.74990844726562, -5.749755859375],
+    [5.24984741210938, -4.49981689453125],
+    [4.74993896484375, -6.00039672851562],
+    [13.5004577636719, -4.74996948242188],
+    [19.2501220703125, -10.9999694824219],
+    [8.2498779296875, -4.249755859375],
+    [3.499755859375, -1.50028991699219],
+    [7.25, -5.25],
+    [3.5, -5],
+    [11.5, -8.5],
+    [0, 0]
+  ];
+
+  createAnimatedMap('Gaza_Map', vertices, inTangents, outTangents);
+};
+
+const createCountingText = (): void => {
+  const comp = app.project.activeItem as CompItem;
+  const layer = comp.layers.addText();
+  layer.name = 'Numbers';
+
+  const fx = layer.property('ADBE Effect Parade') as PropertyGroup;
+  const numFx = fx.addProperty('ADBE Numbers2');
+
+  const decPointsProp = numFx.property(
+    'ADBE Numbers2-0004'
+  ) as Property<number>;
+  decPointsProp.setValue(0);
+
+  const fillProp = numFx.property('ADBE Numbers2-0008') as Property<
+    [number, number, number]
+  >;
+  fillProp.setValue([255, 255, 255]);
+
+  const sizeProp = numFx.property('ADBE Numbers2-0006') as Property<number>;
+  sizeProp.setValue(150);
+
+  const numValProp = numFx.property('ADBE Numbers2-0003') as Property<number>;
+
+  numValProp.setValueAtTime(0, 0);
+  numValProp.setValueAtTime((1 / 24) * 40, 99);
+
+  numValProp.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 20)]);
+  numValProp.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 75)]);
 };

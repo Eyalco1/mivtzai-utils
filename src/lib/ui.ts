@@ -6,7 +6,11 @@ const init = (thisObj: typeof globalThis) => {
   if (w == null) w;
   w = w as Window;
 
-  const btnsGrp = w.add('group');
+  const tpanel = w.add('tabbedpanel');
+
+  const quickActionsTab = tpanel.add('tab', undefined, ['Quick Actions']);
+
+  const btnsGrp = quickActionsTab.add('group');
   const tvaiBtn = btnsGrp.add('button', undefined, 'T');
   const scaleBtn = btnsGrp.add('button', undefined, 'S');
   const logosBtn = btnsGrp.add('button', undefined, 'L');
@@ -14,7 +18,12 @@ const init = (thisObj: typeof globalThis) => {
   const formatLayerBtn = btnsGrp.add('button', undefined, 'F');
   const textReverseBtn = btnsGrp.add('button', undefined, 'R');
   const bgBtn = btnsGrp.add('button', undefined, 'BG');
-  const ILMapBtn = btnsGrp.add('button', undefined, 'IL');
+  const IsraelMapBtn = btnsGrp.add('button', undefined, 'IL');
+  const GazaMapBtn = btnsGrp.add('button', undefined, 'GA');
+  const numCountBtn = btnsGrp.add('button', undefined, 'N');
+
+  const iconsTab = tpanel.add('tab', undefined, ['Icons']);
+  const texturesTab = tpanel.add('tab', undefined, ['Textures']);
 
   tvaiBtn.onClick = createTvaiStroke;
   scaleBtn.onClick = scaleWithOvershoot;
@@ -23,7 +32,9 @@ const init = (thisObj: typeof globalThis) => {
   formatLayerBtn.onClick = formatLayerName;
   textReverseBtn.onClick = textReverse;
   bgBtn.onClick = createBg;
-  ILMapBtn.onClick = createILMap;
+  IsraelMapBtn.onClick = createIsraelMap;
+  GazaMapBtn.onClick = createGazaMap;
+  numCountBtn.onClick = createCountingText;
 
   w.layout.layout(true);
   w.layout.resize();
