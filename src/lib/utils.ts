@@ -286,3 +286,25 @@ const createIconCircle = (
     [0, 0]
   );
 };
+
+const getLanguageFromKeyboard = (): Lingo => {
+  const keyState = ScriptUI.environment.keyboardState;
+  if (keyState.ctrlKey) {
+    return 'English';
+  } else if (keyState.shiftKey) {
+    return 'Arabic';
+  } else {
+    return 'Hebrew';
+  }
+};
+
+const getFontFromLanguage = (lang: Lingo) => {
+  if (lang === 'English') {
+    return 'TradeGothic LT CondEighteen-Bold';
+  } else if (lang === 'Hebrew') {
+    return 'NarkisBlockCondensedMF-Bold';
+  } else if (lang === 'Arabic') {
+    // DroidArabicKufi Bold*
+    return 'Janna LT Bold';
+  }
+};

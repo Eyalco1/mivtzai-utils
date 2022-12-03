@@ -547,7 +547,7 @@ const createExplosionIcon = (
 ): void => {
   const comp = app.project.activeItem as CompItem;
   const layer = comp.layers.addShape();
-  layer.name = 'Explosion';
+  layer.name = 'Boom';
   const contents = layer.property('Contents') as PropertyGroup;
 
   let circleColorRgb: [number, number, number];
@@ -847,4 +847,162 @@ const createExplosionIcon = (
   createLittleBoom();
   createBigBoom();
   if (hasCircle) createIconCircle(contents, circleColorRgb);
+};
+
+const createTunnelIcon = (
+  circleColor: ColorDropdown,
+  iconColor: ColorDropdown,
+  hasCircle: Boolean
+): void => {
+  const comp = app.project.activeItem as CompItem;
+  const layer = comp.layers.addShape();
+  layer.name = 'Tunnel';
+  const contents = layer.property('Contents') as PropertyGroup;
+
+  let circleColorRgb: [number, number, number];
+  if (circleColor === 'White') {
+    circleColorRgb = [255, 255, 255];
+  } else if (circleColor === 'Black') {
+    circleColorRgb = [0, 0, 0];
+  } else if (circleColor === 'Red') {
+    circleColorRgb = [197, 24, 24];
+  }
+
+  let iconColorRgb: [number, number, number];
+  if (iconColor === 'White') {
+    iconColorRgb = [255, 255, 255];
+  } else if (iconColor === 'Black') {
+    iconColorRgb = [0, 0, 0];
+  } else if (iconColor === 'Red') {
+    iconColorRgb = [197, 24, 24];
+  }
+
+  const createInside = () => {
+    const vertices: [number, number][] = [
+      [0, -75.4871215820312],
+      [-75.4871215820312, -0.01185607910156],
+      [-75.4871215820312, 75.4871215820312],
+      [-18.8729705810547, 18.8729705810547],
+      [-18.8729705810547, 0],
+      [0, -18.8729705810547],
+      [18.8705902099609, 0],
+      [18.8705902099609, 18.8729705810547],
+      [75.4871215820312, 75.4871215820312],
+      [75.4871215820312, -0.01185607910156]
+    ];
+
+    const inTangents: [number, number][] = [
+      [41.6728515625, 0],
+      [0, -41.6681213378906],
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [-10.4211730957031, 0],
+      [0, -10.4211883544922],
+      [0, 0],
+      [0, 0],
+      [0, 0]
+    ];
+    const outTangents: [number, number][] = [
+      [-41.6704864501953, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, -10.4188079833984],
+      [10.4188079833984, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, -41.6704864501953]
+    ];
+
+    createPathGrp(
+      contents,
+      'Tunnel_Inside',
+      true,
+      false,
+      iconColorRgb,
+      iconColorRgb,
+      0,
+      vertices,
+      inTangents,
+      outTangents,
+      true,
+      [0, 0]
+    );
+  };
+
+  const createBorder = () => {
+    const vertices: [number, number][] = [
+      [0.00009155273438, -91.1960754394531],
+      [-0.00009155273438, -91.1960754394531],
+      [-91.1960754394531, -0.00009155273438],
+      [-91.1960754394531, 91.1960754394531],
+      [91.1960754394531, 91.1960754394531],
+      [91.1960754394531, -0.00009155273438]
+    ];
+
+    const inTangents: [number, number][] = [
+      [50.3661499023438, 0],
+      [0, 0],
+      [0, -50.3661499023438],
+      [0, 0],
+      [0, 0],
+      [0, 0]
+    ];
+    const outTangents: [number, number][] = [
+      [0, 0],
+      [-50.3661499023438, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, -50.3661499023438]
+    ];
+
+    createPathGrp(
+      contents,
+      'Tunnel_Border',
+      false,
+      true,
+      iconColorRgb,
+      iconColorRgb,
+      6,
+      vertices,
+      inTangents,
+      outTangents,
+      true,
+      [0, 0]
+    );
+  };
+
+  createBorder();
+  createInside();
+  if (hasCircle) createIconCircle(contents, circleColorRgb);
+};
+
+const createKindergardenLocation = (lang: Lingo): void => {
+  const comp = app.project.activeItem as CompItem;
+  const textLayer = comp.layers.addText();
+  const srcText = textLayer
+    .property('ADBE Text Properties')
+    .property('ADBE Text Document') as Property<any>;
+
+  let text: string;
+  if (lang === 'Hebrew') {
+    text = 'גן ילדים';
+  } else if (lang === 'English') {
+    text = 'Kindergarden';
+  } else if (lang === 'Arabic') {
+    text = 'روضة أطفال';
+  }
+
+  srcText.setValue(text);
+  const textDoc = srcText.value;
+  textDoc.font = 'NarkisBlockCondensedMF-Bold';
+  textDoc.fontSize = 100;
+  textDoc.applyFill = true;
+  textDoc.fillColor = [1, 1, 1];
+  textDoc.applyStroke = false;
+  textDoc.tracking = 0;
+  srcText.setValue(textDoc);
 };

@@ -32,7 +32,8 @@ const init = (thisObj: typeof globalThis) => {
   const iconsTab = tpanel.add('tab', undefined, ['Icons']);
 
   const IconsBtnsGrp = iconsTab.add('group');
-  const explosionBtn = IconsBtnsGrp.add('button', undefined, 'Explosion!');
+  const boomBtn = IconsBtnsGrp.add('button', undefined, 'Boom!');
+  const tunnelBtn = IconsBtnsGrp.add('button', undefined, 'Tunnel');
 
   const circleCheck = iconsTab.add('checkbox', undefined, 'Circle');
   const circleColorGrp = iconsTab.add('group');
@@ -57,10 +58,14 @@ const init = (thisObj: typeof globalThis) => {
   circleColorDD.selection = iconColorDD.selection = 0;
 
   const locationsTab = tpanel.add('tab', undefined, ['Locations']);
+
+  const locBtnsGrp = locationsTab.add('group');
+  const kindergardenBtn = locBtnsGrp.add('button', undefined, 'Kindergarden');
+
   const texturesTab = tpanel.add('tab', undefined, ['Textures']);
 
-  const TexBtnsGrp = texturesTab.add('group');
-  const paperBtn = TexBtnsGrp.add('button', undefined, 'Paper');
+  const texBtnsGrp = texturesTab.add('group');
+  const paperBtn = texBtnsGrp.add('button', undefined, 'Paper');
 
   // Quick Actions
   tvaiBtn.onClick = createTvaiStroke;
@@ -74,13 +79,29 @@ const init = (thisObj: typeof globalThis) => {
   GazaMapBtn.onClick = createGazaMap;
   numCountBtn.onClick = createCountingText;
   // Icons
-  explosionBtn.onClick = () => {
+  boomBtn.onClick = () => {
     createExplosionIcon(
       circleColorDD.selection.toString() as ColorDropdown,
       iconColorDD.selection.toString() as ColorDropdown,
       circleCheck.value
     );
   };
+  tunnelBtn.onClick = () => {
+    createTunnelIcon(
+      circleColorDD.selection.toString() as ColorDropdown,
+      iconColorDD.selection.toString() as ColorDropdown,
+      circleCheck.value
+    );
+  };
+
+  // Locations
+  kindergardenBtn.onClick = () => {
+    const lang = getLanguageFromKeyboard();
+
+    alert(lang);
+    createKindergardenLocation(lang);
+  };
+
   // Textures
   paperBtn.onClick = () => {
     importAndLoopTexture(

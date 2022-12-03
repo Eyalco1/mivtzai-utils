@@ -1,11 +1,3 @@
-/**
- * @name mivtzai-utils
- * @description Utilites for operative projects
- * @version 1.0.0
- * @author Eyal Cohen
- * @license ISC
- */
-
 Array.prototype.map || (Array.prototype.map = function (callback) { var T, A, k; if (null == this)
     throw new TypeError("this is null or not defined"); var O = Object(this), len = O.length >>> 0; if ("function" != typeof callback)
     throw new TypeError(callback + " is not a function"); for (arguments.length > 1 && (T = arguments[1]), A = new Array(len), k = 0; k < len;) {
@@ -215,6 +207,29 @@ var createIconCircle = function (contents, circleColorRgb) {
         [100, 0]
     ];
     createPathGrp(contents, 'Circle', true, false, circleColorRgb, circleColorRgb, 0, vertices, inTangents, outTangents, true, [0, 0]);
+};
+var getLanguageFromKeyboard = function () {
+    var keyState = ScriptUI.environment.keyboardState;
+    if (keyState.ctrlKey) {
+        return 'English';
+    }
+    else if (keyState.shiftKey) {
+        return 'Arabic';
+    }
+    else {
+        return 'Hebrew';
+    }
+};
+var getFontFromLanguage = function (lang) {
+    if (lang === 'English') {
+        return 'TradeGothic LT CondEighteen-Bold';
+    }
+    else if (lang === 'Hebrew') {
+        return 'NarkisBlockCondensedMF-Bold';
+    }
+    else if (lang === 'Arabic') {
+        return 'Janna LT Bold';
+    }
 };
 var createTvaiStroke = function () {
     var comp = app.project.activeItem;
@@ -661,7 +676,7 @@ var createCountingText = function () {
 var createExplosionIcon = function (circleColor, iconColor, hasCircle) {
     var comp = app.project.activeItem;
     var layer = comp.layers.addShape();
-    layer.name = 'Explosion';
+    layer.name = 'Boom';
     var contents = layer.property('Contents');
     var circleColorRgb;
     if (circleColor === 'White') {
@@ -888,6 +903,128 @@ var createExplosionIcon = function (circleColor, iconColor, hasCircle) {
     if (hasCircle)
         createIconCircle(contents, circleColorRgb);
 };
+var createTunnelIcon = function (circleColor, iconColor, hasCircle) {
+    var comp = app.project.activeItem;
+    var layer = comp.layers.addShape();
+    layer.name = 'Tunnel';
+    var contents = layer.property('Contents');
+    var circleColorRgb;
+    if (circleColor === 'White') {
+        circleColorRgb = [255, 255, 255];
+    }
+    else if (circleColor === 'Black') {
+        circleColorRgb = [0, 0, 0];
+    }
+    else if (circleColor === 'Red') {
+        circleColorRgb = [197, 24, 24];
+    }
+    var iconColorRgb;
+    if (iconColor === 'White') {
+        iconColorRgb = [255, 255, 255];
+    }
+    else if (iconColor === 'Black') {
+        iconColorRgb = [0, 0, 0];
+    }
+    else if (iconColor === 'Red') {
+        iconColorRgb = [197, 24, 24];
+    }
+    var createInside = function () {
+        var vertices = [
+            [0, -75.4871215820312],
+            [-75.4871215820312, -0.01185607910156],
+            [-75.4871215820312, 75.4871215820312],
+            [-18.8729705810547, 18.8729705810547],
+            [-18.8729705810547, 0],
+            [0, -18.8729705810547],
+            [18.8705902099609, 0],
+            [18.8705902099609, 18.8729705810547],
+            [75.4871215820312, 75.4871215820312],
+            [75.4871215820312, -0.01185607910156]
+        ];
+        var inTangents = [
+            [41.6728515625, 0],
+            [0, -41.6681213378906],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [-10.4211730957031, 0],
+            [0, -10.4211883544922],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [-41.6704864501953, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, -10.4188079833984],
+            [10.4188079833984, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, -41.6704864501953]
+        ];
+        createPathGrp(contents, 'Tunnel_Inside', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [0, 0]);
+    };
+    var createBorder = function () {
+        var vertices = [
+            [0.00009155273438, -91.1960754394531],
+            [-0.00009155273438, -91.1960754394531],
+            [-91.1960754394531, -0.00009155273438],
+            [-91.1960754394531, 91.1960754394531],
+            [91.1960754394531, 91.1960754394531],
+            [91.1960754394531, -0.00009155273438]
+        ];
+        var inTangents = [
+            [50.3661499023438, 0],
+            [0, 0],
+            [0, -50.3661499023438],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [-50.3661499023438, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, -50.3661499023438]
+        ];
+        createPathGrp(contents, 'Tunnel_Border', false, true, iconColorRgb, iconColorRgb, 6, vertices, inTangents, outTangents, true, [0, 0]);
+    };
+    createBorder();
+    createInside();
+    if (hasCircle)
+        createIconCircle(contents, circleColorRgb);
+};
+var createKindergardenLocation = function (lang) {
+    var comp = app.project.activeItem;
+    var textLayer = comp.layers.addText();
+    var srcText = textLayer
+        .property('ADBE Text Properties')
+        .property('ADBE Text Document');
+    var text;
+    if (lang === 'Hebrew') {
+        text = 'גן ילדים';
+    }
+    else if (lang === 'English') {
+        text = 'Kindergarden';
+    }
+    else if (lang === 'Arabic') {
+        text = 'روضة أطفال';
+    }
+    srcText.setValue(text);
+    var textDoc = srcText.value;
+    textDoc.font = 'NarkisBlockCondensedMF-Bold';
+    textDoc.fontSize = 100;
+    textDoc.applyFill = true;
+    textDoc.fillColor = [1, 1, 1];
+    textDoc.applyStroke = false;
+    textDoc.tracking = 0;
+    srcText.setValue(textDoc);
+};
 var init = function (thisObj) {
     var w = thisObj instanceof Panel
         ? thisObj
@@ -910,7 +1047,8 @@ var init = function (thisObj) {
     var numCountBtn = QABtnsGrp.add('button', undefined, 'N');
     var iconsTab = tpanel.add('tab', undefined, ['Icons']);
     var IconsBtnsGrp = iconsTab.add('group');
-    var explosionBtn = IconsBtnsGrp.add('button', undefined, 'Explosion!');
+    var boomBtn = IconsBtnsGrp.add('button', undefined, 'Boom!');
+    var tunnelBtn = IconsBtnsGrp.add('button', undefined, 'Tunnel');
     var circleCheck = iconsTab.add('checkbox', undefined, 'Circle');
     var circleColorGrp = iconsTab.add('group');
     var circleColorText = circleColorGrp.add('statictext', undefined, 'Circle Color');
@@ -928,9 +1066,11 @@ var init = function (thisObj) {
     ]);
     circleColorDD.selection = iconColorDD.selection = 0;
     var locationsTab = tpanel.add('tab', undefined, ['Locations']);
+    var locBtnsGrp = locationsTab.add('group');
+    var kindergardenBtn = locBtnsGrp.add('button', undefined, 'Kindergarden');
     var texturesTab = tpanel.add('tab', undefined, ['Textures']);
-    var TexBtnsGrp = texturesTab.add('group');
-    var paperBtn = TexBtnsGrp.add('button', undefined, 'Paper');
+    var texBtnsGrp = texturesTab.add('group');
+    var paperBtn = texBtnsGrp.add('button', undefined, 'Paper');
     tvaiBtn.onClick = createTvaiStroke;
     scaleBtn.onClick = scaleWithOvershoot;
     logosBtn.onClick = importLogos;
@@ -941,8 +1081,16 @@ var init = function (thisObj) {
     IsraelMapBtn.onClick = createIsraelMap;
     GazaMapBtn.onClick = createGazaMap;
     numCountBtn.onClick = createCountingText;
-    explosionBtn.onClick = function () {
+    boomBtn.onClick = function () {
         createExplosionIcon(circleColorDD.selection.toString(), iconColorDD.selection.toString(), circleCheck.value);
+    };
+    tunnelBtn.onClick = function () {
+        createTunnelIcon(circleColorDD.selection.toString(), iconColorDD.selection.toString(), circleCheck.value);
+    };
+    kindergardenBtn.onClick = function () {
+        var lang = getLanguageFromKeyboard();
+        alert(lang);
+        createKindergardenLocation(lang);
     };
     paperBtn.onClick = function () {
         importAndLoopTexture('C:/Users/eyalc/DevProjects/mivtzai-utils/src/assets/Kyle_Paper_Dark.jpg');
