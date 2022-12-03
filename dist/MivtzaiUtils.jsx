@@ -195,6 +195,27 @@ var openFs = function (path) {
             'open "' + Folder.execute(folder.fsName) + '"';
     system.callSystem(cmd);
 };
+var createIconCircle = function (contents) {
+    var vertices = [
+        [180, 0],
+        [0, 180],
+        [-180, 0],
+        [0, -180]
+    ];
+    var inTangents = [
+        [0, -100],
+        [100, 0],
+        [0, 100],
+        [-100, 0]
+    ];
+    var outTangents = [
+        [0, 100],
+        [-100, 0],
+        [0, -100],
+        [100, 0]
+    ];
+    createPathGrp(contents, 'Circle', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [0, 0]);
+};
 var createTvaiStroke = function () {
     var comp = app.project.activeItem;
     var layer = comp.layers.addShape();
@@ -637,6 +658,215 @@ var createCountingText = function () {
     numValProp.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 20)]);
     numValProp.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 75)]);
 };
+var createExplosionIcon = function () {
+    var comp = app.project.activeItem;
+    var layer = comp.layers.addShape();
+    layer.name = 'Explosion';
+    var contents = layer.property('Contents');
+    var createBigBoom = function () {
+        var vertices = [
+            [-84.9202270507812, 123.637664794922],
+            [-31.8689270019531, 123.637664794922],
+            [-76.7900543212891, 65.0281066894531],
+            [-25.8812561035156, 97.1145477294922],
+            [-29.7290954589844, 70.1620330810547],
+            [-15.1866760253906, 85.1338653564453],
+            [-6.62950134277344, 35.5111694335938],
+            [1.07125854492188, 80.4296264648438],
+            [44.7087097167969, 43.2092437744141],
+            [17.7535095214844, 112.089065551758],
+            [33.1576995849609, 103.958892822266],
+            [24.6005249023438, 124.067077636719],
+            [80.6456604003906, 124.067077636719],
+            [55.403564453125, 103.10221862793],
+            [85.3526000976562, 92.8373107910156],
+            [63.1040496826172, 75.2956848144531],
+            [129.841369628906, -32.941650390625],
+            [43.42529296875, 21.3906555175781],
+            [46.4191284179688, -15.8297271728516],
+            [20.7500152587891, 24.8114776611328],
+            [28.8777770996094, -124.067077636719],
+            [-9.19633483886719, 4.70571899414062],
+            [-34.0090179443359, -35.9381713867188],
+            [-28.4480895996094, 12.8358917236328],
+            [-108.876510620117, -84.7068634033203],
+            [-70.3727111816406, 45.3466644287109],
+            [-129.841369628906, 61.6045837402344],
+            [-76.7900543212891, 97.5415496826172]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Big_Boom', true, false, [0, 0, 0], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [0, 0]);
+    };
+    var createLittleBoom = function () {
+        var vertices = [
+            [-10.4825592041016, 9.19902038574219],
+            [9.19647216796875, 9.19902038574219],
+            [17.3266448974609, 1.92526245117188],
+            [7.48605346679688, 1.92526245117188],
+            [11.7632904052734, -8.34260559082031],
+            [3.20854187011719, -0.641845703125],
+            [1.49571228027344, -9.19902038574219],
+            [-1.92510986328125, -0.641845703125],
+            [-10.4825592041016, -6.20518493652344],
+            [-7.91546630859375, 2.35198974609375],
+            [-17.3266448974609, 3.20867919921875]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Little_Boom', true, false, [0, 0, 0], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [-4.0612, 115.9381]);
+    };
+    var createCircleOne = function () {
+        var vertices = [
+            [5.5621337890625, 0.00120544433594],
+            [-0.00120544433594, 5.5621337890625],
+            [-5.5621337890625, 0.00120544433594],
+            [-0.00120544433594, -5.5621337890625]
+        ];
+        var inTangents = [
+            [0, -3.07241821289062],
+            [3.07241821289062, 0],
+            [0, 3.06973266601562],
+            [-3.06973266601562, 0]
+        ];
+        var outTangents = [
+            [0, 3.06973266601562],
+            [-3.06973266601562, 0],
+            [0, -3.07241821289062],
+            [3.07241821289062, 0]
+        ];
+        createPathGrp(contents, 'Circle_01', true, false, [0, 0, 0], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [-124.4927, 13.475]);
+    };
+    var createCircleTwo = function () {
+        var vertices = [
+            [5.5621337890625, 0.00120544433594],
+            [-0.00120544433594, 5.5621337890625],
+            [-5.5621337890625, 0.00120544433594],
+            [-0.00120544433594, -5.5621337890625]
+        ];
+        var inTangents = [
+            [0, -3.07241821289062],
+            [3.07241821289062, 0],
+            [0, 3.06973266601562],
+            [-3.06973266601562, 0]
+        ];
+        var outTangents = [
+            [0, 3.06973266601562],
+            [-3.06973266601562, 0],
+            [0, -3.07241821289062],
+            [3.07241821289062, 0]
+        ];
+        createPathGrp(contents, 'Circle_02', true, false, [0, 0, 0], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [80.2173, -94.1219]);
+    };
+    var createCircleThree = function () {
+        var vertices = [
+            [5.5621337890625, 0.00120544433594],
+            [-0.00120544433594, 5.5621337890625],
+            [-5.5621337890625, 0.00120544433594],
+            [-0.00120544433594, -5.5621337890625]
+        ];
+        var inTangents = [
+            [0, -3.07241821289062],
+            [3.07241821289062, 0],
+            [0, 3.06973266601562],
+            [-3.06973266601562, 0]
+        ];
+        var outTangents = [
+            [0, 3.06973266601562],
+            [-3.06973266601562, 0],
+            [0, -3.07241821289062],
+            [3.07241821289062, 0]
+        ];
+        createPathGrp(contents, 'Circle_03', true, false, [0, 0, 0], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [94.976, 60.5347]);
+    };
+    createCircleThree();
+    createCircleTwo();
+    createCircleOne();
+    createLittleBoom();
+    createBigBoom();
+    createIconCircle(contents);
+};
 var init = function (thisObj) {
     var w = thisObj instanceof Panel
         ? thisObj
@@ -662,6 +892,8 @@ var init = function (thisObj) {
         openFs('C:/Users/eyalc/DevProjects/mivtzai-utils/src/assets/Kyle_Paper_Dark.jpg');
     };
     var iconsTab = tpanel.add('tab', undefined, ['Icons']);
+    var IconsBtnsGrp = iconsTab.add('group');
+    var explosionBtn = IconsBtnsGrp.add('button', undefined, 'Explosion!');
     var locationsTab = tpanel.add('tab', undefined, ['Locations']);
     var texturesTab = tpanel.add('tab', undefined, ['Textures']);
     var TexBtnsGrp = texturesTab.add('group');
@@ -676,6 +908,7 @@ var init = function (thisObj) {
     IsraelMapBtn.onClick = createIsraelMap;
     GazaMapBtn.onClick = createGazaMap;
     numCountBtn.onClick = createCountingText;
+    explosionBtn.onClick = createExplosionIcon;
     kylePaperBtn.onClick = function () {
         importAndLoopTexture('C:/Users/eyalc/DevProjects/mivtzai-utils/src/assets/Kyle_Paper_Dark.jpg');
     };

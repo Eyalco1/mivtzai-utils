@@ -247,3 +247,39 @@ const openFs = (path: string): void => {
         'open "' + Folder.execute(folder.fsName) + '"';
   system.callSystem(cmd);
 };
+
+const createIconCircle = (contents: PropertyGroup) => {
+  const vertices: [number, number][] = [
+    [180, 0],
+    [0, 180],
+    [-180, 0],
+    [0, -180]
+  ];
+  const inTangents: [number, number][] = [
+    [0, -100],
+    [100, 0],
+    [0, 100],
+    [-100, 0]
+  ];
+  const outTangents: [number, number][] = [
+    [0, 100],
+    [-100, 0],
+    [0, -100],
+    [100, 0]
+  ];
+
+  createPathGrp(
+    contents,
+    'Circle',
+    true,
+    false,
+    [255, 255, 255],
+    [0, 0, 0],
+    0,
+    vertices,
+    inTangents,
+    outTangents,
+    true,
+    [0, 0]
+  );
+};

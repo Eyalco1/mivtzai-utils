@@ -30,6 +30,10 @@ const init = (thisObj: typeof globalThis) => {
   };
 
   const iconsTab = tpanel.add('tab', undefined, ['Icons']);
+
+  const IconsBtnsGrp = iconsTab.add('group');
+  const explosionBtn = IconsBtnsGrp.add('button', undefined, 'Explosion!');
+
   const locationsTab = tpanel.add('tab', undefined, ['Locations']);
   const texturesTab = tpanel.add('tab', undefined, ['Textures']);
 
@@ -47,6 +51,8 @@ const init = (thisObj: typeof globalThis) => {
   IsraelMapBtn.onClick = createIsraelMap;
   GazaMapBtn.onClick = createGazaMap;
   numCountBtn.onClick = createCountingText;
+  // Icons
+  explosionBtn.onClick = createExplosionIcon
   // Textures
   kylePaperBtn.onClick = () => {
     importAndLoopTexture(
