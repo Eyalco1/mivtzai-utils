@@ -21,24 +21,46 @@ const init = (thisObj: typeof globalThis) => {
   const IsraelMapBtn = QABtnsGrp.add('button', undefined, 'IL');
   const GazaMapBtn = QABtnsGrp.add('button', undefined, 'GA');
   const numCountBtn = QABtnsGrp.add('button', undefined, 'N');
-  const testBtn = QABtnsGrp.add('button', undefined, '!TEST!');
+  // const testBtn = QABtnsGrp.add('button', undefined, '!TEST!');
 
-  testBtn.onClick = () => {
-    openFs(
-      'C:/Users/eyalc/DevProjects/mivtzai-utils/src/assets/Kyle_Paper_Dark.jpg'
-    );
-  };
+  // testBtn.onClick = () => {
+  //   openFs(
+  //     'C:/Users/eyalc/DevProjects/mivtzai-utils/src/assets/Kyle_Paper_Dark.jpg'
+  //   );
+  // };
 
   const iconsTab = tpanel.add('tab', undefined, ['Icons']);
 
   const IconsBtnsGrp = iconsTab.add('group');
   const explosionBtn = IconsBtnsGrp.add('button', undefined, 'Explosion!');
 
+  const circleCheck = iconsTab.add('checkbox', undefined, 'Circle');
+  const circleColorGrp = iconsTab.add('group');
+  const circleColorText = circleColorGrp.add(
+    'statictext',
+    undefined,
+    'Circle Color'
+  );
+  const circleColorDD = circleColorGrp.add('dropdownlist', undefined, [
+    'White',
+    'Black',
+    'Red'
+  ]);
+  const iconColorGrp = iconsTab.add('group');
+  const iconColorText = iconColorGrp.add('statictext', undefined, 'Icon Color');
+  const iconColorDD = iconColorGrp.add('dropdownlist', undefined, [
+    'Black',
+    'White',
+    'Red'
+  ]);
+
+  circleColorDD.selection = iconColorDD.selection = 0;
+
   const locationsTab = tpanel.add('tab', undefined, ['Locations']);
   const texturesTab = tpanel.add('tab', undefined, ['Textures']);
 
   const TexBtnsGrp = texturesTab.add('group');
-  const kylePaperBtn = TexBtnsGrp.add('button', undefined, 'Kyle');
+  const paperBtn = TexBtnsGrp.add('button', undefined, 'Paper');
 
   // Quick Actions
   tvaiBtn.onClick = createTvaiStroke;
@@ -52,9 +74,15 @@ const init = (thisObj: typeof globalThis) => {
   GazaMapBtn.onClick = createGazaMap;
   numCountBtn.onClick = createCountingText;
   // Icons
-  explosionBtn.onClick = createExplosionIcon
+  explosionBtn.onClick = () => {
+    createExplosionIcon(
+      circleColorDD.selection.toString() as ColorDropdown,
+      iconColorDD.selection.toString() as ColorDropdown,
+      circleCheck.value
+    );
+  };
   // Textures
-  kylePaperBtn.onClick = () => {
+  paperBtn.onClick = () => {
     importAndLoopTexture(
       'C:/Users/eyalc/DevProjects/mivtzai-utils/src/assets/Kyle_Paper_Dark.jpg'
     );

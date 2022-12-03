@@ -540,11 +540,33 @@ const createCountingText = (): void => {
   numValProp.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 75)]);
 };
 
-const createExplosionIcon = (): void => {
+const createExplosionIcon = (
+  circleColor: ColorDropdown,
+  iconColor: ColorDropdown,
+  hasCircle: Boolean
+): void => {
   const comp = app.project.activeItem as CompItem;
   const layer = comp.layers.addShape();
   layer.name = 'Explosion';
   const contents = layer.property('Contents') as PropertyGroup;
+
+  let circleColorRgb: [number, number, number];
+  if (circleColor === 'White') {
+    circleColorRgb = [255, 255, 255];
+  } else if (circleColor === 'Black') {
+    circleColorRgb = [0, 0, 0];
+  } else if (circleColor === 'Red') {
+    circleColorRgb = [197, 24, 24];
+  }
+
+  let iconColorRgb: [number, number, number];
+  if (iconColor === 'White') {
+    iconColorRgb = [255, 255, 255];
+  } else if (iconColor === 'Black') {
+    iconColorRgb = [0, 0, 0];
+  } else if (iconColor === 'Red') {
+    iconColorRgb = [197, 24, 24];
+  }
 
   const createBigBoom = () => {
     const vertices: [number, number][] = [
@@ -643,8 +665,8 @@ const createExplosionIcon = (): void => {
       'Big_Boom',
       true,
       false,
-      [0, 0, 0],
-      [0, 0, 0],
+      iconColorRgb,
+      iconColorRgb,
       0,
       vertices,
       inTangents,
@@ -700,8 +722,8 @@ const createExplosionIcon = (): void => {
       'Little_Boom',
       true,
       false,
-      [0, 0, 0],
-      [0, 0, 0],
+      iconColorRgb,
+      iconColorRgb,
       0,
       vertices,
       inTangents,
@@ -736,8 +758,8 @@ const createExplosionIcon = (): void => {
       'Circle_01',
       true,
       false,
-      [0, 0, 0],
-      [0, 0, 0],
+      iconColorRgb,
+      iconColorRgb,
       0,
       vertices,
       inTangents,
@@ -772,8 +794,8 @@ const createExplosionIcon = (): void => {
       'Circle_02',
       true,
       false,
-      [0, 0, 0],
-      [0, 0, 0],
+      iconColorRgb,
+      iconColorRgb,
       0,
       vertices,
       inTangents,
@@ -808,8 +830,8 @@ const createExplosionIcon = (): void => {
       'Circle_03',
       true,
       false,
-      [0, 0, 0],
-      [0, 0, 0],
+      iconColorRgb,
+      iconColorRgb,
       0,
       vertices,
       inTangents,
@@ -824,5 +846,5 @@ const createExplosionIcon = (): void => {
   createCircleOne();
   createLittleBoom();
   createBigBoom();
-  createIconCircle(contents);
+  if (hasCircle) createIconCircle(contents, circleColorRgb);
 };

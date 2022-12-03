@@ -248,7 +248,10 @@ const openFs = (path: string): void => {
   system.callSystem(cmd);
 };
 
-const createIconCircle = (contents: PropertyGroup) => {
+const createIconCircle = (
+  contents: PropertyGroup,
+  circleColorRgb: [number, number, number]
+) => {
   const vertices: [number, number][] = [
     [180, 0],
     [0, 180],
@@ -273,8 +276,8 @@ const createIconCircle = (contents: PropertyGroup) => {
     'Circle',
     true,
     false,
-    [255, 255, 255],
-    [0, 0, 0],
+    circleColorRgb,
+    circleColorRgb,
     0,
     vertices,
     inTangents,

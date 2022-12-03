@@ -195,7 +195,7 @@ var openFs = function (path) {
             'open "' + Folder.execute(folder.fsName) + '"';
     system.callSystem(cmd);
 };
-var createIconCircle = function (contents) {
+var createIconCircle = function (contents, circleColorRgb) {
     var vertices = [
         [180, 0],
         [0, 180],
@@ -214,7 +214,7 @@ var createIconCircle = function (contents) {
         [0, -100],
         [100, 0]
     ];
-    createPathGrp(contents, 'Circle', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [0, 0]);
+    createPathGrp(contents, 'Circle', true, false, circleColorRgb, circleColorRgb, 0, vertices, inTangents, outTangents, true, [0, 0]);
 };
 var createTvaiStroke = function () {
     var comp = app.project.activeItem;
@@ -658,11 +658,31 @@ var createCountingText = function () {
     numValProp.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 20)]);
     numValProp.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 75)]);
 };
-var createExplosionIcon = function () {
+var createExplosionIcon = function (circleColor, iconColor, hasCircle) {
     var comp = app.project.activeItem;
     var layer = comp.layers.addShape();
     layer.name = 'Explosion';
     var contents = layer.property('Contents');
+    var circleColorRgb;
+    if (circleColor === 'White') {
+        circleColorRgb = [255, 255, 255];
+    }
+    else if (circleColor === 'Black') {
+        circleColorRgb = [0, 0, 0];
+    }
+    else if (circleColor === 'Red') {
+        circleColorRgb = [197, 24, 24];
+    }
+    var iconColorRgb;
+    if (iconColor === 'White') {
+        iconColorRgb = [255, 255, 255];
+    }
+    else if (iconColor === 'Black') {
+        iconColorRgb = [0, 0, 0];
+    }
+    else if (iconColor === 'Red') {
+        iconColorRgb = [197, 24, 24];
+    }
     var createBigBoom = function () {
         var vertices = [
             [-84.9202270507812, 123.637664794922],
@@ -753,7 +773,7 @@ var createExplosionIcon = function () {
             [0, 0],
             [0, 0]
         ];
-        createPathGrp(contents, 'Big_Boom', true, false, [0, 0, 0], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [0, 0]);
+        createPathGrp(contents, 'Big_Boom', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [0, 0]);
     };
     var createLittleBoom = function () {
         var vertices = [
@@ -795,7 +815,7 @@ var createExplosionIcon = function () {
             [0, 0],
             [0, 0]
         ];
-        createPathGrp(contents, 'Little_Boom', true, false, [0, 0, 0], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [-4.0612, 115.9381]);
+        createPathGrp(contents, 'Little_Boom', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [-4.0612, 115.9381]);
     };
     var createCircleOne = function () {
         var vertices = [
@@ -816,7 +836,7 @@ var createExplosionIcon = function () {
             [0, -3.07241821289062],
             [3.07241821289062, 0]
         ];
-        createPathGrp(contents, 'Circle_01', true, false, [0, 0, 0], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [-124.4927, 13.475]);
+        createPathGrp(contents, 'Circle_01', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [-124.4927, 13.475]);
     };
     var createCircleTwo = function () {
         var vertices = [
@@ -837,7 +857,7 @@ var createExplosionIcon = function () {
             [0, -3.07241821289062],
             [3.07241821289062, 0]
         ];
-        createPathGrp(contents, 'Circle_02', true, false, [0, 0, 0], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [80.2173, -94.1219]);
+        createPathGrp(contents, 'Circle_02', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [80.2173, -94.1219]);
     };
     var createCircleThree = function () {
         var vertices = [
@@ -858,14 +878,15 @@ var createExplosionIcon = function () {
             [0, -3.07241821289062],
             [3.07241821289062, 0]
         ];
-        createPathGrp(contents, 'Circle_03', true, false, [0, 0, 0], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [94.976, 60.5347]);
+        createPathGrp(contents, 'Circle_03', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [94.976, 60.5347]);
     };
     createCircleThree();
     createCircleTwo();
     createCircleOne();
     createLittleBoom();
     createBigBoom();
-    createIconCircle(contents);
+    if (hasCircle)
+        createIconCircle(contents, circleColorRgb);
 };
 var init = function (thisObj) {
     var w = thisObj instanceof Panel
@@ -887,17 +908,29 @@ var init = function (thisObj) {
     var IsraelMapBtn = QABtnsGrp.add('button', undefined, 'IL');
     var GazaMapBtn = QABtnsGrp.add('button', undefined, 'GA');
     var numCountBtn = QABtnsGrp.add('button', undefined, 'N');
-    var testBtn = QABtnsGrp.add('button', undefined, '!TEST!');
-    testBtn.onClick = function () {
-        openFs('C:/Users/eyalc/DevProjects/mivtzai-utils/src/assets/Kyle_Paper_Dark.jpg');
-    };
     var iconsTab = tpanel.add('tab', undefined, ['Icons']);
     var IconsBtnsGrp = iconsTab.add('group');
     var explosionBtn = IconsBtnsGrp.add('button', undefined, 'Explosion!');
+    var circleCheck = iconsTab.add('checkbox', undefined, 'Circle');
+    var circleColorGrp = iconsTab.add('group');
+    var circleColorText = circleColorGrp.add('statictext', undefined, 'Circle Color');
+    var circleColorDD = circleColorGrp.add('dropdownlist', undefined, [
+        'White',
+        'Black',
+        'Red'
+    ]);
+    var iconColorGrp = iconsTab.add('group');
+    var iconColorText = iconColorGrp.add('statictext', undefined, 'Icon Color');
+    var iconColorDD = iconColorGrp.add('dropdownlist', undefined, [
+        'Black',
+        'White',
+        'Red'
+    ]);
+    circleColorDD.selection = iconColorDD.selection = 0;
     var locationsTab = tpanel.add('tab', undefined, ['Locations']);
     var texturesTab = tpanel.add('tab', undefined, ['Textures']);
     var TexBtnsGrp = texturesTab.add('group');
-    var kylePaperBtn = TexBtnsGrp.add('button', undefined, 'Kyle');
+    var paperBtn = TexBtnsGrp.add('button', undefined, 'Paper');
     tvaiBtn.onClick = createTvaiStroke;
     scaleBtn.onClick = scaleWithOvershoot;
     logosBtn.onClick = importLogos;
@@ -908,8 +941,10 @@ var init = function (thisObj) {
     IsraelMapBtn.onClick = createIsraelMap;
     GazaMapBtn.onClick = createGazaMap;
     numCountBtn.onClick = createCountingText;
-    explosionBtn.onClick = createExplosionIcon;
-    kylePaperBtn.onClick = function () {
+    explosionBtn.onClick = function () {
+        createExplosionIcon(circleColorDD.selection.toString(), iconColorDD.selection.toString(), circleCheck.value);
+    };
+    paperBtn.onClick = function () {
         importAndLoopTexture('C:/Users/eyalc/DevProjects/mivtzai-utils/src/assets/Kyle_Paper_Dark.jpg');
     };
     w.layout.layout(true);
