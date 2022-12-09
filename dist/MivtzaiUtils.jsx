@@ -1,11 +1,3 @@
-/**
- * @name mivtzai-utils
- * @description Utilites for operative projects
- * @version 1.0.0
- * @author Eyal Cohen
- * @license ISC
- */
-
 Array.prototype.map || (Array.prototype.map = function (callback) { var T, A, k; if (null == this)
     throw new TypeError("this is null or not defined"); var O = Object(this), len = O.length >>> 0; if ("function" != typeof callback)
     throw new TypeError(callback + " is not a function"); for (arguments.length > 1 && (T = arguments[1]), A = new Array(len), k = 0; k < len;) {
@@ -230,13 +222,13 @@ var getLanguageFromKeyboard = function () {
 };
 var getFontFromLanguage = function (lang) {
     if (lang === 'English') {
-        return 'TradeGothic LT CondEighteen';
+        return 'TradeGothicLT-BoldCondTwenty';
     }
     else if (lang === 'Hebrew') {
         return 'NarkisBlockCondensedMF-Bold';
     }
     else if (lang === 'Arabic') {
-        return 'Janna LT';
+        return 'DroidArabicKufi-Bold';
     }
 };
 var createTvaiStroke = function () {
@@ -1007,31 +999,491 @@ var createTunnelIcon = function (circleColor, iconColor, hasCircle) {
     if (hasCircle)
         createIconCircle(contents, circleColorRgb);
 };
-var createKindergardenLocation = function (lang) {
+var createLocationBG = function (size, locationName, color) {
+    if (color === void 0) { color = [1, 1, 1]; }
+    var comp = app.project.activeItem;
+    var layer = comp.layers.addShape();
+    layer.name = "".concat(locationName, "_BG");
+    var contents = layer.property('ADBE Root Vectors Group');
+    var grp = contents.addProperty('ADBE Vector Group');
+    grp.name = "".concat(locationName, "_BG");
+    var recGrp = grp.property('ADBE Vectors Group');
+    recGrp.addProperty('ADBE Vector Shape - Rect');
+    var fillGrp = recGrp.addProperty('ADBE Vector Graphic - Fill');
+    var fillProp = fillGrp.property('ADBE Vector Fill Color');
+    fillProp.setValue(color);
+    var roundProp = recGrp
+        .property('ADBE Vector Shape - Rect')
+        .property('ADBE Vector Rect Roundness');
+    roundProp.setValue(25.7054);
+    var sizeProp = recGrp
+        .property('ADBE Vector Shape - Rect')
+        .property('ADBE Vector Rect Size');
+    sizeProp.setValue(size);
+    return layer;
+};
+var createLocationText = function (lang, text, fontSize, tracking, textPos, textAnchor) {
     var comp = app.project.activeItem;
     var textLayer = comp.layers.addText();
     var srcText = textLayer
         .property('ADBE Text Properties')
         .property('ADBE Text Document');
-    var text;
-    if (lang === 'Hebrew') {
-        text = 'גן ילדים';
-    }
-    else if (lang === 'English') {
-        text = 'Kindergarden';
-    }
-    else if (lang === 'Arabic') {
-        text = 'روضة أطفال';
-    }
     srcText.setValue(text);
     var textDoc = srcText.value;
     textDoc.font = getFontFromLanguage(lang);
-    textDoc.fontSize = 100;
+    textDoc.fontSize = fontSize;
     textDoc.applyFill = true;
-    textDoc.fillColor = [1, 1, 1];
+    textDoc.fillColor = [53 / 255, 33 / 255, 28 / 255];
     textDoc.applyStroke = false;
-    textDoc.tracking = 0;
+    textDoc.tracking = tracking;
     srcText.setValue(textDoc);
+    var posProp = textLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Position');
+    var anchorProp = textLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Anchor Point');
+    posProp.setValue(textPos);
+    anchorProp.setValue(textAnchor);
+    return textLayer;
+};
+var createKindergardenIcon = function (iconPos, iconAnchor, iconScale) {
+    var comp = app.project.activeItem;
+    var iconLayer = comp.layers.addShape();
+    iconLayer.name = 'Kindergarden Icon';
+    var contents = iconLayer.property('Contents');
+    var createHouseMiddleHide = function () {
+        var vertices = [
+            [0, 5.30056762695312],
+            [0, 5.30056762695312],
+            [-4.27423095703125, 1.02633666992188],
+            [-4.27423095703125, -1.02633666992188],
+            [0, -5.30056762695312],
+            [0, -5.30056762695312],
+            [4.27423095703125, -1.02633666992188],
+            [4.27423095703125, 1.02633666992188]
+        ];
+        var inTangents = [
+            [2.360595703125, 0],
+            [0, 0],
+            [0, 2.360595703125],
+            [0, 0],
+            [-2.360595703125, 0],
+            [0, 0],
+            [0, -2.360595703125],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [-2.360595703125, 0],
+            [0, 0],
+            [0, -2.360595703125],
+            [0, 0],
+            [2.360595703125, 0],
+            [0, 0],
+            [0, 2.360595703125]
+        ];
+        createPathGrp(contents, 'House_Middle_Hide', true, false, [53, 33, 28], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [76.8601, -5.7216]);
+    };
+    var createLadderL = function () {
+        var vertices = [
+            [-0.56208801269531, 13.8012847900391],
+            [0.56208801269531, 13.8012847900391],
+            [0.56208801269531, -13.8012847900391],
+            [-0.56208801269531, -13.8012847900391]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Ladder_L', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [57.6522, 11.2183]);
+    };
+    var createLadderR = function () {
+        var vertices = [
+            [-0.56208801269531, 13.8012847900391],
+            [0.56208801269531, 13.8012847900391],
+            [0.56208801269531, -13.8012847900391],
+            [-0.56208801269531, -13.8012847900391]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Ladder_R', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [62.2776, 11.2183]);
+    };
+    var createLadder06 = function () {
+        var vertices = [
+            [-2.874755859375, -0.65524291992188],
+            [2.874755859375, -0.65524291992188],
+            [2.874755859375, 0.65524291992188],
+            [-2.874755859375, 0.65524291992188]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Ladder_06', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [59.9649, 0.3872]);
+    };
+    var createLadder05 = function () {
+        var vertices = [
+            [-2.874755859375, -0.65524291992188],
+            [2.874755859375, -0.65524291992188],
+            [2.874755859375, 0.65524291992188],
+            [-2.874755859375, 0.65524291992188]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Ladder_05', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [59.9649, 4.9116]);
+    };
+    var createLadder04 = function () {
+        var vertices = [
+            [-2.874755859375, -0.65524291992188],
+            [2.874755859375, -0.65524291992188],
+            [2.874755859375, 0.65524291992188],
+            [-2.874755859375, 0.65524291992188]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Ladder_04', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [59.9649, 9.4359]);
+    };
+    var createLadder03 = function () {
+        var vertices = [
+            [-2.874755859375, -0.65524291992188],
+            [2.874755859375, -0.65524291992188],
+            [2.874755859375, 0.65524291992188],
+            [-2.874755859375, 0.65524291992188]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Ladder_03', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [59.9649, 13.9603]);
+    };
+    var createLadder02 = function () {
+        var vertices = [
+            [-2.874755859375, -0.65524291992188],
+            [2.874755859375, -0.65524291992188],
+            [2.874755859375, 0.65524291992188],
+            [-2.874755859375, 0.65524291992188]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Ladder_02', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [59.9649, 18.4846]);
+    };
+    var createLadder01 = function () {
+        var vertices = [
+            [-2.874755859375, -0.65524291992188],
+            [2.874755859375, -0.65524291992188],
+            [2.874755859375, 0.65524291992188],
+            [-2.874755859375, 0.65524291992188]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Ladder_01', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [59.9649, 23.009]);
+    };
+    var createSlide = function () {
+        var vertices = [
+            [9.17953491210938, 8.79170227050781],
+            [-1.21762084960938, -1.0423583984375],
+            [-11.4797973632812, -13.2806091308594],
+            [-11.5624084472656, -13.2882843017578],
+            [-11.5624084472656, -8.4593505859375],
+            [-5.71575927734375, 0.44515991210938],
+            [9.17953491210938, 13.2882843017578],
+            [11.5624084472656, 11.0399932861328]
+        ];
+        var inTangents = [
+            [1.31709289550781, 0],
+            [2.26652526855469, 6.09716796875],
+            [6.39698791503906, 1.84429931640625],
+            [0.02792358398438, 0.00700378417969],
+            [0, 0],
+            [-1.45497131347656, -3.91241455078125],
+            [-10.1202392578125, 0],
+            [0, 1.24160766601562]
+        ];
+        var outTangents = [
+            [-6.41560363769531, 0],
+            [-1.81275939941406, -4.87202453613281],
+            [-0.02792358398438, -0.00796508789062],
+            [0, 0],
+            [3.10542297363281, 1.55914306640625],
+            [2.12690734863281, 5.72172546386719],
+            [1.31709289550781, 0],
+            [0, -1.24160766601562]
+        ];
+        createPathGrp(contents, 'Slide', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [102.5002, 11.7313]);
+    };
+    var createHouseTop = function () {
+        var vertices = [
+            [-0.16940307617188, -6.54544067382812],
+            [-21.2740783691406, 5.97430419921875],
+            [-21.1046600341797, 6.59190368652344],
+            [21.1046600341797, 6.59190368652344],
+            [21.2740783691406, 5.97430419921875],
+            [0.16940307617188, -6.54544067382812]
+        ];
+        var inTangents = [
+            [0.10444641113281, -0.06195068359375],
+            [0, 0],
+            [-0.33763122558594, 0],
+            [0, 0],
+            [0, 0],
+            [0.29039001464844, 0.17225646972656]
+        ];
+        var outTangents = [
+            [0, 0],
+            [-0.29039001464844, 0.17225646972656],
+            [0, 0],
+            [0.33763122558594, 0],
+            [0, 0],
+            [-0.10444641113281, -0.06195068359375]
+        ];
+        createPathGrp(contents, 'House_Top', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [77.4369, -25.2672]);
+    };
+    var createHouseMiddle = function () {
+        var vertices = [
+            [12.7078552246094, 10.8105163574219],
+            [-12.7078552246094, 10.8105163574219],
+            [-12.7078552246094, -10.8105163574219],
+            [12.7078552246094, -10.8105163574219]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'House_Middle', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [76.8601, -6.6124]);
+    };
+    var createHouseBottom = function () {
+        var vertices = [
+            [12.7078399658203, -9.78457641601562],
+            [7.62483215332031, -9.78457641601562],
+            [-7.62483215332031, -9.78457641601562],
+            [-12.7078399658203, -9.78457641601562],
+            [-12.7078399658203, -4.70140075683594],
+            [-12.7078399658203, 9.78457641601562],
+            [-7.62483215332031, 9.78457641601562],
+            [-7.62483215332031, 2.92341613769531],
+            [0, -4.70140075683594],
+            [0, -4.70140075683594],
+            [7.62483215332031, 2.92341613769531],
+            [7.62483215332031, 9.78457641601562],
+            [12.7078399658203, 9.78457641601562],
+            [12.7078399658203, -9.78457641601562]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [-4.21107482910156, 0],
+            [0, 0],
+            [0, -4.21107482910156],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, -4.21107482910156],
+            [0, 0],
+            [4.21107482910156, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'House_Bottom', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [76.8601, 15.235]);
+    };
+    var createIconCircle = function () {
+        var vertices = [
+            [43.39892578125, 0],
+            [0, 43.39892578125],
+            [-43.39892578125, 0],
+            [0, -43.39892578125]
+        ];
+        var inTangents = [
+            [0, -23.9685668945312],
+            [23.9685668945312, 0],
+            [0, 23.9685668945312],
+            [-23.9685668945312, 0]
+        ];
+        var outTangents = [
+            [0, 23.9685668945312],
+            [-23.9685668945312, 0],
+            [0, -23.9685668945312],
+            [23.9685668945312, 0]
+        ];
+        createPathGrp(contents, 'Icon_Circle', true, false, [53, 33, 28], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [85.5764, -0.8716]);
+    };
+    createHouseMiddleHide();
+    createLadderL();
+    createLadderR();
+    createLadder06();
+    createLadder05();
+    createLadder04();
+    createLadder03();
+    createLadder02();
+    createLadder01();
+    createSlide();
+    createHouseTop();
+    createHouseMiddle();
+    createHouseBottom();
+    createIconCircle();
+    var posProp = iconLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Position');
+    posProp.setValue(iconPos);
+    var anchorProp = iconLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Anchor Point');
+    anchorProp.setValue(iconAnchor);
+    var scaleProp = iconLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Scale');
+    scaleProp.setValue([iconScale, iconScale]);
+    return iconLayer;
+};
+var createLocation = function (inputLang, argsArr) {
+    var _a = argsArr.find(function (args) { return args.lang === inputLang; }), bgSize = _a.bgSize, fontSize = _a.fontSize, lang = _a.lang, text = _a.text, textAnchor = _a.textAnchor, textPos = _a.textPos, tracking = _a.tracking, iconAnchor = _a.iconAnchor, iconPos = _a.iconPos, iconScale = _a.iconScale;
+    var bgLayer = createLocationBG(bgSize, 'Kindergarden');
+    var iconLayer = createKindergardenIcon(iconPos, iconAnchor, iconScale);
+    var textLayer = createLocationText(lang, text, fontSize, tracking, textPos, textAnchor);
+    iconLayer.parent = textLayer.parent = bgLayer;
+    bgLayer.label = iconLayer.label = textLayer.label = 11;
+    iconLayer.selected = textLayer.selected = false;
+    bgLayer.selected = true;
+};
+var createKindergardenLocation = function (lang) {
+    var args = [
+        {
+            lang: 'Hebrew',
+            text: 'גן ילדים',
+            fontSize: 77.3332,
+            tracking: -19,
+            textPos: [922.3363, 540.1692],
+            textAnchor: [75.0863, -19.0808],
+            bgSize: [296, 110],
+            iconPos: [1045.5764, 539.1284],
+            iconAnchor: [85.5764, -0.8716],
+            iconScale: 100
+        },
+        {
+            lang: 'English',
+            text: 'Kindergarden',
+            fontSize: 77.3332,
+            tracking: -26,
+            textPos: [1019.7664, 549.906],
+            textAnchor: [180.7664, -21.344],
+            bgSize: [495, 106],
+            iconPos: [773.5764, 539.1284],
+            iconAnchor: [85.5764, -0.8716],
+            iconScale: 100
+        },
+        {
+            lang: 'Arabic',
+            text: 'روضة أطفال',
+            fontSize: 60,
+            tracking: -23,
+            textPos: [916.7816, 538.4697],
+            textAnchor: [171.7816, -22.2803],
+            bgSize: [466, 92],
+            iconPos: [1141.2014, 539.5034],
+            iconAnchor: [85.5764, -0.8716],
+            iconScale: 83
+        }
+    ];
+    createLocation(lang, args);
 };
 var init = function (thisObj) {
     var w = thisObj instanceof Panel
