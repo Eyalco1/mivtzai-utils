@@ -1,3 +1,11 @@
+/**
+ * @name mivtzai-utils
+ * @description Utilites for operative projects
+ * @version 1.0.0
+ * @author Eyal Cohen
+ * @license ISC
+ */
+
 Array.prototype.map || (Array.prototype.map = function (callback) { var T, A, k; if (null == this)
     throw new TypeError("this is null or not defined"); var O = Object(this), len = O.length >>> 0; if ("function" != typeof callback)
     throw new TypeError(callback + " is not a function"); for (arguments.length > 1 && (T = arguments[1]), A = new Array(len), k = 0; k < len;) {
@@ -222,13 +230,13 @@ var getLanguageFromKeyboard = function () {
 };
 var getFontFromLanguage = function (lang) {
     if (lang === 'English') {
-        return 'TradeGothic LT CondEighteen-Bold';
+        return 'TradeGothic LT CondEighteen';
     }
     else if (lang === 'Hebrew') {
         return 'NarkisBlockCondensedMF-Bold';
     }
     else if (lang === 'Arabic') {
-        return 'Janna LT Bold';
+        return 'Janna LT';
     }
 };
 var createTvaiStroke = function () {
@@ -1017,7 +1025,7 @@ var createKindergardenLocation = function (lang) {
     }
     srcText.setValue(text);
     var textDoc = srcText.value;
-    textDoc.font = 'NarkisBlockCondensedMF-Bold';
+    textDoc.font = getFontFromLanguage(lang);
     textDoc.fontSize = 100;
     textDoc.applyFill = true;
     textDoc.fillColor = [1, 1, 1];
@@ -1089,7 +1097,6 @@ var init = function (thisObj) {
     };
     kindergardenBtn.onClick = function () {
         var lang = getLanguageFromKeyboard();
-        alert(lang);
         createKindergardenLocation(lang);
     };
     paperBtn.onClick = function () {

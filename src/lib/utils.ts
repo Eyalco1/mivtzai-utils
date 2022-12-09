@@ -300,11 +300,11 @@ const getLanguageFromKeyboard = (): Lingo => {
 
 const getFontFromLanguage = (lang: Lingo) => {
   if (lang === 'English') {
-    return 'TradeGothic LT CondEighteen-Bold';
+    return 'TradeGothic LT CondEighteen';
   } else if (lang === 'Hebrew') {
     return 'NarkisBlockCondensedMF-Bold';
   } else if (lang === 'Arabic') {
     // DroidArabicKufi Bold*
-    return 'Janna LT Bold';
+    return 'Janna LT';
   }
 };

@@ -97,8 +97,6 @@ const init = (thisObj: typeof globalThis) => {
   // Locations
   kindergardenBtn.onClick = () => {
     const lang = getLanguageFromKeyboard();
-
-    alert(lang);
     createKindergardenLocation(lang);
   };
 
