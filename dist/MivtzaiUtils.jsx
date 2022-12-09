@@ -1047,10 +1047,37 @@ var createLocationText = function (lang, text, fontSize, tracking, textPos, text
     anchorProp.setValue(textAnchor);
     return textLayer;
 };
-var createKindergardenIcon = function (iconPos, iconAnchor, iconScale) {
+var createLocation = function (inputLang, argsArr) {
+    var _a = argsArr.find(function (args) { return args.lang === inputLang; }), bgSize = _a.bgSize, fontSize = _a.fontSize, lang = _a.lang, text = _a.text, textAnchor = _a.textAnchor, textPos = _a.textPos, tracking = _a.tracking, iconAnchor = _a.iconAnchor, iconPos = _a.iconPos, iconScale = _a.iconScale;
+    var bgLayer = createLocationBG(bgSize, 'Kindergarden');
+    var iconLayer = createKindergardenIcon(iconPos, iconAnchor, iconScale);
+    var textLayer = createLocationText(lang, text, fontSize, tracking, textPos, textAnchor);
+    iconLayer.parent = textLayer.parent = bgLayer;
+    bgLayer.label = iconLayer.label = textLayer.label = 11;
+    iconLayer.selected = textLayer.selected = false;
+    bgLayer.selected = true;
+};
+var createIconBase = function (name, iconPos, iconAnchor, iconScale) {
     var comp = app.project.activeItem;
     var iconLayer = comp.layers.addShape();
-    iconLayer.name = 'Kindergarden Icon';
+    iconLayer.name = "".concat(name, " Icon");
+    var contents = iconLayer.property('Contents');
+    var posProp = iconLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Position');
+    posProp.setValue(iconPos);
+    var anchorProp = iconLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Anchor Point');
+    anchorProp.setValue(iconAnchor);
+    var scaleProp = iconLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Scale');
+    scaleProp.setValue([iconScale, iconScale]);
+    return iconLayer;
+};
+var createKindergardenIcon = function (iconPos, iconAnchor, iconScale) {
+    var iconLayer = createIconBase('Kindergarden', iconPos, iconAnchor, iconScale);
     var contents = iconLayer.property('Contents');
     var createHouseMiddleHide = function () {
         var vertices = [
@@ -1420,29 +1447,7 @@ var createKindergardenIcon = function (iconPos, iconAnchor, iconScale) {
     createHouseMiddle();
     createHouseBottom();
     createIconCircle();
-    var posProp = iconLayer
-        .property('ADBE Transform Group')
-        .property('ADBE Position');
-    posProp.setValue(iconPos);
-    var anchorProp = iconLayer
-        .property('ADBE Transform Group')
-        .property('ADBE Anchor Point');
-    anchorProp.setValue(iconAnchor);
-    var scaleProp = iconLayer
-        .property('ADBE Transform Group')
-        .property('ADBE Scale');
-    scaleProp.setValue([iconScale, iconScale]);
     return iconLayer;
-};
-var createLocation = function (inputLang, argsArr) {
-    var _a = argsArr.find(function (args) { return args.lang === inputLang; }), bgSize = _a.bgSize, fontSize = _a.fontSize, lang = _a.lang, text = _a.text, textAnchor = _a.textAnchor, textPos = _a.textPos, tracking = _a.tracking, iconAnchor = _a.iconAnchor, iconPos = _a.iconPos, iconScale = _a.iconScale;
-    var bgLayer = createLocationBG(bgSize, 'Kindergarden');
-    var iconLayer = createKindergardenIcon(iconPos, iconAnchor, iconScale);
-    var textLayer = createLocationText(lang, text, fontSize, tracking, textPos, textAnchor);
-    iconLayer.parent = textLayer.parent = bgLayer;
-    bgLayer.label = iconLayer.label = textLayer.label = 11;
-    iconLayer.selected = textLayer.selected = false;
-    bgLayer.selected = true;
 };
 var createKindergardenLocation = function (lang) {
     var args = [

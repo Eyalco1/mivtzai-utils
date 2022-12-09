@@ -70,14 +70,82 @@ const createLocationText = (
   return textLayer;
 };
 
-const createKindergardenIcon = (
+const createLocation = (inputLang: Lingo, argsArr: LocationArgs[]): void => {
+  const {
+    bgSize,
+    fontSize,
+    lang,
+    text,
+    textAnchor,
+    textPos,
+    tracking,
+    iconAnchor,
+    iconPos,
+    iconScale
+  } = argsArr.find(args => args.lang === inputLang);
+
+  const bgLayer = createLocationBG(bgSize, 'Kindergarden');
+  const iconLayer = createKindergardenIcon(iconPos, iconAnchor, iconScale);
+  const textLayer = createLocationText(
+    lang,
+    text,
+    fontSize,
+    tracking,
+    textPos,
+    textAnchor
+  );
+
+  iconLayer.parent = textLayer.parent = bgLayer;
+  bgLayer.label = iconLayer.label = textLayer.label = 11;
+  iconLayer.selected = textLayer.selected = false;
+  bgLayer.selected = true;
+};
+
+const createIconBase = (
+  name: string,
   iconPos: [number, number],
   iconAnchor: [number, number],
   iconScale: number
 ): ShapeLayer => {
   const comp = app.project.activeItem as CompItem;
   const iconLayer = comp.layers.addShape();
-  iconLayer.name = 'Kindergarden Icon';
+  iconLayer.name = `${name} Icon`;
+  const contents = iconLayer.property('Contents') as PropertyGroup;
+  const posProp = iconLayer
+    .property('ADBE Transform Group')
+    .property('ADBE Position') as Property<[number, number]>;
+
+  posProp.setValue(iconPos);
+
+  const anchorProp = iconLayer
+    .property('ADBE Transform Group')
+    .property('ADBE Anchor Point') as Property<[number, number]>;
+
+  anchorProp.setValue(iconAnchor);
+
+  const scaleProp = iconLayer
+    .property('ADBE Transform Group')
+    .property('ADBE Scale') as Property<[number, number]>;
+
+  scaleProp.setValue([iconScale, iconScale]);
+
+  return iconLayer;
+};
+
+// ==========================
+
+const createKindergardenIcon = (
+  iconPos: [number, number],
+  iconAnchor: [number, number],
+  iconScale: number
+): ShapeLayer => {
+  const iconLayer = createIconBase(
+    'Kindergarden',
+    iconPos,
+    iconAnchor,
+    iconScale
+  );
+
   const contents = iconLayer.property('Contents') as PropertyGroup;
 
   const createHouseMiddleHide = () => {
@@ -673,56 +741,7 @@ const createKindergardenIcon = (
   createHouseBottom();
   createIconCircle();
 
-  const posProp = iconLayer
-    .property('ADBE Transform Group')
-    .property('ADBE Position') as Property<[number, number]>;
-
-  posProp.setValue(iconPos);
-
-  const anchorProp = iconLayer
-    .property('ADBE Transform Group')
-    .property('ADBE Anchor Point') as Property<[number, number]>;
-
-  anchorProp.setValue(iconAnchor);
-
-  const scaleProp = iconLayer
-    .property('ADBE Transform Group')
-    .property('ADBE Scale') as Property<[number, number]>;
-
-  scaleProp.setValue([iconScale, iconScale]);
-
   return iconLayer;
-};
-
-const createLocation = (inputLang: Lingo, argsArr: LocationArgs[]): void => {
-  const {
-    bgSize,
-    fontSize,
-    lang,
-    text,
-    textAnchor,
-    textPos,
-    tracking,
-    iconAnchor,
-    iconPos,
-    iconScale
-  } = argsArr.find(args => args.lang === inputLang);
-
-  const bgLayer = createLocationBG(bgSize, 'Kindergarden');
-  const iconLayer = createKindergardenIcon(iconPos, iconAnchor, iconScale);
-  const textLayer = createLocationText(
-    lang,
-    text,
-    fontSize,
-    tracking,
-    textPos,
-    textAnchor
-  );
-
-  iconLayer.parent = textLayer.parent = bgLayer;
-  bgLayer.label = iconLayer.label = textLayer.label = 11;
-  iconLayer.selected = textLayer.selected = false;
-  bgLayer.selected = true;
 };
 
 const createKindergardenLocation = (lang: Lingo): void => {
@@ -766,3 +785,9 @@ const createKindergardenLocation = (lang: Lingo): void => {
   ];
   createLocation(lang, args);
 };
+
+// const createMedicalIcon = (
+//   iconPos: [number, number],
+//   iconAnchor: [number, number],
+//   iconScale: number
+// ): ShapeLayer => {};
