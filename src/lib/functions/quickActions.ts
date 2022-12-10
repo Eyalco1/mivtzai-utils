@@ -105,14 +105,18 @@ const importLogos = (): void => {
   const idfItem = app.project.importFile(
     new ImportOptions(
       File(
-        'C:/Users/eyalc/DevProjects/mivtzai-utils/dist/MivtzaiUtils Assets/Logos/IDF_Logo.png'
+        `${File(
+          '.'
+        )}/Scripts/ScriptUI Panels/MivtzaiUtils Assets/Logos/IDF_Logo.png`
       )
     )
   ) as AVItem;
   const dotzItem = app.project.importFile(
     new ImportOptions(
       File(
-        'C:/Users/eyalc/DevProjects/mivtzai-utils/dist/MivtzaiUtils Assets/Logos/Dotz_Logo.png'
+        `${File(
+          '.'
+        )}/Scripts/ScriptUI Panels/MivtzaiUtils Assets/Logos/Dotz_Logo.png`
       )
     )
   ) as AVItem;

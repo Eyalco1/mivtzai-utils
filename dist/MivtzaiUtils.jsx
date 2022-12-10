@@ -1,11 +1,3 @@
-/**
- * @name mivtzai-utils
- * @description Utilites for operative projects
- * @version 1.0.0
- * @author Eyal Cohen
- * @license ISC
- */
-
 Array.prototype.map || (Array.prototype.map = function (callback) { var T, A, k; if (null == this)
     throw new TypeError("this is null or not defined"); var O = Object(this), len = O.length >>> 0; if ("function" != typeof callback)
     throw new TypeError(callback + " is not a function"); for (arguments.length > 1 && (T = arguments[1]), A = new Array(len), k = 0; k < len;) {
@@ -305,8 +297,8 @@ var scaleWithOvershoot = function () {
     });
 };
 var importLogos = function () {
-    var idfItem = app.project.importFile(new ImportOptions(File('C:/Users/eyalc/DevProjects/mivtzai-utils/dist/MivtzaiUtils Assets/Logos/IDF_Logo.png')));
-    var dotzItem = app.project.importFile(new ImportOptions(File('C:/Users/eyalc/DevProjects/mivtzai-utils/dist/MivtzaiUtils Assets/Logos/Dotz_Logo.png')));
+    var idfItem = app.project.importFile(new ImportOptions(File("".concat(File('.'), "/Scripts/ScriptUI Panels/MivtzaiUtils Assets/Logos/IDF_Logo.png"))));
+    var dotzItem = app.project.importFile(new ImportOptions(File("".concat(File('.'), "/Scripts/ScriptUI Panels/MivtzaiUtils Assets/Logos/Dotz_Logo.png"))));
     var comp = app.project.activeItem;
     var idfLayer = comp.layers.add(idfItem);
     var padding = 200;
@@ -1704,7 +1696,7 @@ var init = function (thisObj) {
         createMedicalLocation(lang);
     };
     paperBtn.onClick = function () {
-        importAndLoopTexture('C:/Users/eyalc/DevProjects/mivtzai-utils/dist/MivtzaiUtils Assets/Textures/Kyle_Paper_Dark.jpg');
+        importAndLoopTexture("".concat(File('.'), "/Scripts/ScriptUI Panels/MivtzaiUtils Assets/Textures/Kyle_Paper_Dark.jpg"));
     };
     w.layout.layout(true);
     w.layout.resize();

@@ -109,7 +109,9 @@ const init = (thisObj: typeof globalThis) => {
   // Textures
   paperBtn.onClick = () => {
     importAndLoopTexture(
-      'C:/Users/eyalc/DevProjects/mivtzai-utils/dist/MivtzaiUtils Assets/Textures/Kyle_Paper_Dark.jpg'
+      `${File(
+        '.'
+      )}/Scripts/ScriptUI Panels/MivtzaiUtils Assets/Textures/Kyle_Paper_Dark.jpg`
     );
   };
 

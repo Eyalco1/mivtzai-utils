@@ -30,7 +30,7 @@ task('createHeader', done => {
 });
 
 task('buildAssets', done => {
-  fse.copySync('src/assets', `dist/MivtzaiUtils Assets`, { overwrite: true });
+  fse.copySync('src/assets', 'dist/MivtzaiUtils Assets', { overwrite: true });
   done();
 });
 
@@ -47,6 +47,11 @@ task('jsxbin', () =>
 
 task('addToHost', done => {
   fs.copyFileSync('dist/MivtzaiUtils.jsx', scriptFolder + '\\MivtzaiUtils.jsx');
+  fse.copySync(
+    'dist/MivtzaiUtils Assets',
+    scriptFolder + '\\MivtzaiUtils Assets',
+    { overwrite: true }
+  );
   done();
 });
 
