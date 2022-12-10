@@ -6,14 +6,6 @@
  * @license ISC
  */
 
-/**
- * @name mivtzai-utils
- * @description Utilites for operative projects
- * @version 1.0.0
- * @author Eyal Cohen
- * @license ISC
- */
-
 Array.prototype.map || (Array.prototype.map = function (callback) { var T, A, k; if (null == this)
     throw new TypeError("this is null or not defined"); var O = Object(this), len = O.length >>> 0; if ("function" != typeof callback)
     throw new TypeError(callback + " is not a function"); for (arguments.length > 1 && (T = arguments[1]), A = new Array(len), k = 0; k < len;) {
@@ -1027,6 +1019,14 @@ var createTunnelIcon = function (circleColor, iconColor, hasCircle) {
     if (hasCircle)
         createIconCircle(contents, circleColorRgb);
 };
+var createIconFromId = function (id, circleColor, iconColor, hasCircle) {
+    switch (id) {
+        case 'Boom':
+            return createExplosionIcon(circleColor, iconColor, hasCircle);
+        case 'Tunnel':
+            return createTunnelIcon(circleColor, iconColor, hasCircle);
+    }
+};
 var createLocationBG = function (size, locationName, color) {
     if (color === void 0) { color = [1, 1, 1]; }
     var comp = app.project.activeItem;
@@ -1097,7 +1097,7 @@ var setLayerTransform = function (layer, pos, anchor, scale) {
     scaleProp.setValue([scale, scale]);
     return layer;
 };
-var createIconFromId = function (id, iconPos, iconAnchor, iconScale) {
+var createLocationIconFromId = function (id, iconPos, iconAnchor, iconScale) {
     id = id.toLowerCase();
     if (id === 'kindergarden') {
         return createKindergardenIcon(iconPos, iconAnchor, iconScale);
@@ -1109,7 +1109,7 @@ var createIconFromId = function (id, iconPos, iconAnchor, iconScale) {
 var createLocation = function (inputLang, argsArr) {
     var _a = argsArr.find(function (args) { return args.lang === inputLang; }), bgSize = _a.bgSize, fontSize = _a.fontSize, lang = _a.lang, text = _a.text, textAnchor = _a.textAnchor, textPos = _a.textPos, tracking = _a.tracking, iconAnchor = _a.iconAnchor, iconPos = _a.iconPos, iconScale = _a.iconScale, iconId = _a.iconId;
     var bgLayer = createLocationBG(bgSize, 'Kindergarden');
-    var iconLayer = createIconFromId(iconId, iconPos, iconAnchor, iconScale);
+    var iconLayer = createLocationIconFromId(iconId, iconPos, iconAnchor, iconScale);
     var textLayer = createLocationText(lang, text, fontSize, tracking, textPos, textAnchor);
     iconLayer.parent = textLayer.parent = bgLayer;
     bgLayer.label = iconLayer.label = textLayer.label = 11;
@@ -1679,26 +1679,36 @@ var init = function (thisObj) {
     var numCountBtn = QABtnsRowThree.add('button', undefined, 'Counting Numbers');
     var israelMapPic = QABtnsRowThree.add('button', undefined, 'Israel Google Maps');
     var iconsTab = tpanel.add('tab', undefined, ['Icons']);
-    var IconsBtnsGrp = iconsTab.add('group');
+    var iconsGrp = iconsTab.add('group');
+    iconsGrp.orientation = 'column';
+    iconsGrp.alignChildren = 'left';
+    var iconDD = iconsGrp.add('dropdownlist', undefined, ['Boom', 'Tunnel']);
+    iconDD.preferredSize[0] = 100;
+    iconDD.selection = 0;
+    var IconsBtnsGrp = iconsGrp.add('group');
     IconsBtnsGrp.alignChildren = 'left';
-    var boomBtn = IconsBtnsGrp.add('button', undefined, 'Boom!');
-    var tunnelBtn = IconsBtnsGrp.add('button', undefined, 'Tunnel');
-    var circleCheck = iconsTab.add('checkbox', undefined, 'Circle');
-    var circleColorGrp = iconsTab.add('group');
-    var circleColorText = circleColorGrp.add('statictext', undefined, 'Circle Color');
+    var circleCheck = iconsGrp.add('checkbox', undefined, 'Circle');
+    var circleColorGrp = iconsGrp.add('group');
+    var circleColorText = circleColorGrp.add('statictext', undefined, 'Circle Color:');
     var circleColorDD = circleColorGrp.add('dropdownlist', undefined, [
         'White',
         'Black',
         'Red'
     ]);
-    var iconColorGrp = iconsTab.add('group');
-    var iconColorText = iconColorGrp.add('statictext', undefined, 'Icon Color');
+    var iconColorGrp = iconsGrp.add('group');
+    var iconColorText = iconColorGrp.add('statictext', undefined, 'Icon Color:');
     var iconColorDD = iconColorGrp.add('dropdownlist', undefined, [
         'Black',
         'White',
         'Red'
     ]);
     circleColorDD.selection = iconColorDD.selection = 0;
+    var iconCreateBtn = iconsGrp.add('button', undefined, 'Create Icon');
+    iconCreateBtn.preferredSize[0] = 100;
+    iconCreateBtn.onClick = function () {
+        var id = iconDD.selection.toString();
+        createIconFromId(id, circleColorDD.selection.toString(), iconColorDD.selection.toString(), circleCheck.value);
+    };
     var locationsTab = tpanel.add('tab', undefined, ['Locations']);
     var locBtnsGrp = locationsTab.add('group');
     locBtnsGrp.alignChildren = 'left';
@@ -1719,12 +1729,6 @@ var init = function (thisObj) {
     GazaMapShapeBtn.onClick = createGazaMap;
     numCountBtn.onClick = createCountingText;
     israelMapPic.onClick = importIsraelGoogleMaps;
-    boomBtn.onClick = function () {
-        createExplosionIcon(circleColorDD.selection.toString(), iconColorDD.selection.toString(), circleCheck.value);
-    };
-    tunnelBtn.onClick = function () {
-        createTunnelIcon(circleColorDD.selection.toString(), iconColorDD.selection.toString(), circleCheck.value);
-    };
     kindergardenBtn.onClick = function () {
         var lang = getLanguageFromKeyboard();
         createKindergardenLocation(lang);

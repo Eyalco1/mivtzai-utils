@@ -128,7 +128,7 @@ const setLayerTransform = (
   return layer;
 };
 
-const createIconFromId = (
+const createLocationIconFromId = (
   id: string,
   iconPos: [number, number],
   iconAnchor: [number, number],
@@ -160,7 +160,12 @@ const createLocation = (inputLang: Lingo, argsArr: LocationArgs[]): void => {
   } = argsArr.find(args => args.lang === inputLang);
 
   const bgLayer = createLocationBG(bgSize, 'Kindergarden');
-  const iconLayer = createIconFromId(iconId, iconPos, iconAnchor, iconScale);
+  const iconLayer = createLocationIconFromId(
+    iconId,
+    iconPos,
+    iconAnchor,
+    iconScale
+  );
   const textLayer = createLocationText(
     lang,
     text,

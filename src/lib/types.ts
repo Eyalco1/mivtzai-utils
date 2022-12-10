@@ -1,5 +1,7 @@
 type ColorDropdown = 'White' | 'Black' | 'Red';
+
 type Lingo = 'Hebrew' | 'Arabic' | 'English';
+
 interface LocationArgs {
   lang: Lingo;
   text: string;
@@ -13,3 +15,5 @@ interface LocationArgs {
   iconScale: number;
   iconId: string;
 }
+
+type IconID = 'Boom' | 'Tunnel';

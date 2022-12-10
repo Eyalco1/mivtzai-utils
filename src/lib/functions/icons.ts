@@ -437,3 +437,19 @@ const createTunnelIcon = (
   createInside();
   if (hasCircle) createIconCircle(contents, circleColorRgb);
 };
+
+// ====================================
+
+const createIconFromId = (
+  id: IconID,
+  circleColor: ColorDropdown,
+  iconColor: ColorDropdown,
+  hasCircle: Boolean
+): void => {
+  switch (id) {
+    case 'Boom':
+      return createExplosionIcon(circleColor, iconColor, hasCircle);
+    case 'Tunnel':
+      return createTunnelIcon(circleColor, iconColor, hasCircle);
+  }
+};
