@@ -70,6 +70,80 @@ const createLocationText = (
   return textLayer;
 };
 
+const createIconBase = (
+  name: string,
+  iconPos: [number, number],
+  iconAnchor: [number, number],
+  iconScale: number
+): ShapeLayer => {
+  const comp = app.project.activeItem as CompItem;
+  const iconLayer = comp.layers.addShape();
+  iconLayer.name = `${name} Icon`;
+  const contents = iconLayer.property('Contents') as PropertyGroup;
+  // const posProp = iconLayer
+  //   .property('ADBE Transform Group')
+  //   .property('ADBE Position') as Property<[number, number]>;
+
+  // posProp.setValue(iconPos);
+
+  // const anchorProp = iconLayer
+  //   .property('ADBE Transform Group')
+  //   .property('ADBE Anchor Point') as Property<[number, number]>;
+
+  // anchorProp.setValue(iconAnchor);
+
+  // const scaleProp = iconLayer
+  //   .property('ADBE Transform Group')
+  //   .property('ADBE Scale') as Property<[number, number]>;
+
+  // scaleProp.setValue([iconScale, iconScale]);
+
+  return iconLayer;
+};
+
+const setLayerTransform = (
+  layer: Layer,
+  pos: [number, number],
+  anchor: [number, number],
+  scale: number
+): Layer => {
+  const posProp = layer
+    .property('ADBE Transform Group')
+    .property('ADBE Position') as Property<[number, number]>;
+
+  posProp.setValue(pos);
+
+  const anchorProp = layer
+    .property('ADBE Transform Group')
+    .property('ADBE Anchor Point') as Property<[number, number]>;
+
+  anchorProp.setValue(anchor);
+
+  const scaleProp = layer
+    .property('ADBE Transform Group')
+    .property('ADBE Scale') as Property<[number, number]>;
+
+  scaleProp.setValue([scale, scale]);
+
+  return layer;
+};
+
+const createIconFromId = (
+  id: string,
+  iconPos: [number, number],
+  iconAnchor: [number, number],
+  iconScale: number
+): ShapeLayer => {
+  id = id.toLowerCase();
+  if (id === 'kindergarden') {
+    return createKindergardenIcon(iconPos, iconAnchor, iconScale);
+  }
+
+  if (id === 'medical') {
+    return createMedicalIcon(iconPos, iconAnchor, iconScale);
+  }
+};
+
 const createLocation = (inputLang: Lingo, argsArr: LocationArgs[]): void => {
   const {
     bgSize,
@@ -81,11 +155,12 @@ const createLocation = (inputLang: Lingo, argsArr: LocationArgs[]): void => {
     tracking,
     iconAnchor,
     iconPos,
-    iconScale
+    iconScale,
+    iconId
   } = argsArr.find(args => args.lang === inputLang);
 
   const bgLayer = createLocationBG(bgSize, 'Kindergarden');
-  const iconLayer = createKindergardenIcon(iconPos, iconAnchor, iconScale);
+  const iconLayer = createIconFromId(iconId, iconPos, iconAnchor, iconScale);
   const textLayer = createLocationText(
     lang,
     text,
@@ -99,37 +174,6 @@ const createLocation = (inputLang: Lingo, argsArr: LocationArgs[]): void => {
   bgLayer.label = iconLayer.label = textLayer.label = 11;
   iconLayer.selected = textLayer.selected = false;
   bgLayer.selected = true;
-};
-
-const createIconBase = (
-  name: string,
-  iconPos: [number, number],
-  iconAnchor: [number, number],
-  iconScale: number
-): ShapeLayer => {
-  const comp = app.project.activeItem as CompItem;
-  const iconLayer = comp.layers.addShape();
-  iconLayer.name = `${name} Icon`;
-  const contents = iconLayer.property('Contents') as PropertyGroup;
-  const posProp = iconLayer
-    .property('ADBE Transform Group')
-    .property('ADBE Position') as Property<[number, number]>;
-
-  posProp.setValue(iconPos);
-
-  const anchorProp = iconLayer
-    .property('ADBE Transform Group')
-    .property('ADBE Anchor Point') as Property<[number, number]>;
-
-  anchorProp.setValue(iconAnchor);
-
-  const scaleProp = iconLayer
-    .property('ADBE Transform Group')
-    .property('ADBE Scale') as Property<[number, number]>;
-
-  scaleProp.setValue([iconScale, iconScale]);
-
-  return iconLayer;
 };
 
 // ==========================
@@ -741,6 +785,8 @@ const createKindergardenIcon = (
   createHouseBottom();
   createIconCircle();
 
+  setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
+
   return iconLayer;
 };
 
@@ -756,7 +802,8 @@ const createKindergardenLocation = (lang: Lingo): void => {
       bgSize: [296, 110],
       iconPos: [1045.5764, 539.1284],
       iconAnchor: [85.5764, -0.8716],
-      iconScale: 100
+      iconScale: 100,
+      iconId: 'kindergarden'
     },
     {
       lang: 'English',
@@ -768,7 +815,8 @@ const createKindergardenLocation = (lang: Lingo): void => {
       bgSize: [495, 106],
       iconPos: [773.5764, 539.1284],
       iconAnchor: [85.5764, -0.8716],
-      iconScale: 100
+      iconScale: 100,
+      iconId: 'kindergarden'
     },
     {
       lang: 'Arabic',
@@ -780,14 +828,174 @@ const createKindergardenLocation = (lang: Lingo): void => {
       bgSize: [466, 92],
       iconPos: [1141.2014, 539.5034],
       iconAnchor: [85.5764, -0.8716],
-      iconScale: 83
+      iconScale: 83,
+      iconId: 'kindergarden'
     }
   ];
   createLocation(lang, args);
 };
 
-// const createMedicalIcon = (
-//   iconPos: [number, number],
-//   iconAnchor: [number, number],
-//   iconScale: number
-// ): ShapeLayer => {};
+const createMedicalIcon = (
+  iconPos: [number, number],
+  iconAnchor: [number, number],
+  iconScale: number
+): ShapeLayer => {
+  const iconLayer = createIconBase(
+    'Kindergarden',
+    iconPos,
+    iconAnchor,
+    iconScale
+  );
+
+  const contents = iconLayer.property('Contents') as PropertyGroup;
+
+  const createCross = () => {
+    const vertices: [number, number][] = [
+      [23.6100158691406, -8.60000610351562],
+      [23.6100158691406, 8.60000610351562],
+      [8.58999633789062, 8.60000610351562],
+      [8.58999633789062, 23.6399841308594],
+      [-8.58999633789062, 23.6399841308594],
+      [-8.58999633789062, 8.60000610351562],
+      [-23.6100158691406, 8.60000610351562],
+      [-23.6100158691406, -8.60000610351562],
+      [-8.58999633789062, -8.60000610351562],
+      [-8.58999633789062, -23.6399841308594],
+      [8.58999633789062, -23.6399841308594],
+      [8.58999633789062, -8.60000610351562]
+    ];
+
+    const inTangents: [number, number][] = [
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0]
+    ];
+    const outTangents: [number, number][] = [
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0]
+    ];
+
+    createPathGrp(
+      contents,
+      'Cross',
+      true,
+      false,
+      [255, 255, 255],
+      [0, 0, 0],
+      0,
+      vertices,
+      inTangents,
+      outTangents,
+      true,
+      [86.0601, -1.0216]
+    );
+  };
+
+  const createIconCircle = () => {
+    const vertices: [number, number][] = [
+      [43.39892578125, 0],
+      [0, 43.39892578125],
+      [-43.39892578125, 0],
+      [0, -43.39892578125]
+    ];
+
+    const inTangents: [number, number][] = [
+      [0, -23.9685668945312],
+      [23.9685668945312, 0],
+      [0, 23.9685668945312],
+      [-23.9685668945312, 0]
+    ];
+    const outTangents: [number, number][] = [
+      [0, 23.9685668945312],
+      [-23.9685668945312, 0],
+      [0, -23.9685668945312],
+      [23.9685668945312, 0]
+    ];
+
+    createPathGrp(
+      contents,
+      'Icon_Circle',
+      true,
+      false,
+      [53, 33, 28],
+      [0, 0, 0],
+      0,
+      vertices,
+      inTangents,
+      outTangents,
+      true,
+      [85.5764, -0.8716]
+    );
+  };
+
+  createCross();
+  createIconCircle();
+
+  setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
+
+  return iconLayer;
+};
+
+const createMedicalLocation = (lang: Lingo): void => {
+  const args: LocationArgs[] = [
+    {
+      lang: 'Hebrew',
+      text: 'מרפאה',
+      fontSize: 77.3332,
+      tracking: -19,
+      textPos: [922.3363, 540.1692],
+      textAnchor: [75.0863, -19.0808],
+      bgSize: [296, 110],
+      iconPos: [1045.5764, 539.1284],
+      iconAnchor: [85.5764, -0.8716],
+      iconScale: 100,
+      iconId: 'medical'
+    },
+    {
+      lang: 'English',
+      text: 'Medical Clinic',
+      fontSize: 77.3332,
+      tracking: -31,
+      textPos: [1011.831, 537.0827],
+      textAnchor: [182.081, -27.9173],
+      bgSize: [484, 106],
+      iconPos: [779, 539.1284],
+      iconAnchor: [85.5764, -0.8716],
+      iconScale: 97,
+      iconId: 'medical'
+    },
+    {
+      lang: 'Arabic',
+      text: 'عيادة',
+      fontSize: 64,
+      tracking: -21,
+      textPos: [919.4213, 540.4375],
+      textAnchor: [80.6712, -16.3125],
+      bgSize: [284, 91],
+      iconPos: [1049.9514, 538.2534],
+      iconAnchor: [85.5764, -0.8716],
+      iconScale: 83,
+      iconId: 'medical'
+    }
+  ];
+  createLocation(lang, args);
+};

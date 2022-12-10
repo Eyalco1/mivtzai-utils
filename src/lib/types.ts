@@ -11,4 +11,5 @@ interface LocationArgs {
   iconPos: [number, number];
   iconAnchor: [number, number];
   iconScale: number;
+  iconId: string;
 }

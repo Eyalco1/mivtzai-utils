@@ -2,11 +2,12 @@ const { task, series } = require('gulp');
 const exec = require('child_process').exec;
 const { join } = require('path');
 const fs = require('fs');
+const fse = require('fs-extra');
 const pkg = require('./package.json');
 const jsxbin = require('jsxbin');
-const exeFolder = 
+const exeFolder =
   'C:\\Program Files\\Adobe\\Adobe After Effects 2022\\Support Files\\AfterFX.exe';
-const scriptFolder = 
+const scriptFolder =
   'C:\\Program Files\\Adobe\\Adobe After Effects 2022\\Support Files\\Scripts\\ScriptUI Panels';
 const headerStr =
   `/**\n` +
@@ -28,6 +29,11 @@ task('createHeader', done => {
   done();
 });
 
+task('buildAssets', done => {
+  fse.copySync('src/assets', `dist/MivtzaiUtils Assets`, { overwrite: true });
+  done();
+});
+
 task('runScript', done => {
   const absPath = join(__dirname, 'dist/MivtzaiUtils.jsx');
   executeScript(absPath, (error, stdout, stderr) => {
@@ -35,11 +41,16 @@ task('runScript', done => {
   });
 });
 
-task('jsxbin', () => jsxbin('dist/MivtzaiUtils.jsx', 'dist/MivtzaiUtils.jsxbin'));
+task('jsxbin', () =>
+  jsxbin('dist/MivtzaiUtils.jsx', 'dist/MivtzaiUtils.jsxbin')
+);
 
 task('addToHost', done => {
   fs.copyFileSync('dist/MivtzaiUtils.jsx', scriptFolder + '\\MivtzaiUtils.jsx');
   done();
 });
 
-task('default', series('createHeader', 'runScript', 'jsxbin', 'addToHost'));
+task(
+  'default',
+  series('createHeader', 'buildAssets', 'runScript', 'jsxbin', 'addToHost')
+);

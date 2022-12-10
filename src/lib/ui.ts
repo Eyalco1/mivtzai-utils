@@ -61,6 +61,7 @@ const init = (thisObj: typeof globalThis) => {
 
   const locBtnsGrp = locationsTab.add('group');
   const kindergardenBtn = locBtnsGrp.add('button', undefined, 'Kindergarden');
+  const medicalBtn = locBtnsGrp.add('button', undefined, 'Medical Clinic');
 
   const texturesTab = tpanel.add('tab', undefined, ['Textures']);
 
@@ -100,10 +101,15 @@ const init = (thisObj: typeof globalThis) => {
     createKindergardenLocation(lang);
   };
 
+  medicalBtn.onClick = () => {
+    const lang = getLanguageFromKeyboard();
+    createMedicalLocation(lang);
+  };
+
   // Textures
   paperBtn.onClick = () => {
     importAndLoopTexture(
-      'C:/Users/eyalc/DevProjects/mivtzai-utils/src/assets/Kyle_Paper_Dark.jpg'
+      'C:/Users/eyalc/DevProjects/mivtzai-utils/dist/MivtzaiUtils Assets/Textures/Kyle_Paper_Dark.jpg'
     );
   };
 

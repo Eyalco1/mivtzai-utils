@@ -9,5 +9,8 @@
     "gulp": "^4.0.2",
     "jsxbin": "^2.2.0",
     "types-for-adobe": "^6.0.1"
+  },
+  "dependencies": {
+    "fs-extra": "^11.1.0"
   }
 }

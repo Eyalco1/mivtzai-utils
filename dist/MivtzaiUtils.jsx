@@ -1,3 +1,11 @@
+/**
+ * @name mivtzai-utils
+ * @description Utilites for operative projects
+ * @version 1.0.0
+ * @author Eyal Cohen
+ * @license ISC
+ */
+
 Array.prototype.map || (Array.prototype.map = function (callback) { var T, A, k; if (null == this)
     throw new TypeError("this is null or not defined"); var O = Object(this), len = O.length >>> 0; if ("function" != typeof callback)
     throw new TypeError(callback + " is not a function"); for (arguments.length > 1 && (T = arguments[1]), A = new Array(len), k = 0; k < len;) {
@@ -297,8 +305,8 @@ var scaleWithOvershoot = function () {
     });
 };
 var importLogos = function () {
-    var idfItem = app.project.importFile(new ImportOptions(File('C:/Users/eyalc/DevProjects/mivtzai-utils/src/assets/IDF_Logo.png')));
-    var dotzItem = app.project.importFile(new ImportOptions(File('C:/Users/eyalc/DevProjects/mivtzai-utils/src/assets/Dotz_Logo.png')));
+    var idfItem = app.project.importFile(new ImportOptions(File('C:/Users/eyalc/DevProjects/mivtzai-utils/dist/MivtzaiUtils Assets/Logos/IDF_Logo.png')));
+    var dotzItem = app.project.importFile(new ImportOptions(File('C:/Users/eyalc/DevProjects/mivtzai-utils/dist/MivtzaiUtils Assets/Logos/Dotz_Logo.png')));
     var comp = app.project.activeItem;
     var idfLayer = comp.layers.add(idfItem);
     var padding = 200;
@@ -1047,34 +1055,46 @@ var createLocationText = function (lang, text, fontSize, tracking, textPos, text
     anchorProp.setValue(textAnchor);
     return textLayer;
 };
-var createLocation = function (inputLang, argsArr) {
-    var _a = argsArr.find(function (args) { return args.lang === inputLang; }), bgSize = _a.bgSize, fontSize = _a.fontSize, lang = _a.lang, text = _a.text, textAnchor = _a.textAnchor, textPos = _a.textPos, tracking = _a.tracking, iconAnchor = _a.iconAnchor, iconPos = _a.iconPos, iconScale = _a.iconScale;
-    var bgLayer = createLocationBG(bgSize, 'Kindergarden');
-    var iconLayer = createKindergardenIcon(iconPos, iconAnchor, iconScale);
-    var textLayer = createLocationText(lang, text, fontSize, tracking, textPos, textAnchor);
-    iconLayer.parent = textLayer.parent = bgLayer;
-    bgLayer.label = iconLayer.label = textLayer.label = 11;
-    iconLayer.selected = textLayer.selected = false;
-    bgLayer.selected = true;
-};
 var createIconBase = function (name, iconPos, iconAnchor, iconScale) {
     var comp = app.project.activeItem;
     var iconLayer = comp.layers.addShape();
     iconLayer.name = "".concat(name, " Icon");
     var contents = iconLayer.property('Contents');
-    var posProp = iconLayer
+    return iconLayer;
+};
+var setLayerTransform = function (layer, pos, anchor, scale) {
+    var posProp = layer
         .property('ADBE Transform Group')
         .property('ADBE Position');
-    posProp.setValue(iconPos);
-    var anchorProp = iconLayer
+    posProp.setValue(pos);
+    var anchorProp = layer
         .property('ADBE Transform Group')
         .property('ADBE Anchor Point');
-    anchorProp.setValue(iconAnchor);
-    var scaleProp = iconLayer
+    anchorProp.setValue(anchor);
+    var scaleProp = layer
         .property('ADBE Transform Group')
         .property('ADBE Scale');
-    scaleProp.setValue([iconScale, iconScale]);
-    return iconLayer;
+    scaleProp.setValue([scale, scale]);
+    return layer;
+};
+var createIconFromId = function (id, iconPos, iconAnchor, iconScale) {
+    id = id.toLowerCase();
+    if (id === 'kindergarden') {
+        return createKindergardenIcon(iconPos, iconAnchor, iconScale);
+    }
+    if (id === 'medical') {
+        return createMedicalIcon(iconPos, iconAnchor, iconScale);
+    }
+};
+var createLocation = function (inputLang, argsArr) {
+    var _a = argsArr.find(function (args) { return args.lang === inputLang; }), bgSize = _a.bgSize, fontSize = _a.fontSize, lang = _a.lang, text = _a.text, textAnchor = _a.textAnchor, textPos = _a.textPos, tracking = _a.tracking, iconAnchor = _a.iconAnchor, iconPos = _a.iconPos, iconScale = _a.iconScale, iconId = _a.iconId;
+    var bgLayer = createLocationBG(bgSize, 'Kindergarden');
+    var iconLayer = createIconFromId(iconId, iconPos, iconAnchor, iconScale);
+    var textLayer = createLocationText(lang, text, fontSize, tracking, textPos, textAnchor);
+    iconLayer.parent = textLayer.parent = bgLayer;
+    bgLayer.label = iconLayer.label = textLayer.label = 11;
+    iconLayer.selected = textLayer.selected = false;
+    bgLayer.selected = true;
 };
 var createKindergardenIcon = function (iconPos, iconAnchor, iconScale) {
     var iconLayer = createIconBase('Kindergarden', iconPos, iconAnchor, iconScale);
@@ -1447,6 +1467,7 @@ var createKindergardenIcon = function (iconPos, iconAnchor, iconScale) {
     createHouseMiddle();
     createHouseBottom();
     createIconCircle();
+    setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
     return iconLayer;
 };
 var createKindergardenLocation = function (lang) {
@@ -1461,7 +1482,8 @@ var createKindergardenLocation = function (lang) {
             bgSize: [296, 110],
             iconPos: [1045.5764, 539.1284],
             iconAnchor: [85.5764, -0.8716],
-            iconScale: 100
+            iconScale: 100,
+            iconId: 'kindergarden'
         },
         {
             lang: 'English',
@@ -1473,7 +1495,8 @@ var createKindergardenLocation = function (lang) {
             bgSize: [495, 106],
             iconPos: [773.5764, 539.1284],
             iconAnchor: [85.5764, -0.8716],
-            iconScale: 100
+            iconScale: 100,
+            iconId: 'kindergarden'
         },
         {
             lang: 'Arabic',
@@ -1485,7 +1508,126 @@ var createKindergardenLocation = function (lang) {
             bgSize: [466, 92],
             iconPos: [1141.2014, 539.5034],
             iconAnchor: [85.5764, -0.8716],
-            iconScale: 83
+            iconScale: 83,
+            iconId: 'kindergarden'
+        }
+    ];
+    createLocation(lang, args);
+};
+var createMedicalIcon = function (iconPos, iconAnchor, iconScale) {
+    var iconLayer = createIconBase('Kindergarden', iconPos, iconAnchor, iconScale);
+    var contents = iconLayer.property('Contents');
+    var createCross = function () {
+        var vertices = [
+            [23.6100158691406, -8.60000610351562],
+            [23.6100158691406, 8.60000610351562],
+            [8.58999633789062, 8.60000610351562],
+            [8.58999633789062, 23.6399841308594],
+            [-8.58999633789062, 23.6399841308594],
+            [-8.58999633789062, 8.60000610351562],
+            [-23.6100158691406, 8.60000610351562],
+            [-23.6100158691406, -8.60000610351562],
+            [-8.58999633789062, -8.60000610351562],
+            [-8.58999633789062, -23.6399841308594],
+            [8.58999633789062, -23.6399841308594],
+            [8.58999633789062, -8.60000610351562]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Cross', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [86.0601, -1.0216]);
+    };
+    var createIconCircle = function () {
+        var vertices = [
+            [43.39892578125, 0],
+            [0, 43.39892578125],
+            [-43.39892578125, 0],
+            [0, -43.39892578125]
+        ];
+        var inTangents = [
+            [0, -23.9685668945312],
+            [23.9685668945312, 0],
+            [0, 23.9685668945312],
+            [-23.9685668945312, 0]
+        ];
+        var outTangents = [
+            [0, 23.9685668945312],
+            [-23.9685668945312, 0],
+            [0, -23.9685668945312],
+            [23.9685668945312, 0]
+        ];
+        createPathGrp(contents, 'Icon_Circle', true, false, [53, 33, 28], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [85.5764, -0.8716]);
+    };
+    createCross();
+    createIconCircle();
+    setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
+    return iconLayer;
+};
+var createMedicalLocation = function (lang) {
+    var args = [
+        {
+            lang: 'Hebrew',
+            text: 'מרפאה',
+            fontSize: 77.3332,
+            tracking: -19,
+            textPos: [922.3363, 540.1692],
+            textAnchor: [75.0863, -19.0808],
+            bgSize: [296, 110],
+            iconPos: [1045.5764, 539.1284],
+            iconAnchor: [85.5764, -0.8716],
+            iconScale: 100,
+            iconId: 'medical'
+        },
+        {
+            lang: 'English',
+            text: 'Medical Clinic',
+            fontSize: 77.3332,
+            tracking: -31,
+            textPos: [1011.831, 537.0827],
+            textAnchor: [182.081, -27.9173],
+            bgSize: [484, 106],
+            iconPos: [779, 539.1284],
+            iconAnchor: [85.5764, -0.8716],
+            iconScale: 97,
+            iconId: 'medical'
+        },
+        {
+            lang: 'Arabic',
+            text: 'عيادة',
+            fontSize: 64,
+            tracking: -21,
+            textPos: [919.4213, 540.4375],
+            textAnchor: [80.6712, -16.3125],
+            bgSize: [284, 91],
+            iconPos: [1049.9514, 538.2534],
+            iconAnchor: [85.5764, -0.8716],
+            iconScale: 83,
+            iconId: 'medical'
         }
     ];
     createLocation(lang, args);
@@ -1533,6 +1675,7 @@ var init = function (thisObj) {
     var locationsTab = tpanel.add('tab', undefined, ['Locations']);
     var locBtnsGrp = locationsTab.add('group');
     var kindergardenBtn = locBtnsGrp.add('button', undefined, 'Kindergarden');
+    var medicalBtn = locBtnsGrp.add('button', undefined, 'Medical Clinic');
     var texturesTab = tpanel.add('tab', undefined, ['Textures']);
     var texBtnsGrp = texturesTab.add('group');
     var paperBtn = texBtnsGrp.add('button', undefined, 'Paper');
@@ -1556,8 +1699,12 @@ var init = function (thisObj) {
         var lang = getLanguageFromKeyboard();
         createKindergardenLocation(lang);
     };
+    medicalBtn.onClick = function () {
+        var lang = getLanguageFromKeyboard();
+        createMedicalLocation(lang);
+    };
     paperBtn.onClick = function () {
-        importAndLoopTexture('C:/Users/eyalc/DevProjects/mivtzai-utils/src/assets/Kyle_Paper_Dark.jpg');
+        importAndLoopTexture('C:/Users/eyalc/DevProjects/mivtzai-utils/dist/MivtzaiUtils Assets/Textures/Kyle_Paper_Dark.jpg');
     };
     w.layout.layout(true);
     w.layout.resize();
