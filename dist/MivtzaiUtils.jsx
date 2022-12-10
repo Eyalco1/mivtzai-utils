@@ -6,6 +6,14 @@
  * @license ISC
  */
 
+/**
+ * @name mivtzai-utils
+ * @description Utilites for operative projects
+ * @version 1.0.0
+ * @author Eyal Cohen
+ * @license ISC
+ */
+
 Array.prototype.map || (Array.prototype.map = function (callback) { var T, A, k; if (null == this)
     throw new TypeError("this is null or not defined"); var O = Object(this), len = O.length >>> 0; if ("function" != typeof callback)
     throw new TypeError(callback + " is not a function"); for (arguments.length > 1 && (T = arguments[1]), A = new Array(len), k = 0; k < len;) {
@@ -1654,19 +1662,25 @@ var init = function (thisObj) {
     var tpanel = w.add('tabbedpanel');
     var quickActionsTab = tpanel.add('tab', undefined, ['Quick Actions']);
     var QABtnsGrp = quickActionsTab.add('group');
-    var tvaiBtn = QABtnsGrp.add('button', undefined, 'Tunnel');
-    var scaleBtn = QABtnsGrp.add('button', undefined, 'Pop');
-    var logosBtn = QABtnsGrp.add('button', undefined, 'Logos');
-    var illustrationBtn = QABtnsGrp.add('button', undefined, 'Illustration');
-    var formatLayerBtn = QABtnsGrp.add('button', undefined, 'Format Layer Name');
-    var textReverseBtn = QABtnsGrp.add('button', undefined, 'Reverse Text');
-    var bgBtn = QABtnsGrp.add('button', undefined, 'BG');
-    var IsraelMapShapeBtn = QABtnsGrp.add('button', undefined, 'Israel Map Shape');
-    var GazaMapShapeBtn = QABtnsGrp.add('button', undefined, 'Gaza Map Shape');
-    var numCountBtn = QABtnsGrp.add('button', undefined, 'Counting Numbers');
-    var israelMapPic = QABtnsGrp.add('button', undefined, 'Israel Google Maps');
+    QABtnsGrp.orientation = 'column';
+    QABtnsGrp.alignChildren = 'left';
+    var QABtnsRowOne = QABtnsGrp.add('group');
+    var tvaiBtn = QABtnsRowOne.add('button', undefined, 'Tunnel');
+    var scaleBtn = QABtnsRowOne.add('button', undefined, 'Pop');
+    var logosBtn = QABtnsRowOne.add('button', undefined, 'Logos');
+    var illustrationBtn = QABtnsRowOne.add('button', undefined, 'Illustration');
+    var QABtnsRowTwo = QABtnsGrp.add('group');
+    var formatLayerBtn = QABtnsRowTwo.add('button', undefined, 'Format Layer Name');
+    var textReverseBtn = QABtnsRowTwo.add('button', undefined, 'Reverse Text');
+    var bgBtn = QABtnsRowTwo.add('button', undefined, 'BG');
+    var IsraelMapShapeBtn = QABtnsRowTwo.add('button', undefined, 'Israel Map Shape');
+    var QABtnsRowThree = QABtnsGrp.add('group');
+    var GazaMapShapeBtn = QABtnsRowThree.add('button', undefined, 'Gaza Map Shape');
+    var numCountBtn = QABtnsRowThree.add('button', undefined, 'Counting Numbers');
+    var israelMapPic = QABtnsRowThree.add('button', undefined, 'Israel Google Maps');
     var iconsTab = tpanel.add('tab', undefined, ['Icons']);
     var IconsBtnsGrp = iconsTab.add('group');
+    IconsBtnsGrp.alignChildren = 'left';
     var boomBtn = IconsBtnsGrp.add('button', undefined, 'Boom!');
     var tunnelBtn = IconsBtnsGrp.add('button', undefined, 'Tunnel');
     var circleCheck = iconsTab.add('checkbox', undefined, 'Circle');
@@ -1687,10 +1701,12 @@ var init = function (thisObj) {
     circleColorDD.selection = iconColorDD.selection = 0;
     var locationsTab = tpanel.add('tab', undefined, ['Locations']);
     var locBtnsGrp = locationsTab.add('group');
+    locBtnsGrp.alignChildren = 'left';
     var kindergardenBtn = locBtnsGrp.add('button', undefined, 'Kindergarden');
     var medicalBtn = locBtnsGrp.add('button', undefined, 'Medical Clinic');
     var texturesTab = tpanel.add('tab', undefined, ['Textures']);
     var texBtnsGrp = texturesTab.add('group');
+    texBtnsGrp.alignChildren = 'left';
     var paperBtn = texBtnsGrp.add('button', undefined, 'Paper');
     tvaiBtn.onClick = createTvaiStroke;
     scaleBtn.onClick = scaleWithOvershoot;

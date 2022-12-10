@@ -11,25 +11,45 @@ const init = (thisObj: typeof globalThis) => {
   const quickActionsTab = tpanel.add('tab', undefined, ['Quick Actions']);
 
   const QABtnsGrp = quickActionsTab.add('group');
-  const tvaiBtn = QABtnsGrp.add('button', undefined, 'Tunnel');
-  const scaleBtn = QABtnsGrp.add('button', undefined, 'Pop');
-  const logosBtn = QABtnsGrp.add('button', undefined, 'Logos');
-  const illustrationBtn = QABtnsGrp.add('button', undefined, 'Illustration');
-  const formatLayerBtn = QABtnsGrp.add(
+  QABtnsGrp.orientation = 'column';
+  QABtnsGrp.alignChildren = 'left';
+
+  const QABtnsRowOne = QABtnsGrp.add('group');
+  const tvaiBtn = QABtnsRowOne.add('button', undefined, 'Tunnel');
+  const scaleBtn = QABtnsRowOne.add('button', undefined, 'Pop');
+  const logosBtn = QABtnsRowOne.add('button', undefined, 'Logos');
+  const illustrationBtn = QABtnsRowOne.add('button', undefined, 'Illustration');
+
+  const QABtnsRowTwo = QABtnsGrp.add('group');
+  const formatLayerBtn = QABtnsRowTwo.add(
     'button',
     undefined,
     'Format Layer Name'
   );
-  const textReverseBtn = QABtnsGrp.add('button', undefined, 'Reverse Text');
-  const bgBtn = QABtnsGrp.add('button', undefined, 'BG');
-  const IsraelMapShapeBtn = QABtnsGrp.add(
+  const textReverseBtn = QABtnsRowTwo.add('button', undefined, 'Reverse Text');
+  const bgBtn = QABtnsRowTwo.add('button', undefined, 'BG');
+  const IsraelMapShapeBtn = QABtnsRowTwo.add(
     'button',
     undefined,
     'Israel Map Shape'
   );
-  const GazaMapShapeBtn = QABtnsGrp.add('button', undefined, 'Gaza Map Shape');
-  const numCountBtn = QABtnsGrp.add('button', undefined, 'Counting Numbers');
-  const israelMapPic = QABtnsGrp.add('button', undefined, 'Israel Google Maps');
+
+  const QABtnsRowThree = QABtnsGrp.add('group');
+  const GazaMapShapeBtn = QABtnsRowThree.add(
+    'button',
+    undefined,
+    'Gaza Map Shape'
+  );
+  const numCountBtn = QABtnsRowThree.add(
+    'button',
+    undefined,
+    'Counting Numbers'
+  );
+  const israelMapPic = QABtnsRowThree.add(
+    'button',
+    undefined,
+    'Israel Google Maps'
+  );
   // const testBtn = QABtnsGrp.add('button', undefined, '!TEST!');
 
   // testBtn.onClick = () => {
@@ -41,6 +61,8 @@ const init = (thisObj: typeof globalThis) => {
   const iconsTab = tpanel.add('tab', undefined, ['Icons']);
 
   const IconsBtnsGrp = iconsTab.add('group');
+  IconsBtnsGrp.alignChildren = 'left';
+
   const boomBtn = IconsBtnsGrp.add('button', undefined, 'Boom!');
   const tunnelBtn = IconsBtnsGrp.add('button', undefined, 'Tunnel');
 
@@ -69,12 +91,16 @@ const init = (thisObj: typeof globalThis) => {
   const locationsTab = tpanel.add('tab', undefined, ['Locations']);
 
   const locBtnsGrp = locationsTab.add('group');
+  locBtnsGrp.alignChildren = 'left';
+
   const kindergardenBtn = locBtnsGrp.add('button', undefined, 'Kindergarden');
   const medicalBtn = locBtnsGrp.add('button', undefined, 'Medical Clinic');
 
   const texturesTab = tpanel.add('tab', undefined, ['Textures']);
 
   const texBtnsGrp = texturesTab.add('group');
+  texBtnsGrp.alignChildren = 'left';
+
   const paperBtn = texBtnsGrp.add('button', undefined, 'Paper');
 
   // Quick Actions
