@@ -1,3 +1,11 @@
+/**
+ * @name mivtzai-utils
+ * @description Utilites for operative projects
+ * @version 1.0.0
+ * @author Eyal Cohen
+ * @license ISC
+ */
+
 Array.prototype.map || (Array.prototype.map = function (callback) { var T, A, k; if (null == this)
     throw new TypeError("this is null or not defined"); var O = Object(this), len = O.length >>> 0; if ("function" != typeof callback)
     throw new TypeError(callback + " is not a function"); for (arguments.length > 1 && (T = arguments[1]), A = new Array(len), k = 0; k < len;) {
@@ -672,6 +680,18 @@ var createCountingText = function () {
     numValProp.setValueAtTime((1 / 24) * 40, 99);
     numValProp.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 20)]);
     numValProp.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 75)]);
+};
+var importIsraelGoogleMaps = function () {
+    var keyState = ScriptUI.environment.keyboardState;
+    var whichMap = 'Clean';
+    if (keyState.ctrlKey) {
+        whichMap = 'Guide';
+    }
+    var mapItem = app.project.importFile(new ImportOptions(File("".concat(File('.'), "/Scripts/ScriptUI Panels/MivtzaiUtils Assets/Images/Israel_Map_").concat(whichMap, ".png"))));
+    var comp = app.project.activeItem;
+    var mapLayer = comp.layers.add(mapItem);
+    mapLayer.selected = true;
+    app.executeCommand(2732);
 };
 var createExplosionIcon = function (circleColor, iconColor, hasCircle) {
     var comp = app.project.activeItem;
@@ -1634,16 +1654,17 @@ var init = function (thisObj) {
     var tpanel = w.add('tabbedpanel');
     var quickActionsTab = tpanel.add('tab', undefined, ['Quick Actions']);
     var QABtnsGrp = quickActionsTab.add('group');
-    var tvaiBtn = QABtnsGrp.add('button', undefined, 'T');
-    var scaleBtn = QABtnsGrp.add('button', undefined, 'S');
-    var logosBtn = QABtnsGrp.add('button', undefined, 'L');
-    var illustrationBtn = QABtnsGrp.add('button', undefined, 'I');
-    var formatLayerBtn = QABtnsGrp.add('button', undefined, 'F');
-    var textReverseBtn = QABtnsGrp.add('button', undefined, 'R');
+    var tvaiBtn = QABtnsGrp.add('button', undefined, 'Tunnel');
+    var scaleBtn = QABtnsGrp.add('button', undefined, 'Pop');
+    var logosBtn = QABtnsGrp.add('button', undefined, 'Logos');
+    var illustrationBtn = QABtnsGrp.add('button', undefined, 'Illustration');
+    var formatLayerBtn = QABtnsGrp.add('button', undefined, 'Format Layer Name');
+    var textReverseBtn = QABtnsGrp.add('button', undefined, 'Reverse Text');
     var bgBtn = QABtnsGrp.add('button', undefined, 'BG');
-    var IsraelMapBtn = QABtnsGrp.add('button', undefined, 'IL');
-    var GazaMapBtn = QABtnsGrp.add('button', undefined, 'GA');
-    var numCountBtn = QABtnsGrp.add('button', undefined, 'N');
+    var IsraelMapShapeBtn = QABtnsGrp.add('button', undefined, 'Israel Map Shape');
+    var GazaMapShapeBtn = QABtnsGrp.add('button', undefined, 'Gaza Map Shape');
+    var numCountBtn = QABtnsGrp.add('button', undefined, 'Counting Numbers');
+    var israelMapPic = QABtnsGrp.add('button', undefined, 'Israel Google Maps');
     var iconsTab = tpanel.add('tab', undefined, ['Icons']);
     var IconsBtnsGrp = iconsTab.add('group');
     var boomBtn = IconsBtnsGrp.add('button', undefined, 'Boom!');
@@ -1678,9 +1699,10 @@ var init = function (thisObj) {
     formatLayerBtn.onClick = formatLayerName;
     textReverseBtn.onClick = textReverse;
     bgBtn.onClick = createBg;
-    IsraelMapBtn.onClick = createIsraelMap;
-    GazaMapBtn.onClick = createGazaMap;
+    IsraelMapShapeBtn.onClick = createIsraelMap;
+    GazaMapShapeBtn.onClick = createGazaMap;
     numCountBtn.onClick = createCountingText;
+    israelMapPic.onClick = importIsraelGoogleMaps;
     boomBtn.onClick = function () {
         createExplosionIcon(circleColorDD.selection.toString(), iconColorDD.selection.toString(), circleCheck.value);
     };

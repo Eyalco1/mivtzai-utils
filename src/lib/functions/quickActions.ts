@@ -547,3 +547,28 @@ const createCountingText = (): void => {
   numValProp.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 20)]);
   numValProp.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 75)]);
 };
+
+const importIsraelGoogleMaps = (): void => {
+  const keyState = ScriptUI.environment.keyboardState;
+  let whichMap = 'Clean';
+  if (keyState.ctrlKey) {
+    whichMap = 'Guide';
+  }
+
+  const mapItem = app.project.importFile(
+    new ImportOptions(
+      File(
+        `${File(
+          '.'
+        )}/Scripts/ScriptUI Panels/MivtzaiUtils Assets/Images/Israel_Map_${whichMap}.png`
+      )
+    )
+  ) as AVItem;
+
+  const comp = app.project.activeItem as CompItem;
+  const mapLayer = comp.layers.add(mapItem);
+
+  // Fit To Comp Height
+  mapLayer.selected = true;
+  app.executeCommand(2732);
+};

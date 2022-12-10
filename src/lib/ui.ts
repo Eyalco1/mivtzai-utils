@@ -11,16 +11,25 @@ const init = (thisObj: typeof globalThis) => {
   const quickActionsTab = tpanel.add('tab', undefined, ['Quick Actions']);
 
   const QABtnsGrp = quickActionsTab.add('group');
-  const tvaiBtn = QABtnsGrp.add('button', undefined, 'T');
-  const scaleBtn = QABtnsGrp.add('button', undefined, 'S');
-  const logosBtn = QABtnsGrp.add('button', undefined, 'L');
-  const illustrationBtn = QABtnsGrp.add('button', undefined, 'I');
-  const formatLayerBtn = QABtnsGrp.add('button', undefined, 'F');
-  const textReverseBtn = QABtnsGrp.add('button', undefined, 'R');
+  const tvaiBtn = QABtnsGrp.add('button', undefined, 'Tunnel');
+  const scaleBtn = QABtnsGrp.add('button', undefined, 'Pop');
+  const logosBtn = QABtnsGrp.add('button', undefined, 'Logos');
+  const illustrationBtn = QABtnsGrp.add('button', undefined, 'Illustration');
+  const formatLayerBtn = QABtnsGrp.add(
+    'button',
+    undefined,
+    'Format Layer Name'
+  );
+  const textReverseBtn = QABtnsGrp.add('button', undefined, 'Reverse Text');
   const bgBtn = QABtnsGrp.add('button', undefined, 'BG');
-  const IsraelMapBtn = QABtnsGrp.add('button', undefined, 'IL');
-  const GazaMapBtn = QABtnsGrp.add('button', undefined, 'GA');
-  const numCountBtn = QABtnsGrp.add('button', undefined, 'N');
+  const IsraelMapShapeBtn = QABtnsGrp.add(
+    'button',
+    undefined,
+    'Israel Map Shape'
+  );
+  const GazaMapShapeBtn = QABtnsGrp.add('button', undefined, 'Gaza Map Shape');
+  const numCountBtn = QABtnsGrp.add('button', undefined, 'Counting Numbers');
+  const israelMapPic = QABtnsGrp.add('button', undefined, 'Israel Google Maps');
   // const testBtn = QABtnsGrp.add('button', undefined, '!TEST!');
 
   // testBtn.onClick = () => {
@@ -76,9 +85,10 @@ const init = (thisObj: typeof globalThis) => {
   formatLayerBtn.onClick = formatLayerName;
   textReverseBtn.onClick = textReverse;
   bgBtn.onClick = createBg;
-  IsraelMapBtn.onClick = createIsraelMap;
-  GazaMapBtn.onClick = createGazaMap;
+  IsraelMapShapeBtn.onClick = createIsraelMap;
+  GazaMapShapeBtn.onClick = createGazaMap;
   numCountBtn.onClick = createCountingText;
+  israelMapPic.onClick = importIsraelGoogleMaps;
   // Icons
   boomBtn.onClick = () => {
     createExplosionIcon(
