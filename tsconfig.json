@@ -17,6 +17,7 @@
     "src/lib/functions/icons.ts",
     "src/lib/functions/locations.ts",
     "src/lib/functions/textures.ts",
+    "src/lib/binary.ts",
     "src/lib/ui.ts",
     "src/index.ts"
   ]

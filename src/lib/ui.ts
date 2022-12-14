@@ -15,24 +15,57 @@ const init = (thisObj: typeof globalThis) => {
   QABtnsGrp.alignChildren = 'left';
 
   const QABtnsRowOne = QABtnsGrp.add('group');
-  const tvaiBtn = QABtnsRowOne.add('button', undefined, 'Tunnel');
+
+  const tvaiBtn = QABtnsRowOne.add('iconbutton', undefined, tvaiBinary, {
+    style: 'toolbutton'
+  });
+  tvaiBtn.helpTip = 'Tunnel Illustration';
+
   const scaleBtn = QABtnsRowOne.add('button', undefined, 'Pop');
-  const logosBtn = QABtnsRowOne.add('button', undefined, 'Logos');
-  const illustrationBtn = QABtnsRowOne.add('button', undefined, 'Illustration');
+  scaleBtn.helpTip = 'Pop Animation';
+
+  const logosBtn = QABtnsRowOne.add('iconbutton', undefined, logosBinary, {
+    style: 'toolbutton'
+  });
+  logosBtn.helpTip = 'Import IDF and Dotz Logos';
+
+  const illustrationBtn = QABtnsRowOne.add(
+    'iconbutton',
+    undefined,
+    illustrationBinary,
+    { style: 'toolbutton' }
+  );
+  illustrationBtn.helpTip = 'Illustration Text';
 
   const QABtnsRowTwo = QABtnsGrp.add('group');
   const formatLayerBtn = QABtnsRowTwo.add(
-    'button',
+    'iconbutton',
     undefined,
-    'Format Layer Name'
+    formatBinary,
+    { style: 'toolbutton' }
   );
-  const textReverseBtn = QABtnsRowTwo.add('button', undefined, 'Reverse Text');
-  const bgBtn = QABtnsRowTwo.add('button', undefined, 'BG');
+  formatLayerBtn.helpTip = 'Format Layer Name';
+
+  const textReverseBtn = QABtnsRowTwo.add(
+    'iconbutton',
+    undefined,
+    textReverseBinary,
+    { style: 'toolbutton' }
+  );
+  textReverseBtn.helpTip = 'Reverse Text';
+
+  const bgBtn = QABtnsRowTwo.add('iconbutton', undefined, bgBinary, {
+    style: 'toolbutton'
+  });
+  bgBtn.helpTip = 'Create Background';
+
   const IsraelMapShapeBtn = QABtnsRowTwo.add(
-    'button',
+    'iconbutton',
     undefined,
-    'Israel Map Shape'
+    israelShapeBinary,
+    { style: 'toolbutton' }
   );
+  IsraelMapShapeBtn.helpTip = 'Israel Map Shape';
 
   const QABtnsRowThree = QABtnsGrp.add('group');
   const GazaMapShapeBtn = QABtnsRowThree.add(
@@ -40,16 +73,24 @@ const init = (thisObj: typeof globalThis) => {
     undefined,
     'Gaza Map Shape'
   );
+  GazaMapShapeBtn.helpTip = 'Gaza Map Shape';
+
   const numCountBtn = QABtnsRowThree.add(
-    'button',
+    'iconbutton',
     undefined,
-    'Counting Numbers'
+    countingNumbersBinary,
+    { style: 'toolbutton' }
   );
+  numCountBtn.helpTip = 'Counting Numbers';
+
   const israelMapPic = QABtnsRowThree.add(
     'button',
     undefined,
     'Israel Google Maps'
   );
+  israelMapPic.helpTip =
+    'Israel Map Photo\n\nCLICK: Clean Map\nCTRL + CLICK: Map With Labels';
+
   // const testBtn = QABtnsGrp.add('button', undefined, '!TEST!');
 
   // testBtn.onClick = () => {
