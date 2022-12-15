@@ -1,19 +1,3 @@
-/**
- * @name mivtzai-utils
- * @description Utilites for operative projects
- * @version 1.0.0
- * @author Eyal Cohen
- * @license ISC
- */
-
-/**
- * @name mivtzai-utils
- * @description Utilites for operative projects
- * @version 1.0.0
- * @author Eyal Cohen
- * @license ISC
- */
-
 Array.prototype.map || (Array.prototype.map = function (callback) { var T, A, k; if (null == this)
     throw new TypeError("this is null or not defined"); var O = Object(this), len = O.length >>> 0; if ("function" != typeof callback)
     throw new TypeError(callback + " is not a function"); for (arguments.length > 1 && (T = arguments[1]), A = new Array(len), k = 0; k < len;) {
@@ -411,7 +395,8 @@ var createBg = function () {
     var gradType = gFill.property('ADBE Vector Grad Type');
     gradType.setValue(2);
     var endPoint = gFill.property('ADBE Vector Grad End Pt');
-    endPoint.setValue([comp.width / 2, 0]);
+    var endPointPos = comp.width >= comp.height ? [comp.width / 2, 0] : [0, comp.height / 2];
+    endPoint.setValue(endPointPos);
     var fx = layer.property('ADBE Effect Parade');
     var tint = fx.addProperty('ADBE Tint');
     var tintBlack = tint.property('ADBE Tint-0001');

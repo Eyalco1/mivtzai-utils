@@ -245,13 +245,9 @@ const createBg = (): void => {
   const endPoint = gFill.property('ADBE Vector Grad End Pt') as Property<
     [number, number]
   >;
-  endPoint.setValue([comp.width / 2, 0]);
-
-  // const colors = gFill.property('ADBE Vector Grad Colors') as Property<any>;
-  // colors.setValue([
-  //   [255, 0, 0],
-  //   [0, 0, 255]
-  // ]);
+  const endPointPos: [number, number] =
+    comp.width >= comp.height ? [comp.width / 2, 0] : [0, comp.height / 2];
+  endPoint.setValue(endPointPos);
 
   const fx = layer.property('ADBE Effect Parade') as PropertyGroup;
   const tint = fx.addProperty('ADBE Tint');
