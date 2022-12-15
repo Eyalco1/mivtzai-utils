@@ -120,7 +120,8 @@ const init = (thisObj: typeof globalThis) => {
 
   const iconDDGrp = iconsGrp.add('group');
   iconDDGrp.add('statictext', undefined, 'Icon:');
-  const iconDD = iconDDGrp.add('dropdownlist', undefined, ['Boom', 'Tunnel']);
+  const iconsList: IconID[] = ['Boom', 'Tunnel'];
+  const iconDD = iconDDGrp.add('dropdownlist', undefined, iconsList);
   iconDD.preferredSize[0] = 100;
   iconDD.selection = 0;
 
@@ -169,10 +170,16 @@ const init = (thisObj: typeof globalThis) => {
 
   const locationsDDGrp = locationsGrp.add('group');
   locationsDDGrp.add('statictext', undefined, 'Location:');
-  const locationsDD = locationsDDGrp.add('dropdownlist', undefined, [
+  const locationsList: LocationID[] = [
     'Kindergarden',
-    'Medical Clinic'
-  ]);
+    'Medical Clinic',
+    'Sports'
+  ];
+  const locationsDD = locationsDDGrp.add(
+    'dropdownlist',
+    undefined,
+    locationsList
+  );
   locationsDD.preferredSize[0] = 100;
   locationsDD.selection = 0;
 

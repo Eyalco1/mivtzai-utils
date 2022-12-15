@@ -1,14 +1,14 @@
 const createLocationBG = (
+  id: LocationID,
   size: [number, number],
-  locationName: string,
   color: [number, number, number] = [1, 1, 1]
 ): ShapeLayer => {
   const comp = app.project.activeItem as CompItem;
   const layer = comp.layers.addShape();
-  layer.name = `${locationName}_BG`;
+  layer.name = `${id}_BG`;
   const contents = layer.property('ADBE Root Vectors Group') as PropertyGroup;
   const grp = contents.addProperty('ADBE Vector Group');
-  grp.name = `${locationName}_BG`;
+  grp.name = `${id}_BG`;
   const recGrp = grp.property('ADBE Vectors Group') as PropertyGroup;
   recGrp.addProperty('ADBE Vector Shape - Rect') as PropertyGroup;
 
@@ -38,6 +38,7 @@ const createLocationText = (
   text: string,
   fontSize: number,
   tracking: number,
+  leading: number,
   textPos: [number, number],
   textAnchor: [number, number]
 ): TextLayer => {
@@ -55,6 +56,9 @@ const createLocationText = (
   textDoc.fillColor = [53 / 255, 33 / 255, 28 / 255];
   textDoc.applyStroke = false;
   textDoc.tracking = tracking;
+  if (leading) {
+    textDoc.leading = leading;
+  }
   srcText.setValue(textDoc);
 
   const posProp = textLayer
@@ -70,33 +74,10 @@ const createLocationText = (
   return textLayer;
 };
 
-const createIconBase = (
-  name: string,
-  iconPos: [number, number],
-  iconAnchor: [number, number],
-  iconScale: number
-): ShapeLayer => {
+const createIconBase = (name: string): ShapeLayer => {
   const comp = app.project.activeItem as CompItem;
   const iconLayer = comp.layers.addShape();
   iconLayer.name = `${name}_Icon`;
-  const contents = iconLayer.property('Contents') as PropertyGroup;
-  // const posProp = iconLayer
-  //   .property('ADBE Transform Group')
-  //   .property('ADBE Position') as Property<[number, number]>;
-
-  // posProp.setValue(iconPos);
-
-  // const anchorProp = iconLayer
-  //   .property('ADBE Transform Group')
-  //   .property('ADBE Anchor Point') as Property<[number, number]>;
-
-  // anchorProp.setValue(iconAnchor);
-
-  // const scaleProp = iconLayer
-  //   .property('ADBE Transform Group')
-  //   .property('ADBE Scale') as Property<[number, number]>;
-
-  // scaleProp.setValue([iconScale, iconScale]);
 
   return iconLayer;
 };
@@ -141,6 +122,10 @@ const createLocationIconFromId = (
   if (id === 'Medical Clinic') {
     return createMedicalIcon(iconPos, iconAnchor, iconScale, id);
   }
+
+  if (id === 'Sports') {
+    return createSportsIcon(iconPos, iconAnchor, iconScale, id);
+  }
 };
 
 const createLocation = (inputLang: Lingo, argsArr: LocationArgs[]): void => {
@@ -152,16 +137,14 @@ const createLocation = (inputLang: Lingo, argsArr: LocationArgs[]): void => {
     textAnchor,
     textPos,
     tracking,
+    leading,
     iconAnchor,
     iconPos,
     iconScale,
     iconId
   } = argsArr.find(args => args.lang === inputLang);
 
-  const bgLayer = createLocationBG(
-    bgSize,
-    argsArr.find(args => args.lang === 'English').text
-  );
+  const bgLayer = createLocationBG(iconId, bgSize);
   const iconLayer = createLocationIconFromId(
     iconId,
     iconPos,
@@ -173,6 +156,7 @@ const createLocation = (inputLang: Lingo, argsArr: LocationArgs[]): void => {
     text,
     fontSize,
     tracking,
+    leading,
     textPos,
     textAnchor
   );
@@ -191,7 +175,7 @@ const createKindergardenIcon = (
   iconScale: number,
   name: LocationID
 ): ShapeLayer => {
-  const iconLayer = createIconBase(name, iconPos, iconAnchor, iconScale);
+  const iconLayer = createIconBase(name);
 
   const contents = iconLayer.property('Contents') as PropertyGroup;
 
@@ -844,7 +828,7 @@ const createMedicalIcon = (
   iconScale: number,
   name: LocationID
 ): ShapeLayer => {
-  const iconLayer = createIconBase(name, iconPos, iconAnchor, iconScale);
+  const iconLayer = createIconBase(name);
 
   const contents = iconLayer.property('Contents') as PropertyGroup;
 
@@ -999,6 +983,676 @@ const createMedicalLocation = (lang: Lingo): void => {
   createLocation(lang, args);
 };
 
+const createSportsIcon = (
+  iconPos: [number, number],
+  iconAnchor: [number, number],
+  iconScale: number,
+  name: LocationID
+): ShapeLayer => {
+  const iconLayer = createIconBase(name);
+
+  const contents = iconLayer.property('Contents') as PropertyGroup;
+
+  const createBallBorder = () => {
+    const vertices: [number, number][] = [
+      [26.9803924560547, 0],
+      [0, 26.9803924560547],
+      [-26.9803924560547, 0],
+      [0, -26.9803924560547]
+    ];
+    const inTangents: [number, number][] = [
+      [0, -14.9008636474609],
+      [14.9008636474609, 0],
+      [0, 14.9008636474609],
+      [-14.9008636474609, 0]
+    ];
+    const outTangents: [number, number][] = [
+      [0, 14.9008636474609],
+      [-14.9008636474609, 0],
+      [0, -14.9008636474609],
+      [14.9008636474609, 0]
+    ];
+
+    createPathGrp(
+      contents,
+      'Ball_Border',
+      false,
+      true,
+      [0, 0, 0],
+      [255, 255, 255],
+      4,
+      vertices,
+      inTangents,
+      outTangents,
+      true,
+      [177.6914, -0.8718]
+    );
+  };
+
+  const createBallPattern01 = () => {
+    const vertices: [number, number][] = [
+      [-2.0587158203125, -7.95933532714844],
+      [-9.53825378417969, -3.40415954589844],
+      [-5.0865478515625, 7.95933532714844],
+      [9.53825378417969, 7.95933532714844],
+      [8.969482421875, -2.07745361328125]
+    ];
+    const inTangents: [number, number][] = [
+      [7.33279418945312, 2.37643432617188],
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0]
+    ];
+    const outTangents: [number, number][] = [
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0]
+    ];
+
+    createPathGrp(
+      contents,
+      'Ball_Pattern_01',
+      true,
+      false,
+      [255, 255, 255],
+      [0, 0, 0],
+      0,
+      vertices,
+      inTangents,
+      outTangents,
+      true,
+      [186.5702, -19.2442]
+    );
+  };
+
+  const createBallPattern02 = () => {
+    const vertices: [number, number][] = [
+      [-4.03433227539062, -7.84432983398438],
+      [3.20297241210938, -8.99632263183594],
+      [7.81706237792969, 2.06472778320312],
+      [-1.34603881835938, 8.99632263183594],
+      [-7.81706237792969, 4.27694702148438]
+    ];
+    const inTangents: [number, number][] = [
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0]
+    ];
+    const outTangents: [number, number][] = [
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0]
+    ];
+
+    createPathGrp(
+      contents,
+      'Ball_Pattern_02',
+      true,
+      false,
+      [255, 255, 255],
+      [0, 0, 0],
+      0,
+      vertices,
+      inTangents,
+      outTangents,
+      true,
+      [158.4209, -6.8679]
+    );
+  };
+
+  const createBallPattern03 = () => {
+    const vertices: [number, number][] = [
+      [-10.4224853515625, -7.16879272460938],
+      [4.99301147460938, -1.26144409179688],
+      [10.4224853515625, 7.16879272460938],
+      [-1.47776794433594, 2.66761779785156]
+    ];
+    const inTangents: [number, number][] = [
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0]
+    ];
+    const outTangents: [number, number][] = [
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0]
+    ];
+
+    createPathGrp(
+      contents,
+      'Ball_Pattern_03',
+      true,
+      false,
+      [255, 255, 255],
+      [0, 0, 0],
+      0,
+      vertices,
+      inTangents,
+      outTangents,
+      true,
+      [164.2615, 19.1702]
+    );
+  };
+
+  const createBallPattern04 = () => {
+    const vertices: [number, number][] = [
+      [4.08897399902344, -9.21754455566406],
+      [-8.051025390625, -5.53053283691406],
+      [-8.051025390625, 5.67800903320312],
+      [2.32806396484375, 9.21754455566406],
+      [8.051025390625, 0.9586181640625]
+    ];
+    const inTangents: [number, number][] = [
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0]
+    ];
+    const outTangents: [number, number][] = [
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0]
+    ];
+
+    createPathGrp(
+      contents,
+      'Ball_Pattern_04',
+      true,
+      false,
+      [255, 255, 255],
+      [0, 0, 0],
+      0,
+      vertices,
+      inTangents,
+      outTangents,
+      true,
+      [178.5192, 6.774]
+    );
+  };
+
+  const createBallPattern05 = () => {
+    const vertices: [number, number][] = [
+      [3.44915771484375, -10.29736328125],
+      [-3.88815307617188, 3.47108459472656],
+      [-1.09207153320312, 10.29736328125],
+      [3.88815307617188, 1.25888061523438]
+    ];
+    const inTangents: [number, number][] = [
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0]
+    ];
+    const outTangents: [number, number][] = [
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0]
+    ];
+
+    createPathGrp(
+      contents,
+      'Ball_Pattern_05',
+      true,
+      false,
+      [255, 255, 255],
+      [0, 0, 0],
+      0,
+      vertices,
+      inTangents,
+      outTangents,
+      true,
+      [200.8771, 4.5565]
+    );
+  };
+
+  const createBallPattern06 = () => {
+    const vertices: [number, number][] = [
+      [-9.75572204589844, 4.17427062988281],
+      [-4.83880615234375, -0.86390686035156],
+      [9.75572204589844, -4.17427062988281],
+      [0.74287414550781, 2.04646301269531]
+    ];
+    const inTangents: [number, number][] = [
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0]
+    ];
+    const outTangents: [number, number][] = [
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0]
+    ];
+
+    createPathGrp(
+      contents,
+      'Ball_Pattern_06',
+      true,
+      false,
+      [255, 255, 255],
+      [0, 0, 0],
+      0,
+      vertices,
+      inTangents,
+      outTangents,
+      true,
+      [187.4469, 22.1648]
+    );
+  };
+
+  const createBallLine01 = () => {
+    const vertices: [number, number][] = [
+      [0.380126953125, 9.05567932128906],
+      [-1.5057373046875, 8.93757629394531],
+      [-0.380126953125, -9.05567932128906],
+      [1.5057373046875, -8.93757629394531]
+    ];
+    const inTangents: [number, number][] = [
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0]
+    ];
+    const outTangents: [number, number][] = [
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0]
+    ];
+
+    createPathGrp(
+      contents,
+      'Ball_Line_01',
+      true,
+      false,
+      [255, 255, 255],
+      [0, 0, 0],
+      0,
+      vertices,
+      inTangents,
+      outTangents,
+      true,
+      [182.0461, -6.8678]
+    );
+  };
+
+  const createBallLine02 = () => {
+    const vertices: [number, number][] = [
+      [-4.1038818359375, -3.21076965332031],
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0.57388305664062, 0.58863830566406],
+      [0, 0]
+    ];
+    const inTangents: [number, number][] = [
+      [0, 0],
+      [0.49453735351562, 0.60525512695312],
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [-5.08003234863281, -3.9765625]
+    ];
+    const outTangents: [number, number][] = [
+      [-4.1038818359375, -3.21076965332031],
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0.57388305664062, 0.58863830566406],
+      [0, 0]
+    ];
+
+    createPathGrp(
+      contents,
+      'Ball_Line_02',
+      true,
+      false,
+      [255, 255, 255],
+      [0, 0, 0],
+      0,
+      vertices,
+      inTangents,
+      outTangents,
+      true,
+      [166.771, -2.0904]
+    );
+  };
+
+  const createBallLine03 = () => {
+    const vertices: [number, number][] = [
+      [-10.4728546142578, 5.2987060546875],
+      [-11.1888122558594, 3.54937744140625],
+      [10.4728546142578, -5.2987060546875],
+      [11.1888122558594, -3.54937744140625]
+    ];
+    const inTangents: [number, number][] = [
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0]
+    ];
+    const outTangents: [number, number][] = [
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0]
+    ];
+
+    createPathGrp(
+      contents,
+      'Ball_Line_03',
+      true,
+      false,
+      [255, 255, 255],
+      [0, 0, 0],
+      0,
+      vertices,
+      inTangents,
+      outTangents,
+      true,
+      [170.6526, -18.076]
+    );
+  };
+
+  const createBallLine04 = () => {
+    const vertices: [number, number][] = [
+      [8.58975219726562, 1.38580322265625],
+      [-8.68569946289062, 0.50007629394531],
+      [-8.58975219726562, -1.38580322265625],
+      [8.68569946289062, -0.50007629394531]
+    ];
+    const inTangents: [number, number][] = [
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0]
+    ];
+    const outTangents: [number, number][] = [
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0]
+    ];
+
+    createPathGrp(
+      contents,
+      'Ball_Line_04',
+      true,
+      false,
+      [255, 255, 255],
+      [0, 0, 0],
+      0,
+      vertices,
+      inTangents,
+      outTangents,
+      true,
+      [192.2395, 7.8806]
+    );
+  };
+
+  const createBallLine05 = () => {
+    const vertices: [number, number][] = [
+      [1.67181396484375, 6.34220886230469],
+      [-3.41006469726562, -5.60409545898438],
+      [-1.67181396484375, -6.34220886230469],
+      [3.41006469726562, 5.60409545898438]
+    ];
+    const inTangents: [number, number][] = [
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0]
+    ];
+    const outTangents: [number, number][] = [
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0]
+    ];
+
+    createPathGrp(
+      contents,
+      'Ball_Line_05',
+      true,
+      false,
+      [255, 255, 255],
+      [0, 0, 0],
+      0,
+      vertices,
+      inTangents,
+      outTangents,
+      true,
+      [181.0608, 17.3929]
+    );
+  };
+
+  const createBallLine06 = () => {
+    const vertices: [number, number][] = [
+      [-2.19033813476562, 6.61068725585938],
+      [-3.88798522949219, 5.77662658691406],
+      [2.19033813476562, -6.61068725585938],
+      [3.88798522949219, -5.77662658691406]
+    ];
+    const inTangents: [number, number][] = [
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0]
+    ];
+    const outTangents: [number, number][] = [
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0]
+    ];
+
+    createPathGrp(
+      contents,
+      'Ball_Line_06',
+      true,
+      false,
+      [255, 255, 255],
+      [0, 0, 0],
+      0,
+      vertices,
+      inTangents,
+      outTangents,
+      true,
+      [169.884, 14.0742]
+    );
+  };
+
+  const createBallLine07 = () => {
+    const vertices: [number, number][] = [
+      [4.63255310058594, 6.99728393554688],
+      [-6.07925415039062, -5.7830810546875],
+      [-4.63255310058594, -6.99728393554688],
+      [6.07925415039062, 5.7830810546875]
+    ];
+    const inTangents: [number, number][] = [
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0]
+    ];
+    const outTangents: [number, number][] = [
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0]
+    ];
+
+    createPathGrp(
+      contents,
+      'Ball_Line_07',
+      true,
+      false,
+      [255, 255, 255],
+      [0, 0, 0],
+      0,
+      vertices,
+      inTangents,
+      outTangents,
+      true,
+      [199.4093, -7.2617]
+    );
+  };
+
+  const createBallLine08 = () => {
+    const vertices: [number, number][] = [
+      [-0.67536926269531, 9.75965881347656],
+      [-1.21418762207031, -9.70799255371094],
+      [0.67536926269531, -9.75965881347656],
+      [1.21418762207031, 9.70799255371094]
+    ];
+    const inTangents: [number, number][] = [
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0]
+    ];
+    const outTangents: [number, number][] = [
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0]
+    ];
+
+    createPathGrp(
+      contents,
+      'Ball_Line_08',
+      true,
+      false,
+      [255, 255, 255],
+      [0, 0, 0],
+      0,
+      vertices,
+      inTangents,
+      outTangents,
+      true,
+      [157.1978, 6.2585]
+    );
+  };
+
+  const createIconCircle = () => {
+    const vertices: [number, number][] = [
+      [43.39892578125, 0],
+      [0, 43.39892578125],
+      [-43.39892578125, 0],
+      [0, -43.39892578125]
+    ];
+
+    const inTangents: [number, number][] = [
+      [0, -23.9685668945312],
+      [23.9685668945312, 0],
+      [0, 23.9685668945312],
+      [-23.9685668945312, 0]
+    ];
+    const outTangents: [number, number][] = [
+      [0, 23.9685668945312],
+      [-23.9685668945312, 0],
+      [0, -23.9685668945312],
+      [23.9685668945312, 0]
+    ];
+
+    createPathGrp(
+      contents,
+      'Icon_Circle',
+      true,
+      false,
+      [53, 33, 28],
+      [0, 0, 0],
+      0,
+      vertices,
+      inTangents,
+      outTangents,
+      true,
+      [177.6913, -0.8716]
+    );
+  };
+
+  createBallLine08();
+  createBallLine07();
+  createBallLine06();
+  createBallLine05();
+  createBallLine04();
+  createBallLine03();
+  createBallLine02();
+  createBallLine01();
+  createBallPattern06();
+  createBallPattern05();
+  createBallPattern04();
+  createBallPattern03();
+  createBallPattern02();
+  createBallPattern01();
+  createBallBorder();
+  createIconCircle();
+
+  setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
+
+  return iconLayer;
+};
+
+const createSportsLocation = (lang: Lingo): void => {
+  const args: LocationArgs[] = [
+    {
+      lang: 'Hebrew',
+      text: 'מתחם ספורט ופנאי',
+      fontSize: 77.3332,
+      tracking: -19,
+      textPos: [812.8363, 540.1692],
+      textAnchor: [75.0863, -19.0808],
+      bgSize: [480, 110],
+      iconPos: [1045.5764, 539.1284],
+      iconAnchor: [85.5764, -0.8716],
+      iconScale: 100,
+      iconId: 'Sports'
+    },
+    {
+      lang: 'English',
+      text: 'Sports and\nRecreation Complex',
+      fontSize: 59,
+      tracking: -31,
+      leading: 53,
+      textPos: [1001.1015, 542.921],
+      textAnchor: [201.1015, 9.921],
+      bgSize: [555, 134],
+      iconPos: [743.8515, 536.0034],
+      iconAnchor: [177.6913, -0.8716],
+      iconScale: 100,
+      iconId: 'Sports'
+    },
+    {
+      lang: 'Arabic',
+      text: 'ملعب رياضة',
+      fontSize: 64,
+      tracking: -19,
+      textPos: [918.5146, 540.4375],
+      textAnchor: [173.2645, -16.3125],
+      bgSize: [466, 92],
+      iconPos: [1141.5318, 540.1284],
+      iconAnchor: [177.6913, -0.8716],
+      iconScale: 83,
+      iconId: 'Sports'
+    }
+  ];
+  createLocation(lang, args);
+};
+
 // ====================================
 
 const createLocationFromId = (id: LocationID, lang: Lingo): void => {
@@ -1007,5 +1661,7 @@ const createLocationFromId = (id: LocationID, lang: Lingo): void => {
       return createKindergardenLocation(lang);
     case 'Medical Clinic':
       return createMedicalLocation(lang);
+    case 'Sports':
+      return createSportsLocation(lang);
   }
 };

@@ -1041,14 +1041,14 @@ var createIconFromId = function (id, circleColor, iconColor, hasCircle) {
             return createTunnelIcon(circleColor, iconColor, hasCircle);
     }
 };
-var createLocationBG = function (size, locationName, color) {
+var createLocationBG = function (id, size, color) {
     if (color === void 0) { color = [1, 1, 1]; }
     var comp = app.project.activeItem;
     var layer = comp.layers.addShape();
-    layer.name = "".concat(locationName, "_BG");
+    layer.name = "".concat(id, "_BG");
     var contents = layer.property('ADBE Root Vectors Group');
     var grp = contents.addProperty('ADBE Vector Group');
-    grp.name = "".concat(locationName, "_BG");
+    grp.name = "".concat(id, "_BG");
     var recGrp = grp.property('ADBE Vectors Group');
     recGrp.addProperty('ADBE Vector Shape - Rect');
     var fillGrp = recGrp.addProperty('ADBE Vector Graphic - Fill');
@@ -1064,7 +1064,7 @@ var createLocationBG = function (size, locationName, color) {
     sizeProp.setValue(size);
     return layer;
 };
-var createLocationText = function (lang, text, fontSize, tracking, textPos, textAnchor) {
+var createLocationText = function (lang, text, fontSize, tracking, leading, textPos, textAnchor) {
     var comp = app.project.activeItem;
     var textLayer = comp.layers.addText();
     var srcText = textLayer
@@ -1078,6 +1078,9 @@ var createLocationText = function (lang, text, fontSize, tracking, textPos, text
     textDoc.fillColor = [53 / 255, 33 / 255, 28 / 255];
     textDoc.applyStroke = false;
     textDoc.tracking = tracking;
+    if (leading) {
+        textDoc.leading = leading;
+    }
     srcText.setValue(textDoc);
     var posProp = textLayer
         .property('ADBE Transform Group')
@@ -1089,11 +1092,10 @@ var createLocationText = function (lang, text, fontSize, tracking, textPos, text
     anchorProp.setValue(textAnchor);
     return textLayer;
 };
-var createIconBase = function (name, iconPos, iconAnchor, iconScale) {
+var createIconBase = function (name) {
     var comp = app.project.activeItem;
     var iconLayer = comp.layers.addShape();
     iconLayer.name = "".concat(name, "_Icon");
-    var contents = iconLayer.property('Contents');
     return iconLayer;
 };
 var setLayerTransform = function (layer, pos, anchor, scale) {
@@ -1118,19 +1120,22 @@ var createLocationIconFromId = function (id, iconPos, iconAnchor, iconScale) {
     if (id === 'Medical Clinic') {
         return createMedicalIcon(iconPos, iconAnchor, iconScale, id);
     }
+    if (id === 'Sports') {
+        return createSportsIcon(iconPos, iconAnchor, iconScale, id);
+    }
 };
 var createLocation = function (inputLang, argsArr) {
-    var _a = argsArr.find(function (args) { return args.lang === inputLang; }), bgSize = _a.bgSize, fontSize = _a.fontSize, lang = _a.lang, text = _a.text, textAnchor = _a.textAnchor, textPos = _a.textPos, tracking = _a.tracking, iconAnchor = _a.iconAnchor, iconPos = _a.iconPos, iconScale = _a.iconScale, iconId = _a.iconId;
-    var bgLayer = createLocationBG(bgSize, argsArr.find(function (args) { return args.lang === 'English'; }).text);
+    var _a = argsArr.find(function (args) { return args.lang === inputLang; }), bgSize = _a.bgSize, fontSize = _a.fontSize, lang = _a.lang, text = _a.text, textAnchor = _a.textAnchor, textPos = _a.textPos, tracking = _a.tracking, leading = _a.leading, iconAnchor = _a.iconAnchor, iconPos = _a.iconPos, iconScale = _a.iconScale, iconId = _a.iconId;
+    var bgLayer = createLocationBG(iconId, bgSize);
     var iconLayer = createLocationIconFromId(iconId, iconPos, iconAnchor, iconScale);
-    var textLayer = createLocationText(lang, text, fontSize, tracking, textPos, textAnchor);
+    var textLayer = createLocationText(lang, text, fontSize, tracking, leading, textPos, textAnchor);
     iconLayer.parent = textLayer.parent = bgLayer;
     bgLayer.label = iconLayer.label = textLayer.label = 11;
     iconLayer.selected = textLayer.selected = false;
     bgLayer.selected = true;
 };
 var createKindergardenIcon = function (iconPos, iconAnchor, iconScale, name) {
-    var iconLayer = createIconBase(name, iconPos, iconAnchor, iconScale);
+    var iconLayer = createIconBase(name);
     var contents = iconLayer.property('Contents');
     var createHouseMiddleHide = function () {
         var vertices = [
@@ -1548,7 +1553,7 @@ var createKindergardenLocation = function (lang) {
     createLocation(lang, args);
 };
 var createMedicalIcon = function (iconPos, iconAnchor, iconScale, name) {
-    var iconLayer = createIconBase(name, iconPos, iconAnchor, iconScale);
+    var iconLayer = createIconBase(name);
     var contents = iconLayer.property('Contents');
     var createCross = function () {
         var vertices = [
@@ -1665,12 +1670,432 @@ var createMedicalLocation = function (lang) {
     ];
     createLocation(lang, args);
 };
+var createSportsIcon = function (iconPos, iconAnchor, iconScale, name) {
+    var iconLayer = createIconBase(name);
+    var contents = iconLayer.property('Contents');
+    var createBallBorder = function () {
+        var vertices = [
+            [26.9803924560547, 0],
+            [0, 26.9803924560547],
+            [-26.9803924560547, 0],
+            [0, -26.9803924560547]
+        ];
+        var inTangents = [
+            [0, -14.9008636474609],
+            [14.9008636474609, 0],
+            [0, 14.9008636474609],
+            [-14.9008636474609, 0]
+        ];
+        var outTangents = [
+            [0, 14.9008636474609],
+            [-14.9008636474609, 0],
+            [0, -14.9008636474609],
+            [14.9008636474609, 0]
+        ];
+        createPathGrp(contents, 'Ball_Border', false, true, [0, 0, 0], [255, 255, 255], 4, vertices, inTangents, outTangents, true, [177.6914, -0.8718]);
+    };
+    var createBallPattern01 = function () {
+        var vertices = [
+            [-2.0587158203125, -7.95933532714844],
+            [-9.53825378417969, -3.40415954589844],
+            [-5.0865478515625, 7.95933532714844],
+            [9.53825378417969, 7.95933532714844],
+            [8.969482421875, -2.07745361328125]
+        ];
+        var inTangents = [
+            [7.33279418945312, 2.37643432617188],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Ball_Pattern_01', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [186.5702, -19.2442]);
+    };
+    var createBallPattern02 = function () {
+        var vertices = [
+            [-4.03433227539062, -7.84432983398438],
+            [3.20297241210938, -8.99632263183594],
+            [7.81706237792969, 2.06472778320312],
+            [-1.34603881835938, 8.99632263183594],
+            [-7.81706237792969, 4.27694702148438]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Ball_Pattern_02', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [158.4209, -6.8679]);
+    };
+    var createBallPattern03 = function () {
+        var vertices = [
+            [-10.4224853515625, -7.16879272460938],
+            [4.99301147460938, -1.26144409179688],
+            [10.4224853515625, 7.16879272460938],
+            [-1.47776794433594, 2.66761779785156]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Ball_Pattern_03', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [164.2615, 19.1702]);
+    };
+    var createBallPattern04 = function () {
+        var vertices = [
+            [4.08897399902344, -9.21754455566406],
+            [-8.051025390625, -5.53053283691406],
+            [-8.051025390625, 5.67800903320312],
+            [2.32806396484375, 9.21754455566406],
+            [8.051025390625, 0.9586181640625]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Ball_Pattern_04', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [178.5192, 6.774]);
+    };
+    var createBallPattern05 = function () {
+        var vertices = [
+            [3.44915771484375, -10.29736328125],
+            [-3.88815307617188, 3.47108459472656],
+            [-1.09207153320312, 10.29736328125],
+            [3.88815307617188, 1.25888061523438]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Ball_Pattern_05', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [200.8771, 4.5565]);
+    };
+    var createBallPattern06 = function () {
+        var vertices = [
+            [-9.75572204589844, 4.17427062988281],
+            [-4.83880615234375, -0.86390686035156],
+            [9.75572204589844, -4.17427062988281],
+            [0.74287414550781, 2.04646301269531]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Ball_Pattern_06', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [187.4469, 22.1648]);
+    };
+    var createBallLine01 = function () {
+        var vertices = [
+            [0.380126953125, 9.05567932128906],
+            [-1.5057373046875, 8.93757629394531],
+            [-0.380126953125, -9.05567932128906],
+            [1.5057373046875, -8.93757629394531]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Ball_Line_01', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [182.0461, -6.8678]);
+    };
+    var createBallLine02 = function () {
+        var vertices = [
+            [-4.1038818359375, -3.21076965332031],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0.57388305664062, 0.58863830566406],
+            [0, 0]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0.49453735351562, 0.60525512695312],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [-5.08003234863281, -3.9765625]
+        ];
+        var outTangents = [
+            [-4.1038818359375, -3.21076965332031],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0.57388305664062, 0.58863830566406],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Ball_Line_02', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [166.771, -2.0904]);
+    };
+    var createBallLine03 = function () {
+        var vertices = [
+            [-10.4728546142578, 5.2987060546875],
+            [-11.1888122558594, 3.54937744140625],
+            [10.4728546142578, -5.2987060546875],
+            [11.1888122558594, -3.54937744140625]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Ball_Line_03', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [170.6526, -18.076]);
+    };
+    var createBallLine04 = function () {
+        var vertices = [
+            [8.58975219726562, 1.38580322265625],
+            [-8.68569946289062, 0.50007629394531],
+            [-8.58975219726562, -1.38580322265625],
+            [8.68569946289062, -0.50007629394531]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Ball_Line_04', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [192.2395, 7.8806]);
+    };
+    var createBallLine05 = function () {
+        var vertices = [
+            [1.67181396484375, 6.34220886230469],
+            [-3.41006469726562, -5.60409545898438],
+            [-1.67181396484375, -6.34220886230469],
+            [3.41006469726562, 5.60409545898438]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Ball_Line_05', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [181.0608, 17.3929]);
+    };
+    var createBallLine06 = function () {
+        var vertices = [
+            [-2.19033813476562, 6.61068725585938],
+            [-3.88798522949219, 5.77662658691406],
+            [2.19033813476562, -6.61068725585938],
+            [3.88798522949219, -5.77662658691406]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Ball_Line_06', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [169.884, 14.0742]);
+    };
+    var createBallLine07 = function () {
+        var vertices = [
+            [4.63255310058594, 6.99728393554688],
+            [-6.07925415039062, -5.7830810546875],
+            [-4.63255310058594, -6.99728393554688],
+            [6.07925415039062, 5.7830810546875]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Ball_Line_07', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [199.4093, -7.2617]);
+    };
+    var createBallLine08 = function () {
+        var vertices = [
+            [-0.67536926269531, 9.75965881347656],
+            [-1.21418762207031, -9.70799255371094],
+            [0.67536926269531, -9.75965881347656],
+            [1.21418762207031, 9.70799255371094]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Ball_Line_08', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [157.1978, 6.2585]);
+    };
+    var createIconCircle = function () {
+        var vertices = [
+            [43.39892578125, 0],
+            [0, 43.39892578125],
+            [-43.39892578125, 0],
+            [0, -43.39892578125]
+        ];
+        var inTangents = [
+            [0, -23.9685668945312],
+            [23.9685668945312, 0],
+            [0, 23.9685668945312],
+            [-23.9685668945312, 0]
+        ];
+        var outTangents = [
+            [0, 23.9685668945312],
+            [-23.9685668945312, 0],
+            [0, -23.9685668945312],
+            [23.9685668945312, 0]
+        ];
+        createPathGrp(contents, 'Icon_Circle', true, false, [53, 33, 28], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [177.6913, -0.8716]);
+    };
+    createBallLine08();
+    createBallLine07();
+    createBallLine06();
+    createBallLine05();
+    createBallLine04();
+    createBallLine03();
+    createBallLine02();
+    createBallLine01();
+    createBallPattern06();
+    createBallPattern05();
+    createBallPattern04();
+    createBallPattern03();
+    createBallPattern02();
+    createBallPattern01();
+    createBallBorder();
+    createIconCircle();
+    setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
+    return iconLayer;
+};
+var createSportsLocation = function (lang) {
+    var args = [
+        {
+            lang: 'Hebrew',
+            text: 'מתחם ספורט ופנאי',
+            fontSize: 77.3332,
+            tracking: -19,
+            textPos: [812.8363, 540.1692],
+            textAnchor: [75.0863, -19.0808],
+            bgSize: [480, 110],
+            iconPos: [1045.5764, 539.1284],
+            iconAnchor: [85.5764, -0.8716],
+            iconScale: 100,
+            iconId: 'Sports'
+        },
+        {
+            lang: 'English',
+            text: 'Sports and\nRecreation Complex',
+            fontSize: 59,
+            tracking: -31,
+            leading: 53,
+            textPos: [1001.1015, 542.921],
+            textAnchor: [201.1015, 9.921],
+            bgSize: [555, 134],
+            iconPos: [743.8515, 536.0034],
+            iconAnchor: [177.6913, -0.8716],
+            iconScale: 100,
+            iconId: 'Sports'
+        },
+        {
+            lang: 'Arabic',
+            text: 'ملعب رياضة',
+            fontSize: 64,
+            tracking: -19,
+            textPos: [918.5146, 540.4375],
+            textAnchor: [173.2645, -16.3125],
+            bgSize: [466, 92],
+            iconPos: [1141.5318, 540.1284],
+            iconAnchor: [177.6913, -0.8716],
+            iconScale: 83,
+            iconId: 'Sports'
+        }
+    ];
+    createLocation(lang, args);
+};
 var createLocationFromId = function (id, lang) {
     switch (id) {
         case 'Kindergarden':
             return createKindergardenLocation(lang);
         case 'Medical Clinic':
             return createMedicalLocation(lang);
+        case 'Sports':
+            return createSportsLocation(lang);
     }
 };
 var tvaiBinary = '\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x18\x00\x00\x00\x18\b\x06\x00\x00\x00\u00E0w=\u00F8\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x00\u00FBIDATH\u0089\u00B5U\u0081\r\u00820\x10<\r\x03\u00E0\x06N`p\x03\u00DD\u0084\x11t\x136\u00B0\x0B\u00988\u0082#\u00E0\x04\u00AE\u00C0\x06o>>\u00C9\x17\u00DBZ\u00F8r\u00C9\u00A7@\u009A\u00FF\u00EB\u00DD\u00D3\u00DF\x10\x11\n\u00E2\'\u00D9\u00B6dv\u00C1\x15\u00C0YVT+\x14\u00E8\x01<\u00C7\u00975\n4z-\u00E9\u00C1\x1E\u00C0{\u00FA\u00B1\u0094\x07N\u00A492i/\u00F8\x04\u00C6h\u00E8\u008B\u009E\u0088\u00EAi.\u00ABDN\f\x1D\u00D4\u00EA\u00C3\u00C0\u00BES\u00CC\u00A3\u00FB\u0096v\u00D1\x05\u00C0]\u008Cm\u0093;\x170w\u00C2\u00DC\u00E5\u00EC\u009F\u00EB\x013~\u00C8\u00F3)\u00A8\u00B9\u00E1\x04\u00CCx \u00A2C\u00A8[b\u0091\u009B\u00BCM\u00B5\u00A2U\u00A2N~\u00A2Z\u00DA\u00F2\u00BF,3$\u00CAj\u00C5T\u00A4\u00AE\u008AV\u0098\u00BF\u00C4\u00D0E\u0088\x15`)n"K3[\x16\u0085\u0090\x07\u00B5\u00BA\u00CF\u00F3Z1\u0081*4\u00E6\x00\u00ECd5%\u0087\u0092\u00C8\x1Bs\u0092\u00D8\u009C\x1Cj\u00A2yc\u00AE$\u00C6\x02\u00DE\u0098+\t69\u00E4\x01O#;\x00|\x00\u00E1a\u00F0\u0083\x02\u00DB\u00B5q\x00\x00\x00\x00IEND\u00AEB`\u0082';
@@ -1740,7 +2165,8 @@ var init = function (thisObj) {
     iconsGrp.alignChildren = 'left';
     var iconDDGrp = iconsGrp.add('group');
     iconDDGrp.add('statictext', undefined, 'Icon:');
-    var iconDD = iconDDGrp.add('dropdownlist', undefined, ['Boom', 'Tunnel']);
+    var iconsList = ['Boom', 'Tunnel'];
+    var iconDD = iconDDGrp.add('dropdownlist', undefined, iconsList);
     iconDD.preferredSize[0] = 100;
     iconDD.selection = 0;
     var IconsBtnsGrp = iconsGrp.add('group');
@@ -1773,10 +2199,12 @@ var init = function (thisObj) {
     locationsGrp.alignChildren = 'left';
     var locationsDDGrp = locationsGrp.add('group');
     locationsDDGrp.add('statictext', undefined, 'Location:');
-    var locationsDD = locationsDDGrp.add('dropdownlist', undefined, [
+    var locationsList = [
         'Kindergarden',
-        'Medical Clinic'
-    ]);
+        'Medical Clinic',
+        'Sports'
+    ];
+    var locationsDD = locationsDDGrp.add('dropdownlist', undefined, locationsList);
     locationsDD.preferredSize[0] = 100;
     locationsDD.selection = 0;
     var langDDGrp = locationsGrp.add('group');
