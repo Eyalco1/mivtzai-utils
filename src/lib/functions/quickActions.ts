@@ -4,7 +4,7 @@ const createTvaiStroke = (): void => {
 
   const contents = layer.property('ADBE Root Vectors Group') as PropertyGroup;
   const shapeGrp = contents.addProperty('ADBE Vector Group');
-  shapeGrp.name = 'Shape 1';
+  shapeGrp.name = 'Tunnel_Stroke';
 
   const lineGrp = shapeGrp.property('ADBE Vectors Group') as PropertyGroup;
   const pathGrp = lineGrp.addProperty('ADBE Vector Shape - Group');
@@ -47,7 +47,32 @@ const createTvaiStroke = (): void => {
   const sliderVal = slider.property(
     'ADBE Slider Control-0001'
   ) as Property<any>;
-  sliderVal.setValue(50);
+  sliderVal.setValue(-100);
+  sliderVal.expression =
+    'var endProp = content("Tunnel_Stroke").content("Trim Paths 1").end;\n' +
+    'var speedSlider = effect("Speed")("Slider");\n' +
+    'linear(endProp, 100, 0, 0, speedSlider)';
+
+  const parentGrp = contents
+    .property('Tunnel_Stroke')
+    .property('ADBE Vectors Group') as PropertyGroup;
+  const trimPathsGrp = parentGrp.addProperty('ADBE Vector Filter - Trim');
+  const trimPathsEnd = trimPathsGrp.property(
+    'ADBE Vector Trim End'
+  ) as Property<number>;
+  trimPathsEnd.setValueAtTime(0, 0);
+  trimPathsEnd.setValueAtTime((1 / 24) * 30, 100);
+
+  trimPathsEnd.setTemporalEaseAtKey(
+    1,
+    [new KeyframeEase(0.5, 33)],
+    [new KeyframeEase(0.5, 33)]
+  );
+  trimPathsEnd.setTemporalEaseAtKey(
+    2,
+    [new KeyframeEase(0.5, 88)],
+    [new KeyframeEase(0.5, 88)]
+  );
 
   layer
     .property('ADBE Root Vectors Group')

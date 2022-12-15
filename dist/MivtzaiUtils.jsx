@@ -1,3 +1,11 @@
+/**
+ * @name mivtzai-utils
+ * @description Utilites for operative projects
+ * @version 1.0.0
+ * @author Eyal Cohen
+ * @license ISC
+ */
+
 Array.prototype.map || (Array.prototype.map = function (callback) { var T, A, k; if (null == this)
     throw new TypeError("this is null or not defined"); var O = Object(this), len = O.length >>> 0; if ("function" != typeof callback)
     throw new TypeError(callback + " is not a function"); for (arguments.length > 1 && (T = arguments[1]), A = new Array(len), k = 0; k < len;) {
@@ -236,7 +244,7 @@ var createTvaiStroke = function () {
     var layer = comp.layers.addShape();
     var contents = layer.property('ADBE Root Vectors Group');
     var shapeGrp = contents.addProperty('ADBE Vector Group');
-    shapeGrp.name = 'Shape 1';
+    shapeGrp.name = 'Tunnel_Stroke';
     var lineGrp = shapeGrp.property('ADBE Vectors Group');
     var pathGrp = lineGrp.addProperty('ADBE Vector Shape - Group');
     var linePath = pathGrp.property('ADBE Vector Shape');
@@ -259,7 +267,20 @@ var createTvaiStroke = function () {
     var slider = layer.effect.addProperty('ADBE Slider Control');
     slider.name = 'Speed';
     var sliderVal = slider.property('ADBE Slider Control-0001');
-    sliderVal.setValue(50);
+    sliderVal.setValue(-100);
+    sliderVal.expression =
+        'var endProp = content("Tunnel_Stroke").content("Trim Paths 1").end;\n' +
+            'var speedSlider = effect("Speed")("Slider");\n' +
+            'linear(endProp, 100, 0, 0, speedSlider)';
+    var parentGrp = contents
+        .property('Tunnel_Stroke')
+        .property('ADBE Vectors Group');
+    var trimPathsGrp = parentGrp.addProperty('ADBE Vector Filter - Trim');
+    var trimPathsEnd = trimPathsGrp.property('ADBE Vector Trim End');
+    trimPathsEnd.setValueAtTime(0, 0);
+    trimPathsEnd.setValueAtTime((1 / 24) * 30, 100);
+    trimPathsEnd.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 33)], [new KeyframeEase(0.5, 33)]);
+    trimPathsEnd.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 88)], [new KeyframeEase(0.5, 88)]);
     layer
         .property('ADBE Root Vectors Group')
         .property('ADBE Vector Group')
