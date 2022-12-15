@@ -2,6 +2,9 @@ type ColorDropdown = 'White' | 'Black' | 'Red';
 
 type Lingo = 'Hebrew' | 'Arabic' | 'English';
 
+type IconID = 'Boom' | 'Tunnel';
+type LocationID = 'Kindergarden' | 'Medical Clinic';
+
 interface LocationArgs {
   lang: Lingo;
   text: string;
@@ -13,8 +16,5 @@ interface LocationArgs {
   iconPos: [number, number];
   iconAnchor: [number, number];
   iconScale: number;
-  iconId: string;
+  iconId: LocationID;
 }
-
-type IconID = 'Boom' | 'Tunnel';
-type LocationID = 'Kindergarden' | 'Medical Clinic';

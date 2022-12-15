@@ -78,7 +78,7 @@ const createIconBase = (
 ): ShapeLayer => {
   const comp = app.project.activeItem as CompItem;
   const iconLayer = comp.layers.addShape();
-  iconLayer.name = `${name} Icon`;
+  iconLayer.name = `${name}_Icon`;
   const contents = iconLayer.property('Contents') as PropertyGroup;
   // const posProp = iconLayer
   //   .property('ADBE Transform Group')
@@ -129,18 +129,17 @@ const setLayerTransform = (
 };
 
 const createLocationIconFromId = (
-  id: string,
+  id: LocationID,
   iconPos: [number, number],
   iconAnchor: [number, number],
   iconScale: number
 ): ShapeLayer => {
-  id = id.toLowerCase();
-  if (id === 'kindergarden') {
-    return createKindergardenIcon(iconPos, iconAnchor, iconScale);
+  if (id === 'Kindergarden') {
+    return createKindergardenIcon(iconPos, iconAnchor, iconScale, id);
   }
 
-  if (id === 'medical') {
-    return createMedicalIcon(iconPos, iconAnchor, iconScale);
+  if (id === 'Medical Clinic') {
+    return createMedicalIcon(iconPos, iconAnchor, iconScale, id);
   }
 };
 
@@ -159,7 +158,10 @@ const createLocation = (inputLang: Lingo, argsArr: LocationArgs[]): void => {
     iconId
   } = argsArr.find(args => args.lang === inputLang);
 
-  const bgLayer = createLocationBG(bgSize, 'Kindergarden');
+  const bgLayer = createLocationBG(
+    bgSize,
+    argsArr.find(args => args.lang === 'English').text
+  );
   const iconLayer = createLocationIconFromId(
     iconId,
     iconPos,
@@ -186,14 +188,10 @@ const createLocation = (inputLang: Lingo, argsArr: LocationArgs[]): void => {
 const createKindergardenIcon = (
   iconPos: [number, number],
   iconAnchor: [number, number],
-  iconScale: number
+  iconScale: number,
+  name: LocationID
 ): ShapeLayer => {
-  const iconLayer = createIconBase(
-    'Kindergarden',
-    iconPos,
-    iconAnchor,
-    iconScale
-  );
+  const iconLayer = createIconBase(name, iconPos, iconAnchor, iconScale);
 
   const contents = iconLayer.property('Contents') as PropertyGroup;
 
@@ -808,7 +806,7 @@ const createKindergardenLocation = (lang: Lingo): void => {
       iconPos: [1045.5764, 539.1284],
       iconAnchor: [85.5764, -0.8716],
       iconScale: 100,
-      iconId: 'kindergarden'
+      iconId: 'Kindergarden'
     },
     {
       lang: 'English',
@@ -821,7 +819,7 @@ const createKindergardenLocation = (lang: Lingo): void => {
       iconPos: [773.5764, 539.1284],
       iconAnchor: [85.5764, -0.8716],
       iconScale: 100,
-      iconId: 'kindergarden'
+      iconId: 'Kindergarden'
     },
     {
       lang: 'Arabic',
@@ -834,7 +832,7 @@ const createKindergardenLocation = (lang: Lingo): void => {
       iconPos: [1141.2014, 539.5034],
       iconAnchor: [85.5764, -0.8716],
       iconScale: 83,
-      iconId: 'kindergarden'
+      iconId: 'Kindergarden'
     }
   ];
   createLocation(lang, args);
@@ -843,14 +841,10 @@ const createKindergardenLocation = (lang: Lingo): void => {
 const createMedicalIcon = (
   iconPos: [number, number],
   iconAnchor: [number, number],
-  iconScale: number
+  iconScale: number,
+  name: LocationID
 ): ShapeLayer => {
-  const iconLayer = createIconBase(
-    'Kindergarden',
-    iconPos,
-    iconAnchor,
-    iconScale
-  );
+  const iconLayer = createIconBase(name, iconPos, iconAnchor, iconScale);
 
   const contents = iconLayer.property('Contents') as PropertyGroup;
 
@@ -973,7 +967,7 @@ const createMedicalLocation = (lang: Lingo): void => {
       iconPos: [1045.5764, 539.1284],
       iconAnchor: [85.5764, -0.8716],
       iconScale: 100,
-      iconId: 'medical'
+      iconId: 'Medical Clinic'
     },
     {
       lang: 'English',
@@ -986,7 +980,7 @@ const createMedicalLocation = (lang: Lingo): void => {
       iconPos: [779, 539.1284],
       iconAnchor: [85.5764, -0.8716],
       iconScale: 97,
-      iconId: 'medical'
+      iconId: 'Medical Clinic'
     },
     {
       lang: 'Arabic',
@@ -999,7 +993,7 @@ const createMedicalLocation = (lang: Lingo): void => {
       iconPos: [1049.9514, 538.2534],
       iconAnchor: [85.5764, -0.8716],
       iconScale: 83,
-      iconId: 'medical'
+      iconId: 'Medical Clinic'
     }
   ];
   createLocation(lang, args);
@@ -1012,6 +1006,6 @@ const createLocationFromId = (id: LocationID, lang: Lingo): void => {
     case 'Kindergarden':
       return createKindergardenLocation(lang);
     case 'Medical Clinic':
-      return createKindergardenLocation(lang);
+      return createMedicalLocation(lang);
   }
 };

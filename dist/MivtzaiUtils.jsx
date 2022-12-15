@@ -1092,7 +1092,7 @@ var createLocationText = function (lang, text, fontSize, tracking, textPos, text
 var createIconBase = function (name, iconPos, iconAnchor, iconScale) {
     var comp = app.project.activeItem;
     var iconLayer = comp.layers.addShape();
-    iconLayer.name = "".concat(name, " Icon");
+    iconLayer.name = "".concat(name, "_Icon");
     var contents = iconLayer.property('Contents');
     return iconLayer;
 };
@@ -1112,17 +1112,16 @@ var setLayerTransform = function (layer, pos, anchor, scale) {
     return layer;
 };
 var createLocationIconFromId = function (id, iconPos, iconAnchor, iconScale) {
-    id = id.toLowerCase();
-    if (id === 'kindergarden') {
-        return createKindergardenIcon(iconPos, iconAnchor, iconScale);
+    if (id === 'Kindergarden') {
+        return createKindergardenIcon(iconPos, iconAnchor, iconScale, id);
     }
-    if (id === 'medical') {
-        return createMedicalIcon(iconPos, iconAnchor, iconScale);
+    if (id === 'Medical Clinic') {
+        return createMedicalIcon(iconPos, iconAnchor, iconScale, id);
     }
 };
 var createLocation = function (inputLang, argsArr) {
     var _a = argsArr.find(function (args) { return args.lang === inputLang; }), bgSize = _a.bgSize, fontSize = _a.fontSize, lang = _a.lang, text = _a.text, textAnchor = _a.textAnchor, textPos = _a.textPos, tracking = _a.tracking, iconAnchor = _a.iconAnchor, iconPos = _a.iconPos, iconScale = _a.iconScale, iconId = _a.iconId;
-    var bgLayer = createLocationBG(bgSize, 'Kindergarden');
+    var bgLayer = createLocationBG(bgSize, argsArr.find(function (args) { return args.lang === 'English'; }).text);
     var iconLayer = createLocationIconFromId(iconId, iconPos, iconAnchor, iconScale);
     var textLayer = createLocationText(lang, text, fontSize, tracking, textPos, textAnchor);
     iconLayer.parent = textLayer.parent = bgLayer;
@@ -1130,8 +1129,8 @@ var createLocation = function (inputLang, argsArr) {
     iconLayer.selected = textLayer.selected = false;
     bgLayer.selected = true;
 };
-var createKindergardenIcon = function (iconPos, iconAnchor, iconScale) {
-    var iconLayer = createIconBase('Kindergarden', iconPos, iconAnchor, iconScale);
+var createKindergardenIcon = function (iconPos, iconAnchor, iconScale, name) {
+    var iconLayer = createIconBase(name, iconPos, iconAnchor, iconScale);
     var contents = iconLayer.property('Contents');
     var createHouseMiddleHide = function () {
         var vertices = [
@@ -1517,7 +1516,7 @@ var createKindergardenLocation = function (lang) {
             iconPos: [1045.5764, 539.1284],
             iconAnchor: [85.5764, -0.8716],
             iconScale: 100,
-            iconId: 'kindergarden'
+            iconId: 'Kindergarden'
         },
         {
             lang: 'English',
@@ -1530,7 +1529,7 @@ var createKindergardenLocation = function (lang) {
             iconPos: [773.5764, 539.1284],
             iconAnchor: [85.5764, -0.8716],
             iconScale: 100,
-            iconId: 'kindergarden'
+            iconId: 'Kindergarden'
         },
         {
             lang: 'Arabic',
@@ -1543,13 +1542,13 @@ var createKindergardenLocation = function (lang) {
             iconPos: [1141.2014, 539.5034],
             iconAnchor: [85.5764, -0.8716],
             iconScale: 83,
-            iconId: 'kindergarden'
+            iconId: 'Kindergarden'
         }
     ];
     createLocation(lang, args);
 };
-var createMedicalIcon = function (iconPos, iconAnchor, iconScale) {
-    var iconLayer = createIconBase('Kindergarden', iconPos, iconAnchor, iconScale);
+var createMedicalIcon = function (iconPos, iconAnchor, iconScale, name) {
+    var iconLayer = createIconBase(name, iconPos, iconAnchor, iconScale);
     var contents = iconLayer.property('Contents');
     var createCross = function () {
         var vertices = [
@@ -1635,7 +1634,7 @@ var createMedicalLocation = function (lang) {
             iconPos: [1045.5764, 539.1284],
             iconAnchor: [85.5764, -0.8716],
             iconScale: 100,
-            iconId: 'medical'
+            iconId: 'Medical Clinic'
         },
         {
             lang: 'English',
@@ -1648,7 +1647,7 @@ var createMedicalLocation = function (lang) {
             iconPos: [779, 539.1284],
             iconAnchor: [85.5764, -0.8716],
             iconScale: 97,
-            iconId: 'medical'
+            iconId: 'Medical Clinic'
         },
         {
             lang: 'Arabic',
@@ -1661,7 +1660,7 @@ var createMedicalLocation = function (lang) {
             iconPos: [1049.9514, 538.2534],
             iconAnchor: [85.5764, -0.8716],
             iconScale: 83,
-            iconId: 'medical'
+            iconId: 'Medical Clinic'
         }
     ];
     createLocation(lang, args);
@@ -1671,7 +1670,7 @@ var createLocationFromId = function (id, lang) {
         case 'Kindergarden':
             return createKindergardenLocation(lang);
         case 'Medical Clinic':
-            return createKindergardenLocation(lang);
+            return createMedicalLocation(lang);
     }
 };
 var tvaiBinary = '\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x18\x00\x00\x00\x18\b\x06\x00\x00\x00\u00E0w=\u00F8\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x00\u00FBIDATH\u0089\u00B5U\u0081\r\u00820\x10<\r\x03\u00E0\x06N`p\x03\u00DD\u0084\x11t\x136\u00B0\x0B\u00988\u0082#\u00E0\x04\u00AE\u00C0\x06o>>\u00C9\x17\u00DBZ\u00F8r\u00C9\u00A7@\u009A\u00FF\u00EB\u00DD\u00D3\u00DF\x10\x11\n\u00E2\'\u00D9\u00B6dv\u00C1\x15\u00C0YVT+\x14\u00E8\x01<\u00C7\u00975\n4z-\u00E9\u00C1\x1E\u00C0{\u00FA\u00B1\u0094\x07N\u00A492i/\u00F8\x04\u00C6h\u00E8\u008B\u009E\u0088\u00EAi.\u00ABDN\f\x1D\u00D4\u00EA\u00C3\u00C0\u00BES\u00CC\u00A3\u00FB\u0096v\u00D1\x05\u00C0]\u008Cm\u0093;\x170w\u00C2\u00DC\u00E5\u00EC\u009F\u00EB\x013~\u00C8\u00F3)\u00A8\u00B9\u00E1\x04\u00CCx \u00A2C\u00A8[b\u0091\u009B\u00BCM\u00B5\u00A2U\u00A2N~\u00A2Z\u00DA\u00F2\u00BF,3$\u00CAj\u00C5T\u00A4\u00AE\u008AV\u0098\u00BF\u00C4\u00D0E\u0088\x15`)n"K3[\x16\u0085\u0090\x07\u00B5\u00BA\u00CF\u00F3Z1\u0081*4\u00E6\x00\u00ECd5%\u0087\u0092\u00C8\x1Bs\u0092\u00D8\u009C\x1Cj\u00A2yc\u00AE$\u00C6\x02\u00DE\u0098+\t69\u00E4\x01O#;\x00|\x00\u00E1a\u00F0\u0083\x02\u00DB\u00B5q\x00\x00\x00\x00IEND\u00AEB`\u0082';
