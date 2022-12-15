@@ -17,3 +17,4 @@ interface LocationArgs {
 }
 
 type IconID = 'Boom' | 'Tunnel';
+type LocationID = 'Kindergarden' | 'Medical Clinic';

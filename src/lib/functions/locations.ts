@@ -1004,3 +1004,14 @@ const createMedicalLocation = (lang: Lingo): void => {
   ];
   createLocation(lang, args);
 };
+
+// ====================================
+
+const createLocationFromId = (id: LocationID, lang: Lingo): void => {
+  switch (id) {
+    case 'Kindergarden':
+      return createKindergardenLocation(lang);
+    case 'Medical Clinic':
+      return createKindergardenLocation(lang);
+  }
+};

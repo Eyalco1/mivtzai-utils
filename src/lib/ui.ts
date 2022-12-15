@@ -118,7 +118,9 @@ const init = (thisObj: typeof globalThis) => {
   iconsGrp.orientation = 'column';
   iconsGrp.alignChildren = 'left';
 
-  const iconDD = iconsGrp.add('dropdownlist', undefined, ['Boom', 'Tunnel']);
+  const iconDDGrp = iconsGrp.add('group');
+  iconDDGrp.add('statictext', undefined, 'Icon:');
+  const iconDD = iconDDGrp.add('dropdownlist', undefined, ['Boom', 'Tunnel']);
   iconDD.preferredSize[0] = 100;
   iconDD.selection = 0;
 
@@ -130,22 +132,14 @@ const init = (thisObj: typeof globalThis) => {
 
   const circleCheck = iconsGrp.add('checkbox', undefined, 'Circle');
   const circleColorGrp = iconsGrp.add('group');
-  const circleColorText = circleColorGrp.add(
-    'statictext',
-    undefined,
-    'Circle Color:'
-  );
+  circleColorGrp.add('statictext', undefined, 'Circle Color:');
   const circleColorDD = circleColorGrp.add('dropdownlist', undefined, [
     'White',
     'Black',
     'Red'
   ]);
   const iconColorGrp = iconsGrp.add('group');
-  const iconColorText = iconColorGrp.add(
-    'statictext',
-    undefined,
-    'Icon Color:'
-  );
+  iconColorGrp.add('statictext', undefined, 'Icon Color:');
   const iconColorDD = iconColorGrp.add('dropdownlist', undefined, [
     'Black',
     'White',
@@ -169,11 +163,44 @@ const init = (thisObj: typeof globalThis) => {
 
   const locationsTab = tpanel.add('tab', undefined, ['Locations']);
 
-  const locBtnsGrp = locationsTab.add('group');
-  locBtnsGrp.alignChildren = 'left';
+  const locationsGrp = locationsTab.add('group');
+  locationsGrp.orientation = 'column';
+  locationsGrp.alignChildren = 'left';
 
-  const kindergardenBtn = locBtnsGrp.add('button', undefined, 'Kindergarden');
-  const medicalBtn = locBtnsGrp.add('button', undefined, 'Medical Clinic');
+  const locationsDDGrp = locationsGrp.add('group');
+  locationsDDGrp.add('statictext', undefined, 'Location:');
+  const locationsDD = locationsDDGrp.add('dropdownlist', undefined, [
+    'Kindergarden',
+    'Medical Clinic'
+  ]);
+  locationsDD.preferredSize[0] = 100;
+  locationsDD.selection = 0;
+
+  const langDDGrp = locationsGrp.add('group');
+  langDDGrp.add('statictext', undefined, 'Language:');
+  const langDD = langDDGrp.add('dropdownlist', undefined, [
+    'Hebrew',
+    'English',
+    'Arabic'
+  ]);
+  langDD.preferredSize[0] = 100;
+  langDD.selection = 0;
+
+  const locationsCreateBtn = locationsGrp.add(
+    'button',
+    undefined,
+    'Create Location'
+  );
+  locationsCreateBtn.preferredSize[0] = 100;
+
+  locationsCreateBtn.onClick = () => {
+    const id = locationsDD.selection.toString() as LocationID;
+    const lang = langDD.selection.toString() as Lingo;
+    createLocationFromId(id, lang);
+  };
+
+  // const kindergardenBtn = locationsGrp.add('button', undefined, 'Kindergarden');
+  // const medicalBtn = locationsGrp.add('button', undefined, 'Medical Clinic');
 
   const texturesTab = tpanel.add('tab', undefined, ['Textures']);
 
@@ -211,15 +238,15 @@ const init = (thisObj: typeof globalThis) => {
   // };
 
   // Locations
-  kindergardenBtn.onClick = () => {
-    const lang = getLanguageFromKeyboard();
-    createKindergardenLocation(lang);
-  };
+  // kindergardenBtn.onClick = () => {
+  //   const lang = getLanguageFromKeyboard();
+  //   createKindergardenLocation(lang);
+  // };
 
-  medicalBtn.onClick = () => {
-    const lang = getLanguageFromKeyboard();
-    createMedicalLocation(lang);
-  };
+  // medicalBtn.onClick = () => {
+  //   const lang = getLanguageFromKeyboard();
+  //   createMedicalLocation(lang);
+  // };
 
   // Textures
   paperBtn.onClick = () => {
