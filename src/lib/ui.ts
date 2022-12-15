@@ -173,7 +173,8 @@ const init = (thisObj: typeof globalThis) => {
   const locationsList: LocationID[] = [
     'Kindergarden',
     'Medical Clinic',
-    'Sports'
+    'Sports',
+    'University'
   ];
   const locationsDD = locationsDDGrp.add(
     'dropdownlist',

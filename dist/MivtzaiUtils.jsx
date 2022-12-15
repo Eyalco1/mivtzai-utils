@@ -1114,14 +1114,15 @@ var setLayerTransform = function (layer, pos, anchor, scale) {
     return layer;
 };
 var createLocationIconFromId = function (id, iconPos, iconAnchor, iconScale) {
-    if (id === 'Kindergarden') {
-        return createKindergardenIcon(iconPos, iconAnchor, iconScale, id);
-    }
-    if (id === 'Medical Clinic') {
-        return createMedicalIcon(iconPos, iconAnchor, iconScale, id);
-    }
-    if (id === 'Sports') {
-        return createSportsIcon(iconPos, iconAnchor, iconScale, id);
+    switch (id) {
+        case 'Kindergarden':
+            return createKindergardenIcon(iconPos, iconAnchor, iconScale, id);
+        case 'Medical Clinic':
+            return createMedicalIcon(iconPos, iconAnchor, iconScale, id);
+        case 'Sports':
+            return createSportsIcon(iconPos, iconAnchor, iconScale, id);
+        case 'University':
+            return createUniversityIcon(iconPos, iconAnchor, iconScale, id);
     }
 };
 var createLocation = function (inputLang, argsArr) {
@@ -2088,6 +2089,172 @@ var createSportsLocation = function (lang) {
     ];
     createLocation(lang, args);
 };
+var createUniversityIcon = function (iconPos, iconAnchor, iconScale, name) {
+    var iconLayer = createIconBase(name);
+    var contents = iconLayer.property('Contents');
+    var createCoverL = function () {
+        var vertices = [
+            [14.0190734863281, 19.1502380371094],
+            [-14.0190734863281, 17.6841888427734],
+            [-9.80418395996094, -17.8674468994141],
+            [-5.03953552246094, -19.1502380371094],
+            [-10.9037170410156, 11.0869750976562]
+        ];
+        var inTangents = [
+            [-2.19906616210938, -2.93209838867188],
+            [5.31442260742188, -1.83256530761719],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Cover_L', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [91.8363, -1.761]);
+    };
+    var createPaperL = function () {
+        var vertices = [
+            [12.3697662353516, -10.0790710449219],
+            [-5.58930969238281, -20.3414001464844],
+            [-12.3697662353516, 10.4455871582031],
+            [12.3697662353516, 20.3414001464844]
+        ];
+        var inTangents = [
+            [0, 0],
+            [10.4065246582031, 2.35177612304688],
+            [0, 0],
+            [-6.04743957519531, -5.13116455078125]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Paper_L', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [95.5015, -2.9521]);
+    };
+    var createCoverR = function () {
+        var vertices = [
+            [-14.0190734863281, 19.1502380371094],
+            [14.0190734863281, 17.6841888427734],
+            [9.80418395996094, -17.8674468994141],
+            [5.03953552246094, -19.1502380371094],
+            [10.9037170410156, 11.0869750976562]
+        ];
+        var inTangents = [
+            [2.19906616210938, -2.93209838867188],
+            [-5.31442260742188, -1.83256530761719],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Cover_R', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [126.4342, -1.761]);
+    };
+    var createPaperR = function () {
+        var vertices = [
+            [-12.3697662353516, -10.0790710449219],
+            [5.58930969238281, -20.3414001464844],
+            [12.3697662353516, 10.4455871582031],
+            [-12.3697662353516, 20.3414001464844]
+        ];
+        var inTangents = [
+            [0, 0],
+            [-10.4065246582031, 2.35177612304688],
+            [0, 0],
+            [6.04743957519531, -5.13116455078125]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Paper_R', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [122.769, -2.9521]);
+    };
+    var createIconCircle = function () {
+        var vertices = [
+            [43.39892578125, 0],
+            [0, 43.39892578125],
+            [-43.39892578125, 0],
+            [0, -43.39892578125]
+        ];
+        var inTangents = [
+            [0, -23.9685668945312],
+            [23.9685668945312, 0],
+            [0, 23.9685668945312],
+            [-23.9685668945312, 0]
+        ];
+        var outTangents = [
+            [0, 23.9685668945312],
+            [-23.9685668945312, 0],
+            [0, -23.9685668945312],
+            [23.9685668945312, 0]
+        ];
+        createPathGrp(contents, 'Icon_Circle', true, false, [53, 33, 28], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [110.002, -0.8716]);
+    };
+    createCoverL();
+    createPaperL();
+    createCoverR();
+    createPaperR();
+    createIconCircle();
+    setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
+    return iconLayer;
+};
+var createUniversityLocation = function (lang) {
+    var args = [
+        {
+            lang: 'Hebrew',
+            text: 'אוניברסיטה',
+            fontSize: 77.3332,
+            tracking: -19,
+            textPos: [907.7467, 539.0399],
+            textAnchor: [102.9967, -20.21],
+            bgSize: [344, 110],
+            iconPos: [1045.5764, 539.1284],
+            iconAnchor: [85.5764, -0.8716],
+            iconScale: 100,
+            iconId: 'University'
+        },
+        {
+            lang: 'English',
+            text: 'University',
+            fontSize: 77,
+            tracking: -29,
+            textPos: [1006.8615, 543.4595],
+            textAnchor: [130.8615, -21.2905],
+            bgSize: [388, 106],
+            iconPos: [826.9122, 539.0034],
+            iconAnchor: [110.002, -0.8716],
+            iconScale: 97,
+            iconId: 'University'
+        },
+        {
+            lang: 'Arabic',
+            text: 'جامعة',
+            fontSize: 64,
+            tracking: -19,
+            textPos: [920.9957, 540.4375],
+            textAnchor: [90.2456, -16.3125],
+            bgSize: [302, 92],
+            iconPos: [1058.9747, 540.1284],
+            iconAnchor: [110.002, -0.8716],
+            iconScale: 83,
+            iconId: 'University'
+        }
+    ];
+    createLocation(lang, args);
+};
 var createLocationFromId = function (id, lang) {
     switch (id) {
         case 'Kindergarden':
@@ -2096,6 +2263,8 @@ var createLocationFromId = function (id, lang) {
             return createMedicalLocation(lang);
         case 'Sports':
             return createSportsLocation(lang);
+        case 'University':
+            return createUniversityLocation(lang);
     }
 };
 var tvaiBinary = '\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x18\x00\x00\x00\x18\b\x06\x00\x00\x00\u00E0w=\u00F8\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x00\u00FBIDATH\u0089\u00B5U\u0081\r\u00820\x10<\r\x03\u00E0\x06N`p\x03\u00DD\u0084\x11t\x136\u00B0\x0B\u00988\u0082#\u00E0\x04\u00AE\u00C0\x06o>>\u00C9\x17\u00DBZ\u00F8r\u00C9\u00A7@\u009A\u00FF\u00EB\u00DD\u00D3\u00DF\x10\x11\n\u00E2\'\u00D9\u00B6dv\u00C1\x15\u00C0YVT+\x14\u00E8\x01<\u00C7\u00975\n4z-\u00E9\u00C1\x1E\u00C0{\u00FA\u00B1\u0094\x07N\u00A492i/\u00F8\x04\u00C6h\u00E8\u008B\u009E\u0088\u00EAi.\u00ABDN\f\x1D\u00D4\u00EA\u00C3\u00C0\u00BES\u00CC\u00A3\u00FB\u0096v\u00D1\x05\u00C0]\u008Cm\u0093;\x170w\u00C2\u00DC\u00E5\u00EC\u009F\u00EB\x013~\u00C8\u00F3)\u00A8\u00B9\u00E1\x04\u00CCx \u00A2C\u00A8[b\u0091\u009B\u00BCM\u00B5\u00A2U\u00A2N~\u00A2Z\u00DA\u00F2\u00BF,3$\u00CAj\u00C5T\u00A4\u00AE\u008AV\u0098\u00BF\u00C4\u00D0E\u0088\x15`)n"K3[\x16\u0085\u0090\x07\u00B5\u00BA\u00CF\u00F3Z1\u0081*4\u00E6\x00\u00ECd5%\u0087\u0092\u00C8\x1Bs\u0092\u00D8\u009C\x1Cj\u00A2yc\u00AE$\u00C6\x02\u00DE\u0098+\t69\u00E4\x01O#;\x00|\x00\u00E1a\u00F0\u0083\x02\u00DB\u00B5q\x00\x00\x00\x00IEND\u00AEB`\u0082';
@@ -2202,7 +2371,8 @@ var init = function (thisObj) {
     var locationsList = [
         'Kindergarden',
         'Medical Clinic',
-        'Sports'
+        'Sports',
+        'University'
     ];
     var locationsDD = locationsDDGrp.add('dropdownlist', undefined, locationsList);
     locationsDD.preferredSize[0] = 100;

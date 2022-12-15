@@ -115,16 +115,15 @@ const createLocationIconFromId = (
   iconAnchor: [number, number],
   iconScale: number
 ): ShapeLayer => {
-  if (id === 'Kindergarden') {
-    return createKindergardenIcon(iconPos, iconAnchor, iconScale, id);
-  }
-
-  if (id === 'Medical Clinic') {
-    return createMedicalIcon(iconPos, iconAnchor, iconScale, id);
-  }
-
-  if (id === 'Sports') {
-    return createSportsIcon(iconPos, iconAnchor, iconScale, id);
+  switch (id) {
+    case 'Kindergarden':
+      return createKindergardenIcon(iconPos, iconAnchor, iconScale, id);
+    case 'Medical Clinic':
+      return createMedicalIcon(iconPos, iconAnchor, iconScale, id);
+    case 'Sports':
+      return createSportsIcon(iconPos, iconAnchor, iconScale, id);
+    case 'University':
+      return createUniversityIcon(iconPos, iconAnchor, iconScale, id);
   }
 };
 
@@ -1653,6 +1652,259 @@ const createSportsLocation = (lang: Lingo): void => {
   createLocation(lang, args);
 };
 
+const createUniversityIcon = (
+  iconPos: [number, number],
+  iconAnchor: [number, number],
+  iconScale: number,
+  name: LocationID
+): ShapeLayer => {
+  const iconLayer = createIconBase(name);
+
+  const contents = iconLayer.property('Contents') as PropertyGroup;
+
+  const createCoverL = () => {
+    const vertices: [number, number][] = [
+      [14.0190734863281, 19.1502380371094],
+      [-14.0190734863281, 17.6841888427734],
+      [-9.80418395996094, -17.8674468994141],
+      [-5.03953552246094, -19.1502380371094],
+      [-10.9037170410156, 11.0869750976562]
+    ];
+    const inTangents: [number, number][] = [
+      [-2.19906616210938, -2.93209838867188],
+      [5.31442260742188, -1.83256530761719],
+      [0, 0],
+      [0, 0],
+      [0, 0]
+    ];
+    const outTangents: [number, number][] = [
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0]
+    ];
+
+    createPathGrp(
+      contents,
+      'Cover_L',
+      true,
+      false,
+      [255, 255, 255],
+      [0, 0, 0],
+      0,
+      vertices,
+      inTangents,
+      outTangents,
+      true,
+      [91.8363, -1.761]
+    );
+  };
+
+  const createPaperL = () => {
+    const vertices: [number, number][] = [
+      [12.3697662353516, -10.0790710449219],
+      [-5.58930969238281, -20.3414001464844],
+      [-12.3697662353516, 10.4455871582031],
+      [12.3697662353516, 20.3414001464844]
+    ];
+    const inTangents: [number, number][] = [
+      [0, 0],
+      [10.4065246582031, 2.35177612304688],
+      [0, 0],
+      [-6.04743957519531, -5.13116455078125]
+    ];
+    const outTangents: [number, number][] = [
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0]
+    ];
+
+    createPathGrp(
+      contents,
+      'Paper_L',
+      true,
+      false,
+      [255, 255, 255],
+      [0, 0, 0],
+      0,
+      vertices,
+      inTangents,
+      outTangents,
+      true,
+      [95.5015, -2.9521]
+    );
+  };
+
+  const createCoverR = () => {
+    const vertices: [number, number][] = [
+      [-14.0190734863281, 19.1502380371094],
+      [14.0190734863281, 17.6841888427734],
+      [9.80418395996094, -17.8674468994141],
+      [5.03953552246094, -19.1502380371094],
+      [10.9037170410156, 11.0869750976562]
+    ];
+    const inTangents: [number, number][] = [
+      [2.19906616210938, -2.93209838867188],
+      [-5.31442260742188, -1.83256530761719],
+      [0, 0],
+      [0, 0],
+      [0, 0]
+    ];
+    const outTangents: [number, number][] = [
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0]
+    ];
+
+    createPathGrp(
+      contents,
+      'Cover_R',
+      true,
+      false,
+      [255, 255, 255],
+      [0, 0, 0],
+      0,
+      vertices,
+      inTangents,
+      outTangents,
+      true,
+      [126.4342, -1.761]
+    );
+  };
+
+  const createPaperR = () => {
+    const vertices: [number, number][] = [
+      [-12.3697662353516, -10.0790710449219],
+      [5.58930969238281, -20.3414001464844],
+      [12.3697662353516, 10.4455871582031],
+      [-12.3697662353516, 20.3414001464844]
+    ];
+    const inTangents: [number, number][] = [
+      [0, 0],
+      [-10.4065246582031, 2.35177612304688],
+      [0, 0],
+      [6.04743957519531, -5.13116455078125]
+    ];
+    const outTangents: [number, number][] = [
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0]
+    ];
+
+    createPathGrp(
+      contents,
+      'Paper_R',
+      true,
+      false,
+      [255, 255, 255],
+      [0, 0, 0],
+      0,
+      vertices,
+      inTangents,
+      outTangents,
+      true,
+      [122.769, -2.9521]
+    );
+  };
+
+  const createIconCircle = () => {
+    const vertices: [number, number][] = [
+      [43.39892578125, 0],
+      [0, 43.39892578125],
+      [-43.39892578125, 0],
+      [0, -43.39892578125]
+    ];
+
+    const inTangents: [number, number][] = [
+      [0, -23.9685668945312],
+      [23.9685668945312, 0],
+      [0, 23.9685668945312],
+      [-23.9685668945312, 0]
+    ];
+    const outTangents: [number, number][] = [
+      [0, 23.9685668945312],
+      [-23.9685668945312, 0],
+      [0, -23.9685668945312],
+      [23.9685668945312, 0]
+    ];
+
+    createPathGrp(
+      contents,
+      'Icon_Circle',
+      true,
+      false,
+      [53, 33, 28],
+      [0, 0, 0],
+      0,
+      vertices,
+      inTangents,
+      outTangents,
+      true,
+      [110.002, -0.8716]
+    );
+  };
+
+  createCoverL();
+  createPaperL();
+  createCoverR();
+  createPaperR();
+  createIconCircle();
+
+  setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
+
+  return iconLayer;
+};
+
+const createUniversityLocation = (lang: Lingo): void => {
+  const args: LocationArgs[] = [
+    {
+      lang: 'Hebrew',
+      text: 'אוניברסיטה',
+      fontSize: 77.3332,
+      tracking: -19,
+      textPos: [907.7467, 539.0399],
+      textAnchor: [102.9967, -20.21],
+      bgSize: [344, 110],
+      iconPos: [1045.5764, 539.1284],
+      iconAnchor: [85.5764, -0.8716],
+      iconScale: 100,
+      iconId: 'University'
+    },
+    {
+      lang: 'English',
+      text: 'University',
+      fontSize: 77,
+      tracking: -29,
+      textPos: [1006.8615, 543.4595],
+      textAnchor: [130.8615, -21.2905],
+      bgSize: [388, 106],
+      iconPos: [826.9122, 539.0034],
+      iconAnchor: [110.002, -0.8716],
+      iconScale: 97,
+      iconId: 'University'
+    },
+    {
+      lang: 'Arabic',
+      text: 'جامعة',
+      fontSize: 64,
+      tracking: -19,
+      textPos: [920.9957, 540.4375],
+      textAnchor: [90.2456, -16.3125],
+      bgSize: [302, 92],
+      iconPos: [1058.9747, 540.1284],
+      iconAnchor: [110.002, -0.8716],
+      iconScale: 83,
+      iconId: 'University'
+    }
+  ];
+  createLocation(lang, args);
+};
+
 // ====================================
 
 const createLocationFromId = (id: LocationID, lang: Lingo): void => {
@@ -1663,5 +1915,7 @@ const createLocationFromId = (id: LocationID, lang: Lingo): void => {
       return createMedicalLocation(lang);
     case 'Sports':
       return createSportsLocation(lang);
+    case 'University':
+      return createUniversityLocation(lang);
   }
 };
