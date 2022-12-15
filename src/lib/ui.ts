@@ -21,7 +21,9 @@ const init = (thisObj: typeof globalThis) => {
   });
   tvaiBtn.helpTip = 'Tunnel Illustration';
 
-  const scaleBtn = QABtnsRowOne.add('button', undefined, 'Pop');
+  const scaleBtn = QABtnsRowOne.add('iconbutton', undefined, popBinary, {
+    style: 'toolbutton'
+  });
   scaleBtn.helpTip = 'Pop Animation';
 
   const logosBtn = QABtnsRowOne.add('iconbutton', undefined, logosBinary, {
@@ -69,9 +71,10 @@ const init = (thisObj: typeof globalThis) => {
 
   const QABtnsRowThree = QABtnsGrp.add('group');
   const GazaMapShapeBtn = QABtnsRowThree.add(
-    'button',
+    'iconbutton',
     undefined,
-    'Gaza Map Shape'
+    gazaShapeBinary,
+    { style: 'toolbutton' }
   );
   GazaMapShapeBtn.helpTip = 'Gaza Map Shape';
 
@@ -84,12 +87,22 @@ const init = (thisObj: typeof globalThis) => {
   numCountBtn.helpTip = 'Counting Numbers';
 
   const israelMapPic = QABtnsRowThree.add(
-    'button',
+    'iconbutton',
     undefined,
-    'Israel Google Maps'
+    ILMapPhotoBinary,
+    { style: 'toolbutton' }
   );
   israelMapPic.helpTip =
     'Israel Map Photo\n\nCLICK: Clean Map\nCTRL + CLICK: Map With Labels';
+
+  const gazaMapPic = QABtnsRowThree.add(
+    'iconbutton',
+    undefined,
+    GAMapPhotoBinary,
+    { style: 'toolbutton' }
+  );
+  gazaMapPic.helpTip =
+    'Gaza Map Photo\n\nCLICK: Clean Map\nCTRL + CLICK: Map With Labels';
 
   // const testBtn = QABtnsGrp.add('button', undefined, '!TEST!');
 
