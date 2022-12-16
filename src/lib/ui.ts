@@ -86,6 +86,11 @@ const init = (thisObj: typeof globalThis) => {
   );
   numCountBtn.helpTip = 'Counting Numbers';
 
+  const frameBtn = QABtnsRowThree.add('iconbutton', undefined, frameBinary, {
+    style: 'toolbutton'
+  });
+  frameBtn.helpTip = 'Animated Frame';
+
   const israelMapPic = QABtnsRowThree.add(
     'iconbutton',
     undefined,
@@ -228,6 +233,7 @@ const init = (thisObj: typeof globalThis) => {
   IsraelMapShapeBtn.onClick = createIsraelMap;
   GazaMapShapeBtn.onClick = createGazaMap;
   numCountBtn.onClick = createCountingText;
+  frameBtn.onClick = createAnimatedFrame;
   israelMapPic.onClick = importIsraelGoogleMaps;
   // Icons
   // boomBtn.onClick = () => {

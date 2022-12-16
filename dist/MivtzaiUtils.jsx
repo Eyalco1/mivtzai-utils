@@ -242,6 +242,7 @@ var getFontFromLanguage = function (lang) {
 var createTvaiStroke = function () {
     var comp = app.project.activeItem;
     var layer = comp.layers.addShape();
+    layer.name = 'Tunnel';
     var contents = layer.property('ADBE Root Vectors Group');
     var shapeGrp = contents.addProperty('ADBE Vector Group');
     shapeGrp.name = 'Tunnel_Stroke';
@@ -706,6 +707,46 @@ var importIsraelGoogleMaps = function () {
     var mapLayer = comp.layers.add(mapItem);
     mapLayer.selected = true;
     app.executeCommand(2732);
+};
+var createAnimatedFrame = function () {
+    var comp = app.project.activeItem;
+    var layer = comp.layers.addShape();
+    layer.name = 'Frame';
+    var contents = layer.property('ADBE Root Vectors Group');
+    var shapeGrp = contents.addProperty('ADBE Vector Group');
+    shapeGrp.name = 'Frame';
+    var xSlider = layer.effect.addProperty('ADBE Slider Control');
+    xSlider.name = 'Size X';
+    var xSliderProp = xSlider.property('ADBE Slider Control-0001');
+    xSliderProp.setValue(100);
+    var ySlider = layer.effect.addProperty('ADBE Slider Control');
+    ySlider.name = 'Size Y';
+    var ySliderProp = ySlider.property('ADBE Slider Control-0001');
+    ySliderProp.setValue(100);
+    var lineGrp = shapeGrp.property('ADBE Vectors Group');
+    var rectGrp = lineGrp.addProperty('ADBE Vector Shape - Rect');
+    var rectSize = rectGrp.property('ADBE Vector Rect Size');
+    rectSize.expression =
+        '[effect("Size X")("Slider"), effect("Size Y")("Slider")]';
+    var myStroke = lineGrp.addProperty('ADBE Vector Graphic - Stroke');
+    var strokeWidth = myStroke.property('ADBE Vector Stroke Width');
+    strokeWidth.setValue(10);
+    var strokeColor = myStroke.property('ADBE Vector Stroke Color');
+    strokeColor.setValue([1, 1, 1]);
+    var parentGrp = contents
+        .property('Frame')
+        .property('ADBE Vectors Group');
+    var trimPathsGrp = parentGrp.addProperty('ADBE Vector Filter - Trim');
+    var trimPathsEnd = trimPathsGrp.property('ADBE Vector Trim End');
+    trimPathsEnd.setValueAtTime(0, 0);
+    trimPathsEnd.setValueAtTime((1 / 24) * 30, 100);
+    trimPathsEnd.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 34)], [new KeyframeEase(0.5, 34)]);
+    trimPathsEnd.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 92)], [new KeyframeEase(0.5, 92)]);
+    var trimPathsOffset = trimPathsGrp.property('ADBE Vector Trim Offset');
+    trimPathsOffset.setValueAtTime(0, -324);
+    trimPathsOffset.setValueAtTime((1 / 24) * 32, 0);
+    trimPathsOffset.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 24)], [new KeyframeEase(0.5, 24)]);
+    trimPathsOffset.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 72)], [new KeyframeEase(0.5, 72)]);
 };
 var createExplosionIcon = function (circleColor, iconColor, hasCircle) {
     var comp = app.project.activeItem;
@@ -2279,6 +2320,7 @@ var gazaShapeBinary = '\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x18\x00
 var ILMapPhotoBinary = '\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x18\x00\x00\x00\x18\b\x06\x00\x00\x00\u00E0w=\u00F8\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x00LIDATH\u0089c\u00FC\u00FF\u00FF?\x03-\x01\x13MM\x1F\u00B5\u0080\x1C\x0B\x1A\x18\x18\x18\u00FE\u00A3a\x07"\u00E4\u0088\u00B6\u0080\u00EA`\u00D4\u0082Q\x0BF-```\u00A1P\x7F\x02\u0096\u00DC|\x00\u008A\u00A9bA<\x0Eq\u00B8\x05C?\u0092G\u00AB\u00CC\u00E1n\x01\x03\x03\x03\x00\x15\\\x12\u00E4A\u00B92J\x00\x00\x00\x00IEND\u00AEB`\u0082';
 var GAMapPhotoBinary = '\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x18\x00\x00\x00\x18\b\x06\x00\x00\x00\u00E0w=\u00F8\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x01\tIDATH\u0089\u00EDUQ\r\u0083@\f\u00ED\u0096\u00FD\x0F\x07L\x02\x12\u0090\u0080\x04$ \u00819@\x02\x12\u0090p\x12n\x0E\u0098\x03\u00A6\u00E0-\u0097\x14\u00D25\u00BD\x0Bd\u00E3g\u00A1\t\t4\u00EF\u00DA\u00BE\u00BE\u00F68\x01\u00A0=\u00ED\u00BCk\u00F4#\u00C1\x1A\u00BB\x18\u0098\u0082\u00882~w_g\bS\x04 \x03\u00D0\u00C36\x07\u00A0`\u009C|n\x06\u00DAk\u00DC\x1C|\u008C\x04\u009Fm\u00E2\u0080\u00F2p\x13\u00C1~\u00E0\u0082\x065\x11\u00E5\u008A\u00D8K}_\u0089\u00A8U\u00BE:\u00D2\u0094J\u00B7\u00C8\u00A9\n:f\u00E5\x13\u00F4\u008B\x04\u00DBQ2\u00B0D\x1EX\u00E4&!\u009D\u00AE\u00FE)\u00BA\u0090\u00F3\u00A0\u00F8\x18\u0083\x12@\x1B\u00A9n\u00AELk\u00A6\u00F5\u00E8\u00A4\x06[\u00ADT\u009A=\u0098\u00B5\u00A9C,A\u0098\u00FF\u00FB\u00CA\u00F6\u0084v\u00F6\u00CA\u0097/I""\x13\u00B7J\u009Ac\u00FF\u0094\x10XZ?\u00EF\u00815\u00CF\u00DE\b\x14\x12W+\u0083\u0083\u00CF/\u008B\u00A6G\u00D2\x02\u0087\x05\x1A\u0094\u00DF\t\u00E13\u00E3\\\u00BD\u00E5\u00AA\u00B0\x02\u00B4j\u00BBu\u00A1\u0083\u00F5G\u00FB\u00E9ew\u00FC2\u00FF=\x01\x11\u00BD\x01U~\u00D8\u00CC\x1D5 \u00CA\x00\x00\x00\x00IEND\u00AEB`\u0082';
 var popBinary = '\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x18\x00\x00\x00\x18\b\x06\x00\x00\x00\u00E0w=\u00F8\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x00\u00D7IDATH\u0089\u00B5\u0095\u00D1\x11\u00820\f\u0086?=\u00DFe\x146\u00B0\u008E\u00E4\x06\u008C\u00E0H\u00B8AG\u00C1\t\u00E2\x15\u00DB;\u00E4R,m\u00F8\u00EF\u00F2@\u00DA~?\t\x01N"B\u0085z\u00E0Yp\u00CC_j\u00E8@\x07\u00DCJ6\u00D6\x1Ax\u00E0\u00AE\u00E4Ce\x03pM\u0089\u00DA\x16i\n\u00F0q\t\x07^\u00E7\x03\u00E0o\u00E0\u0091\x16j[\u00B4\x05w\u00F1\x19\u00CDj\u00AD@\u0083\u00FB\u00E5\u0086\x16\u0083\u00BF\u00F0\x16\u0083"x\u00ADA1|V\x18\u00D3\x1D\u00D1\u008B\u00C8$_M\u00F1Z;\u00DF\u0089\u0088\x0B\u00EBG\u00C0\x7F\u00E2Px2\u00E8c9\u009D5<\x19\u008C\u00F1\u00B0\u00B3\u0086\u0087\u00D8\u009A\u00A2}\u00D3\u0092Q\u00CE\u00C0\x04N\u00C6\u00C0\f\u00AE\x19\u0098\u00C2\u00D7\x06\u00E6\u00F0Y\u008B)\u0092\u0096i\u00C9\u0085\u00F6?\x18\u00E2\u00F7\u00DC\u00AD\u00F2\u00A1\u009A\u00C9\u00A2\u0082\u009C\u00B4\u00F7\u00A4\u00A8\u0082\u00D2>\u00EF\u00BF{\u00E0\x03\x07\u00DBG\u00B9q4\f\u00D0\x00\x00\x00\x00IEND\u00AEB`\u0082';
+var frameBinary = "\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x18\x00\x00\x00\x18\b\x06\x00\x00\x00\u00E0w=\u00F8\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x00\u008DIDATH\u0089c\u00FC\u00FF\u00FF?\x03-\x01\x13MMg```! \u00DF@\u00A9\x05\u0084\u0082\u0088\u00E2\u00F0#\u00E4\u0083F2\u00CDU```\u0088g \u00C2\x07\u00E4\x02\x07\x06\x06\u0086\u00FD\f\u00F4\u0088\u00E4Q\x0B\b\x02ZE\u00B2\x00\x03\x03\u0083\x01\x03\r-\u0080\x03\u00BA\x14\x15\x0EP\u00F6\x05\x06\x06\u0086\x0F\u00D4\u00B6\x00\x14D\u00B00rd``8@m\x0BF\u00F3\u00C1\u00C0[\u0080\x1C\u00C9\x0B\x19\x18\x18\x1E\u0090i\x0E\u00CE\u008A\t\u00D9\x02J\x00#.\u00BD,\x14T*D\u0081!^T000\x00\x00\x1D\u009F'T\x1DC\u00D4<\x00\x00\x00\x00IEND\u00AEB`\u0082";
 var init = function (thisObj) {
     var w = thisObj instanceof Panel
         ? thisObj
@@ -2322,6 +2364,10 @@ var init = function (thisObj) {
     GazaMapShapeBtn.helpTip = 'Gaza Map Shape';
     var numCountBtn = QABtnsRowThree.add('iconbutton', undefined, countingNumbersBinary, { style: 'toolbutton' });
     numCountBtn.helpTip = 'Counting Numbers';
+    var frameBtn = QABtnsRowThree.add('iconbutton', undefined, frameBinary, {
+        style: 'toolbutton'
+    });
+    frameBtn.helpTip = 'Animated Frame';
     var israelMapPic = QABtnsRowThree.add('iconbutton', undefined, ILMapPhotoBinary, { style: 'toolbutton' });
     israelMapPic.helpTip =
         'Israel Map Photo\n\nCLICK: Clean Map\nCTRL + CLICK: Map With Labels';
@@ -2407,6 +2453,7 @@ var init = function (thisObj) {
     IsraelMapShapeBtn.onClick = createIsraelMap;
     GazaMapShapeBtn.onClick = createGazaMap;
     numCountBtn.onClick = createCountingText;
+    frameBtn.onClick = createAnimatedFrame;
     israelMapPic.onClick = importIsraelGoogleMaps;
     paperBtn.onClick = function () {
         importAndLoopTexture("".concat(File('.'), "/Scripts/ScriptUI Panels/MivtzaiUtils Assets/Textures/Kyle_Paper_Dark.jpg"));

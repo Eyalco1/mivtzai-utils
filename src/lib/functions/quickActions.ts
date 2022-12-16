@@ -1,6 +1,7 @@
 const createTvaiStroke = (): void => {
   const comp = app.project.activeItem as CompItem;
   const layer = comp.layers.addShape();
+  layer.name = 'Tunnel';
 
   const contents = layer.property('ADBE Root Vectors Group') as PropertyGroup;
   const shapeGrp = contents.addProperty('ADBE Vector Group');
@@ -592,4 +593,91 @@ const importIsraelGoogleMaps = (): void => {
   // Fit To Comp Height
   mapLayer.selected = true;
   app.executeCommand(2732);
+};
+
+const createAnimatedFrame = (): void => {
+  const comp = app.project.activeItem as CompItem;
+  const layer = comp.layers.addShape();
+  layer.name = 'Frame';
+
+  const contents = layer.property('ADBE Root Vectors Group') as PropertyGroup;
+  const shapeGrp = contents.addProperty('ADBE Vector Group');
+  shapeGrp.name = 'Frame';
+
+  const xSlider = layer.effect.addProperty(
+    'ADBE Slider Control'
+  ) as Property<any>;
+  xSlider.name = 'Size X';
+  const xSliderProp = xSlider.property(
+    'ADBE Slider Control-0001'
+  ) as Property<any>;
+  xSliderProp.setValue(100);
+
+  const ySlider = layer.effect.addProperty(
+    'ADBE Slider Control'
+  ) as Property<any>;
+  ySlider.name = 'Size Y';
+  const ySliderProp = ySlider.property(
+    'ADBE Slider Control-0001'
+  ) as Property<any>;
+  ySliderProp.setValue(100);
+
+  const lineGrp = shapeGrp.property('ADBE Vectors Group') as PropertyGroup;
+  const rectGrp = lineGrp.addProperty('ADBE Vector Shape - Rect');
+  const rectSize = rectGrp.property('ADBE Vector Rect Size') as Property<
+    [number, number]
+  >;
+
+  rectSize.expression =
+    '[effect("Size X")("Slider"), effect("Size Y")("Slider")]';
+
+  const myStroke = lineGrp.addProperty(
+    'ADBE Vector Graphic - Stroke'
+  ) as PropertyGroup;
+  const strokeWidth = myStroke.property(
+    'ADBE Vector Stroke Width'
+  ) as Property<number>;
+  strokeWidth.setValue(10);
+  const strokeColor = myStroke.property('ADBE Vector Stroke Color') as Property<
+    [number, number, number]
+  >;
+  strokeColor.setValue([1, 1, 1]);
+
+  const parentGrp = contents
+    .property('Frame')
+    .property('ADBE Vectors Group') as PropertyGroup;
+  const trimPathsGrp = parentGrp.addProperty('ADBE Vector Filter - Trim');
+  const trimPathsEnd = trimPathsGrp.property(
+    'ADBE Vector Trim End'
+  ) as Property<number>;
+  trimPathsEnd.setValueAtTime(0, 0);
+  trimPathsEnd.setValueAtTime((1 / 24) * 30, 100);
+
+  trimPathsEnd.setTemporalEaseAtKey(
+    1,
+    [new KeyframeEase(0.5, 34)],
+    [new KeyframeEase(0.5, 34)]
+  );
+  trimPathsEnd.setTemporalEaseAtKey(
+    2,
+    [new KeyframeEase(0.5, 92)],
+    [new KeyframeEase(0.5, 92)]
+  );
+
+  const trimPathsOffset = trimPathsGrp.property(
+    'ADBE Vector Trim Offset'
+  ) as Property<number>;
+  trimPathsOffset.setValueAtTime(0, -324);
+  trimPathsOffset.setValueAtTime((1 / 24) * 32, 0);
+
+  trimPathsOffset.setTemporalEaseAtKey(
+    1,
+    [new KeyframeEase(0.5, 24)],
+    [new KeyframeEase(0.5, 24)]
+  );
+  trimPathsOffset.setTemporalEaseAtKey(
+    2,
+    [new KeyframeEase(0.5, 72)],
+    [new KeyframeEase(0.5, 72)]
+  );
 };
