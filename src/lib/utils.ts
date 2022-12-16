@@ -238,10 +238,15 @@ const importAndLoopTexture = (path: string): void => {
   loopTexture(textureLayer);
 };
 
+const getOS = (): 'Win' | 'Mac' => {
+  if ($.os.indexOf('Win') != -1) return 'Win';
+  return 'Mac';
+};
+
 const openFs = (path: string): void => {
   const folder = File(path).parent;
   const cmd =
-    $.os.indexOf('Win') != -1
+    getOS() === 'Win'
       ? 'explorer ' + Folder.decode(folder.fsName)
       : // @ts-ignore
         'open "' + Folder.execute(folder.fsName) + '"';
@@ -307,3 +312,29 @@ const getFontFromLanguage = (lang: Lingo) => {
     return 'DroidArabicKufi-Bold';
   }
 };
+
+const createFolder = (folderObj: Folder): Folder => {
+  if (!folderObj.exists) folderObj.create();
+  return folderObj;
+};
+
+const readJSON = (file: File): object => {
+  file.open('r');
+  const stringData: string = file.read();
+  file.close();
+  const parsedData = JSON.parse(stringData);
+  return parsedData;
+};
+
+const writePrefsToMemory = (prefs: object) => {
+  const appDataFolder = File(Folder.appData.toString()).toString();
+  createFolder(Folder(appDataFolder + '/Mivtazi'));
+  createFolder(Folder(appDataFolder + '/Mivtazi/Prefs'));
+  const myJSON = File(appDataFolder + '/Mivtazi/Prefs/Prefs.json');
+  myJSON.open('w');
+  myJSON.write(JSON.stringify(prefs, null, 2));
+  myJSON.close();
+  return myJSON;
+};
+
+// writePrefsToMemory({ test: true, name: 'Luciano' });

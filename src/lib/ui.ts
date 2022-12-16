@@ -109,6 +109,16 @@ const init = (thisObj: typeof globalThis) => {
   gazaMapPic.helpTip =
     'Gaza Map Photo\n\nCLICK: Clean Map\nCTRL + CLICK: Map With Labels';
 
+  const openFinderBtn = QABtnsRowThree.add(
+    'iconbutton',
+    undefined,
+    folderBinary,
+    { style: 'toolbutton' }
+  );
+  openFinderBtn.helpTip = `Open Project Folder in ${
+    getOS() === 'Win' ? 'Explorer' : 'Finder'
+  }`;
+
   // const testBtn = QABtnsGrp.add('button', undefined, '!TEST!');
 
   // testBtn.onClick = () => {
