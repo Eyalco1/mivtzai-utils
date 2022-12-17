@@ -259,7 +259,7 @@ var createHelpWindow = function () {
     aboutTab.add('edittext', [0, 0, 380, 300], 'aboutString', {
         multiline: true,
         readonly: true,
-        scrolling: true
+        scrollable: true
     });
     var settingsTab = tpanel.add('tab', undefined, ['Settings']);
     settingsTab.orientation = 'row';
@@ -267,7 +267,7 @@ var createHelpWindow = function () {
     reviewsTab.add('edittext', [0, 0, 380, 300], 'howItWorksString', {
         multiline: true,
         readonly: true,
-        scrolling: true
+        scrollable: true
     });
     var okBtn = helpWin.add('button', undefined, 'Ok', { name: 'Ok' });
     helpWin.layout.layout(true);

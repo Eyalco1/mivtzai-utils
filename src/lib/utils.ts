@@ -333,7 +333,7 @@ const createHelpWindow = () => {
   aboutTab.add('edittext', [0, 0, 380, 300], 'aboutString', {
     multiline: true,
     readonly: true,
-    scrolling: true
+    scrollable: true
   });
 
   // === Settings ===
@@ -345,8 +345,17 @@ const createHelpWindow = () => {
   reviewsTab.add('edittext', [0, 0, 380, 300], 'howItWorksString', {
     multiline: true,
     readonly: true,
-    scrolling: true
+    scrollable: true
   });
+
+  // name?: string
+  // multiline?: boolean
+  // borderless?: boolean
+  // scrollable?: boolean
+  // readonly?: boolean
+  // noecho?: boolean
+  // enterKeySignalsOnChange?: boolean
+  // wantReturn?: boolean
 
   // === Ok Button ===
   const okBtn = helpWin.add('button', undefined, 'Ok', { name: 'Ok' });
