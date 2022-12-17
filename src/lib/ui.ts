@@ -297,7 +297,10 @@ const init = (thisObj: typeof globalThis) => {
   //   );
   // };
 
-  const helpBtn = w.add('button', undefined, 'Help');
+  const helpBtn = w.add('iconbutton', undefined, helpBinary, {
+    style: 'toolbutton'
+  });
+  helpBtn.alignment = 'right';
   helpBtn.onClick = createHelpWindow;
 
   w.layout.layout(true);
