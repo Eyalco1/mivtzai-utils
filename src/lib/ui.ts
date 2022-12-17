@@ -297,6 +297,9 @@ const init = (thisObj: typeof globalThis) => {
   //   );
   // };
 
+  const helpBtn = w.add('button', undefined, 'Help');
+  helpBtn.onClick = createHelpWindow;
+
   w.layout.layout(true);
   w.layout.resize();
   w.onResizing = w.onResize = () => {

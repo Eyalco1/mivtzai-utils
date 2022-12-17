@@ -319,3 +319,43 @@ const importGoogleMaps = (location: GoogleMapsLocation): void => {
   mapLayer.selected = true;
   app.executeCommand(2732);
 };
+
+const createHelpWindow = () => {
+  const helpWin = new Window('dialog', 'Help & Info');
+  if (helpWin == null) {
+    helpWin;
+  }
+
+  const tpanel = helpWin.add('tabbedpanel');
+
+  // === About ===
+  const aboutTab = tpanel.add('tab', undefined, ['About']);
+  aboutTab.add('edittext', [0, 0, 380, 300], 'aboutString', {
+    multiline: true,
+    readonly: true,
+    scrolling: true
+  });
+
+  // === Settings ===
+  const settingsTab = tpanel.add('tab', undefined, ['Settings']);
+  settingsTab.orientation = 'row';
+
+  // === Reviews ===
+  const reviewsTab = tpanel.add('tab', undefined, ['Reviews']);
+  reviewsTab.add('edittext', [0, 0, 380, 300], 'howItWorksString', {
+    multiline: true,
+    readonly: true,
+    scrolling: true
+  });
+
+  // === Ok Button ===
+  const okBtn = helpWin.add('button', undefined, 'Ok', { name: 'Ok' });
+
+  // === Initilaztion ===
+  helpWin.layout.layout(true);
+
+  if (helpWin != null && helpWin instanceof Window) {
+    helpWin.center();
+    helpWin.show();
+  }
+};
