@@ -65,7 +65,7 @@ const getCommandId = (
   { width: texW, height: texH }: AVItem
 ): 2732 | 2733 => {
   if (texW >= texH && compW >= compH) return 2732;
-  if (texH >= texW && compW >= compH) return 2733;
+  if (texH >= texW && compW >= compH) return 2732;
   if (texW >= texH && compH >= compW) return 2733;
   if (texH >= texW && compH >= compW) return 2732;
   return 2732;

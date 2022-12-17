@@ -236,7 +236,10 @@ const init = (thisObj: typeof globalThis) => {
   const texturesList: TextureID[] = [
     'Paper Dark',
     'Paper Medium',
-    'Paper Light'
+    'Paper Light',
+    'Smoke',
+    'Noise',
+    'Dust'
   ];
   const texturesDD = texturesDDGrp.add('dropdownlist', undefined, texturesList);
   texturesDD.preferredSize[0] = 100;
