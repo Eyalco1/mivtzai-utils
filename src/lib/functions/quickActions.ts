@@ -571,28 +571,11 @@ const createCountingText = (): void => {
 };
 
 const importIsraelGoogleMaps = (): void => {
-  const keyState = ScriptUI.environment.keyboardState;
-  let whichMap = 'Clean';
-  if (keyState.ctrlKey) {
-    whichMap = 'Guide';
-  }
+  importGoogleMaps('Israel');
+};
 
-  const mapItem = app.project.importFile(
-    new ImportOptions(
-      File(
-        `${File(
-          '.'
-        )}/Scripts/ScriptUI Panels/MivtzaiUtils Assets/Images/Israel_Map_${whichMap}.png`
-      )
-    )
-  ) as AVItem;
-
-  const comp = app.project.activeItem as CompItem;
-  const mapLayer = comp.layers.add(mapItem);
-
-  // Fit To Comp Height
-  mapLayer.selected = true;
-  app.executeCommand(2732);
+const importGazaGoogleMaps = (): void => {
+  importGoogleMaps('Gaza');
 };
 
 const createAnimatedFrame = (): void => {

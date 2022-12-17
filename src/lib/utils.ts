@@ -356,3 +356,28 @@ const writePrefsToMemory = (prefs: Prefs) => {
   myJSON.close();
   return myJSON;
 };
+
+const importGoogleMaps = (location: GoogleMapsLocation): void => {
+  const keyState = ScriptUI.environment.keyboardState;
+  let whichMap = 'Clean';
+  if (keyState.ctrlKey) {
+    whichMap = 'Guide';
+  }
+
+  const mapItem = app.project.importFile(
+    new ImportOptions(
+      File(
+        `${File(
+          '.'
+        )}/Scripts/ScriptUI Panels/MivtzaiUtils Assets/Images/${location}_Map_${whichMap}.png`
+      )
+    )
+  ) as AVItem;
+
+  const comp = app.project.activeItem as CompItem;
+  const mapLayer = comp.layers.add(mapItem);
+
+  // Fit To Comp Height
+  mapLayer.selected = true;
+  app.executeCommand(2732);
+};

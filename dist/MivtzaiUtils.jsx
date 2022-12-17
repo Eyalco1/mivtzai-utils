@@ -283,6 +283,18 @@ var writePrefsToMemory = function (prefs) {
     myJSON.close();
     return myJSON;
 };
+var importGoogleMaps = function (location) {
+    var keyState = ScriptUI.environment.keyboardState;
+    var whichMap = 'Clean';
+    if (keyState.ctrlKey) {
+        whichMap = 'Guide';
+    }
+    var mapItem = app.project.importFile(new ImportOptions(File("".concat(File('.'), "/Scripts/ScriptUI Panels/MivtzaiUtils Assets/Images/").concat(location, "_Map_").concat(whichMap, ".png"))));
+    var comp = app.project.activeItem;
+    var mapLayer = comp.layers.add(mapItem);
+    mapLayer.selected = true;
+    app.executeCommand(2732);
+};
 var createTvaiStroke = function () {
     var comp = app.project.activeItem;
     var layer = comp.layers.addShape();
@@ -741,16 +753,10 @@ var createCountingText = function () {
     numValProp.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 75)]);
 };
 var importIsraelGoogleMaps = function () {
-    var keyState = ScriptUI.environment.keyboardState;
-    var whichMap = 'Clean';
-    if (keyState.ctrlKey) {
-        whichMap = 'Guide';
-    }
-    var mapItem = app.project.importFile(new ImportOptions(File("".concat(File('.'), "/Scripts/ScriptUI Panels/MivtzaiUtils Assets/Images/Israel_Map_").concat(whichMap, ".png"))));
-    var comp = app.project.activeItem;
-    var mapLayer = comp.layers.add(mapItem);
-    mapLayer.selected = true;
-    app.executeCommand(2732);
+    importGoogleMaps('Israel');
+};
+var importGazaGoogleMaps = function () {
+    importGoogleMaps('Gaza');
 };
 var createAnimatedFrame = function () {
     var comp = app.project.activeItem;
@@ -2835,6 +2841,7 @@ var init = function (thisObj) {
     frameBtn.onClick = createAnimatedFrame;
     openFinderBtn.onClick = openProjectInFinder;
     israelMapPic.onClick = importIsraelGoogleMaps;
+    gazaMapPic.onClick = importGazaGoogleMaps;
     paperBtn.onClick = function () {
         importAndLoopTexture("".concat(File('.'), "/Scripts/ScriptUI Panels/MivtzaiUtils Assets/Textures/Kyle_Paper_Dark.jpg"));
     };

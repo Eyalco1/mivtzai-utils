@@ -23,3 +23,5 @@ interface LocationArgs {
 interface Prefs {
   projectFolderPath: string;
 }
+
+type GoogleMapsLocation = 'Israel' | 'Gaza';

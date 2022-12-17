@@ -246,6 +246,7 @@ const init = (thisObj: typeof globalThis) => {
   frameBtn.onClick = createAnimatedFrame;
   openFinderBtn.onClick = openProjectInFinder;
   israelMapPic.onClick = importIsraelGoogleMaps;
+  gazaMapPic.onClick = importGazaGoogleMaps;
   // Icons
   // boomBtn.onClick = () => {
   //   createExplosionIcon(
