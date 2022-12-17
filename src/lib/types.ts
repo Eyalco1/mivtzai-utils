@@ -4,6 +4,7 @@ type Lingo = 'Hebrew' | 'Arabic' | 'English';
 
 type IconID = 'Boom' | 'Tunnel' | 'Terror Tunnel';
 type LocationID = 'Kindergarden' | 'Medical Clinic' | 'Sports' | 'University';
+type TextureID = 'Paper Dark';
 
 interface LocationArgs {
   lang: Lingo;

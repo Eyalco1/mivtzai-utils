@@ -227,10 +227,38 @@ const init = (thisObj: typeof globalThis) => {
 
   const texturesTab = tpanel.add('tab', undefined, ['Textures']);
 
-  const texBtnsGrp = texturesTab.add('group');
-  texBtnsGrp.alignChildren = 'left';
+  const texturesGrp = texturesTab.add('group');
+  texturesGrp.orientation = 'column';
+  texturesGrp.alignChildren = 'left';
 
-  const paperBtn = texBtnsGrp.add('button', undefined, 'Paper');
+  const texturesDDGrp = texturesGrp.add('group');
+  texturesDDGrp.add('statictext', undefined, 'Texture:');
+  const texturesList: TextureID[] = ['Paper Dark'];
+  const texturesDD = texturesDDGrp.add('dropdownlist', undefined, texturesList);
+  texturesDD.preferredSize[0] = 100;
+  texturesDD.selection = 0;
+
+  const textureChecksGrp = texturesGrp.add('group');
+  const textureLoopCheck = textureChecksGrp.add('checkbox', undefined, 'Loop');
+  const textureFitCheck = textureChecksGrp.add(
+    'checkbox',
+    undefined,
+    'Fit To Comp'
+  );
+
+  const texturesCreateBtn = texturesGrp.add(
+    'button',
+    undefined,
+    'Import Texture'
+  );
+  texturesCreateBtn.preferredSize[0] = 100;
+
+  texturesCreateBtn.onClick = () => {
+    const id = texturesDD.selection.toString() as TextureID;
+    const loop = textureLoopCheck.value;
+    const fit = textureFitCheck.value;
+    createTexture(id, loop, fit);
+  };
 
   // Quick Actions
   tvaiBtn.onClick = createTvaiStroke;
@@ -247,41 +275,15 @@ const init = (thisObj: typeof globalThis) => {
   openFinderBtn.onClick = openProjectInFinder;
   israelMapPic.onClick = importIsraelGoogleMaps;
   gazaMapPic.onClick = importGazaGoogleMaps;
-  // Icons
-  // boomBtn.onClick = () => {
-  //   createExplosionIcon(
-  //     circleColorDD.selection.toString() as ColorDropdown,
-  //     iconColorDD.selection.toString() as ColorDropdown,
-  //     circleCheck.value
-  //   );
-  // };
-  // tunnelBtn.onClick = () => {
-  //   createTunnelIcon(
-  //     circleColorDD.selection.toString() as ColorDropdown,
-  //     iconColorDD.selection.toString() as ColorDropdown,
-  //     circleCheck.value
-  //   );
-  // };
-
-  // Locations
-  // kindergardenBtn.onClick = () => {
-  //   const lang = getLanguageFromKeyboard();
-  //   createKindergardenLocation(lang);
-  // };
-
-  // medicalBtn.onClick = () => {
-  //   const lang = getLanguageFromKeyboard();
-  //   createMedicalLocation(lang);
-  // };
 
   // Textures
-  paperBtn.onClick = () => {
-    importAndLoopTexture(
-      `${File(
-        '.'
-      )}/Scripts/ScriptUI Panels/MivtzaiUtils Assets/Textures/Kyle_Paper_Dark.jpg`
-    );
-  };
+  // paperBtn.onClick = () => {
+  //   importAndLoopTexture(
+  //     `${File(
+  //       '.'
+  //     )}/Scripts/ScriptUI Panels/MivtzaiUtils Assets/Textures/Kyle_Paper_Dark.jpg`
+  //   );
+  // };
 
   w.layout.layout(true);
   w.layout.resize();

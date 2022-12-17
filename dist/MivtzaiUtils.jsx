@@ -1,11 +1,3 @@
-/**
- * @name mivtzai-utils
- * @description Utilites for operative projects
- * @version 1.0.0
- * @author Eyal Cohen
- * @license ISC
- */
-
 Array.prototype.map || (Array.prototype.map = function (callback) { var T, A, k; if (null == this)
     throw new TypeError("this is null or not defined"); var O = Object(this), len = O.length >>> 0; if ("function" != typeof callback)
     throw new TypeError(callback + " is not a function"); for (arguments.length > 1 && (T = arguments[1]), A = new Array(len), k = 0; k < len;) {
@@ -140,52 +132,6 @@ var createAnimatedMap = function (name, vertices, inTangents, outTangents) {
     trimPathsEnd.setValueAtTime((1 / 24) * 30, 100);
     trimPathsEnd.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 33)], [new KeyframeEase(0.5, 33)]);
     trimPathsEnd.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 66)], [new KeyframeEase(0.5, 66)]);
-};
-var importTexture = function (path) {
-    var textureItem = app.project.importFile(new ImportOptions(File(path)));
-    return textureItem;
-};
-var loopTexture = function (layer) {
-    var posProp = layer
-        .property('ADBE Transform Group')
-        .property('ADBE Position');
-    var scaleProp = layer
-        .property('ADBE Transform Group')
-        .property('ADBE Scale');
-    var rotProp = layer
-        .property('ADBE Transform Group')
-        .property('ADBE Rotate Z');
-    posProp.setValueAtTime(0, [960, 540]);
-    scaleProp.setValueAtTime(0, [100, 100]);
-    rotProp.setValueAtTime(0, 0);
-    posProp.setValueAtTime((1 / 24) * 10, [840, 804]);
-    scaleProp.setValueAtTime((1 / 24) * 10, [100, 100]);
-    rotProp.setValueAtTime((1 / 24) * 10, 50);
-    posProp.setValueAtTime((1 / 24) * 20, [1284, 913]);
-    scaleProp.setValueAtTime((1 / 24) * 20, [116, 116]);
-    rotProp.setValueAtTime((1 / 24) * 20, -35);
-    posProp.setValueAtTime((1 / 24) * 30, [960, 540]);
-    scaleProp.setValueAtTime((1 / 24) * 30, [100, 100]);
-    rotProp.setValueAtTime((1 / 24) * 30, 0);
-    posProp.setInterpolationTypeAtKey(1, KeyframeInterpolationType.HOLD);
-    posProp.setInterpolationTypeAtKey(2, KeyframeInterpolationType.HOLD);
-    posProp.setInterpolationTypeAtKey(3, KeyframeInterpolationType.HOLD);
-    posProp.setInterpolationTypeAtKey(4, KeyframeInterpolationType.HOLD);
-    scaleProp.setInterpolationTypeAtKey(1, KeyframeInterpolationType.HOLD);
-    scaleProp.setInterpolationTypeAtKey(2, KeyframeInterpolationType.HOLD);
-    scaleProp.setInterpolationTypeAtKey(3, KeyframeInterpolationType.HOLD);
-    scaleProp.setInterpolationTypeAtKey(4, KeyframeInterpolationType.HOLD);
-    rotProp.setInterpolationTypeAtKey(1, KeyframeInterpolationType.HOLD);
-    rotProp.setInterpolationTypeAtKey(2, KeyframeInterpolationType.HOLD);
-    rotProp.setInterpolationTypeAtKey(3, KeyframeInterpolationType.HOLD);
-    rotProp.setInterpolationTypeAtKey(4, KeyframeInterpolationType.HOLD);
-    posProp.expression = scaleProp.expression = rotProp.expression = 'loopOut()';
-};
-var importAndLoopTexture = function (path) {
-    var textureItem = importTexture(path);
-    var comp = app.project.activeItem;
-    var textureLayer = comp.layers.add(textureItem);
-    loopTexture(textureLayer);
 };
 var getOS = function () {
     if ($.os.indexOf('Win') != -1)
@@ -2690,6 +2636,75 @@ var createLocationFromId = function (id, lang) {
             return createUniversityLocation(lang);
     }
 };
+var importTexture = function (path) {
+    var textureItem = app.project.importFile(new ImportOptions(File(path)));
+    return textureItem;
+};
+var loopTexture = function (layer) {
+    var posProp = layer
+        .property('ADBE Transform Group')
+        .property('ADBE Position');
+    var scaleProp = layer
+        .property('ADBE Transform Group')
+        .property('ADBE Scale');
+    var rotProp = layer
+        .property('ADBE Transform Group')
+        .property('ADBE Rotate Z');
+    posProp.setValueAtTime(0, [960, 540]);
+    scaleProp.setValueAtTime(0, [100, 100]);
+    rotProp.setValueAtTime(0, 0);
+    posProp.setValueAtTime((1 / 24) * 10, [840, 804]);
+    scaleProp.setValueAtTime((1 / 24) * 10, [100, 100]);
+    rotProp.setValueAtTime((1 / 24) * 10, 50);
+    posProp.setValueAtTime((1 / 24) * 20, [1284, 913]);
+    scaleProp.setValueAtTime((1 / 24) * 20, [116, 116]);
+    rotProp.setValueAtTime((1 / 24) * 20, -35);
+    posProp.setValueAtTime((1 / 24) * 30, [960, 540]);
+    scaleProp.setValueAtTime((1 / 24) * 30, [100, 100]);
+    rotProp.setValueAtTime((1 / 24) * 30, 0);
+    posProp.setInterpolationTypeAtKey(1, KeyframeInterpolationType.HOLD);
+    posProp.setInterpolationTypeAtKey(2, KeyframeInterpolationType.HOLD);
+    posProp.setInterpolationTypeAtKey(3, KeyframeInterpolationType.HOLD);
+    posProp.setInterpolationTypeAtKey(4, KeyframeInterpolationType.HOLD);
+    scaleProp.setInterpolationTypeAtKey(1, KeyframeInterpolationType.HOLD);
+    scaleProp.setInterpolationTypeAtKey(2, KeyframeInterpolationType.HOLD);
+    scaleProp.setInterpolationTypeAtKey(3, KeyframeInterpolationType.HOLD);
+    scaleProp.setInterpolationTypeAtKey(4, KeyframeInterpolationType.HOLD);
+    rotProp.setInterpolationTypeAtKey(1, KeyframeInterpolationType.HOLD);
+    rotProp.setInterpolationTypeAtKey(2, KeyframeInterpolationType.HOLD);
+    rotProp.setInterpolationTypeAtKey(3, KeyframeInterpolationType.HOLD);
+    rotProp.setInterpolationTypeAtKey(4, KeyframeInterpolationType.HOLD);
+    posProp.expression = scaleProp.expression = rotProp.expression = 'loopOut()';
+};
+var getPathFromTextureID = function (id) {
+    return "".concat(File('.'), "/Scripts/ScriptUI Panels/MivtzaiUtils Assets/Textures/").concat(id.replace(/ /g, '_'), ".jpg");
+};
+var getCommandId = function (_a, _b) {
+    var compW = _a.width, compH = _a.height;
+    var texW = _b.width, texH = _b.height;
+    if (texW >= texH && compW >= compH)
+        return 2732;
+    if (texH >= texW && compW >= compH)
+        return 2733;
+    if (texW >= texH && compH >= compW)
+        return 2733;
+    if (texH >= texW && compH >= compW)
+        return 2732;
+    return 2732;
+};
+var createTexture = function (id, loop, fit) {
+    var path = getPathFromTextureID(id);
+    var textureItem = importTexture(path);
+    var comp = app.project.activeItem;
+    var textureLayer = comp.layers.add(textureItem);
+    if (loop)
+        loopTexture(textureLayer);
+    if (fit) {
+        var commandId = getCommandId(comp, textureItem);
+        textureLayer.selected = true;
+        app.executeCommand(commandId);
+    }
+};
 var tvaiBinary = '\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x18\x00\x00\x00\x18\b\x06\x00\x00\x00\u00E0w=\u00F8\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x00\u00FBIDATH\u0089\u00B5U\u0081\r\u00820\x10<\r\x03\u00E0\x06N`p\x03\u00DD\u0084\x11t\x136\u00B0\x0B\u00988\u0082#\u00E0\x04\u00AE\u00C0\x06o>>\u00C9\x17\u00DBZ\u00F8r\u00C9\u00A7@\u009A\u00FF\u00EB\u00DD\u00D3\u00DF\x10\x11\n\u00E2\'\u00D9\u00B6dv\u00C1\x15\u00C0YVT+\x14\u00E8\x01<\u00C7\u00975\n4z-\u00E9\u00C1\x1E\u00C0{\u00FA\u00B1\u0094\x07N\u00A492i/\u00F8\x04\u00C6h\u00E8\u008B\u009E\u0088\u00EAi.\u00ABDN\f\x1D\u00D4\u00EA\u00C3\u00C0\u00BES\u00CC\u00A3\u00FB\u0096v\u00D1\x05\u00C0]\u008Cm\u0093;\x170w\u00C2\u00DC\u00E5\u00EC\u009F\u00EB\x013~\u00C8\u00F3)\u00A8\u00B9\u00E1\x04\u00CCx \u00A2C\u00A8[b\u0091\u009B\u00BCM\u00B5\u00A2U\u00A2N~\u00A2Z\u00DA\u00F2\u00BF,3$\u00CAj\u00C5T\u00A4\u00AE\u008AV\u0098\u00BF\u00C4\u00D0E\u0088\x15`)n"K3[\x16\u0085\u0090\x07\u00B5\u00BA\u00CF\u00F3Z1\u0081*4\u00E6\x00\u00ECd5%\u0087\u0092\u00C8\x1Bs\u0092\u00D8\u009C\x1Cj\u00A2yc\u00AE$\u00C6\x02\u00DE\u0098+\t69\u00E4\x01O#;\x00|\x00\u00E1a\u00F0\u0083\x02\u00DB\u00B5q\x00\x00\x00\x00IEND\u00AEB`\u0082';
 var countingNumbersBinary = '\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x18\x00\x00\x00\x18\b\x06\x00\x00\x00\u00E0w=\u00F8\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x010IDATH\u0089\u00EDU\u00D1\u00AD\u0082P\f=\x1A\u00FFe\x03\x19\u00E1\u00BA\x01#0\x02#0\x02#0\x02#\u00E8\x06\u008C\u00A0\x1B\u00F86\u00E0MPS-/}\u00B5\u00D5\u00EB\u008711\u009E\u00A4\x01.\u00A7\u00ED\u00ED\u00ED),\u0088\b\u00AF\u00C4\u00F2\u00A5\u00D1?"\u00C1\u00CA<\u0097b\x15\u0080\u0093\u00D8\x01\u00C0\x14\u00F8\x17\x00\u0092\u00F2\x1B\u0095\u00DF\x15\u00DCd"JD4\u0092\u008F\u0089\u0088z\u00E1i\u00EB\x03>I\u00ACt\x11\x10\x11\u0095\x12\u00E4\x11\x06\x15|\u00C8\u00E0s\u00CC2\u0097<#\u0089\u00E5b\u00E0&\u00D7\u00CE\u00D9n\x01\u00EC\u009D\u00F5:\u00E0\u00EF\u00C5\u00E7\u0086\u00CF\t\u00D6f\u00F1(\u008D\u00ED\u0083\u00C6z\u00E8\u00C5\u00E7h\u00DE\u00AD=\u0099\x16\u00E6\u009A\u0083\u00D0\u0087e\u00FA\x03`\u00A3\u00D6\u00F8\u00BE\r\u008E"\u0092k#2\u00DD\u0098\u00F5_nr\u00F7D\u00D3XqE\u00A6\u00EA\x18\u00C33\u00B2\x1B\u0095L\u009B\u00CC$\u00A5\x1E\u009CJ\u00AA98\u00C4Iv\u00AF\u00F9\\I{g\u00E0\u00BAy\u00D0\u00B4\u00D5\x01\u00B9v&yN\u00E2m\u00E8\u00AFZMNA\u00D9]\x10<:\u00DAI\x12\u00FFK\u00F0p\'\u008E\u00B5A\u00B5Is\u00E7\x1B\u00EFCw\u00D2;1V\x05\u00C1\x1B\u00CB]\\:}\u00D5\u00B1\u00C5N\u00A6\u00F3\u009E\u00EE\u00ED\u008C\u00DCL\u00FF\u00F7\u009F\u00FC\u00E6\x04\x00\u00CE=*\u0087W\x0E\u00A9\u0095\u00DB\x00\x00\x00\x00IEND\u00AEB`\u0082';
 var bgBinary = '\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x18\x00\x00\x00\x18\b\x06\x00\x00\x00\u00E0w=\u00F8\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x01\x0BIDATH\u0089\u00CD\u0096\u00E1m\u00C20\x10\u0085\u00BF"\u00FE7\x1B\x106\u00C8\x06x\x03\u00D8\u00A0\u008C\x00\x1Bd\u0083\u0096\r\u00D8\u00A0\u008C\u0090n\u00D0\x11\u00D2\r\u00D8\u00E0\u00D0I\x07\u00B2\u00ACs\u0095\u008A\u008B\u00D4\'Y\u00B2\u00CE\u00F6{>\u00FB\u00E5\x1CD$\u0089\u00C8 \u00F1P\u00CE\u00F4\u00A2\x1D`\u00C3<\u00F8R\x011\u00EA#\u00F0\x1D$\u00D3\x01\u00EF\u00DAYfA%\x1F\u00A2\u00F3XD\x13F\x0B\u00E8Q\u009C\u0081=\u00D0x\x13\u0096^\u00F0\x0F\u00B8\x00+\u00E0\u00CD\u0096\u009C#3h\u008D\u00FC\u008E\u00E4MzF`\x04N\u00D6\u00FF\x01>\u00A2\x05\x14\x07`m\u00D9\u00B8\x16\u008Fp\u00D1\u00F8\u00DB\u00E0\u00BF\u00B6\u00A9\u00DAr\u00F7\u00AC\u0080\u00EBm\u0083Z\u00F2\u00B3\u00E6\u009E\u00A9\x02\u00EA\u00F3\u00DE\u0089\u00EB\u00E5n\u00B39\u00F5\u008DdEZ\u00CB6Y\u00EB\u00B3\u00B1.\u008BwNa\x1F\u008A\u00B5\u00E9>P\x13\u00D8\x15\x04\u00A3\u00884\u00D6\u00AE\u0095\u0097\u00A3\u009F*\u00D0VH.\x13\x1E\u00A6T\n\u0094\u00B5\u00A8\u00B13}uNs\u00EB\u00C4\u00BC;k\u00F3@)p\u00B5\n\x19\u0086\u00D9?\u00B4<\u0083\u00C8\u009D?\u00B8f\x7F\u00F4\u00E7\u00FDm\x11I7\x1D\u00C4\u00E2\x1A\u00DFx\u0084\u00C7\x00\x00\x00\x00IEND\u00AEB`\u0082';
@@ -2825,9 +2840,26 @@ var init = function (thisObj) {
         createLocationFromId(id, lang);
     };
     var texturesTab = tpanel.add('tab', undefined, ['Textures']);
-    var texBtnsGrp = texturesTab.add('group');
-    texBtnsGrp.alignChildren = 'left';
-    var paperBtn = texBtnsGrp.add('button', undefined, 'Paper');
+    var texturesGrp = texturesTab.add('group');
+    texturesGrp.orientation = 'column';
+    texturesGrp.alignChildren = 'left';
+    var texturesDDGrp = texturesGrp.add('group');
+    texturesDDGrp.add('statictext', undefined, 'Texture:');
+    var texturesList = ['Paper Dark'];
+    var texturesDD = texturesDDGrp.add('dropdownlist', undefined, texturesList);
+    texturesDD.preferredSize[0] = 100;
+    texturesDD.selection = 0;
+    var textureChecksGrp = texturesGrp.add('group');
+    var textureLoopCheck = textureChecksGrp.add('checkbox', undefined, 'Loop');
+    var textureFitCheck = textureChecksGrp.add('checkbox', undefined, 'Fit To Comp');
+    var texturesCreateBtn = texturesGrp.add('button', undefined, 'Import Texture');
+    texturesCreateBtn.preferredSize[0] = 100;
+    texturesCreateBtn.onClick = function () {
+        var id = texturesDD.selection.toString();
+        var loop = textureLoopCheck.value;
+        var fit = textureFitCheck.value;
+        createTexture(id, loop, fit);
+    };
     tvaiBtn.onClick = createTvaiStroke;
     scaleBtn.onClick = scaleWithOvershoot;
     logosBtn.onClick = importLogos;
@@ -2842,9 +2874,6 @@ var init = function (thisObj) {
     openFinderBtn.onClick = openProjectInFinder;
     israelMapPic.onClick = importIsraelGoogleMaps;
     gazaMapPic.onClick = importGazaGoogleMaps;
-    paperBtn.onClick = function () {
-        importAndLoopTexture("".concat(File('.'), "/Scripts/ScriptUI Panels/MivtzaiUtils Assets/Textures/Kyle_Paper_Dark.jpg"));
-    };
     w.layout.layout(true);
     w.layout.resize();
     w.onResizing = w.onResize = function () {

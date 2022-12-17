@@ -176,68 +176,6 @@ const createAnimatedMap = (
   );
 };
 
-const importTexture = (path: string): AVItem => {
-  const textureItem = app.project.importFile(
-    new ImportOptions(File(path))
-  ) as AVItem;
-
-  return textureItem;
-};
-
-const loopTexture = (layer: Layer): void => {
-  const posProp = layer
-    .property('ADBE Transform Group')
-    .property('ADBE Position') as Property<[number, number]>;
-  const scaleProp = layer
-    .property('ADBE Transform Group')
-    .property('ADBE Scale') as Property<[number, number]>;
-  const rotProp = layer
-    .property('ADBE Transform Group')
-    .property('ADBE Rotate Z') as Property<number>;
-
-  posProp.setValueAtTime(0, [960, 540]);
-  scaleProp.setValueAtTime(0, [100, 100]);
-  rotProp.setValueAtTime(0, 0);
-
-  posProp.setValueAtTime((1 / 24) * 10, [840, 804]);
-  scaleProp.setValueAtTime((1 / 24) * 10, [100, 100]);
-  rotProp.setValueAtTime((1 / 24) * 10, 50);
-
-  posProp.setValueAtTime((1 / 24) * 20, [1284, 913]);
-  scaleProp.setValueAtTime((1 / 24) * 20, [116, 116]);
-  rotProp.setValueAtTime((1 / 24) * 20, -35);
-
-  posProp.setValueAtTime((1 / 24) * 30, [960, 540]);
-  scaleProp.setValueAtTime((1 / 24) * 30, [100, 100]);
-  rotProp.setValueAtTime((1 / 24) * 30, 0);
-
-  posProp.setInterpolationTypeAtKey(1, KeyframeInterpolationType.HOLD);
-  posProp.setInterpolationTypeAtKey(2, KeyframeInterpolationType.HOLD);
-  posProp.setInterpolationTypeAtKey(3, KeyframeInterpolationType.HOLD);
-  posProp.setInterpolationTypeAtKey(4, KeyframeInterpolationType.HOLD);
-
-  scaleProp.setInterpolationTypeAtKey(1, KeyframeInterpolationType.HOLD);
-  scaleProp.setInterpolationTypeAtKey(2, KeyframeInterpolationType.HOLD);
-  scaleProp.setInterpolationTypeAtKey(3, KeyframeInterpolationType.HOLD);
-  scaleProp.setInterpolationTypeAtKey(4, KeyframeInterpolationType.HOLD);
-
-  rotProp.setInterpolationTypeAtKey(1, KeyframeInterpolationType.HOLD);
-  rotProp.setInterpolationTypeAtKey(2, KeyframeInterpolationType.HOLD);
-  rotProp.setInterpolationTypeAtKey(3, KeyframeInterpolationType.HOLD);
-  rotProp.setInterpolationTypeAtKey(4, KeyframeInterpolationType.HOLD);
-
-  posProp.expression = scaleProp.expression = rotProp.expression = 'loopOut()';
-};
-
-const importAndLoopTexture = (path: string): void => {
-  const textureItem = importTexture(path);
-
-  const comp = app.project.activeItem as CompItem;
-  const textureLayer = comp.layers.add(textureItem);
-
-  loopTexture(textureLayer);
-};
-
 const getOS = (): 'Win' | 'Mac' => {
   if ($.os.indexOf('Win') != -1) return 'Win';
   return 'Mac';
