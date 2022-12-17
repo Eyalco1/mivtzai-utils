@@ -233,7 +233,11 @@ const init = (thisObj: typeof globalThis) => {
 
   const texturesDDGrp = texturesGrp.add('group');
   texturesDDGrp.add('statictext', undefined, 'Texture:');
-  const texturesList: TextureID[] = ['Paper Dark'];
+  const texturesList: TextureID[] = [
+    'Paper Dark',
+    'Paper Medium',
+    'Paper Light'
+  ];
   const texturesDD = texturesDDGrp.add('dropdownlist', undefined, texturesList);
   texturesDD.preferredSize[0] = 100;
   texturesDD.selection = 0;
@@ -245,6 +249,11 @@ const init = (thisObj: typeof globalThis) => {
     undefined,
     'Fit To Comp'
   );
+
+  textureLoopCheck.onClick = () => {
+    textureFitCheck.enabled = !textureLoopCheck.value;
+    textureFitCheck.value = false;
+  };
 
   const texturesCreateBtn = texturesGrp.add(
     'button',

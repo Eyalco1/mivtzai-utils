@@ -1,3 +1,11 @@
+/**
+ * @name mivtzai-utils
+ * @description Utilites for operative projects
+ * @version 1.0.0
+ * @author Eyal Cohen
+ * @license ISC
+ */
+
 Array.prototype.map || (Array.prototype.map = function (callback) { var T, A, k; if (null == this)
     throw new TypeError("this is null or not defined"); var O = Object(this), len = O.length >>> 0; if ("function" != typeof callback)
     throw new TypeError(callback + " is not a function"); for (arguments.length > 1 && (T = arguments[1]), A = new Array(len), k = 0; k < len;) {
@@ -2845,13 +2853,21 @@ var init = function (thisObj) {
     texturesGrp.alignChildren = 'left';
     var texturesDDGrp = texturesGrp.add('group');
     texturesDDGrp.add('statictext', undefined, 'Texture:');
-    var texturesList = ['Paper Dark'];
+    var texturesList = [
+        'Paper Dark',
+        'Paper Medium',
+        'Paper Light'
+    ];
     var texturesDD = texturesDDGrp.add('dropdownlist', undefined, texturesList);
     texturesDD.preferredSize[0] = 100;
     texturesDD.selection = 0;
     var textureChecksGrp = texturesGrp.add('group');
     var textureLoopCheck = textureChecksGrp.add('checkbox', undefined, 'Loop');
     var textureFitCheck = textureChecksGrp.add('checkbox', undefined, 'Fit To Comp');
+    textureLoopCheck.onClick = function () {
+        textureFitCheck.enabled = !textureLoopCheck.value;
+        textureFitCheck.value = false;
+    };
     var texturesCreateBtn = texturesGrp.add('button', undefined, 'Import Texture');
     texturesCreateBtn.preferredSize[0] = 100;
     texturesCreateBtn.onClick = function () {
