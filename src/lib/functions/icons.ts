@@ -877,12 +877,19 @@ const createIconFromId = (
   iconColor: ColorDropdown,
   hasCircle: Boolean
 ): void => {
+  app.beginUndoGroup(`Create Icon: ${id}`);
+
   switch (id) {
     case 'Boom':
-      return createExplosionIcon(circleColor, iconColor, hasCircle);
+      createExplosionIcon(circleColor, iconColor, hasCircle);
+      break;
     case 'Tunnel':
-      return createTunnelIcon(circleColor, iconColor, hasCircle);
+      createTunnelIcon(circleColor, iconColor, hasCircle);
+      break;
     case 'Terror Tunnel':
-      return createTerrorTunnelIcon(circleColor, iconColor, hasCircle);
+      createTerrorTunnelIcon(circleColor, iconColor, hasCircle);
+      break;
   }
+
+  app.endUndoGroup();
 };

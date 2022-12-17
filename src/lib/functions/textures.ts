@@ -72,6 +72,8 @@ const getCommandId = (
 };
 
 const createTexture = (id: TextureID, loop: Boolean, fit: Boolean) => {
+  app.beginUndoGroup(`Import Texture: ${id}`);
+
   const path = getPathFromTextureID(id);
   const textureItem = importTexture(path);
 
@@ -85,4 +87,6 @@ const createTexture = (id: TextureID, loop: Boolean, fit: Boolean) => {
     textureLayer.selected = true;
     app.executeCommand(commandId);
   }
+
+  app.endUndoGroup();
 };

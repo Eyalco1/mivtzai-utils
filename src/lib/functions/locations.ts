@@ -1908,14 +1908,22 @@ const createUniversityLocation = (lang: Lingo): void => {
 // ====================================
 
 const createLocationFromId = (id: LocationID, lang: Lingo): void => {
+  app.beginUndoGroup(`Create Location: ${id}`);
+
   switch (id) {
     case 'Kindergarden':
-      return createKindergardenLocation(lang);
+      createKindergardenLocation(lang);
+      break;
     case 'Medical Clinic':
-      return createMedicalLocation(lang);
+      createMedicalLocation(lang);
+      break;
     case 'Sports':
-      return createSportsLocation(lang);
+      createSportsLocation(lang);
+      break;
     case 'University':
-      return createUniversityLocation(lang);
+      createUniversityLocation(lang);
+      break;
   }
+
+  app.endUndoGroup();
 };

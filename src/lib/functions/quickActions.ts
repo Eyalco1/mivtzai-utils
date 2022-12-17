@@ -1,4 +1,6 @@
 const createTvaiStroke = (): void => {
+  app.beginUndoGroup('Create Tunnel Stroke');
+
   const comp = app.project.activeItem as CompItem;
   const layer = comp.layers.addShape();
   layer.name = 'Tunnel';
@@ -80,9 +82,13 @@ const createTvaiStroke = (): void => {
     .property('ADBE Vector Group')
     .property('ADBE Vectors Group')
     .property('ADBE Vector Shape - Group').selected = true;
+
+  app.endUndoGroup();
 };
 
 const scaleWithOvershoot = (): void => {
+  app.beginUndoGroup('Pop Animation');
+
   const comp = app.project.activeItem as CompItem;
   const selectedLayers = comp.selectedLayers;
   if (selectedLayers.length === 0) return;
@@ -125,9 +131,13 @@ const scaleWithOvershoot = (): void => {
       [easeOut, easeOut, easeOut]
     );
   });
+
+  app.endUndoGroup();
 };
 
 const importLogos = (): void => {
+  app.beginUndoGroup('Import Logos');
+
   const idfItem = app.project.importFile(
     new ImportOptions(
       File(
@@ -170,9 +180,13 @@ const importLogos = (): void => {
     .property('ADBE Transform Group')
     .property('ADBE Position') as Property<any>;
   dotzPos.setValue([0 + padding, 0 + padding]);
+
+  app.endUndoGroup();
 };
 
 const createIllustrationText = (): void => {
+  app.beginUndoGroup('Create Illustration Text');
+
   const comp = app.project.activeItem as CompItem;
   const textLayer = comp.layers.addText();
   const srcText = textLayer
@@ -196,9 +210,13 @@ const createIllustrationText = (): void => {
 
   const padding = 40;
   layerPos.setValue([-boundingBox.left + padding, comp.height - padding]);
+
+  app.endUndoGroup();
 };
 
 const formatLayerName = (): void => {
+  app.beginUndoGroup('Format Layer Name');
+
   const comp = app.project.activeItem as CompItem;
 
   const selLayers = comp.selectedLayers;
@@ -222,9 +240,13 @@ const formatLayerName = (): void => {
       cur.source.name = cur.name;
     }
   }
+
+  app.endUndoGroup();
 };
 
 const textReverse = (): void => {
+  app.beginUndoGroup('Reverse Text');
+
   const comp = app.project.activeItem as CompItem;
   const selLayers = comp.selectedLayers;
 
@@ -241,9 +263,13 @@ const textReverse = (): void => {
       srcTextProp.setValue(srcValueReverse.toString());
     }
   }
+
+  app.endUndoGroup();
 };
 
 const createBg = (): void => {
+  app.beginUndoGroup('Create Background');
+
   const comp = app.project.activeItem as CompItem;
   const layer = comp.layers.addShape();
   layer.name = 'BG';
@@ -282,9 +308,13 @@ const createBg = (): void => {
 
   tintWhite.setValue([118 / 255, 15 / 255, 15 / 255]);
   tintBlack.setValue([25 / 255, 0, 0]);
+
+  app.endUndoGroup();
 };
 
 const createIsraelMap = (): void => {
+  app.beginUndoGroup('Create Israel Map');
+
   const vertices: [number, number][] = [
     [163.25, -515.875],
     [150.375, -508.625],
@@ -437,9 +467,13 @@ const createIsraelMap = (): void => {
   ];
 
   createAnimatedMap('Israel_Map', vertices, inTangents, outTangents);
+
+  app.endUndoGroup();
 };
 
 const createGazaMap = (): void => {
+  app.beginUndoGroup('Create Gaza Map');
+
   const vertices: [number, number][] = [
     [209.749725341797, -480.25],
     [128.999969482422, -358],
@@ -538,9 +572,13 @@ const createGazaMap = (): void => {
   ];
 
   createAnimatedMap('Gaza_Map', vertices, inTangents, outTangents);
+
+  app.endUndoGroup();
 };
 
 const createCountingText = (): void => {
+  app.beginUndoGroup('Create Counting Numbers');
+
   const comp = app.project.activeItem as CompItem;
   const layer = comp.layers.addText();
   layer.name = 'Numbers';
@@ -568,17 +606,25 @@ const createCountingText = (): void => {
 
   numValProp.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 20)]);
   numValProp.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 75)]);
+
+  app.endUndoGroup();
 };
 
 const importIsraelGoogleMaps = (): void => {
+  app.beginUndoGroup('Import Israel Map');
   importGoogleMaps('Israel');
+  app.endUndoGroup();
 };
 
 const importGazaGoogleMaps = (): void => {
+  app.beginUndoGroup('Import Gaza Map');
   importGoogleMaps('Gaza');
+  app.endUndoGroup();
 };
 
 const createAnimatedFrame = (): void => {
+  app.beginUndoGroup('Create Animated Frame');
+
   const comp = app.project.activeItem as CompItem;
   const layer = comp.layers.addShape();
   layer.name = 'Frame';
@@ -663,6 +709,8 @@ const createAnimatedFrame = (): void => {
     [new KeyframeEase(0.5, 72)],
     [new KeyframeEase(0.5, 72)]
   );
+
+  app.endUndoGroup();
 };
 
 const openProjectInFinder = (): void => {
