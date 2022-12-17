@@ -683,18 +683,24 @@ const createAnimatedFrame = (): void => {
 };
 
 const openProjectInFinder = (): void => {
-  // alert('sa');
-  const parsedPrefs = parsePrefs();
-  const path = parsedPrefs.projectFolderPath || null;
-  if (!path) {
-    const conf = confirm(
-      'No folder selected yet.\nWould you like to choose now?'
-    );
-    if (conf) {
-      const selFolder = Folder.selectDialog('Select Project Folder');
-      writePrefsToMemory({ projectFolderPath: selFolder.fsName });
-    }
+  const writeSelectDialogToPrefs = (): void => {
+    const selFolder = Folder.selectDialog('Select Project Folder');
+    writePrefsToMemory({ projectFolderPath: selFolder.fsName });
+  };
+
+  const { ctrlKey } = ScriptUI.environment.keyboardState;
+  if (ctrlKey) {
+    writeSelectDialogToPrefs();
   } else {
-    openFs(path);
+    const parsedPrefs = parsePrefs();
+    const path = parsedPrefs.projectFolderPath;
+    if (!path) {
+      const conf = confirm(
+        'No folder selected yet.\nWould you like to choose now?'
+      );
+      if (conf) writeSelectDialogToPrefs();
+    } else {
+      openFs(path);
+    }
   }
 };

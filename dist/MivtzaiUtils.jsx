@@ -1,3 +1,19 @@
+/**
+ * @name mivtzai-utils
+ * @description Utilites for operative projects
+ * @version 1.0.0
+ * @author Eyal Cohen
+ * @license ISC
+ */
+
+/**
+ * @name mivtzai-utils
+ * @description Utilites for operative projects
+ * @version 1.0.0
+ * @author Eyal Cohen
+ * @license ISC
+ */
+
 Array.prototype.map || (Array.prototype.map = function (callback) { var T, A, k; if (null == this)
     throw new TypeError("this is null or not defined"); var O = Object(this), len = O.length >>> 0; if ("function" != typeof callback)
     throw new TypeError(callback + " is not a function"); for (arguments.length > 1 && (T = arguments[1]), A = new Array(len), k = 0; k < len;) {
@@ -785,17 +801,25 @@ var createAnimatedFrame = function () {
     trimPathsOffset.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 72)], [new KeyframeEase(0.5, 72)]);
 };
 var openProjectInFinder = function () {
-    var parsedPrefs = parsePrefs();
-    var path = parsedPrefs.projectFolderPath || null;
-    if (!path) {
-        var conf = confirm('No folder selected yet.\nWould you like to choose now?');
-        if (conf) {
-            var selFolder = Folder.selectDialog('Select Project Folder');
-            writePrefsToMemory({ projectFolderPath: selFolder.fsName });
-        }
+    var writeSelectDialogToPrefs = function () {
+        var selFolder = Folder.selectDialog('Select Project Folder');
+        writePrefsToMemory({ projectFolderPath: selFolder.fsName });
+    };
+    var ctrlKey = ScriptUI.environment.keyboardState.ctrlKey;
+    if (ctrlKey) {
+        writeSelectDialogToPrefs();
     }
     else {
-        openFs(path);
+        var parsedPrefs = parsePrefs();
+        var path = parsedPrefs.projectFolderPath;
+        if (!path) {
+            var conf = confirm('No folder selected yet.\nWould you like to choose now?');
+            if (conf)
+                writeSelectDialogToPrefs();
+        }
+        else {
+            openFs(path);
+        }
     }
 };
 var createExplosionIcon = function (circleColor, iconColor, hasCircle) {
