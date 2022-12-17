@@ -135,7 +135,7 @@ const init = (thisObj: typeof globalThis) => {
 
   const iconDDGrp = iconsGrp.add('group');
   iconDDGrp.add('statictext', undefined, 'Icon:');
-  const iconsList: IconID[] = ['Boom', 'Tunnel'];
+  const iconsList: IconID[] = ['Boom', 'Tunnel', 'Terror Tunnel'];
   const iconDD = iconDDGrp.add('dropdownlist', undefined, iconsList);
   iconDD.preferredSize[0] = 100;
   iconDD.selection = 0;
