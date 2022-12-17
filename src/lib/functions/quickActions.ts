@@ -681,3 +681,20 @@ const createAnimatedFrame = (): void => {
     [new KeyframeEase(0.5, 72)]
   );
 };
+
+const openProjectInFinder = (): void => {
+  // alert('sa');
+  const parsedPrefs = parsePrefs();
+  const path = parsedPrefs.projectFolderPath || null;
+  if (!path) {
+    const conf = confirm(
+      'No folder selected yet.\nWould you like to choose now?'
+    );
+    if (conf) {
+      const selFolder = Folder.selectDialog('Select Project Folder');
+      writePrefsToMemory({ projectFolderPath: selFolder.fsName });
+    }
+  } else {
+    openFs(path);
+  }
+};

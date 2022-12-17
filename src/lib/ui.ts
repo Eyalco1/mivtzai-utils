@@ -244,6 +244,7 @@ const init = (thisObj: typeof globalThis) => {
   GazaMapShapeBtn.onClick = createGazaMap;
   numCountBtn.onClick = createCountingText;
   frameBtn.onClick = createAnimatedFrame;
+  openFinderBtn.onClick = openProjectInFinder;
   israelMapPic.onClick = importIsraelGoogleMaps;
   // Icons
   // boomBtn.onClick = () => {

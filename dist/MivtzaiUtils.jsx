@@ -185,7 +185,7 @@ var getOS = function () {
     return 'Mac';
 };
 var openFs = function (path) {
-    var folder = File(path).parent;
+    var folder = Folder(path);
     var cmd = getOS() === 'Win'
         ? 'explorer ' + Folder.decode(folder.fsName)
         :
@@ -241,12 +241,29 @@ var createFolder = function (folderObj) {
         folderObj.create();
     return folderObj;
 };
-var readJSON = function (file) {
+var readPrefs = function () {
+    var appDataFolder = File(Folder.appData.toString()).toString();
+    var file = File(appDataFolder + '/Mivtazi/Prefs/Prefs.json');
     file.open('r');
     var stringData = file.read();
     file.close();
+    return stringData;
+};
+var parsePrefs = function () {
+    var stringData = readPrefs();
     var parsedData = JSON.parse(stringData);
     return parsedData;
+};
+var writeEmptyPrefs = function () {
+    var appDataFolder = File(Folder.appData.toString()).toString();
+    createFolder(Folder(appDataFolder + '/Mivtazi'));
+    createFolder(Folder(appDataFolder + '/Mivtazi/Prefs'));
+    var myJSON = File(appDataFolder + '/Mivtazi/Prefs/Prefs.json');
+    if (!myJSON.exists) {
+        myJSON.open('w');
+        myJSON.write(JSON.stringify({}, null, 2));
+        myJSON.close();
+    }
 };
 var writePrefsToMemory = function (prefs) {
     var appDataFolder = File(Folder.appData.toString()).toString();
@@ -766,6 +783,20 @@ var createAnimatedFrame = function () {
     trimPathsOffset.setValueAtTime((1 / 24) * 32, 0);
     trimPathsOffset.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 24)], [new KeyframeEase(0.5, 24)]);
     trimPathsOffset.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 72)], [new KeyframeEase(0.5, 72)]);
+};
+var openProjectInFinder = function () {
+    var parsedPrefs = parsePrefs();
+    var path = parsedPrefs.projectFolderPath || null;
+    if (!path) {
+        var conf = confirm('No folder selected yet.\nWould you like to choose now?');
+        if (conf) {
+            var selFolder = Folder.selectDialog('Select Project Folder');
+            writePrefsToMemory({ projectFolderPath: selFolder.fsName });
+        }
+    }
+    else {
+        openFs(path);
+    }
 };
 var createExplosionIcon = function (circleColor, iconColor, hasCircle) {
     var comp = app.project.activeItem;
@@ -2476,6 +2507,7 @@ var init = function (thisObj) {
     GazaMapShapeBtn.onClick = createGazaMap;
     numCountBtn.onClick = createCountingText;
     frameBtn.onClick = createAnimatedFrame;
+    openFinderBtn.onClick = openProjectInFinder;
     israelMapPic.onClick = importIsraelGoogleMaps;
     paperBtn.onClick = function () {
         importAndLoopTexture("".concat(File('.'), "/Scripts/ScriptUI Panels/MivtzaiUtils Assets/Textures/Kyle_Paper_Dark.jpg"));
@@ -2494,5 +2526,6 @@ var init = function (thisObj) {
     }
 };
 (function (thisObj) {
+    writeEmptyPrefs();
     init(thisObj);
 })(this);

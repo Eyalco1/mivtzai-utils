@@ -244,7 +244,7 @@ const getOS = (): 'Win' | 'Mac' => {
 };
 
 const openFs = (path: string): void => {
-  const folder = File(path).parent;
+  const folder = Folder(path);
   const cmd =
     getOS() === 'Win'
       ? 'explorer ' + Folder.decode(folder.fsName)
@@ -318,15 +318,35 @@ const createFolder = (folderObj: Folder): Folder => {
   return folderObj;
 };
 
-const readJSON = (file: File): object => {
+const readPrefs = (): string => {
+  const appDataFolder = File(Folder.appData.toString()).toString();
+  const file = File(appDataFolder + '/Mivtazi/Prefs/Prefs.json');
   file.open('r');
   const stringData: string = file.read();
   file.close();
+
+  return stringData;
+};
+
+const parsePrefs = (): Prefs => {
+  const stringData = readPrefs();
   const parsedData = JSON.parse(stringData);
   return parsedData;
 };
 
-const writePrefsToMemory = (prefs: object) => {
+const writeEmptyPrefs = (): void => {
+  const appDataFolder = File(Folder.appData.toString()).toString();
+  createFolder(Folder(appDataFolder + '/Mivtazi'));
+  createFolder(Folder(appDataFolder + '/Mivtazi/Prefs'));
+  const myJSON = File(appDataFolder + '/Mivtazi/Prefs/Prefs.json');
+  if (!myJSON.exists) {
+    myJSON.open('w');
+    myJSON.write(JSON.stringify({}, null, 2));
+    myJSON.close();
+  }
+};
+
+const writePrefsToMemory = (prefs: Prefs) => {
   const appDataFolder = File(Folder.appData.toString()).toString();
   createFolder(Folder(appDataFolder + '/Mivtazi'));
   createFolder(Folder(appDataFolder + '/Mivtazi/Prefs'));
@@ -336,5 +356,3 @@ const writePrefsToMemory = (prefs: object) => {
   myJSON.close();
   return myJSON;
 };
-
-// writePrefsToMemory({ test: true, name: 'Luciano' });

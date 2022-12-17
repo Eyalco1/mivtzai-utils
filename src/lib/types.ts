@@ -19,3 +19,7 @@ interface LocationArgs {
   iconScale: number;
   iconId: LocationID;
 }
+
+interface Prefs {
+  projectFolderPath: string;
+}
