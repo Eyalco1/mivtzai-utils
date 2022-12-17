@@ -1177,8 +1177,8 @@ var createTerrorTunnelIcon = function (circleColor, iconColor, hasCircle) {
             [0.3848876953125, 23.6990051269531],
             [16.0854644775391, 10.3062591552734],
             [6.16842651367188, 34.760009765625],
-            [9.38737487792969, 36.8605346679688],
             [11.9305572509766, 32.1637420654297],
+            [9.38737487792969, 36.8605346679688],
             [25.2387390136719, 46.2252044677734],
             [19.9361419677734, 31.8591461181641],
             [30.7105560302734, 28.1645812988281],
@@ -1219,19 +1219,9 @@ var createTerrorTunnelIcon = function (circleColor, iconColor, hasCircle) {
             [0, 0],
             [0, 0],
             [0, 0],
-            [0, 0],
-            [0, 0],
-            [0, 0],
-            [0, 0],
-            [0, 0],
             [0, 0]
         ];
         var outTangents = [
-            [0, 0],
-            [0, 0],
-            [0, 0],
-            [0, 0],
-            [0, 0],
             [0, 0],
             [0, 0],
             [0, 0],
@@ -1298,7 +1288,7 @@ var createTerrorTunnelIcon = function (circleColor, iconColor, hasCircle) {
             [0, 0],
             [0, 0]
         ];
-        createPathGrp(contents, 'Little_Boom', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [0, 0]);
+        createPathGrp(contents, 'Little_Boom', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [2.978, 52.1255]);
     };
     var createCircleOne = function () {
         var vertices = [
@@ -1322,7 +1312,7 @@ var createTerrorTunnelIcon = function (circleColor, iconColor, hasCircle) {
             [1.10519409179688, 0],
             [0, 0]
         ];
-        createPathGrp(contents, 'Circle_01', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [0, 0]);
+        createPathGrp(contents, 'Circle_01', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [-40.3515, 15.2593]);
     };
     var createCircleTwo = function () {
         var vertices = [
@@ -1346,7 +1336,7 @@ var createTerrorTunnelIcon = function (circleColor, iconColor, hasCircle) {
             [0.88671875, 0],
             [0, 0]
         ];
-        createPathGrp(contents, 'Circle_02', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [0, 0]);
+        createPathGrp(contents, 'Circle_02', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [33.3021, -23.4531]);
     };
     var createCircleThree = function () {
         var vertices = [
@@ -1370,7 +1360,7 @@ var createTerrorTunnelIcon = function (circleColor, iconColor, hasCircle) {
             [0.93635559082031, 0],
             [0, 0]
         ];
-        createPathGrp(contents, 'Circle_03', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [0, 0]);
+        createPathGrp(contents, 'Circle_03', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [38.6104, 32.1923]);
     };
     var createBorder = function () {
         var vertices = [
