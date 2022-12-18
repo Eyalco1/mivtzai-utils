@@ -258,7 +258,7 @@ const createFolder = (folderObj: Folder): Folder => {
 
 const readPrefs = (): string => {
   const appDataFolder = File(Folder.appData.toString()).toString();
-  const file = File(appDataFolder + '/Mivtazi/Prefs/Prefs.json');
+  const file = File(appDataFolder + '/Mivtzai/Prefs/Prefs.json');
   file.open('r');
   const stringData: string = file.read();
   file.close();
@@ -274,21 +274,21 @@ const parsePrefs = (): Prefs => {
 
 const writeEmptyPrefs = (): void => {
   const appDataFolder = File(Folder.appData.toString()).toString();
-  createFolder(Folder(appDataFolder + '/Mivtazi'));
-  createFolder(Folder(appDataFolder + '/Mivtazi/Prefs'));
-  const myJSON = File(appDataFolder + '/Mivtazi/Prefs/Prefs.json');
+  createFolder(Folder(appDataFolder + '/Mivtzai'));
+  createFolder(Folder(appDataFolder + '/Mivtzai/Prefs'));
+  const myJSON = File(appDataFolder + '/Mivtzai/Prefs/Prefs.json');
   if (!myJSON.exists) {
     myJSON.open('w');
-    myJSON.write(JSON.stringify({}, null, 2));
+    myJSON.write(JSON.stringify({ version: VERSION }, null, 2));
     myJSON.close();
   }
 };
 
 const writePrefsToMemory = (prefs: Prefs) => {
   const appDataFolder = File(Folder.appData.toString()).toString();
-  createFolder(Folder(appDataFolder + '/Mivtazi'));
-  createFolder(Folder(appDataFolder + '/Mivtazi/Prefs'));
-  const myJSON = File(appDataFolder + '/Mivtazi/Prefs/Prefs.json');
+  createFolder(Folder(appDataFolder + '/Mivtzai'));
+  createFolder(Folder(appDataFolder + '/Mivtzai/Prefs'));
+  const myJSON = File(appDataFolder + '/Mivtzai/Prefs/Prefs.json');
   myJSON.open('w');
   myJSON.write(JSON.stringify(prefs, null, 2));
   myJSON.close();

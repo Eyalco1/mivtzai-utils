@@ -28,6 +28,7 @@ interface LocationArgs {
 }
 
 interface Prefs {
+  version: string;
   projectFolderPath: string;
 }
 

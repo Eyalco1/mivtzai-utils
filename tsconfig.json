@@ -12,6 +12,7 @@
   "include": [
     "src/lib/polyfills.ts",
     "src/lib/types.ts",
+    "src/lib/global.ts",
     "src/lib/utils.ts",
     "src/lib/functions/quickActions.ts",
     "src/lib/functions/icons.ts",

@@ -67,6 +67,7 @@ Array.prototype.find = Array.prototype.find || function (callback) { if (null ==
     if (callback.call(thisArg, element, i, list))
         return element;
 } };
+var VERSION = '1.0.0';
 var createPathGrp = function (contents, name, hasFill, hasStroke, fillColor, strokeColor, strokeSize, vertices, inTangents, outTangents, pathClosed, position) {
     var grp = contents.addProperty('ADBE Vector Group');
     grp.name = name;
@@ -205,7 +206,7 @@ var createFolder = function (folderObj) {
 };
 var readPrefs = function () {
     var appDataFolder = File(Folder.appData.toString()).toString();
-    var file = File(appDataFolder + '/Mivtazi/Prefs/Prefs.json');
+    var file = File(appDataFolder + '/Mivtzai/Prefs/Prefs.json');
     file.open('r');
     var stringData = file.read();
     file.close();
@@ -218,20 +219,20 @@ var parsePrefs = function () {
 };
 var writeEmptyPrefs = function () {
     var appDataFolder = File(Folder.appData.toString()).toString();
-    createFolder(Folder(appDataFolder + '/Mivtazi'));
-    createFolder(Folder(appDataFolder + '/Mivtazi/Prefs'));
-    var myJSON = File(appDataFolder + '/Mivtazi/Prefs/Prefs.json');
+    createFolder(Folder(appDataFolder + '/Mivtzai'));
+    createFolder(Folder(appDataFolder + '/Mivtzai/Prefs'));
+    var myJSON = File(appDataFolder + '/Mivtzai/Prefs/Prefs.json');
     if (!myJSON.exists) {
         myJSON.open('w');
-        myJSON.write(JSON.stringify({}, null, 2));
+        myJSON.write(JSON.stringify({ version: VERSION }, null, 2));
         myJSON.close();
     }
 };
 var writePrefsToMemory = function (prefs) {
     var appDataFolder = File(Folder.appData.toString()).toString();
-    createFolder(Folder(appDataFolder + '/Mivtazi'));
-    createFolder(Folder(appDataFolder + '/Mivtazi/Prefs'));
-    var myJSON = File(appDataFolder + '/Mivtazi/Prefs/Prefs.json');
+    createFolder(Folder(appDataFolder + '/Mivtzai'));
+    createFolder(Folder(appDataFolder + '/Mivtzai/Prefs'));
+    var myJSON = File(appDataFolder + '/Mivtzai/Prefs/Prefs.json');
     myJSON.open('w');
     myJSON.write(JSON.stringify(prefs, null, 2));
     myJSON.close();
@@ -808,7 +809,10 @@ var createAnimatedFrame = function () {
 var openProjectInFinder = function () {
     var writeSelectDialogToPrefs = function () {
         var selFolder = Folder.selectDialog('Select Project Folder');
-        writePrefsToMemory({ projectFolderPath: selFolder.fsName });
+        writePrefsToMemory({
+            projectFolderPath: selFolder.fsName,
+            version: VERSION
+        });
     };
     var ctrlKey = ScriptUI.environment.keyboardState.ctrlKey;
     if (ctrlKey) {
