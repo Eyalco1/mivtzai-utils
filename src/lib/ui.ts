@@ -101,7 +101,9 @@ const init = (thisObj: typeof globalThis) => {
   israelMapPic.helpTip =
     'Israel Map Photo\n\nCLICK: Clean Map\nCTRL + CLICK: Map With Labels';
 
-  const gazaMapPic = QABtnsRowThree.add(
+  const QABtnsRowFour = QABtnsGrp.add('group');
+
+  const gazaMapPic = QABtnsRowFour.add(
     'iconbutton',
     undefined,
     GAMapPhotoBinary,
@@ -110,7 +112,7 @@ const init = (thisObj: typeof globalThis) => {
   gazaMapPic.helpTip =
     'Gaza Map Photo\n\nCLICK: Clean Map\nCTRL + CLICK: Map With Labels';
 
-  const openFinderBtn = QABtnsRowThree.add(
+  const openFinderBtn = QABtnsRowFour.add(
     'iconbutton',
     undefined,
     folderBinary,
@@ -259,31 +261,71 @@ const init = (thisObj: typeof globalThis) => {
     createTexture(id, loop, fit);
   };
 
-  quickActionsTab.alignment =
-    quickActionsTab.alignChildren =
-    iconsTab.alignment =
-    iconsTab.alignChildren =
-    locationsTab.alignment =
-    locationsTab.alignChildren =
-    texturesTab.alignment =
-    texturesTab.alignChildren =
+  const extraBtnsQA = quickActionsTab.add('group');
+  const extraBtnsIcons = iconsTab.add('group');
+  const extraBtnsLocations = locationsTab.add('group');
+  const extraBtnsTextures = texturesTab.add('group');
+
+  extraBtnsQA.spacing =
+    extraBtnsIcons.spacing =
+    extraBtnsLocations.spacing =
+    extraBtnsTextures.spacing =
+      2;
+
+  extraBtnsQA.alignment =
+    extraBtnsQA.alignChildren =
+    extraBtnsIcons.alignment =
+    extraBtnsIcons.alignChildren =
+    extraBtnsLocations.alignment =
+    extraBtnsLocations.alignChildren =
+    extraBtnsTextures.alignment =
+    extraBtnsTextures.alignChildren =
       ['fill', 'fill'];
 
-  const helpBtnQA = quickActionsTab.add('iconbutton', undefined, helpBinary, {
+  const quoteBtnQA = extraBtnsQA.add('iconbutton', undefined, quoteBinary, {
     style: 'toolbutton'
   });
-  const helpBtnIcons = iconsTab.add('iconbutton', undefined, helpBinary, {
+  const helpBtnQA = extraBtnsQA.add('iconbutton', undefined, helpBinary, {
     style: 'toolbutton'
   });
-  const helpBtnLocations = locationsTab.add(
+
+  const quoteBtnIcons = extraBtnsIcons.add(
+    'iconbutton',
+    undefined,
+    quoteBinary,
+    {
+      style: 'toolbutton'
+    }
+  );
+  const helpBtnIcons = extraBtnsIcons.add('iconbutton', undefined, helpBinary, {
+    style: 'toolbutton'
+  });
+
+  const quoteBtnLocations = extraBtnsLocations.add(
+    'iconbutton',
+    undefined,
+    quoteBinary,
+    { style: 'toolbutton' }
+  );
+  const helpBtnLocations = extraBtnsLocations.add(
     'iconbutton',
     undefined,
     helpBinary,
     { style: 'toolbutton' }
   );
-  const helpBtnTextures = texturesTab.add('iconbutton', undefined, helpBinary, {
-    style: 'toolbutton'
-  });
+
+  const quoteBtnTextures = extraBtnsTextures.add(
+    'iconbutton',
+    undefined,
+    quoteBinary,
+    { style: 'toolbutton' }
+  );
+  const helpBtnTextures = extraBtnsTextures.add(
+    'iconbutton',
+    undefined,
+    helpBinary,
+    { style: 'toolbutton' }
+  );
 
   quickActionsTab.alignment = quickActionsTab.alignChildren = ['fill', 'fill'];
 
@@ -291,6 +333,10 @@ const init = (thisObj: typeof globalThis) => {
     helpBtnIcons.alignment =
     helpBtnLocations.alignment =
     helpBtnTextures.alignment =
+    quoteBtnQA.alignment =
+    quoteBtnIcons.alignment =
+    quoteBtnLocations.alignment =
+    quoteBtnTextures.alignment =
       ['right', 'bottom'];
 
   helpBtnQA.onClick =

@@ -249,7 +249,7 @@ var createHelpWindow = function () {
     }
     var tpanel = helpWin.add('tabbedpanel');
     var aboutTab = tpanel.add('tab', undefined, ['About']);
-    aboutTab.add('edittext', [0, 0, 380, 300], 'aboutString', {
+    aboutTab.add('edittext', [0, 0, 380, 300], '', {
         multiline: true,
         readonly: true,
         scrollable: true
@@ -257,7 +257,7 @@ var createHelpWindow = function () {
     var settingsTab = tpanel.add('tab', undefined, ['Settings']);
     settingsTab.orientation = 'row';
     var reviewsTab = tpanel.add('tab', undefined, ['Reviews']);
-    reviewsTab.add('edittext', [0, 0, 380, 300], 'howItWorksString', {
+    reviewsTab.add('edittext', [0, 0, 380, 300], '', {
         multiline: true,
         readonly: true,
         scrollable: true
@@ -2790,6 +2790,7 @@ var popBinary = '\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x18\x00\x00\x
 var frameBinary = "\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x18\x00\x00\x00\x18\b\x06\x00\x00\x00\u00E0w=\u00F8\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x00\u008DIDATH\u0089c\u00FC\u00FF\u00FF?\x03-\x01\x13MMg```! \u00DF@\u00A9\x05\u0084\u0082\u0088\u00E2\u00F0#\u00E4\u0083F2\u00CDU```\u0088g \u00C2\x07\u00E4\x02\x07\x06\x06\u0086\u00FD\f\u00F4\u0088\u00E4Q\x0B\b\x02ZE\u00B2\x00\x03\x03\u0083\x01\x03\r-\u0080\x03\u00BA\x14\x15\x0EP\u00F6\x05\x06\x06\u0086\x0F\u00D4\u00B6\x00\x14D\u00B00rd``8@m\x0BF\u00F3\u00C1\u00C0[\u0080\x1C\u00C9\x0B\x19\x18\x18\x1E\u0090i\x0E\u00CE\u008A\t\u00D9\x02J\x00#.\u00BD,\x14T*D\u0081!^T000\x00\x00\x1D\u009F'T\x1DC\u00D4<\x00\x00\x00\x00IEND\u00AEB`\u0082";
 var folderBinary = '\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x18\x00\x00\x00\x18\b\x06\x00\x00\x00\u00E0w=\u00F8\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x00\u00D2IDATH\u0089\u00ED\u0095\u00DD\r\u00C20\f\u0084\u00BFV\fP&`\x04V(\x1B0BVb\x13Fh7\u0080\r\u00C2\x06e\x02#W\tDyhJ\u00E5\u00F0\u00C4IV\u00FBP\u009D}\u00E7\u009F6"BM\u00B4U\u00D9\x7F\u0095\u00C0\x01\x13 \u0085p[\x12h\x0F<pX\u00F9\u00FD%\x14S\u00C2\x10\x02\u00A4\x1E\u009C\x0E\u00D0.\u00A9\u00E4\t\\\x01\u00BF\u00C5\u008A%\u008B\u00E2\u009C\u009E\u00DE\u00B2\f\u0091\u008Ei$\u00EF\u0083\u008AR\u00D3K\u00A1\x1C.U\u00D0\u0084\u00E7\r8\x1Ai\x18\u00F3E\u00EB\f\u00C9g\u00BE<AoH\u00AE\x18\u00AA\'\u00C8{`\u00E9\u00BFb\u009F*\u00B0\u00F6\u00FF\u00AE[\u009F&8\x1B\u0092\x13\u00C7>M`\u00EE?\u00D9&?\u00BE8zk0\u00EFU\u00AA\u00C0\u0092|\u008C/m\u00A8\u00DC\x1A\u009F\u009B\x16\u00CE\u00EAdx\u00B4\u00BD\u0088t\u00EA\u00BC\u00C6\u00FF\u00A7\u00BF\f\u00E0\x05\u00BB\u00A4\x03\u00F3\u00D1~\x02\u00D0\x00\x00\x00\x00IEND\u00AEB`\u0082';
 var helpBinary = "\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x10\x00\x00\x00\x10\b\x06\x00\x00\x00\x1F\u00F3\u00FFa\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x00\u00ACIDAT8\u008D\u00A5\u0091a\r\u00C3 \x14\u0084\u00AFSP\x07\u00AD\x04$LB%TJ\u00E7`\x12\u0090\u00B09\u0098\x04$ \u0081)\u00B8\u0085\u00E55\u00A1/\u00F4\u0095\u00AD\u0097\u00BC\x1F\u0085\u00BB\u008F\u0083\u0082\u00A4\u009E\u0091\u00A4'\u0099\u00B8\u00D5\u0083\u00E4U\u00FBux\u00E6\u00B1&\x0B\x10\x1B\x00\u00D1\x028\u00A9\u009E\u00A4\u00CD(k\x1A\u00BC\x0BX!\u00AE\u00F8\u00EEI\u0086_\x00z\u00BC\n\u00FBV@>\u00F9\u00A5\u00C2A\u00D6\u009B\x00\u00F7\u00CAo\u00EC\u00B5\u00CF\x02$\u00EB\u00E4u.\u00D8W(v<\u0080TsZ\u0080\x1Cz\x03x*\u00D8F\u00DD\u00F7\x1E'd5p\x00\u00A2\u00CC\u00FCO\u0083\x1C\x1CJo\u00CDd5h\u0092\x05X\u00E4\x11\u00B3nU\x07\u0080\x0F\u00AE|\u00F2\u00F6\x1C\u008E\u00B6\u00DF\x00\x00\x00\x00IEND\u00AEB`\u0082";
+var quoteBinary = '\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x10\x00\x00\x00\x10\b\x06\x00\x00\x00\x1F\u00F3\u00FFa\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x00xIDAT8\u008Dc\u00FC\u00FF\u00FF?\x03%\u0080\u0089"\u00DD\f\f\f,\f\f\f\x07\u00F0\u00C8;@i\u009Cj@^\u00C0\u00E7\x07F(\u008DS\r\u00C5^\x185\x00\x12\u008D\u008EH\u00FC\r\f\f\f\u00FCP\u00F6C$q\u00DCj@\u00B1\b\u00C5\t\u00FFQA\x02\u0092\x1CN5\u00C8\u0092\x0F\u0090$\x1E`\u00D1\u008CU\rE\u00B6\u0083\u00C4Aa\x00\x02\u00A0${\x10\u00CA\u00FE\u00C0\u00C0\u00C0\u00B0\x00Kx\x19`S3\u00C0\u00B9\u0091\u0081\u0081\x01\x00\b\u00F8\u00BB\u0088y\u00F5\x0B\u00D9\x00\x00\x00\x00IEND\u00AEB`\u0082';
 var init = function (thisObj) {
     var w = thisObj instanceof Panel
         ? thisObj
@@ -2841,10 +2842,11 @@ var init = function (thisObj) {
     var israelMapPic = QABtnsRowThree.add('iconbutton', undefined, ILMapPhotoBinary, { style: 'toolbutton' });
     israelMapPic.helpTip =
         'Israel Map Photo\n\nCLICK: Clean Map\nCTRL + CLICK: Map With Labels';
-    var gazaMapPic = QABtnsRowThree.add('iconbutton', undefined, GAMapPhotoBinary, { style: 'toolbutton' });
+    var QABtnsRowFour = QABtnsGrp.add('group');
+    var gazaMapPic = QABtnsRowFour.add('iconbutton', undefined, GAMapPhotoBinary, { style: 'toolbutton' });
     gazaMapPic.helpTip =
         'Gaza Map Photo\n\nCLICK: Clean Map\nCTRL + CLICK: Map With Labels';
-    var openFinderBtn = QABtnsRowThree.add('iconbutton', undefined, folderBinary, { style: 'toolbutton' });
+    var openFinderBtn = QABtnsRowFour.add('iconbutton', undefined, folderBinary, { style: 'toolbutton' });
     openFinderBtn.helpTip = "Open Project Folder in ".concat(getOS() === 'Win' ? 'Explorer' : 'Finder', "\n\nClick: Open Project Folder\nCTRL + CLICK: Choose New Project Folder");
     var iconsTab = tpanel.add('tab', undefined, ['Icons']);
     var iconsGrp = iconsTab.add('group');
@@ -2943,31 +2945,50 @@ var init = function (thisObj) {
         var fit = textureFitCheck.value;
         createTexture(id, loop, fit);
     };
-    quickActionsTab.alignment =
-        quickActionsTab.alignChildren =
-            iconsTab.alignment =
-                iconsTab.alignChildren =
-                    locationsTab.alignment =
-                        locationsTab.alignChildren =
-                            texturesTab.alignment =
-                                texturesTab.alignChildren =
+    var extraBtnsQA = quickActionsTab.add('group');
+    var extraBtnsIcons = iconsTab.add('group');
+    var extraBtnsLocations = locationsTab.add('group');
+    var extraBtnsTextures = texturesTab.add('group');
+    extraBtnsQA.spacing =
+        extraBtnsIcons.spacing =
+            extraBtnsLocations.spacing =
+                extraBtnsTextures.spacing =
+                    2;
+    extraBtnsQA.alignment =
+        extraBtnsQA.alignChildren =
+            extraBtnsIcons.alignment =
+                extraBtnsIcons.alignChildren =
+                    extraBtnsLocations.alignment =
+                        extraBtnsLocations.alignChildren =
+                            extraBtnsTextures.alignment =
+                                extraBtnsTextures.alignChildren =
                                     ['fill', 'fill'];
-    var helpBtnQA = quickActionsTab.add('iconbutton', undefined, helpBinary, {
+    var quoteBtnQA = extraBtnsQA.add('iconbutton', undefined, quoteBinary, {
         style: 'toolbutton'
     });
-    var helpBtnIcons = iconsTab.add('iconbutton', undefined, helpBinary, {
+    var helpBtnQA = extraBtnsQA.add('iconbutton', undefined, helpBinary, {
         style: 'toolbutton'
     });
-    var helpBtnLocations = locationsTab.add('iconbutton', undefined, helpBinary, { style: 'toolbutton' });
-    var helpBtnTextures = texturesTab.add('iconbutton', undefined, helpBinary, {
+    var quoteBtnIcons = extraBtnsIcons.add('iconbutton', undefined, quoteBinary, {
         style: 'toolbutton'
     });
+    var helpBtnIcons = extraBtnsIcons.add('iconbutton', undefined, helpBinary, {
+        style: 'toolbutton'
+    });
+    var quoteBtnLocations = extraBtnsLocations.add('iconbutton', undefined, quoteBinary, { style: 'toolbutton' });
+    var helpBtnLocations = extraBtnsLocations.add('iconbutton', undefined, helpBinary, { style: 'toolbutton' });
+    var quoteBtnTextures = extraBtnsTextures.add('iconbutton', undefined, quoteBinary, { style: 'toolbutton' });
+    var helpBtnTextures = extraBtnsTextures.add('iconbutton', undefined, helpBinary, { style: 'toolbutton' });
     quickActionsTab.alignment = quickActionsTab.alignChildren = ['fill', 'fill'];
     helpBtnQA.alignment =
         helpBtnIcons.alignment =
             helpBtnLocations.alignment =
                 helpBtnTextures.alignment =
-                    ['right', 'bottom'];
+                    quoteBtnQA.alignment =
+                        quoteBtnIcons.alignment =
+                            quoteBtnLocations.alignment =
+                                quoteBtnTextures.alignment =
+                                    ['right', 'bottom'];
     helpBtnQA.onClick =
         helpBtnIcons.onClick =
             helpBtnLocations.onClick =

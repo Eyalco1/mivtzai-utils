@@ -330,7 +330,7 @@ const createHelpWindow = () => {
 
   // === About ===
   const aboutTab = tpanel.add('tab', undefined, ['About']);
-  aboutTab.add('edittext', [0, 0, 380, 300], 'aboutString', {
+  aboutTab.add('edittext', [0, 0, 380, 300], '', {
     multiline: true,
     readonly: true,
     scrollable: true
@@ -342,20 +342,11 @@ const createHelpWindow = () => {
 
   // === Reviews ===
   const reviewsTab = tpanel.add('tab', undefined, ['Reviews']);
-  reviewsTab.add('edittext', [0, 0, 380, 300], 'howItWorksString', {
+  reviewsTab.add('edittext', [0, 0, 380, 300], '', {
     multiline: true,
     readonly: true,
     scrollable: true
   });
-
-  // name?: string
-  // multiline?: boolean
-  // borderless?: boolean
-  // scrollable?: boolean
-  // readonly?: boolean
-  // noecho?: boolean
-  // enterKeySignalsOnChange?: boolean
-  // wantReturn?: boolean
 
   // === Ok Button ===
   const okBtn = helpWin.add('button', undefined, 'Ok', { name: 'Ok' });
