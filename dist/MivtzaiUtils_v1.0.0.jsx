@@ -2802,6 +2802,7 @@ var init = function (thisObj) {
         w;
     w = w;
     var tpanel = w.add('tabbedpanel');
+    tpanel.alignment = tpanel.alignChildren = ['fill', 'fill'];
     var quickActionsTab = tpanel.add('tab', undefined, ['Quick Actions']);
     var QABtnsGrp = quickActionsTab.add('group');
     QABtnsGrp.orientation = 'column';
@@ -2946,6 +2947,36 @@ var init = function (thisObj) {
         var fit = textureFitCheck.value;
         createTexture(id, loop, fit);
     };
+    quickActionsTab.alignment =
+        quickActionsTab.alignChildren =
+            iconsTab.alignment =
+                iconsTab.alignChildren =
+                    locationsTab.alignment =
+                        locationsTab.alignChildren =
+                            texturesTab.alignment =
+                                texturesTab.alignChildren =
+                                    ['fill', 'fill'];
+    var helpBtnQA = quickActionsTab.add('iconbutton', undefined, helpBinary, {
+        style: 'toolbutton'
+    });
+    var helpBtnIcons = iconsTab.add('iconbutton', undefined, helpBinary, {
+        style: 'toolbutton'
+    });
+    var helpBtnLocations = locationsTab.add('iconbutton', undefined, helpBinary, { style: 'toolbutton' });
+    var helpBtnTextures = texturesTab.add('iconbutton', undefined, helpBinary, {
+        style: 'toolbutton'
+    });
+    quickActionsTab.alignment = quickActionsTab.alignChildren = ['fill', 'fill'];
+    helpBtnQA.alignment =
+        helpBtnIcons.alignment =
+            helpBtnLocations.alignment =
+                helpBtnTextures.alignment =
+                    ['right', 'bottom'];
+    helpBtnQA.onClick =
+        helpBtnIcons.onClick =
+            helpBtnLocations.onClick =
+                helpBtnTextures.onClick =
+                    createHelpWindow;
     tvaiBtn.onClick = createTvaiStroke;
     scaleBtn.onClick = scaleWithOvershoot;
     logosBtn.onClick = importLogos;
@@ -2960,11 +2991,6 @@ var init = function (thisObj) {
     openFinderBtn.onClick = openProjectInFinder;
     israelMapPic.onClick = importIsraelGoogleMaps;
     gazaMapPic.onClick = importGazaGoogleMaps;
-    var helpBtn = w.add('iconbutton', undefined, helpBinary, {
-        style: 'toolbutton'
-    });
-    helpBtn.alignment = 'right';
-    helpBtn.onClick = createHelpWindow;
     w.layout.layout(true);
     w.layout.resize();
     w.onResizing = w.onResize = function () {

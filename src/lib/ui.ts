@@ -7,6 +7,7 @@ const init = (thisObj: typeof globalThis) => {
   w = w as Window;
 
   const tpanel = w.add('tabbedpanel');
+  tpanel.alignment = tpanel.alignChildren = ['fill', 'fill'];
 
   const quickActionsTab = tpanel.add('tab', undefined, ['Quick Actions']);
 
@@ -119,14 +120,6 @@ const init = (thisObj: typeof globalThis) => {
     getOS() === 'Win' ? 'Explorer' : 'Finder'
   }\n\nClick: Open Project Folder\nCTRL + CLICK: Choose New Project Folder'`;
 
-  // const testBtn = QABtnsGrp.add('button', undefined, '!TEST!');
-
-  // testBtn.onClick = () => {
-  //   openFs(
-  //     'C:/Users/eyalc/DevProjects/mivtzai-utils/src/assets/Kyle_Paper_Dark.jpg'
-  //   );
-  // };
-
   const iconsTab = tpanel.add('tab', undefined, ['Icons']);
 
   const iconsGrp = iconsTab.add('group');
@@ -142,9 +135,6 @@ const init = (thisObj: typeof globalThis) => {
 
   const IconsBtnsGrp = iconsGrp.add('group');
   IconsBtnsGrp.alignChildren = 'left';
-
-  // const boomBtn = IconsBtnsGrp.add('button', undefined, 'Boom!');
-  // const tunnelBtn = IconsBtnsGrp.add('button', undefined, 'Tunnel');
 
   const circleCheck = iconsGrp.add('checkbox', undefined, 'Circle');
   const circleColorGrp = iconsGrp.add('group');
@@ -222,9 +212,6 @@ const init = (thisObj: typeof globalThis) => {
     createLocationFromId(id, lang);
   };
 
-  // const kindergardenBtn = locationsGrp.add('button', undefined, 'Kindergarden');
-  // const medicalBtn = locationsGrp.add('button', undefined, 'Medical Clinic');
-
   const texturesTab = tpanel.add('tab', undefined, ['Textures']);
 
   const texturesGrp = texturesTab.add('group');
@@ -272,6 +259,46 @@ const init = (thisObj: typeof globalThis) => {
     createTexture(id, loop, fit);
   };
 
+  quickActionsTab.alignment =
+    quickActionsTab.alignChildren =
+    iconsTab.alignment =
+    iconsTab.alignChildren =
+    locationsTab.alignment =
+    locationsTab.alignChildren =
+    texturesTab.alignment =
+    texturesTab.alignChildren =
+      ['fill', 'fill'];
+
+  const helpBtnQA = quickActionsTab.add('iconbutton', undefined, helpBinary, {
+    style: 'toolbutton'
+  });
+  const helpBtnIcons = iconsTab.add('iconbutton', undefined, helpBinary, {
+    style: 'toolbutton'
+  });
+  const helpBtnLocations = locationsTab.add(
+    'iconbutton',
+    undefined,
+    helpBinary,
+    { style: 'toolbutton' }
+  );
+  const helpBtnTextures = texturesTab.add('iconbutton', undefined, helpBinary, {
+    style: 'toolbutton'
+  });
+
+  quickActionsTab.alignment = quickActionsTab.alignChildren = ['fill', 'fill'];
+
+  helpBtnQA.alignment =
+    helpBtnIcons.alignment =
+    helpBtnLocations.alignment =
+    helpBtnTextures.alignment =
+      ['right', 'bottom'];
+
+  helpBtnQA.onClick =
+    helpBtnIcons.onClick =
+    helpBtnLocations.onClick =
+    helpBtnTextures.onClick =
+      createHelpWindow;
+
   // Quick Actions
   tvaiBtn.onClick = createTvaiStroke;
   scaleBtn.onClick = scaleWithOvershoot;
@@ -288,20 +315,11 @@ const init = (thisObj: typeof globalThis) => {
   israelMapPic.onClick = importIsraelGoogleMaps;
   gazaMapPic.onClick = importGazaGoogleMaps;
 
-  // Textures
-  // paperBtn.onClick = () => {
-  //   importAndLoopTexture(
-  //     `${File(
-  //       '.'
-  //     )}/Scripts/ScriptUI Panels/MivtzaiUtils Assets/Textures/Kyle_Paper_Dark.jpg`
-  //   );
-  // };
-
-  const helpBtn = w.add('iconbutton', undefined, helpBinary, {
-    style: 'toolbutton'
-  });
-  helpBtn.alignment = 'right';
-  helpBtn.onClick = createHelpWindow;
+  // const helpBtn = w.add('iconbutton', undefined, helpBinary, {
+  //   style: 'toolbutton'
+  // });
+  // helpBtn.alignment = 'right';
+  // helpBtn.onClick = createHelpWindow;
 
   w.layout.layout(true);
   w.layout.resize();
