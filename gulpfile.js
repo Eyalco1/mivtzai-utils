@@ -23,33 +23,54 @@ const executeScript = (absFilePath, callback) => {
   exec(shellCommand, callback);
 };
 
+task('renameWithVersion', done => {
+  try {
+    fs.renameSync(
+      'dist/MivtzaiUtils.jsx',
+      `dist/MivtzaiUtils_v${pkg.version}.jsx`
+    );
+  } catch (_) {}
+
+  done();
+});
+
 task('createHeader', done => {
-  const read = fs.readFileSync('dist/MivtzaiUtils.jsx', { encoding: 'utf-8' });
-  fs.writeFileSync('dist/MivtzaiUtils.jsx', headerStr + read);
+  const read = fs.readFileSync(`dist/MivtzaiUtils_v${pkg.version}.jsx`, {
+    encoding: 'utf-8'
+  });
+  fs.writeFileSync(`dist/MivtzaiUtils_v${pkg.version}.jsx`, headerStr + read);
   done();
 });
 
 task('buildAssets', done => {
-  fse.copySync('src/assets', 'dist/MivtzaiUtils Assets', { overwrite: true });
+  fse.copySync('src/assets', `dist/MivtzaiUtils_v${pkg.version} Assets`, {
+    overwrite: true
+  });
   done();
 });
 
 task('runScript', done => {
-  const absPath = join(__dirname, 'dist/MivtzaiUtils.jsx');
+  const absPath = join(__dirname, `dist/MivtzaiUtils_v${pkg.version}.jsx`);
   executeScript(absPath, (error, stdout, stderr) => {
     done();
   });
 });
 
 task('jsxbin', () =>
-  jsxbin('dist/MivtzaiUtils.jsx', 'dist/MivtzaiUtils.jsxbin')
+  jsxbin(
+    `dist/MivtzaiUtils_v${pkg.version}.jsx`,
+    `dist/MivtzaiUtils_v${pkg.version}.jsxbin`
+  )
 );
 
 task('addToHost', done => {
-  fs.copyFileSync('dist/MivtzaiUtils.jsx', scriptFolder + '\\MivtzaiUtils.jsx');
+  fs.copyFileSync(
+    `dist/MivtzaiUtils_v${pkg.version}.jsx`,
+    scriptFolder + `\\MivtzaiUtils_v${pkg.version}.jsx`
+  );
   fse.copySync(
-    'dist/MivtzaiUtils Assets',
-    scriptFolder + '\\MivtzaiUtils Assets',
+    `dist/MivtzaiUtils_v${pkg.version} Assets`,
+    scriptFolder + `\\MivtzaiUtils_v${pkg.version} Assets`,
     { overwrite: true }
   );
   done();
@@ -57,5 +78,12 @@ task('addToHost', done => {
 
 task(
   'default',
-  series('createHeader', 'buildAssets', 'runScript', 'jsxbin', 'addToHost')
+  series(
+    'renameWithVersion',
+    'createHeader',
+    'buildAssets',
+    'runScript',
+    'jsxbin',
+    'addToHost'
+  )
 );
