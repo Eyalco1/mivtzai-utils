@@ -1,11 +1,3 @@
-/**
- * @name mivtzai-utils
- * @description Utilites for operative projects
- * @version 1.0.0
- * @author Eyal Cohen
- * @license ISC
- */
-
 Array.prototype.map || (Array.prototype.map = function (callback) { var T, A, k; if (null == this)
     throw new TypeError("this is null or not defined"); var O = Object(this), len = O.length >>> 0; if ("function" != typeof callback)
     throw new TypeError(callback + " is not a function"); for (arguments.length > 1 && (T = arguments[1]), A = new Array(len), k = 0; k < len;) {
@@ -2853,7 +2845,7 @@ var init = function (thisObj) {
     gazaMapPic.helpTip =
         'Gaza Map Photo\n\nCLICK: Clean Map\nCTRL + CLICK: Map With Labels';
     var openFinderBtn = QABtnsRowThree.add('iconbutton', undefined, folderBinary, { style: 'toolbutton' });
-    openFinderBtn.helpTip = "Open Project Folder in ".concat(getOS() === 'Win' ? 'Explorer' : 'Finder', "\n\nClick: Open Project Folder\nCTRL + CLICK: Choose New Project Folder'");
+    openFinderBtn.helpTip = "Open Project Folder in ".concat(getOS() === 'Win' ? 'Explorer' : 'Finder', "\n\nClick: Open Project Folder\nCTRL + CLICK: Choose New Project Folder");
     var iconsTab = tpanel.add('tab', undefined, ['Icons']);
     var iconsGrp = iconsTab.add('group');
     iconsGrp.orientation = 'column';

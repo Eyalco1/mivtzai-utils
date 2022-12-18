@@ -143,7 +143,7 @@ const importLogos = (): void => {
       File(
         `${File(
           '.'
-        )}/Scripts/ScriptUI Panels/MivtzaiUtils Assets/Logos/IDF_Logo.png`
+        )}/Scripts/ScriptUI Panels/MivtzaiUtils_v${VERSION} Assets/Logos/IDF_Logo.png`
       )
     )
   ) as AVItem;
@@ -152,7 +152,7 @@ const importLogos = (): void => {
       File(
         `${File(
           '.'
-        )}/Scripts/ScriptUI Panels/MivtzaiUtils Assets/Logos/Dotz_Logo.png`
+        )}/Scripts/ScriptUI Panels/MivtzaiUtils_v${VERSION} Assets/Logos/Dotz_Logo.png`
       )
     )
   ) as AVItem;

@@ -118,7 +118,7 @@ const init = (thisObj: typeof globalThis) => {
   );
   openFinderBtn.helpTip = `Open Project Folder in ${
     getOS() === 'Win' ? 'Explorer' : 'Finder'
-  }\n\nClick: Open Project Folder\nCTRL + CLICK: Choose New Project Folder'`;
+  }\n\nClick: Open Project Folder\nCTRL + CLICK: Choose New Project Folder`;
 
   const iconsTab = tpanel.add('tab', undefined, ['Icons']);
 

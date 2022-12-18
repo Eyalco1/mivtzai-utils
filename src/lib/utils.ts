@@ -307,7 +307,7 @@ const importGoogleMaps = (location: GoogleMapsLocation): void => {
       File(
         `${File(
           '.'
-        )}/Scripts/ScriptUI Panels/MivtzaiUtils Assets/Images/${location}_Map_${whichMap}.png`
+        )}/Scripts/ScriptUI Panels/MivtzaiUtils_v${VERSION} Assets/Images/${location}_Map_${whichMap}.png`
       )
     )
   ) as AVItem;

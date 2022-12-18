@@ -54,7 +54,7 @@ const loopTexture = (layer: Layer): void => {
 const getPathFromTextureID = (id: TextureID): string => {
   return `${File(
     '.'
-  )}/Scripts/ScriptUI Panels/MivtzaiUtils Assets/Textures/${id.replace(
+  )}/Scripts/ScriptUI Panels/MivtzaiUtils_v${VERSION} Assets/Textures/${id.replace(
     / /g,
     '_'
   )}.jpg`;
