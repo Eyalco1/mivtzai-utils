@@ -277,6 +277,11 @@ var createHelpWindow = function () {
         helpWin.show();
     }
 };
+var generateCaspiQuote = function () {
+    var quotes = ['1', '2', '3', '4'];
+    var theQuote = quotes[Math.floor(Math.random() * quotes.length)];
+    alert(theQuote, 'Caspi Says:');
+};
 var createTvaiStroke = function () {
     app.beginUndoGroup('Create Tunnel Stroke');
     var comp = app.project.activeItem;
@@ -3002,6 +3007,11 @@ var init = function (thisObj) {
             helpBtnLocations.onClick =
                 helpBtnTextures.onClick =
                     createHelpWindow;
+    quoteBtnQA.onClick =
+        quoteBtnIcons.onClick =
+            quoteBtnLocations.onClick =
+                quoteBtnTextures.onClick =
+                    generateCaspiQuote;
     tvaiBtn.onClick = createTvaiStroke;
     scaleBtn.onClick = scaleWithOvershoot;
     logosBtn.onClick = importLogos;

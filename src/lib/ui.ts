@@ -345,6 +345,12 @@ const init = (thisObj: typeof globalThis) => {
     helpBtnTextures.onClick =
       createHelpWindow;
 
+  quoteBtnQA.onClick =
+    quoteBtnIcons.onClick =
+    quoteBtnLocations.onClick =
+    quoteBtnTextures.onClick =
+      generateCaspiQuote;
+
   // Quick Actions
   tvaiBtn.onClick = createTvaiStroke;
   scaleBtn.onClick = scaleWithOvershoot;
@@ -360,12 +366,6 @@ const init = (thisObj: typeof globalThis) => {
   openFinderBtn.onClick = openProjectInFinder;
   israelMapPic.onClick = importIsraelGoogleMaps;
   gazaMapPic.onClick = importGazaGoogleMaps;
-
-  // const helpBtn = w.add('iconbutton', undefined, helpBinary, {
-  //   style: 'toolbutton'
-  // });
-  // helpBtn.alignment = 'right';
-  // helpBtn.onClick = createHelpWindow;
 
   w.layout.layout(true);
   w.layout.resize();
