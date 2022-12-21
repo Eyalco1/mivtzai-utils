@@ -1,3 +1,11 @@
+const getScriptUIPathFromOS = (os: OS) => {
+  if (os === 'Win') {
+    // return ...
+  } else if (os === 'Mac') {
+    return '\\Applications\\Adobe After Effects 2021\\Scripts\\ScriptUI Panels';
+  }
+};
+
 const createPathGrp = (
   contents: PropertyGroup,
   name: string,
@@ -176,7 +184,7 @@ const createAnimatedMap = (
   );
 };
 
-const getOS = (): 'Win' | 'Mac' => {
+const getOS = (): OS => {
   if ($.os.indexOf('Win') != -1) return 'Win';
   return 'Mac';
 };
@@ -303,11 +311,25 @@ const importGoogleMaps = (location: GoogleMapsLocation): void => {
   }
 
   const mapItem = app.project.importFile(
+    //   new ImportOptions(
+    //     File(
+    //       `${File(
+    //         '.'
+    //       )}/Scripts/ScriptUI Panels/MivtzaiUtils_v${VERSION} Assets/Images/${location}_Map_${whichMap}.png`
+    //     )
+    //   )
+    // ) as AVItem;
+
     new ImportOptions(
       File(
-        `${File(
-          '.'
-        )}/Scripts/ScriptUI Panels/MivtzaiUtils_v${VERSION} Assets/Images/${location}_Map_${whichMap}.png`
+        getScriptUIPathFromOS('Mac') +
+          '\\MivtzaiUtils_v' +
+          VERSION +
+          'Assets\\Images\\' +
+          location +
+          '_Map_' +
+          whichMap +
+          '.png'
       )
     )
   ) as AVItem;
