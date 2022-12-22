@@ -4,7 +4,13 @@ type ColorDropdown = 'White' | 'Black' | 'Red';
 
 type Lingo = 'Hebrew' | 'Arabic' | 'English';
 
-type IconID = 'Boom' | 'Tunnel' | 'Terror Tunnel' | 'Target' | 'Sniper Target';
+type IconID =
+  | 'Boom'
+  | 'Tunnel'
+  | 'Terror Tunnel'
+  | 'Target'
+  | 'Sniper Target'
+  | 'House Bombing';
 type LocationID = 'Kindergarden' | 'Medical Clinic' | 'Sports' | 'University';
 type TextureID =
   | 'Paper Dark'

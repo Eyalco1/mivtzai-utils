@@ -135,7 +135,8 @@ const init = (thisObj: typeof globalThis) => {
     'Tunnel',
     'Terror Tunnel',
     'Target',
-    'Sniper Target'
+    'Sniper Target',
+    'House Bombing'
   ];
   const iconDD = iconDDGrp.add('dropdownlist', undefined, iconsList);
   iconDD.preferredSize[0] = 100;
