@@ -74,7 +74,7 @@ var getAssetsPathFromOS = function (os) {
         return "".concat(File('.'), "/Scripts/ScriptUI Panels/MivtzaiUtils_v").concat(VERSION.toString(), " Assets");
     }
     else if (os === 'Mac') {
-        return '/Applications/Adobe After Effects 2021/Scripts/ScriptUI Panels';
+        return "/Applications/Adobe After Effects 20".concat(app.version.substring(0, 2), "/Scripts/ScriptUI Panels");
     }
 };
 var createPathGrp = function (contents, name, hasFill, hasStroke, fillColor, strokeColor, strokeSize, vertices, inTangents, outTangents, pathClosed, position) {

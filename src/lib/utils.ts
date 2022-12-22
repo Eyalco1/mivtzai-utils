@@ -4,7 +4,10 @@ const getAssetsPathFromOS = (os: OS = getOS()) => {
       '.'
     )}/Scripts/ScriptUI Panels/MivtzaiUtils_v${VERSION.toString()} Assets`;
   } else if (os === 'Mac') {
-    return '/Applications/Adobe After Effects 2021/Scripts/ScriptUI Panels';
+    return `/Applications/Adobe After Effects 20${app.version.substring(
+      0,
+      2
+    )}/Scripts/ScriptUI Panels`;
   }
 };
 
