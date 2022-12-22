@@ -376,8 +376,8 @@ var scaleWithOvershoot = function () {
 };
 var importLogos = function () {
     app.beginUndoGroup('Import Logos');
-    var idfItem = app.project.importFile(new ImportOptions(File("".concat(File('.'), "/Scripts/ScriptUI Panels/MivtzaiUtils_v").concat(VERSION, " Assets/Logos/IDF_Logo.png"))));
-    var dotzItem = app.project.importFile(new ImportOptions(File("".concat(File('.'), "/Scripts/ScriptUI Panels/MivtzaiUtils_v").concat(VERSION, " Assets/Logos/Dotz_Logo.png"))));
+    var idfItem = app.project.importFile(new ImportOptions(File("".concat(getAssetsPathFromOS(), "/Logos/IDF_Logo.png"))));
+    var dotzItem = app.project.importFile(new ImportOptions(File("".concat(getAssetsPathFromOS(), "/Logos/Dotz_Logo.png"))));
     var comp = app.project.activeItem;
     var idfLayer = comp.layers.add(idfItem);
     var padding = 200;

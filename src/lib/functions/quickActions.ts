@@ -139,22 +139,10 @@ const importLogos = (): void => {
   app.beginUndoGroup('Import Logos');
 
   const idfItem = app.project.importFile(
-    new ImportOptions(
-      File(
-        `${File(
-          '.'
-        )}/Scripts/ScriptUI Panels/MivtzaiUtils_v${VERSION} Assets/Logos/IDF_Logo.png`
-      )
-    )
+    new ImportOptions(File(`${getAssetsPathFromOS()}/Logos/IDF_Logo.png`))
   ) as AVItem;
   const dotzItem = app.project.importFile(
-    new ImportOptions(
-      File(
-        `${File(
-          '.'
-        )}/Scripts/ScriptUI Panels/MivtzaiUtils_v${VERSION} Assets/Logos/Dotz_Logo.png`
-      )
-    )
+    new ImportOptions(File(`${getAssetsPathFromOS()}/Logos/Dotz_Logo.png`))
   ) as AVItem;
 
   const comp = app.project.activeItem as CompItem;
