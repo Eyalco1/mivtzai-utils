@@ -52,12 +52,7 @@ const loopTexture = (layer: Layer): void => {
 };
 
 const getPathFromTextureID = (id: TextureID): string => {
-  return `${File(
-    '.'
-  )}/Scripts/ScriptUI Panels/MivtzaiUtils_v${VERSION} Assets/Textures/${id.replace(
-    / /g,
-    '_'
-  )}.jpg`;
+  return `${getAssetsPathFromOS()}/Textures/${id.replace(/ /g, '_')}.jpg`;
 };
 
 const getCommandId = (

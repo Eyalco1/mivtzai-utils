@@ -1,4 +1,4 @@
-const getAssetsPathFromOS = (os: OS) => {
+const getAssetsPathFromOS = (os: OS = getOS()) => {
   if (os === 'Win') {
     return `${File(
       '.'
@@ -314,9 +314,7 @@ const importGoogleMaps = (location: GoogleMapsLocation): void => {
 
   const mapItem = app.project.importFile(
     new ImportOptions(
-      File(
-        `${getAssetsPathFromOS('Win')}/Images/${location}_Map_${whichMap}.png`
-      )
+      File(`${getAssetsPathFromOS()}/Images/${location}_Map_${whichMap}.png`)
     )
   ) as AVItem;
 

@@ -69,6 +69,7 @@ Array.prototype.find = Array.prototype.find || function (callback) { if (null ==
 } };
 var VERSION = '1.0.0';
 var getAssetsPathFromOS = function (os) {
+    if (os === void 0) { os = getOS(); }
     if (os === 'Win') {
         return "".concat(File('.'), "/Scripts/ScriptUI Panels/MivtzaiUtils_v").concat(VERSION.toString(), " Assets");
     }
@@ -252,7 +253,7 @@ var importGoogleMaps = function (location) {
     if (keyState.ctrlKey) {
         whichMap = 'Guide';
     }
-    var mapItem = app.project.importFile(new ImportOptions(File("".concat(getAssetsPathFromOS('Win'), "/Images/").concat(location, "_Map_").concat(whichMap, ".png"))));
+    var mapItem = app.project.importFile(new ImportOptions(File("".concat(getAssetsPathFromOS(), "/Images/").concat(location, "_Map_").concat(whichMap, ".png"))));
     var comp = app.project.activeItem;
     var mapLayer = comp.layers.add(mapItem);
     mapLayer.selected = true;
@@ -3446,7 +3447,7 @@ var loopTexture = function (layer) {
     posProp.expression = scaleProp.expression = rotProp.expression = 'loopOut()';
 };
 var getPathFromTextureID = function (id) {
-    return "".concat(File('.'), "/Scripts/ScriptUI Panels/MivtzaiUtils_v").concat(VERSION, " Assets/Textures/").concat(id.replace(/ /g, '_'), ".jpg");
+    return "".concat(getAssetsPathFromOS(), "/Textures/").concat(id.replace(/ /g, '_'), ".jpg");
 };
 var getCommandId = function (_a, _b) {
     var compW = _a.width, compH = _a.height;
