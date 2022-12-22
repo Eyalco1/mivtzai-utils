@@ -145,7 +145,10 @@ const init = (thisObj: typeof globalThis) => {
   const IconsBtnsGrp = iconsGrp.add('group');
   IconsBtnsGrp.alignChildren = 'left';
 
-  const circleCheck = iconsGrp.add('checkbox', undefined, 'Circle');
+  const iconsChecksGrp = iconsGrp.add('group');
+  const circleCheck = iconsChecksGrp.add('checkbox', undefined, 'Circle');
+  const scaleCheck = iconsChecksGrp.add('checkbox', undefined, 'Scale');
+
   const circleColorGrp = iconsGrp.add('group');
   circleColorGrp.add('statictext', undefined, 'Circle Color:');
   const circleColorDD = circleColorGrp.add('dropdownlist', undefined, [
@@ -172,7 +175,8 @@ const init = (thisObj: typeof globalThis) => {
       id,
       circleColorDD.selection.toString() as ColorDropdown,
       iconColorDD.selection.toString() as ColorDropdown,
-      circleCheck.value
+      circleCheck.value,
+      scaleCheck.value
     );
   };
 

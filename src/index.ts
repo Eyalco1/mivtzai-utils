@@ -1,4 +1,4 @@
 ((thisObj: typeof globalThis) => {
-  writeEmptyPrefs();
+  setUpPrefs();
   init(thisObj);
 })(this);

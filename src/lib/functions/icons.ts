@@ -1,7 +1,8 @@
 const createExplosionIcon = (
   circleColor: ColorDropdown,
   iconColor: ColorDropdown,
-  hasCircle: Boolean
+  hasCircle: Boolean,
+  scale: boolean
 ): void => {
   const comp = app.project.activeItem as CompItem;
   const layer = comp.layers.addShape();
@@ -305,12 +306,14 @@ const createExplosionIcon = (
   createLittleBoom();
   createBigBoom();
   if (hasCircle) createIconCircle(contents, circleColorRgb);
+  if (scale) scaleWithOvershoot([layer]);
 };
 
 const createTunnelIcon = (
   circleColor: ColorDropdown,
   iconColor: ColorDropdown,
-  hasCircle: Boolean
+  hasCircle: Boolean,
+  scale: boolean
 ): void => {
   const comp = app.project.activeItem as CompItem;
   const layer = comp.layers.addShape();
@@ -436,12 +439,14 @@ const createTunnelIcon = (
   createBorder();
   createInside();
   if (hasCircle) createIconCircle(contents, circleColorRgb);
+  if (scale) scaleWithOvershoot([layer]);
 };
 
 const createTerrorTunnelIcon = (
   circleColor: ColorDropdown,
   iconColor: ColorDropdown,
-  hasCircle: Boolean
+  hasCircle: Boolean,
+  scale: boolean
 ): void => {
   const comp = app.project.activeItem as CompItem;
   const layer = comp.layers.addShape();
@@ -867,12 +872,14 @@ const createTerrorTunnelIcon = (
   createLittleBoom();
   createBigBoom();
   if (hasCircle) createIconCircle(contents, circleColorRgb);
+  if (scale) scaleWithOvershoot([layer]);
 };
 
 const createTargetIcon = (
   circleColor: ColorDropdown,
   iconColor: ColorDropdown,
-  hasCircle: Boolean
+  hasCircle: Boolean,
+  scale: boolean
 ): void => {
   const comp = app.project.activeItem as CompItem;
   const layer = comp.layers.addShape();
@@ -1120,12 +1127,14 @@ const createTargetIcon = (
   createBigCircle();
   createLittleCircle();
   if (hasCircle) createIconCircle(contents, circleColorRgb);
+  if (scale) scaleWithOvershoot([layer]);
 };
 
 const createSniperTargetIcon = (
   circleColor: ColorDropdown,
   iconColor: ColorDropdown,
-  hasCircle: Boolean
+  hasCircle: Boolean,
+  scale: boolean
 ): void => {
   const comp = app.project.activeItem as CompItem;
   const layer = comp.layers.addShape();
@@ -1772,12 +1781,14 @@ const createSniperTargetIcon = (
   createMiddleBL();
   createOuterRing();
   if (hasCircle) createIconCircle(contents, circleColorRgb);
+  if (scale) scaleWithOvershoot([layer]);
 };
 
 const createHouseBombingIcon = (
   circleColor: ColorDropdown,
   iconColor: ColorDropdown,
-  hasCircle: Boolean
+  hasCircle: Boolean,
+  scale: boolean
 ): void => {
   const comp = app.project.activeItem as CompItem;
   const layer = comp.layers.addShape();
@@ -2188,6 +2199,7 @@ const createHouseBombingIcon = (
   createLittleBoom();
   createBigBoom();
   if (hasCircle) createIconCircle(contents, circleColorRgb);
+  if (scale) scaleWithOvershoot([layer]);
 };
 
 // ====================================
@@ -2196,28 +2208,29 @@ const createIconFromId = (
   id: IconID,
   circleColor: ColorDropdown,
   iconColor: ColorDropdown,
-  hasCircle: Boolean
+  hasCircle: boolean,
+  scale: boolean
 ): void => {
   app.beginUndoGroup(`Create Icon: ${id}`);
 
   switch (id) {
     case 'Boom':
-      createExplosionIcon(circleColor, iconColor, hasCircle);
+      createExplosionIcon(circleColor, iconColor, hasCircle, scale);
       break;
     case 'Tunnel':
-      createTunnelIcon(circleColor, iconColor, hasCircle);
+      createTunnelIcon(circleColor, iconColor, hasCircle, scale);
       break;
     case 'Terror Tunnel':
-      createTerrorTunnelIcon(circleColor, iconColor, hasCircle);
+      createTerrorTunnelIcon(circleColor, iconColor, hasCircle, scale);
       break;
     case 'Target':
-      createTargetIcon(circleColor, iconColor, hasCircle);
+      createTargetIcon(circleColor, iconColor, hasCircle, scale);
       break;
     case 'Sniper Target':
-      createSniperTargetIcon(circleColor, iconColor, hasCircle);
+      createSniperTargetIcon(circleColor, iconColor, hasCircle, scale);
       break;
     case 'House Bombing':
-      createHouseBombingIcon(circleColor, iconColor, hasCircle);
+      createHouseBombingIcon(circleColor, iconColor, hasCircle, scale);
       break;
   }
 

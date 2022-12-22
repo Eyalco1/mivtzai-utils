@@ -285,12 +285,18 @@ const parsePrefs = (): Prefs => {
   return parsedData;
 };
 
-const writeEmptyPrefs = (): void => {
+const setUpPrefs = (): void => {
   const appDataFolder = File(Folder.appData.toString()).toString();
   createFolder(Folder(appDataFolder + '/Mivtzai'));
   createFolder(Folder(appDataFolder + '/Mivtzai/Prefs'));
   const myJSON = File(appDataFolder + '/Mivtzai/Prefs/Prefs.json');
-  if (!myJSON.exists) {
+  if (myJSON.exists) {
+    const parsedPrefs = parsePrefs();
+    parsedPrefs.version = VERSION;
+    myJSON.open('w');
+    myJSON.write(JSON.stringify(parsedPrefs, null, 2));
+    myJSON.close();
+  } else {
     myJSON.open('w');
     myJSON.write(JSON.stringify({ version: VERSION }, null, 2));
     myJSON.close();
@@ -373,4 +379,51 @@ const generateCaspiQuote = () => {
   const quotes = ['1', '2', '3', '4'];
   const theQuote = quotes[Math.floor(Math.random() * quotes.length)];
   alert(theQuote, 'Caspi Says:');
+};
+
+const scaleWithOvershoot = (
+  layers: Layer[] = (<CompItem>app.project.activeItem).selectedLayers
+): void => {
+  const comp = app.project.activeItem as CompItem;
+  // const selectedLayers = comp.selectedLayers;
+  if (layers.length === 0) return;
+
+  layers.forEach(sl => {
+    const scaleProp = sl
+      .property('ADBE Transform Group')
+      .property('ADBE Scale') as Property<any>;
+    const origVal = scaleProp.value;
+
+    let beforeKeys: number = 0;
+    const numKeys = scaleProp.numKeys;
+    for (let i = 1; i <= numKeys; i++) {
+      const keyTime = scaleProp.keyTime(i);
+      if (keyTime < comp.time) beforeKeys++;
+    }
+
+    scaleProp.setValueAtTime(comp.time, [0, 0]);
+    scaleProp.setValueAtTime(comp.time + (1 / 24) * 10, [
+      origVal[0] + 5,
+      origVal[1] + 5
+    ]);
+    scaleProp.setValueAtTime(comp.time + (1 / 24) * 14, origVal);
+
+    const easeIn = new KeyframeEase(0.5, 66);
+    const easeOut = new KeyframeEase(0.75, 66);
+    scaleProp.setTemporalEaseAtKey(
+      beforeKeys + 1,
+      [easeIn, easeIn, easeIn],
+      [easeOut, easeOut, easeOut]
+    );
+    scaleProp.setTemporalEaseAtKey(
+      beforeKeys + 2,
+      [easeIn, easeIn, easeIn],
+      [easeOut, easeOut, easeOut]
+    );
+    scaleProp.setTemporalEaseAtKey(
+      beforeKeys + 3,
+      [easeIn, easeIn, easeIn],
+      [easeOut, easeOut, easeOut]
+    );
+  });
 };

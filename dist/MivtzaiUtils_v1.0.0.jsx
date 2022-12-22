@@ -226,12 +226,19 @@ var parsePrefs = function () {
     var parsedData = JSON.parse(stringData);
     return parsedData;
 };
-var writeEmptyPrefs = function () {
+var setUpPrefs = function () {
     var appDataFolder = File(Folder.appData.toString()).toString();
     createFolder(Folder(appDataFolder + '/Mivtzai'));
     createFolder(Folder(appDataFolder + '/Mivtzai/Prefs'));
     var myJSON = File(appDataFolder + '/Mivtzai/Prefs/Prefs.json');
-    if (!myJSON.exists) {
+    if (myJSON.exists) {
+        var parsedPrefs = parsePrefs();
+        parsedPrefs.version = VERSION;
+        myJSON.open('w');
+        myJSON.write(JSON.stringify(parsedPrefs, null, 2));
+        myJSON.close();
+    }
+    else {
         myJSON.open('w');
         myJSON.write(JSON.stringify({ version: VERSION }, null, 2));
         myJSON.close();
@@ -291,6 +298,36 @@ var generateCaspiQuote = function () {
     var theQuote = quotes[Math.floor(Math.random() * quotes.length)];
     alert(theQuote, 'Caspi Says:');
 };
+var scaleWithOvershoot = function (layers) {
+    if (layers === void 0) { layers = app.project.activeItem.selectedLayers; }
+    var comp = app.project.activeItem;
+    if (layers.length === 0)
+        return;
+    layers.forEach(function (sl) {
+        var scaleProp = sl
+            .property('ADBE Transform Group')
+            .property('ADBE Scale');
+        var origVal = scaleProp.value;
+        var beforeKeys = 0;
+        var numKeys = scaleProp.numKeys;
+        for (var i = 1; i <= numKeys; i++) {
+            var keyTime = scaleProp.keyTime(i);
+            if (keyTime < comp.time)
+                beforeKeys++;
+        }
+        scaleProp.setValueAtTime(comp.time, [0, 0]);
+        scaleProp.setValueAtTime(comp.time + (1 / 24) * 10, [
+            origVal[0] + 5,
+            origVal[1] + 5
+        ]);
+        scaleProp.setValueAtTime(comp.time + (1 / 24) * 14, origVal);
+        var easeIn = new KeyframeEase(0.5, 66);
+        var easeOut = new KeyframeEase(0.75, 66);
+        scaleProp.setTemporalEaseAtKey(beforeKeys + 1, [easeIn, easeIn, easeIn], [easeOut, easeOut, easeOut]);
+        scaleProp.setTemporalEaseAtKey(beforeKeys + 2, [easeIn, easeIn, easeIn], [easeOut, easeOut, easeOut]);
+        scaleProp.setTemporalEaseAtKey(beforeKeys + 3, [easeIn, easeIn, easeIn], [easeOut, easeOut, easeOut]);
+    });
+};
 var createTvaiStroke = function () {
     app.beginUndoGroup('Create Tunnel Stroke');
     var comp = app.project.activeItem;
@@ -342,36 +379,10 @@ var createTvaiStroke = function () {
         .property('ADBE Vector Shape - Group').selected = true;
     app.endUndoGroup();
 };
-var scaleWithOvershoot = function () {
+var scaleWithOvershootQA = function (layers) {
+    if (layers === void 0) { layers = app.project.activeItem.selectedLayers; }
     app.beginUndoGroup('Pop Animation');
-    var comp = app.project.activeItem;
-    var selectedLayers = comp.selectedLayers;
-    if (selectedLayers.length === 0)
-        return;
-    selectedLayers.forEach(function (sl) {
-        var scaleProp = sl
-            .property('ADBE Transform Group')
-            .property('ADBE Scale');
-        var origVal = scaleProp.value;
-        var beforeKeys = 0;
-        var numKeys = scaleProp.numKeys;
-        for (var i = 1; i <= numKeys; i++) {
-            var keyTime = scaleProp.keyTime(i);
-            if (keyTime < comp.time)
-                beforeKeys++;
-        }
-        scaleProp.setValueAtTime(comp.time, [0, 0]);
-        scaleProp.setValueAtTime(comp.time + (1 / 24) * 10, [
-            origVal[0] + 5,
-            origVal[1] + 5
-        ]);
-        scaleProp.setValueAtTime(comp.time + (1 / 24) * 14, origVal);
-        var easeIn = new KeyframeEase(0.5, 66);
-        var easeOut = new KeyframeEase(0.75, 66);
-        scaleProp.setTemporalEaseAtKey(beforeKeys + 1, [easeIn, easeIn, easeIn], [easeOut, easeOut, easeOut]);
-        scaleProp.setTemporalEaseAtKey(beforeKeys + 2, [easeIn, easeIn, easeIn], [easeOut, easeOut, easeOut]);
-        scaleProp.setTemporalEaseAtKey(beforeKeys + 3, [easeIn, easeIn, easeIn], [easeOut, easeOut, easeOut]);
-    });
+    scaleWithOvershoot(layers);
     app.endUndoGroup();
 };
 var importLogos = function () {
@@ -845,7 +856,7 @@ var openProjectInFinder = function () {
         }
     }
 };
-var createExplosionIcon = function (circleColor, iconColor, hasCircle) {
+var createExplosionIcon = function (circleColor, iconColor, hasCircle, scale) {
     var comp = app.project.activeItem;
     var layer = comp.layers.addShape();
     layer.name = 'Boom';
@@ -1074,8 +1085,10 @@ var createExplosionIcon = function (circleColor, iconColor, hasCircle) {
     createBigBoom();
     if (hasCircle)
         createIconCircle(contents, circleColorRgb);
+    if (scale)
+        scaleWithOvershoot([layer]);
 };
-var createTunnelIcon = function (circleColor, iconColor, hasCircle) {
+var createTunnelIcon = function (circleColor, iconColor, hasCircle, scale) {
     var comp = app.project.activeItem;
     var layer = comp.layers.addShape();
     layer.name = 'Tunnel';
@@ -1170,8 +1183,10 @@ var createTunnelIcon = function (circleColor, iconColor, hasCircle) {
     createInside();
     if (hasCircle)
         createIconCircle(contents, circleColorRgb);
+    if (scale)
+        scaleWithOvershoot([layer]);
 };
-var createTerrorTunnelIcon = function (circleColor, iconColor, hasCircle) {
+var createTerrorTunnelIcon = function (circleColor, iconColor, hasCircle, scale) {
     var comp = app.project.activeItem;
     var layer = comp.layers.addShape();
     layer.name = 'Terror_Tunnel';
@@ -1478,8 +1493,10 @@ var createTerrorTunnelIcon = function (circleColor, iconColor, hasCircle) {
     createBigBoom();
     if (hasCircle)
         createIconCircle(contents, circleColorRgb);
+    if (scale)
+        scaleWithOvershoot([layer]);
 };
-var createTargetIcon = function (circleColor, iconColor, hasCircle) {
+var createTargetIcon = function (circleColor, iconColor, hasCircle, scale) {
     var comp = app.project.activeItem;
     var layer = comp.layers.addShape();
     layer.name = 'Target';
@@ -1638,8 +1655,10 @@ var createTargetIcon = function (circleColor, iconColor, hasCircle) {
     createLittleCircle();
     if (hasCircle)
         createIconCircle(contents, circleColorRgb);
+    if (scale)
+        scaleWithOvershoot([layer]);
 };
-var createSniperTargetIcon = function (circleColor, iconColor, hasCircle) {
+var createSniperTargetIcon = function (circleColor, iconColor, hasCircle, scale) {
     var comp = app.project.activeItem;
     var layer = comp.layers.addShape();
     layer.name = 'Sniper_Target';
@@ -2152,8 +2171,10 @@ var createSniperTargetIcon = function (circleColor, iconColor, hasCircle) {
     createOuterRing();
     if (hasCircle)
         createIconCircle(contents, circleColorRgb);
+    if (scale)
+        scaleWithOvershoot([layer]);
 };
-var createHouseBombingIcon = function (circleColor, iconColor, hasCircle) {
+var createHouseBombingIcon = function (circleColor, iconColor, hasCircle, scale) {
     var comp = app.project.activeItem;
     var layer = comp.layers.addShape();
     layer.name = 'House_Bombing';
@@ -2460,27 +2481,29 @@ var createHouseBombingIcon = function (circleColor, iconColor, hasCircle) {
     createBigBoom();
     if (hasCircle)
         createIconCircle(contents, circleColorRgb);
+    if (scale)
+        scaleWithOvershoot([layer]);
 };
-var createIconFromId = function (id, circleColor, iconColor, hasCircle) {
+var createIconFromId = function (id, circleColor, iconColor, hasCircle, scale) {
     app.beginUndoGroup("Create Icon: ".concat(id));
     switch (id) {
         case 'Boom':
-            createExplosionIcon(circleColor, iconColor, hasCircle);
+            createExplosionIcon(circleColor, iconColor, hasCircle, scale);
             break;
         case 'Tunnel':
-            createTunnelIcon(circleColor, iconColor, hasCircle);
+            createTunnelIcon(circleColor, iconColor, hasCircle, scale);
             break;
         case 'Terror Tunnel':
-            createTerrorTunnelIcon(circleColor, iconColor, hasCircle);
+            createTerrorTunnelIcon(circleColor, iconColor, hasCircle, scale);
             break;
         case 'Target':
-            createTargetIcon(circleColor, iconColor, hasCircle);
+            createTargetIcon(circleColor, iconColor, hasCircle, scale);
             break;
         case 'Sniper Target':
-            createSniperTargetIcon(circleColor, iconColor, hasCircle);
+            createSniperTargetIcon(circleColor, iconColor, hasCircle, scale);
             break;
         case 'House Bombing':
-            createHouseBombingIcon(circleColor, iconColor, hasCircle);
+            createHouseBombingIcon(circleColor, iconColor, hasCircle, scale);
             break;
     }
     app.endUndoGroup();
@@ -3880,7 +3903,9 @@ var init = function (thisObj) {
     iconDD.selection = 0;
     var IconsBtnsGrp = iconsGrp.add('group');
     IconsBtnsGrp.alignChildren = 'left';
-    var circleCheck = iconsGrp.add('checkbox', undefined, 'Circle');
+    var iconsChecksGrp = iconsGrp.add('group');
+    var circleCheck = iconsChecksGrp.add('checkbox', undefined, 'Circle');
+    var scaleCheck = iconsChecksGrp.add('checkbox', undefined, 'Scale');
     var circleColorGrp = iconsGrp.add('group');
     circleColorGrp.add('statictext', undefined, 'Circle Color:');
     var circleColorDD = circleColorGrp.add('dropdownlist', undefined, [
@@ -3900,7 +3925,7 @@ var init = function (thisObj) {
     iconCreateBtn.preferredSize[0] = 100;
     iconCreateBtn.onClick = function () {
         var id = iconDD.selection.toString();
-        createIconFromId(id, circleColorDD.selection.toString(), iconColorDD.selection.toString(), circleCheck.value);
+        createIconFromId(id, circleColorDD.selection.toString(), iconColorDD.selection.toString(), circleCheck.value, scaleCheck.value);
     };
     var locationsTab = tpanel.add('tab', undefined, ['Locations']);
     var locationsGrp = locationsTab.add('group');
@@ -4047,6 +4072,6 @@ var init = function (thisObj) {
     }
 };
 (function (thisObj) {
-    writeEmptyPrefs();
+    setUpPrefs();
     init(thisObj);
 })(this);

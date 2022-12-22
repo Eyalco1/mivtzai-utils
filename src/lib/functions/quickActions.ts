@@ -86,52 +86,11 @@ const createTvaiStroke = (): void => {
   app.endUndoGroup();
 };
 
-const scaleWithOvershoot = (): void => {
+const scaleWithOvershootQA = (
+  layers: Layer[] = (<CompItem>app.project.activeItem).selectedLayers
+): void => {
   app.beginUndoGroup('Pop Animation');
-
-  const comp = app.project.activeItem as CompItem;
-  const selectedLayers = comp.selectedLayers;
-  if (selectedLayers.length === 0) return;
-
-  selectedLayers.forEach(sl => {
-    const scaleProp = sl
-      .property('ADBE Transform Group')
-      .property('ADBE Scale') as Property<any>;
-    const origVal = scaleProp.value;
-
-    let beforeKeys: number = 0;
-    const numKeys = scaleProp.numKeys;
-    for (let i = 1; i <= numKeys; i++) {
-      const keyTime = scaleProp.keyTime(i);
-      if (keyTime < comp.time) beforeKeys++;
-    }
-
-    scaleProp.setValueAtTime(comp.time, [0, 0]);
-    scaleProp.setValueAtTime(comp.time + (1 / 24) * 10, [
-      origVal[0] + 5,
-      origVal[1] + 5
-    ]);
-    scaleProp.setValueAtTime(comp.time + (1 / 24) * 14, origVal);
-
-    const easeIn = new KeyframeEase(0.5, 66);
-    const easeOut = new KeyframeEase(0.75, 66);
-    scaleProp.setTemporalEaseAtKey(
-      beforeKeys + 1,
-      [easeIn, easeIn, easeIn],
-      [easeOut, easeOut, easeOut]
-    );
-    scaleProp.setTemporalEaseAtKey(
-      beforeKeys + 2,
-      [easeIn, easeIn, easeIn],
-      [easeOut, easeOut, easeOut]
-    );
-    scaleProp.setTemporalEaseAtKey(
-      beforeKeys + 3,
-      [easeIn, easeIn, easeIn],
-      [easeOut, easeOut, easeOut]
-    );
-  });
-
+  scaleWithOvershoot(layers);
   app.endUndoGroup();
 };
 
