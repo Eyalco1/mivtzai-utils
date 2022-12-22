@@ -1,8 +1,10 @@
-const getScriptUIPathFromOS = (os: OS) => {
+const getAssetsPathFromOS = (os: OS) => {
   if (os === 'Win') {
-    // return ...
+    return `${File(
+      '.'
+    )}/Scripts/ScriptUI Panels/MivtzaiUtils_v${VERSION.toString()} Assets`;
   } else if (os === 'Mac') {
-    return '\\Applications\\Adobe After Effects 2021\\Scripts\\ScriptUI Panels';
+    return '/Applications/Adobe After Effects 2021/Scripts/ScriptUI Panels';
   }
 };
 
@@ -311,25 +313,9 @@ const importGoogleMaps = (location: GoogleMapsLocation): void => {
   }
 
   const mapItem = app.project.importFile(
-    //   new ImportOptions(
-    //     File(
-    //       `${File(
-    //         '.'
-    //       )}/Scripts/ScriptUI Panels/MivtzaiUtils_v${VERSION} Assets/Images/${location}_Map_${whichMap}.png`
-    //     )
-    //   )
-    // ) as AVItem;
-
     new ImportOptions(
       File(
-        getScriptUIPathFromOS('Mac') +
-          '\\MivtzaiUtils_v' +
-          VERSION +
-          'Assets\\Images\\' +
-          location +
-          '_Map_' +
-          whichMap +
-          '.png'
+        `${getAssetsPathFromOS('Win')}/Images/${location}_Map_${whichMap}.png`
       )
     )
   ) as AVItem;
