@@ -2,7 +2,7 @@ const init = (thisObj: typeof globalThis) => {
     let w =
         thisObj instanceof Panel
             ? thisObj
-            : new Window('palette', 'Mivtzai Utils', undefined, {
+            : new Window('palette', '@@name', undefined, {
                   resizeable: true
               });
     if (w == null) w;

@@ -1,22 +1,25 @@
 {
-  "name": "mivtzai-utils",
-  "version": "1.0.0",
-  "description": "Utilites for operative projects",
-  "main": "./src/index.jsx",
-  "author": "Eyal Cohen",
-  "license": "ISC",
-  "scripts": {
-    "tsc:temp": "tsc --rootDir .temp --outFile ./dist/MivtzaiUtils_Test.jsx"
-  },
-  "devDependencies": {
-    "delete": "^1.1.0",
-    "gulp": "^4.0.2",
-    "gulp-exec": "^5.0.0",
-    "gulp-replace": "^1.1.4",
-    "jsxbin": "^2.2.0",
-    "types-for-adobe": "^6.0.1"
-  },
-  "dependencies": {
-    "fs-extra": "^11.1.0"
-  }
+    "name": "mivtzai-utils",
+    "version": "1.0.0",
+    "description": "Utilites for operative projects",
+    "main": "./src/index.jsx",
+    "author": "Eyal Cohen",
+    "license": "ISC",
+    "scripts": {
+        "tsc:temp": "tsc --rootDir .temp --outFile ./dist/MivtzaiUtils_Test.jsx"
+    },
+    "eyal": {
+        "name": "Operative Utils"
+    },
+    "devDependencies": {
+        "delete": "^1.1.0",
+        "gulp": "^4.0.2",
+        "gulp-exec": "^5.0.0",
+        "gulp-replace": "^1.1.4",
+        "jsxbin": "^2.2.0",
+        "types-for-adobe": "^6.0.1"
+    },
+    "dependencies": {
+        "fs-extra": "^11.1.0"
+    }
 }

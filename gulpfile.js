@@ -13,12 +13,14 @@ const scriptFolder =
     'C:\\Program Files\\Adobe\\Adobe After Effects 2022\\Support Files\\Scripts\\ScriptUI Panels';
 const headerStr =
     `/**\n` +
-    ` * @name ${pkg.name}\n` +
+    ` * @name ${pkg.eyal.name}\n` +
     ` * @description ${pkg.description}\n` +
     ` * @version ${pkg.version}\n` +
     ` * @author ${pkg.author}\n` +
     ` * @license ${pkg.license}\n` +
     ` */\n\n`;
+
+const scriptNameNoSpaces = pkg.eyal.name.replace(/\s+/g, '');
 
 const executeScript = (absFilePath, callback) => {
     const shellCommand = `"${exeFolder}" -r ` + absFilePath;
@@ -28,8 +30,8 @@ const executeScript = (absFilePath, callback) => {
 task('renameWithVersion', done => {
     try {
         fs.renameSync(
-            'dist/MivtzaiUtils.jsx',
-            `dist/MivtzaiUtils_v${pkg.version}.jsx`
+            `dist/temp.jsx`,
+            `dist/${scriptNameNoSpaces}_v${pkg.version}.jsx`
         );
     } catch (_) {}
 
@@ -37,17 +39,17 @@ task('renameWithVersion', done => {
 });
 
 task('createHeader', done => {
-    const read = fs.readFileSync(`dist/MivtzaiUtils.jsx`, {
+    const read = fs.readFileSync(`dist/temp.jsx`, {
         encoding: 'utf-8'
     });
-    fs.writeFileSync(`dist/MivtzaiUtils.jsx`, headerStr + read);
+    fs.writeFileSync(`dist/temp.jsx`, headerStr + read);
     done();
 });
 
 task('preprocessSources', done => {
     src('src/**/*.ts')
         .pipe(replace(/^\s*#include/gm, '//= include'))
-        .pipe(replace('@@name', pkg.name))
+        .pipe(replace('@@name', pkg.eyal.name))
         .pipe(replace('@@version', pkg.version))
         .pipe(dest('.temp'));
 
@@ -62,14 +64,21 @@ task('tsc', done => {
 });
 
 task('buildAssets', done => {
-    fse.copySync('src/assets', `dist/MivtzaiUtils_v${pkg.version} Assets`, {
-        overwrite: true
-    });
+    fse.copySync(
+        'src/assets',
+        `dist/${scriptNameNoSpaces}_v${pkg.version} Assets`,
+        {
+            overwrite: true
+        }
+    );
     done();
 });
 
 task('runScript', done => {
-    const absPath = join(__dirname, `dist/MivtzaiUtils_v${pkg.version}.jsx`);
+    const absPath = join(
+        __dirname,
+        `dist/${scriptNameNoSpaces}_v${pkg.version}.jsx`
+    );
     executeScript(absPath, (error, stdout, stderr) => {
         done();
     });
@@ -77,8 +86,8 @@ task('runScript', done => {
 
 task('jsxbin', done => {
     jsxbin(
-        `dist/MivtzaiUtils_v${pkg.version}.jsx`,
-        `dist/MivtzaiUtils_v${pkg.version}.jsxbin`
+        `dist/${scriptNameNoSpaces}_v${pkg.version}.jsx`,
+        `dist/${scriptNameNoSpaces}_v${pkg.version}.jsxbin`
     );
 
     done();
@@ -86,19 +95,19 @@ task('jsxbin', done => {
 
 task('addToHost', done => {
     fs.copyFileSync(
-        `dist/MivtzaiUtils_v${pkg.version}.jsx`,
-        scriptFolder + `\\MivtzaiUtils_v${pkg.version}.jsx`
+        `dist/${scriptNameNoSpaces}_v${pkg.version}.jsx`,
+        scriptFolder + `\\${scriptNameNoSpaces}_v${pkg.version}.jsx`
     );
     fse.copySync(
-        `dist/MivtzaiUtils_v${pkg.version} Assets`,
-        scriptFolder + `\\MivtzaiUtils_v${pkg.version} Assets`,
+        `dist/${scriptNameNoSpaces}_v${pkg.version} Assets`,
+        scriptFolder + `\\${scriptNameNoSpaces}_v${pkg.version} Assets`,
         { overwrite: true }
     );
     done();
 });
 
 task('clean', done => {
-    del(['.temp', 'dist/MivtzaiUtils.jsx']);
+    del(['.temp', `dist/${scriptNameNoSpaces}.jsx`]);
     done();
 });
 

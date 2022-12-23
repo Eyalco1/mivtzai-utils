@@ -4,7 +4,7 @@
         "module": "none",
         "lib": ["ES2020"],
         "types": ["types-for-adobe/AfterEffects/2018"],
-        "outFile": "./dist/MivtzaiUtils.jsx",
+        "outFile": "./dist/temp.jsx",
         "jsx": "preserve",
         "removeComments": true,
         "skipLibCheck": true
@@ -12,7 +12,6 @@
     "include": [
         ".temp/lib/polyfills.ts",
         ".temp/lib/types.ts",
-        ".temp/lib/global.ts",
         ".temp/lib/utils.ts",
         ".temp/lib/functions/quickActions.ts",
         ".temp/lib/functions/icons.ts",

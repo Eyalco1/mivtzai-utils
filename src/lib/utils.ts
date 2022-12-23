@@ -1,8 +1,6 @@
 const getAssetsPathFromOS = (os: OS = getOS()) => {
     if (os === 'Win') {
-        return `${File(
-            '.'
-        )}/Scripts/ScriptUI Panels/MivtzaiUtils_v${VERSION.toString()} Assets`;
+        return `${File('.')}/Scripts/ScriptUI Panels/@@name_v@@version Assets`;
     } else if (os === 'Mac') {
         return `/Applications/Adobe After Effects 20${app.version.substring(
             0,
@@ -277,7 +275,7 @@ const createFolder = (folderObj: Folder): Folder => {
 
 const readPrefs = (): string => {
     const appDataFolder = File(Folder.appData.toString()).toString();
-    const file = File(appDataFolder + '/Mivtzai/Prefs/Prefs.json');
+    const file = File(appDataFolder + '/@@name/Prefs/Prefs.json');
     file.open('r');
     const stringData: string = file.read();
     file.close();
@@ -293,27 +291,27 @@ const parsePrefs = (): Prefs => {
 
 const setUpPrefs = (): void => {
     const appDataFolder = File(Folder.appData.toString()).toString();
-    createFolder(Folder(appDataFolder + '/Mivtzai'));
-    createFolder(Folder(appDataFolder + '/Mivtzai/Prefs'));
-    const myJSON = File(appDataFolder + '/Mivtzai/Prefs/Prefs.json');
+    createFolder(Folder(appDataFolder + '/@@name'));
+    createFolder(Folder(appDataFolder + '/@@name/Prefs'));
+    const myJSON = File(appDataFolder + '/@@name/Prefs/Prefs.json');
     if (myJSON.exists) {
         const parsedPrefs = parsePrefs();
-        parsedPrefs.version = VERSION;
+        parsedPrefs.version = '@@version';
         myJSON.open('w');
         myJSON.write(JSON.stringify(parsedPrefs, null, 2));
         myJSON.close();
     } else {
         myJSON.open('w');
-        myJSON.write(JSON.stringify({ version: VERSION }, null, 2));
+        myJSON.write(JSON.stringify({ version: '@@version' }, null, 2));
         myJSON.close();
     }
 };
 
 const writePrefsToMemory = (prefs: Prefs) => {
     const appDataFolder = File(Folder.appData.toString()).toString();
-    createFolder(Folder(appDataFolder + '/Mivtzai'));
-    createFolder(Folder(appDataFolder + '/Mivtzai/Prefs'));
-    const myJSON = File(appDataFolder + '/Mivtzai/Prefs/Prefs.json');
+    createFolder(Folder(appDataFolder + '/@@name'));
+    createFolder(Folder(appDataFolder + '/@@name/Prefs'));
+    const myJSON = File(appDataFolder + '/@@name/Prefs/Prefs.json');
     myJSON.open('w');
     myJSON.write(JSON.stringify(prefs, null, 2));
     myJSON.close();

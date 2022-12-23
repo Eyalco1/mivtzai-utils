@@ -1,5 +1,5 @@
 /**
- * @name mivtzai-utils
+ * @name Operative Utils
  * @description Utilites for operative projects
  * @version 1.0.0
  * @author Eyal Cohen
@@ -71,7 +71,7 @@ var VERSION = '1.0.0';
 var getAssetsPathFromOS = function (os) {
     if (os === void 0) { os = getOS(); }
     if (os === 'Win') {
-        return "".concat(File('.'), "/Scripts/ScriptUI Panels/MivtzaiUtils_v").concat(VERSION.toString(), " Assets");
+        return "".concat(File('.'), "/Scripts/ScriptUI Panels/Operative Utils_v1.0.0 Assets");
     }
     else if (os === 'Mac') {
         return "/Applications/Adobe After Effects 20".concat(app.version.substring(0, 2), "/Scripts/ScriptUI Panels");
@@ -215,7 +215,7 @@ var createFolder = function (folderObj) {
 };
 var readPrefs = function () {
     var appDataFolder = File(Folder.appData.toString()).toString();
-    var file = File(appDataFolder + '/Mivtzai/Prefs/Prefs.json');
+    var file = File(appDataFolder + '/Operative Utils/Prefs/Prefs.json');
     file.open('r');
     var stringData = file.read();
     file.close();
@@ -228,27 +228,27 @@ var parsePrefs = function () {
 };
 var setUpPrefs = function () {
     var appDataFolder = File(Folder.appData.toString()).toString();
-    createFolder(Folder(appDataFolder + '/Mivtzai'));
-    createFolder(Folder(appDataFolder + '/Mivtzai/Prefs'));
-    var myJSON = File(appDataFolder + '/Mivtzai/Prefs/Prefs.json');
+    createFolder(Folder(appDataFolder + '/Operative Utils'));
+    createFolder(Folder(appDataFolder + '/Operative Utils/Prefs'));
+    var myJSON = File(appDataFolder + '/Operative Utils/Prefs/Prefs.json');
     if (myJSON.exists) {
         var parsedPrefs = parsePrefs();
-        parsedPrefs.version = VERSION;
+        parsedPrefs.version = '1.0.0';
         myJSON.open('w');
         myJSON.write(JSON.stringify(parsedPrefs, null, 2));
         myJSON.close();
     }
     else {
         myJSON.open('w');
-        myJSON.write(JSON.stringify({ version: VERSION }, null, 2));
+        myJSON.write(JSON.stringify({ version: '1.0.0' }, null, 2));
         myJSON.close();
     }
 };
 var writePrefsToMemory = function (prefs) {
     var appDataFolder = File(Folder.appData.toString()).toString();
-    createFolder(Folder(appDataFolder + '/Mivtzai'));
-    createFolder(Folder(appDataFolder + '/Mivtzai/Prefs'));
-    var myJSON = File(appDataFolder + '/Mivtzai/Prefs/Prefs.json');
+    createFolder(Folder(appDataFolder + '/Operative Utils'));
+    createFolder(Folder(appDataFolder + '/Operative Utils/Prefs'));
+    var myJSON = File(appDataFolder + '/Operative Utils/Prefs/Prefs.json');
     myJSON.open('w');
     myJSON.write(JSON.stringify(prefs, null, 2));
     myJSON.close();
@@ -847,7 +847,7 @@ var openProjectInFinder = function () {
         var selFolder = Folder.selectDialog('Select Project Folder');
         writePrefsToMemory({
             projectFolderPath: selFolder.fsName,
-            version: VERSION
+            version: '1.0.0'
         });
     };
     var ctrlKey = ScriptUI.environment.keyboardState.ctrlKey;
@@ -1158,10 +1158,7 @@ var createTunnelIcon = function (circleColor, iconColor, hasCircle, scale) {
     };
     createBorder();
     createInside();
-    if (hasCircle)
-        createIconCircle(contents, circleColorRgb);
-    if (scale)
-        scaleWithOvershoot([layer]);
+    iconAftermath(hasCircle, contents, circleColorRgb, scale, layer);
 };
 var createTerrorTunnelIcon = function (circleColor, iconColor, hasCircle, scale) {
     var _a = setUpIcon('Terror_Tunnel', circleColor, iconColor), layer = _a.layer, contents = _a.contents, circleColorRgb = _a.circleColorRgb, iconColorRgb = _a.iconColorRgb;
@@ -1445,10 +1442,7 @@ var createTerrorTunnelIcon = function (circleColor, iconColor, hasCircle, scale)
     createCircleOne();
     createLittleBoom();
     createBigBoom();
-    if (hasCircle)
-        createIconCircle(contents, circleColorRgb);
-    if (scale)
-        scaleWithOvershoot([layer]);
+    iconAftermath(hasCircle, contents, circleColorRgb, scale, layer);
 };
 var createTargetIcon = function (circleColor, iconColor, hasCircle, scale) {
     var _a = setUpIcon('Target', circleColor, iconColor), layer = _a.layer, contents = _a.contents, circleColorRgb = _a.circleColorRgb, iconColorRgb = _a.iconColorRgb;
@@ -1584,10 +1578,7 @@ var createTargetIcon = function (circleColor, iconColor, hasCircle, scale) {
     createRecTop();
     createBigCircle();
     createLittleCircle();
-    if (hasCircle)
-        createIconCircle(contents, circleColorRgb);
-    if (scale)
-        scaleWithOvershoot([layer]);
+    iconAftermath(hasCircle, contents, circleColorRgb, scale, layer);
 };
 var createSniperTargetIcon = function (circleColor, iconColor, hasCircle, scale) {
     var _a = setUpIcon('Sniper_Target', circleColor, iconColor), layer = _a.layer, contents = _a.contents, circleColorRgb = _a.circleColorRgb, iconColorRgb = _a.iconColorRgb;
@@ -2077,10 +2068,7 @@ var createSniperTargetIcon = function (circleColor, iconColor, hasCircle, scale)
     createMiddleBR();
     createMiddleBL();
     createOuterRing();
-    if (hasCircle)
-        createIconCircle(contents, circleColorRgb);
-    if (scale)
-        scaleWithOvershoot([layer]);
+    iconAftermath(hasCircle, contents, circleColorRgb, scale, layer);
 };
 var createHouseBombingIcon = function (circleColor, iconColor, hasCircle, scale) {
     var _a = setUpIcon('House_Bombing', circleColor, iconColor), layer = _a.layer, contents = _a.contents, circleColorRgb = _a.circleColorRgb, iconColorRgb = _a.iconColorRgb;
@@ -2364,10 +2352,7 @@ var createHouseBombingIcon = function (circleColor, iconColor, hasCircle, scale)
     createCircleOne();
     createLittleBoom();
     createBigBoom();
-    if (hasCircle)
-        createIconCircle(contents, circleColorRgb);
-    if (scale)
-        scaleWithOvershoot([layer]);
+    iconAftermath(hasCircle, contents, circleColorRgb, scale, layer);
 };
 var createFireIcon = function (circleColor, iconColor, hasCircle, scale) {
     var _a = setUpIcon('Fire', circleColor, iconColor), layer = _a.layer, contents = _a.contents, circleColorRgb = _a.circleColorRgb, iconColorRgb = _a.iconColorRgb;
@@ -2460,10 +2445,7 @@ var createFireIcon = function (circleColor, iconColor, hasCircle, scale) {
     var offsetPaths = contents.addProperty('ADBE Vector Filter - Offset');
     var offsetAmt = offsetPaths.property('ADBE Vector Offset Amount');
     offsetAmt.setValue(0.5);
-    if (hasCircle)
-        createIconCircle(contents, circleColorRgb);
-    if (scale)
-        scaleWithOvershoot([layer]);
+    iconAftermath(hasCircle, contents, circleColorRgb, scale, layer);
 };
 var createIconFromId = function (id, circleColor, iconColor, hasCircle, scale) {
     app.beginUndoGroup("Create Icon: ".concat(id));
@@ -3816,7 +3798,7 @@ var quoteBinary = '\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x10\x00\x00
 var init = function (thisObj) {
     var w = thisObj instanceof Panel
         ? thisObj
-        : new Window('palette', 'Mivtzai Utils', undefined, {
+        : new Window('palette', 'Operative Utils', undefined, {
             resizeable: true
         });
     if (w == null)

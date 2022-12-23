@@ -667,7 +667,7 @@ const openProjectInFinder = (): void => {
         const selFolder = Folder.selectDialog('Select Project Folder');
         writePrefsToMemory({
             projectFolderPath: selFolder.fsName,
-            version: VERSION
+            version: '@@version'
         });
     };
 
