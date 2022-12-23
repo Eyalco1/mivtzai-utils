@@ -1,16 +1,33 @@
+const setUpIcon = (
+    name: string,
+    circleColor: ColorDropdown,
+    iconColor: ColorDropdown
+) => {
+    const comp = app.project.activeItem as CompItem;
+    const layer = comp.layers.addShape();
+    layer.name = name;
+    const contents = layer.property('Contents') as PropertyGroup;
+
+    const circleColorRgb = colorNameToRGB(circleColor);
+    const iconColorRgb = colorNameToRGB(iconColor);
+
+    return { layer, contents, circleColorRgb, iconColorRgb };
+};
+const iconAftermath = () => {};
+
+// =======================
+
 const createExplosionIcon = (
     circleColor: ColorDropdown,
     iconColor: ColorDropdown,
     hasCircle: Boolean,
     scale: boolean
 ): void => {
-    const comp = app.project.activeItem as CompItem;
-    const layer = comp.layers.addShape();
-    layer.name = 'Boom';
-    const contents = layer.property('Contents') as PropertyGroup;
-
-    const circleColorRgb = colorNameToRGB(circleColor);
-    const iconColorRgb = colorNameToRGB(iconColor);
+    const { layer, contents, circleColorRgb, iconColorRgb } = setUpIcon(
+        'Boom',
+        circleColor,
+        iconColor
+    );
 
     const createBigBoom = () => {
         const vertices: [number, number][] = [
@@ -300,13 +317,11 @@ const createTunnelIcon = (
     hasCircle: Boolean,
     scale: boolean
 ): void => {
-    const comp = app.project.activeItem as CompItem;
-    const layer = comp.layers.addShape();
-    layer.name = 'Tunnel';
-    const contents = layer.property('Contents') as PropertyGroup;
-
-    const circleColorRgb = colorNameToRGB(circleColor);
-    const iconColorRgb = colorNameToRGB(iconColor);
+    const { layer, contents, circleColorRgb, iconColorRgb } = setUpIcon(
+        'Tunnel',
+        circleColor,
+        iconColor
+    );
 
     const createInside = () => {
         const vertices: [number, number][] = [
@@ -418,13 +433,11 @@ const createTerrorTunnelIcon = (
     hasCircle: Boolean,
     scale: boolean
 ): void => {
-    const comp = app.project.activeItem as CompItem;
-    const layer = comp.layers.addShape();
-    layer.name = 'Terror_Tunnel';
-    const contents = layer.property('Contents') as PropertyGroup;
-
-    const circleColorRgb = colorNameToRGB(circleColor);
-    const iconColorRgb = colorNameToRGB(iconColor);
+    const { layer, contents, circleColorRgb, iconColorRgb } = setUpIcon(
+        'Terror_Tunnel',
+        circleColor,
+        iconColor
+    );
 
     const createBigBoom = () => {
         const vertices: [number, number][] = [
@@ -836,13 +849,11 @@ const createTargetIcon = (
     hasCircle: Boolean,
     scale: boolean
 ): void => {
-    const comp = app.project.activeItem as CompItem;
-    const layer = comp.layers.addShape();
-    layer.name = 'Target';
-    const contents = layer.property('Contents') as PropertyGroup;
-
-    const circleColorRgb = colorNameToRGB(circleColor);
-    const iconColorRgb = colorNameToRGB(iconColor);
+    const { layer, contents, circleColorRgb, iconColorRgb } = setUpIcon(
+        'Target',
+        circleColor,
+        iconColor
+    );
 
     const createLittleCircle = () => {
         const vertices: [number, number][] = [
@@ -1076,13 +1087,11 @@ const createSniperTargetIcon = (
     hasCircle: Boolean,
     scale: boolean
 ): void => {
-    const comp = app.project.activeItem as CompItem;
-    const layer = comp.layers.addShape();
-    layer.name = 'Sniper_Target';
-    const contents = layer.property('Contents') as PropertyGroup;
-
-    const circleColorRgb = colorNameToRGB(circleColor);
-    const iconColorRgb = colorNameToRGB(iconColor);
+    const { layer, contents, circleColorRgb, iconColorRgb } = setUpIcon(
+        'Sniper_Target',
+        circleColor,
+        iconColor
+    );
 
     const createOuterRing = () => {
         const vertices: [number, number][] = [
@@ -1715,13 +1724,11 @@ const createHouseBombingIcon = (
     hasCircle: Boolean,
     scale: boolean
 ): void => {
-    const comp = app.project.activeItem as CompItem;
-    const layer = comp.layers.addShape();
-    layer.name = 'House_Bombing';
-    const contents = layer.property('Contents') as PropertyGroup;
-
-    const circleColorRgb = colorNameToRGB(circleColor);
-    const iconColorRgb = colorNameToRGB(iconColor);
+    const { layer, contents, circleColorRgb, iconColorRgb } = setUpIcon(
+        'House_Bombing',
+        circleColor,
+        iconColor
+    );
 
     const createBigBoom = () => {
         const vertices: [number, number][] = [
@@ -2118,13 +2125,11 @@ const createFireIcon = (
     hasCircle: Boolean,
     scale: boolean
 ): void => {
-    const comp = app.project.activeItem as CompItem;
-    const layer = comp.layers.addShape();
-    layer.name = 'Fire';
-    const contents = layer.property('Contents') as PropertyGroup;
-
-    const circleColorRgb = colorNameToRGB(circleColor);
-    const iconColorRgb = colorNameToRGB(iconColor);
+    const { layer, contents, circleColorRgb, iconColorRgb } = setUpIcon(
+        'Fire',
+        circleColor,
+        iconColor
+    );
 
     const createFireL = () => {
         const vertices: [number, number][] = [

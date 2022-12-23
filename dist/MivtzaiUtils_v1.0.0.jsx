@@ -867,13 +867,18 @@ var openProjectInFinder = function () {
         }
     }
 };
-var createExplosionIcon = function (circleColor, iconColor, hasCircle, scale) {
+var setUpIcon = function (name, circleColor, iconColor) {
     var comp = app.project.activeItem;
     var layer = comp.layers.addShape();
-    layer.name = 'Boom';
+    layer.name = name;
     var contents = layer.property('Contents');
     var circleColorRgb = colorNameToRGB(circleColor);
     var iconColorRgb = colorNameToRGB(iconColor);
+    return { layer: layer, contents: contents, circleColorRgb: circleColorRgb, iconColorRgb: iconColorRgb };
+};
+var iconAftermath = function () { };
+var createExplosionIcon = function (circleColor, iconColor, hasCircle, scale) {
+    var _a = setUpIcon('Boom', circleColor, iconColor), layer = _a.layer, contents = _a.contents, circleColorRgb = _a.circleColorRgb, iconColorRgb = _a.iconColorRgb;
     var createBigBoom = function () {
         var vertices = [
             [-84.9202270507812, 123.637664794922],
@@ -1086,26 +1091,8 @@ var createTunnelIcon = function (circleColor, iconColor, hasCircle, scale) {
     var layer = comp.layers.addShape();
     layer.name = 'Tunnel';
     var contents = layer.property('Contents');
-    var circleColorRgb;
-    if (circleColor === 'White') {
-        circleColorRgb = [255, 255, 255];
-    }
-    else if (circleColor === 'Black') {
-        circleColorRgb = [0, 0, 0];
-    }
-    else if (circleColor === 'Red') {
-        circleColorRgb = [197, 24, 24];
-    }
-    var iconColorRgb;
-    if (iconColor === 'White') {
-        iconColorRgb = [255, 255, 255];
-    }
-    else if (iconColor === 'Black') {
-        iconColorRgb = [0, 0, 0];
-    }
-    else if (iconColor === 'Red') {
-        iconColorRgb = [197, 24, 24];
-    }
+    var circleColorRgb = colorNameToRGB(circleColor);
+    var iconColorRgb = colorNameToRGB(iconColor);
     var createInside = function () {
         var vertices = [
             [0, -75.4871215820312],
@@ -1184,26 +1171,8 @@ var createTerrorTunnelIcon = function (circleColor, iconColor, hasCircle, scale)
     var layer = comp.layers.addShape();
     layer.name = 'Terror_Tunnel';
     var contents = layer.property('Contents');
-    var circleColorRgb;
-    if (circleColor === 'White') {
-        circleColorRgb = [255, 255, 255];
-    }
-    else if (circleColor === 'Black') {
-        circleColorRgb = [0, 0, 0];
-    }
-    else if (circleColor === 'Red') {
-        circleColorRgb = [197, 24, 24];
-    }
-    var iconColorRgb;
-    if (iconColor === 'White') {
-        iconColorRgb = [255, 255, 255];
-    }
-    else if (iconColor === 'Black') {
-        iconColorRgb = [0, 0, 0];
-    }
-    else if (iconColor === 'Red') {
-        iconColorRgb = [197, 24, 24];
-    }
+    var circleColorRgb = colorNameToRGB(circleColor);
+    var iconColorRgb = colorNameToRGB(iconColor);
     var createBigBoom = function () {
         var vertices = [
             [-33.0333709716797, 49.8754119873047],
@@ -1494,26 +1463,8 @@ var createTargetIcon = function (circleColor, iconColor, hasCircle, scale) {
     var layer = comp.layers.addShape();
     layer.name = 'Target';
     var contents = layer.property('Contents');
-    var circleColorRgb;
-    if (circleColor === 'White') {
-        circleColorRgb = [255, 255, 255];
-    }
-    else if (circleColor === 'Black') {
-        circleColorRgb = [0, 0, 0];
-    }
-    else if (circleColor === 'Red') {
-        circleColorRgb = [197, 24, 24];
-    }
-    var iconColorRgb;
-    if (iconColor === 'White') {
-        iconColorRgb = [255, 255, 255];
-    }
-    else if (iconColor === 'Black') {
-        iconColorRgb = [0, 0, 0];
-    }
-    else if (iconColor === 'Red') {
-        iconColorRgb = [197, 24, 24];
-    }
+    var circleColorRgb = colorNameToRGB(circleColor);
+    var iconColorRgb = colorNameToRGB(iconColor);
     var createLittleCircle = function () {
         var vertices = [
             [31.2296600341797, 0],
@@ -1656,26 +1607,8 @@ var createSniperTargetIcon = function (circleColor, iconColor, hasCircle, scale)
     var layer = comp.layers.addShape();
     layer.name = 'Sniper_Target';
     var contents = layer.property('Contents');
-    var circleColorRgb;
-    if (circleColor === 'White') {
-        circleColorRgb = [255, 255, 255];
-    }
-    else if (circleColor === 'Black') {
-        circleColorRgb = [0, 0, 0];
-    }
-    else if (circleColor === 'Red') {
-        circleColorRgb = [197, 24, 24];
-    }
-    var iconColorRgb;
-    if (iconColor === 'White') {
-        iconColorRgb = [255, 255, 255];
-    }
-    else if (iconColor === 'Black') {
-        iconColorRgb = [0, 0, 0];
-    }
-    else if (iconColor === 'Red') {
-        iconColorRgb = [197, 24, 24];
-    }
+    var circleColorRgb = colorNameToRGB(circleColor);
+    var iconColorRgb = colorNameToRGB(iconColor);
     var createOuterRing = function () {
         var vertices = [
             [0, -103.27001953125],
@@ -2172,26 +2105,8 @@ var createHouseBombingIcon = function (circleColor, iconColor, hasCircle, scale)
     var layer = comp.layers.addShape();
     layer.name = 'House_Bombing';
     var contents = layer.property('Contents');
-    var circleColorRgb;
-    if (circleColor === 'White') {
-        circleColorRgb = [255, 255, 255];
-    }
-    else if (circleColor === 'Black') {
-        circleColorRgb = [0, 0, 0];
-    }
-    else if (circleColor === 'Red') {
-        circleColorRgb = [197, 24, 24];
-    }
-    var iconColorRgb;
-    if (iconColor === 'White') {
-        iconColorRgb = [255, 255, 255];
-    }
-    else if (iconColor === 'Black') {
-        iconColorRgb = [0, 0, 0];
-    }
-    else if (iconColor === 'Red') {
-        iconColorRgb = [197, 24, 24];
-    }
+    var circleColorRgb = colorNameToRGB(circleColor);
+    var iconColorRgb = colorNameToRGB(iconColor);
     var createBigBoom = function () {
         var vertices = [
             [-65.4785614013672, 11.6502380371094],
@@ -2482,26 +2397,8 @@ var createFireIcon = function (circleColor, iconColor, hasCircle, scale) {
     var layer = comp.layers.addShape();
     layer.name = 'Fire';
     var contents = layer.property('Contents');
-    var circleColorRgb;
-    if (circleColor === 'White') {
-        circleColorRgb = [255, 255, 255];
-    }
-    else if (circleColor === 'Black') {
-        circleColorRgb = [0, 0, 0];
-    }
-    else if (circleColor === 'Red') {
-        circleColorRgb = [197, 24, 24];
-    }
-    var iconColorRgb;
-    if (iconColor === 'White') {
-        iconColorRgb = [255, 255, 255];
-    }
-    else if (iconColor === 'Black') {
-        iconColorRgb = [0, 0, 0];
-    }
-    else if (iconColor === 'Red') {
-        iconColorRgb = [197, 24, 24];
-    }
+    var circleColorRgb = colorNameToRGB(circleColor);
+    var iconColorRgb = colorNameToRGB(iconColor);
     var createFireL = function () {
         var vertices = [
             [42.7799987792969, -19.1463470458984],
