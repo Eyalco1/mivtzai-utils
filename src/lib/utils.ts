@@ -435,3 +435,13 @@ const scaleWithOvershoot = (
         );
     });
 };
+
+const colorNameToRGB = (name: ColorDropdown): [number, number, number] => {
+    if (name === 'White') {
+        return [255, 255, 255];
+    } else if (name === 'Black') {
+        return [0, 0, 0];
+    } else if (name === 'Red') {
+        return [197, 24, 24];
+    }
+};

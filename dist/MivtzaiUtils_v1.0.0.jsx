@@ -328,6 +328,17 @@ var scaleWithOvershoot = function (layers) {
         scaleProp.setTemporalEaseAtKey(beforeKeys + 3, [easeIn, easeIn, easeIn], [easeOut, easeOut, easeOut]);
     });
 };
+var colorNameToRGB = function (name) {
+    if (name === 'White') {
+        return [255, 255, 255];
+    }
+    else if (name === 'Black') {
+        return [0, 0, 0];
+    }
+    else if (name === 'Red') {
+        return [197, 24, 24];
+    }
+};
 var createTvaiStroke = function () {
     app.beginUndoGroup('Create Tunnel Stroke');
     var comp = app.project.activeItem;
@@ -861,26 +872,8 @@ var createExplosionIcon = function (circleColor, iconColor, hasCircle, scale) {
     var layer = comp.layers.addShape();
     layer.name = 'Boom';
     var contents = layer.property('Contents');
-    var circleColorRgb;
-    if (circleColor === 'White') {
-        circleColorRgb = [255, 255, 255];
-    }
-    else if (circleColor === 'Black') {
-        circleColorRgb = [0, 0, 0];
-    }
-    else if (circleColor === 'Red') {
-        circleColorRgb = [197, 24, 24];
-    }
-    var iconColorRgb;
-    if (iconColor === 'White') {
-        iconColorRgb = [255, 255, 255];
-    }
-    else if (iconColor === 'Black') {
-        iconColorRgb = [0, 0, 0];
-    }
-    else if (iconColor === 'Red') {
-        iconColorRgb = [197, 24, 24];
-    }
+    var circleColorRgb = colorNameToRGB(circleColor);
+    var iconColorRgb = colorNameToRGB(iconColor);
     var createBigBoom = function () {
         var vertices = [
             [-84.9202270507812, 123.637664794922],
@@ -2484,6 +2477,125 @@ var createHouseBombingIcon = function (circleColor, iconColor, hasCircle, scale)
     if (scale)
         scaleWithOvershoot([layer]);
 };
+var createFireIcon = function (circleColor, iconColor, hasCircle, scale) {
+    var comp = app.project.activeItem;
+    var layer = comp.layers.addShape();
+    layer.name = 'Fire';
+    var contents = layer.property('Contents');
+    var circleColorRgb;
+    if (circleColor === 'White') {
+        circleColorRgb = [255, 255, 255];
+    }
+    else if (circleColor === 'Black') {
+        circleColorRgb = [0, 0, 0];
+    }
+    else if (circleColor === 'Red') {
+        circleColorRgb = [197, 24, 24];
+    }
+    var iconColorRgb;
+    if (iconColor === 'White') {
+        iconColorRgb = [255, 255, 255];
+    }
+    else if (iconColor === 'Black') {
+        iconColorRgb = [0, 0, 0];
+    }
+    else if (iconColor === 'Red') {
+        iconColorRgb = [197, 24, 24];
+    }
+    var createFireL = function () {
+        var vertices = [
+            [42.7799987792969, -19.1463470458984],
+            [43.7399597167969, 35.3036651611328],
+            [18.2900085449219, 60.0136871337891],
+            [48.0299987792969, 70.8736724853516],
+            [48.0299987792969, 109.133682250977],
+            [24.8099670410156, 108.46369934082],
+            [-48.0299987792969, 27.8136749267578],
+            [-33.3800354003906, -28.3362884521484],
+            [-23.6399841308594, -24.7063446044922],
+            [-3.95999145507812, 26.1036529541016],
+            [4.05996704101562, 19.7936553955078],
+            [47.3799743652344, -109.096298217773],
+            [48.0299987792969, -109.436325073242],
+            [48.0299987792969, -7.54631042480469]
+        ];
+        var inTangents = [
+            [0.72998046875, 4.1300048828125],
+            [3.530029296875, -15.2999877929688],
+            [15.3999633789062, -3.75],
+            [-8.989990234375, 0.780029296875],
+            [0, 0],
+            [7.6400146484375, 0.97998046875],
+            [4.05999755859375, 59.9000244140625],
+            [-7.26995849609375, 11.1199951171875],
+            [0.63995361328125, -5.55999755859375],
+            [-19.3600463867188, -14.6499481201172],
+            [1.92999267578125, 4.9200439453125],
+            [-38.8299560546875, 22.8899536132812],
+            [-0.22003173828125, 0.09002685546875],
+            [0, 0]
+        ];
+        var outTangents = [
+            [-9.29998779296875, 24.1800537109375],
+            [-2.13995361328125, 9.84002685546875],
+            [10.469970703125, 8.5999755859375],
+            [0, 0],
+            [-7.760009765625, 0.58001708984375],
+            [-18.1799926757812, -2.35003662109375],
+            [0, -27.0599975585938],
+            [3.10003662109375, -4.60003662109375],
+            [-1.72003173828125, 15.0800170898438],
+            [4.16998291015625, 3.21002197265625],
+            [-23.4299926757812, -60.1099853515625],
+            [0.22003173828125, -0.1300048828125],
+            [0, 0],
+            [-2.60003662109375, -3.6500244140625]
+        ];
+        createPathGrp(contents, 'Fire_L', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [-37.5212, 0.2258]);
+    };
+    var createFireR = function () {
+        var vertices = [
+            [80.0287933349609, 6.43951416015625],
+            [17.8787689208984, -102.990478515625],
+            [10.5087738037109, -109.210510253906],
+            [10.5087738037109, -7.32049560546875],
+            [40.2387542724609, 35.4194946289062],
+            [10.5087738037109, 71.0994873046875],
+            [10.5087738037109, 109.359497070312],
+            [61.6287689208984, 88.6895141601562]
+        ];
+        var inTangents = [
+            [11.97998046875, 28.6599731445312],
+            [-14.4400024414062, 63.4299926757812],
+            [3.94000244140625, -1.72998046875],
+            [0, 0],
+            [0, -17.3099975585938],
+            [17.6300048828125, -1.52001953125],
+            [0, 0],
+            [-14.27001953125, 13.0700073242188]
+        ];
+        var outTangents = [
+            [-16.7900390625, -43.6500244140625],
+            [1.010009765625, -4.46002197265625],
+            [0, 0],
+            [9.94000244140625, 13.9799957275391],
+            [0.55999755859375, 17.9199829101562],
+            [0, 0],
+            [18.6199951171875, -1.3599853515625],
+            [22.25, -20.6400146484375]
+        ];
+        createPathGrp(contents, 'Fire_R', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [0, 0]);
+    };
+    createFireR();
+    createFireL();
+    var offsetPaths = contents.addProperty('ADBE Vector Filter - Offset');
+    var offsetAmt = offsetPaths.property('ADBE Vector Offset Amount');
+    offsetAmt.setValue(0.5);
+    if (hasCircle)
+        createIconCircle(contents, circleColorRgb);
+    if (scale)
+        scaleWithOvershoot([layer]);
+};
 var createIconFromId = function (id, circleColor, iconColor, hasCircle, scale) {
     app.beginUndoGroup("Create Icon: ".concat(id));
     switch (id) {
@@ -2505,6 +2617,8 @@ var createIconFromId = function (id, circleColor, iconColor, hasCircle, scale) {
         case 'House Bombing':
             createHouseBombingIcon(circleColor, iconColor, hasCircle, scale);
             break;
+        case 'Fire':
+            createFireIcon(circleColor, iconColor, hasCircle, scale);
     }
     app.endUndoGroup();
 };
@@ -3901,7 +4015,8 @@ var init = function (thisObj) {
         'Terror Tunnel',
         'Target',
         'Sniper Target',
-        'House Bombing'
+        'House Bombing',
+        'Fire'
     ];
     var iconDD = iconDDGrp.add('dropdownlist', undefined, iconsList);
     iconDD.preferredSize[0] = 100;

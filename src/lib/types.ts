@@ -10,7 +10,8 @@ type IconID =
     | 'Terror Tunnel'
     | 'Target'
     | 'Sniper Target'
-    | 'House Bombing';
+    | 'House Bombing'
+    | 'Fire';
 type LocationID = 'Kindergarden' | 'Medical Clinic' | 'Sports' | 'University';
 type TextureID =
     | 'Paper Dark'
