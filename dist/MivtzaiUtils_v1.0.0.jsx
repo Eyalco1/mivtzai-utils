@@ -876,7 +876,12 @@ var setUpIcon = function (name, circleColor, iconColor) {
     var iconColorRgb = colorNameToRGB(iconColor);
     return { layer: layer, contents: contents, circleColorRgb: circleColorRgb, iconColorRgb: iconColorRgb };
 };
-var iconAftermath = function () { };
+var iconAftermath = function (hasCircle, contents, circleColorRgb, scale, layer) {
+    if (hasCircle)
+        createIconCircle(contents, circleColorRgb);
+    if (scale)
+        scaleWithOvershoot([layer]);
+};
 var createExplosionIcon = function (circleColor, iconColor, hasCircle, scale) {
     var _a = setUpIcon('Boom', circleColor, iconColor), layer = _a.layer, contents = _a.contents, circleColorRgb = _a.circleColorRgb, iconColorRgb = _a.iconColorRgb;
     var createBigBoom = function () {
@@ -1081,18 +1086,10 @@ var createExplosionIcon = function (circleColor, iconColor, hasCircle, scale) {
     createCircleOne();
     createLittleBoom();
     createBigBoom();
-    if (hasCircle)
-        createIconCircle(contents, circleColorRgb);
-    if (scale)
-        scaleWithOvershoot([layer]);
+    iconAftermath(hasCircle, contents, circleColorRgb, scale, layer);
 };
 var createTunnelIcon = function (circleColor, iconColor, hasCircle, scale) {
-    var comp = app.project.activeItem;
-    var layer = comp.layers.addShape();
-    layer.name = 'Tunnel';
-    var contents = layer.property('Contents');
-    var circleColorRgb = colorNameToRGB(circleColor);
-    var iconColorRgb = colorNameToRGB(iconColor);
+    var _a = setUpIcon('Tunnel', circleColor, iconColor), layer = _a.layer, contents = _a.contents, circleColorRgb = _a.circleColorRgb, iconColorRgb = _a.iconColorRgb;
     var createInside = function () {
         var vertices = [
             [0, -75.4871215820312],
@@ -1167,12 +1164,7 @@ var createTunnelIcon = function (circleColor, iconColor, hasCircle, scale) {
         scaleWithOvershoot([layer]);
 };
 var createTerrorTunnelIcon = function (circleColor, iconColor, hasCircle, scale) {
-    var comp = app.project.activeItem;
-    var layer = comp.layers.addShape();
-    layer.name = 'Terror_Tunnel';
-    var contents = layer.property('Contents');
-    var circleColorRgb = colorNameToRGB(circleColor);
-    var iconColorRgb = colorNameToRGB(iconColor);
+    var _a = setUpIcon('Terror_Tunnel', circleColor, iconColor), layer = _a.layer, contents = _a.contents, circleColorRgb = _a.circleColorRgb, iconColorRgb = _a.iconColorRgb;
     var createBigBoom = function () {
         var vertices = [
             [-33.0333709716797, 49.8754119873047],
@@ -1459,12 +1451,7 @@ var createTerrorTunnelIcon = function (circleColor, iconColor, hasCircle, scale)
         scaleWithOvershoot([layer]);
 };
 var createTargetIcon = function (circleColor, iconColor, hasCircle, scale) {
-    var comp = app.project.activeItem;
-    var layer = comp.layers.addShape();
-    layer.name = 'Target';
-    var contents = layer.property('Contents');
-    var circleColorRgb = colorNameToRGB(circleColor);
-    var iconColorRgb = colorNameToRGB(iconColor);
+    var _a = setUpIcon('Target', circleColor, iconColor), layer = _a.layer, contents = _a.contents, circleColorRgb = _a.circleColorRgb, iconColorRgb = _a.iconColorRgb;
     var createLittleCircle = function () {
         var vertices = [
             [31.2296600341797, 0],
@@ -1603,12 +1590,7 @@ var createTargetIcon = function (circleColor, iconColor, hasCircle, scale) {
         scaleWithOvershoot([layer]);
 };
 var createSniperTargetIcon = function (circleColor, iconColor, hasCircle, scale) {
-    var comp = app.project.activeItem;
-    var layer = comp.layers.addShape();
-    layer.name = 'Sniper_Target';
-    var contents = layer.property('Contents');
-    var circleColorRgb = colorNameToRGB(circleColor);
-    var iconColorRgb = colorNameToRGB(iconColor);
+    var _a = setUpIcon('Sniper_Target', circleColor, iconColor), layer = _a.layer, contents = _a.contents, circleColorRgb = _a.circleColorRgb, iconColorRgb = _a.iconColorRgb;
     var createOuterRing = function () {
         var vertices = [
             [0, -103.27001953125],
@@ -2101,12 +2083,7 @@ var createSniperTargetIcon = function (circleColor, iconColor, hasCircle, scale)
         scaleWithOvershoot([layer]);
 };
 var createHouseBombingIcon = function (circleColor, iconColor, hasCircle, scale) {
-    var comp = app.project.activeItem;
-    var layer = comp.layers.addShape();
-    layer.name = 'House_Bombing';
-    var contents = layer.property('Contents');
-    var circleColorRgb = colorNameToRGB(circleColor);
-    var iconColorRgb = colorNameToRGB(iconColor);
+    var _a = setUpIcon('House_Bombing', circleColor, iconColor), layer = _a.layer, contents = _a.contents, circleColorRgb = _a.circleColorRgb, iconColorRgb = _a.iconColorRgb;
     var createBigBoom = function () {
         var vertices = [
             [-65.4785614013672, 11.6502380371094],
@@ -2393,12 +2370,7 @@ var createHouseBombingIcon = function (circleColor, iconColor, hasCircle, scale)
         scaleWithOvershoot([layer]);
 };
 var createFireIcon = function (circleColor, iconColor, hasCircle, scale) {
-    var comp = app.project.activeItem;
-    var layer = comp.layers.addShape();
-    layer.name = 'Fire';
-    var contents = layer.property('Contents');
-    var circleColorRgb = colorNameToRGB(circleColor);
-    var iconColorRgb = colorNameToRGB(iconColor);
+    var _a = setUpIcon('Fire', circleColor, iconColor), layer = _a.layer, contents = _a.contents, circleColorRgb = _a.circleColorRgb, iconColorRgb = _a.iconColorRgb;
     var createFireL = function () {
         var vertices = [
             [42.7799987792969, -19.1463470458984],

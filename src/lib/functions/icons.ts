@@ -13,14 +13,24 @@ const setUpIcon = (
 
     return { layer, contents, circleColorRgb, iconColorRgb };
 };
-const iconAftermath = () => {};
+
+const iconAftermath = (
+    hasCircle: boolean,
+    contents: PropertyGroup,
+    circleColorRgb: [number, number, number],
+    scale: boolean,
+    layer: ShapeLayer
+) => {
+    if (hasCircle) createIconCircle(contents, circleColorRgb);
+    if (scale) scaleWithOvershoot([layer]);
+};
 
 // =======================
 
 const createExplosionIcon = (
     circleColor: ColorDropdown,
     iconColor: ColorDropdown,
-    hasCircle: Boolean,
+    hasCircle: boolean,
     scale: boolean
 ): void => {
     const { layer, contents, circleColorRgb, iconColorRgb } = setUpIcon(
@@ -307,14 +317,13 @@ const createExplosionIcon = (
     createCircleOne();
     createLittleBoom();
     createBigBoom();
-    if (hasCircle) createIconCircle(contents, circleColorRgb);
-    if (scale) scaleWithOvershoot([layer]);
+    iconAftermath(hasCircle, contents, circleColorRgb, scale, layer);
 };
 
 const createTunnelIcon = (
     circleColor: ColorDropdown,
     iconColor: ColorDropdown,
-    hasCircle: Boolean,
+    hasCircle: boolean,
     scale: boolean
 ): void => {
     const { layer, contents, circleColorRgb, iconColorRgb } = setUpIcon(
@@ -423,14 +432,13 @@ const createTunnelIcon = (
 
     createBorder();
     createInside();
-    if (hasCircle) createIconCircle(contents, circleColorRgb);
-    if (scale) scaleWithOvershoot([layer]);
+    iconAftermath(hasCircle, contents, circleColorRgb, scale, layer);
 };
 
 const createTerrorTunnelIcon = (
     circleColor: ColorDropdown,
     iconColor: ColorDropdown,
-    hasCircle: Boolean,
+    hasCircle: boolean,
     scale: boolean
 ): void => {
     const { layer, contents, circleColorRgb, iconColorRgb } = setUpIcon(
@@ -839,14 +847,13 @@ const createTerrorTunnelIcon = (
     createCircleOne();
     createLittleBoom();
     createBigBoom();
-    if (hasCircle) createIconCircle(contents, circleColorRgb);
-    if (scale) scaleWithOvershoot([layer]);
+    iconAftermath(hasCircle, contents, circleColorRgb, scale, layer);
 };
 
 const createTargetIcon = (
     circleColor: ColorDropdown,
     iconColor: ColorDropdown,
-    hasCircle: Boolean,
+    hasCircle: boolean,
     scale: boolean
 ): void => {
     const { layer, contents, circleColorRgb, iconColorRgb } = setUpIcon(
@@ -1077,14 +1084,13 @@ const createTargetIcon = (
     createRecTop();
     createBigCircle();
     createLittleCircle();
-    if (hasCircle) createIconCircle(contents, circleColorRgb);
-    if (scale) scaleWithOvershoot([layer]);
+    iconAftermath(hasCircle, contents, circleColorRgb, scale, layer);
 };
 
 const createSniperTargetIcon = (
     circleColor: ColorDropdown,
     iconColor: ColorDropdown,
-    hasCircle: Boolean,
+    hasCircle: boolean,
     scale: boolean
 ): void => {
     const { layer, contents, circleColorRgb, iconColorRgb } = setUpIcon(
@@ -1714,14 +1720,13 @@ const createSniperTargetIcon = (
     createMiddleBR();
     createMiddleBL();
     createOuterRing();
-    if (hasCircle) createIconCircle(contents, circleColorRgb);
-    if (scale) scaleWithOvershoot([layer]);
+    iconAftermath(hasCircle, contents, circleColorRgb, scale, layer);
 };
 
 const createHouseBombingIcon = (
     circleColor: ColorDropdown,
     iconColor: ColorDropdown,
-    hasCircle: Boolean,
+    hasCircle: boolean,
     scale: boolean
 ): void => {
     const { layer, contents, circleColorRgb, iconColorRgb } = setUpIcon(
@@ -2115,14 +2120,13 @@ const createHouseBombingIcon = (
     createCircleOne();
     createLittleBoom();
     createBigBoom();
-    if (hasCircle) createIconCircle(contents, circleColorRgb);
-    if (scale) scaleWithOvershoot([layer]);
+    iconAftermath(hasCircle, contents, circleColorRgb, scale, layer);
 };
 
 const createFireIcon = (
     circleColor: ColorDropdown,
     iconColor: ColorDropdown,
-    hasCircle: Boolean,
+    hasCircle: boolean,
     scale: boolean
 ): void => {
     const { layer, contents, circleColorRgb, iconColorRgb } = setUpIcon(
@@ -2252,8 +2256,7 @@ const createFireIcon = (
         'ADBE Vector Offset Amount'
     ) as Property<number>;
     offsetAmt.setValue(0.5);
-    if (hasCircle) createIconCircle(contents, circleColorRgb);
-    if (scale) scaleWithOvershoot([layer]);
+    iconAftermath(hasCircle, contents, circleColorRgb, scale, layer);
 };
 
 // ====================================
