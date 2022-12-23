@@ -10,14 +10,14 @@
         "skipLibCheck": true
     },
     "include": [
-        ".temp/lib/polyfills.ts",
+        ".temp/lib/helpers/polyfills.ts",
         ".temp/lib/types/index.ts",
         ".temp/lib/utils.ts",
         ".temp/lib/functions/quickActions.ts",
         ".temp/lib/functions/icons.ts",
         ".temp/lib/functions/locations.ts",
         ".temp/lib/functions/textures.ts",
-        ".temp/lib/binary.ts",
+        ".temp/lib/helpers/binary.ts",
         ".temp/lib/interface/quickActions.ts",
         ".temp/lib/interface/icons.ts",
         ".temp/lib/interface/locations.ts",
