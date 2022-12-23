@@ -18,7 +18,11 @@
         "src/lib/functions/locations.ts",
         "src/lib/functions/textures.ts",
         "src/lib/binary.ts",
-        "src/lib/ui.ts",
+        "src/lib/interface/quickActions.ts",
+        "src/lib/interface/icons.ts",
+        "src/lib/interface/locations.ts",
+        "src/lib/interface/textures.ts",
+        "src/lib/interface/index.ts",
         "src/index.ts"
     ]
 }

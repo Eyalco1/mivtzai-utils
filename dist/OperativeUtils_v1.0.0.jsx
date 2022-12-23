@@ -67,7 +67,6 @@ Array.prototype.find = Array.prototype.find || function (callback) { if (null ==
     if (callback.call(thisArg, element, i, list))
         return element;
 } };
-var VERSION = '1.0.0';
 var getAssetsPathFromOS = function (os) {
     if (os === void 0) { os = getOS(); }
     if (os === 'Win') {
@@ -273,7 +272,8 @@ var createHelpWindow = function () {
     }
     var tpanel = helpWin.add('tabbedpanel');
     var aboutTab = tpanel.add('tab', undefined, ['About']);
-    aboutTab.add('edittext', [0, 0, 380, 300], '', {
+    var abtStr = '‹ Operative Utils - 1.0.0 - Created By Eyal Cohen ›';
+    aboutTab.add('edittext', [0, 0, 380, 300], abtStr, {
         multiline: true,
         readonly: true,
         scrollable: true
@@ -3795,17 +3795,7 @@ var frameBinary = "\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x18\x00\x00
 var folderBinary = '\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x18\x00\x00\x00\x18\b\x06\x00\x00\x00\u00E0w=\u00F8\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x00\u00D2IDATH\u0089\u00ED\u0095\u00DD\r\u00C20\f\u0084\u00BFV\fP&`\x04V(\x1B0BVb\x13Fh7\u0080\r\u00C2\x06e\x02#W\tDyhJ\u00E5\u00F0\u00C4IV\u00FBP\u009D}\u00E7\u009F6"BM\u00B4U\u00D9\x7F\u0095\u00C0\x01\x13 \u0085p[\x12h\x0F<pX\u00F9\u00FD%\x14S\u00C2\x10\x02\u00A4\x1E\u009C\x0E\u00D0.\u00A9\u00E4\t\\\x01\u00BF\u00C5\u008A%\u008B\u00E2\u009C\u009E\u00DE\u00B2\f\u0091\u008Ei$\u00EF\u0083\u008AR\u00D3K\u00A1\x1C.U\u00D0\u0084\u00E7\r8\x1Ai\x18\u00F3E\u00EB\f\u00C9g\u00BE<AoH\u00AE\x18\u00AA\'\u00C8{`\u00E9\u00BFb\u009F*\u00B0\u00F6\u00FF\u00AE[\u009F&8\x1B\u0092\x13\u00C7>M`\u00EE?\u00D9&?\u00BE8zk0\u00EFU\u00AA\u00C0\u0092|\u008C/m\u00A8\u00DC\x1A\u009F\u009B\x16\u00CE\u00EAdx\u00B4\u00BD\u0088t\u00EA\u00BC\u00C6\u00FF\u00A7\u00BF\f\u00E0\x05\u00BB\u00A4\x03\u00F3\u00D1~\x02\u00D0\x00\x00\x00\x00IEND\u00AEB`\u0082';
 var helpBinary = "\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x10\x00\x00\x00\x10\b\x06\x00\x00\x00\x1F\u00F3\u00FFa\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x00\u00ACIDAT8\u008D\u00A5\u0091a\r\u00C3 \x14\u0084\u00AFSP\x07\u00AD\x04$LB%TJ\u00E7`\x12\u0090\u00B09\u0098\x04$ \u0081)\u00B8\u0085\u00E55\u00A1/\u00F4\u0095\u00AD\u0097\u00BC\x1F\u0085\u00BB\u008F\u0083\u0082\u00A4\u009E\u0091\u00A4'\u0099\u00B8\u00D5\u0083\u00E4U\u00FBux\u00E6\u00B1&\x0B\x10\x1B\x00\u00D1\x028\u00A9\u009E\u00A4\u00CD(k\x1A\u00BC\x0BX!\u00AE\u00F8\u00EEI\u0086_\x00z\u00BC\n\u00FBV@>\u00F9\u00A5\u00C2A\u00D6\u009B\x00\u00F7\u00CAo\u00EC\u00B5\u00CF\x02$\u00EB\u00E4u.\u00D8W(v<\u0080TsZ\u0080\x1Cz\x03x*\u00D8F\u00DD\u00F7\x1E'd5p\x00\u00A2\u00CC\u00FCO\u0083\x1C\x1CJo\u00CDd5h\u0092\x05X\u00E4\x11\u00B3nU\x07\u0080\x0F\u00AE|\u00F2\u00F6\x1C\u008E\u00B6\u00DF\x00\x00\x00\x00IEND\u00AEB`\u0082";
 var quoteBinary = '\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x10\x00\x00\x00\x10\b\x06\x00\x00\x00\x1F\u00F3\u00FFa\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x00xIDAT8\u008Dc\u00FC\u00FF\u00FF?\x03%\u0080\u0089"\u00DD\f\f\f,\f\f\f\x07\u00F0\u00C8;@i\u009Cj@^\u00C0\u00E7\x07F(\u008DS\r\u00C5^\x185\x00\x12\u008D\u008EH\u00FC\r\f\f\f\u00FCP\u00F6C$q\u00DCj@\u00B1\b\u00C5\t\u00FFQA\x02\u0092\x1CN5\u00C8\u0092\x0F\u0090$\x1E`\u00D1\u008CU\rE\u00B6\u0083\u00C4Aa\x00\x02\u00A0${\x10\u00CA\u00FE\u00C0\u00C0\u00C0\u00B0\x00Kx\x19`S3\u00C0\u00B9\u0091\u0081\u0081\x01\x00\b\u00F8\u00BB\u0088y\u00F5\x0B\u00D9\x00\x00\x00\x00IEND\u00AEB`\u0082';
-var init = function (thisObj) {
-    var w = thisObj instanceof Panel
-        ? thisObj
-        : new Window('palette', 'Operative Utils', undefined, {
-            resizeable: true
-        });
-    if (w == null)
-        w;
-    w = w;
-    var tpanel = w.add('tabbedpanel');
-    tpanel.alignment = tpanel.alignChildren = ['fill', 'fill'];
+var createQAUI = function (tpanel) {
     var quickActionsTab = tpanel.add('tab', undefined, ['Quick Actions']);
     var QABtnsGrp = quickActionsTab.add('group');
     QABtnsGrp.orientation = 'column';
@@ -3854,6 +3844,23 @@ var init = function (thisObj) {
         'Gaza Map Photo\n\nCLICK: Clean Map\nCTRL + CLICK: Map With Labels';
     var openFinderBtn = QABtnsRowFour.add('iconbutton', undefined, folderBinary, { style: 'toolbutton' });
     openFinderBtn.helpTip = "Open Project Folder in ".concat(getOS() === 'Win' ? 'Explorer' : 'Finder', "\n\nClick: Open Project Folder\nCTRL + CLICK: Choose New Project Folder");
+    tvaiBtn.onClick = createTvaiStroke;
+    scaleBtn.onClick = scaleWithOvershoot;
+    logosBtn.onClick = importLogos;
+    illustrationBtn.onClick = createIllustrationText;
+    formatLayerBtn.onClick = formatLayerName;
+    textReverseBtn.onClick = textReverse;
+    bgBtn.onClick = createBg;
+    IsraelMapShapeBtn.onClick = createIsraelMap;
+    GazaMapShapeBtn.onClick = createGazaMap;
+    numCountBtn.onClick = createCountingText;
+    frameBtn.onClick = createAnimatedFrame;
+    openFinderBtn.onClick = openProjectInFinder;
+    israelMapPic.onClick = importIsraelGoogleMaps;
+    gazaMapPic.onClick = importGazaGoogleMaps;
+    return quickActionsTab;
+};
+var createIconsUI = function (tpanel) {
     var iconsTab = tpanel.add('tab', undefined, ['Icons']);
     var iconsGrp = iconsTab.add('group');
     iconsGrp.orientation = 'column';
@@ -3898,6 +3905,9 @@ var init = function (thisObj) {
         var id = iconDD.selection.toString();
         createIconFromId(id, circleColorDD.selection.toString(), iconColorDD.selection.toString(), circleCheck.value, scaleCheck.value);
     };
+    return iconsTab;
+};
+var createLocationsUI = function (tpanel) {
     var locationsTab = tpanel.add('tab', undefined, ['Locations']);
     var locationsGrp = locationsTab.add('group');
     locationsGrp.orientation = 'column';
@@ -3929,6 +3939,9 @@ var init = function (thisObj) {
         var lang = langDD.selection.toString();
         createLocationFromId(id, lang);
     };
+    return locationsTab;
+};
+var createTexturesUI = function (tpanel) {
     var texturesTab = tpanel.add('tab', undefined, ['Textures']);
     var texturesGrp = texturesTab.add('group');
     texturesGrp.orientation = 'column';
@@ -3961,10 +3974,27 @@ var init = function (thisObj) {
         var fit = textureFitCheck.value;
         createTexture(id, loop, fit);
     };
-    var extraBtnsQA = quickActionsTab.add('group');
+    return texturesTab;
+};
+var init = function (thisObj) {
+    var w = thisObj instanceof Panel
+        ? thisObj
+        : new Window('palette', 'Operative Utils', undefined, {
+            resizeable: true
+        });
+    if (w == null)
+        w;
+    w = w;
+    var tpanel = w.add('tabbedpanel');
+    tpanel.alignment = tpanel.alignChildren = ['fill', 'fill'];
+    var qaTab = createQAUI(tpanel);
+    var iconsTab = createIconsUI(tpanel);
+    var locTab = createLocationsUI(tpanel);
+    var texTab = createTexturesUI(tpanel);
+    var extraBtnsQA = qaTab.add('group');
     var extraBtnsIcons = iconsTab.add('group');
-    var extraBtnsLocations = locationsTab.add('group');
-    var extraBtnsTextures = texturesTab.add('group');
+    var extraBtnsLocations = locTab.add('group');
+    var extraBtnsTextures = texTab.add('group');
     extraBtnsQA.spacing =
         extraBtnsIcons.spacing =
             extraBtnsLocations.spacing =
@@ -3995,10 +4025,7 @@ var init = function (thisObj) {
     var helpBtnLocations = extraBtnsLocations.add('iconbutton', undefined, helpBinary, { style: 'toolbutton' });
     var quoteBtnTextures = extraBtnsTextures.add('iconbutton', undefined, quoteBinary, { style: 'toolbutton' });
     var helpBtnTextures = extraBtnsTextures.add('iconbutton', undefined, helpBinary, { style: 'toolbutton' });
-    quickActionsTab.alignment = quickActionsTab.alignChildren = [
-        'fill',
-        'fill'
-    ];
+    qaTab.alignment = qaTab.alignChildren = ['fill', 'fill'];
     helpBtnQA.alignment =
         helpBtnIcons.alignment =
             helpBtnLocations.alignment =
@@ -4018,20 +4045,6 @@ var init = function (thisObj) {
             quoteBtnLocations.onClick =
                 quoteBtnTextures.onClick =
                     generateCaspiQuote;
-    tvaiBtn.onClick = createTvaiStroke;
-    scaleBtn.onClick = scaleWithOvershoot;
-    logosBtn.onClick = importLogos;
-    illustrationBtn.onClick = createIllustrationText;
-    formatLayerBtn.onClick = formatLayerName;
-    textReverseBtn.onClick = textReverse;
-    bgBtn.onClick = createBg;
-    IsraelMapShapeBtn.onClick = createIsraelMap;
-    GazaMapShapeBtn.onClick = createGazaMap;
-    numCountBtn.onClick = createCountingText;
-    frameBtn.onClick = createAnimatedFrame;
-    openFinderBtn.onClick = openProjectInFinder;
-    israelMapPic.onClick = importIsraelGoogleMaps;
-    gazaMapPic.onClick = importGazaGoogleMaps;
     w.layout.layout(true);
     w.layout.resize();
     w.onResizing = w.onResize = function () {

@@ -351,7 +351,8 @@ const createHelpWindow = () => {
 
     // === About ===
     const aboutTab = tpanel.add('tab', undefined, ['About']);
-    aboutTab.add('edittext', [0, 0, 380, 300], '', {
+    const abtStr = '‹ @@name - @@version - Created By Eyal Cohen ›';
+    aboutTab.add('edittext', [0, 0, 380, 300], abtStr, {
         multiline: true,
         readonly: true,
         scrollable: true
