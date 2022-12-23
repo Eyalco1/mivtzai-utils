@@ -1,25 +1,25 @@
 {
-  "compilerOptions": {
-    "target": "ES3",
-    "module": "none",
-    "lib": ["ES2020"],
-    "types": ["types-for-adobe/AfterEffects/2018"],
-    "outFile": "./dist/MivtzaiUtils.jsx",
-    "jsx": "preserve",
-    "removeComments": true,
-    "skipLibCheck": true
-  },
-  "include": [
-    ".temp/lib/polyfills.ts",
-    ".temp/lib/types.ts",
-    ".temp/lib/global.ts",
-    ".temp/lib/utils.ts",
-    ".temp/lib/functions/quickActions.ts",
-    ".temp/lib/functions/icons.ts",
-    ".temp/lib/functions/locations.ts",
-    ".temp/lib/functions/textures.ts",
-    ".temp/lib/binary.ts",
-    ".temp/lib/ui.ts",
-    ".temp/index.ts"
-  ]
+    "compilerOptions": {
+        "target": "ES3",
+        "module": "none",
+        "lib": ["ES2020"],
+        "types": ["types-for-adobe/AfterEffects/2018"],
+        "outFile": "./dist/MivtzaiUtils.jsx",
+        "jsx": "preserve",
+        "removeComments": true,
+        "skipLibCheck": true
+    },
+    "include": [
+        "src/lib/polyfills.ts",
+        "src/lib/types.ts",
+        "src/lib/global.ts",
+        "src/lib/utils.ts",
+        "src/lib/functions/quickActions.ts",
+        "src/lib/functions/icons.ts",
+        "src/lib/functions/locations.ts",
+        "src/lib/functions/textures.ts",
+        "src/lib/binary.ts",
+        "src/lib/ui.ts",
+        "src/index.ts"
+    ]
 }

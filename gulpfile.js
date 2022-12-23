@@ -55,11 +55,10 @@ task('preprocessSources', done => {
 });
 
 task('tsc', done => {
-    exec('tsc');
-    console.log('Before TO');
-    setTimeout(() => {}, 3000);
-    console.log('After TO');
-    done();
+    exec('tsc --p tsconfig-build.json');
+    setTimeout(() => {
+        done();
+    }, 2000);
 });
 
 task('buildAssets', done => {
@@ -99,7 +98,7 @@ task('addToHost', done => {
 });
 
 task('clean', done => {
-    del(['.temp']);
+    del(['.temp', 'dist/MivtzaiUtils.jsx']);
     done();
 });
 
