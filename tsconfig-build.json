@@ -11,7 +11,7 @@
     },
     "include": [
         ".temp/lib/polyfills.ts",
-        ".temp/lib/types.ts",
+        ".temp/lib/types/index.ts",
         ".temp/lib/utils.ts",
         ".temp/lib/functions/quickActions.ts",
         ".temp/lib/functions/icons.ts",
