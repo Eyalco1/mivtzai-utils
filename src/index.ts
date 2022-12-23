@@ -1,4 +1,4 @@
 ((thisObj: typeof globalThis) => {
-  setUpPrefs();
-  init(thisObj);
+    setUpPrefs();
+    init(thisObj);
 })(this);
