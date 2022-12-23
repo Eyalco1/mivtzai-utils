@@ -2,6 +2,7 @@ const { task, series, src, dest } = require('gulp');
 const exec = require('child_process').exec;
 const { join } = require('path');
 const replace = require('gulp-replace');
+const zip = require('gulp-zip');
 const del = require('delete');
 const fs = require('fs');
 const fse = require('fs-extra');
@@ -107,6 +108,14 @@ task('addToHost', done => {
     done();
 });
 
+task('zip', done => {
+    src('dist/**')
+        .pipe(zip(`${scriptNameNoSpaces}_v${pkg.version}.zip`))
+        .pipe(dest('dist'));
+
+    done();
+});
+
 task('clean', done => {
     del(['.temp', `dist/${scriptNameNoSpaces}.jsx`]);
     done();
@@ -123,6 +132,7 @@ task(
         'runScript',
         'jsxbin',
         'addToHost',
+        'zip',
         'clean'
     )
 );
