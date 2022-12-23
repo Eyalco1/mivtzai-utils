@@ -67,14 +67,73 @@ Array.prototype.find = Array.prototype.find || function (callback) { if (null ==
     if (callback.call(thisArg, element, i, list))
         return element;
 } };
+var getOS = function () {
+    if ($.os.indexOf('Win') != -1)
+        return 'Win';
+    return 'Mac';
+};
 var getAssetsPathFromOS = function (os) {
     if (os === void 0) { os = getOS(); }
     if (os === 'Win') {
-        return "".concat(File('.'), "/Scripts/ScriptUI Panels/Operative Utils_v1.0.0 Assets");
+        return "".concat(File('.'), "/Scripts/ScriptUI Panels/OperativeUtils_v1.0.0 Assets");
     }
     else if (os === 'Mac') {
         return "/Applications/Adobe After Effects 20".concat(app.version.substring(0, 2), "/Scripts/ScriptUI Panels");
     }
+};
+var openFs = function (path) {
+    var folder = Folder(path);
+    var cmd = getOS() === 'Win'
+        ? 'explorer ' + Folder.decode(folder.fsName)
+        :
+            'open "' + Folder.execute(folder.fsName) + '"';
+    system.callSystem(cmd);
+};
+var createFolder = function (folderObj) {
+    if (!folderObj.exists)
+        folderObj.create();
+    return folderObj;
+};
+var readPrefs = function () {
+    var appDataFolder = File(Folder.appData.toString()).toString();
+    var file = File(appDataFolder + '/Operative Utils/Prefs/Prefs.json');
+    file.open('r');
+    var stringData = file.read();
+    file.close();
+    return stringData;
+};
+var parsePrefs = function () {
+    var stringData = readPrefs();
+    var parsedData = JSON.parse(stringData);
+    return parsedData;
+};
+var setUpPrefs = function () {
+    var appDataFolder = File(Folder.appData.toString()).toString();
+    createFolder(Folder(appDataFolder + '/Operative Utils'));
+    createFolder(Folder(appDataFolder + '/Operative Utils/Prefs'));
+    var myJSON = File(appDataFolder + '/Operative Utils/Prefs/Prefs.json');
+    if (myJSON.exists) {
+        var parsedPrefs = parsePrefs();
+        parsedPrefs.version = '1.0.0';
+        myJSON.open('w');
+        myJSON.write(JSON.stringify(parsedPrefs, null, 2));
+        myJSON.close();
+    }
+    else {
+        myJSON.open('w');
+        myJSON.write(JSON.stringify({ version: '1.0.0' }, null, 2));
+        myJSON.close();
+    }
+};
+var writePrefsToMemory = function (prefs) {
+    var appDataFolder = File(Folder.appData.toString()).toString();
+    createFolder(Folder(appDataFolder + '/Operative Utils'));
+    createFolder(Folder(appDataFolder + '/Operative Utils/Prefs'));
+    var myJSON = File(appDataFolder + '/Operative Utils/Prefs/Prefs.json');
+    myJSON.open('w');
+    myJSON.write(JSON.stringify(prefs, null, 2));
+    myJSON.close();
+    return myJSON;
 };
 var createPathGrp = function (contents, name, hasFill, hasStroke, fillColor, strokeColor, strokeSize, vertices, inTangents, outTangents, pathClosed, position) {
     var grp = contents.addProperty('ADBE Vector Group');
@@ -150,19 +209,6 @@ var createAnimatedMap = function (name, vertices, inTangents, outTangents) {
     trimPathsEnd.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 33)], [new KeyframeEase(0.5, 33)]);
     trimPathsEnd.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 66)], [new KeyframeEase(0.5, 66)]);
 };
-var getOS = function () {
-    if ($.os.indexOf('Win') != -1)
-        return 'Win';
-    return 'Mac';
-};
-var openFs = function (path) {
-    var folder = Folder(path);
-    var cmd = getOS() === 'Win'
-        ? 'explorer ' + Folder.decode(folder.fsName)
-        :
-            'open "' + Folder.execute(folder.fsName) + '"';
-    system.callSystem(cmd);
-};
 var createIconCircle = function (contents, circleColorRgb) {
     var vertices = [
         [180, 0],
@@ -184,18 +230,6 @@ var createIconCircle = function (contents, circleColorRgb) {
     ];
     createPathGrp(contents, 'Circle', true, false, circleColorRgb, circleColorRgb, 0, vertices, inTangents, outTangents, true, [0, 0]);
 };
-var getLanguageFromKeyboard = function () {
-    var keyState = ScriptUI.environment.keyboardState;
-    if (keyState.ctrlKey) {
-        return 'English';
-    }
-    else if (keyState.shiftKey) {
-        return 'Arabic';
-    }
-    else {
-        return 'Hebrew';
-    }
-};
 var getFontFromLanguage = function (lang) {
     if (lang === 'English') {
         return 'TradeGothicLT-BoldCondTwenty';
@@ -206,52 +240,6 @@ var getFontFromLanguage = function (lang) {
     else if (lang === 'Arabic') {
         return 'DroidArabicKufi-Bold';
     }
-};
-var createFolder = function (folderObj) {
-    if (!folderObj.exists)
-        folderObj.create();
-    return folderObj;
-};
-var readPrefs = function () {
-    var appDataFolder = File(Folder.appData.toString()).toString();
-    var file = File(appDataFolder + '/Operative Utils/Prefs/Prefs.json');
-    file.open('r');
-    var stringData = file.read();
-    file.close();
-    return stringData;
-};
-var parsePrefs = function () {
-    var stringData = readPrefs();
-    var parsedData = JSON.parse(stringData);
-    return parsedData;
-};
-var setUpPrefs = function () {
-    var appDataFolder = File(Folder.appData.toString()).toString();
-    createFolder(Folder(appDataFolder + '/Operative Utils'));
-    createFolder(Folder(appDataFolder + '/Operative Utils/Prefs'));
-    var myJSON = File(appDataFolder + '/Operative Utils/Prefs/Prefs.json');
-    if (myJSON.exists) {
-        var parsedPrefs = parsePrefs();
-        parsedPrefs.version = '1.0.0';
-        myJSON.open('w');
-        myJSON.write(JSON.stringify(parsedPrefs, null, 2));
-        myJSON.close();
-    }
-    else {
-        myJSON.open('w');
-        myJSON.write(JSON.stringify({ version: '1.0.0' }, null, 2));
-        myJSON.close();
-    }
-};
-var writePrefsToMemory = function (prefs) {
-    var appDataFolder = File(Folder.appData.toString()).toString();
-    createFolder(Folder(appDataFolder + '/Operative Utils'));
-    createFolder(Folder(appDataFolder + '/Operative Utils/Prefs'));
-    var myJSON = File(appDataFolder + '/Operative Utils/Prefs/Prefs.json');
-    myJSON.open('w');
-    myJSON.write(JSON.stringify(prefs, null, 2));
-    myJSON.close();
-    return myJSON;
 };
 var importGoogleMaps = function (location) {
     var keyState = ScriptUI.environment.keyboardState;
@@ -293,11 +281,6 @@ var createHelpWindow = function () {
         helpWin.show();
     }
 };
-var generateCaspiQuote = function () {
-    var quotes = ['1', '2', '3', '4'];
-    var theQuote = quotes[Math.floor(Math.random() * quotes.length)];
-    alert(theQuote, 'Caspi Says:');
-};
 var scaleWithOvershoot = function (layers) {
     if (layers === void 0) { layers = app.project.activeItem.selectedLayers; }
     var comp = app.project.activeItem;
@@ -338,6 +321,11 @@ var colorNameToRGB = function (name) {
     else if (name === 'Red') {
         return [197, 24, 24];
     }
+};
+var generateCaspiQuote = function () {
+    var quotes = ['1', '2', '3', '4'];
+    var theQuote = quotes[Math.floor(Math.random() * quotes.length)];
+    alert(theQuote, 'Caspi Says:');
 };
 var createTvaiStroke = function () {
     app.beginUndoGroup('Create Tunnel Stroke');

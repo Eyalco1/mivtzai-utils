@@ -50,6 +50,7 @@ task('preprocessSources', done => {
     src('src/**/*.ts')
         .pipe(replace(/^\s*#include/gm, '//= include'))
         .pipe(replace('@@name', pkg.eyal.name))
+        .pipe(replace('@@nospacename', scriptNameNoSpaces))
         .pipe(replace('@@version', pkg.version))
         .pipe(dest('.temp'));
 
