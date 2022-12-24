@@ -97,16 +97,22 @@ const scaleWithOvershootQA = (
 const importLogos = (): void => {
     app.beginUndoGroup('Import Logos');
 
-    const idfFile = writeBinaryImageDataToFile(
-        idfBinary,
+    const idfLogoFile = writeBinaryImageDataToFile(
+        idfLogoBinary,
         `${getAssetsPathFromOS()}/Logos/IDF_Logo.png`
     );
     const idfItem = app.project.importFile(
         // new ImportOptions(File(`${getAssetsPathFromOS()}/Logos/IDF_Logo.png`))
-        new ImportOptions(idfFile)
+        new ImportOptions(idfLogoFile)
     ) as AVItem;
+
+    const dotzLogoFile = writeBinaryImageDataToFile(
+        dotzLogoBinary,
+        `${getAssetsPathFromOS()}/Logos/Dotz_Logo.png`
+    );
     const dotzItem = app.project.importFile(
-        new ImportOptions(File(`${getAssetsPathFromOS()}/Logos/Dotz_Logo.png`))
+        // new ImportOptions(File(`${getAssetsPathFromOS()}/Logos/Dotz_Logo.png`))
+        new ImportOptions(dotzLogoFile)
     ) as AVItem;
 
     const comp = app.project.activeItem as CompItem;

@@ -233,6 +233,7 @@ const getFontFromLanguage = (lang: Lingo) => {
 
 const importGoogleMaps = (location: GoogleMapsLocation): void => {
     const keyState = ScriptUI.environment.keyboardState;
+    // if (location === '')
     let whichMap = 'Clean';
     if (keyState.ctrlKey) {
         whichMap = 'Guide';

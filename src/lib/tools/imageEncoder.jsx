@@ -9,7 +9,7 @@ function encodeImage(src, dest) {
     var myFile = new File(dest);
     myFile.open('w');
     myFile.encoding = 'UTF-8';
-    myFile.write(binary);
+    myFile.write(binary.replace('(new String(', '').replace('))', ''));
     myFile.close();
 
     $.writeln(binary);
