@@ -99,6 +99,7 @@ const importLogos = (): void => {
 
     const idfItem = app.project.importFile(
         new ImportOptions(File(`${getAssetsPathFromOS()}/Logos/IDF_Logo.png`))
+        // new ImportOptions(File(idfBinary))
     ) as AVItem;
     const dotzItem = app.project.importFile(
         new ImportOptions(File(`${getAssetsPathFromOS()}/Logos/Dotz_Logo.png`))

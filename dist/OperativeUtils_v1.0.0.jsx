@@ -67,51 +67,82 @@ Array.prototype.find = Array.prototype.find || function (callback) { if (null ==
     if (callback.call(thisArg, element, i, list))
         return element;
 } };
-if (!this.JSON) {
-    this.JSON = {};
+if (typeof JSON !== 'object') {
+    JSON = {};
 }
 (function () {
+    'use strict';
+    var rx_one = /^[\],:{}\s]*$/;
+    var rx_two = /\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})/g;
+    var rx_three = /"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g;
+    var rx_four = /(?:^|:|,)(?:\s*\[)+/g;
+    var rx_escapable = /[\\"\u0000-\u001f\u007f-\u009f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g;
+    var rx_dangerous = /[\u0000\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g;
     function f(n) {
         return n < 10 ? '0' + n : n;
     }
-    if (typeof Date.prototype.toJSON !== 'function') {
-        Date.prototype.toJSON = function (key) {
-            return isFinite(this.valueOf()) ?
-                this.getUTCFullYear() + '-' +
-                    f(this.getUTCMonth() + 1) + '-' +
-                    f(this.getUTCDate()) + 'T' +
-                    f(this.getUTCHours()) + ':' +
-                    f(this.getUTCMinutes()) + ':' +
-                    f(this.getUTCSeconds()) + 'Z' : null;
-        };
-        String.prototype.toJSON =
-            Number.prototype.toJSON =
-                Boolean.prototype.toJSON = function (key) {
-                    return this.valueOf();
-                };
+    function this_value() {
+        return this.valueOf();
     }
-    var cx = /[\u0000\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g, escapable = /[\\\"\x00-\x1f\x7f-\x9f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g, gap, indent, meta = {
-        '\b': '\\b',
-        '\t': '\\t',
-        '\n': '\\n',
-        '\f': '\\f',
-        '\r': '\\r',
-        '"': '\\"',
-        '\\': '\\\\'
-    }, rep;
+    if (typeof Date.prototype.toJSON !== 'function') {
+        Date.prototype.toJSON = function () {
+            return isFinite(this.valueOf())
+                ? this.getUTCFullYear() +
+                    '-' +
+                    f(this.getUTCMonth() + 1) +
+                    '-' +
+                    f(this.getUTCDate()) +
+                    'T' +
+                    f(this.getUTCHours()) +
+                    ':' +
+                    f(this.getUTCMinutes()) +
+                    ':' +
+                    f(this.getUTCSeconds()) +
+                    'Z'
+                : null;
+        };
+        Boolean.prototype.toJSON = this_value;
+        Number.prototype.toJSON = this_value;
+        String.prototype.toJSON = this_value;
+    }
+    var gap;
+    var indent;
+    var meta;
+    var rep;
     function quote(string) {
-        escapable.lastIndex = 0;
-        return escapable.test(string) ?
-            '"' + string.replace(escapable, function (a) {
-                var c = meta[a];
-                return typeof c === 'string' ? c :
-                    '\\u' + ('0000' + a.charCodeAt(0).toString(16)).slice(-4);
-            }) + '"' :
-            '"' + string + '"';
+        rx_escapable.lastIndex = 0;
+        return rx_escapable.test(string)
+            ? '"' +
+                string.replace(rx_escapable, function (a) {
+                    var c = meta[a];
+                    return typeof c === 'string'
+                        ? c
+                        : '\\u' +
+                            ('0000' + a.charCodeAt(0).toString(16)).slice(-4);
+                }) +
+                '"'
+            : '"' + string + '"';
+    }
+    var seen;
+    function includes(array, value) {
+        var i;
+        for (i = 0; i < array.length; i += 1) {
+            if (value === array[i]) {
+                return true;
+            }
+        }
+        return false;
     }
     function str(key, holder) {
-        var i, k, v, length, mind = gap, partial, value = holder[key];
-        if (value && typeof value === 'object' &&
+        var i;
+        var k;
+        var v;
+        var length;
+        var mind = gap;
+        var partial;
+        var value = holder[key];
+        if (value &&
+            typeof value === 'object' &&
             typeof value.toJSON === 'function') {
             value = value.toJSON(key);
         }
@@ -130,6 +161,10 @@ if (!this.JSON) {
                 if (!value) {
                     return 'null';
                 }
+                if (includes(seen, value)) {
+                    throw new TypeError('Converting circular structure to JSON');
+                }
+                seen.push(value);
                 gap += indent;
                 partial = [];
                 if (Object.prototype.toString.apply(value) === '[object Array]') {
@@ -137,19 +172,25 @@ if (!this.JSON) {
                     for (i = 0; i < length; i += 1) {
                         partial[i] = str(i, value) || 'null';
                     }
-                    v = partial.length === 0 ? '[]' :
-                        gap ? '[\n' + gap +
-                            partial.join(',\n' + gap) + '\n' +
-                            mind + ']' :
-                            '[' + partial.join(',') + ']';
+                    v =
+                        partial.length === 0
+                            ? '[]'
+                            : gap
+                                ? '[\n' +
+                                    gap +
+                                    partial.join(',\n' + gap) +
+                                    '\n' +
+                                    mind +
+                                    ']'
+                                : '[' + partial.join(',') + ']';
                     gap = mind;
                     return v;
                 }
                 if (rep && typeof rep === 'object') {
                     length = rep.length;
                     for (i = 0; i < length; i += 1) {
-                        k = rep[i];
-                        if (typeof k === 'string') {
+                        if (typeof rep[i] === 'string') {
+                            k = rep[i];
                             v = str(k, value);
                             if (v) {
                                 partial.push(quote(k) + (gap ? ': ' : ':') + v);
@@ -159,7 +200,7 @@ if (!this.JSON) {
                 }
                 else {
                     for (k in value) {
-                        if (Object.hasOwnProperty.call(value, k)) {
+                        if (Object.prototype.hasOwnProperty.call(value, k)) {
                             v = str(k, value);
                             if (v) {
                                 partial.push(quote(k) + (gap ? ': ' : ':') + v);
@@ -167,14 +208,31 @@ if (!this.JSON) {
                         }
                     }
                 }
-                v = partial.length === 0 ? '{}' :
-                    gap ? '{\n' + gap + partial.join(',\n' + gap) + '\n' +
-                        mind + '}' : '{' + partial.join(',') + '}';
+                v =
+                    partial.length === 0
+                        ? '{}'
+                        : gap
+                            ? '{\n' +
+                                gap +
+                                partial.join(',\n' + gap) +
+                                '\n' +
+                                mind +
+                                '}'
+                            : '{' + partial.join(',') + '}';
                 gap = mind;
                 return v;
         }
     }
     if (typeof JSON.stringify !== 'function') {
+        meta = {
+            '\b': '\\b',
+            '\t': '\\t',
+            '\n': '\\n',
+            '\f': '\\f',
+            '\r': '\\r',
+            '"': '\\"',
+            '\\': '\\\\'
+        };
         JSON.stringify = function (value, replacer, space) {
             var i;
             gap = '';
@@ -188,11 +246,13 @@ if (!this.JSON) {
                 indent = space;
             }
             rep = replacer;
-            if (replacer && typeof replacer !== 'function' &&
+            if (replacer &&
+                typeof replacer !== 'function' &&
                 (typeof replacer !== 'object' ||
                     typeof replacer.length !== 'number')) {
                 throw new Error('JSON.stringify');
             }
+            seen = [];
             return str('', { '': value });
         };
     }
@@ -200,10 +260,12 @@ if (!this.JSON) {
         JSON.parse = function (text, reviver) {
             var j;
             function walk(holder, key) {
-                var k, v, value = holder[key];
+                var k;
+                var v;
+                var value = holder[key];
                 if (value && typeof value === 'object') {
                     for (k in value) {
-                        if (Object.hasOwnProperty.call(value, k)) {
+                        if (Object.prototype.hasOwnProperty.call(value, k)) {
                             v = walk(value, k);
                             if (v !== undefined) {
                                 value[k] = v;
@@ -217,25 +279,24 @@ if (!this.JSON) {
                 return reviver.call(holder, key, value);
             }
             text = String(text);
-            cx.lastIndex = 0;
-            if (cx.test(text)) {
-                text = text.replace(cx, function (a) {
-                    return '\\u' +
-                        ('0000' + a.charCodeAt(0).toString(16)).slice(-4);
+            rx_dangerous.lastIndex = 0;
+            if (rx_dangerous.test(text)) {
+                text = text.replace(rx_dangerous, function (a) {
+                    return ('\\u' +
+                        ('0000' + a.charCodeAt(0).toString(16)).slice(-4));
                 });
             }
-            if (/^[\],:{}\s]*$/
-                .test(text.replace(/\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})/g, '@')
-                .replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']')
-                .replace(/(?:^|:|,)(?:\s*\[)+/g, ''))) {
+            if (rx_one.test(text
+                .replace(rx_two, '@')
+                .replace(rx_three, ']')
+                .replace(rx_four, ''))) {
                 j = eval('(' + text + ')');
-                return typeof reviver === 'function' ?
-                    walk({ '': j }, '') : j;
+                return typeof reviver === 'function' ? walk({ '': j }, '') : j;
             }
             throw new SyntaxError('JSON.parse');
         };
     }
-}());
+})();
 var getOS = function () {
     if ($.os.indexOf('Win') != -1)
         return 'Win';
