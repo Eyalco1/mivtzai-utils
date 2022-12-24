@@ -12,7 +12,8 @@ const createLocationsUI = (tpanel: TabbedPanel): Tab => {
         'Kindergarden',
         'Medical Clinic',
         'Sports',
-        'University'
+        'University',
+        'Mosque'
     ];
     const locationsDD = locationsDDGrp.add(
         'dropdownlist',

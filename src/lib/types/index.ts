@@ -12,7 +12,12 @@ type IconID =
     | 'Sniper Target'
     | 'House Bombing'
     | 'Fire';
-type LocationID = 'Kindergarden' | 'Medical Clinic' | 'Sports' | 'University';
+type LocationID =
+    | 'Kindergarden'
+    | 'Medical Clinic'
+    | 'Sports'
+    | 'University'
+    | 'Mosque';
 type TextureID =
     | 'Paper Dark'
     | 'Paper Medium'

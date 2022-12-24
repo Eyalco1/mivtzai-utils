@@ -11,6 +11,7 @@
     },
     "include": [
         "src/lib/helpers/polyfills.ts",
+        "src/lib/helpers/json2.ts",
         "src/lib/types/index.ts",
         "src/lib/utils/system.ts",
         "src/lib/utils/host.ts",

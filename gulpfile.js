@@ -28,6 +28,11 @@ const executeScript = (absFilePath, callback) => {
     exec(shellCommand, callback);
 };
 
+task('removeDist', done => {
+    del(['dist']);
+    done();
+});
+
 task('renameWithVersion', done => {
     try {
         fs.renameSync(
@@ -122,8 +127,25 @@ task('clean', done => {
 });
 
 task(
+    'bdr',
+    series(
+        'removeDist',
+        'preprocessSources',
+        'tsc',
+        'createHeader',
+        'renameWithVersion',
+        'buildAssets',
+        'jsxbin',
+        'addToHost',
+        'zip',
+        'clean'
+    )
+);
+
+task(
     'default',
     series(
+        'removeDist',
         'preprocessSources',
         'tsc',
         'createHeader',
