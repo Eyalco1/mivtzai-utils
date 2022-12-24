@@ -75,3 +75,13 @@ const writePrefsToMemory = (prefs: Prefs) => {
     myJSON.close();
     return myJSON;
 };
+
+const writeBinaryImageDataToFile = (binary: string, path: string): File => {
+    const file = File(path);
+    file.open('w');
+    file.encoding = 'BINARY';
+    file.write(binary);
+    file.close();
+
+    return file;
+};
