@@ -67,7 +67,7 @@ task('tsc', done => {
     exec('tsc --p tsconfig-build.json');
     setTimeout(() => {
         done();
-    }, 21000);
+    }, 8000);
 });
 
 task('buildAssets', done => {
