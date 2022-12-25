@@ -72,12 +72,14 @@ task('tsc', done => {
 
 task('buildAssets', done => {
     fse.copySync(
-        'src/assets',
+        'src/assets/build',
         `dist/${scriptNameNoSpaces}_v${pkg.version} Assets`,
         {
             overwrite: true
         }
     );
+
+    fse.copySync('src/assets/Fonts', `dist/Fonts`, { overwrite: true });
     done();
 });
 
@@ -97,7 +99,9 @@ task('jsxbin', done => {
         `dist/${scriptNameNoSpaces}_v${pkg.version}.jsxbin`
     );
 
-    done();
+    setTimeout(() => {
+        done();
+    }, 3000);
 });
 
 task('addToHost', done => {
@@ -114,7 +118,7 @@ task('addToHost', done => {
 });
 
 task('zip', done => {
-    src('dist/**')
+    src(['dist/**', '!dist/*.jsx'])
         .pipe(zip(`${scriptNameNoSpaces}_v${pkg.version}.zip`))
         .pipe(dest('dist'));
 
