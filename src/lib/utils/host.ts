@@ -318,8 +318,8 @@ const scaleWithOvershoot = (
 
         scaleProp.setValueAtTime(comp.time, [0, 0]);
         scaleProp.setValueAtTime(comp.time + (1 / 24) * 10, [
-            origVal[0] + 5,
-            origVal[1] + 5
+            origVal[0] + 3,
+            origVal[1] + 3
         ]);
         scaleProp.setValueAtTime(comp.time + (1 / 24) * 14, origVal);
 
