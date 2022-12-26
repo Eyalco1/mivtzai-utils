@@ -17,7 +17,8 @@ type LocationID =
     | 'Medical Clinic'
     | 'Sports'
     | 'University'
-    | 'Mosque';
+    | 'Mosque'
+    | 'U.N. Building';
 type TextureID =
     | 'Paper Dark'
     | 'Paper Medium'

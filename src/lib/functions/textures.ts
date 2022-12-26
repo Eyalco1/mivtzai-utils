@@ -55,7 +55,7 @@ const loopTexture = (layer: Layer): void => {
 };
 
 const getPathFromTextureID = (id: TextureID): string => {
-    return `${getAssetsPathFromOS()}/Textures/${id.replace(/ /g, '_')}.jpg`;
+    return `${getAssetsPath()}/Textures/${id.replace(/ /g, '_')}.jpg`;
 };
 
 const getCommandId = (

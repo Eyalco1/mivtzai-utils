@@ -318,14 +318,10 @@ var getOS = function () {
         return 'Win';
     return 'Mac';
 };
-var getAssetsPathFromOS = function (os) {
-    if (os === void 0) { os = getOS(); }
-    if (os === 'Win') {
-        return "".concat(File('.'), "/Scripts/ScriptUI Panels/OperativeUtils_v0.0.0 Assets");
-    }
-    else if (os === 'Mac') {
-        return "/Applications/Adobe After Effects 20".concat(app.version.substring(0, 2), "/Scripts/ScriptUI Panels");
-    }
+var getAssetsPathFromOS = function () {
+    var nameNoSpaces = 'Operative Utils'.replace(/\s+/g, '');
+    return ($.fileName.toString().replace("".concat(nameNoSpaces, "_v0.0.0.jsx"), '') +
+        "".concat(nameNoSpaces, "_v0.0.0 Assets"));
 };
 var openFs = function (path) {
     var folder = Folder(path);
@@ -554,8 +550,8 @@ var scaleWithOvershoot = function (layers) {
         }
         scaleProp.setValueAtTime(comp.time, [0, 0]);
         scaleProp.setValueAtTime(comp.time + (1 / 24) * 10, [
-            origVal[0] + 5,
-            origVal[1] + 5
+            origVal[0] + 3,
+            origVal[1] + 3
         ]);
         scaleProp.setValueAtTime(comp.time + (1 / 24) * 14, origVal);
         var easeIn = new KeyframeEase(0.5, 66);
@@ -2799,6 +2795,8 @@ var createLocationIconFromId = function (id, iconPos, iconAnchor, iconScale) {
             return createUniversityIcon(iconPos, iconAnchor, iconScale, id);
         case 'Mosque':
             return createMosqueIcon(iconPos, iconAnchor, iconScale, id);
+        case 'U.N. Building':
+            return createUNBuildingIcon(iconPos, iconAnchor, iconScale, id);
     }
 };
 var createLocation = function (inputLang, argsArr) {
@@ -4420,6 +4418,109 @@ var createMosqueLocation = function (lang) {
     ];
     createLocation(lang, args);
 };
+var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
+    var iconLayer = createIconBase(name);
+    var contents = iconLayer.property('Contents');
+    var createGlobe = function () {
+        var vertices = [
+            [41.5897674560547, -8.96760559082031],
+            [41.6720886230469, -8.75849914550781],
+            [41.8212738037109, -8.7900390625],
+            [42.2030029296875, -8.847412109375],
+            [42.4898529052734, -8.8455810546875],
+            [42.4857025146484, -9.1673583984375],
+            [41.8723297119141, -9.27090454101562]
+        ];
+        var inTangents = [
+            [-0.02647399902344, -0.21446228027344],
+            [-0.08363342285156, -0.04718017578125],
+            [-0.02096557617188, 0.05293273925781],
+            [-0.14030456542969, -0.04557800292969],
+            [-0.08352661132812, 0.09523010253906],
+            [0.0555419921875, 0.09483337402344],
+            [0.21296691894531, -0.01918029785156]
+        ];
+        var outTangents = [
+            [0.00697326660156, 0.07667541503906],
+            [0.05818176269531, 0.0328369140625],
+            [0.0987548828125, -0.2493896484375],
+            [0.09210205078125, 0.02992248535156],
+            [0.08567810058594, -0.09770202636719],
+            [-0.15708923339844, -0.26815795898438],
+            [-0.17817687988281, 0.01605224609375]
+        ];
+        createPathGrp(contents, 'Globe', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [0, 0]);
+    };
+    var createIconCircle = function () {
+        var vertices = [
+            [43.39892578125, 0],
+            [0, 43.39892578125],
+            [-43.39892578125, 0],
+            [0, -43.39892578125]
+        ];
+        var inTangents = [
+            [0, -23.9685668945312],
+            [23.9685668945312, 0],
+            [0, 23.9685668945312],
+            [-23.9685668945312, 0]
+        ];
+        var outTangents = [
+            [0, 23.9685668945312],
+            [-23.9685668945312, 0],
+            [0, -23.9685668945312],
+            [23.9685668945312, 0]
+        ];
+        createPathGrp(contents, 'Icon_Circle', true, false, [53, 33, 28], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [43.3989, 0]);
+    };
+    createGlobe();
+    createIconCircle();
+    setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
+    return iconLayer;
+};
+var createUNBuildingLocation = function (lang) {
+    var args = [
+        {
+            lang: 'Hebrew',
+            text: 'מבנה או”ם',
+            fontSize: 77.3332,
+            tracking: -19,
+            textPos: [907.9708, 539.3514],
+            textAnchor: [45.7208, -19.8985],
+            bgSize: [238, 110],
+            iconPos: [1016.1489, 539.5],
+            iconAnchor: [43.3989, 0],
+            iconScale: 100,
+            iconId: 'U.N. Building'
+        },
+        {
+            lang: 'English',
+            text: 'U.N. Building',
+            fontSize: 77,
+            tracking: -29,
+            textPos: [1007.486, 548.998],
+            textAnchor: [101.486, -21.252],
+            bgSize: [325, 106],
+            iconPos: [857.3072, 538.8489],
+            iconAnchor: [43.3989, 0],
+            iconScale: 97,
+            iconId: 'U.N. Building'
+        },
+        {
+            lang: 'Arabic',
+            text: 'مبنى تابع للأمم المتحدة',
+            fontSize: 64,
+            tracking: -19,
+            textPos: [920.9957, 540.4375],
+            textAnchor: [90.2456, -16.3125],
+            bgSize: [306, 92],
+            iconPos: [1060.6942, 539.6018],
+            iconAnchor: [43.3989, 0],
+            iconScale: 83,
+            iconId: 'U.N. Building'
+        }
+    ];
+    createLocation(lang, args);
+};
 var createLocationFromId = function (id, lang) {
     app.beginUndoGroup("Create Location: ".concat(id));
     switch (id) {
@@ -4437,6 +4538,9 @@ var createLocationFromId = function (id, lang) {
             break;
         case 'Mosque':
             createMosqueLocation(lang);
+            break;
+        case 'U.N. Building':
+            createUNBuildingLocation(lang);
             break;
     }
     app.endUndoGroup();
@@ -4639,7 +4743,8 @@ var createLocationsUI = function (tpanel) {
         'Medical Clinic',
         'Sports',
         'University',
-        'Mosque'
+        'Mosque',
+        'U.N. Building'
     ];
     var locationsDD = locationsDDGrp.add('dropdownlist', undefined, locationsList);
     locationsDD.preferredSize[0] = 100;

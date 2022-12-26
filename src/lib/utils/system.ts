@@ -3,17 +3,12 @@ const getOS = (): OS => {
     return 'Mac';
 };
 
-const getAssetsPathFromOS = (os: OS = getOS()) => {
-    if (os === 'Win') {
-        return `${File(
-            '.'
-        )}/Scripts/ScriptUI Panels/@@nospacename_v@@version Assets`;
-    } else if (os === 'Mac') {
-        return `/Applications/Adobe After Effects 20${app.version.substring(
-            0,
-            2
-        )}/Scripts/ScriptUI Panels`;
-    }
+const getAssetsPath = (): string => {
+    const nameNoSpaces = '@@name'.replace(/\s+/g, '');
+    return (
+        $.fileName.toString().replace(`${nameNoSpaces}_v@@version.jsx`, '') +
+        `${nameNoSpaces}_v@@version Assets`
+    );
 };
 
 const openFs = (path: string): void => {

@@ -98,11 +98,11 @@ const importLogos = (): void => {
     app.beginUndoGroup('Import Logos');
 
     const idfItem = app.project.importFile(
-        new ImportOptions(File(`${getAssetsPathFromOS()}/Logos/IDF_Logo.png`))
+        new ImportOptions(File(`${getAssetsPath()}/Logos/IDF_Logo.png`))
     ) as AVItem;
 
     const dotzItem = app.project.importFile(
-        new ImportOptions(File(`${getAssetsPathFromOS()}/Logos/Dotz_Logo.png`))
+        new ImportOptions(File(`${getAssetsPath()}/Logos/Dotz_Logo.png`))
     ) as AVItem;
 
     const comp = app.project.activeItem as CompItem;

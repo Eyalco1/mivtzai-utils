@@ -242,7 +242,7 @@ const importGoogleMaps = (location: GoogleMapsLocation): void => {
     const mapItem = app.project.importFile(
         new ImportOptions(
             File(
-                `${getAssetsPathFromOS()}/Images/${location}_Map_${whichMap}.png`
+                `${getAssetsPath()}/Images/${location}_Map_${whichMap}.png`
             )
         )
     ) as AVItem;
