@@ -15,7 +15,8 @@ const createIconsUI = (tpanel: TabbedPanel): Tab => {
         'Target',
         'Sniper Target',
         'House Bombing',
-        'Fire'
+        'Fire',
+        'Money'
     ];
     const iconDD = iconDDGrp.add('dropdownlist', undefined, iconsList);
     iconDD.preferredSize[0] = 100;
