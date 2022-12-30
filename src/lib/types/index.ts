@@ -46,6 +46,7 @@ interface Prefs {
     version?: string;
     projectFolderPath?: string;
     iconsLabelName?: string;
+    iconsLabelIndex?: number;
 }
 
 type GoogleMapsLocation = 'Israel' | 'Gaza';

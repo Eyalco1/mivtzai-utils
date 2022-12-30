@@ -8189,7 +8189,7 @@ var createHelpWindow = function () {
     var iconlabelsGrp = iconlabelsSettingGrp.add('group');
     var labelNames = getLabelNamesFromPrefs();
     var iconLabelsDD = iconlabelsGrp.add('dropdownlist', undefined, labelNames);
-    iconLabelsDD.selection = 0;
+    iconLabelsDD.selection = parsePrefs().iconsLabelIndex;
     var iconLabelColors = getLabelsFromPrefs().map(function (hex) { return hexToRgb(hex); });
     var selection = iconLabelsDD.selection;
     var theLabel = createColoredButton(iconlabelsGrp, iconLabelColors[selection.index], [20, 20]);
@@ -8206,7 +8206,8 @@ var createHelpWindow = function () {
     var okBtn = helpWin.add('button', undefined, 'Ok', { name: 'Ok' });
     okBtn.onClick = function () {
         writePrefsToMemory({
-            iconsLabelName: iconLabelsDD.selection.toString()
+            iconsLabelName: iconLabelsDD.selection.toString(),
+            iconsLabelIndex: iconLabelsDD.selection.index
         });
         helpWin.close();
     };

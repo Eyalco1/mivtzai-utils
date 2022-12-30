@@ -50,7 +50,7 @@ const createHelpWindow = () => {
         undefined,
         labelNames
     );
-    iconLabelsDD.selection = 0;
+    iconLabelsDD.selection = parsePrefs().iconsLabelIndex;
     const iconLabelColors = getLabelsFromPrefs().map(hex => hexToRgb(hex));
 
     const selection = iconLabelsDD.selection as unknown as ListItem;
@@ -81,7 +81,8 @@ const createHelpWindow = () => {
     const okBtn = helpWin.add('button', undefined, 'Ok', { name: 'Ok' });
     okBtn.onClick = () => {
         writePrefsToMemory({
-            iconsLabelName: iconLabelsDD.selection.toString()
+            iconsLabelName: iconLabelsDD.selection.toString(),
+            iconsLabelIndex: (<ListItem>iconLabelsDD.selection).index
         });
 
         helpWin.close();
