@@ -77,6 +77,9 @@ const createTexture = (id: TextureID, loop: Boolean, fit: Boolean) => {
 
     const comp = app.project.activeItem as CompItem;
     const textureLayer = comp.layers.add(textureItem);
+    textureLayer.label = parsePrefs().texLabelRandom
+        ? Math.floor(Math.random() * 16) + 1
+        : parsePrefs().texLabelIndex + 1;
 
     if (loop) loopTexture(textureLayer);
 

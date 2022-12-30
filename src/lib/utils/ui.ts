@@ -85,56 +85,117 @@ const createHelpWindow = () => {
         undefined,
         'Random'
     );
-    iconRandomCheck.onClick = () => {
-        iconlabelsGrp.enabled = !iconRandomCheck.value;
+    iconRandomCheck.value = parsePrefs().iconsLabelRandom;
+    const updateFromIconCheck = (val: boolean) => {
+        iconlabelsGrp.enabled = !val;
         iconTheLabel.fillBrush = iconTheLabel.graphics.newBrush(
             iconTheLabel.graphics.BrushType.SOLID_COLOR,
-            iconRandomCheck.value
-                ? [0.2, 0.2, 0.2, 1]
-                : labelColors[selection.index],
+            val ? [0.2, 0.2, 0.2, 1] : labelColors[iconSelection.index],
             1
         );
     };
+    updateFromIconCheck(iconRandomCheck.value);
+    iconRandomCheck.onClick = () => {
+        updateFromIconCheck(iconRandomCheck.value);
+    };
 
     // == Locations ==
-    const loclabelsSettingGrp = settingsTab.add('group');
-    loclabelsSettingGrp.add('statictext', undefined, 'Locations Label Color:');
+    const locLabelsSettingGrp = settingsTab.add('group');
+    const locStaticGrp = locLabelsSettingGrp.add('group');
+    const locStatic = locStaticGrp.add(
+        'statictext',
+        undefined,
+        'Locations Label Color:'
+    );
 
-    const loclabelsGrp = loclabelsSettingGrp.add('group');
+    const loclabelsGrp = locLabelsSettingGrp.add('group');
     const locLabelsDD = loclabelsGrp.add('dropdownlist', undefined, labelNames);
     locLabelsDD.selection = parsePrefs().locsLabelIndex;
-    const locLabelColors = getLabelsFromPrefs().map(hex => hexToRgb(hex));
 
-    const selection = locLabelsDD.selection as unknown as ListItem;
-    const loctheLabel = createColoredButton(
+    const locSelection = locLabelsDD.selection as unknown as ListItem;
+    const locTheLabel = createColoredButton(
         loclabelsGrp,
-        locLabelColors[selection.index],
+        labelColors[locSelection.index],
         [20, 20]
     );
 
     locLabelsDD.onChange = () => {
         const selection = locLabelsDD.selection as unknown as ListItem;
-        loctheLabel.fillBrush = loctheLabel.graphics.newBrush(
-            loctheLabel.graphics.BrushType.SOLID_COLOR,
-            locLabelColors[selection.index],
+        locTheLabel.fillBrush = locTheLabel.graphics.newBrush(
+            locTheLabel.graphics.BrushType.SOLID_COLOR,
+            labelColors[selection.index],
             1
         );
     };
 
-    const locRandomCheck = loclabelsSettingGrp.add(
+    const locRandomCheck = locLabelsSettingGrp.add(
         'checkbox',
         undefined,
         'Random'
     );
-    locRandomCheck.onClick = () => {
-        iconlabelsGrp.enabled = !locRandomCheck.value;
-        loctheLabel.fillBrush = loctheLabel.graphics.newBrush(
-            loctheLabel.graphics.BrushType.SOLID_COLOR,
-            locRandomCheck.value
-                ? [0.2, 0.2, 0.2, 1]
-                : labelColors[selection.index],
+    locRandomCheck.value = parsePrefs().locsLabelRandom;
+    const updateFromLocCheck = (val: boolean) => {
+        loclabelsGrp.enabled = !val;
+        locTheLabel.fillBrush = locTheLabel.graphics.newBrush(
+            locTheLabel.graphics.BrushType.SOLID_COLOR,
+            val ? [0.2, 0.2, 0.2, 1] : labelColors[locSelection.index],
             1
         );
+    };
+    updateFromLocCheck(locRandomCheck.value);
+    locRandomCheck.onClick = () => {
+        updateFromLocCheck(locRandomCheck.value);
+    };
+
+    // == Textures ==
+    const texlabelsSettingGrp = settingsTab.add('group');
+    const texStaticGrp = texlabelsSettingGrp.add('group');
+    const texStatic = texStaticGrp.add(
+        'statictext',
+        undefined,
+        'Textures Label Color:'
+    );
+    // @ts-ignore
+    texStaticGrp.margins.right = 5;
+
+    const texlabelsGrp = texlabelsSettingGrp.add('group');
+    const texLabelsDD = texlabelsGrp.add('dropdownlist', undefined, labelNames);
+    texLabelsDD.selection = parsePrefs().texLabelIndex;
+    const texLabelColors = getLabelsFromPrefs().map(hex => hexToRgb(hex));
+
+    const texSelection = texLabelsDD.selection as unknown as ListItem;
+    const texTheLabel = createColoredButton(
+        texlabelsGrp,
+        texLabelColors[texSelection.index],
+        [20, 20]
+    );
+
+    texLabelsDD.onChange = () => {
+        const selection = texLabelsDD.selection as unknown as ListItem;
+        texTheLabel.fillBrush = texTheLabel.graphics.newBrush(
+            texTheLabel.graphics.BrushType.SOLID_COLOR,
+            labelColors[selection.index],
+            1
+        );
+    };
+
+    const texRandomCheck = texlabelsSettingGrp.add(
+        'checkbox',
+        undefined,
+        'Random'
+    );
+    texRandomCheck.value = parsePrefs().texLabelRandom;
+    const updateFromTexCheck = (val: boolean) => {
+        texlabelsGrp.enabled = !val;
+        texTheLabel.fillBrush = texTheLabel.graphics.newBrush(
+            texTheLabel.graphics.BrushType.SOLID_COLOR,
+            val ? [0.2, 0.2, 0.2, 1] : labelColors[texSelection.index],
+            1
+        );
+    };
+    updateFromTexCheck(texRandomCheck.value);
+    texRandomCheck.onClick = () => {
+        updateFromTexCheck(texRandomCheck.value);
     };
 
     // === Reviews ===
@@ -151,8 +212,13 @@ const createHelpWindow = () => {
         writePrefsToMemory({
             iconsLabelName: iconLabelsDD.selection.toString(),
             iconsLabelIndex: (<ListItem>iconLabelsDD.selection).index,
+            iconsLabelRandom: iconRandomCheck.value,
             locsLabelName: locLabelsDD.selection.toString(),
-            locsLabelIndex: (<ListItem>locLabelsDD.selection).index
+            locsLabelIndex: (<ListItem>locLabelsDD.selection).index,
+            locsLabelRandom: locRandomCheck.value,
+            texLabelName: texLabelsDD.selection.toString(),
+            texLabelIndex: (<ListItem>texLabelsDD.selection).index,
+            texLabelRandom: texRandomCheck.value
         });
 
         helpWin.close();

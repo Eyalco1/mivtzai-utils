@@ -1267,7 +1267,9 @@ var setUpIcon = function (name, circleColor, iconColor) {
     var comp = app.project.activeItem;
     var layer = comp.layers.addShape();
     layer.name = name;
-    layer.label = parsePrefs().iconsLabelIndex + 1;
+    layer.label = parsePrefs().iconsLabelRandom
+        ? Math.floor(Math.random() * 16) + 1
+        : parsePrefs().iconsLabelIndex + 1;
     var contents = layer.property('Contents');
     var circleColorRgb = colorNameToRGB(circleColor);
     var iconColorRgb = colorNameToRGB(iconColor);
@@ -2967,7 +2969,9 @@ var createLocation = function (inputLang, argsArr) {
     bgLayer.label =
         iconLayer.label =
             textLayer.label =
-                parsePrefs().locsLabelIndex + 1;
+                parsePrefs().locsLabelRandom
+                    ? Math.floor(Math.random() * 16) + 1
+                    : parsePrefs().locsLabelIndex + 1;
     iconLayer.selected = textLayer.selected = false;
     bgLayer.selected = true;
 };
@@ -8148,6 +8152,9 @@ var createTexture = function (id, loop, fit) {
     var textureItem = importTexture(path);
     var comp = app.project.activeItem;
     var textureLayer = comp.layers.add(textureItem);
+    textureLayer.label = parsePrefs().texLabelRandom
+        ? Math.floor(Math.random() * 16) + 1
+        : parsePrefs().texLabelIndex + 1;
     if (loop)
         loopTexture(textureLayer);
     if (fit) {
@@ -8205,30 +8212,60 @@ var createHelpWindow = function () {
         iconTheLabel.fillBrush = iconTheLabel.graphics.newBrush(iconTheLabel.graphics.BrushType.SOLID_COLOR, labelColors[selection.index], 1);
     };
     var iconRandomCheck = iconlabelsSettingGrp.add('checkbox', undefined, 'Random');
-    iconRandomCheck.onClick = function () {
-        iconlabelsGrp.enabled = !iconRandomCheck.value;
-        iconTheLabel.fillBrush = iconTheLabel.graphics.newBrush(iconTheLabel.graphics.BrushType.SOLID_COLOR, iconRandomCheck.value
-            ? [0.2, 0.2, 0.2, 1]
-            : labelColors[selection.index], 1);
+    iconRandomCheck.value = parsePrefs().iconsLabelRandom;
+    var updateFromIconCheck = function (val) {
+        iconlabelsGrp.enabled = !val;
+        iconTheLabel.fillBrush = iconTheLabel.graphics.newBrush(iconTheLabel.graphics.BrushType.SOLID_COLOR, val ? [0.2, 0.2, 0.2, 1] : labelColors[iconSelection.index], 1);
     };
-    var loclabelsSettingGrp = settingsTab.add('group');
-    loclabelsSettingGrp.add('statictext', undefined, 'Locations Label Color:');
-    var loclabelsGrp = loclabelsSettingGrp.add('group');
+    updateFromIconCheck(iconRandomCheck.value);
+    iconRandomCheck.onClick = function () {
+        updateFromIconCheck(iconRandomCheck.value);
+    };
+    var locLabelsSettingGrp = settingsTab.add('group');
+    var locStaticGrp = locLabelsSettingGrp.add('group');
+    var locStatic = locStaticGrp.add('statictext', undefined, 'Locations Label Color:');
+    var loclabelsGrp = locLabelsSettingGrp.add('group');
     var locLabelsDD = loclabelsGrp.add('dropdownlist', undefined, labelNames);
     locLabelsDD.selection = parsePrefs().locsLabelIndex;
-    var locLabelColors = getLabelsFromPrefs().map(function (hex) { return hexToRgb(hex); });
-    var selection = locLabelsDD.selection;
-    var loctheLabel = createColoredButton(loclabelsGrp, locLabelColors[selection.index], [20, 20]);
+    var locSelection = locLabelsDD.selection;
+    var locTheLabel = createColoredButton(loclabelsGrp, labelColors[locSelection.index], [20, 20]);
     locLabelsDD.onChange = function () {
         var selection = locLabelsDD.selection;
-        loctheLabel.fillBrush = loctheLabel.graphics.newBrush(loctheLabel.graphics.BrushType.SOLID_COLOR, locLabelColors[selection.index], 1);
+        locTheLabel.fillBrush = locTheLabel.graphics.newBrush(locTheLabel.graphics.BrushType.SOLID_COLOR, labelColors[selection.index], 1);
     };
-    var locRandomCheck = loclabelsSettingGrp.add('checkbox', undefined, 'Random');
+    var locRandomCheck = locLabelsSettingGrp.add('checkbox', undefined, 'Random');
+    locRandomCheck.value = parsePrefs().locsLabelRandom;
+    var updateFromLocCheck = function (val) {
+        loclabelsGrp.enabled = !val;
+        locTheLabel.fillBrush = locTheLabel.graphics.newBrush(locTheLabel.graphics.BrushType.SOLID_COLOR, val ? [0.2, 0.2, 0.2, 1] : labelColors[locSelection.index], 1);
+    };
+    updateFromLocCheck(locRandomCheck.value);
     locRandomCheck.onClick = function () {
-        iconlabelsGrp.enabled = !locRandomCheck.value;
-        loctheLabel.fillBrush = loctheLabel.graphics.newBrush(loctheLabel.graphics.BrushType.SOLID_COLOR, locRandomCheck.value
-            ? [0.2, 0.2, 0.2, 1]
-            : labelColors[selection.index], 1);
+        updateFromLocCheck(locRandomCheck.value);
+    };
+    var texlabelsSettingGrp = settingsTab.add('group');
+    var texStaticGrp = texlabelsSettingGrp.add('group');
+    var texStatic = texStaticGrp.add('statictext', undefined, 'Textures Label Color:');
+    texStaticGrp.margins.right = 5;
+    var texlabelsGrp = texlabelsSettingGrp.add('group');
+    var texLabelsDD = texlabelsGrp.add('dropdownlist', undefined, labelNames);
+    texLabelsDD.selection = parsePrefs().texLabelIndex;
+    var texLabelColors = getLabelsFromPrefs().map(function (hex) { return hexToRgb(hex); });
+    var texSelection = texLabelsDD.selection;
+    var texTheLabel = createColoredButton(texlabelsGrp, texLabelColors[texSelection.index], [20, 20]);
+    texLabelsDD.onChange = function () {
+        var selection = texLabelsDD.selection;
+        texTheLabel.fillBrush = texTheLabel.graphics.newBrush(texTheLabel.graphics.BrushType.SOLID_COLOR, labelColors[selection.index], 1);
+    };
+    var texRandomCheck = texlabelsSettingGrp.add('checkbox', undefined, 'Random');
+    texRandomCheck.value = parsePrefs().texLabelRandom;
+    var updateFromTexCheck = function (val) {
+        texlabelsGrp.enabled = !val;
+        texTheLabel.fillBrush = texTheLabel.graphics.newBrush(texTheLabel.graphics.BrushType.SOLID_COLOR, val ? [0.2, 0.2, 0.2, 1] : labelColors[texSelection.index], 1);
+    };
+    updateFromTexCheck(texRandomCheck.value);
+    texRandomCheck.onClick = function () {
+        updateFromTexCheck(texRandomCheck.value);
     };
     var reviewsTab = tpanel.add('tab', undefined, ['Reviews']);
     reviewsTab.add('edittext', [0, 0, 380, 300], '', {
@@ -8241,8 +8278,13 @@ var createHelpWindow = function () {
         writePrefsToMemory({
             iconsLabelName: iconLabelsDD.selection.toString(),
             iconsLabelIndex: iconLabelsDD.selection.index,
+            iconsLabelRandom: iconRandomCheck.value,
             locsLabelName: locLabelsDD.selection.toString(),
-            locsLabelIndex: locLabelsDD.selection.index
+            locsLabelIndex: locLabelsDD.selection.index,
+            locsLabelRandom: locRandomCheck.value,
+            texLabelName: texLabelsDD.selection.toString(),
+            texLabelIndex: texLabelsDD.selection.index,
+            texLabelRandom: texRandomCheck.value
         });
         helpWin.close();
     };

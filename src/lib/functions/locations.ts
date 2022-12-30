@@ -168,7 +168,9 @@ const createLocation = (inputLang: Lingo, argsArr: LocationArgs[]): void => {
     bgLayer.label =
         iconLayer.label =
         textLayer.label =
-            parsePrefs().locsLabelIndex + 1;
+            parsePrefs().locsLabelRandom
+                ? Math.floor(Math.random() * 16) + 1
+                : parsePrefs().locsLabelIndex + 1;
     iconLayer.selected = textLayer.selected = false;
     bgLayer.selected = true;
 };
