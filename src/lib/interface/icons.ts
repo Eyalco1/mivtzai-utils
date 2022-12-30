@@ -43,11 +43,11 @@ const createIconsUI = (tpanel: TabbedPanel): Tab => {
         'Red'
     ]);
 
-    const labelGrp = iconsGrp.add('group');
-    labelGrp.add('statictext', undefined, 'Label:');
-    const labelNames = getLabelNamesFromPrefs();
-    const labelDD = labelGrp.add('dropdownlist', undefined, labelNames);
-    labelDD.selection = 0;
+    // const labelGrp = iconsGrp.add('group');
+    // labelGrp.add('statictext', undefined, 'Label:');
+    // const labelNames = getLabelNamesFromPrefs();
+    // const labelDD = labelGrp.add('dropdownlist', undefined, labelNames);
+    // labelDD.selection = 0;
 
     circleColorDD.selection = iconColorDD.selection = 0;
 

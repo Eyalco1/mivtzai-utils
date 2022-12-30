@@ -1267,6 +1267,7 @@ var setUpIcon = function (name, circleColor, iconColor) {
     var comp = app.project.activeItem;
     var layer = comp.layers.addShape();
     layer.name = name;
+    layer.label = parsePrefs().iconsLabelIndex + 1;
     var contents = layer.property('Contents');
     var circleColorRgb = colorNameToRGB(circleColor);
     var iconColorRgb = colorNameToRGB(iconColor);
@@ -2963,7 +2964,10 @@ var createLocation = function (inputLang, argsArr) {
     var iconLayer = createLocationIconFromId(iconId, iconPos, iconAnchor, iconScale);
     var textLayer = createLocationText(lang, text, fontSize, tracking, leading, textPos, textAnchor);
     iconLayer.parent = textLayer.parent = bgLayer;
-    bgLayer.label = iconLayer.label = textLayer.label = 11;
+    bgLayer.label =
+        iconLayer.label =
+            textLayer.label =
+                parsePrefs().locsLabelIndex + 1;
     iconLayer.selected = textLayer.selected = false;
     bgLayer.selected = true;
 };
@@ -8351,11 +8355,6 @@ var createIconsUI = function (tpanel) {
         'White',
         'Red'
     ]);
-    var labelGrp = iconsGrp.add('group');
-    labelGrp.add('statictext', undefined, 'Label:');
-    var labelNames = getLabelNamesFromPrefs();
-    var labelDD = labelGrp.add('dropdownlist', undefined, labelNames);
-    labelDD.selection = 0;
     circleColorDD.selection = iconColorDD.selection = 0;
     var iconCreateBtn = iconsGrp.add('button', undefined, 'Create Icon');
     iconCreateBtn.preferredSize[0] = 100;

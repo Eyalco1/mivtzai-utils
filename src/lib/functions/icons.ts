@@ -6,6 +6,7 @@ const setUpIcon = (
     const comp = app.project.activeItem as CompItem;
     const layer = comp.layers.addShape();
     layer.name = name;
+    layer.label = parsePrefs().iconsLabelIndex + 1;
     const contents = layer.property('Contents') as PropertyGroup;
 
     const circleColorRgb = colorNameToRGB(circleColor);

@@ -165,7 +165,10 @@ const createLocation = (inputLang: Lingo, argsArr: LocationArgs[]): void => {
     );
 
     iconLayer.parent = textLayer.parent = bgLayer;
-    bgLayer.label = iconLayer.label = textLayer.label = 11;
+    bgLayer.label =
+        iconLayer.label =
+        textLayer.label =
+            parsePrefs().locsLabelIndex + 1;
     iconLayer.selected = textLayer.selected = false;
     bgLayer.selected = true;
 };
