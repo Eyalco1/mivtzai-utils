@@ -65,8 +65,9 @@ const writePrefsToMemory = (prefs: Prefs) => {
     createFolder(Folder(appDataFolder + '/@@name'));
     createFolder(Folder(appDataFolder + '/@@name/Prefs'));
     const myJSON = File(appDataFolder + '/@@name/Prefs/Prefs.json');
+    const parsedPrefs = parsePrefs();
     myJSON.open('w');
-    myJSON.write(JSON.stringify(prefs, null, 2));
+    myJSON.write(JSON.stringify({...parsedPrefs, ...prefs}, null, 2));
     myJSON.close();
     return myJSON;
 };

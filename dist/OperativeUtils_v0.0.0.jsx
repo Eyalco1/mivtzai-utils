@@ -313,6 +313,141 @@ var frameBinary = "\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x18\x00\x00
 var folderBinary = '\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x18\x00\x00\x00\x18\b\x06\x00\x00\x00\u00E0w=\u00F8\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x00\u00D2IDATH\u0089\u00ED\u0095\u00DD\r\u00C20\f\u0084\u00BFV\fP&`\x04V(\x1B0BVb\x13Fh7\u0080\r\u00C2\x06e\x02#W\tDyhJ\u00E5\u00F0\u00C4IV\u00FBP\u009D}\u00E7\u009F6"BM\u00B4U\u00D9\x7F\u0095\u00C0\x01\x13 \u0085p[\x12h\x0F<pX\u00F9\u00FD%\x14S\u00C2\x10\x02\u00A4\x1E\u009C\x0E\u00D0.\u00A9\u00E4\t\\\x01\u00BF\u00C5\u008A%\u008B\u00E2\u009C\u009E\u00DE\u00B2\f\u0091\u008Ei$\u00EF\u0083\u008AR\u00D3K\u00A1\x1C.U\u00D0\u0084\u00E7\r8\x1Ai\x18\u00F3E\u00EB\f\u00C9g\u00BE<AoH\u00AE\x18\u00AA\'\u00C8{`\u00E9\u00BFb\u009F*\u00B0\u00F6\u00FF\u00AE[\u009F&8\x1B\u0092\x13\u00C7>M`\u00EE?\u00D9&?\u00BE8zk0\u00EFU\u00AA\u00C0\u0092|\u008C/m\u00A8\u00DC\x1A\u009F\u009B\x16\u00CE\u00EAdx\u00B4\u00BD\u0088t\u00EA\u00BC\u00C6\u00FF\u00A7\u00BF\f\u00E0\x05\u00BB\u00A4\x03\u00F3\u00D1~\x02\u00D0\x00\x00\x00\x00IEND\u00AEB`\u0082';
 var helpBinary = "\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x10\x00\x00\x00\x10\b\x06\x00\x00\x00\x1F\u00F3\u00FFa\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x00\u00ACIDAT8\u008D\u00A5\u0091a\r\u00C3 \x14\u0084\u00AFSP\x07\u00AD\x04$LB%TJ\u00E7`\x12\u0090\u00B09\u0098\x04$ \u0081)\u00B8\u0085\u00E55\u00A1/\u00F4\u0095\u00AD\u0097\u00BC\x1F\u0085\u00BB\u008F\u0083\u0082\u00A4\u009E\u0091\u00A4'\u0099\u00B8\u00D5\u0083\u00E4U\u00FBux\u00E6\u00B1&\x0B\x10\x1B\x00\u00D1\x028\u00A9\u009E\u00A4\u00CD(k\x1A\u00BC\x0BX!\u00AE\u00F8\u00EEI\u0086_\x00z\u00BC\n\u00FBV@>\u00F9\u00A5\u00C2A\u00D6\u009B\x00\u00F7\u00CAo\u00EC\u00B5\u00CF\x02$\u00EB\u00E4u.\u00D8W(v<\u0080TsZ\u0080\x1Cz\x03x*\u00D8F\u00DD\u00F7\x1E'd5p\x00\u00A2\u00CC\u00FCO\u0083\x1C\x1CJo\u00CDd5h\u0092\x05X\u00E4\x11\u00B3nU\x07\u0080\x0F\u00AE|\u00F2\u00F6\x1C\u008E\u00B6\u00DF\x00\x00\x00\x00IEND\u00AEB`\u0082";
 var quoteBinary = '\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x10\x00\x00\x00\x10\b\x06\x00\x00\x00\x1F\u00F3\u00FFa\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x00xIDAT8\u008Dc\u00FC\u00FF\u00FF?\x03%\u0080\u0089"\u00DD\f\f\f,\f\f\f\x07\u00F0\u00C8;@i\u009Cj@^\u00C0\u00E7\x07F(\u008DS\r\u00C5^\x185\x00\x12\u008D\u008EH\u00FC\r\f\f\f\u00FCP\u00F6C$q\u00DCj@\u00B1\b\u00C5\t\u00FFQA\x02\u0092\x1CN5\u00C8\u0092\x0F\u0090$\x1E`\u00D1\u008CU\rE\u00B6\u0083\u00C4Aa\x00\x02\u00A0${\x10\u00CA\u00FE\u00C0\u00C0\u00C0\u00B0\x00Kx\x19`S3\u00C0\u00B9\u0091\u0081\u0081\x01\x00\b\u00F8\u00BB\u0088y\u00F5\x0B\u00D9\x00\x00\x00\x00IEND\u00AEB`\u0082';
+var table1252 = {
+    "€": 128,
+    "‚": 130,
+    "ƒ": 131,
+    "„": 132,
+    "…": 133,
+    "†": 134,
+    "‡": 135,
+    "ˆ": 136,
+    "‰": 137,
+    "Š": 138,
+    "‹": 139,
+    "Œ": 140,
+    "Ž": 142,
+    "‘": 145,
+    "’": 146,
+    "“": 147,
+    "”": 148,
+    "•": 149,
+    "–": 150,
+    "—": 151,
+    "˜": 152,
+    "™": 153,
+    "š": 154,
+    "›": 155,
+    "œ": 156,
+    "ž": 158,
+    "Ÿ": 159,
+    "¡": 161,
+    "¢": 162,
+    "£": 163,
+    "¤": 164,
+    "¥": 165,
+    "¦": 166,
+    "§": 167,
+    "¨": 168,
+    "©": 169,
+    "ª": 170,
+    "«": 171,
+    "¬": 172,
+    "�­": 173,
+    "®": 174,
+    "¯": 175,
+    "°": 176,
+    "±": 177,
+    "²": 178,
+    "³": 179,
+    "´": 180,
+    "µ": 181,
+    "¶": 182,
+    "·": 183,
+    "¸": 184,
+    "¹": 185,
+    "º": 186,
+    "»": 187,
+    "¼": 188,
+    "½": 189,
+    "¾": 190,
+    "¿": 191,
+    "À": 192,
+    "Á": 193,
+    "Â": 194,
+    "Ã": 195,
+    "Ä": 196,
+    "Å": 197,
+    "Æ": 198,
+    "Ç": 199,
+    "È": 200,
+    "É": 201,
+    "Ê": 202,
+    "Ë": 203,
+    "Ì": 204,
+    "Í": 205,
+    "Î": 206,
+    "Ï": 207,
+    "Ð": 208,
+    "Ñ": 209,
+    "Ò": 210,
+    "Ó": 211,
+    "Ô": 212,
+    "Õ": 213,
+    "Ö": 214,
+    "×": 215,
+    "Ø": 216,
+    "Ù": 217,
+    "Ú": 218,
+    "Û": 219,
+    "Ü": 220,
+    "Ý": 221,
+    "Þ": 222,
+    "ß": 223,
+    "à": 224,
+    "á": 225,
+    "â": 226,
+    "ã": 227,
+    "ä": 228,
+    "å": 229,
+    "æ": 230,
+    "ç": 231,
+    "è": 232,
+    "é": 233,
+    "ê": 234,
+    "ë": 235,
+    "ì": 236,
+    "í": 237,
+    "î": 238,
+    "ï": 239,
+    "ð": 240,
+    "ñ": 241,
+    "ò": 242,
+    "ó": 243,
+    "ô": 244,
+    "õ": 245,
+    "ö": 246,
+    "÷": 247,
+    "ø": 248,
+    "ù": 249,
+    "ú": 250,
+    "û": 251,
+    "ü": 252,
+    "ý": 253,
+    "þ": 254,
+    "ÿ": 255
+};
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var getOS = function () {
     if ($.os.indexOf('Win') != -1)
         return 'Win';
@@ -372,8 +507,9 @@ var writePrefsToMemory = function (prefs) {
     createFolder(Folder(appDataFolder + '/Operative Utils'));
     createFolder(Folder(appDataFolder + '/Operative Utils/Prefs'));
     var myJSON = File(appDataFolder + '/Operative Utils/Prefs/Prefs.json');
+    var parsedPrefs = parsePrefs();
     myJSON.open('w');
-    myJSON.write(JSON.stringify(prefs, null, 2));
+    myJSON.write(JSON.stringify(__assign(__assign({}, parsedPrefs), prefs), null, 2));
     myJSON.close();
     return myJSON;
 };
@@ -503,34 +639,6 @@ var importGoogleMaps = function (location) {
     mapLayer.selected = true;
     app.executeCommand(2732);
 };
-var createHelpWindow = function () {
-    var helpWin = new Window('dialog', 'Help & Info');
-    if (helpWin == null) {
-        helpWin;
-    }
-    var tpanel = helpWin.add('tabbedpanel');
-    var aboutTab = tpanel.add('tab', undefined, ['About']);
-    var abtStr = '‹ Operative Utils - 0.0.0 - Created By Eyal Cohen ›';
-    aboutTab.add('edittext', [0, 0, 380, 300], abtStr, {
-        multiline: true,
-        readonly: true,
-        scrollable: true
-    });
-    var settingsTab = tpanel.add('tab', undefined, ['Settings']);
-    settingsTab.orientation = 'row';
-    var reviewsTab = tpanel.add('tab', undefined, ['Reviews']);
-    reviewsTab.add('edittext', [0, 0, 380, 300], '', {
-        multiline: true,
-        readonly: true,
-        scrollable: true
-    });
-    var okBtn = helpWin.add('button', undefined, 'Ok', { name: 'Ok' });
-    helpWin.layout.layout(true);
-    if (helpWin != null && helpWin instanceof Window) {
-        helpWin.center();
-        helpWin.show();
-    }
-};
 var scaleWithOvershoot = function (layers) {
     if (layers === void 0) { layers = app.project.activeItem.selectedLayers; }
     var comp = app.project.activeItem;
@@ -571,6 +679,59 @@ var colorNameToRGB = function (name) {
     else if (name === 'Red') {
         return [197, 24, 24];
     }
+};
+var getLabelsFromPrefs = function () {
+    $.appEncoding = 'CP1252';
+    var sectionName = 'Label Preference Color Section 5';
+    var prefFile = PREFType.PREF_Type_MACHINE_INDEPENDENT;
+    var keyName;
+    var mypref;
+    var resArray = [];
+    for (var i = 1; i <= 16; i++) {
+        keyName = 'Label Color ID 2 # ' + i.toString();
+        mypref = app.preferences.getPrefAsString(sectionName, keyName, prefFile);
+        var res = '';
+        for (var j = 1; j < mypref.length; j++) {
+            var charCode = mypref.charCodeAt(j);
+            if (charCode > 254) {
+                charCode = table1252[mypref[j]];
+            }
+            var newCode = charCode.toString(16).toUpperCase();
+            if (newCode.toString().length === 1) {
+                newCode = '0' + newCode;
+            }
+            res += newCode;
+        }
+        resArray.push(res);
+    }
+    return resArray;
+};
+var getLabelNamesFromPrefs = function () {
+    var outputArray = [];
+    var sectionName = 'Label Preference Text Section 7';
+    var prefFile = PREFType.PREF_Type_MACHINE_INDEPENDENT;
+    for (var i = 1; i <= 16; i++) {
+        var keyName = 'Label Text ID 2 # ' + i.toString();
+        outputArray.push(app.preferences.getPrefAsString(sectionName, keyName, prefFile));
+    }
+    return outputArray;
+};
+var hexToRgb = function (hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result
+        ? [
+            Math.round(parseInt(result[1], 16)) / 255,
+            Math.round(parseInt(result[2], 16)) / 255,
+            Math.round(parseInt(result[3], 16)) / 255
+        ]
+        : null;
+};
+var rgbToHex = function (r, g, b) {
+    var componentToHex = function (c) {
+        var hex = c.toString(16);
+        return hex.length == 1 ? '0' + hex : hex;
+    };
+    return componentToHex(r) + componentToHex(g) + componentToHex(b);
 };
 var generateCaspiQuote = function () {
     var quotes = ['1', '2', '3', '4'];
@@ -1083,10 +1244,7 @@ var createAnimatedFrame = function () {
 var openProjectInFinder = function () {
     var writeSelectDialogToPrefs = function () {
         var selFolder = Folder.selectDialog('Select Project Folder');
-        writePrefsToMemory({
-            projectFolderPath: selFolder.fsName,
-            version: '0.0.0'
-        });
+        writePrefsToMemory({ projectFolderPath: selFolder.fsName });
     };
     var ctrlKey = ScriptUI.environment.keyboardState.ctrlKey;
     if (ctrlKey) {
@@ -4382,7 +4540,7 @@ var createMosqueLocation = function (lang) {
             fontSize: 77.3332,
             tracking: -19,
             textPos: [907.9708, 539.3514],
-            textAnchor: [45.7208, -19.8985],
+            textAnchor: [getOS() === 'Win' ? 45.7208 : -45.7208, -19.8985],
             bgSize: [238, 110],
             iconPos: [1016.1489, 539.5],
             iconAnchor: [43.3989, 0],
@@ -7995,6 +8153,69 @@ var createTexture = function (id, loop, fit) {
     }
     app.endUndoGroup();
 };
+var createColoredButton = function (container, color, size) {
+    color = color || [1, 1, 0, 1];
+    size = size || [50, 50];
+    var grp = container.add('group');
+    var button = grp.add('iconbutton', undefined, undefined, {
+        style: 'toolbutton'
+    });
+    button.size = size;
+    button.fillBrush = button.graphics.newBrush(button.graphics.BrushType.SOLID_COLOR, color, 1);
+    button.onDraw = function () {
+        this.graphics.drawOSControl();
+        this.graphics.rectPath(0, 0, this.size[0], this.size[1]);
+        this.graphics.fillPath(this.fillBrush);
+    };
+    return button;
+};
+var createHelpWindow = function () {
+    var helpWin = new Window('dialog', 'Help & Info');
+    if (helpWin == null) {
+        helpWin;
+    }
+    var tpanel = helpWin.add('tabbedpanel');
+    var aboutTab = tpanel.add('tab', undefined, ['About']);
+    var abtStr = '‹ Operative Utils - 0.0.0 - Created By Eyal Cohen ›';
+    aboutTab.add('edittext', [0, 0, 380, 300], abtStr, {
+        multiline: true,
+        readonly: true,
+        scrollable: true
+    });
+    var settingsTab = tpanel.add('tab', undefined, ['Settings']);
+    settingsTab.orientation = 'row';
+    var iconlabelsSettingGrp = settingsTab.add('group');
+    iconlabelsSettingGrp.add('statictext', undefined, 'Icons Label Color:');
+    var iconlabelsGrp = iconlabelsSettingGrp.add('group');
+    var labelNames = getLabelNamesFromPrefs();
+    var iconLabelsDD = iconlabelsGrp.add('dropdownlist', undefined, labelNames);
+    iconLabelsDD.selection = 0;
+    var iconLabelColors = getLabelsFromPrefs().map(function (hex) { return hexToRgb(hex); });
+    var selection = iconLabelsDD.selection;
+    var theLabel = createColoredButton(iconlabelsGrp, iconLabelColors[selection.index], [20, 20]);
+    iconLabelsDD.onChange = function () {
+        var selection = iconLabelsDD.selection;
+        theLabel.fillBrush = theLabel.graphics.newBrush(theLabel.graphics.BrushType.SOLID_COLOR, iconLabelColors[selection.index], 1);
+    };
+    var reviewsTab = tpanel.add('tab', undefined, ['Reviews']);
+    reviewsTab.add('edittext', [0, 0, 380, 300], '', {
+        multiline: true,
+        readonly: true,
+        scrollable: true
+    });
+    var okBtn = helpWin.add('button', undefined, 'Ok', { name: 'Ok' });
+    okBtn.onClick = function () {
+        writePrefsToMemory({
+            iconsLabelName: iconLabelsDD.selection.toString()
+        });
+        helpWin.close();
+    };
+    helpWin.layout.layout(true);
+    if (helpWin != null && helpWin instanceof Window) {
+        helpWin.center();
+        helpWin.show();
+    }
+};
 var createQAUI = function (tpanel) {
     var quickActionsTab = tpanel.add('tab', undefined, ['Quick Actions']);
     var QABtnsGrp = quickActionsTab.add('group');
@@ -8098,6 +8319,11 @@ var createIconsUI = function (tpanel) {
         'White',
         'Red'
     ]);
+    var labelGrp = iconsGrp.add('group');
+    labelGrp.add('statictext', undefined, 'Label:');
+    var labelNames = getLabelNamesFromPrefs();
+    var labelDD = labelGrp.add('dropdownlist', undefined, labelNames);
+    labelDD.selection = 0;
     circleColorDD.selection = iconColorDD.selection = 0;
     var iconCreateBtn = iconsGrp.add('button', undefined, 'Create Icon');
     iconCreateBtn.preferredSize[0] = 100;

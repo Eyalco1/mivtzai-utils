@@ -2433,7 +2433,7 @@ const createMosqueLocation = (lang: Lingo): void => {
             fontSize: 77.3332,
             tracking: -19,
             textPos: [907.9708, 539.3514],
-            textAnchor: [45.7208, -19.8985],
+            textAnchor: [getOS() === 'Win' ? 45.7208 : -45.7208, -19.8985],
             bgSize: [238, 110],
             iconPos: [1016.1489, 539.5],
             iconAnchor: [43.3989, 0],

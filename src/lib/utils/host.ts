@@ -241,9 +241,7 @@ const importGoogleMaps = (location: GoogleMapsLocation): void => {
 
     const mapItem = app.project.importFile(
         new ImportOptions(
-            File(
-                `${getAssetsPath()}/Images/${location}_Map_${whichMap}.png`
-            )
+            File(`${getAssetsPath()}/Images/${location}_Map_${whichMap}.png`)
         )
     ) as AVItem;
 
@@ -253,47 +251,6 @@ const importGoogleMaps = (location: GoogleMapsLocation): void => {
     // Fit To Comp Height
     mapLayer.selected = true;
     app.executeCommand(2732);
-};
-
-const createHelpWindow = () => {
-    const helpWin = new Window('dialog', 'Help & Info');
-    if (helpWin == null) {
-        helpWin;
-    }
-
-    const tpanel = helpWin.add('tabbedpanel');
-
-    // === About ===
-    const aboutTab = tpanel.add('tab', undefined, ['About']);
-    const abtStr = '‹ @@name - @@version - Created By Eyal Cohen ›';
-    aboutTab.add('edittext', [0, 0, 380, 300], abtStr, {
-        multiline: true,
-        readonly: true,
-        scrollable: true
-    });
-
-    // === Settings ===
-    const settingsTab = tpanel.add('tab', undefined, ['Settings']);
-    settingsTab.orientation = 'row';
-
-    // === Reviews ===
-    const reviewsTab = tpanel.add('tab', undefined, ['Reviews']);
-    reviewsTab.add('edittext', [0, 0, 380, 300], '', {
-        multiline: true,
-        readonly: true,
-        scrollable: true
-    });
-
-    // === Ok Button ===
-    const okBtn = helpWin.add('button', undefined, 'Ok', { name: 'Ok' });
-
-    // === Initilaztion ===
-    helpWin.layout.layout(true);
-
-    if (helpWin != null && helpWin instanceof Window) {
-        helpWin.center();
-        helpWin.show();
-    }
 };
 
 const scaleWithOvershoot = (
@@ -351,4 +308,71 @@ const colorNameToRGB = (name: ColorDropdown): [number, number, number] => {
     } else if (name === 'Red') {
         return [197, 24, 24];
     }
+};
+
+const getLabelsFromPrefs = (): string[] => {
+    // @ts-ignore
+    $.appEncoding = 'CP1252';
+
+    const sectionName = 'Label Preference Color Section 5';
+    const prefFile = PREFType.PREF_Type_MACHINE_INDEPENDENT;
+    let keyName: string;
+    let mypref: string;
+    const resArray: string[] = [];
+
+    for (var i = 1; i <= 16; i++) {
+        keyName = 'Label Color ID 2 # ' + i.toString();
+        mypref = app.preferences.getPrefAsString(
+            sectionName,
+            keyName,
+            prefFile
+        );
+
+        var res = '';
+        for (var j = 1; j < mypref.length; j++) {
+            var charCode = mypref.charCodeAt(j);
+            if (charCode > 254) {
+                charCode = table1252[mypref[j]];
+            }
+            var newCode = charCode.toString(16).toUpperCase();
+            if (newCode.toString().length === 1) {
+                newCode = '0' + newCode;
+            }
+            res += newCode;
+        }
+        resArray.push(res);
+    }
+    return resArray;
+};
+
+const getLabelNamesFromPrefs = (): string[] => {
+    const outputArray: string[] = [];
+    const sectionName = 'Label Preference Text Section 7';
+    const prefFile = PREFType.PREF_Type_MACHINE_INDEPENDENT;
+    for (var i = 1; i <= 16; i++) {
+        const keyName = 'Label Text ID 2 # ' + i.toString();
+        outputArray.push(
+            app.preferences.getPrefAsString(sectionName, keyName, prefFile)
+        );
+    }
+    return outputArray;
+};
+
+const hexToRgb = (hex: string): [number, number, number] => {
+    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result
+        ? [
+              Math.round(parseInt(result[1], 16)) / 255,
+              Math.round(parseInt(result[2], 16)) / 255,
+              Math.round(parseInt(result[3], 16)) / 255
+          ]
+        : null;
+};
+
+const rgbToHex = (r: number, g: number, b: number): string => {
+    const componentToHex = (c: number): string => {
+        const hex = c.toString(16);
+        return hex.length == 1 ? '0' + hex : hex;
+    };
+    return componentToHex(r) + componentToHex(g) + componentToHex(b);
 };

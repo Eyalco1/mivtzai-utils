@@ -1,1 +1,2 @@
-src/lib/polyfills.ts
+src/lib/helpers/polyfills.ts
+src/lib/helpers/global.ts

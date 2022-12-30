@@ -666,10 +666,7 @@ const createAnimatedFrame = (): void => {
 const openProjectInFinder = (): void => {
     const writeSelectDialogToPrefs = (): void => {
         const selFolder = Folder.selectDialog('Select Project Folder');
-        writePrefsToMemory({
-            projectFolderPath: selFolder.fsName,
-            version: '@@version'
-        });
+        writePrefsToMemory({ projectFolderPath: selFolder.fsName });
     };
 
     const { ctrlKey } = ScriptUI.environment.keyboardState;
