@@ -2872,8 +2872,18 @@ var createIconFromId = function (id, circleColor, iconColor, hasCircle, scale) {
     }
     app.endUndoGroup();
 };
-var createLocationBG = function (id, size, color) {
-    if (color === void 0) { color = [1, 1, 1]; }
+var getColorsFromMitug = function (mitug) {
+    if (mitug === 'Gaza') {
+        return { bg: [255, 255, 255], pri: [22, 39, 92] };
+    }
+    else if (mitug === 'Lebanon') {
+        return { bg: [1, 25, 1], pri: [255, 255, 255] };
+    }
+    else if (mitug === 'Pakmaz') {
+        return { bg: [255, 255, 255], pri: [53, 33, 28] };
+    }
+};
+var createLocationBG = function (id, size, mitug) {
     var comp = app.project.activeItem;
     var layer = comp.layers.addShape();
     layer.name = "".concat(id, "_BG");
@@ -2884,7 +2894,7 @@ var createLocationBG = function (id, size, color) {
     recGrp.addProperty('ADBE Vector Shape - Rect');
     var fillGrp = recGrp.addProperty('ADBE Vector Graphic - Fill');
     var fillProp = fillGrp.property('ADBE Vector Fill Color');
-    fillProp.setValue(color);
+    fillProp.setValue(getColorsFromMitug(mitug).bg.map(function (c) { return c / 255; }));
     var roundProp = recGrp
         .property('ADBE Vector Shape - Rect')
         .property('ADBE Vector Rect Roundness');
@@ -2895,7 +2905,7 @@ var createLocationBG = function (id, size, color) {
     sizeProp.setValue(size);
     return layer;
 };
-var createLocationText = function (lang, text, fontSize, tracking, leading, textPos, textAnchor) {
+var createLocationText = function (lang, text, fontSize, tracking, leading, textPos, textAnchor, mitug) {
     var comp = app.project.activeItem;
     var textLayer = comp.layers.addText();
     var srcText = textLayer
@@ -2906,7 +2916,7 @@ var createLocationText = function (lang, text, fontSize, tracking, leading, text
     textDoc.font = getFontFromLanguage(lang);
     textDoc.fontSize = fontSize;
     textDoc.applyFill = true;
-    textDoc.fillColor = [53 / 255, 33 / 255, 28 / 255];
+    textDoc.fillColor = getColorsFromMitug(mitug).pri.map(function (c) { return c / 255; });
     textDoc.applyStroke = false;
     textDoc.tracking = tracking;
     if (leading) {
@@ -2944,27 +2954,27 @@ var setLayerTransform = function (layer, pos, anchor, scale) {
     scaleProp.setValue([scale, scale]);
     return layer;
 };
-var createLocationIconFromId = function (id, iconPos, iconAnchor, iconScale) {
+var createLocationIconFromId = function (id, iconPos, iconAnchor, iconScale, mitug) {
     switch (id) {
         case 'Kindergarden':
-            return createKindergardenIcon(iconPos, iconAnchor, iconScale, id);
+            return createKindergardenIcon(iconPos, iconAnchor, iconScale, id, mitug);
         case 'Medical Clinic':
-            return createMedicalIcon(iconPos, iconAnchor, iconScale, id);
+            return createMedicalIcon(iconPos, iconAnchor, iconScale, id, mitug);
         case 'Sports':
-            return createSportsIcon(iconPos, iconAnchor, iconScale, id);
+            return createSportsIcon(iconPos, iconAnchor, iconScale, id, mitug);
         case 'University':
-            return createUniversityIcon(iconPos, iconAnchor, iconScale, id);
+            return createUniversityIcon(iconPos, iconAnchor, iconScale, id, mitug);
         case 'Mosque':
-            return createMosqueIcon(iconPos, iconAnchor, iconScale, id);
+            return createMosqueIcon(iconPos, iconAnchor, iconScale, id, mitug);
         case 'U.N. Building':
-            return createUNBuildingIcon(iconPos, iconAnchor, iconScale, id);
+            return createUNBuildingIcon(iconPos, iconAnchor, iconScale, id, mitug);
     }
 };
-var createLocation = function (inputLang, argsArr) {
+var createLocation = function (argsArr, inputLang, mitug) {
     var _a = argsArr.find(function (args) { return args.lang === inputLang; }), bgSize = _a.bgSize, fontSize = _a.fontSize, lang = _a.lang, text = _a.text, textAnchor = _a.textAnchor, textPos = _a.textPos, tracking = _a.tracking, leading = _a.leading, iconAnchor = _a.iconAnchor, iconPos = _a.iconPos, iconScale = _a.iconScale, iconId = _a.iconId;
-    var bgLayer = createLocationBG(iconId, bgSize);
-    var iconLayer = createLocationIconFromId(iconId, iconPos, iconAnchor, iconScale);
-    var textLayer = createLocationText(lang, text, fontSize, tracking, leading, textPos, textAnchor);
+    var bgLayer = createLocationBG(iconId, bgSize, mitug);
+    var iconLayer = createLocationIconFromId(iconId, iconPos, iconAnchor, iconScale, mitug);
+    var textLayer = createLocationText(lang, text, fontSize, tracking, leading, textPos, textAnchor, mitug);
     iconLayer.parent = textLayer.parent = bgLayer;
     bgLayer.label =
         iconLayer.label =
@@ -2975,7 +2985,7 @@ var createLocation = function (inputLang, argsArr) {
     iconLayer.selected = textLayer.selected = false;
     bgLayer.selected = true;
 };
-var createKindergardenIcon = function (iconPos, iconAnchor, iconScale, name) {
+var createKindergardenIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     var iconLayer = createIconBase(name);
     var contents = iconLayer.property('Contents');
     var createHouseMiddleHide = function () {
@@ -3009,7 +3019,7 @@ var createKindergardenIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, 0],
             [0, 2.360595703125]
         ];
-        createPathGrp(contents, 'House_Middle_Hide', true, false, [53, 33, 28], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [76.8601, -5.7216]);
+        createPathGrp(contents, 'House_Middle_Hide', true, false, getColorsFromMitug(mitug).pri, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [76.8601, -5.7216]);
     };
     var createLadderL = function () {
         var vertices = [
@@ -3030,7 +3040,7 @@ var createKindergardenIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, 0],
             [0, 0]
         ];
-        createPathGrp(contents, 'Ladder_L', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [57.6522, 11.2183]);
+        createPathGrp(contents, 'Ladder_L', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [57.6522, 11.2183]);
     };
     var createLadderR = function () {
         var vertices = [
@@ -3051,7 +3061,7 @@ var createKindergardenIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, 0],
             [0, 0]
         ];
-        createPathGrp(contents, 'Ladder_R', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [62.2776, 11.2183]);
+        createPathGrp(contents, 'Ladder_R', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [62.2776, 11.2183]);
     };
     var createLadder06 = function () {
         var vertices = [
@@ -3072,7 +3082,7 @@ var createKindergardenIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, 0],
             [0, 0]
         ];
-        createPathGrp(contents, 'Ladder_06', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [59.9649, 0.3872]);
+        createPathGrp(contents, 'Ladder_06', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [59.9649, 0.3872]);
     };
     var createLadder05 = function () {
         var vertices = [
@@ -3093,7 +3103,7 @@ var createKindergardenIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, 0],
             [0, 0]
         ];
-        createPathGrp(contents, 'Ladder_05', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [59.9649, 4.9116]);
+        createPathGrp(contents, 'Ladder_05', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [59.9649, 4.9116]);
     };
     var createLadder04 = function () {
         var vertices = [
@@ -3114,7 +3124,7 @@ var createKindergardenIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, 0],
             [0, 0]
         ];
-        createPathGrp(contents, 'Ladder_04', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [59.9649, 9.4359]);
+        createPathGrp(contents, 'Ladder_04', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [59.9649, 9.4359]);
     };
     var createLadder03 = function () {
         var vertices = [
@@ -3135,7 +3145,7 @@ var createKindergardenIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, 0],
             [0, 0]
         ];
-        createPathGrp(contents, 'Ladder_03', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [59.9649, 13.9603]);
+        createPathGrp(contents, 'Ladder_03', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [59.9649, 13.9603]);
     };
     var createLadder02 = function () {
         var vertices = [
@@ -3156,7 +3166,7 @@ var createKindergardenIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, 0],
             [0, 0]
         ];
-        createPathGrp(contents, 'Ladder_02', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [59.9649, 18.4846]);
+        createPathGrp(contents, 'Ladder_02', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [59.9649, 18.4846]);
     };
     var createLadder01 = function () {
         var vertices = [
@@ -3177,7 +3187,7 @@ var createKindergardenIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, 0],
             [0, 0]
         ];
-        createPathGrp(contents, 'Ladder_01', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [59.9649, 23.009]);
+        createPathGrp(contents, 'Ladder_01', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [59.9649, 23.009]);
     };
     var createSlide = function () {
         var vertices = [
@@ -3210,7 +3220,7 @@ var createKindergardenIcon = function (iconPos, iconAnchor, iconScale, name) {
             [1.31709289550781, 0],
             [0, -1.24160766601562]
         ];
-        createPathGrp(contents, 'Slide', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [102.5002, 11.7313]);
+        createPathGrp(contents, 'Slide', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [102.5002, 11.7313]);
     };
     var createHouseTop = function () {
         var vertices = [
@@ -3237,7 +3247,7 @@ var createKindergardenIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, 0],
             [-0.10444641113281, -0.06195068359375]
         ];
-        createPathGrp(contents, 'House_Top', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [77.4369, -25.2672]);
+        createPathGrp(contents, 'House_Top', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [77.4369, -25.2672]);
     };
     var createHouseMiddle = function () {
         var vertices = [
@@ -3258,7 +3268,7 @@ var createKindergardenIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, 0],
             [0, 0]
         ];
-        createPathGrp(contents, 'House_Middle', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [76.8601, -6.6124]);
+        createPathGrp(contents, 'House_Middle', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [76.8601, -6.6124]);
     };
     var createHouseBottom = function () {
         var vertices = [
@@ -3309,7 +3319,7 @@ var createKindergardenIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, 0],
             [0, 0]
         ];
-        createPathGrp(contents, 'House_Bottom', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [76.8601, 15.235]);
+        createPathGrp(contents, 'House_Bottom', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [76.8601, 15.235]);
     };
     var createIconCircle = function () {
         var vertices = [
@@ -3330,7 +3340,7 @@ var createKindergardenIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, -23.9685668945312],
             [23.9685668945312, 0]
         ];
-        createPathGrp(contents, 'Icon_Circle', true, false, [53, 33, 28], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [85.5764, -0.8716]);
+        createPathGrp(contents, 'Icon_Circle', true, false, getColorsFromMitug(mitug).pri, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [85.5764, -0.8716]);
     };
     createHouseMiddleHide();
     createLadderL();
@@ -3349,7 +3359,7 @@ var createKindergardenIcon = function (iconPos, iconAnchor, iconScale, name) {
     setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
     return iconLayer;
 };
-var createKindergardenLocation = function (lang) {
+var createKindergardenLocation = function (lang, mitug) {
     var args = [
         {
             lang: 'Hebrew',
@@ -3391,9 +3401,9 @@ var createKindergardenLocation = function (lang) {
             iconId: 'Kindergarden'
         }
     ];
-    createLocation(lang, args);
+    createLocation(args, lang, mitug);
 };
-var createMedicalIcon = function (iconPos, iconAnchor, iconScale, name) {
+var createMedicalIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     var iconLayer = createIconBase(name);
     var contents = iconLayer.property('Contents');
     var createCross = function () {
@@ -3439,7 +3449,7 @@ var createMedicalIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, 0],
             [0, 0]
         ];
-        createPathGrp(contents, 'Cross', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [86.0601, -1.0216]);
+        createPathGrp(contents, 'Cross', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [86.0601, -1.0216]);
     };
     var createIconCircle = function () {
         var vertices = [
@@ -3460,14 +3470,14 @@ var createMedicalIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, -23.9685668945312],
             [23.9685668945312, 0]
         ];
-        createPathGrp(contents, 'Icon_Circle', true, false, [53, 33, 28], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [85.5764, -0.8716]);
+        createPathGrp(contents, 'Icon_Circle', true, false, getColorsFromMitug(mitug).pri, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [85.5764, -0.8716]);
     };
     createCross();
     createIconCircle();
     setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
     return iconLayer;
 };
-var createMedicalLocation = function (lang) {
+var createMedicalLocation = function (lang, mitug) {
     var args = [
         {
             lang: 'Hebrew',
@@ -3509,9 +3519,9 @@ var createMedicalLocation = function (lang) {
             iconId: 'Medical Clinic'
         }
     ];
-    createLocation(lang, args);
+    createLocation(args, lang, mitug);
 };
-var createSportsIcon = function (iconPos, iconAnchor, iconScale, name) {
+var createSportsIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     var iconLayer = createIconBase(name);
     var contents = iconLayer.property('Contents');
     var createBallBorder = function () {
@@ -3533,7 +3543,7 @@ var createSportsIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, -14.9008636474609],
             [14.9008636474609, 0]
         ];
-        createPathGrp(contents, 'Ball_Border', false, true, [0, 0, 0], [255, 255, 255], 4, vertices, inTangents, outTangents, true, [177.6914, -0.8718]);
+        createPathGrp(contents, 'Ball_Border', false, true, [0, 0, 0], getColorsFromMitug(mitug).bg, 4, vertices, inTangents, outTangents, true, [177.6914, -0.8718]);
     };
     var createBallPattern01 = function () {
         var vertices = [
@@ -3557,7 +3567,7 @@ var createSportsIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, 0],
             [0, 0]
         ];
-        createPathGrp(contents, 'Ball_Pattern_01', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [186.5702, -19.2442]);
+        createPathGrp(contents, 'Ball_Pattern_01', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [186.5702, -19.2442]);
     };
     var createBallPattern02 = function () {
         var vertices = [
@@ -3581,7 +3591,7 @@ var createSportsIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, 0],
             [0, 0]
         ];
-        createPathGrp(contents, 'Ball_Pattern_02', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [158.4209, -6.8679]);
+        createPathGrp(contents, 'Ball_Pattern_02', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [158.4209, -6.8679]);
     };
     var createBallPattern03 = function () {
         var vertices = [
@@ -3602,7 +3612,7 @@ var createSportsIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, 0],
             [0, 0]
         ];
-        createPathGrp(contents, 'Ball_Pattern_03', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [164.2615, 19.1702]);
+        createPathGrp(contents, 'Ball_Pattern_03', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [164.2615, 19.1702]);
     };
     var createBallPattern04 = function () {
         var vertices = [
@@ -3626,7 +3636,7 @@ var createSportsIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, 0],
             [0, 0]
         ];
-        createPathGrp(contents, 'Ball_Pattern_04', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [178.5192, 6.774]);
+        createPathGrp(contents, 'Ball_Pattern_04', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [178.5192, 6.774]);
     };
     var createBallPattern05 = function () {
         var vertices = [
@@ -3647,7 +3657,7 @@ var createSportsIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, 0],
             [0, 0]
         ];
-        createPathGrp(contents, 'Ball_Pattern_05', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [200.8771, 4.5565]);
+        createPathGrp(contents, 'Ball_Pattern_05', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [200.8771, 4.5565]);
     };
     var createBallPattern06 = function () {
         var vertices = [
@@ -3668,7 +3678,7 @@ var createSportsIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, 0],
             [0, 0]
         ];
-        createPathGrp(contents, 'Ball_Pattern_06', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [187.4469, 22.1648]);
+        createPathGrp(contents, 'Ball_Pattern_06', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [187.4469, 22.1648]);
     };
     var createBallLine01 = function () {
         var vertices = [
@@ -3689,7 +3699,7 @@ var createSportsIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, 0],
             [0, 0]
         ];
-        createPathGrp(contents, 'Ball_Line_01', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [182.0461, -6.8678]);
+        createPathGrp(contents, 'Ball_Line_01', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [182.0461, -6.8678]);
     };
     var createBallLine02 = function () {
         var vertices = [
@@ -3716,7 +3726,7 @@ var createSportsIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0.57388305664062, 0.58863830566406],
             [0, 0]
         ];
-        createPathGrp(contents, 'Ball_Line_02', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [166.771, -2.0904]);
+        createPathGrp(contents, 'Ball_Line_02', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [166.771, -2.0904]);
     };
     var createBallLine03 = function () {
         var vertices = [
@@ -3737,7 +3747,7 @@ var createSportsIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, 0],
             [0, 0]
         ];
-        createPathGrp(contents, 'Ball_Line_03', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [170.6526, -18.076]);
+        createPathGrp(contents, 'Ball_Line_03', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [170.6526, -18.076]);
     };
     var createBallLine04 = function () {
         var vertices = [
@@ -3758,7 +3768,7 @@ var createSportsIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, 0],
             [0, 0]
         ];
-        createPathGrp(contents, 'Ball_Line_04', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [192.2395, 7.8806]);
+        createPathGrp(contents, 'Ball_Line_04', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [192.2395, 7.8806]);
     };
     var createBallLine05 = function () {
         var vertices = [
@@ -3779,7 +3789,7 @@ var createSportsIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, 0],
             [0, 0]
         ];
-        createPathGrp(contents, 'Ball_Line_05', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [181.0608, 17.3929]);
+        createPathGrp(contents, 'Ball_Line_05', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [181.0608, 17.3929]);
     };
     var createBallLine06 = function () {
         var vertices = [
@@ -3800,7 +3810,7 @@ var createSportsIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, 0],
             [0, 0]
         ];
-        createPathGrp(contents, 'Ball_Line_06', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [169.884, 14.0742]);
+        createPathGrp(contents, 'Ball_Line_06', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [169.884, 14.0742]);
     };
     var createBallLine07 = function () {
         var vertices = [
@@ -3821,7 +3831,7 @@ var createSportsIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, 0],
             [0, 0]
         ];
-        createPathGrp(contents, 'Ball_Line_07', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [199.4093, -7.2617]);
+        createPathGrp(contents, 'Ball_Line_07', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [199.4093, -7.2617]);
     };
     var createBallLine08 = function () {
         var vertices = [
@@ -3842,7 +3852,7 @@ var createSportsIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, 0],
             [0, 0]
         ];
-        createPathGrp(contents, 'Ball_Line_08', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [157.1978, 6.2585]);
+        createPathGrp(contents, 'Ball_Line_08', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [157.1978, 6.2585]);
     };
     var createIconCircle = function () {
         var vertices = [
@@ -3863,7 +3873,7 @@ var createSportsIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, -23.9685668945312],
             [23.9685668945312, 0]
         ];
-        createPathGrp(contents, 'Icon_Circle', true, false, [53, 33, 28], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [177.6913, -0.8716]);
+        createPathGrp(contents, 'Icon_Circle', true, false, getColorsFromMitug(mitug).pri, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [177.6913, -0.8716]);
     };
     createBallLine08();
     createBallLine07();
@@ -3884,7 +3894,7 @@ var createSportsIcon = function (iconPos, iconAnchor, iconScale, name) {
     setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
     return iconLayer;
 };
-var createSportsLocation = function (lang) {
+var createSportsLocation = function (lang, mitug) {
     var args = [
         {
             lang: 'Hebrew',
@@ -3927,9 +3937,9 @@ var createSportsLocation = function (lang) {
             iconId: 'Sports'
         }
     ];
-    createLocation(lang, args);
+    createLocation(args, lang, mitug);
 };
-var createUniversityIcon = function (iconPos, iconAnchor, iconScale, name) {
+var createUniversityIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     var iconLayer = createIconBase(name);
     var contents = iconLayer.property('Contents');
     var createCoverL = function () {
@@ -3954,7 +3964,7 @@ var createUniversityIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, 0],
             [0, 0]
         ];
-        createPathGrp(contents, 'Cover_L', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [91.8363, -1.761]);
+        createPathGrp(contents, 'Cover_L', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [91.8363, -1.761]);
     };
     var createPaperL = function () {
         var vertices = [
@@ -3975,7 +3985,7 @@ var createUniversityIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, 0],
             [0, 0]
         ];
-        createPathGrp(contents, 'Paper_L', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [95.5015, -2.9521]);
+        createPathGrp(contents, 'Paper_L', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [95.5015, -2.9521]);
     };
     var createCoverR = function () {
         var vertices = [
@@ -3999,7 +4009,7 @@ var createUniversityIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, 0],
             [0, 0]
         ];
-        createPathGrp(contents, 'Cover_R', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [126.4342, -1.761]);
+        createPathGrp(contents, 'Cover_R', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [126.4342, -1.761]);
     };
     var createPaperR = function () {
         var vertices = [
@@ -4020,7 +4030,7 @@ var createUniversityIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, 0],
             [0, 0]
         ];
-        createPathGrp(contents, 'Paper_R', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [122.769, -2.9521]);
+        createPathGrp(contents, 'Paper_R', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [122.769, -2.9521]);
     };
     var createIconCircle = function () {
         var vertices = [
@@ -4041,7 +4051,7 @@ var createUniversityIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, -23.9685668945312],
             [23.9685668945312, 0]
         ];
-        createPathGrp(contents, 'Icon_Circle', true, false, [53, 33, 28], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [110.002, -0.8716]);
+        createPathGrp(contents, 'Icon_Circle', true, false, getColorsFromMitug(mitug).pri, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [110.002, -0.8716]);
     };
     createCoverL();
     createPaperL();
@@ -4051,7 +4061,7 @@ var createUniversityIcon = function (iconPos, iconAnchor, iconScale, name) {
     setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
     return iconLayer;
 };
-var createUniversityLocation = function (lang) {
+var createUniversityLocation = function (lang, mitug) {
     var args = [
         {
             lang: 'Hebrew',
@@ -4093,9 +4103,9 @@ var createUniversityLocation = function (lang) {
             iconId: 'University'
         }
     ];
-    createLocation(lang, args);
+    createLocation(args, lang, mitug);
 };
-var createMosqueIcon = function (iconPos, iconAnchor, iconScale, name) {
+var createMosqueIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     var iconLayer = createIconBase(name);
     var contents = iconLayer.property('Contents');
     var createMosqueB = function () {
@@ -4162,7 +4172,7 @@ var createMosqueIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, -1.67999267578125],
             [0, 0]
         ];
-        createPathGrp(contents, 'Mosque_Bottom', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [0, 0]);
+        createPathGrp(contents, 'Mosque_Bottom', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [0, 0]);
     };
     var createMosqueM = function () {
         var vertices = [
@@ -4330,7 +4340,7 @@ var createMosqueIcon = function (iconPos, iconAnchor, iconScale, name) {
             [-0.010009765625, 1.83001708984375],
             [0, 0]
         ];
-        createPathGrp(contents, 'Mosque_Middle', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [0, 0]);
+        createPathGrp(contents, 'Mosque_Middle', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [0, 0]);
     };
     var createMosqueT = function () {
         var vertices = [
@@ -4510,7 +4520,7 @@ var createMosqueIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0.8699951171875, -0.260009765625],
             [-0.02996826171875, -0.82000732421875]
         ];
-        createPathGrp(contents, 'Mosque_Top', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [0, 0]);
+        createPathGrp(contents, 'Mosque_Top', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [0, 0]);
     };
     var createIconCircle = function () {
         var vertices = [
@@ -4531,7 +4541,7 @@ var createMosqueIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, -23.9685668945312],
             [23.9685668945312, 0]
         ];
-        createPathGrp(contents, 'Icon_Circle', true, false, [53, 33, 28], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [43.3989, 0]);
+        createPathGrp(contents, 'Icon_Circle', true, false, getColorsFromMitug(mitug).pri, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [43.3989, 0]);
     };
     createMosqueT();
     createMosqueM();
@@ -4540,7 +4550,7 @@ var createMosqueIcon = function (iconPos, iconAnchor, iconScale, name) {
     setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
     return iconLayer;
 };
-var createMosqueLocation = function (lang) {
+var createMosqueLocation = function (lang, mitug) {
     var args = [
         {
             lang: 'Hebrew',
@@ -4582,9 +4592,9 @@ var createMosqueLocation = function (lang) {
             iconId: 'Mosque'
         }
     ];
-    createLocation(lang, args);
+    createLocation(args, lang, mitug);
 };
-var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
+var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     var iconLayer = createIconBase(name);
     var contents = iconLayer.property('Contents');
     var createGlobeRing01 = function () {
@@ -4606,7 +4616,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, -13.4497222900391],
             [13.4497222900391, 0]
         ];
-        createPathGrp(contents, 'Globe_Ring_01', false, true, [0, 0, 0], [255, 255, 255], 1, vertices, inTangents, outTangents, true, [42.5417, -5.6811]);
+        createPathGrp(contents, 'Globe_Ring_01', false, true, [0, 0, 0], getColorsFromMitug(mitug).bg, 1, vertices, inTangents, outTangents, true, [42.5417, -5.6811]);
     };
     var createGlobeRing02 = function () {
         var vertices = [
@@ -4627,7 +4637,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, -10.8223266601562],
             [10.8223266601562, 0]
         ];
-        createPathGrp(contents, 'Globe_Ring_02', false, true, [0, 0, 0], [255, 255, 255], 0.75, vertices, inTangents, outTangents, true, [42.5417, -5.6811]);
+        createPathGrp(contents, 'Globe_Ring_02', false, true, [0, 0, 0], getColorsFromMitug(mitug).bg, 0.75, vertices, inTangents, outTangents, true, [42.5417, -5.6811]);
     };
     var createGlobeRing03 = function () {
         var vertices = [
@@ -4648,7 +4658,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, -8.26666259765625],
             [8.26666259765625, 0]
         ];
-        createPathGrp(contents, 'Globe_Ring_03', false, true, [0, 0, 0], [255, 255, 255], 0.75, vertices, inTangents, outTangents, true, [42.5417, -5.6811]);
+        createPathGrp(contents, 'Globe_Ring_03', false, true, [0, 0, 0], getColorsFromMitug(mitug).bg, 0.75, vertices, inTangents, outTangents, true, [42.5417, -5.6811]);
     };
     var createGlobeRing04 = function () {
         var vertices = [
@@ -4669,7 +4679,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, -5.32115173339844],
             [5.32115173339844, 0]
         ];
-        createPathGrp(contents, 'Globe_Ring_04', false, true, [0, 0, 0], [255, 255, 255], 0.75, vertices, inTangents, outTangents, true, [42.5417, -5.6811]);
+        createPathGrp(contents, 'Globe_Ring_04', false, true, [0, 0, 0], getColorsFromMitug(mitug).bg, 0.75, vertices, inTangents, outTangents, true, [42.5417, -5.6811]);
     };
     var createGlobeRing05 = function () {
         var vertices = [
@@ -4684,7 +4694,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, 0],
             [0, 0]
         ];
-        createPathGrp(contents, 'Globe_Ring_05', false, true, [0, 0, 0], [255, 255, 255], 0.75, vertices, inTangents, outTangents, true, [57.3002, -5.6811]);
+        createPathGrp(contents, 'Globe_Ring_05', false, true, [0, 0, 0], getColorsFromMitug(mitug).bg, 0.75, vertices, inTangents, outTangents, true, [57.3002, -5.6811]);
     };
     var createGlobeRing06 = function () {
         var vertices = [
@@ -4699,7 +4709,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, 0],
             [0, 0]
         ];
-        createPathGrp(contents, 'Globe_Ring_06', false, true, [0, 0, 0], [255, 255, 255], 0.75, vertices, inTangents, outTangents, true, [27.7831, -5.6811]);
+        createPathGrp(contents, 'Globe_Ring_06', false, true, [0, 0, 0], getColorsFromMitug(mitug).bg, 0.75, vertices, inTangents, outTangents, true, [27.7831, -5.6811]);
     };
     var createGlobeRing07 = function () {
         var vertices = [
@@ -4714,7 +4724,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, 0],
             [0, 0]
         ];
-        createPathGrp(contents, 'Globe_Ring_07', false, true, [0, 0, 0], [255, 255, 255], 0.75, vertices, inTangents, outTangents, true, [42.5417, 9.0775]);
+        createPathGrp(contents, 'Globe_Ring_07', false, true, [0, 0, 0], getColorsFromMitug(mitug).bg, 0.75, vertices, inTangents, outTangents, true, [42.5417, 9.0775]);
     };
     var createGlobeRing08 = function () {
         var vertices = [
@@ -4729,7 +4739,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, 0],
             [0, 0]
         ];
-        createPathGrp(contents, 'Globe_Ring_08', false, true, [0, 0, 0], [255, 255, 255], 0.75, vertices, inTangents, outTangents, true, [42.5417, -20.4397]);
+        createPathGrp(contents, 'Globe_Ring_08', false, true, [0, 0, 0], getColorsFromMitug(mitug).bg, 0.75, vertices, inTangents, outTangents, true, [42.5417, -20.4397]);
     };
     var createGlobeRing09 = function () {
         var vertices = [
@@ -4744,7 +4754,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, 0],
             [0, 0]
         ];
-        createPathGrp(contents, 'Globe_Ring_09', false, true, [0, 0, 0], [255, 255, 255], 0.75, vertices, inTangents, outTangents, true, [53.0331, 4.8104]);
+        createPathGrp(contents, 'Globe_Ring_09', false, true, [0, 0, 0], getColorsFromMitug(mitug).bg, 0.75, vertices, inTangents, outTangents, true, [53.0331, 4.8104]);
     };
     var createGlobeRing10 = function () {
         var vertices = [
@@ -4759,7 +4769,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, 0],
             [0, 0]
         ];
-        createPathGrp(contents, 'Globe_Ring_10', false, true, [0, 0, 0], [255, 255, 255], 0.75, vertices, inTangents, outTangents, true, [32.1058, -16.117]);
+        createPathGrp(contents, 'Globe_Ring_10', false, true, [0, 0, 0], getColorsFromMitug(mitug).bg, 0.75, vertices, inTangents, outTangents, true, [32.1058, -16.117]);
     };
     var createGlobeRing11 = function () {
         var vertices = [
@@ -4774,7 +4784,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, 0],
             [0, 0]
         ];
-        createPathGrp(contents, 'Globe_Ring_11', false, true, [0, 0, 0], [255, 255, 255], 0.75, vertices, inTangents, outTangents, true, [32.1058, 4.7548]);
+        createPathGrp(contents, 'Globe_Ring_11', false, true, [0, 0, 0], getColorsFromMitug(mitug).bg, 0.75, vertices, inTangents, outTangents, true, [32.1058, 4.7548]);
     };
     var createGlobeRing12 = function () {
         var vertices = [
@@ -4789,7 +4799,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, 0],
             [0, 0]
         ];
-        createPathGrp(contents, 'Globe_Ring_12', false, true, [0, 0, 0], [255, 255, 255], 0.75, vertices, inTangents, outTangents, true, [53.0331, -16.1725]);
+        createPathGrp(contents, 'Globe_Ring_12', false, true, [0, 0, 0], getColorsFromMitug(mitug).bg, 0.75, vertices, inTangents, outTangents, true, [53.0331, -16.1725]);
     };
     var createCountries = function () {
         var vertices = [
@@ -5761,7 +5771,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0.300048828125, 0.25994873046875],
             [-0.77996826171875, 0.760009765625]
         ];
-        createPathGrp(contents, 'Countries', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [40.8466, -4.9677]);
+        createPathGrp(contents, 'Countries', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [40.8466, -4.9677]);
     };
     var createLeavesBottom = function () {
         var vertices = [
@@ -5887,7 +5897,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0.64643859863281, -0.370361328125],
             [0.08030700683594, -0.03558349609375]
         ];
-        createPathGrp(contents, 'Leaves_Bottom', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [42.645, 25.1974]);
+        createPathGrp(contents, 'Leaves_Bottom', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [42.645, 25.1974]);
     };
     var createLeavesL01 = function () {
         var vertices = [
@@ -5956,7 +5966,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [1.65214538574219, 1.69581604003906],
             [0.09867858886719, 0.01954650878906]
         ];
-        createPathGrp(contents, 'Leaves_L_01', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [24.8022, 18.1959]);
+        createPathGrp(contents, 'Leaves_L_01', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [24.8022, 18.1959]);
     };
     var createLeavesL02 = function () {
         var vertices = [
@@ -6028,7 +6038,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [-0.21438598632812, -1.37091064453125],
             [-0.0115966796875, -0.02740478515625]
         ];
-        createPathGrp(contents, 'Leaves_L_02', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [17.5583, 12.8008]);
+        createPathGrp(contents, 'Leaves_L_02', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [17.5583, 12.8008]);
     };
     var createLeavesL03 = function () {
         var vertices = [
@@ -6100,7 +6110,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [-0.05726623535156, -0.43075561523438],
             [0, -0.36663818359375]
         ];
-        createPathGrp(contents, 'Leaves_L_03', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [12.9322, 6.4299]);
+        createPathGrp(contents, 'Leaves_L_03', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [12.9322, 6.4299]);
     };
     var createLeavesL04 = function () {
         var vertices = [
@@ -6172,7 +6182,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [-0.04342651367188, -0.31600952148438],
             [0, -0.61868286132812]
         ];
-        createPathGrp(contents, 'Leaves_L_04', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [11.5116, -2.4915]);
+        createPathGrp(contents, 'Leaves_L_04', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [11.5116, -2.4915]);
     };
     var createLeavesL05 = function () {
         var vertices = [
@@ -6244,7 +6254,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [-0.38124084472656, 0.74967956542969],
             [-0.01222229003906, 0.06295776367188]
         ];
-        createPathGrp(contents, 'Leaves_L_05', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [13.3015, -11.6646]);
+        createPathGrp(contents, 'Leaves_L_05', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [13.3015, -11.6646]);
     };
     var createLeavesL06 = function () {
         var vertices = [
@@ -6304,7 +6314,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0.66537475585938, -0.5650634765625],
             [0.02314758300781, -0.04910278320312]
         ];
-        createPathGrp(contents, 'Leaves_L_06', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [16.4495, -18.2098]);
+        createPathGrp(contents, 'Leaves_L_06', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [16.4495, -18.2098]);
     };
     var createLeavesL07 = function () {
         var vertices = [
@@ -6340,7 +6350,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [-1.05476379394531, 1.60415649414062],
             [-0.33148193359375, 0.25602722167969]
         ];
-        createPathGrp(contents, 'Leaves_L_07', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [19.7543, -23.4899]);
+        createPathGrp(contents, 'Leaves_L_07', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [19.7543, -23.4899]);
     };
     var createLeavesR01 = function () {
         var vertices = [
@@ -6412,7 +6422,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0.67555236816406, -0.60273742675781],
             [0.09013366699219, -0.0634765625]
         ];
-        createPathGrp(contents, 'Leaves_R_01', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [60.4651, 18.2267]);
+        createPathGrp(contents, 'Leaves_R_01', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [60.4651, 18.2267]);
     };
     var createLeavesR02 = function () {
         var vertices = [
@@ -6487,7 +6497,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [-0.54118347167969, 0.72744750976562],
             [-0.08132934570312, 0.07089233398438]
         ];
-        createPathGrp(contents, 'Leaves_R_02', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [67.6777, 12.7751]);
+        createPathGrp(contents, 'Leaves_R_02', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [67.6777, 12.7751]);
     };
     var createLeavesR03 = function () {
         var vertices = [
@@ -6556,7 +6566,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0.81007385253906, -1.03520202636719],
             [0.00959777832031, -0.06190490722656]
         ];
-        createPathGrp(contents, 'Leaves_R_03', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [72.3323, 6.4485]);
+        createPathGrp(contents, 'Leaves_R_03', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [72.3323, 6.4485]);
     };
     var createLeavesR04 = function () {
         var vertices = [
@@ -6628,7 +6638,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [-0.08168029785156, -0.67109680175781],
             [0.00413513183594, -0.10055541992188]
         ];
-        createPathGrp(contents, 'Leaves_R_04', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [73.7413, -2.4803]);
+        createPathGrp(contents, 'Leaves_R_04', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [73.7413, -2.4803]);
     };
     var createLeavesR05 = function () {
         var vertices = [
@@ -6694,7 +6704,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [-0.68980407714844, -1.26296997070312],
             [-0.00715637207031, -0.04244995117188]
         ];
-        createPathGrp(contents, 'Leaves_R_05', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [71.9413, -11.6729]);
+        createPathGrp(contents, 'Leaves_R_05', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [71.9413, -11.6729]);
     };
     var createLeavesR06 = function () {
         var vertices = [
@@ -6757,7 +6767,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [-0.24783325195312, -1.19589233398438],
             [-0.24055480957031, -0.303466796875]
         ];
-        createPathGrp(contents, 'Leaves_R_06', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [68.7883, -18.2064]);
+        createPathGrp(contents, 'Leaves_R_06', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [68.7883, -18.2064]);
     };
     var createLeavesR07 = function () {
         var vertices = [
@@ -6790,7 +6800,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [-0.8565673828125, -1.1748046875],
             [-0.03854370117188, -0.03681945800781]
         ];
-        createPathGrp(contents, 'Leaves_R_07', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [65.5815, -23.4541]);
+        createPathGrp(contents, 'Leaves_R_07', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [65.5815, -23.4541]);
     };
     var createGlobePiece01 = function () {
         var vertices = [
@@ -6832,7 +6842,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [-0.10446166992188, 0.02412414550781],
             [-0.11566162109375, 0.16122436523438]
         ];
-        createPathGrp(contents, 'Globe_Piece_01', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [46.2798, -27.3924]);
+        createPathGrp(contents, 'Globe_Piece_01', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [46.2798, -27.3924]);
     };
     var createGlobePiece02 = function () {
         var vertices = [
@@ -6874,7 +6884,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0.12123107910156, 0.29039001464844],
             [0.04122924804688, 0.02976989746094]
         ];
-        createPathGrp(contents, 'Globe_Piece_02', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [44.1799, -26.6207]);
+        createPathGrp(contents, 'Globe_Piece_02', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [44.1799, -26.6207]);
     };
     var createGlobePiece03 = function () {
         var vertices = [
@@ -6898,7 +6908,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [-0.16030883789062, -0.04896545410156],
             [0.0462646484375, -0.20347595214844]
         ];
-        createPathGrp(contents, 'Globe_Piece_03', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [54.4153, -23.728]);
+        createPathGrp(contents, 'Globe_Piece_03', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [54.4153, -23.728]);
     };
     var createGlobePiece04 = function () {
         var vertices = [
@@ -6931,7 +6941,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [-0.26724243164062, -0.17222595214844],
             [-0.03366088867188, -0.06448364257812]
         ];
-        createPathGrp(contents, 'Globe_Piece_04', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [48.4786, -20.6559]);
+        createPathGrp(contents, 'Globe_Piece_04', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [48.4786, -20.6559]);
     };
     var createGlobePiece05 = function () {
         var vertices = [
@@ -6970,7 +6980,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [-0.04495239257812, -0.15664672851562],
             [0.09025573730469, -0.08596801757812]
         ];
-        createPathGrp(contents, 'Globe_Piece_05', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [57.371, -11.3203]);
+        createPathGrp(contents, 'Globe_Piece_05', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [57.371, -11.3203]);
     };
     var createGlobePiece06 = function () {
         var vertices = [
@@ -7003,7 +7013,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0.12045288085938, -0.17350769042969],
             [0.44415283203125, 0.18214416503906]
         ];
-        createPathGrp(contents, 'Globe_Piece_06', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [56.5825, -13.5684]);
+        createPathGrp(contents, 'Globe_Piece_06', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [56.5825, -13.5684]);
     };
     var createGlobePiece07 = function () {
         var vertices = [
@@ -7051,7 +7061,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [-0.10723876953125, 0.10403442382812],
             [-0.25032043457031, -0.07247924804688]
         ];
-        createPathGrp(contents, 'Globe_Piece_07', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [39.7985, -5.3347]);
+        createPathGrp(contents, 'Globe_Piece_07', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [39.7985, -5.3347]);
     };
     var createGlobePiece08 = function () {
         var vertices = [
@@ -7111,7 +7121,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0.00619506835938, 0.1727294921875],
             [-0.05592346191406, 0.00874328613281]
         ];
-        createPathGrp(contents, 'Globe_Piece_08', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [53.3894, -12.5704]);
+        createPathGrp(contents, 'Globe_Piece_08', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [53.3894, -12.5704]);
     };
     var createGlobePiece09 = function () {
         var vertices = [
@@ -7156,7 +7166,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0.11766052246094, 0.01321411132812],
             [0.005126953125, 0.25033569335938]
         ];
-        createPathGrp(contents, 'Globe_Piece_09', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [31.3746, -3.7924]);
+        createPathGrp(contents, 'Globe_Piece_09', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [31.3746, -3.7924]);
     };
     var createGlobePiece10 = function () {
         var vertices = [
@@ -7183,7 +7193,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0.00968933105469, -0.05772399902344],
             [0.18437194824219, 0.07965087890625]
         ];
-        createPathGrp(contents, 'Globe_Piece_10', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [31.5722, -2.1651]);
+        createPathGrp(contents, 'Globe_Piece_10', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [31.5722, -2.1651]);
     };
     var createGlobePiece11 = function () {
         var vertices = [
@@ -7210,7 +7220,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [-0.07038879394531, -0.11871337890625],
             [0.06370544433594, -0.15773010253906]
         ];
-        createPathGrp(contents, 'Globe_Piece_11', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [47.1992, -11.8752]);
+        createPathGrp(contents, 'Globe_Piece_11', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [47.1992, -11.8752]);
     };
     var createGlobePiece12 = function () {
         var vertices = [
@@ -7237,7 +7247,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [-0.45001220703125, -0.00994873046875],
             [-0.030029296875, -0.4599609375]
         ];
-        createPathGrp(contents, 'Globe_Piece_12', true, false, [53, 33, 28], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [31.8575, -6.6279]);
+        createPathGrp(contents, 'Globe_Piece_12', true, false, getColorsFromMitug(mitug).pri, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [31.8575, -6.6279]);
     };
     var createGlobePiece13 = function () {
         var vertices = [
@@ -7267,7 +7277,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [-0.0799560546875, -0.04998779296875],
             [-0.030029296875, -0.2099609375]
         ];
-        createPathGrp(contents, 'Globe_Piece_13', true, false, [53, 33, 28], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [42.0646, -10.1216]);
+        createPathGrp(contents, 'Globe_Piece_13', true, false, getColorsFromMitug(mitug).pri, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [42.0646, -10.1216]);
     };
     var createGlobePiece14 = function () {
         var vertices = [
@@ -7300,7 +7310,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [-0.38995361328125, -0.1199951171875],
             [-0.05999755859375, -0.0999755859375]
         ];
-        createPathGrp(contents, 'Globe_Piece_14', true, false, [53, 33, 28], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [48.6892, -0.6266]);
+        createPathGrp(contents, 'Globe_Piece_14', true, false, getColorsFromMitug(mitug).pri, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [48.6892, -0.6266]);
     };
     var createGlobePiece15 = function () {
         var vertices = [
@@ -7336,7 +7346,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [-0.03997802734375, 0.08001708984375],
             [-0.12005615234375, -0.030029296875]
         ];
-        createPathGrp(contents, 'Globe_Piece_15', true, false, [53, 33, 28], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [43.7259, -0.1575]);
+        createPathGrp(contents, 'Globe_Piece_15', true, false, getColorsFromMitug(mitug).pri, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [43.7259, -0.1575]);
     };
     var createGlobePiece16 = function () {
         var vertices = [
@@ -7384,7 +7394,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [-0.0699462890625, 0.1300048828125],
             [-0.1400146484375, -0.10003662109375]
         ];
-        createPathGrp(contents, 'Globe_Piece_16', true, false, [53, 33, 28], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [49.4558, -10.6698]);
+        createPathGrp(contents, 'Globe_Piece_16', true, false, getColorsFromMitug(mitug).pri, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [49.4558, -10.6698]);
     };
     var createGlobePiece17 = function () {
         var vertices = [
@@ -7420,7 +7430,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0.1099853515625, 0.010009765625],
             [0.02001953125, 0.17999267578125]
         ];
-        createPathGrp(contents, 'Globe_Piece_17', true, false, [53, 33, 28], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [49.8358, 3.4784]);
+        createPathGrp(contents, 'Globe_Piece_17', true, false, getColorsFromMitug(mitug).pri, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [49.8358, 3.4784]);
     };
     var createGlobePiece18 = function () {
         var vertices = [
@@ -7531,7 +7541,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0.1600341796875, -0.1199951171875],
             [0.13995361328125, 0.2099609375]
         ];
-        createPathGrp(contents, 'Globe_Piece_18', true, false, [53, 33, 28], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [45.4147, 1.8938]);
+        createPathGrp(contents, 'Globe_Piece_18', true, false, getColorsFromMitug(mitug).pri, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [45.4147, 1.8938]);
     };
     var createGlobePiece19 = function () {
         var vertices = [
@@ -7591,7 +7601,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0.05999755859375, 0.010009765625],
             [0, 0]
         ];
-        createPathGrp(contents, 'Globe_Piece_19', true, false, [53, 33, 28], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [54.0643, 7.8721]);
+        createPathGrp(contents, 'Globe_Piece_19', true, false, getColorsFromMitug(mitug).pri, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [54.0643, 7.8721]);
     };
     var createGlobePiece20 = function () {
         var vertices = [
@@ -7747,7 +7757,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [-0.97998046875, -0.03997802734375],
             [0, 0]
         ];
-        createPathGrp(contents, 'Globe_Piece_20', true, false, [53, 33, 28], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [41.6745, -5.1758]);
+        createPathGrp(contents, 'Globe_Piece_20', true, false, getColorsFromMitug(mitug).pri, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [41.6745, -5.1758]);
     };
     var createGlobePiece21 = function () {
         var vertices = [
@@ -7879,7 +7889,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0.14996337890625, -0.14996337890625],
             [0.05999755859375, 0.17999267578125]
         ];
-        createPathGrp(contents, 'Globe_Piece_21', true, false, [53, 33, 28], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [53.5961, -10.7761]);
+        createPathGrp(contents, 'Globe_Piece_21', true, false, getColorsFromMitug(mitug).pri, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [53.5961, -10.7761]);
     };
     var createGlobePiece22 = function () {
         var vertices = [
@@ -7942,7 +7952,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [-0.07000732421875, 0.010009765625],
             [-0.3299560546875, -0.4200439453125]
         ];
-        createPathGrp(contents, 'Globe_Piece_22', true, false, [255, 255, 255], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [40.6219, -3.8605]);
+        createPathGrp(contents, 'Globe_Piece_22', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [40.6219, -3.8605]);
     };
     var createIconCircle = function () {
         var vertices = [
@@ -7963,7 +7973,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
             [0, -23.9685668945312],
             [23.9685668945312, 0]
         ];
-        createPathGrp(contents, 'Icon_Circle', true, false, [53, 33, 28], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [43.3989, 0]);
+        createPathGrp(contents, 'Icon_Circle', true, false, getColorsFromMitug(mitug).pri, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [43.3989, 0]);
     };
     createGlobePiece22();
     createGlobePiece21();
@@ -8019,7 +8029,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name) {
     setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
     return iconLayer;
 };
-var createUNBuildingLocation = function (lang) {
+var createUNBuildingLocation = function (lang, mitug) {
     var args = [
         {
             lang: 'Hebrew',
@@ -8061,28 +8071,28 @@ var createUNBuildingLocation = function (lang) {
             iconId: 'U.N. Building'
         }
     ];
-    createLocation(lang, args);
+    createLocation(args, lang, mitug);
 };
-var createLocationFromId = function (id, lang) {
+var createLocationFromId = function (id, lang, mitug) {
     app.beginUndoGroup("Create Location: ".concat(id));
     switch (id) {
         case 'Kindergarden':
-            createKindergardenLocation(lang);
+            createKindergardenLocation(lang, mitug);
             break;
         case 'Medical Clinic':
-            createMedicalLocation(lang);
+            createMedicalLocation(lang, mitug);
             break;
         case 'Sports':
-            createSportsLocation(lang);
+            createSportsLocation(lang, mitug);
             break;
         case 'University':
-            createUniversityLocation(lang);
+            createUniversityLocation(lang, mitug);
             break;
         case 'Mosque':
-            createMosqueLocation(lang);
+            createMosqueLocation(lang, mitug);
             break;
         case 'U.N. Building':
-            createUNBuildingLocation(lang);
+            createUNBuildingLocation(lang, mitug);
             break;
     }
     app.endUndoGroup();
@@ -8426,19 +8436,23 @@ var createLocationsUI = function (tpanel) {
     locationsDD.selection = 0;
     var langDDGrp = locationsGrp.add('group');
     langDDGrp.add('statictext', undefined, 'Language:');
-    var langDD = langDDGrp.add('dropdownlist', undefined, [
-        'Hebrew',
-        'English',
-        'Arabic'
-    ]);
+    var langs = ['Hebrew', 'English', 'Arabic'];
+    var langDD = langDDGrp.add('dropdownlist', undefined, langs);
     langDD.preferredSize[0] = 100;
     langDD.selection = 0;
+    var mitugDDGrp = locationsGrp.add('group');
+    mitugDDGrp.add('statictext', undefined, 'Mitug:');
+    var mitugim = ['Gaza', 'Pakmaz', 'Lebanon'];
+    var mitugDD = mitugDDGrp.add('dropdownlist', undefined, mitugim);
+    mitugDD.preferredSize[0] = 100;
+    mitugDD.selection = 0;
     var locationsCreateBtn = locationsGrp.add('button', undefined, 'Create Location');
     locationsCreateBtn.preferredSize[0] = 100;
     locationsCreateBtn.onClick = function () {
         var id = locationsDD.selection.toString();
         var lang = langDD.selection.toString();
-        createLocationFromId(id, lang);
+        var mitug = mitugDD.selection.toString();
+        createLocationFromId(id, lang, mitug);
     };
     return locationsTab;
 };

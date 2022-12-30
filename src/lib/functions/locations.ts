@@ -1,7 +1,19 @@
+const getColorsFromMitug = (
+    mitug: Mitug
+): { bg: [number, number, number]; pri: [number, number, number] } => {
+    if (mitug === 'Gaza') {
+        return { bg: [255, 255, 255], pri: [22, 39, 92] };
+    } else if (mitug === 'Lebanon') {
+        return { bg: [1, 25, 1], pri: [255, 255, 255] };
+    } else if (mitug === 'Pakmaz') {
+        return { bg: [255, 255, 255], pri: [53, 33, 28] };
+    }
+};
+
 const createLocationBG = (
     id: LocationID,
     size: [number, number],
-    color: [number, number, number] = [1, 1, 1]
+    mitug: Mitug
 ): ShapeLayer => {
     const comp = app.project.activeItem as CompItem;
     const layer = comp.layers.addShape();
@@ -18,7 +30,14 @@ const createLocationBG = (
     const fillProp = fillGrp.property('ADBE Vector Fill Color') as Property<
         [number, number, number]
     >;
-    fillProp.setValue(color);
+    // TODO
+    fillProp.setValue(
+        getColorsFromMitug(mitug).bg.map(c => c / 255) as [
+            number,
+            number,
+            number
+        ]
+    );
 
     const roundProp = recGrp
         .property('ADBE Vector Shape - Rect')
@@ -40,7 +59,8 @@ const createLocationText = (
     tracking: number,
     leading: number,
     textPos: [number, number],
-    textAnchor: [number, number]
+    textAnchor: [number, number],
+    mitug: Mitug
 ): TextLayer => {
     const comp = app.project.activeItem as CompItem;
     const textLayer = comp.layers.addText();
@@ -53,7 +73,8 @@ const createLocationText = (
     textDoc.font = getFontFromLanguage(lang);
     textDoc.fontSize = fontSize;
     textDoc.applyFill = true;
-    textDoc.fillColor = [53 / 255, 33 / 255, 28 / 255];
+    // TODO
+    textDoc.fillColor = getColorsFromMitug(mitug).pri.map(c => c / 255);
     textDoc.applyStroke = false;
     textDoc.tracking = tracking;
     if (leading) {
@@ -113,25 +134,48 @@ const createLocationIconFromId = (
     id: LocationID,
     iconPos: [number, number],
     iconAnchor: [number, number],
-    iconScale: number
+    iconScale: number,
+    mitug: Mitug
 ): ShapeLayer => {
     switch (id) {
         case 'Kindergarden':
-            return createKindergardenIcon(iconPos, iconAnchor, iconScale, id);
+            return createKindergardenIcon(
+                iconPos,
+                iconAnchor,
+                iconScale,
+                id,
+                mitug
+            );
         case 'Medical Clinic':
-            return createMedicalIcon(iconPos, iconAnchor, iconScale, id);
+            return createMedicalIcon(iconPos, iconAnchor, iconScale, id, mitug);
         case 'Sports':
-            return createSportsIcon(iconPos, iconAnchor, iconScale, id);
+            return createSportsIcon(iconPos, iconAnchor, iconScale, id, mitug);
         case 'University':
-            return createUniversityIcon(iconPos, iconAnchor, iconScale, id);
+            return createUniversityIcon(
+                iconPos,
+                iconAnchor,
+                iconScale,
+                id,
+                mitug
+            );
         case 'Mosque':
-            return createMosqueIcon(iconPos, iconAnchor, iconScale, id);
+            return createMosqueIcon(iconPos, iconAnchor, iconScale, id, mitug);
         case 'U.N. Building':
-            return createUNBuildingIcon(iconPos, iconAnchor, iconScale, id);
+            return createUNBuildingIcon(
+                iconPos,
+                iconAnchor,
+                iconScale,
+                id,
+                mitug
+            );
     }
 };
 
-const createLocation = (inputLang: Lingo, argsArr: LocationArgs[]): void => {
+const createLocation = (
+    argsArr: LocationArgs[],
+    inputLang: Lingo,
+    mitug: Mitug
+): void => {
     const {
         bgSize,
         fontSize,
@@ -147,12 +191,13 @@ const createLocation = (inputLang: Lingo, argsArr: LocationArgs[]): void => {
         iconId
     } = argsArr.find(args => args.lang === inputLang);
 
-    const bgLayer = createLocationBG(iconId, bgSize);
+    const bgLayer = createLocationBG(iconId, bgSize, mitug);
     const iconLayer = createLocationIconFromId(
         iconId,
         iconPos,
         iconAnchor,
-        iconScale
+        iconScale,
+        mitug
     );
     const textLayer = createLocationText(
         lang,
@@ -161,7 +206,8 @@ const createLocation = (inputLang: Lingo, argsArr: LocationArgs[]): void => {
         tracking,
         leading,
         textPos,
-        textAnchor
+        textAnchor,
+        mitug
     );
 
     iconLayer.parent = textLayer.parent = bgLayer;
@@ -181,7 +227,8 @@ const createKindergardenIcon = (
     iconPos: [number, number],
     iconAnchor: [number, number],
     iconScale: number,
-    name: LocationID
+    name: LocationID,
+    mitug: Mitug
 ): ShapeLayer => {
     const iconLayer = createIconBase(name);
 
@@ -225,7 +272,7 @@ const createKindergardenIcon = (
             'House_Middle_Hide',
             true,
             false,
-            [53, 33, 28],
+            getColorsFromMitug(mitug).pri,
             [0, 0, 0],
             0,
             vertices,
@@ -262,7 +309,7 @@ const createKindergardenIcon = (
             'Ladder_L',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -299,7 +346,7 @@ const createKindergardenIcon = (
             'Ladder_R',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -336,7 +383,7 @@ const createKindergardenIcon = (
             'Ladder_06',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -373,7 +420,7 @@ const createKindergardenIcon = (
             'Ladder_05',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -410,7 +457,7 @@ const createKindergardenIcon = (
             'Ladder_04',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -447,7 +494,7 @@ const createKindergardenIcon = (
             'Ladder_03',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -484,7 +531,7 @@ const createKindergardenIcon = (
             'Ladder_02',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -521,7 +568,7 @@ const createKindergardenIcon = (
             'Ladder_01',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -570,7 +617,7 @@ const createKindergardenIcon = (
             'Slide',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -613,7 +660,7 @@ const createKindergardenIcon = (
             'House_Top',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -650,7 +697,7 @@ const createKindergardenIcon = (
             'House_Middle',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -717,7 +764,7 @@ const createKindergardenIcon = (
             'House_Bottom',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -754,7 +801,7 @@ const createKindergardenIcon = (
             'Icon_Circle',
             true,
             false,
-            [53, 33, 28],
+            getColorsFromMitug(mitug).pri,
             [0, 0, 0],
             0,
             vertices,
@@ -785,7 +832,7 @@ const createKindergardenIcon = (
     return iconLayer;
 };
 
-const createKindergardenLocation = (lang: Lingo): void => {
+const createKindergardenLocation = (lang: Lingo, mitug: Mitug): void => {
     const args: LocationArgs[] = [
         {
             lang: 'Hebrew',
@@ -827,14 +874,15 @@ const createKindergardenLocation = (lang: Lingo): void => {
             iconId: 'Kindergarden'
         }
     ];
-    createLocation(lang, args);
+    createLocation(args, lang, mitug);
 };
 
 const createMedicalIcon = (
     iconPos: [number, number],
     iconAnchor: [number, number],
     iconScale: number,
-    name: LocationID
+    name: LocationID,
+    mitug: Mitug
 ): ShapeLayer => {
     const iconLayer = createIconBase(name);
 
@@ -890,7 +938,7 @@ const createMedicalIcon = (
             'Cross',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -927,7 +975,7 @@ const createMedicalIcon = (
             'Icon_Circle',
             true,
             false,
-            [53, 33, 28],
+            getColorsFromMitug(mitug).pri,
             [0, 0, 0],
             0,
             vertices,
@@ -946,7 +994,7 @@ const createMedicalIcon = (
     return iconLayer;
 };
 
-const createMedicalLocation = (lang: Lingo): void => {
+const createMedicalLocation = (lang: Lingo, mitug: Mitug): void => {
     const args: LocationArgs[] = [
         {
             lang: 'Hebrew',
@@ -988,14 +1036,15 @@ const createMedicalLocation = (lang: Lingo): void => {
             iconId: 'Medical Clinic'
         }
     ];
-    createLocation(lang, args);
+    createLocation(args, lang, mitug);
 };
 
 const createSportsIcon = (
     iconPos: [number, number],
     iconAnchor: [number, number],
     iconScale: number,
-    name: LocationID
+    name: LocationID,
+    mitug: Mitug
 ): ShapeLayer => {
     const iconLayer = createIconBase(name);
 
@@ -1027,7 +1076,7 @@ const createSportsIcon = (
             false,
             true,
             [0, 0, 0],
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             4,
             vertices,
             inTangents,
@@ -1065,7 +1114,7 @@ const createSportsIcon = (
             'Ball_Pattern_01',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -1104,7 +1153,7 @@ const createSportsIcon = (
             'Ball_Pattern_02',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -1140,7 +1189,7 @@ const createSportsIcon = (
             'Ball_Pattern_03',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -1179,7 +1228,7 @@ const createSportsIcon = (
             'Ball_Pattern_04',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -1215,7 +1264,7 @@ const createSportsIcon = (
             'Ball_Pattern_05',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -1251,7 +1300,7 @@ const createSportsIcon = (
             'Ball_Pattern_06',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -1287,7 +1336,7 @@ const createSportsIcon = (
             'Ball_Line_01',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -1329,7 +1378,7 @@ const createSportsIcon = (
             'Ball_Line_02',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -1365,7 +1414,7 @@ const createSportsIcon = (
             'Ball_Line_03',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -1401,7 +1450,7 @@ const createSportsIcon = (
             'Ball_Line_04',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -1437,7 +1486,7 @@ const createSportsIcon = (
             'Ball_Line_05',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -1473,7 +1522,7 @@ const createSportsIcon = (
             'Ball_Line_06',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -1509,7 +1558,7 @@ const createSportsIcon = (
             'Ball_Line_07',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -1545,7 +1594,7 @@ const createSportsIcon = (
             'Ball_Line_08',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -1582,7 +1631,7 @@ const createSportsIcon = (
             'Icon_Circle',
             true,
             false,
-            [53, 33, 28],
+            getColorsFromMitug(mitug).pri,
             [0, 0, 0],
             0,
             vertices,
@@ -1615,7 +1664,7 @@ const createSportsIcon = (
     return iconLayer;
 };
 
-const createSportsLocation = (lang: Lingo): void => {
+const createSportsLocation = (lang: Lingo, mitug: Mitug): void => {
     const args: LocationArgs[] = [
         {
             lang: 'Hebrew',
@@ -1658,14 +1707,15 @@ const createSportsLocation = (lang: Lingo): void => {
             iconId: 'Sports'
         }
     ];
-    createLocation(lang, args);
+    createLocation(args, lang, mitug);
 };
 
 const createUniversityIcon = (
     iconPos: [number, number],
     iconAnchor: [number, number],
     iconScale: number,
-    name: LocationID
+    name: LocationID,
+    mitug: Mitug
 ): ShapeLayer => {
     const iconLayer = createIconBase(name);
 
@@ -1699,7 +1749,7 @@ const createUniversityIcon = (
             'Cover_L',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -1735,7 +1785,7 @@ const createUniversityIcon = (
             'Paper_L',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -1774,7 +1824,7 @@ const createUniversityIcon = (
             'Cover_R',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -1810,7 +1860,7 @@ const createUniversityIcon = (
             'Paper_R',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -1847,7 +1897,7 @@ const createUniversityIcon = (
             'Icon_Circle',
             true,
             false,
-            [53, 33, 28],
+            getColorsFromMitug(mitug).pri,
             [0, 0, 0],
             0,
             vertices,
@@ -1869,7 +1919,7 @@ const createUniversityIcon = (
     return iconLayer;
 };
 
-const createUniversityLocation = (lang: Lingo): void => {
+const createUniversityLocation = (lang: Lingo, mitug: Mitug): void => {
     const args: LocationArgs[] = [
         {
             lang: 'Hebrew',
@@ -1911,14 +1961,15 @@ const createUniversityLocation = (lang: Lingo): void => {
             iconId: 'University'
         }
     ];
-    createLocation(lang, args);
+    createLocation(args, lang, mitug);
 };
 
 const createMosqueIcon = (
     iconPos: [number, number],
     iconAnchor: [number, number],
     iconScale: number,
-    name: LocationID
+    name: LocationID,
+    mitug: Mitug
 ): ShapeLayer => {
     const iconLayer = createIconBase(name);
 
@@ -1994,7 +2045,7 @@ const createMosqueIcon = (
             'Mosque_Bottom',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -2177,7 +2228,7 @@ const createMosqueIcon = (
             'Mosque_Middle',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -2372,7 +2423,7 @@ const createMosqueIcon = (
             'Mosque_Top',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -2409,7 +2460,7 @@ const createMosqueIcon = (
             'Icon_Circle',
             true,
             false,
-            [53, 33, 28],
+            getColorsFromMitug(mitug).pri,
             [0, 0, 0],
             0,
             vertices,
@@ -2430,7 +2481,7 @@ const createMosqueIcon = (
     return iconLayer;
 };
 
-const createMosqueLocation = (lang: Lingo): void => {
+const createMosqueLocation = (lang: Lingo, mitug: Mitug): void => {
     const args: LocationArgs[] = [
         {
             lang: 'Hebrew',
@@ -2472,14 +2523,15 @@ const createMosqueLocation = (lang: Lingo): void => {
             iconId: 'Mosque'
         }
     ];
-    createLocation(lang, args);
+    createLocation(args, lang, mitug);
 };
 
 const createUNBuildingIcon = (
     iconPos: [number, number],
     iconAnchor: [number, number],
     iconScale: number,
-    name: LocationID
+    name: LocationID,
+    mitug: Mitug
 ): ShapeLayer => {
     const iconLayer = createIconBase(name);
 
@@ -2511,7 +2563,7 @@ const createUNBuildingIcon = (
             false,
             true,
             [0, 0, 0],
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             1,
             vertices,
             inTangents,
@@ -2547,7 +2599,7 @@ const createUNBuildingIcon = (
             false,
             true,
             [0, 0, 0],
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             0.75,
             vertices,
             inTangents,
@@ -2583,7 +2635,7 @@ const createUNBuildingIcon = (
             false,
             true,
             [0, 0, 0],
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             0.75,
             vertices,
             inTangents,
@@ -2619,7 +2671,7 @@ const createUNBuildingIcon = (
             false,
             true,
             [0, 0, 0],
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             0.75,
             vertices,
             inTangents,
@@ -2649,7 +2701,7 @@ const createUNBuildingIcon = (
             false,
             true,
             [0, 0, 0],
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             0.75,
             vertices,
             inTangents,
@@ -2679,7 +2731,7 @@ const createUNBuildingIcon = (
             false,
             true,
             [0, 0, 0],
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             0.75,
             vertices,
             inTangents,
@@ -2709,7 +2761,7 @@ const createUNBuildingIcon = (
             false,
             true,
             [0, 0, 0],
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             0.75,
             vertices,
             inTangents,
@@ -2739,7 +2791,7 @@ const createUNBuildingIcon = (
             false,
             true,
             [0, 0, 0],
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             0.75,
             vertices,
             inTangents,
@@ -2769,7 +2821,7 @@ const createUNBuildingIcon = (
             false,
             true,
             [0, 0, 0],
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             0.75,
             vertices,
             inTangents,
@@ -2799,7 +2851,7 @@ const createUNBuildingIcon = (
             false,
             true,
             [0, 0, 0],
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             0.75,
             vertices,
             inTangents,
@@ -2829,7 +2881,7 @@ const createUNBuildingIcon = (
             false,
             true,
             [0, 0, 0],
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             0.75,
             vertices,
             inTangents,
@@ -2859,7 +2911,7 @@ const createUNBuildingIcon = (
             false,
             true,
             [0, 0, 0],
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             0.75,
             vertices,
             inTangents,
@@ -3845,7 +3897,7 @@ const createUNBuildingIcon = (
             'Countries',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -3986,7 +4038,7 @@ const createUNBuildingIcon = (
             'Leaves_Bottom',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -4070,7 +4122,7 @@ const createUNBuildingIcon = (
             'Leaves_L_01',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -4157,7 +4209,7 @@ const createUNBuildingIcon = (
             'Leaves_L_02',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -4244,7 +4296,7 @@ const createUNBuildingIcon = (
             'Leaves_L_03',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -4331,7 +4383,7 @@ const createUNBuildingIcon = (
             'Leaves_L_04',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -4418,7 +4470,7 @@ const createUNBuildingIcon = (
             'Leaves_L_05',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -4493,7 +4545,7 @@ const createUNBuildingIcon = (
             'Leaves_L_06',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -4544,7 +4596,7 @@ const createUNBuildingIcon = (
             'Leaves_L_07',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -4631,7 +4683,7 @@ const createUNBuildingIcon = (
             'Leaves_R_01',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -4721,7 +4773,7 @@ const createUNBuildingIcon = (
             'Leaves_R_02',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -4805,7 +4857,7 @@ const createUNBuildingIcon = (
             'Leaves_R_03',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -4892,7 +4944,7 @@ const createUNBuildingIcon = (
             'Leaves_R_04',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -4973,7 +5025,7 @@ const createUNBuildingIcon = (
             'Leaves_R_05',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -5051,7 +5103,7 @@ const createUNBuildingIcon = (
             'Leaves_R_06',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -5099,7 +5151,7 @@ const createUNBuildingIcon = (
             'Leaves_R_07',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -5156,7 +5208,7 @@ const createUNBuildingIcon = (
             'Globe_Piece_01',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -5213,7 +5265,7 @@ const createUNBuildingIcon = (
             'Globe_Piece_02',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -5252,7 +5304,7 @@ const createUNBuildingIcon = (
             'Globe_Piece_03',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -5300,7 +5352,7 @@ const createUNBuildingIcon = (
             'Globe_Piece_04',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -5354,7 +5406,7 @@ const createUNBuildingIcon = (
             'Globe_Piece_05',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -5402,7 +5454,7 @@ const createUNBuildingIcon = (
             'Globe_Piece_06',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -5465,7 +5517,7 @@ const createUNBuildingIcon = (
             'Globe_Piece_07',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -5540,7 +5592,7 @@ const createUNBuildingIcon = (
             'Globe_Piece_08',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -5600,7 +5652,7 @@ const createUNBuildingIcon = (
             'Globe_Piece_09',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -5642,7 +5694,7 @@ const createUNBuildingIcon = (
             'Globe_Piece_10',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -5684,7 +5736,7 @@ const createUNBuildingIcon = (
             'Globe_Piece_11',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -5726,7 +5778,7 @@ const createUNBuildingIcon = (
             'Globe_Piece_12',
             true,
             false,
-            [53, 33, 28],
+            getColorsFromMitug(mitug).pri,
             [0, 0, 0],
             0,
             vertices,
@@ -5771,7 +5823,7 @@ const createUNBuildingIcon = (
             'Globe_Piece_13',
             true,
             false,
-            [53, 33, 28],
+            getColorsFromMitug(mitug).pri,
             [0, 0, 0],
             0,
             vertices,
@@ -5819,7 +5871,7 @@ const createUNBuildingIcon = (
             'Globe_Piece_14',
             true,
             false,
-            [53, 33, 28],
+            getColorsFromMitug(mitug).pri,
             [0, 0, 0],
             0,
             vertices,
@@ -5870,7 +5922,7 @@ const createUNBuildingIcon = (
             'Globe_Piece_15',
             true,
             false,
-            [53, 33, 28],
+            getColorsFromMitug(mitug).pri,
             [0, 0, 0],
             0,
             vertices,
@@ -5933,7 +5985,7 @@ const createUNBuildingIcon = (
             'Globe_Piece_16',
             true,
             false,
-            [53, 33, 28],
+            getColorsFromMitug(mitug).pri,
             [0, 0, 0],
             0,
             vertices,
@@ -5984,7 +6036,7 @@ const createUNBuildingIcon = (
             'Globe_Piece_17',
             true,
             false,
-            [53, 33, 28],
+            getColorsFromMitug(mitug).pri,
             [0, 0, 0],
             0,
             vertices,
@@ -6110,7 +6162,7 @@ const createUNBuildingIcon = (
             'Globe_Piece_18',
             true,
             false,
-            [53, 33, 28],
+            getColorsFromMitug(mitug).pri,
             [0, 0, 0],
             0,
             vertices,
@@ -6185,7 +6237,7 @@ const createUNBuildingIcon = (
             'Globe_Piece_19',
             true,
             false,
-            [53, 33, 28],
+            getColorsFromMitug(mitug).pri,
             [0, 0, 0],
             0,
             vertices,
@@ -6356,7 +6408,7 @@ const createUNBuildingIcon = (
             'Globe_Piece_20',
             true,
             false,
-            [53, 33, 28],
+            getColorsFromMitug(mitug).pri,
             [0, 0, 0],
             0,
             vertices,
@@ -6503,7 +6555,7 @@ const createUNBuildingIcon = (
             'Globe_Piece_21',
             true,
             false,
-            [53, 33, 28],
+            getColorsFromMitug(mitug).pri,
             [0, 0, 0],
             0,
             vertices,
@@ -6581,7 +6633,7 @@ const createUNBuildingIcon = (
             'Globe_Piece_22',
             true,
             false,
-            [255, 255, 255],
+            getColorsFromMitug(mitug).bg,
             [0, 0, 0],
             0,
             vertices,
@@ -6618,7 +6670,7 @@ const createUNBuildingIcon = (
             'Icon_Circle',
             true,
             false,
-            [53, 33, 28],
+            getColorsFromMitug(mitug).pri,
             [0, 0, 0],
             0,
             vertices,
@@ -6686,7 +6738,7 @@ const createUNBuildingIcon = (
     return iconLayer;
 };
 
-const createUNBuildingLocation = (lang: Lingo): void => {
+const createUNBuildingLocation = (lang: Lingo, mitug: Mitug): void => {
     const args: LocationArgs[] = [
         {
             lang: 'Hebrew',
@@ -6728,32 +6780,36 @@ const createUNBuildingLocation = (lang: Lingo): void => {
             iconId: 'U.N. Building'
         }
     ];
-    createLocation(lang, args);
+    createLocation(args, lang, mitug);
 };
 
 // ====================================
 
-const createLocationFromId = (id: LocationID, lang: Lingo): void => {
+const createLocationFromId = (
+    id: LocationID,
+    lang: Lingo,
+    mitug: Mitug
+): void => {
     app.beginUndoGroup(`Create Location: ${id}`);
 
     switch (id) {
         case 'Kindergarden':
-            createKindergardenLocation(lang);
+            createKindergardenLocation(lang, mitug);
             break;
         case 'Medical Clinic':
-            createMedicalLocation(lang);
+            createMedicalLocation(lang, mitug);
             break;
         case 'Sports':
-            createSportsLocation(lang);
+            createSportsLocation(lang, mitug);
             break;
         case 'University':
-            createUniversityLocation(lang);
+            createUniversityLocation(lang, mitug);
             break;
         case 'Mosque':
-            createMosqueLocation(lang);
+            createMosqueLocation(lang, mitug);
             break;
         case 'U.N. Building':
-            createUNBuildingLocation(lang);
+            createUNBuildingLocation(lang, mitug);
             break;
     }
 

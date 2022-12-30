@@ -4,6 +4,8 @@ type ColorDropdown = 'White' | 'Black' | 'Red';
 
 type Lingo = 'Hebrew' | 'Arabic' | 'English';
 
+type Mitug = 'Pakmaz' | 'Gaza' | 'Lebanon';
+
 type IconID =
     | 'Boom'
     | 'Tunnel'
