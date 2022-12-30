@@ -37,34 +37,102 @@ const createHelpWindow = () => {
     });
 
     // === Settings ===
-    const settingsTab = tpanel.add('tab', undefined, ['Settings']);
-    settingsTab.orientation = 'row';
+    const labelNames = getLabelNamesFromPrefs();
+    const labelColors = getLabelsFromPrefs().map(hex => hexToRgb(hex));
 
+    const settingsTab = tpanel.add('tab', undefined, ['Settings']);
+    settingsTab.orientation = 'column';
+    settingsTab.alignChildren = ['left', 'top'];
+
+    // == Icons ==
     const iconlabelsSettingGrp = settingsTab.add('group');
-    iconlabelsSettingGrp.add('statictext', undefined, 'Icons Label Color:');
+    const iconStaticGrp = iconlabelsSettingGrp.add('group');
+    const iconsStatic = iconStaticGrp.add(
+        'statictext',
+        undefined,
+        'Icons Label Color:'
+    );
+    // @ts-ignore
+    iconStaticGrp.margins.right = 22;
 
     const iconlabelsGrp = iconlabelsSettingGrp.add('group');
-    const labelNames = getLabelNamesFromPrefs();
+
     const iconLabelsDD = iconlabelsGrp.add(
         'dropdownlist',
         undefined,
         labelNames
     );
     iconLabelsDD.selection = parsePrefs().iconsLabelIndex;
-    const iconLabelColors = getLabelsFromPrefs().map(hex => hexToRgb(hex));
 
-    const selection = iconLabelsDD.selection as unknown as ListItem;
-    const theLabel = createColoredButton(
+    const iconSelection = iconLabelsDD.selection as unknown as ListItem;
+    const iconTheLabel = createColoredButton(
         iconlabelsGrp,
-        iconLabelColors[selection.index],
+        labelColors[iconSelection.index],
         [20, 20]
     );
 
     iconLabelsDD.onChange = () => {
         const selection = iconLabelsDD.selection as unknown as ListItem;
-        theLabel.fillBrush = theLabel.graphics.newBrush(
-            theLabel.graphics.BrushType.SOLID_COLOR,
-            iconLabelColors[selection.index],
+        iconTheLabel.fillBrush = iconTheLabel.graphics.newBrush(
+            iconTheLabel.graphics.BrushType.SOLID_COLOR,
+            labelColors[selection.index],
+            1
+        );
+    };
+
+    const iconRandomCheck = iconlabelsSettingGrp.add(
+        'checkbox',
+        undefined,
+        'Random'
+    );
+    iconRandomCheck.onClick = () => {
+        iconlabelsGrp.enabled = !iconRandomCheck.value;
+        iconTheLabel.fillBrush = iconTheLabel.graphics.newBrush(
+            iconTheLabel.graphics.BrushType.SOLID_COLOR,
+            iconRandomCheck.value
+                ? [0.2, 0.2, 0.2, 1]
+                : labelColors[selection.index],
+            1
+        );
+    };
+
+    // == Locations ==
+    const loclabelsSettingGrp = settingsTab.add('group');
+    loclabelsSettingGrp.add('statictext', undefined, 'Locations Label Color:');
+
+    const loclabelsGrp = loclabelsSettingGrp.add('group');
+    const locLabelsDD = loclabelsGrp.add('dropdownlist', undefined, labelNames);
+    locLabelsDD.selection = parsePrefs().locsLabelIndex;
+    const locLabelColors = getLabelsFromPrefs().map(hex => hexToRgb(hex));
+
+    const selection = locLabelsDD.selection as unknown as ListItem;
+    const loctheLabel = createColoredButton(
+        loclabelsGrp,
+        locLabelColors[selection.index],
+        [20, 20]
+    );
+
+    locLabelsDD.onChange = () => {
+        const selection = locLabelsDD.selection as unknown as ListItem;
+        loctheLabel.fillBrush = loctheLabel.graphics.newBrush(
+            loctheLabel.graphics.BrushType.SOLID_COLOR,
+            locLabelColors[selection.index],
+            1
+        );
+    };
+
+    const locRandomCheck = loclabelsSettingGrp.add(
+        'checkbox',
+        undefined,
+        'Random'
+    );
+    locRandomCheck.onClick = () => {
+        iconlabelsGrp.enabled = !locRandomCheck.value;
+        loctheLabel.fillBrush = loctheLabel.graphics.newBrush(
+            loctheLabel.graphics.BrushType.SOLID_COLOR,
+            locRandomCheck.value
+                ? [0.2, 0.2, 0.2, 1]
+                : labelColors[selection.index],
             1
         );
     };
@@ -82,7 +150,9 @@ const createHelpWindow = () => {
     okBtn.onClick = () => {
         writePrefsToMemory({
             iconsLabelName: iconLabelsDD.selection.toString(),
-            iconsLabelIndex: (<ListItem>iconLabelsDD.selection).index
+            iconsLabelIndex: (<ListItem>iconLabelsDD.selection).index,
+            locsLabelName: locLabelsDD.selection.toString(),
+            locsLabelIndex: (<ListItem>locLabelsDD.selection).index
         });
 
         helpWin.close();

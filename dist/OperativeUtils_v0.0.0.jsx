@@ -8182,20 +8182,49 @@ var createHelpWindow = function () {
         readonly: true,
         scrollable: true
     });
-    var settingsTab = tpanel.add('tab', undefined, ['Settings']);
-    settingsTab.orientation = 'row';
-    var iconlabelsSettingGrp = settingsTab.add('group');
-    iconlabelsSettingGrp.add('statictext', undefined, 'Icons Label Color:');
-    var iconlabelsGrp = iconlabelsSettingGrp.add('group');
     var labelNames = getLabelNamesFromPrefs();
+    var labelColors = getLabelsFromPrefs().map(function (hex) { return hexToRgb(hex); });
+    var settingsTab = tpanel.add('tab', undefined, ['Settings']);
+    settingsTab.orientation = 'column';
+    settingsTab.alignChildren = ['left', 'top'];
+    var iconlabelsSettingGrp = settingsTab.add('group');
+    var iconStaticGrp = iconlabelsSettingGrp.add('group');
+    var iconsStatic = iconStaticGrp.add('statictext', undefined, 'Icons Label Color:');
+    iconStaticGrp.margins.right = 22;
+    var iconlabelsGrp = iconlabelsSettingGrp.add('group');
     var iconLabelsDD = iconlabelsGrp.add('dropdownlist', undefined, labelNames);
     iconLabelsDD.selection = parsePrefs().iconsLabelIndex;
-    var iconLabelColors = getLabelsFromPrefs().map(function (hex) { return hexToRgb(hex); });
-    var selection = iconLabelsDD.selection;
-    var theLabel = createColoredButton(iconlabelsGrp, iconLabelColors[selection.index], [20, 20]);
+    var iconSelection = iconLabelsDD.selection;
+    var iconTheLabel = createColoredButton(iconlabelsGrp, labelColors[iconSelection.index], [20, 20]);
     iconLabelsDD.onChange = function () {
         var selection = iconLabelsDD.selection;
-        theLabel.fillBrush = theLabel.graphics.newBrush(theLabel.graphics.BrushType.SOLID_COLOR, iconLabelColors[selection.index], 1);
+        iconTheLabel.fillBrush = iconTheLabel.graphics.newBrush(iconTheLabel.graphics.BrushType.SOLID_COLOR, labelColors[selection.index], 1);
+    };
+    var iconRandomCheck = iconlabelsSettingGrp.add('checkbox', undefined, 'Random');
+    iconRandomCheck.onClick = function () {
+        iconlabelsGrp.enabled = !iconRandomCheck.value;
+        iconTheLabel.fillBrush = iconTheLabel.graphics.newBrush(iconTheLabel.graphics.BrushType.SOLID_COLOR, iconRandomCheck.value
+            ? [0.2, 0.2, 0.2, 1]
+            : labelColors[selection.index], 1);
+    };
+    var loclabelsSettingGrp = settingsTab.add('group');
+    loclabelsSettingGrp.add('statictext', undefined, 'Locations Label Color:');
+    var loclabelsGrp = loclabelsSettingGrp.add('group');
+    var locLabelsDD = loclabelsGrp.add('dropdownlist', undefined, labelNames);
+    locLabelsDD.selection = parsePrefs().locsLabelIndex;
+    var locLabelColors = getLabelsFromPrefs().map(function (hex) { return hexToRgb(hex); });
+    var selection = locLabelsDD.selection;
+    var loctheLabel = createColoredButton(loclabelsGrp, locLabelColors[selection.index], [20, 20]);
+    locLabelsDD.onChange = function () {
+        var selection = locLabelsDD.selection;
+        loctheLabel.fillBrush = loctheLabel.graphics.newBrush(loctheLabel.graphics.BrushType.SOLID_COLOR, locLabelColors[selection.index], 1);
+    };
+    var locRandomCheck = loclabelsSettingGrp.add('checkbox', undefined, 'Random');
+    locRandomCheck.onClick = function () {
+        iconlabelsGrp.enabled = !locRandomCheck.value;
+        loctheLabel.fillBrush = loctheLabel.graphics.newBrush(loctheLabel.graphics.BrushType.SOLID_COLOR, locRandomCheck.value
+            ? [0.2, 0.2, 0.2, 1]
+            : labelColors[selection.index], 1);
     };
     var reviewsTab = tpanel.add('tab', undefined, ['Reviews']);
     reviewsTab.add('edittext', [0, 0, 380, 300], '', {
@@ -8207,7 +8236,9 @@ var createHelpWindow = function () {
     okBtn.onClick = function () {
         writePrefsToMemory({
             iconsLabelName: iconLabelsDD.selection.toString(),
-            iconsLabelIndex: iconLabelsDD.selection.index
+            iconsLabelIndex: iconLabelsDD.selection.index,
+            locsLabelName: locLabelsDD.selection.toString(),
+            locsLabelIndex: locLabelsDD.selection.index
         });
         helpWin.close();
     };
