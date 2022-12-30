@@ -8688,7 +8688,7 @@ var createIconsUI = function (tpanel) {
     var iconsTab = tpanel.add('tab', undefined, ['Icons']);
     var iconsGrp = iconsTab.add('group');
     iconsGrp.orientation = 'column';
-    iconsGrp.alignChildren = 'left';
+    iconsGrp.alignChildren = 'center';
     var iconDDGrp = iconsGrp.add('group');
     iconDDGrp.add('statictext', undefined, 'Icon:');
     var iconsList = [
@@ -8704,11 +8704,6 @@ var createIconsUI = function (tpanel) {
     var iconDD = iconDDGrp.add('dropdownlist', undefined, iconsList);
     iconDD.preferredSize[0] = 100;
     iconDD.selection = 0;
-    var IconsBtnsGrp = iconsGrp.add('group');
-    IconsBtnsGrp.alignChildren = 'left';
-    var iconsChecksGrp = iconsGrp.add('group');
-    var circleCheck = iconsChecksGrp.add('checkbox', undefined, 'Circle');
-    var scaleCheck = iconsChecksGrp.add('checkbox', undefined, 'Scale');
     var circleColorGrp = iconsGrp.add('group');
     circleColorGrp.add('statictext', undefined, 'Circle Color:');
     var circleColorDD = circleColorGrp.add('dropdownlist', undefined, [
@@ -8723,7 +8718,12 @@ var createIconsUI = function (tpanel) {
         'White',
         'Red'
     ]);
+    iconColorDD.preferredSize[0] = 71;
     circleColorDD.selection = iconColorDD.selection = 0;
+    var iconsChecksGrp = iconsGrp.add('group');
+    iconsChecksGrp.spacing = 20;
+    var circleCheck = iconsChecksGrp.add('checkbox', undefined, 'Circle');
+    var scaleCheck = iconsChecksGrp.add('checkbox', undefined, 'Scale');
     var iconCreateBtn = iconsGrp.add('button', undefined, 'Create Icon');
     iconCreateBtn.preferredSize[0] = 100;
     iconCreateBtn.onClick = function () {

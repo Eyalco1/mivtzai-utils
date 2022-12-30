@@ -4,7 +4,7 @@ const createIconsUI = (tpanel: TabbedPanel): Tab => {
 
     const iconsGrp = iconsTab.add('group');
     iconsGrp.orientation = 'column';
-    iconsGrp.alignChildren = 'left';
+    iconsGrp.alignChildren = 'center';
 
     const iconDDGrp = iconsGrp.add('group');
     iconDDGrp.add('statictext', undefined, 'Icon:');
@@ -22,13 +22,6 @@ const createIconsUI = (tpanel: TabbedPanel): Tab => {
     iconDD.preferredSize[0] = 100;
     iconDD.selection = 0;
 
-    const IconsBtnsGrp = iconsGrp.add('group');
-    IconsBtnsGrp.alignChildren = 'left';
-
-    const iconsChecksGrp = iconsGrp.add('group');
-    const circleCheck = iconsChecksGrp.add('checkbox', undefined, 'Circle');
-    const scaleCheck = iconsChecksGrp.add('checkbox', undefined, 'Scale');
-
     const circleColorGrp = iconsGrp.add('group');
     circleColorGrp.add('statictext', undefined, 'Circle Color:');
     const circleColorDD = circleColorGrp.add('dropdownlist', undefined, [
@@ -43,14 +36,14 @@ const createIconsUI = (tpanel: TabbedPanel): Tab => {
         'White',
         'Red'
     ]);
-
-    // const labelGrp = iconsGrp.add('group');
-    // labelGrp.add('statictext', undefined, 'Label:');
-    // const labelNames = getLabelNamesFromPrefs();
-    // const labelDD = labelGrp.add('dropdownlist', undefined, labelNames);
-    // labelDD.selection = 0;
+    iconColorDD.preferredSize[0] = 71;
 
     circleColorDD.selection = iconColorDD.selection = 0;
+
+    const iconsChecksGrp = iconsGrp.add('group');
+    iconsChecksGrp.spacing = 20;
+    const circleCheck = iconsChecksGrp.add('checkbox', undefined, 'Circle');
+    const scaleCheck = iconsChecksGrp.add('checkbox', undefined, 'Scale');
 
     const iconCreateBtn = iconsGrp.add('button', undefined, 'Create Icon');
     iconCreateBtn.preferredSize[0] = 100;
