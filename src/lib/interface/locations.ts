@@ -5,6 +5,10 @@ const createLocationsUI = (tpanel: TabbedPanel): Tab => {
     const locationsGrp = locationsTab.add('group');
     locationsGrp.orientation = 'column';
     locationsGrp.alignChildren = 'left';
+    locationsGrp.alignment = 'left';
+    locationsGrp.margins = 4;
+    // @ts-ignore
+    locationsGrp.margins.left = 10;
 
     const locationsDDGrp = locationsGrp.add('group');
     locationsDDGrp.add('statictext', undefined, 'Location:');

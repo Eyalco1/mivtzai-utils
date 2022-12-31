@@ -19,6 +19,8 @@ const createQAUI = (tpanel: TabbedPanel): Tab => {
     const QABtnsGrp = quickActionsTab.add('group');
     QABtnsGrp.orientation = 'column';
     QABtnsGrp.alignChildren = 'left';
+    QABtnsGrp.alignment = 'left';
+    QABtnsGrp.margins = 4;
 
     const rowOne = QABtnsGrp.add('group');
     createQABtn(rowOne, tvaiBinary, 'Tunnel Illustration', createTvaiStroke);
@@ -29,7 +31,7 @@ const createQAUI = (tpanel: TabbedPanel): Tab => {
     const rowTwo = QABtnsGrp.add('group');
     createQABtn(rowTwo, formatBinary, 'Format Layer Name', formatLayerName);
     createQABtn(rowTwo, textReverseBinary, 'Reverse Text', textReverse);
-    createQABtn(rowTwo, bgBinary, 'Create Background', createBg);
+    createQABtn(rowTwo, bgBinary, 'Background', createBg);
     createQABtn(rowTwo, israelShapeBinary, 'Israel Map Shape', createIsraelMap);
 
     const rowThree = QABtnsGrp.add('group');
@@ -58,6 +60,7 @@ const createQAUI = (tpanel: TabbedPanel): Tab => {
         }\n\nClick: Open Project Folder\nCTRL + CLICK: Choose New Project Folder`,
         openProjectInFinder
     );
+    createQABtn(rowFour, tatzaBinary, 'Location Mark', createTatzaPath);
 
     return quickActionsTab;
 };

@@ -685,3 +685,7 @@ const openProjectInFinder = (): void => {
         }
     }
 };
+
+const createTatzaPath = (): void => {
+    alert('Hi!');
+};

@@ -5,6 +5,10 @@ const createTexturesUI = (tpanel: TabbedPanel): Tab => {
     const texturesGrp = texturesTab.add('group');
     texturesGrp.orientation = 'column';
     texturesGrp.alignChildren = 'left';
+    texturesGrp.alignment = 'left';
+    texturesGrp.margins = 4;
+    // @ts-ignore
+    texturesGrp.margins.left = 10;
 
     const texturesDDGrp = texturesGrp.add('group');
     texturesDDGrp.add('statictext', undefined, 'Texture:');

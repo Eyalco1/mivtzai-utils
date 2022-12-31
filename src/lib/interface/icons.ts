@@ -4,7 +4,11 @@ const createIconsUI = (tpanel: TabbedPanel): Tab => {
 
     const iconsGrp = iconsTab.add('group');
     iconsGrp.orientation = 'column';
-    iconsGrp.alignChildren = 'center';
+    iconsGrp.alignChildren = 'left';
+    iconsGrp.alignment = 'left';
+    iconsGrp.margins = 4;
+    // @ts-ignore
+    iconsGrp.margins.left = 10;
 
     const iconDDGrp = iconsGrp.add('group');
     iconDDGrp.add('statictext', undefined, 'Icon:');

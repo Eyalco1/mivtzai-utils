@@ -1264,6 +1264,9 @@ var openProjectInFinder = function () {
         }
     }
 };
+var createTatzaPath = function () {
+    alert('Hi!');
+};
 var setUpIcon = function (name, circleColor, iconColor) {
     var comp = app.project.activeItem;
     var layer = comp.layers.addShape();
@@ -8633,6 +8636,8 @@ var createQAUI = function (tpanel) {
     var QABtnsGrp = quickActionsTab.add('group');
     QABtnsGrp.orientation = 'column';
     QABtnsGrp.alignChildren = 'left';
+    QABtnsGrp.alignment = 'left';
+    QABtnsGrp.margins = 4;
     var rowOne = QABtnsGrp.add('group');
     createQABtn(rowOne, tvaiBinary, 'Tunnel Illustration', createTvaiStroke);
     createQABtn(rowOne, popBinary, 'Pop Animation', scaleWithOvershoot);
@@ -8651,13 +8656,17 @@ var createQAUI = function (tpanel) {
     var rowFour = QABtnsGrp.add('group');
     createQABtn(rowFour, GAMapPhotoBinary, 'Gaza Map Photo\n\nCLICK: Clean Map\nCTRL + CLICK: Map With Labels', importGazaGoogleMaps);
     createQABtn(rowFour, folderBinary, "Open Project Folder in ".concat(getOS() === 'Win' ? 'Explorer' : 'Finder', "\n\nClick: Open Project Folder\nCTRL + CLICK: Choose New Project Folder"), openProjectInFinder);
+    createQABtn(rowFour, tatzaBinary, "Open Project Folder in ".concat(getOS() === 'Win' ? 'Explorer' : 'Finder', "\n\nClick: Open Project Folder\nCTRL + CLICK: Choose New Project Folder"), createTatzaPath);
     return quickActionsTab;
 };
 var createIconsUI = function (tpanel) {
     var iconsTab = tpanel.add('tab', undefined, ['Icons']);
     var iconsGrp = iconsTab.add('group');
     iconsGrp.orientation = 'column';
-    iconsGrp.alignChildren = 'center';
+    iconsGrp.alignChildren = 'left';
+    iconsGrp.alignment = 'left';
+    iconsGrp.margins = 4;
+    iconsGrp.margins.left = 10;
     var iconDDGrp = iconsGrp.add('group');
     iconDDGrp.add('statictext', undefined, 'Icon:');
     var iconsList = [
@@ -8706,6 +8715,9 @@ var createLocationsUI = function (tpanel) {
     var locationsGrp = locationsTab.add('group');
     locationsGrp.orientation = 'column';
     locationsGrp.alignChildren = 'left';
+    locationsGrp.alignment = 'left';
+    locationsGrp.margins = 4;
+    locationsGrp.margins.left = 10;
     var locationsDDGrp = locationsGrp.add('group');
     locationsDDGrp.add('statictext', undefined, 'Location:');
     var locationsList = [
@@ -8746,6 +8758,9 @@ var createTexturesUI = function (tpanel) {
     var texturesGrp = texturesTab.add('group');
     texturesGrp.orientation = 'column';
     texturesGrp.alignChildren = 'left';
+    texturesGrp.alignment = 'left';
+    texturesGrp.margins = 4;
+    texturesGrp.margins.left = 10;
     var texturesDDGrp = texturesGrp.add('group');
     texturesDDGrp.add('statictext', undefined, 'Texture:');
     var texturesList = [
