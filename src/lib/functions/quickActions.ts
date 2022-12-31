@@ -527,7 +527,7 @@ const createGazaMap = (): void => {
 };
 
 const createCountingText = (): void => {
-    app.beginUndoGroup('Create Counting Numbers');
+    app.beginUndoGroup('Counting Numbers');
 
     const comp = app.project.activeItem as CompItem;
     const layer = comp.layers.addText();
@@ -573,7 +573,7 @@ const importGazaGoogleMaps = (): void => {
 };
 
 const createAnimatedFrame = (): void => {
-    app.beginUndoGroup('Create Animated Frame');
+    app.beginUndoGroup('Animated Frame');
 
     const comp = app.project.activeItem as CompItem;
     const layer = comp.layers.addShape();
