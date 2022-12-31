@@ -9,7 +9,7 @@
         "tsc:temp": "tsc --rootDir .temp --outFile ./dist/MivtzaiUtils_Test.jsx"
     },
     "eyal": {
-        "name": "Operative Utils"
+        "name": "Caspion"
     },
     "devDependencies": {
         "delete": "^1.1.0",
