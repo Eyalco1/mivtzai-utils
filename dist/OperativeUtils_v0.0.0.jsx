@@ -1265,7 +1265,57 @@ var openProjectInFinder = function () {
     }
 };
 var createTatzaPath = function () {
-    alert('Hi!');
+    app.beginUndoGroup('Create Location Mark');
+    var comp = app.project.activeItem;
+    var layer = comp.layers.addShape();
+    layer.name = 'Location_Mark';
+    var contents = layer.property('ADBE Root Vectors Group');
+    var shapeGrp = contents.addProperty('ADBE Vector Group');
+    shapeGrp.name = 'Location_Mark_Stroke';
+    var lineGrp = shapeGrp.property('ADBE Vectors Group');
+    var pathGrp = lineGrp.addProperty('ADBE Vector Shape - Group');
+    var linePath = pathGrp.property('ADBE Vector Shape');
+    var myShape = new Shape();
+    var baseNum = Math.min(comp.width, comp.height) / 4;
+    myShape.vertices = [
+        [baseNum, -baseNum],
+        [baseNum, baseNum],
+        [-baseNum, baseNum],
+        [-baseNum, -baseNum]
+    ];
+    myShape.closed = true;
+    linePath.setValue(myShape);
+    var myStroke = lineGrp.addProperty('ADBE Vector Graphic - Stroke');
+    var strokeWidth = myStroke.property('ADBE Vector Stroke Width');
+    strokeWidth.setValue(10);
+    var dashesProp = myStroke.property('ADBE Vector Stroke Dashes');
+    var dashOne = dashesProp.addProperty('ADBE Vector Stroke Dash 1');
+    dashOne.setValue(25);
+    var dashOffset = dashesProp.addProperty('ADBE Vector Stroke Offset');
+    dashOffset.expression = 'time * effect("Speed")("Slider")';
+    var slider = layer.effect.addProperty('ADBE Slider Control');
+    slider.name = 'Speed';
+    var sliderVal = slider.property('ADBE Slider Control-0001');
+    sliderVal.setValue(-100);
+    sliderVal.expression =
+        'var endProp = content("Location_Mark_Stroke").content("Trim Paths 1").end;\n' +
+            'var speedSlider = effect("Speed")("Slider");\n' +
+            'linear(endProp, 100, 0, 0, speedSlider)';
+    var parentGrp = contents
+        .property('Location_Mark_Stroke')
+        .property('ADBE Vectors Group');
+    var trimPathsGrp = parentGrp.addProperty('ADBE Vector Filter - Trim');
+    var trimPathsEnd = trimPathsGrp.property('ADBE Vector Trim End');
+    trimPathsEnd.setValueAtTime(0, 0);
+    trimPathsEnd.setValueAtTime((1 / 24) * 30, 100);
+    trimPathsEnd.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 33)], [new KeyframeEase(0.5, 33)]);
+    trimPathsEnd.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 88)], [new KeyframeEase(0.5, 88)]);
+    layer
+        .property('ADBE Root Vectors Group')
+        .property('ADBE Vector Group')
+        .property('ADBE Vectors Group')
+        .property('ADBE Vector Shape - Group').selected = true;
+    app.endUndoGroup();
 };
 var setUpIcon = function (name, circleColor, iconColor) {
     var comp = app.project.activeItem;
@@ -8646,7 +8696,7 @@ var createQAUI = function (tpanel) {
     var rowTwo = QABtnsGrp.add('group');
     createQABtn(rowTwo, formatBinary, 'Format Layer Name', formatLayerName);
     createQABtn(rowTwo, textReverseBinary, 'Reverse Text', textReverse);
-    createQABtn(rowTwo, bgBinary, 'Create Background', createBg);
+    createQABtn(rowTwo, bgBinary, 'Background', createBg);
     createQABtn(rowTwo, israelShapeBinary, 'Israel Map Shape', createIsraelMap);
     var rowThree = QABtnsGrp.add('group');
     createQABtn(rowThree, gazaShapeBinary, 'Gaza Map Shape', createGazaMap);
@@ -8656,7 +8706,7 @@ var createQAUI = function (tpanel) {
     var rowFour = QABtnsGrp.add('group');
     createQABtn(rowFour, GAMapPhotoBinary, 'Gaza Map Photo\n\nCLICK: Clean Map\nCTRL + CLICK: Map With Labels', importGazaGoogleMaps);
     createQABtn(rowFour, folderBinary, "Open Project Folder in ".concat(getOS() === 'Win' ? 'Explorer' : 'Finder', "\n\nClick: Open Project Folder\nCTRL + CLICK: Choose New Project Folder"), openProjectInFinder);
-    createQABtn(rowFour, tatzaBinary, "Open Project Folder in ".concat(getOS() === 'Win' ? 'Explorer' : 'Finder', "\n\nClick: Open Project Folder\nCTRL + CLICK: Choose New Project Folder"), createTatzaPath);
+    createQABtn(rowFour, tatzaBinary, 'Location Mark', createTatzaPath);
     return quickActionsTab;
 };
 var createIconsUI = function (tpanel) {

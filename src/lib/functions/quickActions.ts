@@ -687,5 +687,91 @@ const openProjectInFinder = (): void => {
 };
 
 const createTatzaPath = (): void => {
-    alert('Hi!');
+    app.beginUndoGroup('Create Location Mark');
+
+    const comp = app.project.activeItem as CompItem;
+    const layer = comp.layers.addShape();
+    layer.name = 'Location_Mark';
+
+    const contents = layer.property('ADBE Root Vectors Group') as PropertyGroup;
+    const shapeGrp = contents.addProperty('ADBE Vector Group');
+    shapeGrp.name = 'Location_Mark_Stroke';
+
+    const lineGrp = shapeGrp.property('ADBE Vectors Group') as PropertyGroup;
+    const pathGrp = lineGrp.addProperty('ADBE Vector Shape - Group');
+    const linePath = pathGrp.property('ADBE Vector Shape') as Property<any>;
+
+    const myShape = new Shape();
+    const baseNum = Math.min(comp.width, comp.height) / 4;
+    myShape.vertices = [
+        [baseNum, -baseNum],
+        [baseNum, baseNum],
+        [-baseNum, baseNum],
+        [-baseNum, -baseNum]
+    ];
+    myShape.closed = true;
+
+    linePath.setValue(myShape);
+
+    const myStroke = lineGrp.addProperty(
+        'ADBE Vector Graphic - Stroke'
+    ) as Property<any>;
+    const strokeWidth = myStroke.property(
+        'ADBE Vector Stroke Width'
+    ) as Property<any>;
+    strokeWidth.setValue(10);
+
+    const dashesProp = myStroke.property(
+        'ADBE Vector Stroke Dashes'
+    ) as PropertyGroup;
+    const dashOne = dashesProp.addProperty(
+        'ADBE Vector Stroke Dash 1'
+    ) as Property<any>;
+    dashOne.setValue(25);
+    const dashOffset = dashesProp.addProperty(
+        'ADBE Vector Stroke Offset'
+    ) as Property<any>;
+    dashOffset.expression = 'time * effect("Speed")("Slider")';
+
+    const slider = layer.effect.addProperty(
+        'ADBE Slider Control'
+    ) as Property<any>;
+    slider.name = 'Speed';
+    const sliderVal = slider.property(
+        'ADBE Slider Control-0001'
+    ) as Property<any>;
+    sliderVal.setValue(-100);
+    sliderVal.expression =
+        'var endProp = content("Location_Mark_Stroke").content("Trim Paths 1").end;\n' +
+        'var speedSlider = effect("Speed")("Slider");\n' +
+        'linear(endProp, 100, 0, 0, speedSlider)';
+
+    const parentGrp = contents
+        .property('Location_Mark_Stroke')
+        .property('ADBE Vectors Group') as PropertyGroup;
+    const trimPathsGrp = parentGrp.addProperty('ADBE Vector Filter - Trim');
+    const trimPathsEnd = trimPathsGrp.property(
+        'ADBE Vector Trim End'
+    ) as Property<number>;
+    trimPathsEnd.setValueAtTime(0, 0);
+    trimPathsEnd.setValueAtTime((1 / 24) * 30, 100);
+
+    trimPathsEnd.setTemporalEaseAtKey(
+        1,
+        [new KeyframeEase(0.5, 33)],
+        [new KeyframeEase(0.5, 33)]
+    );
+    trimPathsEnd.setTemporalEaseAtKey(
+        2,
+        [new KeyframeEase(0.5, 88)],
+        [new KeyframeEase(0.5, 88)]
+    );
+
+    layer
+        .property('ADBE Root Vectors Group')
+        .property('ADBE Vector Group')
+        .property('ADBE Vectors Group')
+        .property('ADBE Vector Shape - Group').selected = true;
+
+    app.endUndoGroup();
 };
