@@ -17,6 +17,7 @@ const createQAUI = (
     tpanel: TabbedPanel
 ): { qaTab: Tab; QABtnsGrp: Group; bigRowOne: Group; bigRowTwo: Group } => {
     const qaTab = tpanel.add('tab', undefined, ['Quick Actions']);
+    qaTab.alignment = qaTab.alignChildren = ['fill', 'fill'];
 
     const QABtnsGrp = qaTab.add('group');
     QABtnsGrp.orientation = 'column';

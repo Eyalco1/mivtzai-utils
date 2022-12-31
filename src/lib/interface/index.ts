@@ -1,20 +1,25 @@
-const init = (thisObj: typeof globalThis) => {
-    let w =
-        thisObj instanceof Panel
-            ? thisObj
-            : new Window('palette', '@@name', undefined, {
-                  resizeable: true
-              });
-    if (w == null) w;
-    w = w as Window;
+const createSideBtns = (
+    qaTab: Tab,
+    iconsTab: Tab,
+    locTab: Tab,
+    texTab: Tab
+) => {
+    const createTheBtns = (container: Group): [IconButton, IconButton] => {
+        const quoteBtn = createQABtn(
+            container,
+            quoteBinary,
+            'Quote',
+            generateCaspiQuote
+        );
+        const helpBtn = createQABtn(
+            container,
+            helpBinary,
+            'Help',
+            createHelpWindow
+        );
 
-    const tpanel = w.add('tabbedpanel');
-    tpanel.alignment = tpanel.alignChildren = ['fill', 'fill'];
-
-    const { qaTab, QABtnsGrp, bigRowOne, bigRowTwo } = createQAUI(tpanel);
-    const { iconsTab, iconCircleGrp, colorChecksGrp } = createIconsUI(tpanel);
-    const { locTab, dropdownsGrp } = createLocationsUI(tpanel);
-    const { texTab, dropdownChecksGrp } = createTexturesUI(tpanel);
+        return [quoteBtn, helpBtn];
+    };
 
     const extraBtnsQA = qaTab.add('group');
     const extraBtnsIcons = iconsTab.add('group');
@@ -37,79 +42,41 @@ const init = (thisObj: typeof globalThis) => {
         extraBtnsTextures.alignChildren =
             ['fill', 'fill'];
 
-    const quoteBtnQA = extraBtnsQA.add('iconbutton', undefined, quoteBinary, {
-        style: 'toolbutton'
-    });
-    const helpBtnQA = extraBtnsQA.add('iconbutton', undefined, helpBinary, {
-        style: 'toolbutton'
-    });
-
-    const quoteBtnIcons = extraBtnsIcons.add(
-        'iconbutton',
-        undefined,
-        quoteBinary,
-        {
-            style: 'toolbutton'
-        }
-    );
-    const helpBtnIcons = extraBtnsIcons.add(
-        'iconbutton',
-        undefined,
-        helpBinary,
-        {
-            style: 'toolbutton'
-        }
-    );
-
-    const quoteBtnLocations = extraBtnsLocations.add(
-        'iconbutton',
-        undefined,
-        quoteBinary,
-        { style: 'toolbutton' }
-    );
-    const helpBtnLocations = extraBtnsLocations.add(
-        'iconbutton',
-        undefined,
-        helpBinary,
-        { style: 'toolbutton' }
-    );
-
-    const quoteBtnTextures = extraBtnsTextures.add(
-        'iconbutton',
-        undefined,
-        quoteBinary,
-        { style: 'toolbutton' }
-    );
-    const helpBtnTextures = extraBtnsTextures.add(
-        'iconbutton',
-        undefined,
-        helpBinary,
-        { style: 'toolbutton' }
-    );
-
-    qaTab.alignment = qaTab.alignChildren = ['fill', 'fill'];
+    const [quoteBtnQA, helpBtnQA] = createTheBtns(extraBtnsQA);
+    const [quoteBtnIcons, helpBtnIcons] = createTheBtns(extraBtnsIcons);
+    const [quoteBtnLocs, helpBtnLocs] = createTheBtns(extraBtnsLocations);
+    const [quoteBtnTexs, helpBtnTexs] = createTheBtns(extraBtnsTextures);
 
     helpBtnQA.alignment =
         helpBtnIcons.alignment =
-        helpBtnLocations.alignment =
-        helpBtnTextures.alignment =
+        helpBtnLocs.alignment =
+        helpBtnTexs.alignment =
         quoteBtnQA.alignment =
         quoteBtnIcons.alignment =
-        quoteBtnLocations.alignment =
-        quoteBtnTextures.alignment =
+        quoteBtnLocs.alignment =
+        quoteBtnTexs.alignment =
             ['right', 'bottom'];
+};
 
-    helpBtnQA.onClick =
-        helpBtnIcons.onClick =
-        helpBtnLocations.onClick =
-        helpBtnTextures.onClick =
-            createHelpWindow;
+const init = (thisObj: typeof globalThis) => {
+    let w =
+        thisObj instanceof Panel
+            ? thisObj
+            : new Window('palette', '@@name', undefined, {
+                  resizeable: true
+              });
+    if (w == null) w;
+    w = w as Window;
 
-    quoteBtnQA.onClick =
-        quoteBtnIcons.onClick =
-        quoteBtnLocations.onClick =
-        quoteBtnTextures.onClick =
-            generateCaspiQuote;
+    const tpanel = w.add('tabbedpanel');
+    tpanel.alignment = tpanel.alignChildren = ['fill', 'fill'];
+
+    const { qaTab, QABtnsGrp, bigRowOne, bigRowTwo } = createQAUI(tpanel);
+    const { iconsTab, iconCircleGrp, colorChecksGrp } = createIconsUI(tpanel);
+    const { locTab, dropdownsGrp } = createLocationsUI(tpanel);
+    const { texTab, dropdownChecksGrp } = createTexturesUI(tpanel);
+
+    createSideBtns(qaTab, iconsTab, locTab, texTab);
 
     w.layout.layout(true);
     w.layout.resize();

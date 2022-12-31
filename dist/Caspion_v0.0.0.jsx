@@ -8719,6 +8719,7 @@ var createQABtn = function (container, binary, helpTip, onClick) {
 };
 var createQAUI = function (tpanel) {
     var qaTab = tpanel.add('tab', undefined, ['Quick Actions']);
+    qaTab.alignment = qaTab.alignChildren = ['fill', 'fill'];
     var QABtnsGrp = qaTab.add('group');
     QABtnsGrp.orientation = 'column';
     QABtnsGrp.alignChildren = 'left';
@@ -8889,21 +8890,12 @@ var createTexturesUI = function (tpanel) {
     };
     return { texTab: texTab, dropdownChecksGrp: dropdownChecksGrp };
 };
-var init = function (thisObj) {
-    var w = thisObj instanceof Panel
-        ? thisObj
-        : new Window('palette', 'Caspion', undefined, {
-            resizeable: true
-        });
-    if (w == null)
-        w;
-    w = w;
-    var tpanel = w.add('tabbedpanel');
-    tpanel.alignment = tpanel.alignChildren = ['fill', 'fill'];
-    var _a = createQAUI(tpanel), qaTab = _a.qaTab, QABtnsGrp = _a.QABtnsGrp, bigRowOne = _a.bigRowOne, bigRowTwo = _a.bigRowTwo;
-    var _b = createIconsUI(tpanel), iconsTab = _b.iconsTab, iconCircleGrp = _b.iconCircleGrp, colorChecksGrp = _b.colorChecksGrp;
-    var _c = createLocationsUI(tpanel), locTab = _c.locTab, dropdownsGrp = _c.dropdownsGrp;
-    var _d = createTexturesUI(tpanel), texTab = _d.texTab, dropdownChecksGrp = _d.dropdownChecksGrp;
+var createSideBtns = function (qaTab, iconsTab, locTab, texTab) {
+    var createTheBtns = function (container) {
+        var quoteBtn = createQABtn(container, quoteBinary, 'Quote', generateCaspiQuote);
+        var helpBtn = createQABtn(container, helpBinary, 'Help', createHelpWindow);
+        return [quoteBtn, helpBtn];
+    };
     var extraBtnsQA = qaTab.add('group');
     var extraBtnsIcons = iconsTab.add('group');
     var extraBtnsLocations = locTab.add('group');
@@ -8922,42 +8914,36 @@ var init = function (thisObj) {
                             extraBtnsTextures.alignment =
                                 extraBtnsTextures.alignChildren =
                                     ['fill', 'fill'];
-    var quoteBtnQA = extraBtnsQA.add('iconbutton', undefined, quoteBinary, {
-        style: 'toolbutton'
-    });
-    var helpBtnQA = extraBtnsQA.add('iconbutton', undefined, helpBinary, {
-        style: 'toolbutton'
-    });
-    var quoteBtnIcons = extraBtnsIcons.add('iconbutton', undefined, quoteBinary, {
-        style: 'toolbutton'
-    });
-    var helpBtnIcons = extraBtnsIcons.add('iconbutton', undefined, helpBinary, {
-        style: 'toolbutton'
-    });
-    var quoteBtnLocations = extraBtnsLocations.add('iconbutton', undefined, quoteBinary, { style: 'toolbutton' });
-    var helpBtnLocations = extraBtnsLocations.add('iconbutton', undefined, helpBinary, { style: 'toolbutton' });
-    var quoteBtnTextures = extraBtnsTextures.add('iconbutton', undefined, quoteBinary, { style: 'toolbutton' });
-    var helpBtnTextures = extraBtnsTextures.add('iconbutton', undefined, helpBinary, { style: 'toolbutton' });
-    qaTab.alignment = qaTab.alignChildren = ['fill', 'fill'];
+    var _a = createTheBtns(extraBtnsQA), quoteBtnQA = _a[0], helpBtnQA = _a[1];
+    var _b = createTheBtns(extraBtnsIcons), quoteBtnIcons = _b[0], helpBtnIcons = _b[1];
+    var _c = createTheBtns(extraBtnsLocations), quoteBtnLocs = _c[0], helpBtnLocs = _c[1];
+    var _d = createTheBtns(extraBtnsTextures), quoteBtnTexs = _d[0], helpBtnTexs = _d[1];
     helpBtnQA.alignment =
         helpBtnIcons.alignment =
-            helpBtnLocations.alignment =
-                helpBtnTextures.alignment =
+            helpBtnLocs.alignment =
+                helpBtnTexs.alignment =
                     quoteBtnQA.alignment =
                         quoteBtnIcons.alignment =
-                            quoteBtnLocations.alignment =
-                                quoteBtnTextures.alignment =
+                            quoteBtnLocs.alignment =
+                                quoteBtnTexs.alignment =
                                     ['right', 'bottom'];
-    helpBtnQA.onClick =
-        helpBtnIcons.onClick =
-            helpBtnLocations.onClick =
-                helpBtnTextures.onClick =
-                    createHelpWindow;
-    quoteBtnQA.onClick =
-        quoteBtnIcons.onClick =
-            quoteBtnLocations.onClick =
-                quoteBtnTextures.onClick =
-                    generateCaspiQuote;
+};
+var init = function (thisObj) {
+    var w = thisObj instanceof Panel
+        ? thisObj
+        : new Window('palette', 'Caspion', undefined, {
+            resizeable: true
+        });
+    if (w == null)
+        w;
+    w = w;
+    var tpanel = w.add('tabbedpanel');
+    tpanel.alignment = tpanel.alignChildren = ['fill', 'fill'];
+    var _a = createQAUI(tpanel), qaTab = _a.qaTab, QABtnsGrp = _a.QABtnsGrp, bigRowOne = _a.bigRowOne, bigRowTwo = _a.bigRowTwo;
+    var _b = createIconsUI(tpanel), iconsTab = _b.iconsTab, iconCircleGrp = _b.iconCircleGrp, colorChecksGrp = _b.colorChecksGrp;
+    var _c = createLocationsUI(tpanel), locTab = _c.locTab, dropdownsGrp = _c.dropdownsGrp;
+    var _d = createTexturesUI(tpanel), texTab = _d.texTab, dropdownChecksGrp = _d.dropdownChecksGrp;
+    createSideBtns(qaTab, iconsTab, locTab, texTab);
     w.layout.layout(true);
     w.layout.resize();
     w.onResizing = w.onResize = function () {
