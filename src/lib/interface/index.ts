@@ -12,9 +12,9 @@ const init = (thisObj: typeof globalThis) => {
     tpanel.alignment = tpanel.alignChildren = ['fill', 'fill'];
 
     const { qaTab, QABtnsGrp, bigRowOne, bigRowTwo } = createQAUI(tpanel);
-    const iconsTab = createIconsUI(tpanel);
-    const locTab = createLocationsUI(tpanel);
-    const texTab = createTexturesUI(tpanel);
+    const { iconsTab, iconCircleGrp, colorChecksGrp } = createIconsUI(tpanel);
+    const { locTab, dropdownsGrp } = createLocationsUI(tpanel);
+    const { texTab, dropdownChecksGrp } = createTexturesUI(tpanel);
 
     const extraBtnsQA = qaTab.add('group');
     const extraBtnsIcons = iconsTab.add('group');
@@ -115,10 +115,21 @@ const init = (thisObj: typeof globalThis) => {
     w.layout.resize();
     w.onResizing = w.onResize = () => {
         (<Window>w).onResize = () => {
+            // QA
             bigRowOne.orientation = bigRowTwo.orientation =
                 (<Dimension>w.size).width > 400 ? 'row' : 'column';
             QABtnsGrp.orientation =
                 (<Dimension>w.size).width > 800 ? 'row' : 'column';
+            // Icons
+            iconCircleGrp.orientation = colorChecksGrp.orientation =
+                (<Dimension>w.size).width > 350 ? 'row' : 'column';
+            // Locations
+            dropdownsGrp.orientation =
+                (<Dimension>w.size).width > 520 ? 'row' : 'column';
+            // Textures
+            dropdownChecksGrp.orientation =
+                (<Dimension>w.size).width > 350 ? 'row' : 'column';
+            //
             w.layout.layout(true);
             w.layout.resize();
         };

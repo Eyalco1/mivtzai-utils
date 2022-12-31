@@ -1347,24 +1347,10 @@ var recScaleX = function () {
         .property('ADBE Scale');
     scaleProp.setValueAtTime(0, [0, 100]);
     scaleProp.setValueAtTime((1 / 24) * 14, [100, 100]);
-    scaleProp.setTemporalEaseAtKey(1, [
-        new KeyframeEase(0.5, 75),
-        new KeyframeEase(0.5, 75),
-        new KeyframeEase(0.5, 75)
-    ], [
-        new KeyframeEase(0.5, 75),
-        new KeyframeEase(0.5, 75),
-        new KeyframeEase(0.5, 75)
-    ]);
-    scaleProp.setTemporalEaseAtKey(2, [
-        new KeyframeEase(0.5, 92),
-        new KeyframeEase(0.5, 92),
-        new KeyframeEase(0.5, 92)
-    ], [
-        new KeyframeEase(0.5, 92),
-        new KeyframeEase(0.5, 92),
-        new KeyframeEase(0.5, 92)
-    ]);
+    var ease1 = new KeyframeEase(0.5, 65);
+    var ease2 = new KeyframeEase(0.5, 92);
+    scaleProp.setTemporalEaseAtKey(1, [ease1, ease1, ease1], [ease1, ease1, ease1]);
+    scaleProp.setTemporalEaseAtKey(2, [ease2, ease2, ease2], [ease2, ease2, ease2]);
     app.endUndoGroup();
 };
 var setUpIcon = function (name, circleColor, iconColor) {
@@ -8771,7 +8757,8 @@ var createIconsUI = function (tpanel) {
     iconsGrp.alignment = 'left';
     iconsGrp.margins = 4;
     iconsGrp.margins.left = 10;
-    var iconDDGrp = iconsGrp.add('group');
+    var iconCircleGrp = iconsGrp.add('group');
+    var iconDDGrp = iconCircleGrp.add('group');
     iconDDGrp.add('statictext', undefined, 'Icon:');
     var iconsList = [
         'Boom',
@@ -8786,14 +8773,15 @@ var createIconsUI = function (tpanel) {
     var iconDD = iconDDGrp.add('dropdownlist', undefined, iconsList);
     iconDD.preferredSize[0] = 100;
     iconDD.selection = 0;
-    var circleColorGrp = iconsGrp.add('group');
+    var circleColorGrp = iconCircleGrp.add('group');
     circleColorGrp.add('statictext', undefined, 'Circle Color:');
     var circleColorDD = circleColorGrp.add('dropdownlist', undefined, [
         'White',
         'Black',
         'Red'
     ]);
-    var iconColorGrp = iconsGrp.add('group');
+    var colorChecksGrp = iconsGrp.add('group');
+    var iconColorGrp = colorChecksGrp.add('group');
     iconColorGrp.add('statictext', undefined, 'Icon Color:');
     var iconColorDD = iconColorGrp.add('dropdownlist', undefined, [
         'Black',
@@ -8802,7 +8790,7 @@ var createIconsUI = function (tpanel) {
     ]);
     iconColorDD.preferredSize[0] = 71;
     circleColorDD.selection = iconColorDD.selection = 0;
-    var iconsChecksGrp = iconsGrp.add('group');
+    var iconsChecksGrp = colorChecksGrp.add('group');
     iconsChecksGrp.spacing = 20;
     var circleCheck = iconsChecksGrp.add('checkbox', undefined, 'Circle');
     var scaleCheck = iconsChecksGrp.add('checkbox', undefined, 'Scale');
@@ -8812,17 +8800,20 @@ var createIconsUI = function (tpanel) {
         var id = iconDD.selection.toString();
         createIconFromId(id, circleColorDD.selection.toString(), iconColorDD.selection.toString(), circleCheck.value, scaleCheck.value);
     };
-    return iconsTab;
+    return { iconsTab: iconsTab, iconCircleGrp: iconCircleGrp, colorChecksGrp: colorChecksGrp };
 };
 var createLocationsUI = function (tpanel) {
-    var locationsTab = tpanel.add('tab', undefined, ['Locations']);
-    var locationsGrp = locationsTab.add('group');
+    var locTab = tpanel.add('tab', undefined, ['Locations']);
+    var locationsGrp = locTab.add('group');
     locationsGrp.orientation = 'column';
     locationsGrp.alignChildren = 'left';
     locationsGrp.alignment = 'left';
     locationsGrp.margins = 4;
     locationsGrp.margins.left = 10;
-    var locationsDDGrp = locationsGrp.add('group');
+    var dropdownsGrp = locationsGrp.add('group');
+    dropdownsGrp.alignChildren = 'left';
+    dropdownsGrp.alignment = 'left';
+    var locationsDDGrp = dropdownsGrp.add('group');
     locationsDDGrp.add('statictext', undefined, 'Location:');
     var locationsList = [
         'Kindergarden',
@@ -8835,13 +8826,13 @@ var createLocationsUI = function (tpanel) {
     var locationsDD = locationsDDGrp.add('dropdownlist', undefined, locationsList);
     locationsDD.preferredSize[0] = 100;
     locationsDD.selection = 0;
-    var langDDGrp = locationsGrp.add('group');
+    var langDDGrp = dropdownsGrp.add('group');
     langDDGrp.add('statictext', undefined, 'Language:');
     var langs = ['Hebrew', 'English', 'Arabic'];
     var langDD = langDDGrp.add('dropdownlist', undefined, langs);
     langDD.preferredSize[0] = 100;
     langDD.selection = 0;
-    var mitugDDGrp = locationsGrp.add('group');
+    var mitugDDGrp = dropdownsGrp.add('group');
     mitugDDGrp.add('statictext', undefined, 'Mitug:');
     var mitugim = ['Gaza', 'Pakmaz', 'Lebanon'];
     var mitugDD = mitugDDGrp.add('dropdownlist', undefined, mitugim);
@@ -8855,17 +8846,20 @@ var createLocationsUI = function (tpanel) {
         var mitug = mitugDD.selection.toString();
         createLocationFromId(id, lang, mitug);
     };
-    return locationsTab;
+    return { locTab: locTab, dropdownsGrp: dropdownsGrp };
 };
 var createTexturesUI = function (tpanel) {
-    var texturesTab = tpanel.add('tab', undefined, ['Textures']);
-    var texturesGrp = texturesTab.add('group');
+    var texTab = tpanel.add('tab', undefined, ['Textures']);
+    var texturesGrp = texTab.add('group');
     texturesGrp.orientation = 'column';
     texturesGrp.alignChildren = 'left';
     texturesGrp.alignment = 'left';
     texturesGrp.margins = 4;
     texturesGrp.margins.left = 10;
-    var texturesDDGrp = texturesGrp.add('group');
+    var dropdownChecksGrp = texturesGrp.add('group');
+    dropdownChecksGrp.alignChildren = 'left';
+    dropdownChecksGrp.alignment = 'left';
+    var texturesDDGrp = dropdownChecksGrp.add('group');
     texturesDDGrp.add('statictext', undefined, 'Texture:');
     var texturesList = [
         'Paper Dark',
@@ -8878,7 +8872,7 @@ var createTexturesUI = function (tpanel) {
     var texturesDD = texturesDDGrp.add('dropdownlist', undefined, texturesList);
     texturesDD.preferredSize[0] = 100;
     texturesDD.selection = 0;
-    var textureChecksGrp = texturesGrp.add('group');
+    var textureChecksGrp = dropdownChecksGrp.add('group');
     var textureLoopCheck = textureChecksGrp.add('checkbox', undefined, 'Loop');
     var textureFitCheck = textureChecksGrp.add('checkbox', undefined, 'Fit To Comp');
     textureLoopCheck.onClick = function () {
@@ -8893,7 +8887,7 @@ var createTexturesUI = function (tpanel) {
         var fit = textureFitCheck.value;
         createTexture(id, loop, fit);
     };
-    return texturesTab;
+    return { texTab: texTab, dropdownChecksGrp: dropdownChecksGrp };
 };
 var init = function (thisObj) {
     var w = thisObj instanceof Panel
@@ -8907,9 +8901,9 @@ var init = function (thisObj) {
     var tpanel = w.add('tabbedpanel');
     tpanel.alignment = tpanel.alignChildren = ['fill', 'fill'];
     var _a = createQAUI(tpanel), qaTab = _a.qaTab, QABtnsGrp = _a.QABtnsGrp, bigRowOne = _a.bigRowOne, bigRowTwo = _a.bigRowTwo;
-    var iconsTab = createIconsUI(tpanel);
-    var locTab = createLocationsUI(tpanel);
-    var texTab = createTexturesUI(tpanel);
+    var _b = createIconsUI(tpanel), iconsTab = _b.iconsTab, iconCircleGrp = _b.iconCircleGrp, colorChecksGrp = _b.colorChecksGrp;
+    var _c = createLocationsUI(tpanel), locTab = _c.locTab, dropdownsGrp = _c.dropdownsGrp;
+    var _d = createTexturesUI(tpanel), texTab = _d.texTab, dropdownChecksGrp = _d.dropdownChecksGrp;
     var extraBtnsQA = qaTab.add('group');
     var extraBtnsIcons = iconsTab.add('group');
     var extraBtnsLocations = locTab.add('group');
@@ -8972,6 +8966,12 @@ var init = function (thisObj) {
                 w.size.width > 400 ? 'row' : 'column';
             QABtnsGrp.orientation =
                 w.size.width > 800 ? 'row' : 'column';
+            iconCircleGrp.orientation = colorChecksGrp.orientation =
+                w.size.width > 350 ? 'row' : 'column';
+            dropdownsGrp.orientation =
+                w.size.width > 520 ? 'row' : 'column';
+            dropdownChecksGrp.orientation =
+                w.size.width > 350 ? 'row' : 'column';
             w.layout.layout(true);
             w.layout.resize();
         };

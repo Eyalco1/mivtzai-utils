@@ -1,8 +1,10 @@
 // UI
-const createTexturesUI = (tpanel: TabbedPanel): Tab => {
-    const texturesTab = tpanel.add('tab', undefined, ['Textures']);
+const createTexturesUI = (
+    tpanel: TabbedPanel
+): { texTab: Tab; dropdownChecksGrp: Group } => {
+    const texTab = tpanel.add('tab', undefined, ['Textures']);
 
-    const texturesGrp = texturesTab.add('group');
+    const texturesGrp = texTab.add('group');
     texturesGrp.orientation = 'column';
     texturesGrp.alignChildren = 'left';
     texturesGrp.alignment = 'left';
@@ -10,7 +12,11 @@ const createTexturesUI = (tpanel: TabbedPanel): Tab => {
     // @ts-ignore
     texturesGrp.margins.left = 10;
 
-    const texturesDDGrp = texturesGrp.add('group');
+    const dropdownChecksGrp = texturesGrp.add('group');
+    dropdownChecksGrp.alignChildren = 'left';
+    dropdownChecksGrp.alignment = 'left';
+
+    const texturesDDGrp = dropdownChecksGrp.add('group');
     texturesDDGrp.add('statictext', undefined, 'Texture:');
     const texturesList: TextureID[] = [
         'Paper Dark',
@@ -28,7 +34,7 @@ const createTexturesUI = (tpanel: TabbedPanel): Tab => {
     texturesDD.preferredSize[0] = 100;
     texturesDD.selection = 0;
 
-    const textureChecksGrp = texturesGrp.add('group');
+    const textureChecksGrp = dropdownChecksGrp.add('group');
     const textureLoopCheck = textureChecksGrp.add(
         'checkbox',
         undefined,
@@ -59,5 +65,5 @@ const createTexturesUI = (tpanel: TabbedPanel): Tab => {
         createTexture(id, loop, fit);
     };
 
-    return texturesTab;
+    return { texTab, dropdownChecksGrp };
 };

@@ -1,8 +1,10 @@
 // UI
-const createLocationsUI = (tpanel: TabbedPanel): Tab => {
-    const locationsTab = tpanel.add('tab', undefined, ['Locations']);
+const createLocationsUI = (
+    tpanel: TabbedPanel
+): { locTab: Tab; dropdownsGrp: Group } => {
+    const locTab = tpanel.add('tab', undefined, ['Locations']);
 
-    const locationsGrp = locationsTab.add('group');
+    const locationsGrp = locTab.add('group');
     locationsGrp.orientation = 'column';
     locationsGrp.alignChildren = 'left';
     locationsGrp.alignment = 'left';
@@ -10,7 +12,11 @@ const createLocationsUI = (tpanel: TabbedPanel): Tab => {
     // @ts-ignore
     locationsGrp.margins.left = 10;
 
-    const locationsDDGrp = locationsGrp.add('group');
+    const dropdownsGrp = locationsGrp.add('group');
+    dropdownsGrp.alignChildren = 'left';
+    dropdownsGrp.alignment = 'left';
+
+    const locationsDDGrp = dropdownsGrp.add('group');
     locationsDDGrp.add('statictext', undefined, 'Location:');
     const locationsList: LocationID[] = [
         'Kindergarden',
@@ -28,14 +34,14 @@ const createLocationsUI = (tpanel: TabbedPanel): Tab => {
     locationsDD.preferredSize[0] = 100;
     locationsDD.selection = 0;
 
-    const langDDGrp = locationsGrp.add('group');
+    const langDDGrp = dropdownsGrp.add('group');
     langDDGrp.add('statictext', undefined, 'Language:');
     const langs: Lingo[] = ['Hebrew', 'English', 'Arabic'];
     const langDD = langDDGrp.add('dropdownlist', undefined, langs);
     langDD.preferredSize[0] = 100;
     langDD.selection = 0;
 
-    const mitugDDGrp = locationsGrp.add('group');
+    const mitugDDGrp = dropdownsGrp.add('group');
     mitugDDGrp.add('statictext', undefined, 'Mitug:');
     const mitugim: Mitug[] = ['Gaza', 'Pakmaz', 'Lebanon'];
     const mitugDD = mitugDDGrp.add('dropdownlist', undefined, mitugim);
@@ -56,5 +62,5 @@ const createLocationsUI = (tpanel: TabbedPanel): Tab => {
         createLocationFromId(id, lang, mitug);
     };
 
-    return locationsTab;
+    return { locTab, dropdownsGrp };
 };
