@@ -1,4 +1,18 @@
 // UI
+const createQABtn = (
+    container: Group,
+    binary: string,
+    helpTip: string,
+    onClick: () => void
+): IconButton => {
+    const btn = container.add('iconbutton', undefined, binary, {
+        style: 'toolbutton'
+    });
+    btn.helpTip = helpTip;
+    btn.onClick = onClick;
+    return btn;
+};
+
 const createQAUI = (tpanel: TabbedPanel): Tab => {
     const quickActionsTab = tpanel.add('tab', undefined, ['Quick Actions']);
 
@@ -6,127 +20,44 @@ const createQAUI = (tpanel: TabbedPanel): Tab => {
     QABtnsGrp.orientation = 'column';
     QABtnsGrp.alignChildren = 'left';
 
-    const QABtnsRowOne = QABtnsGrp.add('group');
+    const rowOne = QABtnsGrp.add('group');
+    createQABtn(rowOne, tvaiBinary, 'Tunnel Illustration', createTvaiStroke);
+    createQABtn(rowOne, popBinary, 'Pop Animation', scaleWithOvershoot);
+    createQABtn(rowOne, logosBinary, 'Import IDF and Dotz Logos', importLogos);
+    createQABtn(rowOne, illusBinary, 'Illustration Text', createIllusText);
 
-    const tvaiBtn = QABtnsRowOne.add('iconbutton', undefined, tvaiBinary, {
-        style: 'toolbutton'
-    });
-    tvaiBtn.helpTip = 'Tunnel Illustration';
+    const rowTwo = QABtnsGrp.add('group');
+    createQABtn(rowTwo, formatBinary, 'Format Layer Name', formatLayerName);
+    createQABtn(rowTwo, textReverseBinary, 'Reverse Text', textReverse);
+    createQABtn(rowTwo, bgBinary, 'Create Background', createBg);
+    createQABtn(rowTwo, israelShapeBinary, 'Israel Map Shape', createIsraelMap);
 
-    const scaleBtn = QABtnsRowOne.add('iconbutton', undefined, popBinary, {
-        style: 'toolbutton'
-    });
-    scaleBtn.helpTip = 'Pop Animation';
-
-    const logosBtn = QABtnsRowOne.add('iconbutton', undefined, logosBinary, {
-        style: 'toolbutton'
-    });
-    logosBtn.helpTip = 'Import IDF and Dotz Logos';
-
-    const illustrationBtn = QABtnsRowOne.add(
-        'iconbutton',
-        undefined,
-        illustrationBinary,
-        { style: 'toolbutton' }
-    );
-    illustrationBtn.helpTip = 'Illustration Text';
-
-    const QABtnsRowTwo = QABtnsGrp.add('group');
-    const formatLayerBtn = QABtnsRowTwo.add(
-        'iconbutton',
-        undefined,
-        formatBinary,
-        { style: 'toolbutton' }
-    );
-    formatLayerBtn.helpTip = 'Format Layer Name';
-
-    const textReverseBtn = QABtnsRowTwo.add(
-        'iconbutton',
-        undefined,
-        textReverseBinary,
-        { style: 'toolbutton' }
-    );
-    textReverseBtn.helpTip = 'Reverse Text';
-
-    const bgBtn = QABtnsRowTwo.add('iconbutton', undefined, bgBinary, {
-        style: 'toolbutton'
-    });
-    bgBtn.helpTip = 'Create Background';
-
-    const IsraelMapShapeBtn = QABtnsRowTwo.add(
-        'iconbutton',
-        undefined,
-        israelShapeBinary,
-        { style: 'toolbutton' }
-    );
-    IsraelMapShapeBtn.helpTip = 'Israel Map Shape';
-
-    const QABtnsRowThree = QABtnsGrp.add('group');
-    const GazaMapShapeBtn = QABtnsRowThree.add(
-        'iconbutton',
-        undefined,
-        gazaShapeBinary,
-        { style: 'toolbutton' }
-    );
-    GazaMapShapeBtn.helpTip = 'Gaza Map Shape';
-
-    const numCountBtn = QABtnsRowThree.add(
-        'iconbutton',
-        undefined,
-        countingNumbersBinary,
-        { style: 'toolbutton' }
-    );
-    numCountBtn.helpTip = 'Counting Numbers';
-
-    const frameBtn = QABtnsRowThree.add('iconbutton', undefined, frameBinary, {
-        style: 'toolbutton'
-    });
-    frameBtn.helpTip = 'Animated Frame';
-
-    const israelMapPic = QABtnsRowThree.add(
-        'iconbutton',
-        undefined,
+    const rowThree = QABtnsGrp.add('group');
+    createQABtn(rowThree, gazaShapeBinary, 'Gaza Map Shape', createGazaMap);
+    createQABtn(rowThree, numsBinary, 'Counting Numbers', createCountingText);
+    createQABtn(rowThree, frameBinary, 'Animated Frame', createAnimatedFrame);
+    createQABtn(
+        rowThree,
         ILMapPhotoBinary,
-        { style: 'toolbutton' }
+        'Israel Map Photo\n\nCLICK: Clean Map\nCTRL + CLICK: Map With Labels',
+        importIsraelGoogleMaps
     );
-    israelMapPic.helpTip =
-        'Israel Map Photo\n\nCLICK: Clean Map\nCTRL + CLICK: Map With Labels';
 
-    const QABtnsRowFour = QABtnsGrp.add('group');
-
-    const gazaMapPic = QABtnsRowFour.add(
-        'iconbutton',
-        undefined,
+    const rowFour = QABtnsGrp.add('group');
+    createQABtn(
+        rowFour,
         GAMapPhotoBinary,
-        { style: 'toolbutton' }
+        'Gaza Map Photo\n\nCLICK: Clean Map\nCTRL + CLICK: Map With Labels',
+        importGazaGoogleMaps
     );
-    gazaMapPic.helpTip =
-        'Gaza Map Photo\n\nCLICK: Clean Map\nCTRL + CLICK: Map With Labels';
-
-    const openFinderBtn = QABtnsRowFour.add(
-        'iconbutton',
-        undefined,
+    createQABtn(
+        rowFour,
         folderBinary,
-        { style: 'toolbutton' }
+        `Open Project Folder in ${
+            getOS() === 'Win' ? 'Explorer' : 'Finder'
+        }\n\nClick: Open Project Folder\nCTRL + CLICK: Choose New Project Folder`,
+        openProjectInFinder
     );
-    openFinderBtn.helpTip = `Open Project Folder in ${
-        getOS() === 'Win' ? 'Explorer' : 'Finder'
-    }\n\nClick: Open Project Folder\nCTRL + CLICK: Choose New Project Folder`;
-
-    tvaiBtn.onClick = createTvaiStroke;
-    scaleBtn.onClick = scaleWithOvershoot;
-    logosBtn.onClick = importLogos;
-    illustrationBtn.onClick = createIllustrationText;
-    formatLayerBtn.onClick = formatLayerName;
-    textReverseBtn.onClick = textReverse;
-    bgBtn.onClick = createBg;
-    IsraelMapShapeBtn.onClick = createIsraelMap;
-    GazaMapShapeBtn.onClick = createGazaMap;
-    numCountBtn.onClick = createCountingText;
-    frameBtn.onClick = createAnimatedFrame;
-    openFinderBtn.onClick = openProjectInFinder;
-    israelMapPic.onClick = importIsraelGoogleMaps;
-    gazaMapPic.onClick = importGazaGoogleMaps;
 
     return quickActionsTab;
 };

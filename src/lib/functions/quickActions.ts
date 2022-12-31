@@ -132,7 +132,7 @@ const importLogos = (): void => {
     app.endUndoGroup();
 };
 
-const createIllustrationText = (): void => {
+const createIllusText = (): void => {
     app.beginUndoGroup('Create Illustration Text');
 
     const comp = app.project.activeItem as CompItem;
