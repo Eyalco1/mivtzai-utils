@@ -13,28 +13,34 @@ const createQABtn = (
     return btn;
 };
 
-const createQAUI = (tpanel: TabbedPanel): Tab => {
-    const quickActionsTab = tpanel.add('tab', undefined, ['Quick Actions']);
+const createQAUI = (
+    tpanel: TabbedPanel
+): { qaTab: Tab; QABtnsGrp: Group; bigRowOne: Group; bigRowTwo: Group } => {
+    const qaTab = tpanel.add('tab', undefined, ['Quick Actions']);
 
-    const QABtnsGrp = quickActionsTab.add('group');
+    const QABtnsGrp = qaTab.add('group');
     QABtnsGrp.orientation = 'column';
     QABtnsGrp.alignChildren = 'left';
     QABtnsGrp.alignment = 'left';
     QABtnsGrp.margins = 4;
 
-    const rowOne = QABtnsGrp.add('group');
+    const bigRowOne = QABtnsGrp.add('group');
+
+    const rowOne = bigRowOne.add('group');
     createQABtn(rowOne, tvaiBinary, 'Tunnel Illustration', createTvaiStroke);
     createQABtn(rowOne, popBinary, 'Pop Animation', scaleWithOvershootQA);
     createQABtn(rowOne, logosBinary, 'Import IDF and Dotz Logos', importLogos);
     createQABtn(rowOne, illusBinary, 'Illustration Text', createIllusText);
 
-    const rowTwo = QABtnsGrp.add('group');
+    const rowTwo = bigRowOne.add('group');
     createQABtn(rowTwo, formatBinary, 'Format Layer Name', formatLayerName);
     createQABtn(rowTwo, textReverseBinary, 'Reverse Text', textReverse);
     createQABtn(rowTwo, bgBinary, 'Background', createBg);
     createQABtn(rowTwo, israelShapeBinary, 'Israel Map Shape', createIsraelMap);
 
-    const rowThree = QABtnsGrp.add('group');
+    const bigRowTwo = QABtnsGrp.add('group');
+
+    const rowThree = bigRowTwo.add('group');
     createQABtn(rowThree, gazaShapeBinary, 'Gaza Map Shape', createGazaMap);
     createQABtn(rowThree, numsBinary, 'Counting Numbers', createCountingText);
     createQABtn(rowThree, frameBinary, 'Animated Frame', createAnimatedFrame);
@@ -45,7 +51,7 @@ const createQAUI = (tpanel: TabbedPanel): Tab => {
         importIsraelGoogleMaps
     );
 
-    const rowFour = QABtnsGrp.add('group');
+    const rowFour = bigRowTwo.add('group');
     createQABtn(
         rowFour,
         GAMapPhotoBinary,
@@ -61,6 +67,9 @@ const createQAUI = (tpanel: TabbedPanel): Tab => {
         openProjectInFinder
     );
     createQABtn(rowFour, tatzaBinary, 'Location Mark', createTatzaPath);
+    createQABtn(rowFour, recScaleXBinary, 'Rectangle X Scale', recScaleX);
 
-    return quickActionsTab;
+    bigRowOne.orientation = bigRowTwo.orientation = 'column';
+
+    return { qaTab, QABtnsGrp, bigRowOne, bigRowTwo };
 };

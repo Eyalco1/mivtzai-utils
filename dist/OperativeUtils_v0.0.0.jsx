@@ -314,6 +314,7 @@ var folderBinary = '\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x18\x00\x0
 var helpBinary = "\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x10\x00\x00\x00\x10\b\x06\x00\x00\x00\x1F\u00F3\u00FFa\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x00\u00ACIDAT8\u008D\u00A5\u0091a\r\u00C3 \x14\u0084\u00AFSP\x07\u00AD\x04$LB%TJ\u00E7`\x12\u0090\u00B09\u0098\x04$ \u0081)\u00B8\u0085\u00E55\u00A1/\u00F4\u0095\u00AD\u0097\u00BC\x1F\u0085\u00BB\u008F\u0083\u0082\u00A4\u009E\u0091\u00A4'\u0099\u00B8\u00D5\u0083\u00E4U\u00FBux\u00E6\u00B1&\x0B\x10\x1B\x00\u00D1\x028\u00A9\u009E\u00A4\u00CD(k\x1A\u00BC\x0BX!\u00AE\u00F8\u00EEI\u0086_\x00z\u00BC\n\u00FBV@>\u00F9\u00A5\u00C2A\u00D6\u009B\x00\u00F7\u00CAo\u00EC\u00B5\u00CF\x02$\u00EB\u00E4u.\u00D8W(v<\u0080TsZ\u0080\x1Cz\x03x*\u00D8F\u00DD\u00F7\x1E'd5p\x00\u00A2\u00CC\u00FCO\u0083\x1C\x1CJo\u00CDd5h\u0092\x05X\u00E4\x11\u00B3nU\x07\u0080\x0F\u00AE|\u00F2\u00F6\x1C\u008E\u00B6\u00DF\x00\x00\x00\x00IEND\u00AEB`\u0082";
 var quoteBinary = '\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x10\x00\x00\x00\x10\b\x06\x00\x00\x00\x1F\u00F3\u00FFa\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x00xIDAT8\u008Dc\u00FC\u00FF\u00FF?\x03%\u0080\u0089"\u00DD\f\f\f,\f\f\f\x07\u00F0\u00C8;@i\u009Cj@^\u00C0\u00E7\x07F(\u008DS\r\u00C5^\x185\x00\x12\u008D\u008EH\u00FC\r\f\f\f\u00FCP\u00F6C$q\u00DCj@\u00B1\b\u00C5\t\u00FFQA\x02\u0092\x1CN5\u00C8\u0092\x0F\u0090$\x1E`\u00D1\u008CU\rE\u00B6\u0083\u00C4Aa\x00\x02\u00A0${\x10\u00CA\u00FE\u00C0\u00C0\u00C0\u00B0\x00Kx\x19`S3\u00C0\u00B9\u0091\u0081\u0081\x01\x00\b\u00F8\u00BB\u0088y\u00F5\x0B\u00D9\x00\x00\x00\x00IEND\u00AEB`\u0082';
 var tatzaBinary = "\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x18\x00\x00\x00\x18\b\x06\x00\x00\x00\u00E0w=\u00F8\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x00\u00EDIDATH\u0089\u00BDU\u0081\r\u00830\f3\u0088\x03\u00F8h\u009C\u00C0\t\u009C\u00B0\x13v\x02'\u00F4\u0084\u009E\u00C0\t;\u0081\x13\u00F8\u00C0SX2U\x13\x15PZ,E\u0088\u0094\u00C6u\x1C\x15\u0090|\u0092\u00F4$;\u0092\u00C8\x1D\r\u0080\x1E\u00C0\x03\u00C0\x02`BfT$\x07\x00-\x00\x0F`V\"\x1F\u00C4%\b\u00C1\u00FF\u00FE>\u0088\u00F6\u00B2\u009E\x03=w$gQ\u009A\u00E2O-\x1C\x1A1x\u00F5f\f\u00D6\u00A5\u008DN\u0095\u00EE*0\u009C9\u0099\u00D3=\u00F3\u00DE\u00B7Mbg\x07}\u00DA\u00D4\u00C5\x07#\u00D3\u00DC\u00F7\u00AAj\u00D1\u00F7\u00D6\u00D6\u00B6\u00A6(\x07\u00C4\u009FN\u0094\x1E19\x05^G\u00FC%\n\u00ACx\u0095\u0099d\u009D\u00BA\u0092\x04+R\u00A7\u00E8\bh\x04ENn\u00A8K\x16\u0087*(\u00E5A\u0085;<\u00B8\u00A5EEM.\u00D9\u00A2\u009F\x07v3\u00BA\u00CC\x04\u00DF\u00BA$'\u00BD\x05\u00C7\u00E0v\f\u00B1\u0095\u008B\u00E5-'\u00B5\u00A4\u00E6$\n.\u00FF\u00D8#x\x03\u00F0\x1FE\u00EB\u00AD\u00CE\u0092\u00C4\f\\\x00\x00\x00\x00IEND\u00AEB`\u0082";
+var recScaleXBinary = '\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x18\x00\x00\x00\x18\b\x06\x00\x00\x00\u00E0w=\u00F8\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x01JIDATH\u0089\u00C5V\u00B1\u0091\u00C2@\f\\\x18r\\\u0082C2(\u0080\u00C0\x1D\u00BC;xw\u0080\x0B \u0080\x0E(\u0081\x0E\u00A0\x04\x07_\u00C0\u0087do2B\x7F\x05\u00FA\u00D1\u00CC\x1E\u0088\u009B3\u0098\u00F3\u00FB_3\x1A\u00DFI\u00BA]\u009FNgy$"\x18R\u00C6\u00C4N\x01\u00EC\x01\x1C\x01\u00E4=\u00F8rb\u00EC\u0088\t\u0088H*"\u008D\u00DCK\u00AE;{Qs\x0FC1\u00D3\t\u0080\x02\u00C0\u00D4{\u0093\u00C3/dM1\u008Bq\u0087\u00C0~\u00D2\u0092\u00A22"Ee(E\u00CE\u00B9\x10\u0091\x0B\x1D\u00EB\bp\u00A7kb\\\u0088y\u00AD\u00A2O\x00\'\u008E?LJ*\u00DD\u00A4\u00D1\u008Cjm\u0095\u0089wkO\u00C4\u00C4\u00E4I~\u00B5\x00\u00BE\u00BCy\x12\u0088i\u0095g\u0087\\\x03\u00D8\u009A\u00F9;\u008073\u00DF2&\u009A\x00\u00BC4\u00E7\u0080\u00FDL\u00DFC\u00E9B\u00D0\x00(\x03\u00F6\u0092\u00BE\u00DE\x04\u00E0\u00C1v\u00B1E\x11(\u00D0*`_\u00B5\x10\u00BFL`\u00F3\u00FCM\r\u00F9\u00A2\b4\u00CFs\x0F\u00D0\u0082\u00CE[\u00CE\u00E7&\u00E6\x16V\u00BC\u0085\x19\u00E7\u00FE\'D\u00C7\t\u00D5\u00B7\u00A7\\\u0093\u00D1V9\\\u00B7\u0083\x05\u0080\x19\u00C7K>k^\u00AA\x115a\u00D54\x01{\u00ED\u00AD\u009D\x11\u00F3o>v\x1B\x19N6\u00FF\u00D6\x0FbZf\u00F1\u00A8\x1F(\u00C9ND\u008E\u0091\u00E0\u00B6/+\u00C6\u00DEU\u00D6\u00B0\u00BF-\x00~\x00L\u00DB\u00BCGD\u00F6\x02\u008A\x00\x00\x00\x00IEND\u00AEB`\u0082';
 var table1252 = {
     "€": 128,
     "‚": 130,
@@ -1171,7 +1172,7 @@ var createGazaMap = function () {
     app.endUndoGroup();
 };
 var createCountingText = function () {
-    app.beginUndoGroup('Create Counting Numbers');
+    app.beginUndoGroup('Counting Numbers');
     var comp = app.project.activeItem;
     var layer = comp.layers.addText();
     layer.name = 'Numbers';
@@ -1201,7 +1202,7 @@ var importGazaGoogleMaps = function () {
     app.endUndoGroup();
 };
 var createAnimatedFrame = function () {
-    app.beginUndoGroup('Create Animated Frame');
+    app.beginUndoGroup('Animated Frame');
     var comp = app.project.activeItem;
     var layer = comp.layers.addShape();
     layer.name = 'Frame';
@@ -1265,7 +1266,7 @@ var openProjectInFinder = function () {
     }
 };
 var createTatzaPath = function () {
-    app.beginUndoGroup('Create Location Mark');
+    app.beginUndoGroup('Location Mark');
     var comp = app.project.activeItem;
     var layer = comp.layers.addShape();
     layer.name = 'Location_Mark';
@@ -1315,6 +1316,29 @@ var createTatzaPath = function () {
         .property('ADBE Vector Group')
         .property('ADBE Vectors Group')
         .property('ADBE Vector Shape - Group').selected = true;
+    app.endUndoGroup();
+};
+var recScaleX = function () {
+    app.beginUndoGroup('Create Background');
+    var comp = app.project.activeItem;
+    var layer = comp.layers.addShape();
+    layer.name = 'Rec';
+    var xSlider = layer.effect.addProperty('ADBE Slider Control');
+    xSlider.name = 'Size X';
+    var xSliderProp = xSlider.property('ADBE Slider Control-0001');
+    xSliderProp.setValue(100);
+    var ySlider = layer.effect.addProperty('ADBE Slider Control');
+    ySlider.name = 'Size Y';
+    var ySliderProp = ySlider.property('ADBE Slider Control-0001');
+    ySliderProp.setValue(100);
+    var contents = layer.property('ADBE Root Vectors Group');
+    var grp = contents.addProperty('ADBE Vector Group');
+    grp.name = 'Rectangle 1';
+    var recGrp = grp.property('ADBE Vectors Group');
+    var recShape = recGrp.addProperty('ADBE Vector Shape - Rect');
+    var recSize = recShape.property('ADBE Vector Rect Size');
+    recSize.expression =
+        '[effect("Size X")("Slider"), effect("Size Y")("Slider")]';
     app.endUndoGroup();
 };
 var setUpIcon = function (name, circleColor, iconColor) {
@@ -8682,32 +8706,36 @@ var createQABtn = function (container, binary, helpTip, onClick) {
     return btn;
 };
 var createQAUI = function (tpanel) {
-    var quickActionsTab = tpanel.add('tab', undefined, ['Quick Actions']);
-    var QABtnsGrp = quickActionsTab.add('group');
+    var qaTab = tpanel.add('tab', undefined, ['Quick Actions']);
+    var QABtnsGrp = qaTab.add('group');
     QABtnsGrp.orientation = 'column';
     QABtnsGrp.alignChildren = 'left';
     QABtnsGrp.alignment = 'left';
     QABtnsGrp.margins = 4;
-    var rowOne = QABtnsGrp.add('group');
+    var bigRowOne = QABtnsGrp.add('group');
+    var rowOne = bigRowOne.add('group');
     createQABtn(rowOne, tvaiBinary, 'Tunnel Illustration', createTvaiStroke);
-    createQABtn(rowOne, popBinary, 'Pop Animation', scaleWithOvershoot);
+    createQABtn(rowOne, popBinary, 'Pop Animation', scaleWithOvershootQA);
     createQABtn(rowOne, logosBinary, 'Import IDF and Dotz Logos', importLogos);
     createQABtn(rowOne, illusBinary, 'Illustration Text', createIllusText);
-    var rowTwo = QABtnsGrp.add('group');
+    var rowTwo = bigRowOne.add('group');
     createQABtn(rowTwo, formatBinary, 'Format Layer Name', formatLayerName);
     createQABtn(rowTwo, textReverseBinary, 'Reverse Text', textReverse);
     createQABtn(rowTwo, bgBinary, 'Background', createBg);
     createQABtn(rowTwo, israelShapeBinary, 'Israel Map Shape', createIsraelMap);
-    var rowThree = QABtnsGrp.add('group');
+    var bigRowTwo = QABtnsGrp.add('group');
+    var rowThree = bigRowTwo.add('group');
     createQABtn(rowThree, gazaShapeBinary, 'Gaza Map Shape', createGazaMap);
     createQABtn(rowThree, numsBinary, 'Counting Numbers', createCountingText);
     createQABtn(rowThree, frameBinary, 'Animated Frame', createAnimatedFrame);
     createQABtn(rowThree, ILMapPhotoBinary, 'Israel Map Photo\n\nCLICK: Clean Map\nCTRL + CLICK: Map With Labels', importIsraelGoogleMaps);
-    var rowFour = QABtnsGrp.add('group');
+    var rowFour = bigRowTwo.add('group');
     createQABtn(rowFour, GAMapPhotoBinary, 'Gaza Map Photo\n\nCLICK: Clean Map\nCTRL + CLICK: Map With Labels', importGazaGoogleMaps);
     createQABtn(rowFour, folderBinary, "Open Project Folder in ".concat(getOS() === 'Win' ? 'Explorer' : 'Finder', "\n\nClick: Open Project Folder\nCTRL + CLICK: Choose New Project Folder"), openProjectInFinder);
     createQABtn(rowFour, tatzaBinary, 'Location Mark', createTatzaPath);
-    return quickActionsTab;
+    createQABtn(rowFour, recScaleXBinary, 'Rectangle X Scale', recScaleX);
+    bigRowOne.orientation = bigRowTwo.orientation = 'column';
+    return { qaTab: qaTab, QABtnsGrp: QABtnsGrp, bigRowOne: bigRowOne, bigRowTwo: bigRowTwo };
 };
 var createIconsUI = function (tpanel) {
     var iconsTab = tpanel.add('tab', undefined, ['Icons']);
@@ -8852,7 +8880,7 @@ var init = function (thisObj) {
     w = w;
     var tpanel = w.add('tabbedpanel');
     tpanel.alignment = tpanel.alignChildren = ['fill', 'fill'];
-    var qaTab = createQAUI(tpanel);
+    var _a = createQAUI(tpanel), qaTab = _a.qaTab, QABtnsGrp = _a.QABtnsGrp, bigRowOne = _a.bigRowOne, bigRowTwo = _a.bigRowTwo;
     var iconsTab = createIconsUI(tpanel);
     var locTab = createLocationsUI(tpanel);
     var texTab = createTexturesUI(tpanel);
@@ -8913,8 +8941,12 @@ var init = function (thisObj) {
     w.layout.layout(true);
     w.layout.resize();
     w.onResizing = w.onResize = function () {
-        w = w;
         w.onResize = function () {
+            bigRowOne.orientation = bigRowTwo.orientation =
+                w.size.width > 400 ? 'row' : 'column';
+            QABtnsGrp.orientation =
+                w.size.width > 800 ? 'row' : 'column';
+            w.layout.layout(true);
             w.layout.resize();
         };
     };

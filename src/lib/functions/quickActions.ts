@@ -687,7 +687,7 @@ const openProjectInFinder = (): void => {
 };
 
 const createTatzaPath = (): void => {
-    app.beginUndoGroup('Create Location Mark');
+    app.beginUndoGroup('Location Mark');
 
     const comp = app.project.activeItem as CompItem;
     const layer = comp.layers.addShape();
@@ -772,6 +772,46 @@ const createTatzaPath = (): void => {
         .property('ADBE Vector Group')
         .property('ADBE Vectors Group')
         .property('ADBE Vector Shape - Group').selected = true;
+
+    app.endUndoGroup();
+};
+
+const recScaleX = (): void => {
+    app.beginUndoGroup('Create Background');
+
+    const comp = app.project.activeItem as CompItem;
+    const layer = comp.layers.addShape();
+    layer.name = 'Rec';
+
+    const xSlider = layer.effect.addProperty(
+        'ADBE Slider Control'
+    ) as Property<any>;
+    xSlider.name = 'Size X';
+    const xSliderProp = xSlider.property(
+        'ADBE Slider Control-0001'
+    ) as Property<any>;
+    xSliderProp.setValue(100);
+
+    const ySlider = layer.effect.addProperty(
+        'ADBE Slider Control'
+    ) as Property<number>;
+    ySlider.name = 'Size Y';
+    const ySliderProp = ySlider.property(
+        'ADBE Slider Control-0001'
+    ) as Property<number>;
+    ySliderProp.setValue(100);
+
+    const contents = layer.property('ADBE Root Vectors Group') as PropertyGroup;
+    const grp = contents.addProperty('ADBE Vector Group') as PropertyGroup;
+    grp.name = 'Rectangle 1';
+    const recGrp = grp.property('ADBE Vectors Group') as PropertyGroup;
+
+    const recShape = recGrp.addProperty('ADBE Vector Shape - Rect');
+    const recSize = recShape.property('ADBE Vector Rect Size') as Property<
+        [number, number]
+    >;
+    recSize.expression =
+        '[effect("Size X")("Slider"), effect("Size Y")("Slider")]';
 
     app.endUndoGroup();
 };

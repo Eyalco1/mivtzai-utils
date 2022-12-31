@@ -11,7 +11,7 @@ const init = (thisObj: typeof globalThis) => {
     const tpanel = w.add('tabbedpanel');
     tpanel.alignment = tpanel.alignChildren = ['fill', 'fill'];
 
-    const qaTab = createQAUI(tpanel);
+    const { qaTab, QABtnsGrp, bigRowOne, bigRowTwo } = createQAUI(tpanel);
     const iconsTab = createIconsUI(tpanel);
     const locTab = createLocationsUI(tpanel);
     const texTab = createTexturesUI(tpanel);
@@ -114,8 +114,12 @@ const init = (thisObj: typeof globalThis) => {
     w.layout.layout(true);
     w.layout.resize();
     w.onResizing = w.onResize = () => {
-        w = w as Window;
-        w.onResize = () => {
+        (<Window>w).onResize = () => {
+            bigRowOne.orientation = bigRowTwo.orientation =
+                (<Dimension>w.size).width > 400 ? 'row' : 'column';
+            QABtnsGrp.orientation =
+                (<Dimension>w.size).width > 800 ? 'row' : 'column';
+            w.layout.layout(true);
             w.layout.resize();
         };
     };
