@@ -24,7 +24,7 @@ const createQAUI = (tpanel: TabbedPanel): Tab => {
 
     const rowOne = QABtnsGrp.add('group');
     createQABtn(rowOne, tvaiBinary, 'Tunnel Illustration', createTvaiStroke);
-    createQABtn(rowOne, popBinary, 'Pop Animation', scaleWithOvershoot);
+    createQABtn(rowOne, popBinary, 'Pop Animation', scaleWithOvershootQA);
     createQABtn(rowOne, logosBinary, 'Import IDF and Dotz Logos', importLogos);
     createQABtn(rowOne, illusBinary, 'Illustration Text', createIllusText);
 
