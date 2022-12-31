@@ -1339,6 +1339,32 @@ var recScaleX = function () {
     var recSize = recShape.property('ADBE Vector Rect Size');
     recSize.expression =
         '[effect("Size X")("Slider"), effect("Size Y")("Slider")]';
+    var myFill = recGrp.addProperty('ADBE Vector Graphic - Fill');
+    var fillColor = myFill.property('ADBE Vector Fill Color');
+    fillColor.setValue([1, 1, 1]);
+    var scaleProp = layer
+        .property('ADBE Transform Group')
+        .property('ADBE Scale');
+    scaleProp.setValueAtTime(0, [0, 100]);
+    scaleProp.setValueAtTime((1 / 24) * 14, [100, 100]);
+    scaleProp.setTemporalEaseAtKey(1, [
+        new KeyframeEase(0.5, 75),
+        new KeyframeEase(0.5, 75),
+        new KeyframeEase(0.5, 75)
+    ], [
+        new KeyframeEase(0.5, 75),
+        new KeyframeEase(0.5, 75),
+        new KeyframeEase(0.5, 75)
+    ]);
+    scaleProp.setTemporalEaseAtKey(2, [
+        new KeyframeEase(0.5, 92),
+        new KeyframeEase(0.5, 92),
+        new KeyframeEase(0.5, 92)
+    ], [
+        new KeyframeEase(0.5, 92),
+        new KeyframeEase(0.5, 92),
+        new KeyframeEase(0.5, 92)
+    ]);
     app.endUndoGroup();
 };
 var setUpIcon = function (name, circleColor, iconColor) {

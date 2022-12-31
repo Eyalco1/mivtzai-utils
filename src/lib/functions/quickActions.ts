@@ -813,5 +813,33 @@ const recScaleX = (): void => {
     recSize.expression =
         '[effect("Size X")("Slider"), effect("Size Y")("Slider")]';
 
+    const myFill = recGrp.addProperty(
+        'ADBE Vector Graphic - Fill'
+    ) as PropertyGroup;
+    const fillColor = myFill.property('ADBE Vector Fill Color') as Property<
+        [number, number, number]
+    >;
+    fillColor.setValue([1, 1, 1]);
+
+    const scaleProp = layer
+        .property('ADBE Transform Group')
+        .property('ADBE Scale') as Property<[number, number]>;
+
+    scaleProp.setValueAtTime(0, [0, 100]);
+    scaleProp.setValueAtTime((1 / 24) * 14, [100, 100]);
+
+    const ease1 = new KeyframeEase(0.5, 65);
+    const ease2 = new KeyframeEase(0.5, 92);
+    scaleProp.setTemporalEaseAtKey(
+        1,
+        [ease1, ease1, ease1],
+        [ease1, ease1, ease1]
+    );
+    scaleProp.setTemporalEaseAtKey(
+        2,
+        [ease2, ease2, ease2],
+        [ease2, ease2, ease2]
+    );
+
     app.endUndoGroup();
 };
