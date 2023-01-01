@@ -47,15 +47,26 @@ const setUpPrefs = (): void => {
     createFolder(Folder(docsFolder + '/@@name'));
     createFolder(Folder(docsFolder + '/@@name/Prefs'));
     const myJSON = File(docsFolder + '/@@name/Prefs/Prefs.json');
+
+    const boilerplatePrefs: Prefs = {
+        version: '@@version',
+        iconsLabelIndex: 5,
+        locsLabelIndex: 13,
+        texLabelIndex: 2
+    };
+
     if (myJSON.exists) {
         const parsedPrefs = parsePrefs();
         parsedPrefs.version = '@@version';
         myJSON.open('w');
-        myJSON.write(JSON.stringify(parsedPrefs, null, 2));
+        myJSON.write(
+            JSON.stringify({ ...parsedPrefs, ...boilerplatePrefs }, null, 2)
+        );
         myJSON.close();
     } else {
         myJSON.open('w');
-        myJSON.write(JSON.stringify({ version: '@@version' }, null, 2));
+
+        myJSON.write(JSON.stringify(boilerplatePrefs, null, 2));
         myJSON.close();
     }
 };

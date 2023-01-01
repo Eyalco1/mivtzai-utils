@@ -491,16 +491,22 @@ var setUpPrefs = function () {
     createFolder(Folder(docsFolder + '/Caspion'));
     createFolder(Folder(docsFolder + '/Caspion/Prefs'));
     var myJSON = File(docsFolder + '/Caspion/Prefs/Prefs.json');
+    var boilerplatePrefs = {
+        version: '0.0.0',
+        iconsLabelIndex: 5,
+        locsLabelIndex: 13,
+        texLabelIndex: 2
+    };
     if (myJSON.exists) {
         var parsedPrefs = parsePrefs();
         parsedPrefs.version = '0.0.0';
         myJSON.open('w');
-        myJSON.write(JSON.stringify(parsedPrefs, null, 2));
+        myJSON.write(JSON.stringify(__assign(__assign({}, parsedPrefs), boilerplatePrefs), null, 2));
         myJSON.close();
     }
     else {
         myJSON.open('w');
-        myJSON.write(JSON.stringify({ version: '0.0.0' }, null, 2));
+        myJSON.write(JSON.stringify(boilerplatePrefs, null, 2));
         myJSON.close();
     }
 };
