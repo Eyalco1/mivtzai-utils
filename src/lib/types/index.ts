@@ -48,13 +48,10 @@ interface LocationArgs {
 interface Prefs {
     version?: string;
     projectFolderPath?: string;
-    iconsLabelName?: string;
     iconsLabelIndex?: number;
     iconsLabelRandom?: boolean;
-    locsLabelName?: string;
     locsLabelIndex?: number;
     locsLabelRandom?: boolean;
-    texLabelName?: string;
     texLabelIndex?: number;
     texLabelRandom?: boolean;
 }

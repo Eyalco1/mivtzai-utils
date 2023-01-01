@@ -210,13 +210,10 @@ const createHelpWindow = () => {
     const okBtn = helpWin.add('button', undefined, 'Ok', { name: 'Ok' });
     okBtn.onClick = () => {
         writePrefsToMemory({
-            iconsLabelName: iconLabelsDD.selection.toString(),
             iconsLabelIndex: (<ListItem>iconLabelsDD.selection).index,
             iconsLabelRandom: iconRandomCheck.value,
-            locsLabelName: locLabelsDD.selection.toString(),
             locsLabelIndex: (<ListItem>locLabelsDD.selection).index,
             locsLabelRandom: locRandomCheck.value,
-            texLabelName: texLabelsDD.selection.toString(),
             texLabelIndex: (<ListItem>texLabelsDD.selection).index,
             texLabelRandom: texRandomCheck.value
         });

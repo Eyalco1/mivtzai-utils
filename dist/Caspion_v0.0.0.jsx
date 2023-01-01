@@ -8698,13 +8698,10 @@ var createHelpWindow = function () {
     var okBtn = helpWin.add('button', undefined, 'Ok', { name: 'Ok' });
     okBtn.onClick = function () {
         writePrefsToMemory({
-            iconsLabelName: iconLabelsDD.selection.toString(),
             iconsLabelIndex: iconLabelsDD.selection.index,
             iconsLabelRandom: iconRandomCheck.value,
-            locsLabelName: locLabelsDD.selection.toString(),
             locsLabelIndex: locLabelsDD.selection.index,
             locsLabelRandom: locRandomCheck.value,
-            texLabelName: texLabelsDD.selection.toString(),
             texLabelIndex: texLabelsDD.selection.index,
             texLabelRandom: texRandomCheck.value
         });
