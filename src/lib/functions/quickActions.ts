@@ -666,11 +666,14 @@ const createAnimatedFrame = (): void => {
 const openProjectInFinder = (): void => {
     const writeSelectDialogToPrefs = (): void => {
         const selFolder = Folder.selectDialog('Select Project Folder');
+        if (!selFolder) return;
         writePrefsToMemory({ projectFolderPath: selFolder.fsName });
     };
 
-    const { ctrlKey } = ScriptUI.environment.keyboardState;
-    if (ctrlKey) {
+    const keyState = ScriptUI.environment.keyboardState;
+    const modKey = getOS() === 'Win' ? keyState.ctrlKey : keyState.metaKey;
+
+    if (modKey) {
         writeSelectDialogToPrefs();
     } else {
         const parsedPrefs = parsePrefs();

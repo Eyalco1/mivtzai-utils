@@ -631,10 +631,8 @@ var getFontFromLanguage = function (lang) {
 };
 var importGoogleMaps = function (location) {
     var keyState = ScriptUI.environment.keyboardState;
-    var whichMap = 'Clean';
-    if (keyState.ctrlKey) {
-        whichMap = 'Guide';
-    }
+    var modKey = getOS() === 'Win' ? keyState.ctrlKey : keyState.metaKey;
+    var whichMap = modKey ? 'Guide' : 'Clean';
     var mapItem = app.project.importFile(new ImportOptions(File("".concat(getAssetsPath(), "/Images/").concat(location, "_Map_").concat(whichMap, ".png"))));
     var comp = app.project.activeItem;
     var mapLayer = comp.layers.add(mapItem);
@@ -1246,10 +1244,13 @@ var createAnimatedFrame = function () {
 var openProjectInFinder = function () {
     var writeSelectDialogToPrefs = function () {
         var selFolder = Folder.selectDialog('Select Project Folder');
+        if (!selFolder)
+            return;
         writePrefsToMemory({ projectFolderPath: selFolder.fsName });
     };
-    var ctrlKey = ScriptUI.environment.keyboardState.ctrlKey;
-    if (ctrlKey) {
+    var keyState = ScriptUI.environment.keyboardState;
+    var modKey = getOS() === 'Win' ? keyState.ctrlKey : keyState.metaKey;
+    if (modKey) {
         writeSelectDialogToPrefs();
     }
     else {
