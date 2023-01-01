@@ -27,8 +27,8 @@ const createFolder = (folderObj: Folder): Folder => {
 };
 
 const readPrefs = (): string => {
-    const appDataFolder = File(Folder.appData.toString()).toString();
-    const file = File(appDataFolder + '/@@name/Prefs/Prefs.json');
+    const docsFolder = File(Folder.myDocuments.toString()).toString();
+    const file = File(docsFolder + '/@@name/Prefs/Prefs.json');
     file.open('r');
     const stringData: string = file.read();
     file.close();
@@ -43,10 +43,10 @@ const parsePrefs = (): Prefs => {
 };
 
 const setUpPrefs = (): void => {
-    const appDataFolder = File(Folder.appData.toString()).toString();
-    createFolder(Folder(appDataFolder + '/@@name'));
-    createFolder(Folder(appDataFolder + '/@@name/Prefs'));
-    const myJSON = File(appDataFolder + '/@@name/Prefs/Prefs.json');
+    const docsFolder = File(Folder.myDocuments.toString()).toString();
+    createFolder(Folder(docsFolder + '/@@name'));
+    createFolder(Folder(docsFolder + '/@@name/Prefs'));
+    const myJSON = File(docsFolder + '/@@name/Prefs/Prefs.json');
     if (myJSON.exists) {
         const parsedPrefs = parsePrefs();
         parsedPrefs.version = '@@version';
@@ -61,13 +61,13 @@ const setUpPrefs = (): void => {
 };
 
 const writePrefsToMemory = (prefs: Prefs) => {
-    const appDataFolder = File(Folder.appData.toString()).toString();
-    createFolder(Folder(appDataFolder + '/@@name'));
-    createFolder(Folder(appDataFolder + '/@@name/Prefs'));
-    const myJSON = File(appDataFolder + '/@@name/Prefs/Prefs.json');
+    const docsFolder = File(Folder.myDocuments.toString()).toString();
+    createFolder(Folder(docsFolder + '/@@name'));
+    createFolder(Folder(docsFolder + '/@@name/Prefs'));
+    const myJSON = File(docsFolder + '/@@name/Prefs/Prefs.json');
     const parsedPrefs = parsePrefs();
     myJSON.open('w');
-    myJSON.write(JSON.stringify({...parsedPrefs, ...prefs}, null, 2));
+    myJSON.write(JSON.stringify({ ...parsedPrefs, ...prefs }, null, 2));
     myJSON.close();
     return myJSON;
 };

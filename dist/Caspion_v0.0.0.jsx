@@ -474,8 +474,8 @@ var createFolder = function (folderObj) {
     return folderObj;
 };
 var readPrefs = function () {
-    var appDataFolder = File(Folder.appData.toString()).toString();
-    var file = File(appDataFolder + '/Caspion/Prefs/Prefs.json');
+    var docsFolder = File(Folder.myDocuments.toString()).toString();
+    var file = File(docsFolder + '/Caspion/Prefs/Prefs.json');
     file.open('r');
     var stringData = file.read();
     file.close();
@@ -487,10 +487,10 @@ var parsePrefs = function () {
     return parsedData;
 };
 var setUpPrefs = function () {
-    var appDataFolder = File(Folder.appData.toString()).toString();
-    createFolder(Folder(appDataFolder + '/Caspion'));
-    createFolder(Folder(appDataFolder + '/Caspion/Prefs'));
-    var myJSON = File(appDataFolder + '/Caspion/Prefs/Prefs.json');
+    var docsFolder = File(Folder.myDocuments.toString()).toString();
+    createFolder(Folder(docsFolder + '/Caspion'));
+    createFolder(Folder(docsFolder + '/Caspion/Prefs'));
+    var myJSON = File(docsFolder + '/Caspion/Prefs/Prefs.json');
     if (myJSON.exists) {
         var parsedPrefs = parsePrefs();
         parsedPrefs.version = '0.0.0';
@@ -505,10 +505,10 @@ var setUpPrefs = function () {
     }
 };
 var writePrefsToMemory = function (prefs) {
-    var appDataFolder = File(Folder.appData.toString()).toString();
-    createFolder(Folder(appDataFolder + '/Caspion'));
-    createFolder(Folder(appDataFolder + '/Caspion/Prefs'));
-    var myJSON = File(appDataFolder + '/Caspion/Prefs/Prefs.json');
+    var docsFolder = File(Folder.myDocuments.toString()).toString();
+    createFolder(Folder(docsFolder + '/Caspion'));
+    createFolder(Folder(docsFolder + '/Caspion/Prefs'));
+    var myJSON = File(docsFolder + '/Caspion/Prefs/Prefs.json');
     var parsedPrefs = parsePrefs();
     myJSON.open('w');
     myJSON.write(JSON.stringify(__assign(__assign({}, parsedPrefs), prefs), null, 2));
