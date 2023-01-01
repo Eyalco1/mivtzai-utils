@@ -8587,20 +8587,20 @@ var createTexture = function (id, loop, fit) {
     app.endUndoGroup();
 };
 var createColoredButton = function (container, color, size) {
-    color = color || [1, 1, 0, 1];
-    size = size || [50, 50];
+    if (color === void 0) { color = [1, 1, 0, 1]; }
+    if (size === void 0) { size = [50, 50]; }
     var grp = container.add('group');
-    var button = grp.add('iconbutton', undefined, undefined, {
+    var btn = grp.add('iconbutton', undefined, undefined, {
         style: 'toolbutton'
     });
-    button.size = size;
-    button.fillBrush = button.graphics.newBrush(button.graphics.BrushType.SOLID_COLOR, color, 1);
-    button.onDraw = function () {
+    btn.size = size;
+    btn.fillBrush = btn.graphics.newBrush(btn.graphics.BrushType.SOLID_COLOR, color, 1);
+    btn.onDraw = function () {
         this.graphics.drawOSControl();
         this.graphics.rectPath(0, 0, this.size[0], this.size[1]);
         this.graphics.fillPath(this.fillBrush);
     };
-    return button;
+    return btn;
 };
 var createHelpWindow = function () {
     var helpWin = new Window('dialog', 'Help & Info');
