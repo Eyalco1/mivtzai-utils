@@ -32,37 +32,37 @@ const createQAUI = (
     const bigRowOne = QABtnsGrp.add('group');
 
     const rowOne = bigRowOne.add('group');
-    createQABtn(rowOne, tvaiBinary, 'Tunnel Illustration', createTvaiStroke);
-    createQABtn(rowOne, popBinary, 'Pop Animation', scaleWithOvershootQA);
+    createQABtn(rowOne, bgBinary, 'Background', createBg);
     createQABtn(rowOne, logosBinary, 'Import IDF and Dotz Logos', importLogos);
     createQABtn(rowOne, illusBinary, 'Illustration Text', createIllusText);
+    createQABtn(rowOne, popBinary, 'Pop Animation', scaleWithOvershootQA);
 
     const rowTwo = bigRowOne.add('group');
-    createQABtn(rowTwo, formatBinary, 'Format Layer Name', formatLayerName);
-    createQABtn(rowTwo, textReverseBinary, 'Reverse Text', textReverse);
-    createQABtn(rowTwo, bgBinary, 'Background', createBg);
     createQABtn(rowTwo, israelShapeBinary, 'Israel Map Shape', createIsraelMap);
-
-    const bigRowTwo = QABtnsGrp.add('group');
-
-    const rowThree = bigRowTwo.add('group');
-    createQABtn(rowThree, gazaShapeBinary, 'Gaza Map Shape', createGazaMap);
-    createQABtn(rowThree, numsBinary, 'Counting Numbers', createCountingText);
-    createQABtn(rowThree, frameBinary, 'Animated Frame', createAnimatedFrame);
+    createQABtn(rowTwo, gazaShapeBinary, 'Gaza Map Shape', createGazaMap);
+    createQABtn(rowTwo, numsBinary, 'Counting Numbers', createCountingText);
     createQABtn(
-        rowThree,
+        rowTwo,
         ILMapPhotoBinary,
         'Israel Map Photo\n\nCLICK: Clean Map\nCTRL + CLICK: Map With Labels',
         importIsraelGoogleMaps
     );
 
-    const rowFour = bigRowTwo.add('group');
+    const bigRowTwo = QABtnsGrp.add('group');
+
+    const rowThree = bigRowTwo.add('group');
     createQABtn(
-        rowFour,
+        rowThree,
         GAMapPhotoBinary,
         'Gaza Map Photo\n\nCLICK: Clean Map\nCTRL + CLICK: Map With Labels',
         importGazaGoogleMaps
     );
+    createQABtn(rowThree, textReverseBinary, 'Reverse Text', textReverse);
+    createQABtn(rowThree, formatBinary, 'Format Layer Name', formatLayerName);
+    createQABtn(rowThree, tvaiBinary, 'Tunnel Illustration', createTvaiStroke);
+
+    const rowFour = bigRowTwo.add('group');
+    createQABtn(rowFour, frameBinary, 'Animated Frame', createAnimatedFrame);
     createQABtn(
         rowFour,
         folderBinary,
