@@ -26,7 +26,8 @@ const createIconsUI = (
         'Fire',
         'Money',
         'Earth',
-        'Kaboom'
+        'Kaboom',
+        'Medal'
     ];
     const iconDD = iconDDGrp.add('dropdownlist', undefined, iconsList);
     iconDD.preferredSize[0] = 100;
