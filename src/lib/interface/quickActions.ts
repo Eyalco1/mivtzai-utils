@@ -70,6 +70,16 @@ const createQAUI = (
     createQABtn(rowFour, tatzaBinary, 'Location Mark', createTatzaPath);
     createQABtn(rowFour, recScaleXBinary, 'Rectangle X Scale', recScaleX);
 
+    const rowFive = bigRowTwo.add('group');
+    rowFive.alignment = 'left';
+    createQABtn(
+        rowFive,
+        textPopBinary,
+        'Text On Location',
+        createTextOnLocation
+    );
+    createQABtn(rowFive, arrowBinary, 'Arrow', createArrow);
+
     bigRowOne.orientation = bigRowTwo.orientation = 'column';
 
     return { qaTab, QABtnsGrp, bigRowOne, bigRowTwo };

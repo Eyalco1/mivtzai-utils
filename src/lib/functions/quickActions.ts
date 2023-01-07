@@ -846,3 +846,7 @@ const recScaleX = (): void => {
 
     app.endUndoGroup();
 };
+
+const createTextOnLocation = (): void => {};
+
+const createArrow = (): void => {};
