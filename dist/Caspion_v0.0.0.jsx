@@ -497,13 +497,14 @@ var setUpPrefs = function () {
         version: '0.0.0',
         iconsLabelIndex: 5,
         locsLabelIndex: 13,
-        texLabelIndex: 2
+        texLabelIndex: 2,
+        showHelpTips: true
     };
     if (myJSON.exists) {
         var parsedPrefs = parsePrefs();
         parsedPrefs.version = '0.0.0';
         myJSON.open('w');
-        myJSON.write(JSON.stringify(__assign(__assign({}, parsedPrefs), boilerplatePrefs), null, 2));
+        myJSON.write(JSON.stringify(__assign(__assign({}, boilerplatePrefs), parsedPrefs), null, 2));
         myJSON.close();
     }
     else {
@@ -8622,11 +8623,17 @@ var createHelpWindow = function () {
     var labelNames = getLabelNamesFromPrefs();
     var labelColors = getLabelsFromPrefs().map(function (hex) { return hexToRgb(hex); });
     var settingsTab = tpanel.add('tab', undefined, ['Settings']);
-    settingsTab.orientation = 'column';
-    settingsTab.alignChildren = ['left', 'top'];
-    var iconlabelsSettingGrp = settingsTab.add('group');
+    var labelSettingsGrp = settingsTab.add('group');
+    settingsTab.orientation = labelSettingsGrp.orientation = 'column';
+    settingsTab.alignChildren = labelSettingsGrp.alignChildren = [
+        'left',
+        'top'
+    ];
+    settingsTab.margins = 16;
+    labelSettingsGrp.margins.bottom = 20;
+    var iconlabelsSettingGrp = labelSettingsGrp.add('group');
     var iconStaticGrp = iconlabelsSettingGrp.add('group');
-    var iconsStatic = iconStaticGrp.add('statictext', undefined, 'Icons Label Color:');
+    iconStaticGrp.add('statictext', undefined, 'Icons Label Color:');
     iconStaticGrp.margins.right = 22;
     var iconlabelsGrp = iconlabelsSettingGrp.add('group');
     var iconLabelsDD = iconlabelsGrp.add('dropdownlist', undefined, labelNames);
@@ -8647,9 +8654,9 @@ var createHelpWindow = function () {
     iconRandomCheck.onClick = function () {
         updateFromIconCheck(iconRandomCheck.value);
     };
-    var locLabelsSettingGrp = settingsTab.add('group');
+    var locLabelsSettingGrp = labelSettingsGrp.add('group');
     var locStaticGrp = locLabelsSettingGrp.add('group');
-    var locStatic = locStaticGrp.add('statictext', undefined, 'Locations Label Color:');
+    locStaticGrp.add('statictext', undefined, 'Locations Label Color:');
     var loclabelsGrp = locLabelsSettingGrp.add('group');
     var locLabelsDD = loclabelsGrp.add('dropdownlist', undefined, labelNames);
     locLabelsDD.selection = parsePrefs().locsLabelIndex;
@@ -8669,9 +8676,9 @@ var createHelpWindow = function () {
     locRandomCheck.onClick = function () {
         updateFromLocCheck(locRandomCheck.value);
     };
-    var texlabelsSettingGrp = settingsTab.add('group');
+    var texlabelsSettingGrp = labelSettingsGrp.add('group');
     var texStaticGrp = texlabelsSettingGrp.add('group');
-    var texStatic = texStaticGrp.add('statictext', undefined, 'Textures Label Color:');
+    texStaticGrp.add('statictext', undefined, 'Textures Label Color:');
     texStaticGrp.margins.right = 5;
     var texlabelsGrp = texlabelsSettingGrp.add('group');
     var texLabelsDD = texlabelsGrp.add('dropdownlist', undefined, labelNames);
@@ -8693,6 +8700,8 @@ var createHelpWindow = function () {
     texRandomCheck.onClick = function () {
         updateFromTexCheck(texRandomCheck.value);
     };
+    var helpTipSettingGrp = settingsTab.add('group');
+    var showHelpTipsCheck = helpTipSettingGrp.add('checkbox', undefined, 'Show Help Tips');
     var reviewsTab = tpanel.add('tab', undefined, ['Reviews']);
     reviewsTab.add('edittext', [0, 0, 380, 300], '', {
         multiline: true,

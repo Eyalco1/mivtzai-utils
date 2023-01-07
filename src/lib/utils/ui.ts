@@ -43,17 +43,22 @@ const createHelpWindow = () => {
     const labelColors = getLabelsFromPrefs().map(hex => hexToRgb(hex));
 
     const settingsTab = tpanel.add('tab', undefined, ['Settings']);
-    settingsTab.orientation = 'column';
-    settingsTab.alignChildren = ['left', 'top'];
 
-    // == Icons ==
-    const iconlabelsSettingGrp = settingsTab.add('group');
+    const labelSettingsGrp = settingsTab.add('group');
+
+    settingsTab.orientation = labelSettingsGrp.orientation = 'column';
+    settingsTab.alignChildren = labelSettingsGrp.alignChildren = [
+        'left',
+        'top'
+    ];
+    settingsTab.margins = 16;
+    // @ts-ignore
+    labelSettingsGrp.margins.bottom = 20;
+
+    // == Settings - Icons ==
+    const iconlabelsSettingGrp = labelSettingsGrp.add('group');
     const iconStaticGrp = iconlabelsSettingGrp.add('group');
-    const iconsStatic = iconStaticGrp.add(
-        'statictext',
-        undefined,
-        'Icons Label Color:'
-    );
+    iconStaticGrp.add('statictext', undefined, 'Icons Label Color:');
     // @ts-ignore
     iconStaticGrp.margins.right = 22;
 
@@ -101,14 +106,10 @@ const createHelpWindow = () => {
         updateFromIconCheck(iconRandomCheck.value);
     };
 
-    // == Locations ==
-    const locLabelsSettingGrp = settingsTab.add('group');
+    // == Settings - Locations ==
+    const locLabelsSettingGrp = labelSettingsGrp.add('group');
     const locStaticGrp = locLabelsSettingGrp.add('group');
-    const locStatic = locStaticGrp.add(
-        'statictext',
-        undefined,
-        'Locations Label Color:'
-    );
+    locStaticGrp.add('statictext', undefined, 'Locations Label Color:');
 
     const loclabelsGrp = locLabelsSettingGrp.add('group');
     const locLabelsDD = loclabelsGrp.add('dropdownlist', undefined, labelNames);
@@ -149,14 +150,10 @@ const createHelpWindow = () => {
         updateFromLocCheck(locRandomCheck.value);
     };
 
-    // == Textures ==
-    const texlabelsSettingGrp = settingsTab.add('group');
+    // == Settings - Textures ==
+    const texlabelsSettingGrp = labelSettingsGrp.add('group');
     const texStaticGrp = texlabelsSettingGrp.add('group');
-    const texStatic = texStaticGrp.add(
-        'statictext',
-        undefined,
-        'Textures Label Color:'
-    );
+    texStaticGrp.add('statictext', undefined, 'Textures Label Color:');
     // @ts-ignore
     texStaticGrp.margins.right = 5;
 
@@ -199,6 +196,14 @@ const createHelpWindow = () => {
     texRandomCheck.onClick = () => {
         updateFromTexCheck(texRandomCheck.value);
     };
+
+    // === Settings - Help Tips ===
+    const helpTipSettingGrp = settingsTab.add('group');
+    const showHelpTipsCheck = helpTipSettingGrp.add(
+        'checkbox',
+        undefined,
+        'Show Help Tips'
+    );
 
     // === Reviews ===
     const reviewsTab = tpanel.add('tab', undefined, ['Reviews']);

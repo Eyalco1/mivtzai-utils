@@ -52,7 +52,8 @@ const setUpPrefs = (): void => {
         version: '@@version',
         iconsLabelIndex: 5,
         locsLabelIndex: 13,
-        texLabelIndex: 2
+        texLabelIndex: 2,
+        showHelpTips: true
     };
 
     if (myJSON.exists) {
@@ -60,12 +61,11 @@ const setUpPrefs = (): void => {
         parsedPrefs.version = '@@version';
         myJSON.open('w');
         myJSON.write(
-            JSON.stringify({ ...parsedPrefs, ...boilerplatePrefs }, null, 2)
+            JSON.stringify({ ...boilerplatePrefs, ...parsedPrefs }, null, 2)
         );
         myJSON.close();
     } else {
         myJSON.open('w');
-
         myJSON.write(JSON.stringify(boilerplatePrefs, null, 2));
         myJSON.close();
     }

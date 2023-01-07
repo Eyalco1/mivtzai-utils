@@ -54,6 +54,7 @@ interface Prefs {
     locsLabelRandom?: boolean;
     texLabelIndex?: number;
     texLabelRandom?: boolean;
+    showHelpTips?: boolean;
 }
 
 type GoogleMapsLocation = 'Israel' | 'Gaza';
