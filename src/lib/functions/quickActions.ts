@@ -2,6 +2,10 @@ const createTvaiStroke = (): void => {
     app.beginUndoGroup('Create Tunnel Stroke');
 
     const comp = app.project.activeItem as CompItem;
+    if (!comp || !(comp instanceof CompItem)) {
+        alert('Open A Composition First');
+        return;
+    }
     const layer = comp.layers.addShape();
     layer.name = 'Tunnel';
 
@@ -86,11 +90,20 @@ const createTvaiStroke = (): void => {
     app.endUndoGroup();
 };
 
-const scaleWithOvershootQA = (
-    layers: Layer[] = (<CompItem>app.project.activeItem).selectedLayers
-): void => {
+const scaleWithOvershootQA = (): void => {
     app.beginUndoGroup('Pop Animation');
-    scaleWithOvershoot(layers);
+    const comp = app.project.activeItem as CompItem;
+    if (!comp || !(comp instanceof CompItem)) {
+        alert('Open A Composition First');
+        return;
+    }
+    const selLayers = comp.selectedLayers;
+    if (selLayers.length === 0) {
+        alert('No Layers Selected');
+        return;
+    }
+
+    scaleWithOvershoot(selLayers);
     app.endUndoGroup();
 };
 
@@ -106,6 +119,8 @@ const importLogos = (): void => {
     ) as AVItem;
 
     const comp = app.project.activeItem as CompItem;
+    if (!comp || !(comp instanceof CompItem)) return;
+
     const idfLayer = comp.layers.add(idfItem);
 
     const padding = 200;
@@ -136,6 +151,11 @@ const createIllusText = (): void => {
     app.beginUndoGroup('Create Illustration Text');
 
     const comp = app.project.activeItem as CompItem;
+    if (!comp || !(comp instanceof CompItem)) {
+        alert('Open A Composition First');
+        return;
+    }
+
     const textLayer = comp.layers.addText();
     const srcText = textLayer
         .property('ADBE Text Properties')
@@ -166,9 +186,16 @@ const formatLayerName = (): void => {
     app.beginUndoGroup('Format Layer Name');
 
     const comp = app.project.activeItem as CompItem;
+    if (!comp || !(comp instanceof CompItem)) {
+        alert('Open A Composition First');
+        return;
+    }
 
     const selLayers = comp.selectedLayers;
-    if (selLayers.length === 0) return;
+    if (selLayers.length === 0) {
+        alert('No Layers Selected');
+        return;
+    }
 
     for (let i = 0; i < selLayers.length; i++) {
         const cur = selLayers[i];
@@ -196,7 +223,16 @@ const textReverse = (): void => {
     app.beginUndoGroup('Reverse Text');
 
     const comp = app.project.activeItem as CompItem;
+    if (!comp || !(comp instanceof CompItem)) {
+        alert('Open A Composition First');
+        return;
+    }
+
     const selLayers = comp.selectedLayers;
+    if (selLayers.length === 0) {
+        alert('No Layers Selected');
+        return;
+    }
 
     for (let i = 0; i < selLayers.length; i++) {
         const curLayer = selLayers[i];
@@ -219,6 +255,11 @@ const createBg = (): void => {
     app.beginUndoGroup('Create Background');
 
     const comp = app.project.activeItem as CompItem;
+    if (!comp || !(comp instanceof CompItem)) {
+        alert('Open A Composition First');
+        return;
+    }
+
     const layer = comp.layers.addShape();
     layer.name = 'BG';
     layer.label = 16;
@@ -530,6 +571,11 @@ const createCountingText = (): void => {
     app.beginUndoGroup('Counting Numbers');
 
     const comp = app.project.activeItem as CompItem;
+    if (!comp || !(comp instanceof CompItem)) {
+        alert('Open A Composition First');
+        return;
+    }
+
     const layer = comp.layers.addText();
     layer.name = 'Numbers';
 
@@ -576,6 +622,11 @@ const createAnimatedFrame = (): void => {
     app.beginUndoGroup('Animated Frame');
 
     const comp = app.project.activeItem as CompItem;
+    if (!comp || !(comp instanceof CompItem)) {
+        alert('Open A Composition First');
+        return;
+    }
+
     const layer = comp.layers.addShape();
     layer.name = 'Frame';
 
@@ -693,6 +744,11 @@ const createTatzaPath = (): void => {
     app.beginUndoGroup('Location Mark');
 
     const comp = app.project.activeItem as CompItem;
+    if (!comp || !(comp instanceof CompItem)) {
+        alert('Open A Composition First');
+        return;
+    }
+
     const layer = comp.layers.addShape();
     layer.name = 'Location_Mark';
 
@@ -783,6 +839,11 @@ const recScaleX = (): void => {
     app.beginUndoGroup('Create Background');
 
     const comp = app.project.activeItem as CompItem;
+    if (!comp || !(comp instanceof CompItem)) {
+        alert('Open A Composition First');
+        return;
+    }
+
     const layer = comp.layers.addShape();
     layer.name = 'Rec';
 
@@ -848,11 +909,15 @@ const recScaleX = (): void => {
 };
 
 const createTextOnLocation = (): void => {
+    const comp = app.project.activeItem as CompItem;
+    if (!comp || !(comp instanceof CompItem)) {
+        alert('Open A Composition First');
+        return;
+    }
+
     const promptVal = prompt('Write Text Here:', '');
 
     app.beginUndoGroup('Text On Location');
-
-    const comp = app.project.activeItem as CompItem;
 
     // === Circle ===
     const circleLayer = comp.layers.addShape();
@@ -1117,6 +1182,10 @@ const createArrow = (): void => {
     app.beginUndoGroup('Create Arrow');
 
     const comp = app.project.activeItem as CompItem;
+    if (!comp || !(comp instanceof CompItem)) {
+        alert('Open A Composition First');
+        return;
+    }
 
     // === Line ===
     const lineLayer = comp.layers.addShape();

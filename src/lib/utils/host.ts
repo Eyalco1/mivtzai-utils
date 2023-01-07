@@ -76,6 +76,11 @@ const createAnimatedMap = (
     outTangents: [number, number][]
 ): void => {
     const comp = app.project.activeItem as CompItem;
+    if (!comp || !(comp instanceof CompItem)) {
+        alert('Open A Composition First');
+        return;
+    }
+
     const shapeLayer = comp.layers.addShape();
     shapeLayer.name = name;
     const contents = shapeLayer.property('Contents') as PropertyGroup;
@@ -244,6 +249,8 @@ const importGoogleMaps = (location: GoogleMapsLocation): void => {
     ) as AVItem;
 
     const comp = app.project.activeItem as CompItem;
+    if (!comp || !(comp instanceof CompItem)) return;
+
     const mapLayer = comp.layers.add(mapItem);
 
     // Fit To Comp Height
@@ -251,12 +258,16 @@ const importGoogleMaps = (location: GoogleMapsLocation): void => {
     app.executeCommand(2732);
 };
 
-const scaleWithOvershoot = (
-    layers: Layer[] = (<CompItem>app.project.activeItem).selectedLayers
-): void => {
+const scaleWithOvershoot = (layers: Layer[]): void => {
     const comp = app.project.activeItem as CompItem;
-    // const selectedLayers = comp.selectedLayers;
-    if (layers.length === 0) return;
+    if (!comp || !(comp instanceof CompItem)) {
+        alert('Open A Composition First');
+        return;
+    }
+    if (layers.length === 0) {
+        alert('No Layers Selected');
+        return;
+    }
 
     layers.forEach(sl => {
         const scaleProp = sl

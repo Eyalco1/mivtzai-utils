@@ -567,6 +567,10 @@ var createPathGrp = function (contents, name, hasFill, hasStroke, fillColor, str
 };
 var createAnimatedMap = function (name, vertices, inTangents, outTangents) {
     var comp = app.project.activeItem;
+    if (!comp || !(comp instanceof CompItem)) {
+        alert('Open A Composition First');
+        return;
+    }
     var shapeLayer = comp.layers.addShape();
     shapeLayer.name = name;
     var contents = shapeLayer.property('Contents');
@@ -644,15 +648,22 @@ var importGoogleMaps = function (location) {
     var whichMap = modKey ? 'Guide' : 'Clean';
     var mapItem = app.project.importFile(new ImportOptions(File("".concat(getAssetsPath(), "/Images/").concat(location, "_Map_").concat(whichMap, ".png"))));
     var comp = app.project.activeItem;
+    if (!comp || !(comp instanceof CompItem))
+        return;
     var mapLayer = comp.layers.add(mapItem);
     mapLayer.selected = true;
     app.executeCommand(2732);
 };
 var scaleWithOvershoot = function (layers) {
-    if (layers === void 0) { layers = app.project.activeItem.selectedLayers; }
     var comp = app.project.activeItem;
-    if (layers.length === 0)
+    if (!comp || !(comp instanceof CompItem)) {
+        alert('Open A Composition First');
         return;
+    }
+    if (layers.length === 0) {
+        alert('No Layers Selected');
+        return;
+    }
     layers.forEach(function (sl) {
         var scaleProp = sl
             .property('ADBE Transform Group')
@@ -750,6 +761,10 @@ var generateCaspiQuote = function () {
 var createTvaiStroke = function () {
     app.beginUndoGroup('Create Tunnel Stroke');
     var comp = app.project.activeItem;
+    if (!comp || !(comp instanceof CompItem)) {
+        alert('Open A Composition First');
+        return;
+    }
     var layer = comp.layers.addShape();
     layer.name = 'Tunnel';
     var contents = layer.property('ADBE Root Vectors Group');
@@ -798,10 +813,19 @@ var createTvaiStroke = function () {
         .property('ADBE Vector Shape - Group').selected = true;
     app.endUndoGroup();
 };
-var scaleWithOvershootQA = function (layers) {
-    if (layers === void 0) { layers = app.project.activeItem.selectedLayers; }
+var scaleWithOvershootQA = function () {
     app.beginUndoGroup('Pop Animation');
-    scaleWithOvershoot(layers);
+    var comp = app.project.activeItem;
+    if (!comp || !(comp instanceof CompItem)) {
+        alert('Open A Composition First');
+        return;
+    }
+    var selLayers = comp.selectedLayers;
+    if (selLayers.length === 0) {
+        alert('No Layers Selected');
+        return;
+    }
+    scaleWithOvershoot(selLayers);
     app.endUndoGroup();
 };
 var importLogos = function () {
@@ -809,6 +833,8 @@ var importLogos = function () {
     var idfItem = app.project.importFile(new ImportOptions(File("".concat(getAssetsPath(), "/Logos/IDF_Logo.png"))));
     var dotzItem = app.project.importFile(new ImportOptions(File("".concat(getAssetsPath(), "/Logos/Dotz_Logo.png"))));
     var comp = app.project.activeItem;
+    if (!comp || !(comp instanceof CompItem))
+        return;
     var idfLayer = comp.layers.add(idfItem);
     var padding = 200;
     var idfScale = idfLayer
@@ -833,6 +859,10 @@ var importLogos = function () {
 var createIllusText = function () {
     app.beginUndoGroup('Create Illustration Text');
     var comp = app.project.activeItem;
+    if (!comp || !(comp instanceof CompItem)) {
+        alert('Open A Composition First');
+        return;
+    }
     var textLayer = comp.layers.addText();
     var srcText = textLayer
         .property('ADBE Text Properties')
@@ -857,9 +887,15 @@ var createIllusText = function () {
 var formatLayerName = function () {
     app.beginUndoGroup('Format Layer Name');
     var comp = app.project.activeItem;
-    var selLayers = comp.selectedLayers;
-    if (selLayers.length === 0)
+    if (!comp || !(comp instanceof CompItem)) {
+        alert('Open A Composition First');
         return;
+    }
+    var selLayers = comp.selectedLayers;
+    if (selLayers.length === 0) {
+        alert('No Layers Selected');
+        return;
+    }
     for (var i = 0; i < selLayers.length; i++) {
         var cur = selLayers[i];
         var name = cur.name;
@@ -881,7 +917,15 @@ var formatLayerName = function () {
 var textReverse = function () {
     app.beginUndoGroup('Reverse Text');
     var comp = app.project.activeItem;
+    if (!comp || !(comp instanceof CompItem)) {
+        alert('Open A Composition First');
+        return;
+    }
     var selLayers = comp.selectedLayers;
+    if (selLayers.length === 0) {
+        alert('No Layers Selected');
+        return;
+    }
     for (var i = 0; i < selLayers.length; i++) {
         var curLayer = selLayers[i];
         if (curLayer instanceof TextLayer) {
@@ -898,6 +942,10 @@ var textReverse = function () {
 var createBg = function () {
     app.beginUndoGroup('Create Background');
     var comp = app.project.activeItem;
+    if (!comp || !(comp instanceof CompItem)) {
+        alert('Open A Composition First');
+        return;
+    }
     var layer = comp.layers.addShape();
     layer.name = 'BG';
     layer.label = 16;
@@ -1181,6 +1229,10 @@ var createGazaMap = function () {
 var createCountingText = function () {
     app.beginUndoGroup('Counting Numbers');
     var comp = app.project.activeItem;
+    if (!comp || !(comp instanceof CompItem)) {
+        alert('Open A Composition First');
+        return;
+    }
     var layer = comp.layers.addText();
     layer.name = 'Numbers';
     var fx = layer.property('ADBE Effect Parade');
@@ -1211,6 +1263,10 @@ var importGazaGoogleMaps = function () {
 var createAnimatedFrame = function () {
     app.beginUndoGroup('Animated Frame');
     var comp = app.project.activeItem;
+    if (!comp || !(comp instanceof CompItem)) {
+        alert('Open A Composition First');
+        return;
+    }
     var layer = comp.layers.addShape();
     layer.name = 'Frame';
     var contents = layer.property('ADBE Root Vectors Group');
@@ -1278,6 +1334,10 @@ var openProjectInFinder = function () {
 var createTatzaPath = function () {
     app.beginUndoGroup('Location Mark');
     var comp = app.project.activeItem;
+    if (!comp || !(comp instanceof CompItem)) {
+        alert('Open A Composition First');
+        return;
+    }
     var layer = comp.layers.addShape();
     layer.name = 'Location_Mark';
     var contents = layer.property('ADBE Root Vectors Group');
@@ -1331,6 +1391,10 @@ var createTatzaPath = function () {
 var recScaleX = function () {
     app.beginUndoGroup('Create Background');
     var comp = app.project.activeItem;
+    if (!comp || !(comp instanceof CompItem)) {
+        alert('Open A Composition First');
+        return;
+    }
     var layer = comp.layers.addShape();
     layer.name = 'Rec';
     var xSlider = layer.effect.addProperty('ADBE Slider Control');
@@ -1364,9 +1428,13 @@ var recScaleX = function () {
     app.endUndoGroup();
 };
 var createTextOnLocation = function () {
+    var comp = app.project.activeItem;
+    if (!comp || !(comp instanceof CompItem)) {
+        alert('Open A Composition First');
+        return;
+    }
     var promptVal = prompt('Write Text Here:', '');
     app.beginUndoGroup('Text On Location');
-    var comp = app.project.activeItem;
     var circleLayer = comp.layers.addShape();
     circleLayer.name = "".concat(promptVal, " - Circle");
     var circleContents = circleLayer.property('ADBE Root Vectors Group');
@@ -1506,6 +1574,10 @@ var createTextOnLocation = function () {
 var createArrow = function () {
     app.beginUndoGroup('Create Arrow');
     var comp = app.project.activeItem;
+    if (!comp || !(comp instanceof CompItem)) {
+        alert('Open A Composition First');
+        return;
+    }
     var lineLayer = comp.layers.addShape();
     lineLayer.name = 'Arrow_Line';
     lineLayer.inPoint = (1 / comp.frameRate) * 7;
