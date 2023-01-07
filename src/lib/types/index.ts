@@ -15,7 +15,8 @@ type IconID =
     | 'House Bombing'
     | 'Fire'
     | 'Money'
-    | 'Earth';
+    | 'Earth'
+    | 'Kaboom';
 type LocationID =
     | 'Kindergarden'
     | 'Medical Clinic'

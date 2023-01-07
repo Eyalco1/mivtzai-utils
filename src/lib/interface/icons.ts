@@ -25,7 +25,8 @@ const createIconsUI = (
         'House Bombing',
         'Fire',
         'Money',
-        'Earth'
+        'Earth',
+        'Kaboom'
     ];
     const iconDD = iconDDGrp.add('dropdownlist', undefined, iconsList);
     iconDD.preferredSize[0] = 100;
