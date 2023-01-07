@@ -1503,7 +1503,107 @@ var createTextOnLocation = function () {
     setMatteLayer.setValue(2);
     app.endUndoGroup();
 };
-var createArrow = function () { };
+var createArrow = function () {
+    app.beginUndoGroup('Create Arrow');
+    var comp = app.project.activeItem;
+    var lineLayer = comp.layers.addShape();
+    lineLayer.name = 'Arrow_Line';
+    lineLayer.inPoint = (1 / comp.frameRate) * 7;
+    var lineContents = lineLayer.property('ADBE Root Vectors Group');
+    createPathGrp(lineContents, 'Arrow_Line', false, true, [0, 0, 0], [255, 255, 255], 73, [
+        [-550, -68],
+        [-204, -68]
+    ], [
+        [0, 0],
+        [0, 0]
+    ], [
+        [0, 0],
+        [0, 0]
+    ], false, [0, 0]);
+    var parentGrp = lineContents
+        .property('Arrow_Line')
+        .property('ADBE Vectors Group');
+    var trimPathsGrp = parentGrp.addProperty('ADBE Vector Filter - Trim');
+    var trimPathsEnd = trimPathsGrp.property('ADBE Vector Trim End');
+    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 7, 0);
+    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 20, 100);
+    trimPathsEnd.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 30)], [new KeyframeEase(0.5, 30)]);
+    trimPathsEnd.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 94)], [new KeyframeEase(0.5, 94)]);
+    var linePos = lineLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Position');
+    linePos.setValue([588, 471.5]);
+    var lineAnchor = lineLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Anchor Point');
+    lineAnchor.setValue([-372, -68]);
+    var pointerLayer = comp.layers.addShape();
+    pointerLayer.name = 'Arrow_Pointer';
+    var pointerContents = pointerLayer.property('ADBE Root Vectors Group');
+    createPathGrp(pointerContents, 'Arrow_Pointer', true, false, [255, 255, 255], [0, 0, 0], 0, [
+        [-207.039474487305, -96],
+        [-111.539505004883, -0.5],
+        [-207.039352416992, 95]
+    ], [
+        [0, 0],
+        [0, 0],
+        [0, 0]
+    ], [
+        [0, 0],
+        [0, 0],
+        [0, 0]
+    ], true, [0.5, -68.5]);
+    var pointerPos = pointerLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Position');
+    pointerPos.setValue([753.4605, 471.5]);
+    pointerPos.dimensionsSeparated = true;
+    var pointerAnchor = pointerLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Anchor Point');
+    pointerAnchor.setValue([-206.5395, -69]);
+    var pointerXPos = pointerLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Position_0');
+    pointerXPos.setValueAtTime((1 / comp.frameRate) * 7, 410.4605);
+    pointerXPos.setValueAtTime((1 / comp.frameRate) * 20, 753.4605);
+    pointerXPos.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 30)], [new KeyframeEase(0.5, 30)]);
+    pointerXPos.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 94)], [new KeyframeEase(0.5, 94)]);
+    var pointerScale = pointerLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Scale');
+    pointerScale.setValueAtTime(0, [0, 0]);
+    pointerScale.setValueAtTime((1 / comp.frameRate) * 7, [55.4514, 55.4514]);
+    pointerScale.setValueAtTime((1 / comp.frameRate) * 20, [100, 100]);
+    pointerScale.setTemporalEaseAtKey(1, [
+        new KeyframeEase(0.5, 46),
+        new KeyframeEase(0.5, 46),
+        new KeyframeEase(0.5, 46)
+    ], [
+        new KeyframeEase(0.5, 46),
+        new KeyframeEase(0.5, 46),
+        new KeyframeEase(0.5, 46)
+    ]);
+    pointerScale.setTemporalEaseAtKey(2, [
+        new KeyframeEase(0.5, 63),
+        new KeyframeEase(0.5, 63),
+        new KeyframeEase(0.5, 63)
+    ], [
+        new KeyframeEase(0.5, 30),
+        new KeyframeEase(0.5, 30),
+        new KeyframeEase(0.5, 30)
+    ]);
+    pointerScale.setTemporalEaseAtKey(3, [
+        new KeyframeEase(0.5, 94),
+        new KeyframeEase(0.5, 94),
+        new KeyframeEase(0.5, 94)
+    ], [
+        new KeyframeEase(0.5, 94),
+        new KeyframeEase(0.5, 94),
+        new KeyframeEase(0.5, 94)
+    ]);
+    app.endUndoGroup();
+};
 var setUpIcon = function (name, circleColor, iconColor) {
     var comp = app.project.activeItem;
     var layer = comp.layers.addShape();

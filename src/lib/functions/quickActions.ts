@@ -1113,4 +1113,184 @@ const createTextOnLocation = (): void => {
     app.endUndoGroup();
 };
 
-const createArrow = (): void => {};
+const createArrow = (): void => {
+    app.beginUndoGroup('Create Arrow');
+
+    const comp = app.project.activeItem as CompItem;
+
+    // === Line ===
+    const lineLayer = comp.layers.addShape();
+    lineLayer.name = 'Arrow_Line';
+    lineLayer.inPoint = (1 / comp.frameRate) * 7;
+
+    const lineContents = lineLayer.property(
+        'ADBE Root Vectors Group'
+    ) as PropertyGroup;
+
+    createPathGrp(
+        lineContents,
+        'Arrow_Line',
+        false,
+        true,
+        [0, 0, 0],
+        [255, 255, 255],
+        73,
+        [
+            [-550, -68],
+            [-204, -68]
+        ],
+        [
+            [0, 0],
+            [0, 0]
+        ],
+        [
+            [0, 0],
+            [0, 0]
+        ],
+        false,
+        [0, 0]
+    );
+
+    const parentGrp = lineContents
+        .property('Arrow_Line')
+        .property('ADBE Vectors Group') as PropertyGroup;
+    const trimPathsGrp = parentGrp.addProperty('ADBE Vector Filter - Trim');
+    const trimPathsEnd = trimPathsGrp.property(
+        'ADBE Vector Trim End'
+    ) as Property<number>;
+    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 7, 0);
+    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 20, 100);
+
+    trimPathsEnd.setTemporalEaseAtKey(
+        1,
+        [new KeyframeEase(0.5, 30)],
+        [new KeyframeEase(0.5, 30)]
+    );
+    trimPathsEnd.setTemporalEaseAtKey(
+        2,
+        [new KeyframeEase(0.5, 94)],
+        [new KeyframeEase(0.5, 94)]
+    );
+
+    const linePos = lineLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Position') as Property<[number, number]>;
+    linePos.setValue([588, 471.5]);
+
+    const lineAnchor = lineLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Anchor Point') as Property<[number, number]>;
+    lineAnchor.setValue([-372, -68]);
+
+    // === Pointer ===
+    const pointerLayer = comp.layers.addShape();
+    pointerLayer.name = 'Arrow_Pointer';
+
+    const pointerContents = pointerLayer.property(
+        'ADBE Root Vectors Group'
+    ) as PropertyGroup;
+
+    createPathGrp(
+        pointerContents,
+        'Arrow_Pointer',
+        true,
+        false,
+        [255, 255, 255],
+        [0, 0, 0],
+        0,
+        [
+            [-207.039474487305, -96],
+            [-111.539505004883, -0.5],
+            [-207.039352416992, 95]
+        ],
+        [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ],
+        [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ],
+        true,
+        [0.5, -68.5]
+    );
+
+    const pointerPos = pointerLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Position') as Property<[number, number]>;
+    pointerPos.setValue([753.4605, 471.5]);
+    pointerPos.dimensionsSeparated = true;
+
+    const pointerAnchor = pointerLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Anchor Point') as Property<[number, number]>;
+    pointerAnchor.setValue([-206.5395, -69]);
+
+    const pointerXPos = pointerLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Position_0') as Property<number>;
+    pointerXPos.setValueAtTime((1 / comp.frameRate) * 7, 410.4605);
+    pointerXPos.setValueAtTime((1 / comp.frameRate) * 20, 753.4605);
+
+    pointerXPos.setTemporalEaseAtKey(
+        1,
+        [new KeyframeEase(0.5, 30)],
+        [new KeyframeEase(0.5, 30)]
+    );
+    pointerXPos.setTemporalEaseAtKey(
+        2,
+        [new KeyframeEase(0.5, 94)],
+        [new KeyframeEase(0.5, 94)]
+    );
+
+    const pointerScale = pointerLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Scale') as Property<[number, number]>;
+    pointerScale.setValueAtTime(0, [0, 0]);
+    pointerScale.setValueAtTime((1 / comp.frameRate) * 7, [55.4514, 55.4514]);
+    pointerScale.setValueAtTime((1 / comp.frameRate) * 20, [100, 100]);
+
+    pointerScale.setTemporalEaseAtKey(
+        1,
+        [
+            new KeyframeEase(0.5, 46),
+            new KeyframeEase(0.5, 46),
+            new KeyframeEase(0.5, 46)
+        ],
+        [
+            new KeyframeEase(0.5, 46),
+            new KeyframeEase(0.5, 46),
+            new KeyframeEase(0.5, 46)
+        ]
+    );
+    pointerScale.setTemporalEaseAtKey(
+        2,
+        [
+            new KeyframeEase(0.5, 63),
+            new KeyframeEase(0.5, 63),
+            new KeyframeEase(0.5, 63)
+        ],
+        [
+            new KeyframeEase(0.5, 30),
+            new KeyframeEase(0.5, 30),
+            new KeyframeEase(0.5, 30)
+        ]
+    );
+    pointerScale.setTemporalEaseAtKey(
+        3,
+        [
+            new KeyframeEase(0.5, 94),
+            new KeyframeEase(0.5, 94),
+            new KeyframeEase(0.5, 94)
+        ],
+        [
+            new KeyframeEase(0.5, 94),
+            new KeyframeEase(0.5, 94),
+            new KeyframeEase(0.5, 94)
+        ]
+    );
+
+    app.endUndoGroup();
+};
