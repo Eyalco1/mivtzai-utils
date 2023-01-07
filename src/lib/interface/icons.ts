@@ -24,7 +24,8 @@ const createIconsUI = (
         'Sniper Target',
         'House Bombing',
         'Fire',
-        'Money'
+        'Money',
+        'Earth'
     ];
     const iconDD = iconDDGrp.add('dropdownlist', undefined, iconsList);
     iconDD.preferredSize[0] = 100;

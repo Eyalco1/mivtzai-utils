@@ -14,7 +14,8 @@ type IconID =
     | 'Sniper Target'
     | 'House Bombing'
     | 'Fire'
-    | 'Money';
+    | 'Money'
+    | 'Earth';
 type LocationID =
     | 'Kindergarden'
     | 'Medical Clinic'
