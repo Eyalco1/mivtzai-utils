@@ -4380,6 +4380,12 @@ const createIconFromId = (
 ): void => {
     app.beginUndoGroup(`Create Icon: ${id}`);
 
+    const comp = app.project.activeItem as CompItem;
+    if (!comp || !(comp instanceof CompItem)) {
+        alert('Open A Composition First');
+        return;
+    }
+
     switch (id) {
         case 'Boom':
             createExplosionIcon(circleColor, iconColor, hasCircle, scale);

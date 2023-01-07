@@ -5050,6 +5050,11 @@ var createKaboomIcon = function (circleColor, iconColor, hasCircle, scale) {
 };
 var createIconFromId = function (id, circleColor, iconColor, hasCircle, scale) {
     app.beginUndoGroup("Create Icon: ".concat(id));
+    var comp = app.project.activeItem;
+    if (!comp || !(comp instanceof CompItem)) {
+        alert('Open A Composition First');
+        return;
+    }
     switch (id) {
         case 'Boom':
             createExplosionIcon(circleColor, iconColor, hasCircle, scale);
@@ -10287,6 +10292,11 @@ var createUNBuildingLocation = function (lang, mitug) {
 };
 var createLocationFromId = function (id, lang, mitug) {
     app.beginUndoGroup("Create Location: ".concat(id));
+    var comp = app.project.activeItem;
+    if (!comp || !(comp instanceof CompItem)) {
+        alert('Open A Composition First');
+        return;
+    }
     switch (id) {
         case 'Kindergarden':
             createKindergardenLocation(lang, mitug);
@@ -10313,7 +10323,7 @@ var importTexture = function (path) {
     var textureItem = app.project.importFile(new ImportOptions(File(path)));
     return textureItem;
 };
-var loopTexture = function (layer) {
+var loopTexture = function (comp, layer) {
     var posProp = layer
         .property('ADBE Transform Group')
         .property('ADBE Position');
@@ -10373,12 +10383,14 @@ var createTexture = function (id, loop, fit) {
     var path = getPathFromTextureID(id);
     var textureItem = importTexture(path);
     var comp = app.project.activeItem;
+    if (!comp || !(comp instanceof CompItem))
+        return;
     var textureLayer = comp.layers.add(textureItem);
     textureLayer.label = parsePrefs().texLabelRandom
         ? Math.floor(Math.random() * 16) + 1
         : parsePrefs().texLabelIndex + 1;
     if (loop)
-        loopTexture(textureLayer);
+        loopTexture(comp, textureLayer);
     if (fit) {
         var commandId = getCommandId(comp, textureItem);
         textureLayer.selected = true;

@@ -6792,6 +6792,12 @@ const createLocationFromId = (
 ): void => {
     app.beginUndoGroup(`Create Location: ${id}`);
 
+    const comp = app.project.activeItem as CompItem;
+    if (!comp || !(comp instanceof CompItem)) {
+        alert('Open A Composition First');
+        return;
+    }
+
     switch (id) {
         case 'Kindergarden':
             createKindergardenLocation(lang, mitug);

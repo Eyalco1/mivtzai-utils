@@ -6,7 +6,7 @@ const importTexture = (path: string): AVItem => {
     return textureItem;
 };
 
-const loopTexture = (layer: Layer): void => {
+const loopTexture = (comp: CompItem, layer: Layer): void => {
     const posProp = layer
         .property('ADBE Transform Group')
         .property('ADBE Position') as Property<[number, number]>;
@@ -76,12 +76,14 @@ const createTexture = (id: TextureID, loop: Boolean, fit: Boolean) => {
     const textureItem = importTexture(path);
 
     const comp = app.project.activeItem as CompItem;
+    if (!comp || !(comp instanceof CompItem)) return;
+
     const textureLayer = comp.layers.add(textureItem);
     textureLayer.label = parsePrefs().texLabelRandom
         ? Math.floor(Math.random() * 16) + 1
         : parsePrefs().texLabelIndex + 1;
 
-    if (loop) loopTexture(textureLayer);
+    if (loop) loopTexture(comp, textureLayer);
 
     if (fit) {
         const commandId = getCommandId(comp, textureItem);
