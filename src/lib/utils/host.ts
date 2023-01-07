@@ -117,7 +117,7 @@ const createAnimatedMap = (
         .property('ADBE Vector Fill Opacity') as Property<number>;
 
     fillOpacity.setValueAtTime(0, 0);
-    fillOpacity.setValueAtTime((1 / 24) * 14, 50);
+    fillOpacity.setValueAtTime((1 / comp.frameRate) * 14, 50);
 
     fillOpacity.setTemporalEaseAtKey(
         1,
@@ -168,7 +168,7 @@ const createAnimatedMap = (
         'ADBE Vector Trim End'
     ) as Property<number>;
     trimPathsEnd.setValueAtTime(0, 0);
-    trimPathsEnd.setValueAtTime((1 / 24) * 30, 100);
+    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 30, 100);
 
     trimPathsEnd.setTemporalEaseAtKey(
         1,
@@ -272,11 +272,14 @@ const scaleWithOvershoot = (
         }
 
         scaleProp.setValueAtTime(comp.time, [0, 0]);
-        scaleProp.setValueAtTime(comp.time + (1 / 24) * 10, [
+        scaleProp.setValueAtTime(comp.time + (1 / comp.frameRate) * 10, [
             origVal[0] + 3,
             origVal[1] + 3
         ]);
-        scaleProp.setValueAtTime(comp.time + (1 / 24) * 14, origVal);
+        scaleProp.setValueAtTime(
+            comp.time + (1 / comp.frameRate) * 14,
+            origVal
+        );
 
         const easeIn = new KeyframeEase(0.5, 66);
         const easeOut = new KeyframeEase(0.75, 66);

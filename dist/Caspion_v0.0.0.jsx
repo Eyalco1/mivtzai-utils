@@ -578,7 +578,7 @@ var createAnimatedMap = function (name, vertices, inTangents, outTangents) {
         .property('ADBE Vector Graphic - Fill')
         .property('ADBE Vector Fill Opacity');
     fillOpacity.setValueAtTime(0, 0);
-    fillOpacity.setValueAtTime((1 / 24) * 14, 50);
+    fillOpacity.setValueAtTime((1 / comp.frameRate) * 14, 50);
     fillOpacity.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 33)], [new KeyframeEase(0.5, 33)]);
     fillOpacity.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 33)], [new KeyframeEase(0.5, 33)]);
     var myStroke = contents
@@ -602,7 +602,7 @@ var createAnimatedMap = function (name, vertices, inTangents, outTangents) {
     var trimPathsGrp = parentGrp.addProperty('ADBE Vector Filter - Trim');
     var trimPathsEnd = trimPathsGrp.property('ADBE Vector Trim End');
     trimPathsEnd.setValueAtTime(0, 0);
-    trimPathsEnd.setValueAtTime((1 / 24) * 30, 100);
+    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 30, 100);
     trimPathsEnd.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 33)], [new KeyframeEase(0.5, 33)]);
     trimPathsEnd.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 66)], [new KeyframeEase(0.5, 66)]);
 };
@@ -666,11 +666,11 @@ var scaleWithOvershoot = function (layers) {
                 beforeKeys++;
         }
         scaleProp.setValueAtTime(comp.time, [0, 0]);
-        scaleProp.setValueAtTime(comp.time + (1 / 24) * 10, [
+        scaleProp.setValueAtTime(comp.time + (1 / comp.frameRate) * 10, [
             origVal[0] + 3,
             origVal[1] + 3
         ]);
-        scaleProp.setValueAtTime(comp.time + (1 / 24) * 14, origVal);
+        scaleProp.setValueAtTime(comp.time + (1 / comp.frameRate) * 14, origVal);
         var easeIn = new KeyframeEase(0.5, 66);
         var easeOut = new KeyframeEase(0.75, 66);
         scaleProp.setTemporalEaseAtKey(beforeKeys + 1, [easeIn, easeIn, easeIn], [easeOut, easeOut, easeOut]);
@@ -788,7 +788,7 @@ var createTvaiStroke = function () {
     var trimPathsGrp = parentGrp.addProperty('ADBE Vector Filter - Trim');
     var trimPathsEnd = trimPathsGrp.property('ADBE Vector Trim End');
     trimPathsEnd.setValueAtTime(0, 0);
-    trimPathsEnd.setValueAtTime((1 / 24) * 30, 100);
+    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 30, 100);
     trimPathsEnd.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 33)], [new KeyframeEase(0.5, 33)]);
     trimPathsEnd.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 88)], [new KeyframeEase(0.5, 88)]);
     layer
@@ -1193,7 +1193,7 @@ var createCountingText = function () {
     sizeProp.setValue(150);
     var numValProp = numFx.property('ADBE Numbers2-0003');
     numValProp.setValueAtTime(0, 0);
-    numValProp.setValueAtTime((1 / 24) * 40, 99);
+    numValProp.setValueAtTime((1 / comp.frameRate) * 40, 99);
     numValProp.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 20)]);
     numValProp.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 75)]);
     app.endUndoGroup();
@@ -1240,12 +1240,12 @@ var createAnimatedFrame = function () {
     var trimPathsGrp = parentGrp.addProperty('ADBE Vector Filter - Trim');
     var trimPathsEnd = trimPathsGrp.property('ADBE Vector Trim End');
     trimPathsEnd.setValueAtTime(0, 0);
-    trimPathsEnd.setValueAtTime((1 / 24) * 30, 100);
+    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 30, 100);
     trimPathsEnd.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 34)], [new KeyframeEase(0.5, 34)]);
     trimPathsEnd.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 92)], [new KeyframeEase(0.5, 92)]);
     var trimPathsOffset = trimPathsGrp.property('ADBE Vector Trim Offset');
     trimPathsOffset.setValueAtTime(0, -324);
-    trimPathsOffset.setValueAtTime((1 / 24) * 32, 0);
+    trimPathsOffset.setValueAtTime((1 / comp.frameRate) * 32, 0);
     trimPathsOffset.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 24)], [new KeyframeEase(0.5, 24)]);
     trimPathsOffset.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 72)], [new KeyframeEase(0.5, 72)]);
     app.endUndoGroup();
@@ -1318,7 +1318,7 @@ var createTatzaPath = function () {
     var trimPathsGrp = parentGrp.addProperty('ADBE Vector Filter - Trim');
     var trimPathsEnd = trimPathsGrp.property('ADBE Vector Trim End');
     trimPathsEnd.setValueAtTime(0, 0);
-    trimPathsEnd.setValueAtTime((1 / 24) * 30, 100);
+    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 30, 100);
     trimPathsEnd.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 33)], [new KeyframeEase(0.5, 33)]);
     trimPathsEnd.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 88)], [new KeyframeEase(0.5, 88)]);
     layer
@@ -1356,14 +1356,153 @@ var recScaleX = function () {
         .property('ADBE Transform Group')
         .property('ADBE Scale');
     scaleProp.setValueAtTime(0, [0, 100]);
-    scaleProp.setValueAtTime((1 / 24) * 14, [100, 100]);
+    scaleProp.setValueAtTime((1 / comp.frameRate) * 14, [100, 100]);
     var ease1 = new KeyframeEase(0.5, 65);
     var ease2 = new KeyframeEase(0.5, 92);
     scaleProp.setTemporalEaseAtKey(1, [ease1, ease1, ease1], [ease1, ease1, ease1]);
     scaleProp.setTemporalEaseAtKey(2, [ease2, ease2, ease2], [ease2, ease2, ease2]);
     app.endUndoGroup();
 };
-var createTextOnLocation = function () { };
+var createTextOnLocation = function () {
+    var promptVal = prompt('Write Text Here:', '');
+    app.beginUndoGroup('Text On Location');
+    var comp = app.project.activeItem;
+    var circleLayer = comp.layers.addShape();
+    circleLayer.name = "".concat(promptVal, " - Circle");
+    var circleContents = circleLayer.property('ADBE Root Vectors Group');
+    var circleShapeGrp = circleContents.addProperty('ADBE Vector Group');
+    circleShapeGrp.name = 'Circle';
+    var circleInnerShapeGrp = circleShapeGrp.property('ADBE Vectors Group');
+    var circleEllipseGrp = circleInnerShapeGrp.addProperty('ADBE Vector Shape - Ellipse');
+    var circleEllipseSize = circleEllipseGrp.property('ADBE Vector Ellipse Size');
+    circleEllipseSize.setValue([50.4149, 50.4149]);
+    var circleStroke = circleInnerShapeGrp.addProperty('ADBE Vector Graphic - Stroke');
+    var circleStrokeWidth = circleStroke.property('ADBE Vector Stroke Width');
+    circleStrokeWidth.setValue(14);
+    var circleScale = circleLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Scale');
+    circleScale.setValueAtTime(0, [0, 0]);
+    circleScale.setValueAtTime((1 / comp.frameRate) * 7, [114.3096, 114.3096]);
+    circleScale.setValueAtTime((1 / comp.frameRate) * 15, [92.2582, 92.2582]);
+    circleScale.setValueAtTime((1 / comp.frameRate) * 22, [104.8933, 104.8933]);
+    circleScale.setValueAtTime((1 / comp.frameRate) * 28, [98.3702, 98.3702]);
+    circleScale.setValueAtTime((1 / comp.frameRate) * 36, [100, 100]);
+    var scaleEase1 = new KeyframeEase(0.5, 56);
+    var scaleEase2 = new KeyframeEase(0.5, 57);
+    var scaleEase3 = new KeyframeEase(0.5, 52.5);
+    var scaleEase4 = new KeyframeEase(0.5, 48);
+    var scaleEase5 = new KeyframeEase(0.5, 45);
+    var scaleEase6 = new KeyframeEase(0.5, 47);
+    circleScale.setTemporalEaseAtKey(1, [scaleEase1, scaleEase1, scaleEase1], [scaleEase1, scaleEase1, scaleEase1]);
+    circleScale.setTemporalEaseAtKey(2, [scaleEase2, scaleEase2, scaleEase2], [scaleEase2, scaleEase2, scaleEase2]);
+    circleScale.setTemporalEaseAtKey(3, [scaleEase3, scaleEase3, scaleEase3], [scaleEase3, scaleEase3, scaleEase3]);
+    circleScale.setTemporalEaseAtKey(4, [scaleEase4, scaleEase4, scaleEase4], [scaleEase4, scaleEase4, scaleEase4]);
+    circleScale.setTemporalEaseAtKey(5, [scaleEase5, scaleEase5, scaleEase5], [scaleEase5, scaleEase5, scaleEase5]);
+    circleScale.setTemporalEaseAtKey(6, [scaleEase6, scaleEase6, scaleEase6], [scaleEase6, scaleEase6, scaleEase6]);
+    var circlePos = circleLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Position');
+    circlePos.setValue([621.2241, 597.2879]);
+    var lineLayer = comp.layers.addShape();
+    lineLayer.name = "".concat(promptVal, " - Line");
+    lineLayer.inPoint = (1 / comp.frameRate) * 3;
+    var lineContents = lineLayer.property('ADBE Root Vectors Group');
+    createPathGrp(lineContents, 'Line', false, true, [0, 0, 0], [255, 255, 255], 14, [
+        [-311, 27.7985687255859],
+        [-61.0000915527344, 28.0378570556641],
+        [97, -206.037857055664]
+    ], [
+        [0, 0],
+        [0, 0],
+        [0, 0]
+    ], [
+        [0, 0],
+        [0, 0],
+        [0, 0]
+    ], false, [0, 0]);
+    var myStroke = lineContents
+        .property('Line')
+        .property('ADBE Vectors Group')
+        .property('ADBE Vector Graphic - Stroke');
+    var lineCapProp = myStroke.property('ADBE Vector Stroke Line Cap');
+    lineCapProp.setValue(2);
+    var lineJoinProp = myStroke.property('ADBE Vector Stroke Line Join');
+    lineJoinProp.setValue(2);
+    var parentGrp = lineContents
+        .property('Line')
+        .property('ADBE Vectors Group');
+    var trimPathsGrp = parentGrp.addProperty('ADBE Vector Filter - Trim');
+    var trimPathsEnd = trimPathsGrp.property('ADBE Vector Trim End');
+    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 3, 0);
+    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 16, 100);
+    trimPathsEnd.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 44)], [new KeyframeEase(0.5, 44)]);
+    trimPathsEnd.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 93)], [new KeyframeEase(0.5, 93)]);
+    var linePos = lineLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Position');
+    linePos.setValue([852, 480.5379]);
+    var lineAnchor = lineLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Anchor Point');
+    lineAnchor.setValue([-108, -89]);
+    var recLayer = comp.layers.addShape();
+    recLayer.name = "".concat(promptVal, " - Rectangle");
+    recLayer.inPoint = (1 / comp.frameRate) * 12;
+    var recContents = recLayer.property('ADBE Root Vectors Group');
+    var recShapeGrp = recContents.addProperty('ADBE Vector Group');
+    recShapeGrp.name = 'Rectangle';
+    var recInnerShapeGrp = recShapeGrp.property('ADBE Vectors Group');
+    var recRectangleGrp = recInnerShapeGrp.addProperty('ADBE Vector Shape - Rect');
+    var recRectangleRoundness = recRectangleGrp.property('ADBE Vector Rect Roundness');
+    recRectangleRoundness.setValue(32);
+    var recFill = recInnerShapeGrp.addProperty('ADBE Vector Graphic - Fill');
+    var recFillColor = recFill.property('ADBE Vector Fill Color');
+    recFillColor.setValue([1, 1, 1]);
+    var recRectangleSize = recLayer
+        .property('ADBE Root Vectors Group')
+        .property('ADBE Vector Group')
+        .property('ADBE Vectors Group')
+        .property('ADBE Vector Shape - Rect')
+        .property('ADBE Vector Rect Size');
+    recRectangleSize.setValue([467, 169]);
+    recRectangleSize.setValueAtTime((1 / comp.frameRate) * 12, [0, 169]);
+    recRectangleSize.setValueAtTime((1 / comp.frameRate) * 41, [467, 169]);
+    var easeOut = new KeyframeEase(0.5, 44);
+    var easeIn = new KeyframeEase(0.5, 93);
+    recRectangleSize.setTemporalEaseAtKey(1, [easeOut, easeOut], [easeOut, easeOut]);
+    recRectangleSize.setTemporalEaseAtKey(2, [easeIn, easeIn], [easeIn, easeIn]);
+    var recPos = recLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Position');
+    recPos.setValue([1055.9803, 280.3122]);
+    var textLayer = comp.layers.addText();
+    textLayer.inPoint = (1 / comp.frameRate) * 12;
+    var srcText = textLayer
+        .property('ADBE Text Properties')
+        .property('ADBE Text Document');
+    srcText.setValue(promptVal);
+    var textDoc = srcText.value;
+    textDoc.font = getFontFromLanguage('Hebrew');
+    textDoc.fontSize = 145;
+    textDoc.applyFill = true;
+    textDoc.fillColor = [0, 0, 0];
+    textDoc.applyStroke = false;
+    textDoc.tracking = -20;
+    srcText.setValue(textDoc);
+    var posProp = textLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Position');
+    var anchorProp = textLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Anchor Point');
+    posProp.setValue([1055.9803, 280.3122]);
+    anchorProp.setValue([158.4607, -28.3756]);
+    var setMatteEffect = textLayer.effect.addProperty('ADBE Set Matte3');
+    var setMatteLayer = setMatteEffect.property('ADBE Set Matte3-0001');
+    setMatteLayer.setValue(2);
+    app.endUndoGroup();
+};
 var createArrow = function () { };
 var setUpIcon = function (name, circleColor, iconColor) {
     var comp = app.project.activeItem;
@@ -8531,15 +8670,15 @@ var loopTexture = function (layer) {
     posProp.setValueAtTime(0, [960, 540]);
     scaleProp.setValueAtTime(0, [100, 100]);
     rotProp.setValueAtTime(0, 0);
-    posProp.setValueAtTime((1 / 24) * 10, [840, 804]);
-    scaleProp.setValueAtTime((1 / 24) * 10, [100, 100]);
-    rotProp.setValueAtTime((1 / 24) * 10, 50);
-    posProp.setValueAtTime((1 / 24) * 20, [1284, 913]);
-    scaleProp.setValueAtTime((1 / 24) * 20, [116, 116]);
-    rotProp.setValueAtTime((1 / 24) * 20, -35);
-    posProp.setValueAtTime((1 / 24) * 30, [960, 540]);
-    scaleProp.setValueAtTime((1 / 24) * 30, [100, 100]);
-    rotProp.setValueAtTime((1 / 24) * 30, 0);
+    posProp.setValueAtTime((1 / comp.frameRate) * 10, [840, 804]);
+    scaleProp.setValueAtTime((1 / comp.frameRate) * 10, [100, 100]);
+    rotProp.setValueAtTime((1 / comp.frameRate) * 10, 50);
+    posProp.setValueAtTime((1 / comp.frameRate) * 20, [1284, 913]);
+    scaleProp.setValueAtTime((1 / comp.frameRate) * 20, [116, 116]);
+    rotProp.setValueAtTime((1 / comp.frameRate) * 20, -35);
+    posProp.setValueAtTime((1 / comp.frameRate) * 30, [960, 540]);
+    scaleProp.setValueAtTime((1 / comp.frameRate) * 30, [100, 100]);
+    rotProp.setValueAtTime((1 / comp.frameRate) * 30, 0);
     posProp.setInterpolationTypeAtKey(1, KeyframeInterpolationType.HOLD);
     posProp.setInterpolationTypeAtKey(2, KeyframeInterpolationType.HOLD);
     posProp.setInterpolationTypeAtKey(3, KeyframeInterpolationType.HOLD);
@@ -8710,7 +8849,6 @@ var createHelpWindow = function () {
         scrollable: true
     });
     var updateQAHelpTips = function (show) {
-        alert('Hi');
         allQABtns.forEach(function (iconData) {
             iconData[0].helpTip = show ? iconData[1] : '';
         });

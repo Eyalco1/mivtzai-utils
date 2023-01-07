@@ -64,7 +64,7 @@ const createTvaiStroke = (): void => {
         'ADBE Vector Trim End'
     ) as Property<number>;
     trimPathsEnd.setValueAtTime(0, 0);
-    trimPathsEnd.setValueAtTime((1 / 24) * 30, 100);
+    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 30, 100);
 
     trimPathsEnd.setTemporalEaseAtKey(
         1,
@@ -552,7 +552,7 @@ const createCountingText = (): void => {
     const numValProp = numFx.property('ADBE Numbers2-0003') as Property<number>;
 
     numValProp.setValueAtTime(0, 0);
-    numValProp.setValueAtTime((1 / 24) * 40, 99);
+    numValProp.setValueAtTime((1 / comp.frameRate) * 40, 99);
 
     numValProp.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 20)]);
     numValProp.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 75)]);
@@ -630,7 +630,7 @@ const createAnimatedFrame = (): void => {
         'ADBE Vector Trim End'
     ) as Property<number>;
     trimPathsEnd.setValueAtTime(0, 0);
-    trimPathsEnd.setValueAtTime((1 / 24) * 30, 100);
+    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 30, 100);
 
     trimPathsEnd.setTemporalEaseAtKey(
         1,
@@ -647,7 +647,7 @@ const createAnimatedFrame = (): void => {
         'ADBE Vector Trim Offset'
     ) as Property<number>;
     trimPathsOffset.setValueAtTime(0, -324);
-    trimPathsOffset.setValueAtTime((1 / 24) * 32, 0);
+    trimPathsOffset.setValueAtTime((1 / comp.frameRate) * 32, 0);
 
     trimPathsOffset.setTemporalEaseAtKey(
         1,
@@ -757,7 +757,7 @@ const createTatzaPath = (): void => {
         'ADBE Vector Trim End'
     ) as Property<number>;
     trimPathsEnd.setValueAtTime(0, 0);
-    trimPathsEnd.setValueAtTime((1 / 24) * 30, 100);
+    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 30, 100);
 
     trimPathsEnd.setTemporalEaseAtKey(
         1,
@@ -829,7 +829,7 @@ const recScaleX = (): void => {
         .property('ADBE Scale') as Property<[number, number]>;
 
     scaleProp.setValueAtTime(0, [0, 100]);
-    scaleProp.setValueAtTime((1 / 24) * 14, [100, 100]);
+    scaleProp.setValueAtTime((1 / comp.frameRate) * 14, [100, 100]);
 
     const ease1 = new KeyframeEase(0.5, 65);
     const ease2 = new KeyframeEase(0.5, 92);
@@ -847,6 +847,270 @@ const recScaleX = (): void => {
     app.endUndoGroup();
 };
 
-const createTextOnLocation = (): void => {};
+const createTextOnLocation = (): void => {
+    const promptVal = prompt('Write Text Here:', '');
+
+    app.beginUndoGroup('Text On Location');
+
+    const comp = app.project.activeItem as CompItem;
+
+    // === Circle ===
+    const circleLayer = comp.layers.addShape();
+    circleLayer.name = `${promptVal} - Circle`;
+
+    const circleContents = circleLayer.property(
+        'ADBE Root Vectors Group'
+    ) as PropertyGroup;
+    const circleShapeGrp = circleContents.addProperty('ADBE Vector Group');
+    circleShapeGrp.name = 'Circle';
+
+    const circleInnerShapeGrp = circleShapeGrp.property(
+        'ADBE Vectors Group'
+    ) as PropertyGroup;
+    const circleEllipseGrp = circleInnerShapeGrp.addProperty(
+        'ADBE Vector Shape - Ellipse'
+    );
+    const circleEllipseSize = circleEllipseGrp.property(
+        'ADBE Vector Ellipse Size'
+    ) as Property<[number, number]>;
+    circleEllipseSize.setValue([50.4149, 50.4149]);
+
+    const circleStroke = circleInnerShapeGrp.addProperty(
+        'ADBE Vector Graphic - Stroke'
+    ) as PropertyGroup;
+    const circleStrokeWidth = circleStroke.property(
+        'ADBE Vector Stroke Width'
+    ) as Property<number>;
+    circleStrokeWidth.setValue(14);
+
+    const circleScale = circleLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Scale') as Property<[number, number]>;
+
+    circleScale.setValueAtTime(0, [0, 0]);
+    circleScale.setValueAtTime((1 / comp.frameRate) * 7, [114.3096, 114.3096]);
+    circleScale.setValueAtTime((1 / comp.frameRate) * 15, [92.2582, 92.2582]);
+    circleScale.setValueAtTime((1 / comp.frameRate) * 22, [104.8933, 104.8933]);
+    circleScale.setValueAtTime((1 / comp.frameRate) * 28, [98.3702, 98.3702]);
+    circleScale.setValueAtTime((1 / comp.frameRate) * 36, [100, 100]);
+
+    const scaleEase1 = new KeyframeEase(0.5, 56);
+    const scaleEase2 = new KeyframeEase(0.5, 57);
+    const scaleEase3 = new KeyframeEase(0.5, 52.5);
+    const scaleEase4 = new KeyframeEase(0.5, 48);
+    const scaleEase5 = new KeyframeEase(0.5, 45);
+    const scaleEase6 = new KeyframeEase(0.5, 47);
+    circleScale.setTemporalEaseAtKey(
+        1,
+        [scaleEase1, scaleEase1, scaleEase1],
+        [scaleEase1, scaleEase1, scaleEase1]
+    );
+    circleScale.setTemporalEaseAtKey(
+        2,
+        [scaleEase2, scaleEase2, scaleEase2],
+        [scaleEase2, scaleEase2, scaleEase2]
+    );
+    circleScale.setTemporalEaseAtKey(
+        3,
+        [scaleEase3, scaleEase3, scaleEase3],
+        [scaleEase3, scaleEase3, scaleEase3]
+    );
+    circleScale.setTemporalEaseAtKey(
+        4,
+        [scaleEase4, scaleEase4, scaleEase4],
+        [scaleEase4, scaleEase4, scaleEase4]
+    );
+    circleScale.setTemporalEaseAtKey(
+        5,
+        [scaleEase5, scaleEase5, scaleEase5],
+        [scaleEase5, scaleEase5, scaleEase5]
+    );
+    circleScale.setTemporalEaseAtKey(
+        6,
+        [scaleEase6, scaleEase6, scaleEase6],
+        [scaleEase6, scaleEase6, scaleEase6]
+    );
+
+    const circlePos = circleLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Position') as Property<[number, number]>;
+    circlePos.setValue([621.2241, 597.2879]);
+
+    // === Line ===
+    const lineLayer = comp.layers.addShape();
+    lineLayer.name = `${promptVal} - Line`;
+    lineLayer.inPoint = (1 / comp.frameRate) * 3;
+
+    const lineContents = lineLayer.property(
+        'ADBE Root Vectors Group'
+    ) as PropertyGroup;
+
+    createPathGrp(
+        lineContents,
+        'Line',
+        false,
+        true,
+        [0, 0, 0],
+        [255, 255, 255],
+        14,
+        [
+            [-311, 27.7985687255859],
+            [-61.0000915527344, 28.0378570556641],
+            [97, -206.037857055664]
+        ],
+        [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ],
+        [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ],
+        false,
+        [0, 0]
+    );
+
+    const myStroke = lineContents
+        .property('Line')
+        .property('ADBE Vectors Group')
+        .property('ADBE Vector Graphic - Stroke') as Property<number>;
+
+    const lineCapProp = myStroke.property(
+        'ADBE Vector Stroke Line Cap'
+    ) as Property<number>;
+    lineCapProp.setValue(2);
+
+    const lineJoinProp = myStroke.property(
+        'ADBE Vector Stroke Line Join'
+    ) as Property<number>;
+    lineJoinProp.setValue(2);
+
+    const parentGrp = lineContents
+        .property('Line')
+        .property('ADBE Vectors Group') as PropertyGroup;
+    const trimPathsGrp = parentGrp.addProperty('ADBE Vector Filter - Trim');
+    const trimPathsEnd = trimPathsGrp.property(
+        'ADBE Vector Trim End'
+    ) as Property<number>;
+    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 3, 0);
+    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 16, 100);
+
+    trimPathsEnd.setTemporalEaseAtKey(
+        1,
+        [new KeyframeEase(0.5, 44)],
+        [new KeyframeEase(0.5, 44)]
+    );
+    trimPathsEnd.setTemporalEaseAtKey(
+        2,
+        [new KeyframeEase(0.5, 93)],
+        [new KeyframeEase(0.5, 93)]
+    );
+
+    const linePos = lineLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Position') as Property<[number, number]>;
+    linePos.setValue([852, 480.5379]);
+    const lineAnchor = lineLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Anchor Point') as Property<[number, number]>;
+    lineAnchor.setValue([-108, -89]);
+
+    // === Rectangle ===
+    const recLayer = comp.layers.addShape();
+    recLayer.name = `${promptVal} - Rectangle`;
+    recLayer.inPoint = (1 / comp.frameRate) * 12;
+
+    const recContents = recLayer.property(
+        'ADBE Root Vectors Group'
+    ) as PropertyGroup;
+    const recShapeGrp = recContents.addProperty('ADBE Vector Group');
+    recShapeGrp.name = 'Rectangle';
+
+    const recInnerShapeGrp = recShapeGrp.property(
+        'ADBE Vectors Group'
+    ) as PropertyGroup;
+    const recRectangleGrp = recInnerShapeGrp.addProperty(
+        'ADBE Vector Shape - Rect'
+    );
+    const recRectangleRoundness = recRectangleGrp.property(
+        'ADBE Vector Rect Roundness'
+    ) as Property<number>;
+    recRectangleRoundness.setValue(32);
+
+    const recFill = recInnerShapeGrp.addProperty(
+        'ADBE Vector Graphic - Fill'
+    ) as PropertyGroup;
+    const recFillColor = recFill.property('ADBE Vector Fill Color') as Property<
+        [number, number, number]
+    >;
+    recFillColor.setValue([1, 1, 1]);
+
+    const recRectangleSize = recLayer
+        .property('ADBE Root Vectors Group')
+        .property('ADBE Vector Group')
+        .property('ADBE Vectors Group')
+        .property('ADBE Vector Shape - Rect')
+        .property('ADBE Vector Rect Size') as Property<[number, number]>;
+    recRectangleSize.setValue([467, 169]);
+
+    recRectangleSize.setValueAtTime((1 / comp.frameRate) * 12, [0, 169]);
+    recRectangleSize.setValueAtTime((1 / comp.frameRate) * 41, [467, 169]);
+
+    const easeOut = new KeyframeEase(0.5, 44);
+    const easeIn = new KeyframeEase(0.5, 93);
+    recRectangleSize.setTemporalEaseAtKey(
+        1,
+        [easeOut, easeOut],
+        [easeOut, easeOut]
+    );
+    recRectangleSize.setTemporalEaseAtKey(
+        2,
+        [easeIn, easeIn],
+        [easeIn, easeIn]
+    );
+
+    const recPos = recLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Position') as Property<[number, number]>;
+    recPos.setValue([1055.9803, 280.3122]);
+
+    // === Text ===
+    const textLayer = comp.layers.addText();
+    textLayer.inPoint = (1 / comp.frameRate) * 12;
+
+    const srcText = textLayer
+        .property('ADBE Text Properties')
+        .property('ADBE Text Document') as Property<any>;
+
+    srcText.setValue(promptVal);
+    const textDoc = srcText.value;
+    textDoc.font = getFontFromLanguage('Hebrew');
+    textDoc.fontSize = 145;
+    textDoc.applyFill = true;
+    textDoc.fillColor = [0, 0, 0];
+    textDoc.applyStroke = false;
+    textDoc.tracking = -20;
+    srcText.setValue(textDoc);
+
+    const posProp = textLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Position') as Property<[number, number]>;
+    const anchorProp = textLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Anchor Point') as Property<[number, number]>;
+
+    posProp.setValue([1055.9803, 280.3122]);
+    anchorProp.setValue([158.4607, -28.3756]);
+
+    const setMatteEffect = textLayer.effect.addProperty('ADBE Set Matte3');
+    const setMatteLayer = setMatteEffect.property(
+        'ADBE Set Matte3-0001'
+    ) as Property<number>;
+    setMatteLayer.setValue(2);
+
+    app.endUndoGroup();
+};
 
 const createArrow = (): void => {};

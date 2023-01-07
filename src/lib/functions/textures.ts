@@ -21,17 +21,17 @@ const loopTexture = (layer: Layer): void => {
     scaleProp.setValueAtTime(0, [100, 100]);
     rotProp.setValueAtTime(0, 0);
 
-    posProp.setValueAtTime((1 / 24) * 10, [840, 804]);
-    scaleProp.setValueAtTime((1 / 24) * 10, [100, 100]);
-    rotProp.setValueAtTime((1 / 24) * 10, 50);
+    posProp.setValueAtTime((1 / comp.frameRate) * 10, [840, 804]);
+    scaleProp.setValueAtTime((1 / comp.frameRate) * 10, [100, 100]);
+    rotProp.setValueAtTime((1 / comp.frameRate) * 10, 50);
 
-    posProp.setValueAtTime((1 / 24) * 20, [1284, 913]);
-    scaleProp.setValueAtTime((1 / 24) * 20, [116, 116]);
-    rotProp.setValueAtTime((1 / 24) * 20, -35);
+    posProp.setValueAtTime((1 / comp.frameRate) * 20, [1284, 913]);
+    scaleProp.setValueAtTime((1 / comp.frameRate) * 20, [116, 116]);
+    rotProp.setValueAtTime((1 / comp.frameRate) * 20, -35);
 
-    posProp.setValueAtTime((1 / 24) * 30, [960, 540]);
-    scaleProp.setValueAtTime((1 / 24) * 30, [100, 100]);
-    rotProp.setValueAtTime((1 / 24) * 30, 0);
+    posProp.setValueAtTime((1 / comp.frameRate) * 30, [960, 540]);
+    scaleProp.setValueAtTime((1 / comp.frameRate) * 30, [100, 100]);
+    rotProp.setValueAtTime((1 / comp.frameRate) * 30, 0);
 
     posProp.setInterpolationTypeAtKey(1, KeyframeInterpolationType.HOLD);
     posProp.setInterpolationTypeAtKey(2, KeyframeInterpolationType.HOLD);
