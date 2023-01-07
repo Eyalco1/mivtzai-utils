@@ -204,6 +204,7 @@ const createHelpWindow = () => {
         undefined,
         'Show Help Tips'
     );
+    showHelpTipsCheck.value = parsePrefs().showHelpTips;
 
     // === Reviews ===
     const reviewsTab = tpanel.add('tab', undefined, ['Reviews']);
@@ -212,6 +213,12 @@ const createHelpWindow = () => {
         readonly: true,
         scrollable: true
     });
+
+    const updateQAHelpTips = (show: boolean): void => {
+        allQABtns.forEach(iconData => {
+            iconData[0].helpTip = show ? iconData[1] : '';
+        });
+    };
 
     // === Ok Button ===
     const okBtn = helpWin.add('button', undefined, 'Ok', { name: 'Ok' });
@@ -222,8 +229,11 @@ const createHelpWindow = () => {
             locsLabelIndex: (<ListItem>locLabelsDD.selection).index,
             locsLabelRandom: locRandomCheck.value,
             texLabelIndex: (<ListItem>texLabelsDD.selection).index,
-            texLabelRandom: texRandomCheck.value
+            texLabelRandom: texRandomCheck.value,
+            showHelpTips: showHelpTipsCheck.value
         });
+
+        updateQAHelpTips(showHelpTipsCheck.value);
 
         helpWin.close();
     };

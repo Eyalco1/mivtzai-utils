@@ -8702,12 +8702,19 @@ var createHelpWindow = function () {
     };
     var helpTipSettingGrp = settingsTab.add('group');
     var showHelpTipsCheck = helpTipSettingGrp.add('checkbox', undefined, 'Show Help Tips');
+    showHelpTipsCheck.value = parsePrefs().showHelpTips;
     var reviewsTab = tpanel.add('tab', undefined, ['Reviews']);
     reviewsTab.add('edittext', [0, 0, 380, 300], '', {
         multiline: true,
         readonly: true,
         scrollable: true
     });
+    var updateQAHelpTips = function (show) {
+        alert('Hi');
+        allQABtns.forEach(function (iconData) {
+            iconData[0].helpTip = show ? iconData[1] : '';
+        });
+    };
     var okBtn = helpWin.add('button', undefined, 'Ok', { name: 'Ok' });
     okBtn.onClick = function () {
         writePrefsToMemory({
@@ -8716,8 +8723,10 @@ var createHelpWindow = function () {
             locsLabelIndex: locLabelsDD.selection.index,
             locsLabelRandom: locRandomCheck.value,
             texLabelIndex: texLabelsDD.selection.index,
-            texLabelRandom: texRandomCheck.value
+            texLabelRandom: texRandomCheck.value,
+            showHelpTips: showHelpTipsCheck.value
         });
+        updateQAHelpTips(showHelpTipsCheck.value);
         helpWin.close();
     };
     helpWin.layout.layout(true);
@@ -8726,12 +8735,14 @@ var createHelpWindow = function () {
         helpWin.show();
     }
 };
+var allQABtns = [];
 var createQABtn = function (container, binary, helpTip, onClick) {
     var btn = container.add('iconbutton', undefined, binary, {
         style: 'toolbutton'
     });
-    btn.helpTip = helpTip;
+    btn.helpTip = parsePrefs().showHelpTips ? helpTip : '';
     btn.onClick = onClick;
+    allQABtns.push([btn, helpTip]);
     return btn;
 };
 var createQAUI = function (tpanel) {

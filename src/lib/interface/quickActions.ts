@@ -1,4 +1,6 @@
 // UI
+const allQABtns: [IconButton, string][] = [];
+
 const createQABtn = (
     container: Group,
     binary: string,
@@ -8,8 +10,10 @@ const createQABtn = (
     const btn = container.add('iconbutton', undefined, binary, {
         style: 'toolbutton'
     });
-    btn.helpTip = helpTip;
+    btn.helpTip = parsePrefs().showHelpTips ? helpTip : '';
     btn.onClick = onClick;
+
+    allQABtns.push([btn, helpTip]);
     return btn;
 };
 
