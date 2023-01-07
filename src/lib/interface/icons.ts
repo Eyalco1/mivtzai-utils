@@ -61,6 +61,11 @@ const createIconsUI = (
     const iconCreateBtn = iconsGrp.add('button', undefined, 'Create Icon');
     iconCreateBtn.preferredSize[0] = 100;
 
+    circleColorGrp.enabled = false;
+    circleCheck.onClick = () => {
+        circleColorGrp.enabled = circleCheck.value;
+    };
+
     iconCreateBtn.onClick = () => {
         const id = iconDD.selection.toString() as IconID;
         createIconFromId(

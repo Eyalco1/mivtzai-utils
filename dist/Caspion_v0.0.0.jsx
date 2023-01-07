@@ -10553,6 +10553,10 @@ var createIconsUI = function (tpanel) {
     var scaleCheck = iconsChecksGrp.add('checkbox', undefined, 'Scale');
     var iconCreateBtn = iconsGrp.add('button', undefined, 'Create Icon');
     iconCreateBtn.preferredSize[0] = 100;
+    circleColorGrp.enabled = false;
+    circleCheck.onClick = function () {
+        circleColorGrp.enabled = circleCheck.value;
+    };
     iconCreateBtn.onClick = function () {
         var id = iconDD.selection.toString();
         createIconFromId(id, circleColorDD.selection.toString(), iconColorDD.selection.toString(), circleCheck.value, scaleCheck.value);
