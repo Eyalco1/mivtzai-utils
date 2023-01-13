@@ -3,7 +3,7 @@ const createTvaiStroke = (): void => {
 
     const comp = app.project.activeItem as CompItem;
     if (!comp || !(comp instanceof CompItem)) {
-        alert('Open A Composition First');
+        alert('No Composition Selected');
         return;
     }
     const layer = comp.layers.addShape();
@@ -94,7 +94,7 @@ const scaleWithOvershootQA = (): void => {
     app.beginUndoGroup('Pop Animation');
     const comp = app.project.activeItem as CompItem;
     if (!comp || !(comp instanceof CompItem)) {
-        alert('Open A Composition First');
+        alert('No Composition Selected');
         return;
     }
     const selLayers = comp.selectedLayers;
@@ -152,7 +152,7 @@ const createIllusText = (): void => {
 
     const comp = app.project.activeItem as CompItem;
     if (!comp || !(comp instanceof CompItem)) {
-        alert('Open A Composition First');
+        alert('No Composition Selected');
         return;
     }
 
@@ -187,7 +187,7 @@ const formatLayerName = (): void => {
 
     const comp = app.project.activeItem as CompItem;
     if (!comp || !(comp instanceof CompItem)) {
-        alert('Open A Composition First');
+        alert('No Composition Selected');
         return;
     }
 
@@ -224,7 +224,7 @@ const textReverse = (): void => {
 
     const comp = app.project.activeItem as CompItem;
     if (!comp || !(comp instanceof CompItem)) {
-        alert('Open A Composition First');
+        alert('No Composition Selected');
         return;
     }
 
@@ -256,7 +256,7 @@ const createBg = (): void => {
 
     const comp = app.project.activeItem as CompItem;
     if (!comp || !(comp instanceof CompItem)) {
-        alert('Open A Composition First');
+        alert('No Composition Selected');
         return;
     }
 
@@ -572,7 +572,7 @@ const createCountingText = (): void => {
 
     const comp = app.project.activeItem as CompItem;
     if (!comp || !(comp instanceof CompItem)) {
-        alert('Open A Composition First');
+        alert('No Composition Selected');
         return;
     }
 
@@ -623,7 +623,7 @@ const createAnimatedFrame = (): void => {
 
     const comp = app.project.activeItem as CompItem;
     if (!comp || !(comp instanceof CompItem)) {
-        alert('Open A Composition First');
+        alert('No Composition Selected');
         return;
     }
 
@@ -745,7 +745,7 @@ const createTatzaPath = (): void => {
 
     const comp = app.project.activeItem as CompItem;
     if (!comp || !(comp instanceof CompItem)) {
-        alert('Open A Composition First');
+        alert('No Composition Selected');
         return;
     }
 
@@ -840,7 +840,7 @@ const recScaleX = (): void => {
 
     const comp = app.project.activeItem as CompItem;
     if (!comp || !(comp instanceof CompItem)) {
-        alert('Open A Composition First');
+        alert('No Composition Selected');
         return;
     }
 
@@ -911,7 +911,7 @@ const recScaleX = (): void => {
 const createTextOnLocation = (): void => {
     const comp = app.project.activeItem as CompItem;
     if (!comp || !(comp instanceof CompItem)) {
-        alert('Open A Composition First');
+        alert('No Composition Selected');
         return;
     }
 
@@ -1183,7 +1183,7 @@ const createArrow = (): void => {
 
     const comp = app.project.activeItem as CompItem;
     if (!comp || !(comp instanceof CompItem)) {
-        alert('Open A Composition First');
+        alert('No Composition Selected');
         return;
     }
 

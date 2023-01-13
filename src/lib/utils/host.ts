@@ -77,7 +77,7 @@ const createAnimatedMap = (
 ): void => {
     const comp = app.project.activeItem as CompItem;
     if (!comp || !(comp instanceof CompItem)) {
-        alert('Open A Composition First');
+        alert('No Composition Selected');
         return;
     }
 
@@ -261,7 +261,7 @@ const importGoogleMaps = (location: GoogleMapsLocation): void => {
 const scaleWithOvershoot = (layers: Layer[]): void => {
     const comp = app.project.activeItem as CompItem;
     if (!comp || !(comp instanceof CompItem)) {
-        alert('Open A Composition First');
+        alert('No Composition Selected');
         return;
     }
     if (layers.length === 0) {

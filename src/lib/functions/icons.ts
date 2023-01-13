@@ -4938,7 +4938,7 @@ const createIconFromId = (
 
     const comp = app.project.activeItem as CompItem;
     if (!comp || !(comp instanceof CompItem)) {
-        alert('Open A Composition First');
+        alert('No Composition Selected');
         return;
     }
 

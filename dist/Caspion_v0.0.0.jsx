@@ -568,7 +568,7 @@ var createPathGrp = function (contents, name, hasFill, hasStroke, fillColor, str
 var createAnimatedMap = function (name, vertices, inTangents, outTangents) {
     var comp = app.project.activeItem;
     if (!comp || !(comp instanceof CompItem)) {
-        alert('Open A Composition First');
+        alert('No Composition Selected');
         return;
     }
     var shapeLayer = comp.layers.addShape();
@@ -657,7 +657,7 @@ var importGoogleMaps = function (location) {
 var scaleWithOvershoot = function (layers) {
     var comp = app.project.activeItem;
     if (!comp || !(comp instanceof CompItem)) {
-        alert('Open A Composition First');
+        alert('No Composition Selected');
         return;
     }
     if (layers.length === 0) {
@@ -762,7 +762,7 @@ var createTvaiStroke = function () {
     app.beginUndoGroup('Create Tunnel Stroke');
     var comp = app.project.activeItem;
     if (!comp || !(comp instanceof CompItem)) {
-        alert('Open A Composition First');
+        alert('No Composition Selected');
         return;
     }
     var layer = comp.layers.addShape();
@@ -817,7 +817,7 @@ var scaleWithOvershootQA = function () {
     app.beginUndoGroup('Pop Animation');
     var comp = app.project.activeItem;
     if (!comp || !(comp instanceof CompItem)) {
-        alert('Open A Composition First');
+        alert('No Composition Selected');
         return;
     }
     var selLayers = comp.selectedLayers;
@@ -860,7 +860,7 @@ var createIllusText = function () {
     app.beginUndoGroup('Create Illustration Text');
     var comp = app.project.activeItem;
     if (!comp || !(comp instanceof CompItem)) {
-        alert('Open A Composition First');
+        alert('No Composition Selected');
         return;
     }
     var textLayer = comp.layers.addText();
@@ -888,7 +888,7 @@ var formatLayerName = function () {
     app.beginUndoGroup('Format Layer Name');
     var comp = app.project.activeItem;
     if (!comp || !(comp instanceof CompItem)) {
-        alert('Open A Composition First');
+        alert('No Composition Selected');
         return;
     }
     var selLayers = comp.selectedLayers;
@@ -918,7 +918,7 @@ var textReverse = function () {
     app.beginUndoGroup('Reverse Text');
     var comp = app.project.activeItem;
     if (!comp || !(comp instanceof CompItem)) {
-        alert('Open A Composition First');
+        alert('No Composition Selected');
         return;
     }
     var selLayers = comp.selectedLayers;
@@ -943,7 +943,7 @@ var createBg = function () {
     app.beginUndoGroup('Create Background');
     var comp = app.project.activeItem;
     if (!comp || !(comp instanceof CompItem)) {
-        alert('Open A Composition First');
+        alert('No Composition Selected');
         return;
     }
     var layer = comp.layers.addShape();
@@ -1230,7 +1230,7 @@ var createCountingText = function () {
     app.beginUndoGroup('Counting Numbers');
     var comp = app.project.activeItem;
     if (!comp || !(comp instanceof CompItem)) {
-        alert('Open A Composition First');
+        alert('No Composition Selected');
         return;
     }
     var layer = comp.layers.addText();
@@ -1264,7 +1264,7 @@ var createAnimatedFrame = function () {
     app.beginUndoGroup('Animated Frame');
     var comp = app.project.activeItem;
     if (!comp || !(comp instanceof CompItem)) {
-        alert('Open A Composition First');
+        alert('No Composition Selected');
         return;
     }
     var layer = comp.layers.addShape();
@@ -1335,7 +1335,7 @@ var createTatzaPath = function () {
     app.beginUndoGroup('Location Mark');
     var comp = app.project.activeItem;
     if (!comp || !(comp instanceof CompItem)) {
-        alert('Open A Composition First');
+        alert('No Composition Selected');
         return;
     }
     var layer = comp.layers.addShape();
@@ -1392,7 +1392,7 @@ var recScaleX = function () {
     app.beginUndoGroup('Create Background');
     var comp = app.project.activeItem;
     if (!comp || !(comp instanceof CompItem)) {
-        alert('Open A Composition First');
+        alert('No Composition Selected');
         return;
     }
     var layer = comp.layers.addShape();
@@ -1430,7 +1430,7 @@ var recScaleX = function () {
 var createTextOnLocation = function () {
     var comp = app.project.activeItem;
     if (!comp || !(comp instanceof CompItem)) {
-        alert('Open A Composition First');
+        alert('No Composition Selected');
         return;
     }
     var promptVal = prompt('Write Text Here:', '');
@@ -1575,7 +1575,7 @@ var createArrow = function () {
     app.beginUndoGroup('Create Arrow');
     var comp = app.project.activeItem;
     if (!comp || !(comp instanceof CompItem)) {
-        alert('Open A Composition First');
+        alert('No Composition Selected');
         return;
     }
     var lineLayer = comp.layers.addShape();
@@ -5462,7 +5462,7 @@ var createIconFromId = function (id, circleColor, iconColor, hasCircle, scale) {
     app.beginUndoGroup("Create Icon: ".concat(id));
     var comp = app.project.activeItem;
     if (!comp || !(comp instanceof CompItem)) {
-        alert('Open A Composition First');
+        alert('No Composition Selected');
         return;
     }
     switch (id) {
@@ -10707,7 +10707,7 @@ var createLocationFromId = function (id, lang, mitug) {
     app.beginUndoGroup("Create Location: ".concat(id));
     var comp = app.project.activeItem;
     if (!comp || !(comp instanceof CompItem)) {
-        alert('Open A Composition First');
+        alert('No Composition Selected');
         return;
     }
     switch (id) {
