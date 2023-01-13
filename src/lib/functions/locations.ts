@@ -8473,6 +8473,8 @@ const createLocationFromId = (
             createGasStationLocation(lang, mitug);
         case 'Government Building':
             createGovernmentBuildingLocation(lang, mitug);
+        case 'Factory':
+            alert('...');
     }
 
     app.endUndoGroup();

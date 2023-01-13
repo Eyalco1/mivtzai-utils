@@ -11955,6 +11955,8 @@ var createLocationFromId = function (id, lang, mitug) {
             createGasStationLocation(lang, mitug);
         case 'Government Building':
             createGovernmentBuildingLocation(lang, mitug);
+        case 'Factory':
+            alert('...');
     }
     app.endUndoGroup();
 };
@@ -12310,7 +12312,8 @@ var createLocationsUI = function (tpanel) {
         'U.N. Building',
         'Diplomatic Building',
         'Gas Station',
-        'Government Building'
+        'Government Building',
+        'Factory'
     ];
     var locationsDD = locationsDDGrp.add('dropdownlist', undefined, locationsList);
     locationsDD.preferredSize[0] = 100;
