@@ -71,7 +71,8 @@ const init = (thisObj: typeof globalThis) => {
     const tpanel = w.add('tabbedpanel');
     tpanel.alignment = tpanel.alignChildren = ['fill', 'fill'];
 
-    const { qaTab, QABtnsGrp, bigRowOne, bigRowTwo } = createQAUI(tpanel);
+    const { qaTab, QABtnsGrp, bigRowOne, bigRowTwo, bigRowThree } =
+        createQAUI(tpanel);
     const { iconsTab, iconCircleGrp, colorChecksGrp } = createIconsUI(tpanel);
     const { locTab, dropdownsGrp } = createLocationsUI(tpanel);
     const { texTab, dropdownChecksGrp } = createTexturesUI(tpanel);
@@ -83,10 +84,12 @@ const init = (thisObj: typeof globalThis) => {
     w.onResizing = w.onResize = () => {
         (<Window>w).onResize = () => {
             // QA
-            bigRowOne.orientation = bigRowTwo.orientation =
-                (<Dimension>w.size).width > 400 ? 'row' : 'column';
+            bigRowOne.orientation =
+                bigRowTwo.orientation =
+                bigRowThree.orientation =
+                    (<Dimension>w.size).width > 400 ? 'row' : 'column';
             QABtnsGrp.orientation =
-                (<Dimension>w.size).width > 800 ? 'row' : 'column';
+                (<Dimension>w.size).width > 840 ? 'row' : 'column';
             // Icons
             iconCircleGrp.orientation = colorChecksGrp.orientation =
                 (<Dimension>w.size).width > 350 ? 'row' : 'column';

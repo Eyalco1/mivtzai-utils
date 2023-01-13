@@ -1680,6 +1680,7 @@ var setUpIcon = function (name, circleColor, iconColor) {
     var comp = app.project.activeItem;
     var layer = comp.layers.addShape();
     layer.name = name;
+    layer.inPoint = comp.time;
     layer.label = parsePrefs().iconsLabelRandom
         ? Math.floor(Math.random() * 16) + 1
         : parsePrefs().iconsLabelIndex + 1;
@@ -10993,12 +10994,13 @@ var createQAUI = function (tpanel) {
     createQABtn(rowFour, folderBinary, "Open Project Folder in ".concat(getOS() === 'Win' ? 'Explorer' : 'Finder', "\n\nClick: Open Project Folder\nCTRL + CLICK: Choose New Project Folder"), openProjectInFinder);
     createQABtn(rowFour, tatzaBinary, 'Location Mark', createTatzaPath);
     createQABtn(rowFour, recScaleXBinary, 'Rectangle X Scale', recScaleX);
-    var rowFive = bigRowTwo.add('group');
+    var bigRowThree = QABtnsGrp.add('group');
+    var rowFive = bigRowThree.add('group');
     rowFive.alignment = 'left';
     createQABtn(rowFive, textPopBinary, 'Text On Location', createTextOnLocation);
     createQABtn(rowFive, arrowBinary, 'Arrow', createArrow);
     bigRowOne.orientation = bigRowTwo.orientation = 'column';
-    return { qaTab: qaTab, QABtnsGrp: QABtnsGrp, bigRowOne: bigRowOne, bigRowTwo: bigRowTwo };
+    return { qaTab: qaTab, QABtnsGrp: QABtnsGrp, bigRowOne: bigRowOne, bigRowTwo: bigRowTwo, bigRowThree: bigRowThree };
 };
 var createIconsUI = function (tpanel) {
     var iconsTab = tpanel.add('tab', undefined, ['Icons']);
@@ -11196,7 +11198,7 @@ var init = function (thisObj) {
     w = w;
     var tpanel = w.add('tabbedpanel');
     tpanel.alignment = tpanel.alignChildren = ['fill', 'fill'];
-    var _a = createQAUI(tpanel), qaTab = _a.qaTab, QABtnsGrp = _a.QABtnsGrp, bigRowOne = _a.bigRowOne, bigRowTwo = _a.bigRowTwo;
+    var _a = createQAUI(tpanel), qaTab = _a.qaTab, QABtnsGrp = _a.QABtnsGrp, bigRowOne = _a.bigRowOne, bigRowTwo = _a.bigRowTwo, bigRowThree = _a.bigRowThree;
     var _b = createIconsUI(tpanel), iconsTab = _b.iconsTab, iconCircleGrp = _b.iconCircleGrp, colorChecksGrp = _b.colorChecksGrp;
     var _c = createLocationsUI(tpanel), locTab = _c.locTab, dropdownsGrp = _c.dropdownsGrp;
     var _d = createTexturesUI(tpanel), texTab = _d.texTab, dropdownChecksGrp = _d.dropdownChecksGrp;
@@ -11205,10 +11207,12 @@ var init = function (thisObj) {
     w.layout.resize();
     w.onResizing = w.onResize = function () {
         w.onResize = function () {
-            bigRowOne.orientation = bigRowTwo.orientation =
-                w.size.width > 400 ? 'row' : 'column';
+            bigRowOne.orientation =
+                bigRowTwo.orientation =
+                    bigRowThree.orientation =
+                        w.size.width > 400 ? 'row' : 'column';
             QABtnsGrp.orientation =
-                w.size.width > 800 ? 'row' : 'column';
+                w.size.width > 840 ? 'row' : 'column';
             iconCircleGrp.orientation = colorChecksGrp.orientation =
                 w.size.width > 350 ? 'row' : 'column';
             dropdownsGrp.orientation =

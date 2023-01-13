@@ -19,7 +19,13 @@ const createQABtn = (
 
 const createQAUI = (
     tpanel: TabbedPanel
-): { qaTab: Tab; QABtnsGrp: Group; bigRowOne: Group; bigRowTwo: Group } => {
+): {
+    qaTab: Tab;
+    QABtnsGrp: Group;
+    bigRowOne: Group;
+    bigRowTwo: Group;
+    bigRowThree: Group;
+} => {
     const qaTab = tpanel.add('tab', undefined, ['Quick Actions']);
     qaTab.alignment = qaTab.alignChildren = ['fill', 'fill'];
 
@@ -74,7 +80,9 @@ const createQAUI = (
     createQABtn(rowFour, tatzaBinary, 'Location Mark', createTatzaPath);
     createQABtn(rowFour, recScaleXBinary, 'Rectangle X Scale', recScaleX);
 
-    const rowFive = bigRowTwo.add('group');
+    const bigRowThree = QABtnsGrp.add('group');
+
+    const rowFive = bigRowThree.add('group');
     rowFive.alignment = 'left';
     createQABtn(
         rowFive,
@@ -86,5 +94,5 @@ const createQAUI = (
 
     bigRowOne.orientation = bigRowTwo.orientation = 'column';
 
-    return { qaTab, QABtnsGrp, bigRowOne, bigRowTwo };
+    return { qaTab, QABtnsGrp, bigRowOne, bigRowTwo, bigRowThree };
 };

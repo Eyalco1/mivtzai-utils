@@ -6,6 +6,7 @@ const setUpIcon = (
     const comp = app.project.activeItem as CompItem;
     const layer = comp.layers.addShape();
     layer.name = name;
+    layer.inPoint = comp.time;
     layer.label = parsePrefs().iconsLabelRandom
         ? Math.floor(Math.random() * 16) + 1
         : parsePrefs().iconsLabelIndex + 1;
