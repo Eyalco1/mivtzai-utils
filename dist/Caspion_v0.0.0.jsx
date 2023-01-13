@@ -5600,6 +5600,8 @@ var createLocationIconFromId = function (id, iconPos, iconAnchor, iconScale, mit
             return createUNBuildingIcon(iconPos, iconAnchor, iconScale, id, mitug);
         case 'Diplomatic Building':
             return createDiplomaticBuildingIcon(iconPos, iconAnchor, iconScale, id, mitug);
+        case 'Gas Station':
+            return createGasStationIcon(iconPos, iconAnchor, iconScale, id, mitug);
     }
 };
 var createLocation = function (argsArr, inputLang, mitug) {
@@ -11195,6 +11197,206 @@ var createDiplomaticBuildingLocation = function (lang, mitug) {
     ];
     createLocation(args, lang, mitug);
 };
+var createGasStationIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
+    var iconLayer = createIconBase(name);
+    var contents = iconLayer.property('Contents');
+    var createIconCircle = function () {
+        var vertices = [
+            [43.39892578125, 0],
+            [0, 43.39892578125],
+            [-43.39892578125, 0],
+            [0, -43.39892578125]
+        ];
+        var inTangents = [
+            [0, -23.9685668945312],
+            [23.9685668945312, 0],
+            [0, 23.9685668945312],
+            [-23.9685668945312, 0]
+        ];
+        var outTangents = [
+            [0, 23.9685668945312],
+            [-23.9685668945312, 0],
+            [0, -23.9685668945312],
+            [23.9685668945312, 0]
+        ];
+        createPathGrp(contents, 'Icon_Circle', true, false, getColorsFromMitug(mitug).pri, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [0, 0]);
+    };
+    var createGas = function () {
+        var vertices = [
+            [19.7266235351562, -18.5678100585938],
+            [15.9114990234375, -23.3271484375],
+            [15.0817260742188, -20.4783325195312],
+            [19.06201171875, -15.2244873046875],
+            [19.03466796875, -12.2393798828125],
+            [21.7686157226562, -8.37860107421875],
+            [21.7686157226562, 7.8604736328125],
+            [20.6541137695312, 13.5918579101562],
+            [18.3536376953125, 5.63153076171875],
+            [12.709716796875, 3.084228515625],
+            [12.709716796875, -23.6531372070312],
+            [10.152099609375, -26.2107543945312],
+            [-15.5855102539062, -26.2107543945312],
+            [-18.1431274414062, -23.6531372070312],
+            [-18.1431274414062, 16.2989501953125],
+            [-22.3543090820312, 16.2989501953125],
+            [-23.9976196289062, 17.9422607421875],
+            [-23.9976196289062, 26.2107543945312],
+            [-15.5855102539062, 26.2107543945312],
+            [10.152099609375, 26.2107543945312],
+            [19.03466796875, 26.2107543945312],
+            [19.03466796875, 17.9422607421875],
+            [17.391357421875, 16.2989501953125],
+            [12.709716796875, 16.2989501953125],
+            [12.709716796875, 6.74603271484375],
+            [17.788330078125, 13.9102783203125],
+            [23.3389282226562, 14.06494140625],
+            [23.9976196289062, -12.2393798828125]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0.02734375, -2.985107421875],
+            [0, 0],
+            [0, 0],
+            [0.955322265625, -0.63677978515625],
+            [1.50445556640625, 2.86572265625],
+            [0, 0],
+            [0, 0],
+            [1.40667724609375, 0],
+            [0, 0],
+            [0, -1.40667724609375],
+            [0, 0],
+            [0, 0],
+            [0, -0.90380859375],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0.90380859375, 0],
+            [0, 0],
+            [0, 0],
+            [-2.70660400390625, -8.91552734375],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [-0.02740478515625, 2.985107421875],
+            [0, 0],
+            [0, 0],
+            [-0.95526123046875, 0.6368408203125],
+            [-1.50445556640625, -2.86566162109375],
+            [0, 0],
+            [0, -1.40667724609375],
+            [0, 0],
+            [-1.40667724609375, 0],
+            [0, 0],
+            [0, 0],
+            [-0.90380859375, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, -0.90380859375],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [2.70660400390625, 8.91558837890625],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Gas', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [0.1536, -2.8365]);
+    };
+    var createGasHide = function () {
+        var vertices = [
+            [9.89009094238281, 8.23963928222656],
+            [-9.89009094238281, 8.23963928222656],
+            [-10.9564514160156, 7.17327880859375],
+            [-10.9564514160156, -7.17327880859375],
+            [-9.89009094238281, -8.23963928222656],
+            [9.89009094238281, -8.23963928222656],
+            [10.9564514160156, -7.17327880859375],
+            [10.9564514160156, 7.17327880859375]
+        ];
+        var inTangents = [
+            [0.58650207519531, 0],
+            [0, 0],
+            [0, 0.58650207519531],
+            [0, 0],
+            [-0.58650207519531, 0],
+            [0, 0],
+            [0, -0.58650207519531],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [-0.58650207519531, 0],
+            [0, 0],
+            [0, -0.58650207519531],
+            [0, 0],
+            [0.58650207519531, 0],
+            [0, 0],
+            [0, 0.58650207519531]
+        ];
+        createPathGrp(contents, 'Gas_Hide', true, false, getColorsFromMitug(mitug).pri, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [-1.9819, -15.077]);
+    };
+    createGasHide();
+    createGas();
+    createIconCircle();
+    setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
+    return iconLayer;
+};
+var createGasStationLocation = function (lang, mitug) {
+    var args = [
+        {
+            lang: 'Hebrew',
+            text: 'תחנת דלק',
+            fontSize: 77.3332,
+            tracking: -19,
+            textPos: [912.9691, 540.1691],
+            textAnchor: [89.969, -19.0808],
+            bgSize: [332, 110],
+            iconPos: [1064.5, 538.5],
+            iconAnchor: [0, 0],
+            iconScale: 100,
+            iconId: 'Gas Station'
+        },
+        {
+            lang: 'English',
+            text: 'Gas station',
+            fontSize: 77,
+            tracking: -29,
+            textPos: [1006.895, 536.953],
+            textAnchor: [145.145, -27.797],
+            bgSize: [428, 106],
+            iconPos: [806.7103, 539.0989],
+            iconAnchor: [0, 0],
+            iconScale: 97,
+            iconId: 'Gas Station'
+        },
+        {
+            lang: 'Arabic',
+            text: 'محطة وقود',
+            fontSize: 64,
+            tracking: -19,
+            textPos: [918.4655, 540.125],
+            textAnchor: [175.4655, -16.625],
+            bgSize: [474, 92],
+            iconPos: [1145.6731, 540.1018],
+            iconAnchor: [0, 0],
+            iconScale: 83,
+            iconId: 'Gas Station'
+        }
+    ];
+    createLocation(args, lang, mitug);
+};
 var createLocationFromId = function (id, lang, mitug) {
     app.beginUndoGroup("Create Location: ".concat(id));
     var comp = app.project.activeItem;
@@ -11223,6 +11425,8 @@ var createLocationFromId = function (id, lang, mitug) {
             break;
         case 'Diplomatic Building':
             createDiplomaticBuildingLocation(lang, mitug);
+        case 'Gas Station':
+            createGasStationLocation(lang, mitug);
     }
     app.endUndoGroup();
 };
@@ -11576,7 +11780,8 @@ var createLocationsUI = function (tpanel) {
         'University',
         'Mosque',
         'U.N. Building',
-        'Diplomatic Building'
+        'Diplomatic Building',
+        'Gas Station'
     ];
     var locationsDD = locationsDDGrp.add('dropdownlist', undefined, locationsList);
     locationsDD.preferredSize[0] = 100;

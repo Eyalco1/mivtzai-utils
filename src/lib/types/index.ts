@@ -25,7 +25,8 @@ type LocationID =
     | 'University'
     | 'Mosque'
     | 'U.N. Building'
-    | 'Diplomatic Building';
+    | 'Diplomatic Building'
+    | 'Gas Station';
 type TextureID =
     | 'Paper Dark'
     | 'Paper Medium'
