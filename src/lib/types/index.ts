@@ -19,7 +19,8 @@ type IconID =
     | 'Kaboom'
     | 'Medal'
     | 'Salute With M16'
-    | 'Holding M16';
+    | 'Holding M16'
+    | 'Shooting M16';
 type LocationID =
     | 'Kindergarden'
     | 'Medical Clinic'
