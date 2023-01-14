@@ -1365,5 +1365,182 @@ const createArrow = (): void => {
 };
 
 const createMikra = (): void => {
-    alert('Hi!');
+    app.beginUndoGroup('Create Mikra');
+
+    const comp = app.project.activeItem as CompItem;
+    if (!comp || !(comp instanceof CompItem)) {
+        alert('No Composition Selected');
+        return;
+    }
+
+    /* BG */
+    const bgLayer = comp.layers.addShape();
+    bgLayer.name = 'Mikra_BG';
+
+    const xSlider = bgLayer.effect.addProperty(
+        'ADBE Slider Control'
+    ) as Property<any>;
+    xSlider.name = 'Size X';
+    const xSliderProp = xSlider.property(
+        'ADBE Slider Control-0001'
+    ) as Property<any>;
+    xSliderProp.setValue(1130);
+
+    const ySlider = bgLayer.effect.addProperty(
+        'ADBE Slider Control'
+    ) as Property<number>;
+    ySlider.name = 'Size Y';
+    const ySliderProp = ySlider.property(
+        'ADBE Slider Control-0001'
+    ) as Property<number>;
+    ySliderProp.setValue(360);
+
+    const contents = bgLayer.property(
+        'ADBE Root Vectors Group'
+    ) as PropertyGroup;
+    const grp = contents.addProperty('ADBE Vector Group') as PropertyGroup;
+    grp.name = 'Rectangle 1';
+    const recGrp = grp.property('ADBE Vectors Group') as PropertyGroup;
+
+    const recShape = recGrp.addProperty('ADBE Vector Shape - Rect');
+    const recSize = recShape.property('ADBE Vector Rect Size') as Property<
+        [number, number]
+    >;
+    recSize.expression =
+        '[effect("Size X")("Slider"), effect("Size Y")("Slider")]';
+
+    const myFill = recGrp.addProperty(
+        'ADBE Vector Graphic - Fill'
+    ) as PropertyGroup;
+    const fillColor = myFill.property('ADBE Vector Fill Color') as Property<
+        [number, number, number]
+    >;
+    fillColor.setValue([1, 1, 1]);
+
+    const shapeAnchorProp = grp
+        .property('ADBE Vector Transform Group')
+        .property('ADBE Vector Anchor') as Property<[number, number]>;
+    shapeAnchorProp.expression =
+        'var size = content("Rectangle 1").content("Rectangle Path 1").size;\n[size[0] / 2, size[1] / 2]';
+
+    const shapePosProp = grp
+        .property('ADBE Vector Transform Group')
+        .property('ADBE Vector Position') as Property<[number, number]>;
+    shapePosProp.expression = '[thisComp.width / 2, thisComp.height / 2]';
+
+    const layerPos = bgLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Position') as Property<[number, number]>;
+    layerPos.dimensionsSeparated = true;
+
+    const layerXPos = bgLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Position_0') as Property<number>;
+    layerXPos.setValue(comp.width);
+
+    const layerYPos = bgLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Position_1') as Property<number>;
+    // layerYPos.setValue(comp.height);
+    layerYPos.setValueAtTime(0, comp.height + 450);
+    layerYPos.setValueAtTime((1 / comp.frameRate) * 15, comp.height);
+
+    layerYPos.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 88)]);
+
+    const layerAnchor = bgLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Anchor Point') as Property<[number, number]>;
+    layerAnchor.setValue([comp.width / 2, comp.height / 2]);
+
+    /* Icons */
+    const createIconGuide = (
+        index: number,
+        pos: [number, number]
+    ): ShapeLayer => {
+        const circleLayer = comp.layers.addShape();
+        circleLayer.name = `Mikra_Icon_0${index}`;
+        circleLayer.parent = bgLayer;
+        circleLayer.guideLayer = true;
+
+        const circleContents = circleLayer.property(
+            'ADBE Root Vectors Group'
+        ) as PropertyGroup;
+        const circleShapeGrp = circleContents.addProperty('ADBE Vector Group');
+        circleShapeGrp.name = 'Circle';
+
+        const circleInnerShapeGrp = circleShapeGrp.property(
+            'ADBE Vectors Group'
+        ) as PropertyGroup;
+        const circleEllipseGrp = circleInnerShapeGrp.addProperty(
+            'ADBE Vector Shape - Ellipse'
+        ) as PropertyGroup;
+        const circleEllipseSize = circleEllipseGrp.property(
+            'ADBE Vector Ellipse Size'
+        ) as Property<[number, number]>;
+        circleEllipseSize.setValue([100, 100]);
+
+        const myFill = circleInnerShapeGrp.addProperty(
+            'ADBE Vector Graphic - Fill'
+        ) as PropertyGroup;
+        const fillColor = myFill.property('ADBE Vector Fill Color') as Property<
+            [number, number, number]
+        >;
+        fillColor.setValue([1, 0, 0]);
+
+        const layerAnchor = circleLayer
+            .property('ADBE Transform Group')
+            .property('ADBE Anchor Point') as Property<[number, number]>;
+        layerAnchor.setValue([0, 0]);
+
+        const layerPos = circleLayer
+            .property('ADBE Transform Group')
+            .property('ADBE Position') as Property<[number, number]>;
+        layerPos.setValue(pos);
+
+        return circleLayer;
+    };
+
+    createIconGuide(1, [830, 292]);
+    createIconGuide(2, [370, 292]);
+    createIconGuide(3, [830, 442]);
+    createIconGuide(4, [370, 442]);
+
+    /* Text */
+    const createText = (text: string, textPos: [number, number]): TextLayer => {
+        const textLayer = comp.layers.addText();
+        textLayer.parent = bgLayer;
+
+        const srcText = textLayer
+            .property('ADBE Text Properties')
+            .property('ADBE Text Document') as Property<any>;
+
+        srcText.setValue(text);
+        const textDoc = srcText.value;
+        textDoc.font = 'NarkisBlockCondensedMF-Bold';
+        textDoc.fontSize = 90;
+        textDoc.applyFill = true;
+        textDoc.fillColor = [0, 0, 0];
+        textDoc.applyStroke = false;
+        textDoc.tracking = -31;
+        srcText.setValue(textDoc);
+
+        const posProp = textLayer
+            .property('ADBE Transform Group')
+            .property('ADBE Position') as Property<[number, number]>;
+        const anchorProp = textLayer
+            .property('ADBE Transform Group')
+            .property('ADBE Anchor Point') as Property<[number, number]>;
+
+        posProp.setValue(textPos);
+        anchorProp.setValue([80.8552, -18.3994]);
+
+        return textLayer;
+    };
+
+    createText('טקסט 1', [682.3552, 292]);
+    createText('טקסט 2', [222.1052, 292]);
+    createText('טקסט 3', [682.3552, 442]);
+    createText('טקסט 4', [222.1052, 442]);
+
+    app.endUndoGroup();
 };

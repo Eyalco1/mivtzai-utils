@@ -1678,7 +1678,119 @@ var createArrow = function () {
     app.endUndoGroup();
 };
 var createMikra = function () {
-    alert('Hi!');
+    app.beginUndoGroup('Create Mikra');
+    var comp = app.project.activeItem;
+    if (!comp || !(comp instanceof CompItem)) {
+        alert('No Composition Selected');
+        return;
+    }
+    var bgLayer = comp.layers.addShape();
+    bgLayer.name = 'Mikra_BG';
+    var xSlider = bgLayer.effect.addProperty('ADBE Slider Control');
+    xSlider.name = 'Size X';
+    var xSliderProp = xSlider.property('ADBE Slider Control-0001');
+    xSliderProp.setValue(1130);
+    var ySlider = bgLayer.effect.addProperty('ADBE Slider Control');
+    ySlider.name = 'Size Y';
+    var ySliderProp = ySlider.property('ADBE Slider Control-0001');
+    ySliderProp.setValue(360);
+    var contents = bgLayer.property('ADBE Root Vectors Group');
+    var grp = contents.addProperty('ADBE Vector Group');
+    grp.name = 'Rectangle 1';
+    var recGrp = grp.property('ADBE Vectors Group');
+    var recShape = recGrp.addProperty('ADBE Vector Shape - Rect');
+    var recSize = recShape.property('ADBE Vector Rect Size');
+    recSize.expression =
+        '[effect("Size X")("Slider"), effect("Size Y")("Slider")]';
+    var myFill = recGrp.addProperty('ADBE Vector Graphic - Fill');
+    var fillColor = myFill.property('ADBE Vector Fill Color');
+    fillColor.setValue([1, 1, 1]);
+    var shapeAnchorProp = grp
+        .property('ADBE Vector Transform Group')
+        .property('ADBE Vector Anchor');
+    shapeAnchorProp.expression =
+        'var size = content("Rectangle 1").content("Rectangle Path 1").size;\n[size[0] / 2, size[1] / 2]';
+    var shapePosProp = grp
+        .property('ADBE Vector Transform Group')
+        .property('ADBE Vector Position');
+    shapePosProp.expression = '[thisComp.width / 2, thisComp.height / 2]';
+    var layerPos = bgLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Position');
+    layerPos.dimensionsSeparated = true;
+    var layerXPos = bgLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Position_0');
+    layerXPos.setValue(comp.width);
+    var layerYPos = bgLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Position_1');
+    layerYPos.setValueAtTime(0, comp.height + 450);
+    layerYPos.setValueAtTime((1 / comp.frameRate) * 15, comp.height);
+    layerYPos.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 88)]);
+    var layerAnchor = bgLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Anchor Point');
+    layerAnchor.setValue([comp.width / 2, comp.height / 2]);
+    var createIconGuide = function (index, pos) {
+        var circleLayer = comp.layers.addShape();
+        circleLayer.name = "Mikra_Icon_0".concat(index);
+        circleLayer.parent = bgLayer;
+        circleLayer.guideLayer = true;
+        var circleContents = circleLayer.property('ADBE Root Vectors Group');
+        var circleShapeGrp = circleContents.addProperty('ADBE Vector Group');
+        circleShapeGrp.name = 'Circle';
+        var circleInnerShapeGrp = circleShapeGrp.property('ADBE Vectors Group');
+        var circleEllipseGrp = circleInnerShapeGrp.addProperty('ADBE Vector Shape - Ellipse');
+        var circleEllipseSize = circleEllipseGrp.property('ADBE Vector Ellipse Size');
+        circleEllipseSize.setValue([100, 100]);
+        var myFill = circleInnerShapeGrp.addProperty('ADBE Vector Graphic - Fill');
+        var fillColor = myFill.property('ADBE Vector Fill Color');
+        fillColor.setValue([1, 0, 0]);
+        var layerAnchor = circleLayer
+            .property('ADBE Transform Group')
+            .property('ADBE Anchor Point');
+        layerAnchor.setValue([0, 0]);
+        var layerPos = circleLayer
+            .property('ADBE Transform Group')
+            .property('ADBE Position');
+        layerPos.setValue(pos);
+        return circleLayer;
+    };
+    createIconGuide(1, [830, 292]);
+    createIconGuide(2, [370, 292]);
+    createIconGuide(3, [830, 442]);
+    createIconGuide(4, [370, 442]);
+    var createText = function (text, textPos) {
+        var textLayer = comp.layers.addText();
+        textLayer.parent = bgLayer;
+        var srcText = textLayer
+            .property('ADBE Text Properties')
+            .property('ADBE Text Document');
+        srcText.setValue(text);
+        var textDoc = srcText.value;
+        textDoc.font = 'NarkisBlockCondensedMF-Bold';
+        textDoc.fontSize = 90;
+        textDoc.applyFill = true;
+        textDoc.fillColor = [0, 0, 0];
+        textDoc.applyStroke = false;
+        textDoc.tracking = -31;
+        srcText.setValue(textDoc);
+        var posProp = textLayer
+            .property('ADBE Transform Group')
+            .property('ADBE Position');
+        var anchorProp = textLayer
+            .property('ADBE Transform Group')
+            .property('ADBE Anchor Point');
+        posProp.setValue(textPos);
+        anchorProp.setValue([80.8552, -18.3994]);
+        return textLayer;
+    };
+    createText('טקסט 1', [682.3552, comp.height - 788]);
+    createText('טקסט 2', [222.1052, comp.height - 788]);
+    createText('טקסט 3', [682.3552, comp.height - 638]);
+    createText('טקסט 4', [222.1052, comp.height - 638]);
+    app.endUndoGroup();
 };
 var setUpIcon = function (name, circleColor, iconColor) {
     var comp = app.project.activeItem;

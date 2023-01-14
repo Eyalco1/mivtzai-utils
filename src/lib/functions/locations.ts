@@ -73,7 +73,6 @@ const createLocationText = (
     textDoc.font = getFontFromLanguage(lang);
     textDoc.fontSize = fontSize;
     textDoc.applyFill = true;
-    // TODO
     textDoc.fillColor = getColorsFromMitug(mitug).pri.map(c => c / 255);
     textDoc.applyStroke = false;
     textDoc.tracking = tracking;
