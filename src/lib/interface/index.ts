@@ -89,7 +89,7 @@ const init = (thisObj: typeof globalThis) => {
                 bigRowThree.orientation =
                     (<Dimension>w.size).width > 400 ? 'row' : 'column';
             QABtnsGrp.orientation =
-                (<Dimension>w.size).width > 840 ? 'row' : 'column';
+                (<Dimension>w.size).width > 880 ? 'row' : 'column';
             // Icons
             iconCircleGrp.orientation = colorChecksGrp.orientation =
                 (<Dimension>w.size).width > 350 ? 'row' : 'column';

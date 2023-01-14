@@ -189,25 +189,26 @@ const createAnimatedMap = (
 
 const createIconCircle = (
     contents: PropertyGroup,
-    circleColorRgb: [number, number, number]
+    circleColorRgb: [number, number, number],
+    size: number
 ) => {
     const vertices: [number, number][] = [
-        [180, 0],
-        [0, 180],
-        [-180, 0],
-        [0, -180]
+        [size, 0],
+        [0, size],
+        [-size, 0],
+        [0, -size]
     ];
     const inTangents: [number, number][] = [
-        [0, -100],
-        [100, 0],
-        [0, 100],
-        [-100, 0]
+        [0, -(size / 1.8)],
+        [size / 1.8, 0],
+        [0, size / 1.8],
+        [-(size / 1.8), 0]
     ];
     const outTangents: [number, number][] = [
-        [0, 100],
-        [-100, 0],
-        [0, -100],
-        [100, 0]
+        [0, size / 1.8],
+        [-(size / 1.8), 0],
+        [0, -(size / 1.8)],
+        [size / 1.8, 0]
     ];
 
     createPathGrp(

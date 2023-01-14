@@ -1363,3 +1363,7 @@ const createArrow = (): void => {
 
     app.endUndoGroup();
 };
+
+const createMikra = (): void => {
+    alert('Hi!');
+};

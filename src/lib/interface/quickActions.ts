@@ -91,6 +91,7 @@ const createQAUI = (
         createTextOnLocation
     );
     createQABtn(rowFive, arrowBinary, 'Arrow', createArrow);
+    createQABtn(rowFive, mikraBinary, 'Mikra', createMikra);
 
     bigRowOne.orientation = bigRowTwo.orientation = 'column';
 
