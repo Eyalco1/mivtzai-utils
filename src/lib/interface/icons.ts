@@ -28,7 +28,8 @@ const createIconsUI = (
         'Earth',
         'Kaboom',
         'Medal',
-        'Salute With M16'
+        'Salute With M16',
+        'Holding M16'
     ];
     const iconDD = iconDDGrp.add('dropdownlist', undefined, iconsList);
     iconDD.preferredSize[0] = 100;

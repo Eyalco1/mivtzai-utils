@@ -18,7 +18,8 @@ type IconID =
     | 'Earth'
     | 'Kaboom'
     | 'Medal'
-    | 'Salute With M16';
+    | 'Salute With M16'
+    | 'Holding M16';
 type LocationID =
     | 'Kindergarden'
     | 'Medical Clinic'
