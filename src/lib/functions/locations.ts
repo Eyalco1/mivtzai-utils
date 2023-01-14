@@ -191,6 +191,14 @@ const createLocationIconFromId = (
                 id,
                 mitug
             );
+        case 'Pumping Station':
+            return createPumpingStationIcon(
+                iconPos,
+                iconAnchor,
+                iconScale,
+                id,
+                mitug
+            );
     }
 };
 
@@ -8432,6 +8440,249 @@ const createGovernmentBuildingLocation = (lang: Lingo, mitug: Mitug): void => {
     createLocation(args, lang, mitug);
 };
 
+const createPumpingStationIcon = (
+    iconPos: [number, number],
+    iconAnchor: [number, number],
+    iconScale: number,
+    name: LocationID,
+    mitug: Mitug
+): ShapeLayer => {
+    const iconLayer = createIconBase(name);
+
+    const contents = iconLayer.property('Contents') as PropertyGroup;
+
+    const createIconCircle = () => {
+        const vertices: [number, number][] = [
+            [43.39892578125, 0],
+            [0, 43.39892578125],
+            [-43.39892578125, 0],
+            [0, -43.39892578125]
+        ];
+        const inTangents: [number, number][] = [
+            [0, -23.9685668945312],
+            [23.9685668945312, 0],
+            [0, 23.9685668945312],
+            [-23.9685668945312, 0]
+        ];
+        const outTangents: [number, number][] = [
+            [0, 23.9685668945312],
+            [-23.9685668945312, 0],
+            [0, -23.9685668945312],
+            [23.9685668945312, 0]
+        ];
+
+        createPathGrp(
+            contents,
+            'Icon_Circle',
+            true,
+            false,
+            getColorsFromMitug(mitug).pri,
+            [0, 0, 0],
+            0,
+            vertices,
+            inTangents,
+            outTangents,
+            true,
+            [0, 0]
+        );
+    };
+
+    const createBigDrop = () => {
+        const vertices: [number, number][] = [
+            [14.536376953125, 23.3396453857422],
+            [14.5363616943359, 23.3396759033203],
+            [-14.5363616943359, 23.3396759033203],
+            [-14.536376953125, 23.3396606445312],
+            [-17.3201904296875, -2.27023315429688],
+            [0, -29.36083984375],
+            [17.3201904296875, -2.27023315429688]
+        ];
+        const inTangents: [number, number][] = [
+            [6.82470703125, -6.82470703125],
+            [0, 0],
+            [8.02821350097656, 8.02821350097656],
+            [0, 0],
+            [-5.19892883300781, 8.13168334960938],
+            [0, 0],
+            [0, 0]
+        ];
+        const outTangents: [number, number][] = [
+            [0, 0],
+            [-8.02821350097656, 8.02821350097656],
+            [0, 0],
+            [-6.82470703125, -6.82470703125],
+            [0, 0],
+            [0, 0],
+            [5.19892883300781, 8.13168334960938]
+        ];
+
+        createPathGrp(
+            contents,
+            'Big_Drop',
+            true,
+            false,
+            getColorsFromMitug(mitug).bg,
+            [0, 0, 0],
+            0,
+            vertices,
+            inTangents,
+            outTangents,
+            true,
+            [-4.259, 6.6779]
+        );
+    };
+
+    const createLittleDrop = () => {
+        const vertices: [number, number][] = [
+            [6.12968444824219, 9.31932067871094],
+            [6.12966918945312, 9.31932067871094],
+            [-6.12966918945312, 9.3193359375],
+            [-6.12966918945312, 9.31932067871094],
+            [-7.08578491210938, -1.80409240722656],
+            [0, -11.8583221435547],
+            [7.08578491210938, -1.80409240722656]
+        ];
+        const inTangents: [number, number][] = [
+            [2.98173522949219, -2.98173522949219],
+            [0, 0],
+            [3.38531494140625, 3.38531494140625],
+            [0, 0],
+            [-2.42916870117188, 3.44682312011719],
+            [0, 0],
+            [0, 0]
+        ];
+        const outTangents: [number, number][] = [
+            [0, 0],
+            [-3.38531494140625, 3.38531494140625],
+            [0, 0],
+            [-2.98173522949219, -2.98173522949219],
+            [0, 0],
+            [0, 0],
+            [2.42916870117188, 3.44682312011719]
+        ];
+
+        createPathGrp(
+            contents,
+            'Little_Drop',
+            true,
+            false,
+            getColorsFromMitug(mitug).bg,
+            [0, 0, 0],
+            0,
+            vertices,
+            inTangents,
+            outTangents,
+            true,
+            [18.1802, -19.2982]
+        );
+    };
+
+    const createDropHighlight = () => {
+        const vertices: [number, number][] = [
+            [5.55082702636719, 10.1707000732422],
+            [5.26551818847656, 10.1485748291016],
+            [-3.01443481445312, 5.94314575195312],
+            [-6.79644775390625, -8.83953857421875],
+            [-4.50321960449219, -10.0962982177734],
+            [-3.24647521972656, -7.80308532714844],
+            [-0.39981079101562, 3.32850646972656],
+            [5.83070373535156, 6.49388122558594],
+            [7.37547302246094, 8.60382080078125]
+        ];
+        const inTangents: [number, number][] = [
+            [0.89561462402344, 0],
+            [0.095703125, 0.014892578125],
+            [2.263427734375, 2.263427734375],
+            [-1.53302001953125, 5.25318908691406],
+            [-0.97958374023438, -0.28575134277344],
+            [0.28619384765625, -0.98048400878906],
+            [-2.9107666015625, -2.91030883789062],
+            [-2.37176513671875, -0.36700439453125],
+            [0.15618896484375, -1.00892639160156]
+        ];
+        const outTangents: [number, number][] = [
+            [-0.09480285644531, 0],
+            [-3.15362548828125, -0.48799133300781],
+            [-3.865966796875, -3.86506652832031],
+            [0.28619384765625, -0.98004150390625],
+            [0.98048400878906, 0.28619384765625],
+            [-1.15473937988281, 3.95579528808594],
+            [1.70365905761719, 1.70365905761719],
+            [1.00938415527344, 0.15618896484375],
+            [-0.14173889160156, 0.91368103027344]
+        ];
+
+        createPathGrp(
+            contents,
+            'Drop_Highlight',
+            true,
+            false,
+            getColorsFromMitug(mitug).pri,
+            [0, 0, 0],
+            0,
+            vertices,
+            inTangents,
+            outTangents,
+            true,
+            [-11.8231, 19.2685]
+        );
+    };
+
+    createDropHighlight();
+    createLittleDrop();
+    createBigDrop();
+    createIconCircle();
+
+    setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
+
+    return iconLayer;
+};
+
+const createPumpingStationLocation = (lang: Lingo, mitug: Mitug): void => {
+    const args: LocationArgs[] = [
+        {
+            lang: 'Hebrew',
+            text: 'תחנת שאיבה',
+            fontSize: 77.3332,
+            tracking: -19,
+            textPos: [-54.5092 + 960, -1.1351 + 540],
+            textAnchor: [117.1903, -20.4437],
+            bgSize: [372, 110],
+            iconPos: [1083, 539],
+            iconAnchor: [0, 0],
+            iconScale: 100,
+            iconId: 'Pumping Station'
+        },
+        {
+            lang: 'English',
+            text: 'Pumping Station',
+            fontSize: 74.9495,
+            tracking: -20,
+            textPos: [1008.1195, 548.5892],
+            textAnchor: [212.3694, -21.0608],
+            bgSize: [556, 106],
+            iconPos: [742, 539],
+            iconAnchor: [0, 0],
+            iconScale: 97,
+            iconId: 'Pumping Station'
+        },
+        {
+            lang: 'Arabic',
+            text: 'محطة ضخ',
+            fontSize: 64,
+            tracking: -19,
+            textPos: [915.8832, 542.875],
+            textAnchor: [144.3833, -13.875],
+            bgSize: [404, 91],
+            iconPos: [1110.625, 540],
+            iconAnchor: [0, 0],
+            iconScale: 83,
+            iconId: 'Pumping Station'
+        }
+    ];
+    createLocation(args, lang, mitug);
+};
+
 // ====================================
 
 const createLocationFromId = (
@@ -8468,12 +8719,19 @@ const createLocationFromId = (
             break;
         case 'Diplomatic Building':
             createDiplomaticBuildingLocation(lang, mitug);
+            break;
         case 'Gas Station':
             createGasStationLocation(lang, mitug);
+            break;
         case 'Government Building':
             createGovernmentBuildingLocation(lang, mitug);
+            break;
         case 'Factory':
             alert('...');
+            break;
+        case 'Pumping Station':
+            createPumpingStationLocation(lang, mitug);
+            break;
     }
 
     app.endUndoGroup();

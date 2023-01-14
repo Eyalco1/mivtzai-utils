@@ -29,7 +29,8 @@ type LocationID =
     | 'Diplomatic Building'
     | 'Gas Station'
     | 'Government Building'
-    | 'Factory';
+    | 'Factory'
+    | 'Pumping Station';
 type TextureID =
     | 'Paper Dark'
     | 'Paper Medium'

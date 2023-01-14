@@ -28,7 +28,8 @@ const createLocationsUI = (
         'Diplomatic Building',
         'Gas Station',
         'Government Building',
-        'Factory'
+        'Factory',
+        'Pumping Station'
     ];
     const locationsDD = locationsDDGrp.add(
         'dropdownlist',
