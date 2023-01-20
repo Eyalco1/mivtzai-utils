@@ -715,9 +715,17 @@ const createAnimatedFrame = (): void => {
 };
 
 const openProjectInFinder = (): void => {
+    const containsHebrew = (str: string) => /[\u0590-\u05FF]/.test(str);
+
     const writeSelectDialogToPrefs = (): void => {
         const selFolder = Folder.selectDialog('Select Project Folder');
         if (!selFolder) return;
+        if (containsHebrew(selFolder.fsName)) {
+            alert(
+                "Sorry, can't choose this folder beacuse it contains Hebrew characters"
+            );
+            return;
+        }
         writePrefsToMemory({ projectFolderPath: selFolder.fsName });
     };
 

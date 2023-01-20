@@ -1308,10 +1308,15 @@ var createAnimatedFrame = function () {
     app.endUndoGroup();
 };
 var openProjectInFinder = function () {
+    var containsHebrew = function (str) { return /[\u0590-\u05FF]/.test(str); };
     var writeSelectDialogToPrefs = function () {
         var selFolder = Folder.selectDialog('Select Project Folder');
         if (!selFolder)
             return;
+        if (containsHebrew(selFolder.fsName)) {
+            alert("Sorry, can't choose this folder beacuse it contains Hebrew characters");
+            return;
+        }
         writePrefsToMemory({ projectFolderPath: selFolder.fsName });
     };
     var keyState = ScriptUI.environment.keyboardState;
