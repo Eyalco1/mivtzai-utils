@@ -33,7 +33,8 @@ const createIconsUI = (
         'Shooting M16',
         'Rocket',
         'Rocket Launcher',
-        'Mask'
+        'Mask',
+        'Shoe'
     ];
     const iconDD = iconDDGrp.add('dropdownlist', undefined, iconsList);
     iconDD.preferredSize[0] = 100;
