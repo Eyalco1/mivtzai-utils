@@ -6475,6 +6475,129 @@ var createRocketIcon = function (circleColor, iconColor, hasCircle, scale) {
     createRocket();
     iconAftermath(hasCircle, contents, circleColorRgb, scale, layer, 200);
 };
+var createRocketLauncherIcon = function (circleColor, iconColor, hasCircle, scale) {
+    var _a = setUpIcon('Rocket Launcher', circleColor, iconColor), layer = _a.layer, contents = _a.contents, circleColorRgb = _a.circleColorRgb, iconColorRgb = _a.iconColorRgb;
+    var createRocket = function () {
+        var vertices = [
+            [-70.6373901367188, 50.3896942138672],
+            [-55.3504486083984, 33.3243713378906],
+            [72.1864776611328, -22.0354614257812],
+            [107.559906005859, -57.1524810791016],
+            [57.7544097900391, -55.2878723144531],
+            [-69.7796478271484, 0.07196044921875],
+            [-92.691162109375, -0.41835021972656],
+            [-107.559906005859, 5.58389282226562],
+            [-89.8646850585938, 19.9709777832031],
+            [-97.8370971679688, 27.8487854003906],
+            [-96.9118499755859, 30.0176696777344],
+            [-95.7527160644531, 32.6878356933594],
+            [-94.7980499267578, 34.8480834960938],
+            [-83.5979766845703, 34.4001617431641],
+            [-85.1724395751953, 57.1524810791016]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Rocket', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [0.0056, -42.3866]);
+    };
+    var createLauncher = function () {
+        var vertices = [
+            [-91.5698547363281, 25.0742797851562],
+            [-91.4781188964844, 9.99700927734375],
+            [-87.5562438964844, 0.5897216796875],
+            [-75.8984069824219, -5.76177978515625],
+            [-77.6433410644531, 1.654296875],
+            [-63.2323303222656, -1.70001220703125],
+            [-39.2351989746094, -22.4977416992188],
+            [-38.8774719238281, -22.0803833007812],
+            [-37.4565124511719, -22.9257202148438],
+            [80.7858581542969, -76.11376953125],
+            [91.3073425292969, -71.711669921875],
+            [80.5113220214844, -65.165771484375],
+            [-0.24533081054688, -23.4327392578125],
+            [-0.24795532226562, -23.4321899414062],
+            [-18.8473205566406, 4.2061767578125],
+            [16.0020446777344, 76.7611083984375],
+            [-87.1478576660156, 76.7611083984375],
+            [-91.5698547363281, 26.2882690429688]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [-4.966796875, 5.486572265625],
+            [-4.0162353515625, 0.25640869140625],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [-0.5145263671875, 0.2308349609375],
+            [0, 0],
+            [-1.8870849609375, -4.19647216796875],
+            [3.9248046875, -1.76336669921875],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, -12.5452117919922],
+            [0, 0],
+            [4.29974365234375, -4.75421142578125],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0.43353271484375, -0.32818603515625],
+            [0, 0],
+            [3.9237060546875, -1.7659912109375],
+            [1.8856201171875, 4.19384765625],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Launcher', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [-15.9957, 22.7779]);
+    };
+    createLauncher();
+    createRocket();
+    iconAftermath(hasCircle, contents, circleColorRgb, scale, layer);
+};
 var createIconFromId = function (id, circleColor, iconColor, hasCircle, scale) {
     app.beginUndoGroup("Create Icon: ".concat(id));
     var comp = app.project.activeItem;
@@ -6527,6 +6650,9 @@ var createIconFromId = function (id, circleColor, iconColor, hasCircle, scale) {
             break;
         case 'Rocket':
             createRocketIcon(circleColor, iconColor, hasCircle, scale);
+            break;
+        case 'Rocket Launcher':
+            createRocketLauncherIcon(circleColor, iconColor, hasCircle, scale);
             break;
     }
     app.endUndoGroup();
@@ -13466,7 +13592,8 @@ var createIconsUI = function (tpanel) {
         'Salute With M16',
         'Holding M16',
         'Shooting M16',
-        'Rocket'
+        'Rocket',
+        'Rocket Launcher'
     ];
     var iconDD = iconDDGrp.add('dropdownlist', undefined, iconsList);
     iconDD.preferredSize[0] = 100;

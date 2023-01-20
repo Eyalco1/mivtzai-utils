@@ -21,7 +21,8 @@ type IconID =
     | 'Salute With M16'
     | 'Holding M16'
     | 'Shooting M16'
-    | 'Rocket';
+    | 'Rocket'
+    | 'Rocket Launcher';
 type LocationID =
     | 'Kindergarden'
     | 'Medical Clinic'
