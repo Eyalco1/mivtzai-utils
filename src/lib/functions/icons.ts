@@ -32,12 +32,12 @@ const iconAftermath = (
 
 // =======================
 
-const createExplosionIcon = (
-    circleColor: ColorDropdown,
-    iconColor: ColorDropdown,
-    hasCircle: boolean,
-    scale: boolean
-): void => {
+const createExplosionIcon: CreateIconFn = (
+    circleColor,
+    iconColor,
+    hasCircle,
+    scale
+) => {
     const { layer, contents, circleColorRgb, iconColorRgb } = setUpIcon(
         'Boom',
         circleColor,
@@ -325,12 +325,12 @@ const createExplosionIcon = (
     iconAftermath(hasCircle, contents, circleColorRgb, scale, layer);
 };
 
-const createTunnelIcon = (
-    circleColor: ColorDropdown,
-    iconColor: ColorDropdown,
-    hasCircle: boolean,
-    scale: boolean
-): void => {
+const createTunnelIcon: CreateIconFn = (
+    circleColor,
+    iconColor,
+    hasCircle,
+    scale
+) => {
     const { layer, contents, circleColorRgb, iconColorRgb } = setUpIcon(
         'Tunnel',
         circleColor,
@@ -440,12 +440,12 @@ const createTunnelIcon = (
     iconAftermath(hasCircle, contents, circleColorRgb, scale, layer);
 };
 
-const createTerrorTunnelIcon = (
-    circleColor: ColorDropdown,
-    iconColor: ColorDropdown,
-    hasCircle: boolean,
-    scale: boolean
-): void => {
+const createTerrorTunnelIcon: CreateIconFn = (
+    circleColor,
+    iconColor,
+    hasCircle,
+    scale
+) => {
     const { layer, contents, circleColorRgb, iconColorRgb } = setUpIcon(
         'Terror_Tunnel',
         circleColor,
@@ -855,12 +855,12 @@ const createTerrorTunnelIcon = (
     iconAftermath(hasCircle, contents, circleColorRgb, scale, layer);
 };
 
-const createTargetIcon = (
-    circleColor: ColorDropdown,
-    iconColor: ColorDropdown,
-    hasCircle: boolean,
-    scale: boolean
-): void => {
+const createTargetIcon: CreateIconFn = (
+    circleColor,
+    iconColor,
+    hasCircle,
+    scale
+) => {
     const { layer, contents, circleColorRgb, iconColorRgb } = setUpIcon(
         'Target',
         circleColor,
@@ -1092,12 +1092,12 @@ const createTargetIcon = (
     iconAftermath(hasCircle, contents, circleColorRgb, scale, layer);
 };
 
-const createSniperTargetIcon = (
-    circleColor: ColorDropdown,
-    iconColor: ColorDropdown,
-    hasCircle: boolean,
-    scale: boolean
-): void => {
+const createSniperTargetIcon: CreateIconFn = (
+    circleColor,
+    iconColor,
+    hasCircle,
+    scale
+) => {
     const { layer, contents, circleColorRgb, iconColorRgb } = setUpIcon(
         'Sniper_Target',
         circleColor,
@@ -1728,12 +1728,12 @@ const createSniperTargetIcon = (
     iconAftermath(hasCircle, contents, circleColorRgb, scale, layer);
 };
 
-const createHouseBombingIcon = (
-    circleColor: ColorDropdown,
-    iconColor: ColorDropdown,
-    hasCircle: boolean,
-    scale: boolean
-): void => {
+const createHouseBombingIcon: CreateIconFn = (
+    circleColor,
+    iconColor,
+    hasCircle,
+    scale
+) => {
     const { layer, contents, circleColorRgb, iconColorRgb } = setUpIcon(
         'House_Bombing',
         circleColor,
@@ -2128,12 +2128,12 @@ const createHouseBombingIcon = (
     iconAftermath(hasCircle, contents, circleColorRgb, scale, layer);
 };
 
-const createFireIcon = (
-    circleColor: ColorDropdown,
-    iconColor: ColorDropdown,
-    hasCircle: boolean,
-    scale: boolean
-): void => {
+const createFireIcon: CreateIconFn = (
+    circleColor,
+    iconColor,
+    hasCircle,
+    scale
+) => {
     const { layer, contents, circleColorRgb, iconColorRgb } = setUpIcon(
         'Fire',
         circleColor,
@@ -2264,12 +2264,12 @@ const createFireIcon = (
     iconAftermath(hasCircle, contents, circleColorRgb, scale, layer);
 };
 
-const createMoneyIcon = (
-    circleColor: ColorDropdown,
-    iconColor: ColorDropdown,
-    hasCircle: boolean,
-    scale: boolean
-): void => {
+const createMoneyIcon: CreateIconFn = (
+    circleColor,
+    iconColor,
+    hasCircle,
+    scale
+) => {
     const { layer, contents, circleColorRgb, iconColorRgb } = setUpIcon(
         'Money',
         circleColor,
@@ -2646,12 +2646,12 @@ const createMoneyIcon = (
     iconAftermath(hasCircle, contents, circleColorRgb, scale, layer);
 };
 
-const createEarthIcon = (
-    circleColor: ColorDropdown,
-    iconColor: ColorDropdown,
-    hasCircle: boolean,
-    scale: boolean
-): void => {
+const createEarthIcon: CreateIconFn = (
+    circleColor,
+    iconColor,
+    hasCircle,
+    scale
+) => {
     const { layer, contents, circleColorRgb, iconColorRgb } = setUpIcon(
         'Earth',
         circleColor,
@@ -3144,12 +3144,12 @@ const createEarthIcon = (
     iconAftermath(hasCircle, contents, circleColorRgb, scale, layer);
 };
 
-const createKaboomIcon = (
-    circleColor: ColorDropdown,
-    iconColor: ColorDropdown,
-    hasCircle: boolean,
-    scale: boolean
-): void => {
+const createKaboomIcon: CreateIconFn = (
+    circleColor,
+    iconColor,
+    hasCircle,
+    scale
+) => {
     const { layer, contents, circleColorRgb, iconColorRgb } = setUpIcon(
         'Kaboom',
         circleColor,
@@ -4371,12 +4371,12 @@ const createKaboomIcon = (
     iconAftermath(hasCircle, contents, circleColorRgb, scale, layer);
 };
 
-const createMedalIcon = (
-    circleColor: ColorDropdown,
-    iconColor: ColorDropdown,
-    hasCircle: boolean,
-    scale: boolean
-): void => {
+const createMedalIcon: CreateIconFn = (
+    circleColor,
+    iconColor,
+    hasCircle,
+    scale
+) => {
     const { layer, contents, circleColorRgb, iconColorRgb } = setUpIcon(
         'Medal',
         circleColor,
@@ -4926,12 +4926,12 @@ const createMedalIcon = (
     iconAftermath(hasCircle, contents, circleColorRgb, scale, layer);
 };
 
-const createSaluteWithM16Icon = (
-    circleColor: ColorDropdown,
-    iconColor: ColorDropdown,
-    hasCircle: boolean,
-    scale: boolean
-): void => {
+const createSaluteWithM16Icon: CreateIconFn = (
+    circleColor,
+    iconColor,
+    hasCircle,
+    scale
+) => {
     const { layer, contents, circleColorRgb, iconColorRgb } = setUpIcon(
         'Salute With M16',
         circleColor,
@@ -5289,12 +5289,12 @@ const createSaluteWithM16Icon = (
     iconAftermath(hasCircle, contents, circleColorRgb, scale, layer, 250);
 };
 
-const createHoldingM16Icon = (
-    circleColor: ColorDropdown,
-    iconColor: ColorDropdown,
-    hasCircle: boolean,
-    scale: boolean
-): void => {
+const createHoldingM16Icon: CreateIconFn = (
+    circleColor,
+    iconColor,
+    hasCircle,
+    scale
+) => {
     const { layer, contents, circleColorRgb, iconColorRgb } = setUpIcon(
         'Holding M16',
         circleColor,
@@ -5647,12 +5647,12 @@ const createHoldingM16Icon = (
     iconAftermath(hasCircle, contents, circleColorRgb, scale, layer, 200);
 };
 
-const createShootingM16Icon = (
-    circleColor: ColorDropdown,
-    iconColor: ColorDropdown,
-    hasCircle: boolean,
-    scale: boolean
-): void => {
+const createShootingM16Icon: CreateIconFn = (
+    circleColor,
+    iconColor,
+    hasCircle,
+    scale
+) => {
     const { layer, contents, circleColorRgb, iconColorRgb } = setUpIcon(
         'Shooting M16',
         circleColor,
@@ -6005,12 +6005,12 @@ const createShootingM16Icon = (
     iconAftermath(hasCircle, contents, circleColorRgb, scale, layer, 250);
 };
 
-const createRocketIcon = (
-    circleColor: ColorDropdown,
-    iconColor: ColorDropdown,
-    hasCircle: boolean,
-    scale: boolean
-): void => {
+const createRocketIcon: CreateIconFn = (
+    circleColor,
+    iconColor,
+    hasCircle,
+    scale
+) => {
     const { layer, contents, circleColorRgb, iconColorRgb } = setUpIcon(
         'Rocket',
         circleColor,
@@ -6090,12 +6090,12 @@ const createRocketIcon = (
     iconAftermath(hasCircle, contents, circleColorRgb, scale, layer, 200);
 };
 
-const createRocketLauncherIcon = (
-    circleColor: ColorDropdown,
-    iconColor: ColorDropdown,
-    hasCircle: boolean,
-    scale: boolean
-): void => {
+const createRocketLauncherIcon: CreateIconFn = (
+    circleColor,
+    iconColor,
+    hasCircle,
+    scale
+) => {
     const { layer, contents, circleColorRgb, iconColorRgb } = setUpIcon(
         'Rocket Launcher',
         circleColor,

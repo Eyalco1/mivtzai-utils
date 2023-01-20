@@ -71,3 +71,10 @@ interface Prefs {
 }
 
 type GoogleMapsLocation = 'Israel' | 'Gaza';
+
+type CreateIconFn = (
+    circleColor: ColorDropdown,
+    iconColor: ColorDropdown,
+    hasCircle: boolean,
+    scale: boolean
+) => void;
