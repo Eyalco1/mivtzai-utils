@@ -30,7 +30,8 @@ const createIconsUI = (
         'Medal',
         'Salute With M16',
         'Holding M16',
-        'Shooting M16'
+        'Shooting M16',
+        'Rocket'
     ];
     const iconDD = iconDDGrp.add('dropdownlist', undefined, iconsList);
     iconDD.preferredSize[0] = 100;

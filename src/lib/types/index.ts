@@ -20,7 +20,8 @@ type IconID =
     | 'Medal'
     | 'Salute With M16'
     | 'Holding M16'
-    | 'Shooting M16';
+    | 'Shooting M16'
+    | 'Rocket';
 type LocationID =
     | 'Kindergarden'
     | 'Medical Clinic'

@@ -6005,6 +6005,91 @@ const createShootingM16Icon = (
     iconAftermath(hasCircle, contents, circleColorRgb, scale, layer, 250);
 };
 
+const createRocketIcon = (
+    circleColor: ColorDropdown,
+    iconColor: ColorDropdown,
+    hasCircle: boolean,
+    scale: boolean
+): void => {
+    const { layer, contents, circleColorRgb, iconColorRgb } = setUpIcon(
+        'Rocket',
+        circleColor,
+        iconColor
+    );
+
+    const createRocket = () => {
+        const vertices: [number, number][] = [
+            [-43.5300140380859, 119.984497070312],
+            [-34.4872131347656, 87.4645690917969],
+            [97.7692565917969, -68.9322052001953],
+            [121.544967651367, -138.406066894531],
+            [56.9946136474609, -103.416275024414],
+            [-75.2580413818359, 52.9786071777344],
+            [-105.83464050293, 67.2960357666016],
+            [-121.544967651367, 84.930419921875],
+            [-88.7843017578125, 92.3727416992188],
+            [-94.1649475097656, 107.981201171875],
+            [-91.528564453125, 110.241882324219],
+            [-88.2521362304688, 113.009826660156],
+            [-85.5840911865234, 115.240631103516],
+            [-71.0854339599609, 107.333633422852],
+            [-58.3045959472656, 138.406066894531]
+        ];
+        const inTangents: [number, number][] = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        const outTangents: [number, number][] = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+
+        createPathGrp(
+            contents,
+            'Rocket',
+            true,
+            false,
+            iconColorRgb,
+            iconColorRgb,
+            0,
+            vertices,
+            inTangents,
+            outTangents,
+            true,
+            [-20, 0]
+        );
+    };
+
+    createRocket();
+    iconAftermath(hasCircle, contents, circleColorRgb, scale, layer, 200);
+};
+
 // ====================================
 
 const createIconFromId = (
@@ -6064,6 +6149,9 @@ const createIconFromId = (
             break;
         case 'Shooting M16':
             createShootingM16Icon(circleColor, iconColor, hasCircle, scale);
+            break;
+        case 'Rocket':
+            createRocketIcon(circleColor, iconColor, hasCircle, scale);
             break;
     }
 
