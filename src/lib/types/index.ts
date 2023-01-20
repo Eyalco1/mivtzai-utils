@@ -78,3 +78,11 @@ type CreateIconFn = (
     hasCircle: boolean,
     scale: boolean
 ) => void;
+
+type CreateLocationIconFn = (
+    iconPos: [number, number],
+    iconAnchor: [number, number],
+    iconScale: number,
+    name: LocationID,
+    mitug: Mitug
+) => ShapeLayer;

@@ -254,13 +254,13 @@ const createLocation = (
 
 // ==========================
 
-const createKindergardenIcon = (
-    iconPos: [number, number],
-    iconAnchor: [number, number],
-    iconScale: number,
-    name: LocationID,
-    mitug: Mitug
-): ShapeLayer => {
+const createKindergardenIcon: CreateLocationIconFn = (
+    iconPos,
+    iconAnchor,
+    iconScale,
+    name,
+    mitug
+) => {
     const iconLayer = createIconBase(name);
 
     const contents = iconLayer.property('Contents') as PropertyGroup;
@@ -908,13 +908,13 @@ const createKindergardenLocation = (lang: Lingo, mitug: Mitug): void => {
     createLocation(args, lang, mitug);
 };
 
-const createMedicalIcon = (
-    iconPos: [number, number],
-    iconAnchor: [number, number],
-    iconScale: number,
-    name: LocationID,
-    mitug: Mitug
-): ShapeLayer => {
+const createMedicalIcon: CreateLocationIconFn = (
+    iconPos,
+    iconAnchor,
+    iconScale,
+    name,
+    mitug
+) => {
     const iconLayer = createIconBase(name);
 
     const contents = iconLayer.property('Contents') as PropertyGroup;
@@ -1070,13 +1070,13 @@ const createMedicalLocation = (lang: Lingo, mitug: Mitug): void => {
     createLocation(args, lang, mitug);
 };
 
-const createSportsIcon = (
-    iconPos: [number, number],
-    iconAnchor: [number, number],
-    iconScale: number,
-    name: LocationID,
-    mitug: Mitug
-): ShapeLayer => {
+const createSportsIcon: CreateLocationIconFn = (
+    iconPos,
+    iconAnchor,
+    iconScale,
+    name,
+    mitug
+) => {
     const iconLayer = createIconBase(name);
 
     const contents = iconLayer.property('Contents') as PropertyGroup;
@@ -1741,13 +1741,13 @@ const createSportsLocation = (lang: Lingo, mitug: Mitug): void => {
     createLocation(args, lang, mitug);
 };
 
-const createUniversityIcon = (
-    iconPos: [number, number],
-    iconAnchor: [number, number],
-    iconScale: number,
-    name: LocationID,
-    mitug: Mitug
-): ShapeLayer => {
+const createUniversityIcon: CreateLocationIconFn = (
+    iconPos,
+    iconAnchor,
+    iconScale,
+    name,
+    mitug
+) => {
     const iconLayer = createIconBase(name);
 
     const contents = iconLayer.property('Contents') as PropertyGroup;
@@ -1995,13 +1995,13 @@ const createUniversityLocation = (lang: Lingo, mitug: Mitug): void => {
     createLocation(args, lang, mitug);
 };
 
-const createMosqueIcon = (
-    iconPos: [number, number],
-    iconAnchor: [number, number],
-    iconScale: number,
-    name: LocationID,
-    mitug: Mitug
-): ShapeLayer => {
+const createMosqueIcon: CreateLocationIconFn = (
+    iconPos,
+    iconAnchor,
+    iconScale,
+    name,
+    mitug
+) => {
     const iconLayer = createIconBase(name);
 
     const contents = iconLayer.property('Contents') as PropertyGroup;
@@ -2557,13 +2557,13 @@ const createMosqueLocation = (lang: Lingo, mitug: Mitug): void => {
     createLocation(args, lang, mitug);
 };
 
-const createUNBuildingIcon = (
-    iconPos: [number, number],
-    iconAnchor: [number, number],
-    iconScale: number,
-    name: LocationID,
-    mitug: Mitug
-): ShapeLayer => {
+const createUNBuildingIcon: CreateLocationIconFn = (
+    iconPos,
+    iconAnchor,
+    iconScale,
+    name,
+    mitug
+) => {
     const iconLayer = createIconBase(name);
 
     const contents = iconLayer.property('Contents') as PropertyGroup;
@@ -6814,13 +6814,13 @@ const createUNBuildingLocation = (lang: Lingo, mitug: Mitug): void => {
     createLocation(args, lang, mitug);
 };
 
-const createDiplomaticBuildingIcon = (
-    iconPos: [number, number],
-    iconAnchor: [number, number],
-    iconScale: number,
-    name: LocationID,
-    mitug: Mitug
-): ShapeLayer => {
+const createDiplomaticBuildingIcon: CreateLocationIconFn = (
+    iconPos,
+    iconAnchor,
+    iconScale,
+    name,
+    mitug
+) => {
     const iconLayer = createIconBase(name);
 
     const contents = iconLayer.property('Contents') as PropertyGroup;
@@ -7527,13 +7527,13 @@ const createDiplomaticBuildingLocation = (lang: Lingo, mitug: Mitug): void => {
     createLocation(args, lang, mitug);
 };
 
-const createGasStationIcon = (
-    iconPos: [number, number],
-    iconAnchor: [number, number],
-    iconScale: number,
-    name: LocationID,
-    mitug: Mitug
-): ShapeLayer => {
+const createGasStationIcon: CreateLocationIconFn = (
+    iconPos,
+    iconAnchor,
+    iconScale,
+    name,
+    mitug
+) => {
     const iconLayer = createIconBase(name);
 
     const contents = iconLayer.property('Contents') as PropertyGroup;
@@ -7784,13 +7784,13 @@ const createGasStationLocation = (lang: Lingo, mitug: Mitug): void => {
     createLocation(args, lang, mitug);
 };
 
-const createGovernmentBuildingIcon = (
-    iconPos: [number, number],
-    iconAnchor: [number, number],
-    iconScale: number,
-    name: LocationID,
-    mitug: Mitug
-): ShapeLayer => {
+const createGovernmentBuildingIcon: CreateLocationIconFn = (
+    iconPos,
+    iconAnchor,
+    iconScale,
+    name,
+    mitug
+) => {
     const iconLayer = createIconBase(name);
 
     const contents = iconLayer.property('Contents') as PropertyGroup;
@@ -8440,13 +8440,13 @@ const createGovernmentBuildingLocation = (lang: Lingo, mitug: Mitug): void => {
     createLocation(args, lang, mitug);
 };
 
-const createPumpingStationIcon = (
-    iconPos: [number, number],
-    iconAnchor: [number, number],
-    iconScale: number,
-    name: LocationID,
-    mitug: Mitug
-): ShapeLayer => {
+const createPumpingStationIcon: CreateLocationIconFn = (
+    iconPos,
+    iconAnchor,
+    iconScale,
+    name,
+    mitug
+) => {
     const iconLayer = createIconBase(name);
 
     const contents = iconLayer.property('Contents') as PropertyGroup;
