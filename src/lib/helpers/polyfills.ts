@@ -10,3 +10,6 @@ Array.prototype.some||(Array.prototype.some=function(fun,thisArg){"use strict";i
 
 Array.prototype.find=Array.prototype.find||function(callback){if(null===this)throw new TypeError("Array.prototype.find called on null or undefined");if("function"!=typeof callback)throw new TypeError("callback must be a function");for(var list=Object(this),length=list.length>>>0,thisArg=arguments[1],i=0;i<length;i++){var element=list[i];if(callback.call(thisArg,element,i,list))return element}};
 
+Array.prototype.indexOf||(Array.prototype.indexOf=function(t){"use strict";if(this==null)throw TypeError();var r=Object(this),n=0|r.length;if(0===n)return -1;var e=0;for(arguments.length>1&&(e=Number(arguments[1]),e==e&&isFinite(e)?0!==e&&(e=Math.floor(e))<0&&(e=Math.max(n-Math.abs(e),0)):e=0);e<n;e++)if(e in r&&r[e]===t)return e;return -1});
+
+Array.prototype.includes||(Array.prototype.includes=function(t){return!!~this.indexOf(t)});

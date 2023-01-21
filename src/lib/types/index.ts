@@ -6,6 +6,10 @@ type Lingo = 'Hebrew' | 'Arabic' | 'English';
 
 type Mitug = 'Pakmaz' | 'Gaza' | 'Lebanon';
 
+type CaspionFont = 'Narkis' | 'Almoni' | 'Trade Gothic' | 'Droid' | 'Janna';
+
+type TextAnimation = 'Y Position' | 'X Position' | 'Scale' | 'Opacity';
+
 type IconID =
     | 'Boom'
     | 'Tunnel'

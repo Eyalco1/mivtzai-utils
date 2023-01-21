@@ -237,6 +237,20 @@ const getFontFromLanguage = (lang: Lingo) => {
     }
 };
 
+const getFontFromName = (name: CaspionFont) => {
+    if (name === 'Trade Gothic') {
+        return 'TradeGothicLT-BoldCondTwenty';
+    } else if (name === 'Narkis') {
+        return 'NarkisBlockCondensedMF-Bold';
+    } else if (name === 'Almoni') {
+        return 'AlmoniNeueDL4.0AAA-Bold';
+    } else if (name === 'Droid') {
+        return 'DroidArabicKufi-Bold';
+    } else if (name === 'Janna') {
+        return 'JannaLT-Bold';
+    }
+};
+
 const importGoogleMaps = (location: GoogleMapsLocation): void => {
     const keyState = ScriptUI.environment.keyboardState;
     const modKey = getOS() === 'Win' ? keyState.ctrlKey : keyState.metaKey;
@@ -391,8 +405,12 @@ const rgbToHex = (r: number, g: number, b: number): string => {
 };
 
 const effectExists = (matchName: string): boolean => {
-    const fx = app.effects;
-    const matches = fx.map(f => f.matchName);
+    var fx = app.effects;
+    var matches = fx.map(function (f) {
+        return f.matchName;
+    });
 
-    return matches.includes(matchName);
+    alert(matches.toString());
+    alert(matches.indexOf('Pseudo/textevo').toString());
+    return matches.indexOf('Pseudo/textevo') > 0;
 };

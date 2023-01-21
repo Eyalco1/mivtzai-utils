@@ -31,7 +31,13 @@ const createTextUI = (
 
     fontDDGrp.add('statictext', undefined, 'Font:');
 
-    const fontDDList = ['Narkis', 'Almoni', '-', 'Trade Gothic', '-', 'Janna'];
+    const fontDDList: CaspionFont[] = [
+        'Narkis',
+        'Almoni',
+        'Trade Gothic',
+        'Droid',
+        'Janna'
+    ];
     const fontDD = fontDDGrp.add('dropdownlist', undefined, fontDDList);
     fontDD.selection = 0;
 
@@ -42,7 +48,12 @@ const createTextUI = (
 
     animationDDGrp.add('statictext', undefined, 'Animation:');
 
-    const animationDDList = ['Y Position', 'X Position', 'Opacity', 'Scale'];
+    const animationDDList: TextAnimation[] = [
+        'Y Position',
+        'X Position',
+        'Scale',
+        'Opacity'
+    ];
     const animationDD = animationDDGrp.add(
         'dropdownlist',
         undefined,
@@ -59,6 +70,17 @@ const createTextUI = (
     const maskCheck = checksGrp.add('checkbox', undefined, 'Mask');
 
     const createBtn = textTab.add('button', undefined, 'Create Text');
+
+    createBtn.onClick = () => {
+        const text = mainTextEdit.text;
+        const font: CaspionFont = fontDD.selection.toString() as CaspionFont;
+        const animation: TextAnimation =
+            animationDD.selection.toString() as TextAnimation;
+        const addTextEvo = addTextEvoCheck.value;
+        const addMask = maskCheck.value;
+
+        createText(text, font, animation, addTextEvo, addMask);
+    };
 
     return { textTab, optionsGrp, textDropdownsGrp };
 };
