@@ -7679,6 +7679,8 @@ var createLocationIconFromId = function (id, iconPos, iconAnchor, iconScale, mit
             return createGovernmentBuildingIcon(iconPos, iconAnchor, iconScale, id, mitug);
         case 'Pumping Station':
             return createPumpingStationIcon(iconPos, iconAnchor, iconScale, id, mitug);
+        case 'Police':
+            return createPoliceIcon(iconPos, iconAnchor, iconScale, id, mitug);
     }
 };
 var createLocation = function (argsArr, inputLang, mitug) {
@@ -14169,6 +14171,222 @@ var createPumpingStationLocation = function (lang, mitug) {
     ];
     createLocation(args, lang, mitug);
 };
+var createPoliceIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
+    var iconLayer = createIconBase(name);
+    var contents = iconLayer.property('Contents');
+    var createIconCircle = function () {
+        var vertices = [
+            [43.39892578125, 0],
+            [0, 43.39892578125],
+            [-43.39892578125, 0],
+            [0, -43.39892578125]
+        ];
+        var inTangents = [
+            [0, -23.9685668945312],
+            [23.9685668945312, 0],
+            [0, 23.9685668945312],
+            [-23.9685668945312, 0]
+        ];
+        var outTangents = [
+            [0, 23.9685668945312],
+            [-23.9685668945312, 0],
+            [0, -23.9685668945312],
+            [23.9685668945312, 0]
+        ];
+        createPathGrp(contents, 'Icon_Circle', true, false, getColorsFromMitug(mitug).pri, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [0, 0]);
+    };
+    var createBadgeFrameTop = function () {
+        var vertices = [
+            [21.9000244140625, -8.67498779296875],
+            [17.27001953125, -10.4650268554688],
+            [10.260009765625, -10.114990234375],
+            [-0.010009765625, -14.1649780273438],
+            [-10.260009765625, -10.10498046875],
+            [-17.27001953125, -10.4650268554688],
+            [-21.9000244140625, -8.66497802734375],
+            [-21.0999755859375, 14.1649780273438],
+            [-15.6099853515625, 14.1649780273438],
+            [-15.489990234375, 13.614990234375],
+            [-15.030029296875, -4.9949951171875],
+            [-14.530029296875, -4.96502685546875],
+            [-10.260009765625, -4.7550048828125],
+            [0, -7.29498291015625],
+            [10.260009765625, -4.7550048828125],
+            [14.5399780273438, -4.96502685546875],
+            [15.030029296875, -5.0050048828125],
+            [15.5, 13.635009765625],
+            [15.6300048828125, 14.1649780273438],
+            [21.1099853515625, 14.1649780273438]
+        ];
+        var inTangents = [
+            [-4.35003662109375, 10.2999877929688],
+            [2.05999755859375, 0],
+            [2.52996826171875, 0],
+            [3.010009765625, 3.3499755859375],
+            [3.5400390625, 0],
+            [2.0400390625, 0],
+            [0.9200439453125, -1.44000244140625],
+            [1.22998046875, -5.7099609375],
+            [0, 0],
+            [-0.0400390625, 0.19000244140625],
+            [1.99005126953125, 7.92999267578125],
+            [-0.16998291015625, -0.00994873046875],
+            [-1.52996826171875, 0],
+            [-4.260009765625, 2.53997802734375],
+            [-1.69000244140625, 0],
+            [-1.28997802734375, 0.10003662109375],
+            [-0.1600341796875, 0.010009765625],
+            [-1.07000732421875, -4.6400146484375],
+            [-0.04998779296875, -0.16998291015625],
+            [0, 0]
+        ];
+        var outTangents = [
+            [-0.9200439453125, -1.42999267578125],
+            [-2.0400390625, 0],
+            [-3.5400390625, 0],
+            [-3, 3.3599853515625],
+            [-2.52996826171875, 0],
+            [-2.05999755859375, 0],
+            [4.34002685546875, 10.2799682617188],
+            [0, 0],
+            [0.03997802734375, -0.17999267578125],
+            [1.05999755859375, -4.6400146484375],
+            [0.1600341796875, 0.010009765625],
+            [1.280029296875, 0.10003662109375],
+            [1.69000244140625, 0],
+            [4.260009765625, 2.53997802734375],
+            [1.52996826171875, 0],
+            [0.1600341796875, -0.00994873046875],
+            [-2, 7.95001220703125],
+            [0.03997802734375, 0.17999267578125],
+            [0, 0],
+            [-1.22998046875, -5.699951171875]
+        ];
+        createPathGrp(contents, 'Badge_Frame_Top', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [0, -11.515]);
+    };
+    var createBadgeFrameBottom = function () {
+        var vertices = [
+            [19.3804473876953, -17.635009765625],
+            [14.0304107666016, -17.635009765625],
+            [15.4904327392578, -5.92498779296875],
+            [-0.00956726074219, 11.8049926757812],
+            [-15.4995574951172, -5.94500732421875],
+            [-14.0495452880859, -17.635009765625],
+            [-19.4095916748047, -17.635009765625],
+            [-0.00956726074219, 17.635009765625]
+        ];
+        var inTangents = [
+            [-0.6300048828125, 15.77001953125],
+            [0, 0],
+            [-0.72998046875, -3.17999267578125],
+            [17.7999877929688, -7.79998779296875],
+            [-1.54998779296875, 6.760009765625],
+            [0.15997314453125, 4.6600341796875],
+            [0, 0],
+            [-32.3900146484375, -13.7100219726562]
+        ];
+        var outTangents = [
+            [0, 0],
+            [1.55999755859375, 6.72998046875],
+            [-0.15997314453125, 4.67999267578125],
+            [-17.780029296875, -7.77001953125],
+            [0.72998046875, -3.17999267578125],
+            [0, 0],
+            [0.6500244140625, 15.760009765625],
+            [32.4400024414062, -13.77001953125]
+        ];
+        createPathGrp(contents, 'Badge_Frame_Bottom', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [0.0096, 8.045]);
+    };
+    var createStar = function () {
+        var vertices = [
+            [0, -10.5857543945312],
+            [3.43951416015625, -3.61653137207031],
+            [11.1305236816406, -2.49896240234375],
+            [5.56526184082031, 2.92582702636719],
+            [6.87904357910156, 10.5857543945312],
+            [0, 6.96923828125],
+            [-6.87904357910156, 10.5857543945312],
+            [-5.56526184082031, 2.92582702636719],
+            [-11.1305236816406, -2.49896240234375],
+            [-3.43951416015625, -3.61653137207031]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Star', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [0, -1.9946]);
+    };
+    createStar();
+    createBadgeFrameBottom();
+    createBadgeFrameTop();
+    createIconCircle();
+    setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
+    return iconLayer;
+};
+var createPoliceLocation = function (lang, mitug) {
+    var args = [
+        {
+            lang: 'Hebrew',
+            text: 'משטרה',
+            fontSize: 77.3332,
+            tracking: -19,
+            textPos: [914.9214, 538.8649],
+            textAnchor: [69.1209, -20.4437],
+            bgSize: [294, 110],
+            iconPos: [1044.5, 539],
+            iconAnchor: [0, 0],
+            iconScale: 100,
+            iconId: 'Police'
+        },
+        {
+            lang: 'English',
+            text: 'Police',
+            fontSize: 74.9495,
+            tracking: -20,
+            textPos: [1013.4949, 542.9679],
+            textAnchor: [81.9948, -26.682],
+            bgSize: [284, 106],
+            iconPos: [878, 539],
+            iconAnchor: [0, 0],
+            iconScale: 97,
+            iconId: 'Police'
+        },
+        {
+            lang: 'Arabic',
+            text: 'مبنى شرطة',
+            fontSize: 64,
+            tracking: -13,
+            textPos: [919.7453, 536.4375],
+            textAnchor: [180.4954, -20.3125],
+            bgSize: [486, 91],
+            iconPos: [1151.125, 540],
+            iconAnchor: [0, 0],
+            iconScale: 83,
+            iconId: 'Police'
+        }
+    ];
+    createLocation(args, lang, mitug);
+};
 var createLocationFromId = function (id, lang, mitug) {
     app.beginUndoGroup("Create Location: ".concat(id));
     var comp = app.project.activeItem;
@@ -14209,6 +14427,9 @@ var createLocationFromId = function (id, lang, mitug) {
             break;
         case 'Pumping Station':
             createPumpingStationLocation(lang, mitug);
+            break;
+        case 'Police':
+            createPoliceLocation(lang, mitug);
             break;
     }
     app.endUndoGroup();
@@ -14576,7 +14797,8 @@ var createLocationsUI = function (tpanel) {
         'Gas Station',
         'Government Building',
         'Factory',
-        'Pumping Station'
+        'Pumping Station',
+        'Police'
     ];
     var locationsDD = locationsDDGrp.add('dropdownlist', undefined, locationsList);
     locationsDD.preferredSize[0] = 100;

@@ -37,7 +37,8 @@ type LocationID =
     | 'Gas Station'
     | 'Government Building'
     | 'Factory'
-    | 'Pumping Station';
+    | 'Pumping Station'
+    | 'Police';
 type TextureID =
     | 'Paper Dark'
     | 'Paper Medium'
