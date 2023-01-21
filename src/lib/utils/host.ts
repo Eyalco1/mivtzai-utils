@@ -389,3 +389,10 @@ const rgbToHex = (r: number, g: number, b: number): string => {
     };
     return componentToHex(r) + componentToHex(g) + componentToHex(b);
 };
+
+const effectExists = (matchName: string): boolean => {
+    const fx = app.effects;
+    const matches = fx.map(f => f.matchName);
+
+    return matches.includes(matchName);
+};

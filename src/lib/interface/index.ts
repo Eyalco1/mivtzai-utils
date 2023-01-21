@@ -1,5 +1,6 @@
 const createSideBtns = (
     qaTab: Tab,
+    textTab: Tab,
     iconsTab: Tab,
     locTab: Tab,
     texTab: Tab
@@ -22,11 +23,13 @@ const createSideBtns = (
     };
 
     const extraBtnsQA = qaTab.add('group');
+    const extraBtnsText = textTab.add('group');
     const extraBtnsIcons = iconsTab.add('group');
     const extraBtnsLocations = locTab.add('group');
     const extraBtnsTextures = texTab.add('group');
 
     extraBtnsQA.spacing =
+        extraBtnsText.spacing =
         extraBtnsIcons.spacing =
         extraBtnsLocations.spacing =
         extraBtnsTextures.spacing =
@@ -34,6 +37,8 @@ const createSideBtns = (
 
     extraBtnsQA.alignment =
         extraBtnsQA.alignChildren =
+        extraBtnsText.alignment =
+        extraBtnsText.alignChildren =
         extraBtnsIcons.alignment =
         extraBtnsIcons.alignChildren =
         extraBtnsLocations.alignment =
@@ -43,15 +48,18 @@ const createSideBtns = (
             ['fill', 'fill'];
 
     const [quoteBtnQA, helpBtnQA] = createTheBtns(extraBtnsQA);
+    const [quoteBtnText, helpBtnText] = createTheBtns(extraBtnsText);
     const [quoteBtnIcons, helpBtnIcons] = createTheBtns(extraBtnsIcons);
     const [quoteBtnLocs, helpBtnLocs] = createTheBtns(extraBtnsLocations);
     const [quoteBtnTexs, helpBtnTexs] = createTheBtns(extraBtnsTextures);
 
     helpBtnQA.alignment =
+        helpBtnText.alignment =
         helpBtnIcons.alignment =
         helpBtnLocs.alignment =
         helpBtnTexs.alignment =
         quoteBtnQA.alignment =
+        quoteBtnText.alignment =
         quoteBtnIcons.alignment =
         quoteBtnLocs.alignment =
         quoteBtnTexs.alignment =
@@ -73,11 +81,12 @@ const init = (thisObj: typeof globalThis) => {
 
     const { qaTab, QABtnsGrp, bigRowOne, bigRowTwo, bigRowThree } =
         createQAUI(tpanel);
+    const { textTab, optionsGrp, textDropdownsGrp } = createTextUI(tpanel);
     const { iconsTab, iconCircleGrp, colorChecksGrp } = createIconsUI(tpanel);
     const { locTab, dropdownsGrp } = createLocationsUI(tpanel);
     const { texTab, dropdownChecksGrp } = createTexturesUI(tpanel);
 
-    createSideBtns(qaTab, iconsTab, locTab, texTab);
+    createSideBtns(qaTab, textTab, iconsTab, locTab, texTab);
 
     w.layout.layout(true);
     w.layout.resize();
@@ -90,6 +99,11 @@ const init = (thisObj: typeof globalThis) => {
                     (<Dimension>w.size).width > 400 ? 'row' : 'column';
             QABtnsGrp.orientation =
                 (<Dimension>w.size).width > 880 ? 'row' : 'column';
+            // Text
+            optionsGrp.orientation =
+                (<Dimension>w.size).width > 450 ? 'row' : 'column';
+            textDropdownsGrp.orientation =
+                (<Dimension>w.size).width > 340 ? 'row' : 'column';
             // Icons
             iconCircleGrp.orientation = colorChecksGrp.orientation =
                 (<Dimension>w.size).width > 350 ? 'row' : 'column';

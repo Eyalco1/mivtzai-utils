@@ -24,6 +24,7 @@
         ".temp/lib/functions/textures.ts",
         ".temp/lib/utils/ui.ts",
         ".temp/lib/interface/quickActions.ts",
+        ".temp/lib/interface/text.ts",
         ".temp/lib/interface/icons.ts",
         ".temp/lib/interface/locations.ts",
         ".temp/lib/interface/textures.ts",

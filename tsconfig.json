@@ -24,6 +24,7 @@
         "src/lib/functions/textures.ts",
         "src/lib/utils/ui.ts",
         "src/lib/interface/quickActions.ts",
+        "src/lib/interface/text.ts",
         "src/lib/interface/icons.ts",
         "src/lib/interface/locations.ts",
         "src/lib/interface/textures.ts",

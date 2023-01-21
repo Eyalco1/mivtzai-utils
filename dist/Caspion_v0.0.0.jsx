@@ -754,6 +754,11 @@ var rgbToHex = function (r, g, b) {
     };
     return componentToHex(r) + componentToHex(g) + componentToHex(b);
 };
+var effectExists = function (matchName) {
+    var fx = app.effects;
+    var matches = fx.map(function (f) { return f.matchName; });
+    return matches.includes(matchName);
+};
 var generateCaspiQuote = function () {
     var quotes = ['1', '2', '3', '4'];
     var theQuote = quotes[Math.floor(Math.random() * quotes.length)];
@@ -14705,6 +14710,48 @@ var createQAUI = function (tpanel) {
     bigRowOne.orientation = bigRowTwo.orientation = 'column';
     return { qaTab: qaTab, QABtnsGrp: QABtnsGrp, bigRowOne: bigRowOne, bigRowTwo: bigRowTwo, bigRowThree: bigRowThree };
 };
+var createTextUI = function (tpanel) {
+    var textTab = tpanel.add('tab', undefined, ['Text']);
+    var mainTextGrp = textTab.add('group');
+    mainTextGrp.alignChildren = ['fill', 'top'];
+    mainTextGrp.alignment = ['fill', 'top'];
+    var mainTextEdit = mainTextGrp.add('edittext', undefined, '', {
+        multiline: true
+    });
+    mainTextEdit.preferredSize = [160, 60];
+    mainTextEdit.alignment = ['fill', 'top'];
+    var optionsGrp = textTab.add('group');
+    optionsGrp.margins.top = optionsGrp.margins.bottom = 14;
+    optionsGrp.alignment = 'center';
+    var textDropdownsGrp = optionsGrp.add('group');
+    textDropdownsGrp.alignChildren = ['left', 'center'];
+    textDropdownsGrp.spacing = 10;
+    textDropdownsGrp.margins = 0;
+    var fontDDGrp = textDropdownsGrp.add('group');
+    fontDDGrp.alignChildren = ['left', 'center'];
+    fontDDGrp.spacing = 10;
+    fontDDGrp.margins = 0;
+    fontDDGrp.add('statictext', undefined, 'Font:');
+    var fontDDList = ['Narkis', 'Almoni', '-', 'Trade Gothic', '-', 'Janna'];
+    var fontDD = fontDDGrp.add('dropdownlist', undefined, fontDDList);
+    fontDD.selection = 0;
+    var animationDDGrp = textDropdownsGrp.add('group');
+    animationDDGrp.alignChildren = ['left', 'center'];
+    animationDDGrp.spacing = 10;
+    animationDDGrp.margins = 0;
+    animationDDGrp.add('statictext', undefined, 'Animation:');
+    var animationDDList = ['Y Position', 'X Position', 'Opacity', 'Scale'];
+    var animationDD = animationDDGrp.add('dropdownlist', undefined, animationDDList);
+    animationDD.selection = 0;
+    var checksGrp = optionsGrp.add('group');
+    checksGrp.alignChildren = ['left', 'center'];
+    checksGrp.spacing = 10;
+    checksGrp.margins = 0;
+    var addTextEvoCheck = checksGrp.add('checkbox', undefined, 'Text Evo');
+    var maskCheck = checksGrp.add('checkbox', undefined, 'Mask');
+    var createBtn = textTab.add('button', undefined, 'Create Text');
+    return { textTab: textTab, optionsGrp: optionsGrp, textDropdownsGrp: textDropdownsGrp };
+};
 var createIconsUI = function (tpanel) {
     var iconsTab = tpanel.add('tab', undefined, ['Icons']);
     var iconsGrp = iconsTab.add('group');
@@ -14866,43 +14913,50 @@ var createTexturesUI = function (tpanel) {
     };
     return { texTab: texTab, dropdownChecksGrp: dropdownChecksGrp };
 };
-var createSideBtns = function (qaTab, iconsTab, locTab, texTab) {
+var createSideBtns = function (qaTab, textTab, iconsTab, locTab, texTab) {
     var createTheBtns = function (container) {
         var quoteBtn = createQABtn(container, quoteBinary, 'Quote', generateCaspiQuote);
         var helpBtn = createQABtn(container, helpBinary, 'Help', createHelpWindow);
         return [quoteBtn, helpBtn];
     };
     var extraBtnsQA = qaTab.add('group');
+    var extraBtnsText = textTab.add('group');
     var extraBtnsIcons = iconsTab.add('group');
     var extraBtnsLocations = locTab.add('group');
     var extraBtnsTextures = texTab.add('group');
     extraBtnsQA.spacing =
-        extraBtnsIcons.spacing =
-            extraBtnsLocations.spacing =
-                extraBtnsTextures.spacing =
-                    2;
+        extraBtnsText.spacing =
+            extraBtnsIcons.spacing =
+                extraBtnsLocations.spacing =
+                    extraBtnsTextures.spacing =
+                        2;
     extraBtnsQA.alignment =
         extraBtnsQA.alignChildren =
-            extraBtnsIcons.alignment =
-                extraBtnsIcons.alignChildren =
-                    extraBtnsLocations.alignment =
-                        extraBtnsLocations.alignChildren =
-                            extraBtnsTextures.alignment =
-                                extraBtnsTextures.alignChildren =
-                                    ['fill', 'fill'];
+            extraBtnsText.alignment =
+                extraBtnsText.alignChildren =
+                    extraBtnsIcons.alignment =
+                        extraBtnsIcons.alignChildren =
+                            extraBtnsLocations.alignment =
+                                extraBtnsLocations.alignChildren =
+                                    extraBtnsTextures.alignment =
+                                        extraBtnsTextures.alignChildren =
+                                            ['fill', 'fill'];
     var _a = createTheBtns(extraBtnsQA), quoteBtnQA = _a[0], helpBtnQA = _a[1];
-    var _b = createTheBtns(extraBtnsIcons), quoteBtnIcons = _b[0], helpBtnIcons = _b[1];
-    var _c = createTheBtns(extraBtnsLocations), quoteBtnLocs = _c[0], helpBtnLocs = _c[1];
-    var _d = createTheBtns(extraBtnsTextures), quoteBtnTexs = _d[0], helpBtnTexs = _d[1];
+    var _b = createTheBtns(extraBtnsText), quoteBtnText = _b[0], helpBtnText = _b[1];
+    var _c = createTheBtns(extraBtnsIcons), quoteBtnIcons = _c[0], helpBtnIcons = _c[1];
+    var _d = createTheBtns(extraBtnsLocations), quoteBtnLocs = _d[0], helpBtnLocs = _d[1];
+    var _e = createTheBtns(extraBtnsTextures), quoteBtnTexs = _e[0], helpBtnTexs = _e[1];
     helpBtnQA.alignment =
-        helpBtnIcons.alignment =
-            helpBtnLocs.alignment =
-                helpBtnTexs.alignment =
-                    quoteBtnQA.alignment =
-                        quoteBtnIcons.alignment =
-                            quoteBtnLocs.alignment =
-                                quoteBtnTexs.alignment =
-                                    ['right', 'bottom'];
+        helpBtnText.alignment =
+            helpBtnIcons.alignment =
+                helpBtnLocs.alignment =
+                    helpBtnTexs.alignment =
+                        quoteBtnQA.alignment =
+                            quoteBtnText.alignment =
+                                quoteBtnIcons.alignment =
+                                    quoteBtnLocs.alignment =
+                                        quoteBtnTexs.alignment =
+                                            ['right', 'bottom'];
 };
 var init = function (thisObj) {
     var w = thisObj instanceof Panel
@@ -14916,10 +14970,11 @@ var init = function (thisObj) {
     var tpanel = w.add('tabbedpanel');
     tpanel.alignment = tpanel.alignChildren = ['fill', 'fill'];
     var _a = createQAUI(tpanel), qaTab = _a.qaTab, QABtnsGrp = _a.QABtnsGrp, bigRowOne = _a.bigRowOne, bigRowTwo = _a.bigRowTwo, bigRowThree = _a.bigRowThree;
-    var _b = createIconsUI(tpanel), iconsTab = _b.iconsTab, iconCircleGrp = _b.iconCircleGrp, colorChecksGrp = _b.colorChecksGrp;
-    var _c = createLocationsUI(tpanel), locTab = _c.locTab, dropdownsGrp = _c.dropdownsGrp;
-    var _d = createTexturesUI(tpanel), texTab = _d.texTab, dropdownChecksGrp = _d.dropdownChecksGrp;
-    createSideBtns(qaTab, iconsTab, locTab, texTab);
+    var _b = createTextUI(tpanel), textTab = _b.textTab, optionsGrp = _b.optionsGrp, textDropdownsGrp = _b.textDropdownsGrp;
+    var _c = createIconsUI(tpanel), iconsTab = _c.iconsTab, iconCircleGrp = _c.iconCircleGrp, colorChecksGrp = _c.colorChecksGrp;
+    var _d = createLocationsUI(tpanel), locTab = _d.locTab, dropdownsGrp = _d.dropdownsGrp;
+    var _e = createTexturesUI(tpanel), texTab = _e.texTab, dropdownChecksGrp = _e.dropdownChecksGrp;
+    createSideBtns(qaTab, textTab, iconsTab, locTab, texTab);
     w.layout.layout(true);
     w.layout.resize();
     w.onResizing = w.onResize = function () {
@@ -14930,6 +14985,10 @@ var init = function (thisObj) {
                         w.size.width > 400 ? 'row' : 'column';
             QABtnsGrp.orientation =
                 w.size.width > 880 ? 'row' : 'column';
+            optionsGrp.orientation =
+                w.size.width > 450 ? 'row' : 'column';
+            textDropdownsGrp.orientation =
+                w.size.width > 340 ? 'row' : 'column';
             iconCircleGrp.orientation = colorChecksGrp.orientation =
                 w.size.width > 350 ? 'row' : 'column';
             dropdownsGrp.orientation =
