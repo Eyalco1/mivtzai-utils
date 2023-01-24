@@ -59,6 +59,7 @@ const createTextUI = (
         undefined,
         animationDDList
     );
+
     animationDD.selection = 0;
 
     const checksGrp = optionsGrp.add('group');
@@ -70,6 +71,11 @@ const createTextUI = (
     const maskCheck = checksGrp.add('checkbox', undefined, 'Mask');
 
     const createBtn = textTab.add('button', undefined, 'Create Text');
+
+    animationDDGrp.enabled = addTextEvoCheck.value;
+    addTextEvoCheck.onClick = () => {
+        animationDDGrp.enabled = addTextEvoCheck.value;
+    };
 
     createBtn.onClick = () => {
         const text = mainTextEdit.text;

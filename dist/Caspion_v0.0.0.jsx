@@ -2050,6 +2050,7 @@ var createText = function (text, font, animation, addTextEvo, addMask) {
         alert('No Composition Selected');
         return;
     }
+    app.beginUndoGroup('Caspion: Create Text');
     var textLayer = comp.layers.addText();
     var srcText = textLayer
         .property('ADBE Text Properties')
@@ -2063,8 +2064,32 @@ var createText = function (text, font, animation, addTextEvo, addMask) {
     textDoc.applyStroke = false;
     textDoc.tracking = 0;
     srcText.setValue(textDoc);
+    if (addMask) {
+        var id = app.findMenuCommandId('New Mask');
+        app.executeCommand(id);
+    }
     if (addTextEvo) {
         introduceTextEvo();
+        var rtl = font !== 'Trade Gothic';
+        var srcRect = textLayer.sourceRectAtTime(0, false);
+        var propId = void 0;
+        var propValue = void 0;
+        if (animation === 'Y Position')
+            (propId = 14), (propValue = Math.ceil(srcRect.height) + 1);
+        else if (animation === 'X Position')
+            (propId = 13),
+                (propValue = rtl
+                    ? -(Math.ceil(srcRect.width) + 1)
+                    : Math.ceil(srcRect.width) + 1);
+        else if (animation === 'Scale')
+            (propId = 18), (propValue = 0);
+        else if (animation === 'Opacity')
+            (propId = 38), (propValue = 0);
+        var theProp = textLayer
+            .property('ADBE Effect Parade')
+            .property('Pseudo/textevo')
+            .property("Pseudo/textevo-00".concat(propId));
+        theProp.setValue(propValue);
     }
     return textLayer;
 };
@@ -15027,6 +15052,10 @@ var createTextUI = function (tpanel) {
     var addTextEvoCheck = checksGrp.add('checkbox', undefined, 'Text Evo');
     var maskCheck = checksGrp.add('checkbox', undefined, 'Mask');
     var createBtn = textTab.add('button', undefined, 'Create Text');
+    animationDDGrp.enabled = addTextEvoCheck.value;
+    addTextEvoCheck.onClick = function () {
+        animationDDGrp.enabled = addTextEvoCheck.value;
+    };
     createBtn.onClick = function () {
         var text = mainTextEdit.text;
         var font = fontDD.selection.toString();
