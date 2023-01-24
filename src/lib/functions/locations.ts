@@ -8980,7 +8980,7 @@ const createLocationFromId = (
     lang: Lingo,
     mitug: Mitug
 ): void => {
-    app.beginUndoGroup(`Create Location: ${id}`);
+    app.beginUndoGroup(`@@name: Create Location - ${id}`);
 
     const comp = app.project.activeItem as CompItem;
     if (!comp || !(comp instanceof CompItem)) {

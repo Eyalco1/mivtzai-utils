@@ -7430,7 +7430,7 @@ const createIconFromId = (
     hasCircle: boolean,
     scale: boolean
 ): void => {
-    app.beginUndoGroup(`Create Icon: ${id}`);
+    app.beginUndoGroup(`@@name: Create Icon - ${id}`);
 
     const comp = app.project.activeItem as CompItem;
     if (!comp || !(comp instanceof CompItem)) {

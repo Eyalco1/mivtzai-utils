@@ -1,5 +1,5 @@
 const createTvaiStroke = (): void => {
-    app.beginUndoGroup('Create Tunnel Stroke');
+    app.beginUndoGroup('@@name: Create Tunnel Stroke');
 
     const comp = app.project.activeItem as CompItem;
     if (!comp || !(comp instanceof CompItem)) {
@@ -91,7 +91,7 @@ const createTvaiStroke = (): void => {
 };
 
 const scaleWithOvershootQA = (): void => {
-    app.beginUndoGroup('Pop Animation');
+    app.beginUndoGroup('@@name: Pop Animation');
     const comp = app.project.activeItem as CompItem;
     if (!comp || !(comp instanceof CompItem)) {
         alert('No Composition Selected');
@@ -108,7 +108,7 @@ const scaleWithOvershootQA = (): void => {
 };
 
 const importLogos = (): void => {
-    app.beginUndoGroup('Import Logos');
+    app.beginUndoGroup('@@name: Import Logos');
 
     const idfItem = app.project.importFile(
         new ImportOptions(File(`${getAssetsPath()}/Logos/IDF_Logo.png`))
@@ -148,7 +148,7 @@ const importLogos = (): void => {
 };
 
 const createIllusText = (): void => {
-    app.beginUndoGroup('Create Illustration Text');
+    app.beginUndoGroup('@@name: Create Illustration Text');
 
     const comp = app.project.activeItem as CompItem;
     if (!comp || !(comp instanceof CompItem)) {
@@ -183,7 +183,7 @@ const createIllusText = (): void => {
 };
 
 const formatLayerName = (): void => {
-    app.beginUndoGroup('Format Layer Name');
+    app.beginUndoGroup('@@name: Format Layer Name');
 
     const comp = app.project.activeItem as CompItem;
     if (!comp || !(comp instanceof CompItem)) {
@@ -220,7 +220,7 @@ const formatLayerName = (): void => {
 };
 
 const textReverse = (): void => {
-    app.beginUndoGroup('Reverse Text');
+    app.beginUndoGroup('@@name: Reverse Text');
 
     const comp = app.project.activeItem as CompItem;
     if (!comp || !(comp instanceof CompItem)) {
@@ -252,7 +252,7 @@ const textReverse = (): void => {
 };
 
 const createBg = (): void => {
-    app.beginUndoGroup('Create Background');
+    app.beginUndoGroup('@@name: Create Background');
 
     const comp = app.project.activeItem as CompItem;
     if (!comp || !(comp instanceof CompItem)) {
@@ -304,7 +304,7 @@ const createBg = (): void => {
 };
 
 const createIsraelMap = (): void => {
-    app.beginUndoGroup('Create Israel Map');
+    app.beginUndoGroup('@@name: Create Israel Map');
 
     const vertices: [number, number][] = [
         [163.25, -515.875],
@@ -463,7 +463,7 @@ const createIsraelMap = (): void => {
 };
 
 const createGazaMap = (): void => {
-    app.beginUndoGroup('Create Gaza Map');
+    app.beginUndoGroup('@@name: Create Gaza Map');
 
     const vertices: [number, number][] = [
         [209.749725341797, -480.25],
@@ -568,7 +568,7 @@ const createGazaMap = (): void => {
 };
 
 const createCountingText = (): void => {
-    app.beginUndoGroup('Counting Numbers');
+    app.beginUndoGroup('@@name: Counting Numbers');
 
     const comp = app.project.activeItem as CompItem;
     if (!comp || !(comp instanceof CompItem)) {
@@ -607,19 +607,19 @@ const createCountingText = (): void => {
 };
 
 const importIsraelGoogleMaps = (): void => {
-    app.beginUndoGroup('Import Israel Map');
+    app.beginUndoGroup('@@name: Import Israel Map');
     importGoogleMaps('Israel');
     app.endUndoGroup();
 };
 
 const importGazaGoogleMaps = (): void => {
-    app.beginUndoGroup('Import Gaza Map');
+    app.beginUndoGroup('@@name: Import Gaza Map');
     importGoogleMaps('Gaza');
     app.endUndoGroup();
 };
 
 const createAnimatedFrame = (): void => {
-    app.beginUndoGroup('Animated Frame');
+    app.beginUndoGroup('@@name: Animated Frame');
 
     const comp = app.project.activeItem as CompItem;
     if (!comp || !(comp instanceof CompItem)) {
@@ -749,7 +749,7 @@ const openProjectInFinder = (): void => {
 };
 
 const createTatzaPath = (): void => {
-    app.beginUndoGroup('Location Mark');
+    app.beginUndoGroup('@@name: Location Mark');
 
     const comp = app.project.activeItem as CompItem;
     if (!comp || !(comp instanceof CompItem)) {
@@ -844,7 +844,7 @@ const createTatzaPath = (): void => {
 };
 
 const recScaleX = (): void => {
-    app.beginUndoGroup('Create Background');
+    app.beginUndoGroup('@@name: Create Background');
 
     const comp = app.project.activeItem as CompItem;
     if (!comp || !(comp instanceof CompItem)) {
@@ -925,7 +925,7 @@ const createTextOnLocation = (): void => {
 
     const promptVal = prompt('Write Text Here:', '');
 
-    app.beginUndoGroup('Text On Location');
+    app.beginUndoGroup('@@name: Text On Location');
 
     // === Circle ===
     const circleLayer = comp.layers.addShape();
@@ -1187,7 +1187,7 @@ const createTextOnLocation = (): void => {
 };
 
 const createArrow = (): void => {
-    app.beginUndoGroup('Create Arrow');
+    app.beginUndoGroup('@@name: Create Arrow');
 
     const comp = app.project.activeItem as CompItem;
     if (!comp || !(comp instanceof CompItem)) {
@@ -1373,7 +1373,7 @@ const createArrow = (): void => {
 };
 
 const createMikra = (): void => {
-    app.beginUndoGroup('Create Mikra');
+    app.beginUndoGroup('@@name: Create Mikra');
 
     const comp = app.project.activeItem as CompItem;
     if (!comp || !(comp instanceof CompItem)) {
