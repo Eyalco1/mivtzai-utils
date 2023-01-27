@@ -30,13 +30,18 @@ const createHelpWindow = () => {
     const tpanel = helpWin.add('tabbedpanel');
 
     // === About ===
+
     const aboutTab = tpanel.add('tab', undefined, ['About']);
-    const abtStr = '‹ @@name - @@version - Created By Eyal Cohen ›';
-    aboutTab.add('edittext', [0, 0, 380, 300], abtStr, {
+    const banner = aboutTab.add('image', [0, 0, 300, 150], bannerBinary);
+    const abtStr = '‹ @@name - version @@version - Created By Eyal Cohen ›';
+    const aboutEditGrp = aboutTab.add('group');
+    aboutEditGrp.add('edittext', [0, 0, 380, 300], abtStr, {
         multiline: true,
         readonly: true,
         scrollable: true
     });
+    // @ts-ignore
+    aboutEditGrp.margins.left = 10;
 
     // === Settings ===
     const labelNames = getLabelNamesFromPrefs();

@@ -19,6 +19,6 @@ function encodeImage(src, dest) {
 }
 
 encodeImage(
-    'C:/Users/eyalc/DevProjects/mivtzai-utils/src/assets/Logos/IDF_Logo.png',
+    'W:/Personal Projects/Caspion/UI/Banner.png',
     'C:/Users/eyalc/OneDrive/Desktop/Binary.txt'
 );

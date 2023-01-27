@@ -5,13 +5,7 @@ const createSideBtns = (
     locTab: Tab,
     texTab: Tab
 ) => {
-    const createTheBtns = (container: Group): [IconButton, IconButton] => {
-        const quoteBtn = createQABtn(
-            container,
-            quoteBinary,
-            'Quote',
-            generateCaspiQuote
-        );
+    const createTheBtns = (container: Group): IconButton => {
         const helpBtn = createQABtn(
             container,
             helpBinary,
@@ -19,7 +13,7 @@ const createSideBtns = (
             createHelpWindow
         );
 
-        return [quoteBtn, helpBtn];
+        return helpBtn;
     };
 
     const extraBtnsQA = qaTab.add('group');
@@ -47,22 +41,17 @@ const createSideBtns = (
         extraBtnsTextures.alignChildren =
             ['fill', 'fill'];
 
-    const [quoteBtnQA, helpBtnQA] = createTheBtns(extraBtnsQA);
-    const [quoteBtnText, helpBtnText] = createTheBtns(extraBtnsText);
-    const [quoteBtnIcons, helpBtnIcons] = createTheBtns(extraBtnsIcons);
-    const [quoteBtnLocs, helpBtnLocs] = createTheBtns(extraBtnsLocations);
-    const [quoteBtnTexs, helpBtnTexs] = createTheBtns(extraBtnsTextures);
+    const helpBtnQA = createTheBtns(extraBtnsQA);
+    const helpBtnText = createTheBtns(extraBtnsText);
+    const helpBtnIcons = createTheBtns(extraBtnsIcons);
+    const helpBtnLocs = createTheBtns(extraBtnsLocations);
+    const helpBtnTexs = createTheBtns(extraBtnsTextures);
 
     helpBtnQA.alignment =
         helpBtnText.alignment =
         helpBtnIcons.alignment =
         helpBtnLocs.alignment =
         helpBtnTexs.alignment =
-        quoteBtnQA.alignment =
-        quoteBtnText.alignment =
-        quoteBtnIcons.alignment =
-        quoteBtnLocs.alignment =
-        quoteBtnTexs.alignment =
             ['right', 'bottom'];
 };
 
