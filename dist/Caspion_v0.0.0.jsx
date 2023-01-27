@@ -14834,10 +14834,10 @@ var createHelpWindow = function () {
     }
     var tpanel = helpWin.add('tabbedpanel');
     var aboutTab = tpanel.add('tab', undefined, ['About']);
-    var banner = aboutTab.add('image', [0, 0, 300, 150], bannerBinary);
+    var banner = aboutTab.add('image', [0, 0, 300, 110], bannerBinary);
     var abtStr = '‹ Caspion - version 0.0.0 - Created By Eyal Cohen ›';
     var aboutEditGrp = aboutTab.add('group');
-    aboutEditGrp.add('edittext', [0, 0, 380, 300], abtStr, {
+    aboutEditGrp.add('edittext', [0, 0, 380, 200], abtStr, {
         multiline: true,
         readonly: true,
         scrollable: true
@@ -14926,12 +14926,6 @@ var createHelpWindow = function () {
     var helpTipSettingGrp = settingsTab.add('group');
     var showHelpTipsCheck = helpTipSettingGrp.add('checkbox', undefined, 'Show Help Tips');
     showHelpTipsCheck.value = parsePrefs().showHelpTips;
-    var reviewsTab = tpanel.add('tab', undefined, ['Reviews']);
-    reviewsTab.add('edittext', [0, 0, 380, 300], '', {
-        multiline: true,
-        readonly: true,
-        scrollable: true
-    });
     var updateQAHelpTips = function (show) {
         allQABtns.forEach(function (iconData) {
             iconData[0].helpTip = show ? iconData[1] : '';

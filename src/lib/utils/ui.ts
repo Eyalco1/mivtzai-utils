@@ -32,10 +32,10 @@ const createHelpWindow = () => {
     // === About ===
 
     const aboutTab = tpanel.add('tab', undefined, ['About']);
-    const banner = aboutTab.add('image', [0, 0, 300, 150], bannerBinary);
+    const banner = aboutTab.add('image', [0, 0, 300, 110], bannerBinary);
     const abtStr = '‹ @@name - version @@version - Created By Eyal Cohen ›';
     const aboutEditGrp = aboutTab.add('group');
-    aboutEditGrp.add('edittext', [0, 0, 380, 300], abtStr, {
+    aboutEditGrp.add('edittext', [0, 0, 380, 200], abtStr, {
         multiline: true,
         readonly: true,
         scrollable: true
@@ -210,14 +210,6 @@ const createHelpWindow = () => {
         'Show Help Tips'
     );
     showHelpTipsCheck.value = parsePrefs().showHelpTips;
-
-    // === Reviews ===
-    const reviewsTab = tpanel.add('tab', undefined, ['Reviews']);
-    reviewsTab.add('edittext', [0, 0, 380, 300], '', {
-        multiline: true,
-        readonly: true,
-        scrollable: true
-    });
 
     const updateQAHelpTips = (show: boolean): void => {
         allQABtns.forEach(iconData => {
