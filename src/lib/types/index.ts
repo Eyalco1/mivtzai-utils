@@ -43,7 +43,8 @@ type LocationID =
     | 'Factory'
     | 'Pumping Station'
     | 'Police'
-    | 'Water Facility';
+    | 'Water Facility'
+    | 'Residential Neighborhood';
 type TextureID =
     | 'Paper Dark'
     | 'Paper Medium'

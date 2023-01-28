@@ -209,6 +209,14 @@ const createLocationIconFromId = (
                 id,
                 mitug
             );
+        case 'Residential Neighborhood':
+            return createResidentialNeighborhoodIcon(
+                iconPos,
+                iconAnchor,
+                iconScale,
+                id,
+                mitug
+            );
     }
 };
 
@@ -9111,6 +9119,431 @@ const createWaterFacilityLocation = (lang: Lingo, mitug: Mitug): void => {
     createLocation(args, lang, mitug);
 };
 
+const createResidentialNeighborhoodIcon: CreateLocationIconFn = (
+    iconPos,
+    iconAnchor,
+    iconScale,
+    name,
+    mitug
+) => {
+    const iconLayer = createIconBase(name);
+
+    const contents = iconLayer.property('Contents') as PropertyGroup;
+
+    const createIconCircle = () => {
+        const vertices: [number, number][] = [
+            [43.39892578125, 0],
+            [0, 43.39892578125],
+            [-43.39892578125, 0],
+            [0, -43.39892578125]
+        ];
+        const inTangents: [number, number][] = [
+            [0, -23.9685668945312],
+            [23.9685668945312, 0],
+            [0, 23.9685668945312],
+            [-23.9685668945312, 0]
+        ];
+        const outTangents: [number, number][] = [
+            [0, 23.9685668945312],
+            [-23.9685668945312, 0],
+            [0, -23.9685668945312],
+            [23.9685668945312, 0]
+        ];
+
+        createPathGrp(
+            contents,
+            'Icon_Circle',
+            true,
+            false,
+            getColorsFromMitug(mitug).pri,
+            [0, 0, 0],
+            0,
+            vertices,
+            inTangents,
+            outTangents,
+            true,
+            [-1.738, 0]
+        );
+    };
+
+    const createMHouse = () => {
+        const vertices: [number, number][] = [
+            [22.9131622314453, -2.52333068847656],
+            [18.7977447509766, -2.52333068847656],
+            [18.7977447509766, 26.367431640625],
+            [13.5069885253906, 26.367431640625],
+            [13.5069885253906, 6.00593566894531],
+            [-0.95298767089844, 6.00593566894531],
+            [-0.95298767089844, 26.367431640625],
+            [-18.7977447509766, 26.367431640625],
+            [-18.7977447509766, -2.52333068847656],
+            [-22.9131622314453, -2.52333068847656],
+            [0, -26.367431640625]
+        ];
+        const inTangents: [number, number][] = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        const outTangents: [number, number][] = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+
+        createPathGrp(
+            contents,
+            'Middle_House',
+            true,
+            false,
+            getColorsFromMitug(mitug).bg,
+            [0, 0, 0],
+            0,
+            vertices,
+            inTangents,
+            outTangents,
+            true,
+            [-1.2362, -3.1699]
+        );
+    };
+
+    const createLHouse = () => {
+        const vertices: [number, number][] = [
+            [13.7579803466797, -3.09284973144531],
+            [11.2869110107422, -3.09284973144531],
+            [11.2869110107422, 15.8320617675781],
+            [4.34127807617188, 15.8320617675781],
+            [4.34127807617188, 3.60621643066406],
+            [-4.34107971191406, 3.60621643066406],
+            [-4.34107971191406, 15.8320617675781],
+            [-11.2869110107422, 15.8320617675781],
+            [-11.2869110107422, -3.09284973144531],
+            [-13.7579803466797, -3.09284973144531],
+            [0, -15.8320617675781]
+        ];
+        const inTangents: [number, number][] = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        const outTangents: [number, number][] = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+
+        createPathGrp(
+            contents,
+            'L_House',
+            true,
+            false,
+            getColorsFromMitug(mitug).bg,
+            [0, 0, 0],
+            0,
+            vertices,
+            inTangents,
+            outTangents,
+            true,
+            [-36.5779, 7.3654]
+        );
+    };
+
+    const createRHouse = () => {
+        const vertices: [number, number][] = [
+            [13.7579803466797, -3.09284973144531],
+            [11.2869110107422, -3.09284973144531],
+            [11.2869110107422, 15.8320617675781],
+            [4.34127807617188, 15.8320617675781],
+            [4.34127807617188, 3.60621643066406],
+            [-4.34107971191406, 3.60621643066406],
+            [-4.34107971191406, 15.8320617675781],
+            [-11.2869110107422, 15.8320617675781],
+            [-11.2869110107422, -3.09284973144531],
+            [-13.7579803466797, -3.09284973144531],
+            [0, -15.8320617675781]
+        ];
+        const inTangents: [number, number][] = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        const outTangents: [number, number][] = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+
+        createPathGrp(
+            contents,
+            'R_House',
+            true,
+            false,
+            getColorsFromMitug(mitug).bg,
+            [0, 0, 0],
+            0,
+            vertices,
+            inTangents,
+            outTangents,
+            true,
+            [36.5779, 7.3654]
+        );
+    };
+
+    const createWindow01 = () => {
+        const vertices: [number, number][] = [
+            [2.46131896972656, 2.46131896972656],
+            [-2.46131896972656, 2.46131896972656],
+            [-2.46131896972656, -2.46131896972656],
+            [2.46131896972656, -2.46131896972656]
+        ];
+        const inTangents: [number, number][] = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        const outTangents: [number, number][] = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+
+        createPathGrp(
+            contents,
+            'Window_01',
+            true,
+            false,
+            getColorsFromMitug(mitug).pri,
+            [0, 0, 0],
+            0,
+            vertices,
+            inTangents,
+            outTangents,
+            true,
+            [-13.3726, -5.0146]
+        );
+    };
+
+    const createWindow02 = () => {
+        const vertices: [number, number][] = [
+            [2.46131896972656, 2.46131896972656],
+            [-2.46131896972656, 2.46131896972656],
+            [-2.46131896972656, -2.46131896972656],
+            [2.46131896972656, -2.46131896972656]
+        ];
+        const inTangents: [number, number][] = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        const outTangents: [number, number][] = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+
+        createPathGrp(
+            contents,
+            'Window_02',
+            true,
+            false,
+            getColorsFromMitug(mitug).pri,
+            [0, 0, 0],
+            0,
+            vertices,
+            inTangents,
+            outTangents,
+            true,
+            [-7.7292, -5.0146]
+        );
+    };
+
+    const createWindow03 = () => {
+        const vertices: [number, number][] = [
+            [2.46131896972656, 2.46131896972656],
+            [-2.46131896972656, 2.46131896972656],
+            [-2.46131896972656, -2.46131896972656],
+            [2.46131896972656, -2.46131896972656]
+        ];
+        const inTangents: [number, number][] = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        const outTangents: [number, number][] = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+
+        createPathGrp(
+            contents,
+            'Window_03',
+            true,
+            false,
+            getColorsFromMitug(mitug).pri,
+            [0, 0, 0],
+            0,
+            vertices,
+            inTangents,
+            outTangents,
+            true,
+            [-13.3726, 0.8716]
+        );
+    };
+
+    const createWindow04 = () => {
+        const vertices: [number, number][] = [
+            [2.46131896972656, 2.46131896972656],
+            [-2.46131896972656, 2.46131896972656],
+            [-2.46131896972656, -2.46131896972656],
+            [2.46131896972656, -2.46131896972656]
+        ];
+        const inTangents: [number, number][] = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        const outTangents: [number, number][] = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+
+        createPathGrp(
+            contents,
+            'Window_04',
+            true,
+            false,
+            getColorsFromMitug(mitug).pri,
+            [0, 0, 0],
+            0,
+            vertices,
+            inTangents,
+            outTangents,
+            true,
+            [-7.7292, 0.8716]
+        );
+    };
+
+    createWindow04();
+    createWindow03();
+    createWindow02();
+    createWindow01();
+    createRHouse();
+    createLHouse();
+    createMHouse();
+    createIconCircle();
+
+    setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
+
+    return iconLayer;
+};
+
+const createResidentialNeighborhoodLocation = (
+    lang: Lingo,
+    mitug: Mitug
+): void => {
+    const args: LocationArgs[] = [
+        {
+            lang: 'Hebrew',
+            text: 'שכונת מגורים',
+            fontSize: 77.3332,
+            tracking: -20,
+            textPos: [905.9881, 539.4101],
+            textAnchor: [getOS() === 'Win' ? 122.4377 : -122.4377, -19.8985],
+            bgSize: [380, 110],
+            iconPos: [1090, 539],
+            iconAnchor: [0, 0],
+            iconScale: 100,
+            iconId: 'Residential Neighborhood'
+        },
+        {
+            lang: 'English',
+            text: 'Residential\nNeighborhood',
+            fontSize: 59,
+            tracking: -18,
+            leading: 50,
+            textPos: [1007.2187, 546.5324],
+            textAnchor: [getOS() === 'Win' ? 143.3405 : -143.3405, 8.716],
+            bgSize: [422, 136],
+            iconPos: [809.6875, 542.4375],
+            iconAnchor: [0, 0],
+            iconScale: 100,
+            iconId: 'Residential Neighborhood'
+        },
+        {
+            lang: 'Arabic',
+            text: 'حي سكني',
+            fontSize: 59.991,
+            tracking: -19,
+            textPos: [918.1465, 541.375],
+            textAnchor: [getOS() === 'Win' ? 147.1732 : -147.1732, -10.6332],
+            bgSize: [410, 91],
+            iconPos: [1114.875, 541.5],
+            iconAnchor: [0, 0],
+            iconScale: 83,
+            iconId: 'Residential Neighborhood'
+        }
+    ];
+    createLocation(args, lang, mitug);
+};
+
 // ====================================
 
 const createLocationFromId = (
@@ -9165,6 +9598,9 @@ const createLocationFromId = (
             break;
         case 'Water Facility':
             createWaterFacilityLocation(lang, mitug);
+            break;
+        case 'Residential Neighborhood':
+            createResidentialNeighborhoodLocation(lang, mitug);
             break;
     }
 
