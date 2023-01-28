@@ -125,6 +125,11 @@ task('zip', done => {
     done();
 });
 
+task('archive', done => {
+    src('dist/**').pipe(dest(`archive/${pkg.version}`));
+    done();
+});
+
 task('clean', done => {
     del(['.temp', `dist/${scriptNameNoSpaces}.jsx`]);
     done();
@@ -142,6 +147,7 @@ task(
         'jsxbin',
         'addToHost',
         'zip',
+        'archive',
         'clean'
     )
 );
@@ -159,6 +165,7 @@ task(
         'jsxbin',
         'addToHost',
         'zip',
+        'archive',
         'clean'
     )
 );
