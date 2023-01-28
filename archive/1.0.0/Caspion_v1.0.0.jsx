@@ -7983,6 +7983,8 @@ var createLocationIconFromId = function (id, iconPos, iconAnchor, iconScale, mit
             return createWaterFacilityIcon(iconPos, iconAnchor, iconScale, id, mitug);
         case 'Residential Neighborhood':
             return createResidentialNeighborhoodIcon(iconPos, iconAnchor, iconScale, id, mitug);
+        case 'Amusement Park':
+            return createAmusementParkIcon(iconPos, iconAnchor, iconScale, id, mitug);
     }
 };
 var createLocation = function (argsArr, inputLang, mitug) {
@@ -15067,6 +15069,287 @@ var createResidentialNeighborhoodLocation = function (lang, mitug) {
     ];
     createLocation(args, lang, mitug);
 };
+var createAmusementParkIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
+    var iconLayer = createIconBase(name);
+    var contents = iconLayer.property('Contents');
+    var createIconCircle = function () {
+        var vertices = [
+            [43.39892578125, 0],
+            [0, 43.39892578125],
+            [-43.39892578125, 0],
+            [0, -43.39892578125]
+        ];
+        var inTangents = [
+            [0, -23.9685668945312],
+            [23.9685668945312, 0],
+            [0, 23.9685668945312],
+            [-23.9685668945312, 0]
+        ];
+        var outTangents = [
+            [0, 23.9685668945312],
+            [-23.9685668945312, 0],
+            [0, -23.9685668945312],
+            [23.9685668945312, 0]
+        ];
+        createPathGrp(contents, 'Icon_Circle', true, false, getColorsFromMitug(mitug).pri, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [0, -2.4971]);
+    };
+    var createRPole = function () {
+        var vertices = [
+            [-12.8439178466797, -20.0448608398438],
+            [12.8439178466797, 20.0448608398438]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'R_Pole', false, true, [0, 0, 0], getColorsFromMitug(mitug).bg, 3, vertices, inTangents, outTangents, true, [17.0875, 25.0419]);
+    };
+    var createLPole = function () {
+        var vertices = [
+            [-12.7528839111328, 19.9027709960938],
+            [12.7528839111328, -19.9027709960938]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'L_Pole', false, true, [0, 0, 0], getColorsFromMitug(mitug).bg, 3, vertices, inTangents, outTangents, true, [-17.1785, 25.184]);
+    };
+    var createBigCircle = function () {
+        var vertices = [
+            [27.192138671875, 0],
+            [0, -27.192138671875],
+            [-27.192138671875, 0],
+            [0, 27.192138671875]
+        ];
+        var inTangents = [
+            [0, 15.0178070068359],
+            [15.0178070068359, 0],
+            [0, -15.0178070068359],
+            [-15.0178070068359, 0]
+        ];
+        var outTangents = [
+            [0, -15.0178070068359],
+            [-15.0178070068359, 0],
+            [0, 15.0178070068359],
+            [15.0178070068359, 0]
+        ];
+        createPathGrp(contents, 'Big_Circle', false, true, [0, 0, 0], getColorsFromMitug(mitug).bg, 3, vertices, inTangents, outTangents, true, [0, -1.6255]);
+    };
+    var createLittleCircle = function () {
+        var vertices = [
+            [8.24102783203125, 0],
+            [0, -8.24102783203125],
+            [-8.24102783203125, 0],
+            [0, 8.24102783203125]
+        ];
+        var inTangents = [
+            [0, 4.5513916015625],
+            [4.5513916015625, 0],
+            [0, -4.5513916015625],
+            [-4.5513916015625, 0]
+        ];
+        var outTangents = [
+            [0, -4.5513916015625],
+            [-4.5513916015625, 0],
+            [0, 4.5513916015625],
+            [4.5513916015625, 0]
+        ];
+        createPathGrp(contents, 'Little_Circle', false, true, [0, 0, 0], getColorsFromMitug(mitug).bg, 3, vertices, inTangents, outTangents, true, [0, -1.6255]);
+    };
+    var createWheel01 = function () {
+        var vertices = [
+            [-6.78562927246094, 0],
+            [0, -6.78562927246094],
+            [6.78562927246094, 0],
+            [0, 6.78562927246094]
+        ];
+        var inTangents = [
+            [0, 3.74760437011719],
+            [-3.74760437011719, 0],
+            [0, -3.74760437011719],
+            [3.74760437011719, 0]
+        ];
+        var outTangents = [
+            [0, -3.74760437011719],
+            [3.74760437011719, 0],
+            [0, 3.74760437011719],
+            [-3.74760437011719, 0]
+        ];
+        createPathGrp(contents, 'Wheel_01', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [0, -27.9795]);
+    };
+    var createWheel02 = function () {
+        var vertices = [
+            [-3.392822265625, -5.87652587890625],
+            [5.87652587890625, -3.392822265625],
+            [3.392822265625, 5.87652587890625],
+            [-5.87652587890625, 3.392822265625]
+        ];
+        var inTangents = [
+            [-3.24551391601562, 1.87379455566406],
+            [-1.87379455566406, -3.24551391601562],
+            [3.24551391601562, -1.87379455566406],
+            [1.87379455566406, 3.24551391601562]
+        ];
+        var outTangents = [
+            [3.24551391601562, -1.87379455566406],
+            [1.87379455566406, 3.24551391601562],
+            [-3.24551391601562, 1.87379455566406],
+            [-1.87379455566406, -3.24551391601562]
+        ];
+        createPathGrp(contents, 'Wheel_02', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [22.8232, -14.8026]);
+    };
+    var createWheel03 = function () {
+        var vertices = [
+            [3.392822265625, -5.87652587890625],
+            [5.87652587890625, 3.392822265625],
+            [-3.392822265625, 5.87652587890625],
+            [-5.87652587890625, -3.392822265625]
+        ];
+        var inTangents = [
+            [-3.24551391601562, -1.87379455566406],
+            [1.87379455566406, -3.24551391601562],
+            [3.24551391601562, 1.87379455566406],
+            [-1.87379455566406, 3.24551391601562]
+        ];
+        var outTangents = [
+            [3.24551391601562, 1.87379455566406],
+            [-1.87379455566406, 3.24551391601562],
+            [-3.24551391601562, -1.87379455566406],
+            [1.87379455566406, -3.24551391601562]
+        ];
+        createPathGrp(contents, 'Wheel_03', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [22.8232, 11.5514]);
+    };
+    var createWheel04 = function () {
+        var vertices = [
+            [3.392822265625, -5.87652587890625],
+            [-5.87652587890625, -3.392822265625],
+            [-3.392822265625, 5.87652587890625],
+            [5.87652587890625, 3.392822265625]
+        ];
+        var inTangents = [
+            [3.24551391601562, 1.87379455566406],
+            [1.87379455566406, -3.24551391601562],
+            [-3.24551391601562, -1.87379455566406],
+            [-1.87379455566406, 3.24551391601562]
+        ];
+        var outTangents = [
+            [-3.24551391601562, -1.87379455566406],
+            [-1.87379455566406, 3.24551391601562],
+            [3.24551391601562, 1.87379455566406],
+            [1.87379455566406, -3.24551391601562]
+        ];
+        createPathGrp(contents, 'Wheel_04', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [-22.8232, -14.8026]);
+    };
+    var createWheel05 = function () {
+        var vertices = [
+            [-3.392822265625, -5.87652587890625],
+            [-5.87652587890625, 3.392822265625],
+            [3.392822265625, 5.87652587890625],
+            [5.87652587890625, -3.392822265625]
+        ];
+        var inTangents = [
+            [3.24551391601562, -1.87379455566406],
+            [-1.87379455566406, -3.24551391601562],
+            [-3.24551391601562, 1.87379455566406],
+            [1.87379455566406, 3.24551391601562]
+        ];
+        var outTangents = [
+            [-3.24551391601562, 1.87379455566406],
+            [1.87379455566406, 3.24551391601562],
+            [3.24551391601562, -1.87379455566406],
+            [-1.87379455566406, -3.24551391601562]
+        ];
+        createPathGrp(contents, 'Wheel_05', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [-22.8232, 11.5514]);
+    };
+    var createWheel06 = function () {
+        var vertices = [
+            [6.78562927246094, 0],
+            [0, 6.78562927246094],
+            [-6.78562927246094, 0],
+            [0, -6.78562927246094]
+        ];
+        var inTangents = [
+            [0, -3.74760437011719],
+            [3.74760437011719, 0],
+            [0, 3.74760437011719],
+            [-3.74760437011719, 0]
+        ];
+        var outTangents = [
+            [0, 3.74760437011719],
+            [-3.74760437011719, 0],
+            [0, -3.74760437011719],
+            [3.74760437011719, 0]
+        ];
+        createPathGrp(contents, 'Wheel_06', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [0, 24.7284]);
+    };
+    createWheel06();
+    createWheel05();
+    createWheel04();
+    createWheel03();
+    createWheel02();
+    createWheel01();
+    createLittleCircle();
+    createBigCircle();
+    createLPole();
+    createRPole();
+    createIconCircle();
+    setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
+    return iconLayer;
+};
+var createAmusementParkLocation = function (lang, mitug) {
+    var args = [
+        {
+            lang: 'Hebrew',
+            text: 'פארק משחקים',
+            fontSize: 77.3332,
+            tracking: -20,
+            textPos: [913.0949, 543.7325],
+            textAnchor: [getOS() === 'Win' ? 134.5445 : -134.5445, -15.5761],
+            bgSize: [422, 110],
+            iconPos: [1108.25, 541.0954],
+            iconAnchor: [0, -0.4046],
+            iconScale: 100,
+            iconId: 'Amusement Park'
+        },
+        {
+            lang: 'English',
+            text: 'Amusement Park',
+            fontSize: 74.9495,
+            tracking: -20,
+            leading: 50,
+            textPos: [1009.3293, 542.8844],
+            textAnchor: [getOS() === 'Win' ? 220.9511 : -220.9511, -26.682],
+            bgSize: [570, 106],
+            iconPos: [735.1875, 541.0329],
+            iconAnchor: [0, -0.4046],
+            iconScale: 100,
+            iconId: 'Amusement Park'
+        },
+        {
+            lang: 'Arabic',
+            text: 'ملعب',
+            fontSize: 64.1684,
+            tracking: -19,
+            textPos: [918.1465, 541.375],
+            textAnchor: [getOS() === 'Win' ? 81.5578 : -81.5578, -16.3554],
+            bgSize: [282, 91],
+            iconPos: [1048.7811, 541.2777],
+            iconAnchor: [0, -0.4046],
+            iconScale: 83,
+            iconId: 'Amusement Park'
+        }
+    ];
+    createLocation(args, lang, mitug);
+};
 var createLocationFromId = function (id, lang, mitug) {
     app.beginUndoGroup("Caspion: Create Location - ".concat(id));
     var comp = app.project.activeItem;
@@ -15116,6 +15399,9 @@ var createLocationFromId = function (id, lang, mitug) {
             break;
         case 'Residential Neighborhood':
             createResidentialNeighborhoodLocation(lang, mitug);
+            break;
+        case 'Amusement Park':
+            createAmusementParkLocation(lang, mitug);
             break;
     }
     app.endUndoGroup();
@@ -15548,7 +15834,8 @@ var createLocationsUI = function (tpanel) {
         'Pumping Station',
         'Police',
         'Water Facility',
-        'Residential Neighborhood'
+        'Residential Neighborhood',
+        'Amusement Park'
     ];
     var locationsDD = locationsDDGrp.add('dropdownlist', undefined, locationsList);
     locationsDD.preferredSize[0] = 100;

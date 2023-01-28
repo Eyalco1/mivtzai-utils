@@ -44,7 +44,8 @@ type LocationID =
     | 'Pumping Station'
     | 'Police'
     | 'Water Facility'
-    | 'Residential Neighborhood';
+    | 'Residential Neighborhood'
+    | 'Amusement Park';
 type TextureID =
     | 'Paper Dark'
     | 'Paper Medium'
