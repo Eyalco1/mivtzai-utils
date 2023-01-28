@@ -42,7 +42,8 @@ type LocationID =
     | 'Government Building'
     | 'Factory'
     | 'Pumping Station'
-    | 'Police';
+    | 'Police'
+    | 'Water Facility';
 type TextureID =
     | 'Paper Dark'
     | 'Paper Medium'

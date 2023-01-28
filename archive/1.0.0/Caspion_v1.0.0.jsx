@@ -7979,6 +7979,8 @@ var createLocationIconFromId = function (id, iconPos, iconAnchor, iconScale, mit
             return createPumpingStationIcon(iconPos, iconAnchor, iconScale, id, mitug);
         case 'Police':
             return createPoliceIcon(iconPos, iconAnchor, iconScale, id, mitug);
+        case 'Water Facility':
+            return createWaterFacilityIcon(iconPos, iconAnchor, iconScale, id, mitug);
     }
 };
 var createLocation = function (argsArr, inputLang, mitug) {
@@ -14685,6 +14687,94 @@ var createPoliceLocation = function (lang, mitug) {
     ];
     createLocation(args, lang, mitug);
 };
+var createWaterFacilityIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
+    var iconLayer = createIconBase(name);
+    var contents = iconLayer.property('Contents');
+    var createIconCircle = function () {
+        var vertices = [
+            [43.39892578125, 0],
+            [0, 43.39892578125],
+            [-43.39892578125, 0],
+            [0, -43.39892578125]
+        ];
+        var inTangents = [
+            [0, -23.9685668945312],
+            [23.9685668945312, 0],
+            [0, 23.9685668945312],
+            [-23.9685668945312, 0]
+        ];
+        var outTangents = [
+            [0, 23.9685668945312],
+            [-23.9685668945312, 0],
+            [0, -23.9685668945312],
+            [23.9685668945312, 0]
+        ];
+        createPathGrp(contents, 'Icon_Circle', true, false, getColorsFromMitug(mitug).pri, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [0, 0]);
+    };
+    var createDrop = function () {
+        var vertices = [
+            [0, -28.6298522949219],
+            [0, 28.6298522949219]
+        ];
+        var inTangents = [
+            [0, 0],
+            [-36.3336029052734, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [36.3336029052734, 0]
+        ];
+        createPathGrp(contents, 'Drop', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [0, 0.8716]);
+    };
+    createDrop();
+    createIconCircle();
+    setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
+    return iconLayer;
+};
+var createWaterFacilityLocation = function (lang, mitug) {
+    var args = [
+        {
+            lang: 'Hebrew',
+            text: 'מתקן מים',
+            fontSize: 77.3332,
+            tracking: -19,
+            textPos: [909.074, 543.7325],
+            textAnchor: [getOS() === 'Win' ? 87.0235 : -87.0235, -15.5761],
+            bgSize: [318, 110],
+            iconPos: [1056, 539],
+            iconAnchor: [0, 0],
+            iconScale: 100,
+            iconId: 'Water Facility'
+        },
+        {
+            lang: 'English',
+            text: 'Water Facility',
+            fontSize: 74.9495,
+            tracking: -20,
+            textPos: [1013.4949, 542.9679],
+            textAnchor: [getOS() === 'Win' ? 179.2417 : -179.2417, -20.7235],
+            bgSize: [486, 106],
+            iconPos: [777, 539],
+            iconAnchor: [0, 0],
+            iconScale: 97,
+            iconId: 'Water Facility'
+        },
+        {
+            lang: 'Arabic',
+            text: 'مجمع مياه',
+            fontSize: 64,
+            tracking: -19,
+            textPos: [918.1465, 541.375],
+            textAnchor: [getOS() === 'Win' ? 154.3966 : -154.3966, -13.875],
+            bgSize: [424, 91],
+            iconPos: [1119.625, 539.25],
+            iconAnchor: [0, 0],
+            iconScale: 83,
+            iconId: 'Water Facility'
+        }
+    ];
+    createLocation(args, lang, mitug);
+};
 var createLocationFromId = function (id, lang, mitug) {
     app.beginUndoGroup("Caspion: Create Location - ".concat(id));
     var comp = app.project.activeItem;
@@ -14728,6 +14818,9 @@ var createLocationFromId = function (id, lang, mitug) {
             break;
         case 'Police':
             createPoliceLocation(lang, mitug);
+            break;
+        case 'Water Facility':
+            createWaterFacilityLocation(lang, mitug);
             break;
     }
     app.endUndoGroup();
@@ -15158,7 +15251,8 @@ var createLocationsUI = function (tpanel) {
         'Government Building',
         'Factory',
         'Pumping Station',
-        'Police'
+        'Police',
+        'Water Facility'
     ];
     var locationsDD = locationsDDGrp.add('dropdownlist', undefined, locationsList);
     locationsDD.preferredSize[0] = 100;
