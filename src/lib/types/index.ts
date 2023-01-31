@@ -25,6 +25,7 @@ type IconID =
     | 'Salute With M16'
     | 'Holding M16'
     | 'Shooting M16'
+    | 'Running With M16'
     | 'Rocket'
     | 'Rocket Launcher'
     | 'Mask'
