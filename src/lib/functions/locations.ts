@@ -225,6 +225,8 @@ const createLocationIconFromId = (
                 id,
                 mitug
             );
+        case 'Hotel':
+            return createHotelIcon(iconPos, iconAnchor, iconScale, id, mitug);
     }
 };
 
@@ -10010,6 +10012,248 @@ const createAmusementParkLocation = (lang: Lingo, mitug: Mitug): void => {
     createLocation(args, lang, mitug);
 };
 
+const createHotelIcon: CreateLocationIconFn = (
+    iconPos,
+    iconAnchor,
+    iconScale,
+    name,
+    mitug
+) => {
+    const iconLayer = createIconBase(name);
+
+    const contents = iconLayer.property('Contents') as PropertyGroup;
+
+    const createIconCircle = () => {
+        const vertices: [number, number][] = [
+            [43.39892578125, 0],
+            [0, 43.39892578125],
+            [-43.39892578125, 0],
+            [0, -43.39892578125]
+        ];
+        const inTangents: [number, number][] = [
+            [0, -23.9685668945312],
+            [23.9685668945312, 0],
+            [0, 23.9685668945312],
+            [-23.9685668945312, 0]
+        ];
+        const outTangents: [number, number][] = [
+            [0, 23.9685668945312],
+            [-23.9685668945312, 0],
+            [0, -23.9685668945312],
+            [23.9685668945312, 0]
+        ];
+
+        createPathGrp(
+            contents,
+            'Icon_Circle',
+            true,
+            false,
+            getColorsFromMitug(mitug).pri,
+            [0, 0, 0],
+            0,
+            vertices,
+            inTangents,
+            outTangents,
+            true,
+            [0, 0]
+        );
+    };
+
+    const createSide = () => {
+        const vertices: [number, number][] = [
+            [0, -20.0343933105469],
+            [0, 20.0343933105469]
+        ];
+        const inTangents: [number, number][] = [
+            [0, 0],
+            [0, 0]
+        ];
+        const outTangents: [number, number][] = [
+            [0, 0],
+            [0, 0]
+        ];
+
+        createPathGrp(
+            contents,
+            'Side',
+            false,
+            true,
+            [0, 0, 0],
+            getColorsFromMitug(mitug).bg,
+            3,
+            vertices,
+            inTangents,
+            outTangents,
+            false,
+            [-26.9079, 0]
+        );
+    };
+
+    const createBed = () => {
+        const vertices: [number, number][] = [
+            [28.9371948242188, 6.33441162109375],
+            [28.9371948242188, -6.33441162109375],
+            [-28.9371948242188, -6.33441162109375]
+        ];
+        const inTangents: [number, number][] = [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        const outTangents: [number, number][] = [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+
+        createPathGrp(
+            contents,
+            'Bed',
+            false,
+            true,
+            [0, 0, 0],
+            getColorsFromMitug(mitug).bg,
+            3,
+            vertices,
+            inTangents,
+            outTangents,
+            false,
+            [2.0293, 13.7]
+        );
+    };
+
+    const createBody = () => {
+        const vertices: [number, number][] = [
+            [16.4273681640625, 8.02848815917969],
+            [16.4273681640625, 8.02847290039062],
+            [0.37040710449219, -8.02848815917969],
+            [-16.4273681640625, -8.02848815917969],
+            [-16.4273681640625, 8.02848815917969]
+        ];
+        const inTangents: [number, number][] = [
+            [0, 0],
+            [0, 0],
+            [8.86801147460938, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        const outTangents: [number, number][] = [
+            [0, 0],
+            [0, -8.86801147460938],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+
+        createPathGrp(
+            contents,
+            'Body',
+            false,
+            true,
+            [0, 0, 0],
+            getColorsFromMitug(mitug).bg,
+            3,
+            vertices,
+            inTangents,
+            outTangents,
+            false,
+            [14.5391, -3.1672]
+        );
+    };
+
+    const createHead = () => {
+        const vertices: [number, number][] = [
+            [5.22111511230469, 0],
+            [0, -5.22111511230469],
+            [-5.22111511230469, 0],
+            [0, 5.22111511230469]
+        ];
+        const inTangents: [number, number][] = [
+            [0, 2.883544921875],
+            [2.883544921875, 0],
+            [0, -2.883544921875],
+            [-2.883544921875, 0]
+        ];
+        const outTangents: [number, number][] = [
+            [0, -2.883544921875],
+            [-2.883544921875, 0],
+            [0, 2.883544921875],
+            [2.883544921875, 0]
+        ];
+
+        createPathGrp(
+            contents,
+            'Head',
+            false,
+            true,
+            [0, 0, 0],
+            getColorsFromMitug(mitug).bg,
+            3,
+            vertices,
+            inTangents,
+            outTangents,
+            true,
+            [-14.6074, -5.9745]
+        );
+    };
+
+    createHead();
+    createBody();
+    createBed();
+    createSide();
+    createIconCircle();
+
+    setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
+
+    return iconLayer;
+};
+
+const createHotelLocation = (lang: Lingo, mitug: Mitug): void => {
+    const args: LocationArgs[] = [
+        {
+            lang: 'Hebrew',
+            text: 'בית מלון',
+            fontSize: 77.3332,
+            tracking: -20,
+            textPos: [906.8351, 540.2278],
+            textAnchor: [getOS() === 'Win' ? 74.2847 : -74.2847, -19.0808],
+            bgSize: [286, 110],
+            iconPos: [1040.25, 539],
+            iconAnchor: [0, 0],
+            iconScale: 100,
+            iconId: 'Hotel'
+        },
+        {
+            lang: 'English',
+            text: 'Hotel',
+            fontSize: 74.9495,
+            tracking: -20,
+            leading: 50,
+            textPos: [1007.8199, 537.8844],
+            textAnchor: [getOS() === 'Win' ? 67.9417 : -67.9417, -26.682],
+            bgSize: [262, 106],
+            iconPos: [888.4375, 538.6875],
+            iconAnchor: [0, 0],
+            iconScale: 100,
+            iconId: 'Hotel'
+        },
+        {
+            lang: 'Arabic',
+            text: 'فندق',
+            fontSize: 64.1684,
+            tracking: -19,
+            textPos: [915.716, 541.6739],
+            textAnchor: [getOS() === 'Win' ? 82.1273 : -82.1273, -15.5565],
+            bgSize: [282, 91],
+            iconPos: [1048.7811, 540.0277],
+            iconAnchor: [0, 0],
+            iconScale: 83,
+            iconId: 'Hotel'
+        }
+    ];
+    createLocation(args, lang, mitug);
+};
+
 // ====================================
 
 const createLocationFromId = (
@@ -10070,6 +10314,9 @@ const createLocationFromId = (
             break;
         case 'Amusement Park':
             createAmusementParkLocation(lang, mitug);
+            break;
+        case 'Hotel':
+            createHotelLocation(lang, mitug);
             break;
     }
 

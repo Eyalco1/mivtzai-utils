@@ -8575,6 +8575,8 @@ var createLocationIconFromId = function (id, iconPos, iconAnchor, iconScale, mit
             return createResidentialNeighborhoodIcon(iconPos, iconAnchor, iconScale, id, mitug);
         case 'Amusement Park':
             return createAmusementParkIcon(iconPos, iconAnchor, iconScale, id, mitug);
+        case 'Hotel':
+            return createHotelIcon(iconPos, iconAnchor, iconScale, id, mitug);
     }
 };
 var createLocation = function (argsArr, inputLang, mitug) {
@@ -15940,6 +15942,161 @@ var createAmusementParkLocation = function (lang, mitug) {
     ];
     createLocation(args, lang, mitug);
 };
+var createHotelIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
+    var iconLayer = createIconBase(name);
+    var contents = iconLayer.property('Contents');
+    var createIconCircle = function () {
+        var vertices = [
+            [43.39892578125, 0],
+            [0, 43.39892578125],
+            [-43.39892578125, 0],
+            [0, -43.39892578125]
+        ];
+        var inTangents = [
+            [0, -23.9685668945312],
+            [23.9685668945312, 0],
+            [0, 23.9685668945312],
+            [-23.9685668945312, 0]
+        ];
+        var outTangents = [
+            [0, 23.9685668945312],
+            [-23.9685668945312, 0],
+            [0, -23.9685668945312],
+            [23.9685668945312, 0]
+        ];
+        createPathGrp(contents, 'Icon_Circle', true, false, getColorsFromMitug(mitug).pri, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [0, 0]);
+    };
+    var createSide = function () {
+        var vertices = [
+            [0, -20.0343933105469],
+            [0, 20.0343933105469]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Side', false, true, [0, 0, 0], getColorsFromMitug(mitug).bg, 3, vertices, inTangents, outTangents, false, [-26.9079, 0]);
+    };
+    var createBed = function () {
+        var vertices = [
+            [28.9371948242188, 6.33441162109375],
+            [28.9371948242188, -6.33441162109375],
+            [-28.9371948242188, -6.33441162109375]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Bed', false, true, [0, 0, 0], getColorsFromMitug(mitug).bg, 3, vertices, inTangents, outTangents, false, [2.0293, 13.7]);
+    };
+    var createBody = function () {
+        var vertices = [
+            [16.4273681640625, 8.02848815917969],
+            [16.4273681640625, 8.02847290039062],
+            [0.37040710449219, -8.02848815917969],
+            [-16.4273681640625, -8.02848815917969],
+            [-16.4273681640625, 8.02848815917969]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [8.86801147460938, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, -8.86801147460938],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Body', false, true, [0, 0, 0], getColorsFromMitug(mitug).bg, 3, vertices, inTangents, outTangents, false, [14.5391, -3.1672]);
+    };
+    var createHead = function () {
+        var vertices = [
+            [5.22111511230469, 0],
+            [0, -5.22111511230469],
+            [-5.22111511230469, 0],
+            [0, 5.22111511230469]
+        ];
+        var inTangents = [
+            [0, 2.883544921875],
+            [2.883544921875, 0],
+            [0, -2.883544921875],
+            [-2.883544921875, 0]
+        ];
+        var outTangents = [
+            [0, -2.883544921875],
+            [-2.883544921875, 0],
+            [0, 2.883544921875],
+            [2.883544921875, 0]
+        ];
+        createPathGrp(contents, 'Head', false, true, [0, 0, 0], getColorsFromMitug(mitug).bg, 3, vertices, inTangents, outTangents, true, [-14.6074, -5.9745]);
+    };
+    createHead();
+    createBody();
+    createBed();
+    createSide();
+    createIconCircle();
+    setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
+    return iconLayer;
+};
+var createHotelLocation = function (lang, mitug) {
+    var args = [
+        {
+            lang: 'Hebrew',
+            text: 'בית מלון',
+            fontSize: 77.3332,
+            tracking: -20,
+            textPos: [906.8351, 540.2278],
+            textAnchor: [getOS() === 'Win' ? 74.2847 : -74.2847, -19.0808],
+            bgSize: [286, 110],
+            iconPos: [1040.25, 539],
+            iconAnchor: [0, 0],
+            iconScale: 100,
+            iconId: 'Hotel'
+        },
+        {
+            lang: 'English',
+            text: 'Hotel',
+            fontSize: 74.9495,
+            tracking: -20,
+            leading: 50,
+            textPos: [1007.8199, 537.8844],
+            textAnchor: [getOS() === 'Win' ? 67.9417 : -67.9417, -26.682],
+            bgSize: [262, 106],
+            iconPos: [888.4375, 538.6875],
+            iconAnchor: [0, 0],
+            iconScale: 100,
+            iconId: 'Hotel'
+        },
+        {
+            lang: 'Arabic',
+            text: 'فندق',
+            fontSize: 64.1684,
+            tracking: -19,
+            textPos: [915.716, 541.6739],
+            textAnchor: [getOS() === 'Win' ? 82.1273 : -82.1273, -15.5565],
+            bgSize: [282, 91],
+            iconPos: [1048.7811, 540.0277],
+            iconAnchor: [0, 0],
+            iconScale: 83,
+            iconId: 'Hotel'
+        }
+    ];
+    createLocation(args, lang, mitug);
+};
 var createLocationFromId = function (id, lang, mitug) {
     app.beginUndoGroup("Caspion: Create Location - ".concat(id));
     var comp = app.project.activeItem;
@@ -15992,6 +16149,9 @@ var createLocationFromId = function (id, lang, mitug) {
             break;
         case 'Amusement Park':
             createAmusementParkLocation(lang, mitug);
+            break;
+        case 'Hotel':
+            createHotelLocation(lang, mitug);
             break;
     }
     app.endUndoGroup();
@@ -16422,12 +16582,12 @@ var createLocationsUI = function (tpanel) {
         'Diplomatic Building',
         'Gas Station',
         'Government Building',
-        'Factory',
         'Pumping Station',
         'Police',
         'Water Facility',
         'Residential Neighborhood',
-        'Amusement Park'
+        'Amusement Park',
+        'Hotel'
     ];
     var locationsDD = locationsDDGrp.add('dropdownlist', undefined, locationsList);
     locationsDD.preferredSize[0] = 100;
