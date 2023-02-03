@@ -35,6 +35,12 @@ const createQAUI = (
     QABtnsGrp.alignment = 'left';
     QABtnsGrp.margins = 4;
 
+    const fsNameFromOs: 'Explorer' | 'Finder' =
+        getOS() === 'Win' ? 'Explorer' : 'Finder';
+
+    const metaKeyNameFromOs: 'CTRL' | 'CMD' =
+        getOS() === 'Win' ? 'CTRL' : 'CMD';
+
     const bigRowOne = QABtnsGrp.add('group');
 
     const rowOne = bigRowOne.add('group');
@@ -50,7 +56,7 @@ const createQAUI = (
     createQABtn(
         rowTwo,
         ILMapPhotoBinary,
-        'Israel Map Photo\n\nCLICK: Clean Map\nCTRL + CLICK: Map With Labels',
+        `Israel Map Photo\n\nCLICK: Clean Map\n${metaKeyNameFromOs} + CLICK: Map With Labels`,
         importIsraelGoogleMaps
     );
 
@@ -60,7 +66,7 @@ const createQAUI = (
     createQABtn(
         rowThree,
         GAMapPhotoBinary,
-        'Gaza Map Photo\n\nCLICK: Clean Map\nCTRL + CLICK: Map With Labels',
+        `Gaza Map Photo\n\nCLICK: Clean Map\n${metaKeyNameFromOs} + CLICK: Map With Labels`,
         importGazaGoogleMaps
     );
     createQABtn(rowThree, textReverseBinary, 'Reverse Text', textReverse);
@@ -72,9 +78,7 @@ const createQAUI = (
     createQABtn(
         rowFour,
         folderBinary,
-        `Open Project Folder in ${
-            getOS() === 'Win' ? 'Explorer' : 'Finder'
-        }\n\nClick: Open Project Folder\nCTRL + CLICK: Choose New Project Folder`,
+        `Open Project Folder in ${fsNameFromOs}\n\nClick: Open Project Folder\n${metaKeyNameFromOs} + CLICK: Choose New Project Folder`,
         openProjectInFinder
     );
     createQABtn(rowFour, tatzaBinary, 'Location Mark', createTatzaPath);

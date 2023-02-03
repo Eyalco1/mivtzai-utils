@@ -49,7 +49,8 @@ type LocationID =
     | 'Residential Neighborhood'
     | 'Amusement Park'
     | 'Hotel'
-    | 'School';
+    | 'School'
+    | 'Stadium';
 type TextureID =
     | 'Paper Dark'
     | 'Paper Medium'
