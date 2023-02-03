@@ -8577,6 +8577,8 @@ var createLocationIconFromId = function (id, iconPos, iconAnchor, iconScale, mit
             return createAmusementParkIcon(iconPos, iconAnchor, iconScale, id, mitug);
         case 'Hotel':
             return createHotelIcon(iconPos, iconAnchor, iconScale, id, mitug);
+        case 'School':
+            return createSchoolIcon(iconPos, iconAnchor, iconScale, id, mitug);
     }
 };
 var createLocation = function (argsArr, inputLang, mitug) {
@@ -16097,6 +16099,174 @@ var createHotelLocation = function (lang, mitug) {
     ];
     createLocation(args, lang, mitug);
 };
+var createSchoolIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
+    var iconLayer = createIconBase(name);
+    var contents = iconLayer.property('Contents');
+    var createIconCircle = function () {
+        var vertices = [
+            [43.39892578125, 0],
+            [0, 43.39892578125],
+            [-43.39892578125, 0],
+            [0, -43.39892578125]
+        ];
+        var inTangents = [
+            [0, -23.9685668945312],
+            [23.9685668945312, 0],
+            [0, 23.9685668945312],
+            [-23.9685668945312, 0]
+        ];
+        var outTangents = [
+            [0, 23.9685668945312],
+            [-23.9685668945312, 0],
+            [0, -23.9685668945312],
+            [23.9685668945312, 0]
+        ];
+        createPathGrp(contents, 'Icon_Circle', true, false, getColorsFromMitug(mitug).pri, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [0, 0]);
+    };
+    var createBottom = function () {
+        var vertices = [
+            [20.3099975585938, -11.0762634277344],
+            [20.3099975585938, -3.42623901367188],
+            [16.25, 3.37374877929688],
+            [3.65997314453125, 10.1537780761719],
+            [-3.6600341796875, 10.1537780761719],
+            [-16.2400512695312, 3.37374877929688],
+            [-20.3099975585938, -3.42623901367188],
+            [-20.3099975585938, -11.0762634277344],
+            [-3.32000732421875, -2.19625854492188],
+            [3.3299560546875, -2.19625854492188]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [2.5, -1.3399658203125],
+            [0, 0],
+            [2.2900390625, 1.22998046875],
+            [0, 0],
+            [0, 2.8499755859375],
+            [0, 0],
+            [0, 0],
+            [-2.0899658203125, 1.08001708984375]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 2.8499755859375],
+            [0, 0],
+            [0, 0],
+            [-2.27996826171875, 1.22998046875],
+            [-2.50994873046875, -1.3399658203125],
+            [0, 0],
+            [0, 0],
+            [2.0799560546875, 1.08001708984375],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Bottom', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [-1.29, 10.6663]);
+    };
+    var createTop = function () {
+        var vertices = [
+            [27.7323913574219, 18.5894165039062],
+            [27.7323913574219, -9.3232421875],
+            [28.2428894042969, -9.5899658203125],
+            [28.2429504394531, -12.1514282226562],
+            [2.44888305664062, -25.6307373046875],
+            [-4.12387084960938, -25.630859375],
+            [-29.9180603027344, -12.1526489257812],
+            [-29.9180603027344, -9.59112548828125],
+            [-4.12399291992188, 3.88812255859375],
+            [2.44869995117188, 3.88824462890625],
+            [25.6533508300781, -8.23687744140625],
+            [25.6533508300781, 18.5894165039062],
+            [22.6918640136719, 22.4367065429688],
+            [26.6928405761719, 26.4376831054688],
+            [30.6938781738281, 22.4367065429688]
+        ];
+        var inTangents = [
+            [1.7022705078125, 0.4599609375],
+            [0, 0],
+            [0, 0],
+            [1.03436279296875, 0.54052734375],
+            [0, 0],
+            [2.058837890625, -1.0758056640625],
+            [0, 0],
+            [-1.034423828125, -0.54058837890625],
+            [0, 0],
+            [-2.058837890625, 1.0758056640625],
+            [0, 0],
+            [0, 0],
+            [0, -1.8477783203125],
+            [-2.20965576171875, 0],
+            [0, 2.209716796875]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [1.034423828125, -0.54052734375],
+            [0, 0],
+            [-2.058837890625, -1.07586669921875],
+            [0, 0],
+            [-1.034423828125, 0.54052734375],
+            [0, 0],
+            [2.05877685546875, 1.07586669921875],
+            [0, 0],
+            [0, 0],
+            [-1.70233154296875, 0.45989990234375],
+            [0, 2.209716796875],
+            [2.209716796875, 0],
+            [0, -1.84771728515625]
+        ];
+        createPathGrp(contents, 'Top', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [-0.4487, 0.3506]);
+    };
+    createTop();
+    createBottom();
+    createIconCircle();
+    setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
+    return iconLayer;
+};
+var createSchoolLocation = function (lang, mitug) {
+    var args = [
+        {
+            lang: 'Hebrew',
+            text: 'בית ספר',
+            fontSize: 77.3332,
+            tracking: -20,
+            textPos: [907.3022, 539.0985],
+            textAnchor: [getOS() === 'Win' ? 73.0018 : -73.0018, -20.21],
+            bgSize: [288, 110],
+            iconPos: [1041.5, 539.25],
+            iconAnchor: [0, 0],
+            iconScale: 100,
+            iconId: 'School'
+        },
+        {
+            lang: 'English',
+            text: 'School',
+            fontSize: 74.9495,
+            tracking: -20,
+            leading: 50,
+            textPos: [1002.1322, 540.0096],
+            textAnchor: [getOS() === 'Win' ? 86.7541 : -86.7541, -27.0568],
+            bgSize: [316, 106],
+            iconPos: [863.4375, 538.6875],
+            iconAnchor: [0, 0],
+            iconScale: 100,
+            iconId: 'School'
+        },
+        {
+            lang: 'Arabic',
+            text: 'مدرسة',
+            fontSize: 64.1684,
+            tracking: -19,
+            textPos: [921.2639, 540.3436],
+            textAnchor: [getOS() === 'Win' ? 106.6752 : -106.6752, -16.3868],
+            bgSize: [334, 91],
+            iconPos: [1075.7811, 540.0277],
+            iconAnchor: [0, 0],
+            iconScale: 83,
+            iconId: 'School'
+        }
+    ];
+    createLocation(args, lang, mitug);
+};
 var createLocationFromId = function (id, lang, mitug) {
     app.beginUndoGroup("Caspion: Create Location - ".concat(id));
     var comp = app.project.activeItem;
@@ -16152,6 +16322,9 @@ var createLocationFromId = function (id, lang, mitug) {
             break;
         case 'Hotel':
             createHotelLocation(lang, mitug);
+            break;
+        case 'School':
+            createSchoolLocation(lang, mitug);
             break;
     }
     app.endUndoGroup();
@@ -16587,7 +16760,8 @@ var createLocationsUI = function (tpanel) {
         'Water Facility',
         'Residential Neighborhood',
         'Amusement Park',
-        'Hotel'
+        'Hotel',
+        'School'
     ];
     var locationsDD = locationsDDGrp.add('dropdownlist', undefined, locationsList);
     locationsDD.preferredSize[0] = 100;

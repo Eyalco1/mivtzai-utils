@@ -48,7 +48,8 @@ type LocationID =
     | 'Water Facility'
     | 'Residential Neighborhood'
     | 'Amusement Park'
-    | 'Hotel';
+    | 'Hotel'
+    | 'School';
 type TextureID =
     | 'Paper Dark'
     | 'Paper Medium'
