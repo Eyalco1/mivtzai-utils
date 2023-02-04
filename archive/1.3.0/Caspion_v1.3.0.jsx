@@ -16912,7 +16912,7 @@ var createQABtn = function (container, binary, helpTip, onClick) {
     });
     btn.helpTip = parsePrefs().showHelpTips ? helpTip : '';
     btn.onClick = onClick;
-    allQABtns.push([btn, helpTip]);
+    allQABtns.push([btn, helpTip, onClick]);
     return btn;
 };
 var createQAUI = function (tpanel) {
@@ -17245,6 +17245,54 @@ var init = function (thisObj) {
     var _d = createLocationsUI(tpanel), locTab = _d.locTab, dropdownsGrp = _d.dropdownsGrp;
     var _e = createTexturesUI(tpanel), texTab = _e.texTab, dropdownChecksGrp = _e.dropdownChecksGrp;
     createSideBtns(qaTab, textTab, iconsTab, locTab, texTab);
+    var checkTimeStampDiffBy = function (lastTimeStamp, curTimeStamp, diffInSeconds) {
+        var _a = lastTimeStamp
+            .toString()
+            .split(' '), lWeekDay = _a[0], lMonth = _a[1], lDay = _a[2], lYear = _a[3], lHour = _a[4];
+        var _b = curTimeStamp
+            .toString()
+            .split(' '), curWeekDay = _b[0], curMonth = _b[1], curDay = _b[2], curYear = _b[3], curHour = _b[4];
+        if (curWeekDay !== lWeekDay ||
+            curMonth !== lMonth ||
+            curDay !== lDay ||
+            curYear !== lYear) {
+            return true;
+        }
+        var _c = lHour.split(':'), lTheHour = _c[0], lTheMinutes = _c[1], lTheSeconds = _c[2];
+        var _d = curHour.split(':'), curTheHour = _d[0], curTheMinutes = _d[1], curTheSeconds = _d[2];
+        if (lTheHour !== curTheHour || lTheMinutes !== curTheMinutes) {
+            return true;
+        }
+        var diff = +curTheSeconds - +lTheSeconds;
+        return diff > diffInSeconds;
+    };
+    var handleKeyShortcuts = function (keyName) {
+        if (keyName === 'B')
+            createBg();
+        if (keyName === 'L')
+            importLogos;
+        if (keyName === 'I')
+            createIllusText();
+        if (keyName === 'S')
+            scaleWithOvershootQA();
+        if (keyName === 'M')
+            createIsraelMap();
+        if (keyName === 'G')
+            createGazaMap();
+        if (keyName === 'N')
+            createCountingText();
+        if (keyName === 'P')
+            importIsraelGoogleMaps();
+        if (keyName === 'D')
+            importGazaGoogleMaps();
+    };
+    var lastTimeStamp = null;
+    w.addEventListener('focus', function () {
+        w.addEventListener('keydown', function (evt) {
+            alert('KeyDown!!!');
+            alert(evt.keyName);
+        });
+    });
     w.layout.layout(true);
     w.layout.resize();
     w.onResizing = w.onResize = function () {

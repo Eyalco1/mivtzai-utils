@@ -77,6 +77,81 @@ const init = (thisObj: typeof globalThis) => {
 
     createSideBtns(qaTab, textTab, iconsTab, locTab, texTab);
 
+    // const checkTimeStampDiffBy = (
+    //     lastTimeStamp: object,
+    //     curTimeStamp: object,
+    //     diffInSeconds: number
+    // ): boolean => {
+    //     const [lWeekDay, lMonth, lDay, lYear, lHour] = lastTimeStamp
+    //         .toString()
+    //         .split(' ');
+
+    //     const [curWeekDay, curMonth, curDay, curYear, curHour] = curTimeStamp
+    //         .toString()
+    //         .split(' ');
+
+    //     if (
+    //         curWeekDay !== lWeekDay ||
+    //         curMonth !== lMonth ||
+    //         curDay !== lDay ||
+    //         curYear !== lYear
+    //     ) {
+    //         return true;
+    //     }
+
+    //     const [lTheHour, lTheMinutes, lTheSeconds] = lHour.split(':');
+    //     const [curTheHour, curTheMinutes, curTheSeconds] = curHour.split(':');
+    //     if (lTheHour !== curTheHour || lTheMinutes !== curTheMinutes) {
+    //         return true;
+    //     }
+
+    //     const diff = +curTheSeconds - +lTheSeconds;
+
+    //     return diff > diffInSeconds;
+    // };
+
+    // const handleKeyShortcuts = (keyName: string) => {
+    //     if (keyName === 'B') createBg();
+    //     if (keyName === 'L') importLogos;
+    //     if (keyName === 'I') createIllusText();
+    //     if (keyName === 'S') scaleWithOvershootQA();
+    //     if (keyName === 'M') createIsraelMap();
+    //     if (keyName === 'G') createGazaMap();
+    //     if (keyName === 'N') createCountingText();
+    //     if (keyName === 'P') importIsraelGoogleMaps();
+    //     if (keyName === 'D') importGazaGoogleMaps();
+    // };
+
+    // let lastTimeStamp: object | null = null;
+    // w.addEventListener('mouseover', evt => {
+    //     const keyName = ScriptUI.environment.keyboardState.keyName;
+
+    //     if (lastTimeStamp) {
+    //         const enoughTimePassed = checkTimeStampDiffBy(
+    //             lastTimeStamp,
+    //             evt.timeStamp,
+    //             1
+    //         );
+
+    //         if (!enoughTimePassed) {
+    //             lastTimeStamp = evt.timeStamp;
+    //         } else {
+    //             handleKeyShortcuts(keyName);
+    //             lastTimeStamp = evt.timeStamp;
+    //         }
+    //     } else {
+    //         handleKeyShortcuts(keyName);
+    //         lastTimeStamp = evt.timeStamp;
+    //     }
+    // });
+
+    // w.addEventListener('focus', () => {
+    //     w.addEventListener('keydown', evt => {
+    //         alert('KeyDown!!!');
+    //         alert(evt.keyName);
+    //     });
+    // });
+
     w.layout.layout(true);
     w.layout.resize();
     w.onResizing = w.onResize = () => {

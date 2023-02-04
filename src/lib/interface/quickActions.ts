@@ -1,5 +1,5 @@
 // UI
-const allQABtns: [IconButton, string][] = [];
+const allQABtns: [IconButton, string, () => void][] = [];
 
 const createQABtn = (
     container: Group,
@@ -13,7 +13,7 @@ const createQABtn = (
     btn.helpTip = parsePrefs().showHelpTips ? helpTip : '';
     btn.onClick = onClick;
 
-    allQABtns.push([btn, helpTip]);
+    allQABtns.push([btn, helpTip, onClick]);
     return btn;
 };
 
