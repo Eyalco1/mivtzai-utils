@@ -903,7 +903,10 @@ const createKindergardenLocation = (lang: Lingo, mitug: Mitug): void => {
             fontSize: 77.3332,
             tracking: -19,
             textPos: [922.3363, 540.1692],
-            textAnchor: [getOS() === 'Win' ? 75.0863 : -75.0863, -19.0808],
+            textAnchor: [
+                getOS() === 'Win' ? 75.0863 : -71.0863,
+                getOS() === 'Win' ? -19.0808 : -2.3808
+            ],
             bgSize: [296, 110],
             iconPos: [1045.5764, 539.1284],
             iconAnchor: [85.5764, -0.8716],
@@ -916,7 +919,10 @@ const createKindergardenLocation = (lang: Lingo, mitug: Mitug): void => {
             fontSize: 77.3332,
             tracking: -26,
             textPos: [1019.7664, 549.906],
-            textAnchor: [getOS() === 'Win' ? 180.7664 : -180.7664, -21.344],
+            textAnchor: [
+                getOS() === 'Win' ? 180.7664 : -169.7664,
+                getOS() === 'Win' ? -21.344 : -0.344
+            ],
             bgSize: [495, 106],
             iconPos: [773.5764, 539.1284],
             iconAnchor: [85.5764, -0.8716],
@@ -929,7 +935,10 @@ const createKindergardenLocation = (lang: Lingo, mitug: Mitug): void => {
             fontSize: 60,
             tracking: -23,
             textPos: [916.7816, 538.4697],
-            textAnchor: [getOS() === 'Win' ? 171.7816 : -171.7816, -22.2803],
+            textAnchor: [
+                getOS() === 'Win' ? 171.7816 : -171.7816,
+                getOS() === 'Win' ? -22.2803 : -5.7803
+            ],
             bgSize: [466, 92],
             iconPos: [1141.2014, 539.5034],
             iconAnchor: [85.5764, -0.8716],
