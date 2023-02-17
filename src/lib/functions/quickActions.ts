@@ -182,7 +182,7 @@ const createIllusText = (): void => {
     app.endUndoGroup();
 };
 
-const formatLayerName = (): void => {
+const formatLayerNameQA = (): void => {
     app.beginUndoGroup('@@name: Format Layer Name');
 
     const comp = app.project.activeItem as CompItem;
@@ -201,16 +201,10 @@ const formatLayerName = (): void => {
         const cur = selLayers[i];
         const name = cur.name;
 
-        const capitalize = (str: string) => {
-            return str
-                .split(' ')
-                .map(function (word) {
-                    return word.charAt(0).toUpperCase() + word.slice(1);
-                })
-                .join(' ');
-        };
+        const formatted = formatLayerName(name);
 
-        cur.name = capitalize(name).replace(/ /g, '_');
+        cur.name = formatted;
+
         if (cur instanceof AVLayer) {
             cur.source.name = cur.name;
         }

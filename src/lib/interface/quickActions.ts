@@ -70,7 +70,7 @@ const createQAUI = (
         importGazaGoogleMaps
     );
     createQABtn(rowThree, textReverseBinary, 'Reverse Text', textReverse);
-    createQABtn(rowThree, formatBinary, 'Format Layer Name', formatLayerName);
+    createQABtn(rowThree, formatBinary, 'Format Layer Name', formatLayerNameQA);
     createQABtn(rowThree, tvaiBinary, 'Tunnel Illustration', createTvaiStroke);
 
     const rowFour = bigRowTwo.add('group');

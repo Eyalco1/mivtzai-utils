@@ -52,7 +52,8 @@ type LocationID =
     | 'School'
     | 'Stadium'
     | 'Tourism Attraction'
-    | 'Communication Antenna';
+    | 'Communication Antenna'
+    | 'Education and Culture Site';
 type TextureID =
     | 'Paper Dark'
     | 'Paper Medium'

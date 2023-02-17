@@ -97,7 +97,7 @@ const createLocationText = (
 const createIconBase = (name: string): ShapeLayer => {
     const comp = app.project.activeItem as CompItem;
     const iconLayer = comp.layers.addShape();
-    iconLayer.name = `${name}_Icon`;
+    iconLayer.name = formatLayerName(`${name}_Icon`);
 
     return iconLayer;
 };
@@ -247,6 +247,8 @@ const createLocationIconFromId = (
                 id,
                 mitug
             );
+        case 'Education and Culture Site':
+            return createSchoolIcon(iconPos, iconAnchor, iconScale, id, mitug);
     }
 };
 
@@ -11582,6 +11584,55 @@ const createCommunicationAntennaLocation = (
     createLocation(args, lang, mitug);
 };
 
+const createEducationAndCultureSiteLocation = (
+    lang: Lingo,
+    mitug: Mitug
+): void => {
+    const args: LocationArgs[] = [
+        {
+            lang: 'Hebrew',
+            text: 'אתר חינוך ותרבות',
+            fontSize: 77.3332,
+            tracking: -20,
+            textPos: [910.1852, 543.9824],
+            textAnchor: [getOS() === 'Win' ? 155.3849 : -155.3849, -15.5761],
+            bgSize: [458, 110],
+            iconPos: [1126, 539.25],
+            iconAnchor: [0, 0],
+            iconScale: 100,
+            iconId: 'Education and Culture Site'
+        },
+        {
+            lang: 'English',
+            text: 'Education and\nCulture Site',
+            fontSize: 59.2903,
+            tracking: -20,
+            leading: 49,
+            textPos: [1006.0533, 537.1626],
+            textAnchor: [getOS() === 'Win' ? 159.5502 : -159.5502, 3.0962],
+            bgSize: [454, 124],
+            iconPos: [793.1875, 535.6875],
+            iconAnchor: [0, 0],
+            iconScale: 100,
+            iconId: 'Education and Culture Site'
+        },
+        {
+            lang: 'Arabic',
+            text: 'مركز تعليم وثقافة',
+            fontSize: 60,
+            tracking: -19,
+            textPos: [920.4418, 542.5458],
+            textAnchor: [getOS() === 'Win' ? 185.4781 : -185.4781, -9.1846],
+            bgSize: [522, 91],
+            iconPos: [1157.1561, 539.1527],
+            iconAnchor: [0, 0],
+            iconScale: 83,
+            iconId: 'Education and Culture Site'
+        }
+    ];
+    createLocation(args, lang, mitug);
+};
+
 // ====================================
 
 const createLocationFromId = (
@@ -11657,6 +11708,9 @@ const createLocationFromId = (
             break;
         case 'Communication Antenna':
             createCommunicationAntennaLocation(lang, mitug);
+            break;
+        case 'Education and Culture Site':
+            createEducationAndCultureSiteLocation(lang, mitug);
             break;
     }
 

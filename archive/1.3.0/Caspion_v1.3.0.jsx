@@ -780,21 +780,17 @@ var hexToRgb = function (hex) {
         ]
         : null;
 };
-var rgbToHex = function (r, g, b) {
-    var componentToHex = function (c) {
-        var hex = c.toString(16);
-        return hex.length == 1 ? '0' + hex : hex;
+var formatLayerName = function (str) {
+    var capitalize = function (str) {
+        return str
+            .split(' ')
+            .map(function (word) {
+            return word.charAt(0).toUpperCase() + word.slice(1);
+        })
+            .join(' ');
     };
-    return componentToHex(r) + componentToHex(g) + componentToHex(b);
-};
-var effectExists = function (matchName) {
-    var fx = app.effects;
-    var matches = fx.map(function (f) {
-        return f.matchName;
-    });
-    alert(matches.toString());
-    alert(matches.indexOf('Pseudo/textevo').toString());
-    return matches.indexOf('Pseudo/textevo') > 0;
+    str = capitalize(str).replace(/ /g, '_');
+    return str;
 };
 var introduceTextEvo = function () {
     var textevo = {
@@ -1134,7 +1130,7 @@ var createIllusText = function () {
     layerPos.setValue([-boundingBox.left + padding, comp.height - padding]);
     app.endUndoGroup();
 };
-var formatLayerName = function () {
+var formatLayerNameQA = function () {
     app.beginUndoGroup('Caspion: Format Layer Name');
     var comp = app.project.activeItem;
     if (!comp || !(comp instanceof CompItem)) {
@@ -1149,15 +1145,8 @@ var formatLayerName = function () {
     for (var i = 0; i < selLayers.length; i++) {
         var cur = selLayers[i];
         var name = cur.name;
-        var capitalize = function (str) {
-            return str
-                .split(' ')
-                .map(function (word) {
-                return word.charAt(0).toUpperCase() + word.slice(1);
-            })
-                .join(' ');
-        };
-        cur.name = capitalize(name).replace(/ /g, '_');
+        var formatted = formatLayerName(name);
+        cur.name = formatted;
         if (cur instanceof AVLayer) {
             cur.source.name = cur.name;
         }
@@ -8527,7 +8516,7 @@ var createLocationText = function (lang, text, fontSize, tracking, leading, text
 var createIconBase = function (name) {
     var comp = app.project.activeItem;
     var iconLayer = comp.layers.addShape();
-    iconLayer.name = "".concat(name, "_Icon");
+    iconLayer.name = formatLayerName("".concat(name, "_Icon"));
     return iconLayer;
 };
 var setLayerTransform = function (layer, pos, anchor, scale) {
@@ -8585,6 +8574,8 @@ var createLocationIconFromId = function (id, iconPos, iconAnchor, iconScale, mit
             return createTourismAttractionIcon(iconPos, iconAnchor, iconScale, id, mitug);
         case 'Communication Antenna':
             return createCommunicationAntennaIcon(iconPos, iconAnchor, iconScale, id, mitug);
+        case 'Education and Culture Site':
+            return createSchoolIcon(iconPos, iconAnchor, iconScale, id, mitug);
     }
 };
 var createLocation = function (argsArr, inputLang, mitug) {
@@ -17047,6 +17038,51 @@ var createCommunicationAntennaLocation = function (lang, mitug) {
     ];
     createLocation(args, lang, mitug);
 };
+var createEducationAndCultureSiteLocation = function (lang, mitug) {
+    var args = [
+        {
+            lang: 'Hebrew',
+            text: 'אתר חינוך ותרבות',
+            fontSize: 77.3332,
+            tracking: -20,
+            textPos: [910.1852, 543.9824],
+            textAnchor: [getOS() === 'Win' ? 155.3849 : -155.3849, -15.5761],
+            bgSize: [458, 110],
+            iconPos: [1126, 539.25],
+            iconAnchor: [0, 0],
+            iconScale: 100,
+            iconId: 'Education and Culture Site'
+        },
+        {
+            lang: 'English',
+            text: 'Education and\nCulture Site',
+            fontSize: 59.2903,
+            tracking: -20,
+            leading: 49,
+            textPos: [1006.0533, 537.1626],
+            textAnchor: [getOS() === 'Win' ? 159.5502 : -159.5502, 3.0962],
+            bgSize: [454, 124],
+            iconPos: [793.1875, 535.6875],
+            iconAnchor: [0, 0],
+            iconScale: 100,
+            iconId: 'Education and Culture Site'
+        },
+        {
+            lang: 'Arabic',
+            text: 'مركز تعليم وثقافة',
+            fontSize: 60,
+            tracking: -19,
+            textPos: [920.4418, 542.5458],
+            textAnchor: [getOS() === 'Win' ? 185.4781 : -185.4781, -9.1846],
+            bgSize: [522, 91],
+            iconPos: [1157.1561, 539.1527],
+            iconAnchor: [0, 0],
+            iconScale: 83,
+            iconId: 'Education and Culture Site'
+        }
+    ];
+    createLocation(args, lang, mitug);
+};
 var createLocationFromId = function (id, lang, mitug) {
     app.beginUndoGroup("Caspion: Create Location - ".concat(id));
     var comp = app.project.activeItem;
@@ -17114,6 +17150,9 @@ var createLocationFromId = function (id, lang, mitug) {
             break;
         case 'Communication Antenna':
             createCommunicationAntennaLocation(lang, mitug);
+            break;
+        case 'Education and Culture Site':
+            createEducationAndCultureSiteLocation(lang, mitug);
             break;
     }
     app.endUndoGroup();
@@ -17372,7 +17411,7 @@ var createQAUI = function (tpanel) {
     var rowThree = bigRowTwo.add('group');
     createQABtn(rowThree, GAMapPhotoBinary, "Gaza Map Photo\n\nCLICK: Clean Map\n".concat(metaKeyNameFromOs, " + CLICK: Map With Labels"), importGazaGoogleMaps);
     createQABtn(rowThree, textReverseBinary, 'Reverse Text', textReverse);
-    createQABtn(rowThree, formatBinary, 'Format Layer Name', formatLayerName);
+    createQABtn(rowThree, formatBinary, 'Format Layer Name', formatLayerNameQA);
     createQABtn(rowThree, tvaiBinary, 'Tunnel Illustration', createTvaiStroke);
     var rowFour = bigRowTwo.add('group');
     createQABtn(rowFour, frameBinary, 'Animated Frame', createAnimatedFrame);
@@ -17555,7 +17594,8 @@ var createLocationsUI = function (tpanel) {
         'School',
         'Stadium',
         'Tourism Attraction',
-        'Communication Antenna'
+        'Communication Antenna',
+        'Education and Culture Site'
     ];
     var locationsDD = locationsDDGrp.add('dropdownlist', undefined, locationsList);
     locationsDD.preferredSize[0] = 100;

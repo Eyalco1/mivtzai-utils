@@ -396,21 +396,17 @@ const hexToRgb = (hex: string): [number, number, number] => {
         : null;
 };
 
-const rgbToHex = (r: number, g: number, b: number): string => {
-    const componentToHex = (c: number): string => {
-        const hex = c.toString(16);
-        return hex.length == 1 ? '0' + hex : hex;
+const formatLayerName = (str: string): string => {
+    const capitalize = (str: string) => {
+        return str
+            .split(' ')
+            .map(function (word) {
+                return word.charAt(0).toUpperCase() + word.slice(1);
+            })
+            .join(' ');
     };
-    return componentToHex(r) + componentToHex(g) + componentToHex(b);
-};
 
-const effectExists = (matchName: string): boolean => {
-    var fx = app.effects;
-    var matches = fx.map(function (f) {
-        return f.matchName;
-    });
+    str = capitalize(str).replace(/ /g, '_');
 
-    alert(matches.toString());
-    alert(matches.indexOf('Pseudo/textevo').toString());
-    return matches.indexOf('Pseudo/textevo') > 0;
+    return str;
 };
