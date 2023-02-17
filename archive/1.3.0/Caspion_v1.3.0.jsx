@@ -2087,7 +2087,7 @@ var createText = function (text, font, animation, addTextEvo, addMask) {
 var setUpIcon = function (name, circleColor, iconColor) {
     var comp = app.project.activeItem;
     var layer = comp.layers.addShape();
-    layer.name = name;
+    layer.name = formatLayerName(name);
     layer.inPoint = comp.time;
     layer.label = parsePrefs().iconsLabelRandom
         ? Math.floor(Math.random() * 16) + 1
@@ -17056,26 +17056,26 @@ var createEducationAndCultureSiteLocation = function (lang, mitug) {
         {
             lang: 'English',
             text: 'Education and\nCulture Site',
-            fontSize: 59.2903,
+            fontSize: 64.7,
             tracking: -20,
-            leading: 49,
-            textPos: [1006.0533, 537.1626],
-            textAnchor: [getOS() === 'Win' ? 159.5502 : -159.5502, 3.0962],
-            bgSize: [454, 124],
-            iconPos: [793.1875, 535.6875],
+            leading: 59,
+            textPos: [1010.9239, 542.0332],
+            textAnchor: [getOS() === 'Win' ? 159.4208 : -159.4208, 6.4668],
+            bgSize: [446, 150],
+            iconPos: [797.4375, 536.4375],
             iconAnchor: [0, 0],
-            iconScale: 100,
+            iconScale: 101,
             iconId: 'Education and Culture Site'
         },
         {
             lang: 'Arabic',
             text: 'مركز تعليم وثقافة',
-            fontSize: 60,
-            tracking: -19,
-            textPos: [920.4418, 542.5458],
-            textAnchor: [getOS() === 'Win' ? 185.4781 : -185.4781, -9.1846],
-            bgSize: [522, 91],
-            iconPos: [1157.1561, 539.1527],
+            fontSize: 64.1684,
+            tracking: -20,
+            textPos: [918.6451, 538.7783],
+            textAnchor: [getOS() === 'Win' ? 273.6814 : -273.6814, -17.4521],
+            bgSize: [666, 91],
+            iconPos: [1240.9061, 539.1527],
             iconAnchor: [0, 0],
             iconScale: 83,
             iconId: 'Education and Culture Site'
