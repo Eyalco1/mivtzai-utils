@@ -37,7 +37,8 @@ const createLocationsUI = (
         'Hotel',
         'School',
         'Stadium',
-        'Tourism Attraction'
+        'Tourism Attraction',
+        'Communication Antenna'
     ];
     const locationsDD = locationsDDGrp.add(
         'dropdownlist',

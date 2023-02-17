@@ -8583,6 +8583,8 @@ var createLocationIconFromId = function (id, iconPos, iconAnchor, iconScale, mit
             return createStadiumIcon(iconPos, iconAnchor, iconScale, id, mitug);
         case 'Tourism Attraction':
             return createTourismAttractionIcon(iconPos, iconAnchor, iconScale, id, mitug);
+        case 'Communication Antenna':
+            return createCommunicationAntennaIcon(iconPos, iconAnchor, iconScale, id, mitug);
     }
 };
 var createLocation = function (argsArr, inputLang, mitug) {
@@ -16874,13 +16876,173 @@ var createTourismAttractionLocation = function (lang, mitug) {
             text: 'موقع سياحي',
             fontSize: 64.1684,
             tracking: -19,
-            textPos: [922.5277, 543.2387],
+            textPos: [922.5277, 541.2387],
             textAnchor: [getOS() === 'Win' ? 198.314 : -198.314, -8.7417],
             bgSize: [522, 91],
             iconPos: [1169.4061, 539.9027],
             iconAnchor: [0, 0],
             iconScale: 83,
             iconId: 'Tourism Attraction'
+        }
+    ];
+    createLocation(args, lang, mitug);
+};
+var createCommunicationAntennaIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
+    var iconLayer = createIconBase(name);
+    var contents = iconLayer.property('Contents');
+    var createIconCircle = function () {
+        var vertices = [
+            [43.39892578125, 0],
+            [0, 43.39892578125],
+            [-43.39892578125, 0],
+            [0, -43.39892578125]
+        ];
+        var inTangents = [
+            [0, -23.9685668945312],
+            [23.9685668945312, 0],
+            [0, 23.9685668945312],
+            [-23.9685668945312, 0]
+        ];
+        var outTangents = [
+            [0, 23.9685668945312],
+            [-23.9685668945312, 0],
+            [0, -23.9685668945312],
+            [23.9685668945312, 0]
+        ];
+        createPathGrp(contents, 'Icon_Circle', true, false, getColorsFromMitug(mitug).pri, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [0, 0]);
+    };
+    var createEllipse = function () {
+        var vertices = [
+            [14.0630950927734, -14.0630950927734],
+            [22.0389709472656, 22.0389709472656],
+            [-14.0630950927734, 14.0630950927734],
+            [-22.0389709472656, -22.0389709472656]
+        ];
+        var inTangents = [
+            [-12.1717834472656, -12.1717834472656],
+            [7.76683044433594, -7.76683044433594],
+            [12.1717834472656, 12.1717834472656],
+            [-7.76683044433594, 7.76683044433594]
+        ];
+        var outTangents = [
+            [12.1717834472656, 12.1717834472656],
+            [-7.76683044433594, 7.76683044433594],
+            [-12.1717834472656, -12.1717834472656],
+            [7.76683044433594, -7.76683044433594]
+        ];
+        createPathGrp(contents, 'Ellipse', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [-0.3879, 0]);
+    };
+    var createLittleCircle = function () {
+        var vertices = [
+            [1.2359619140625, -1.96054077148438],
+            [1.96054077148438, 1.2359619140625],
+            [-1.2359619140625, 1.96054077148438],
+            [-1.96054077148438, -1.2359619140625]
+        ];
+        var inTangents = [
+            [-1.08277893066406, -0.68260192871094],
+            [0.68260192871094, -1.08277893066406],
+            [1.08277893066406, 0.68260192871094],
+            [-0.68260192871094, 1.08277893066406]
+        ];
+        var outTangents = [
+            [1.08277893066406, 0.68260192871094],
+            [-0.68260192871094, 1.08277893066406],
+            [-1.08277893066406, -0.68260192871094],
+            [0.68260192871094, -1.08277893066406]
+        ];
+        createPathGrp(contents, 'Little_Circle', false, true, [0, 0, 0], getColorsFromMitug(mitug).pri, 2, vertices, inTangents, outTangents, true, [5.9136, -7.1401]);
+    };
+    var createTick = function () {
+        var vertices = [
+            [-0.34214782714844, 7.32533264160156],
+            [-1.23081970214844, 5.86830139160156],
+            [-0.79771423339844, 7.21498107910156],
+            [3.65199279785156, -3.64390563964844],
+            [-5.63414001464844, 1.97377014160156],
+            [-7.00718688964844, 1.63587951660156],
+            [-6.66929626464844, 0.26283264160156],
+            [5.63441467285156, -7.18052673339844],
+            [6.83363342285156, -7.05650329589844],
+            [7.04164123535156, -5.86851501464844],
+            [0.54847717285156, 6.78236389160156]
+        ];
+        var inTangents = [
+            [0.36328125, 0],
+            [0.14599609375, 0.0751953125],
+            [-0.25244140625, 0.4921875],
+            [0, 0],
+            [0, 0],
+            [0.2861328125, 0.4716796875],
+            [-0.47265625, 0.2861328125],
+            [0, 0],
+            [-0.3271484375, -0.30615234375],
+            [0.2041015625, -0.39794921875],
+            [0, 0]
+        ];
+        var outTangents = [
+            [-0.1533203125, 0],
+            [-0.4912109375, -0.251953125],
+            [0, 0],
+            [0, 0],
+            [-0.47216796875, 0.2841796875],
+            [-0.2861328125, -0.47265625],
+            [0.380859375, -0.2314453125],
+            [0, 0],
+            [0.3271484375, 0.30517578125],
+            [0, 0],
+            [-0.17724609375, 0.3447265625]
+        ];
+        createPathGrp(contents, 'Tick', true, false, getColorsFromMitug(mitug).pri, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [-1.4742, 1.1454]);
+    };
+    createTick();
+    createLittleCircle();
+    createEllipse();
+    createIconCircle();
+    setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
+    return iconLayer;
+};
+var createCommunicationAntennaLocation = function (lang, mitug) {
+    var args = [
+        {
+            lang: 'Hebrew',
+            text: 'אנטנת תקשורת',
+            fontSize: 77.3332,
+            tracking: -20,
+            textPos: [913.2546, 543.7324],
+            textAnchor: [getOS() === 'Win' ? 139.4543 : -139.4543, -15.5761],
+            bgSize: [420, 110],
+            iconPos: [1113.5, 539.25],
+            iconAnchor: [0, 0],
+            iconScale: 100,
+            iconId: 'Communication Antenna'
+        },
+        {
+            lang: 'English',
+            text: 'Communication\nAntenna',
+            fontSize: 59.2903,
+            tracking: -20,
+            leading: 49,
+            textPos: [1006.0533, 537.1626],
+            textAnchor: [getOS() === 'Win' ? 159.5502 : -159.5502, 3.0962],
+            bgSize: [454, 124],
+            iconPos: [793.1875, 535.6875],
+            iconAnchor: [0, 0],
+            iconScale: 100,
+            iconId: 'Communication Antenna'
+        },
+        {
+            lang: 'Arabic',
+            text: 'هوائي اتصال',
+            fontSize: 60,
+            tracking: -19,
+            textPos: [920.4418, 542.5458],
+            textAnchor: [getOS() === 'Win' ? 185.4781 : -185.4781, -9.1846],
+            bgSize: [522, 91],
+            iconPos: [1157.1561, 539.1527],
+            iconAnchor: [0, 0],
+            iconScale: 83,
+            iconId: 'Communication Antenna'
         }
     ];
     createLocation(args, lang, mitug);
@@ -16949,6 +17111,9 @@ var createLocationFromId = function (id, lang, mitug) {
             break;
         case 'Tourism Attraction':
             createTourismAttractionLocation(lang, mitug);
+            break;
+        case 'Communication Antenna':
+            createCommunicationAntennaLocation(lang, mitug);
             break;
     }
     app.endUndoGroup();
@@ -17389,7 +17554,8 @@ var createLocationsUI = function (tpanel) {
         'Hotel',
         'School',
         'Stadium',
-        'Tourism Attraction'
+        'Tourism Attraction',
+        'Communication Antenna'
     ];
     var locationsDD = locationsDDGrp.add('dropdownlist', undefined, locationsList);
     locationsDD.preferredSize[0] = 100;
