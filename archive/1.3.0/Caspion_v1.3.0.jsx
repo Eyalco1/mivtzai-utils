@@ -8581,6 +8581,8 @@ var createLocationIconFromId = function (id, iconPos, iconAnchor, iconScale, mit
             return createSchoolIcon(iconPos, iconAnchor, iconScale, id, mitug);
         case 'Stadium':
             return createStadiumIcon(iconPos, iconAnchor, iconScale, id, mitug);
+        case 'Tourism Attraction':
+            return createTourismAttractionIcon(iconPos, iconAnchor, iconScale, id, mitug);
     }
 };
 var createLocation = function (argsArr, inputLang, mitug) {
@@ -8980,7 +8982,10 @@ var createKindergardenLocation = function (lang, mitug) {
             fontSize: 77.3332,
             tracking: -19,
             textPos: [922.3363, 540.1692],
-            textAnchor: [getOS() === 'Win' ? 75.0863 : -75.0863, -19.0808],
+            textAnchor: [
+                getOS() === 'Win' ? 75.0863 : -71.0863,
+                getOS() === 'Win' ? -19.0808 : -2.3808
+            ],
             bgSize: [296, 110],
             iconPos: [1045.5764, 539.1284],
             iconAnchor: [85.5764, -0.8716],
@@ -8993,7 +8998,10 @@ var createKindergardenLocation = function (lang, mitug) {
             fontSize: 77.3332,
             tracking: -26,
             textPos: [1019.7664, 549.906],
-            textAnchor: [getOS() === 'Win' ? 180.7664 : -180.7664, -21.344],
+            textAnchor: [
+                getOS() === 'Win' ? 180.7664 : -169.7664,
+                getOS() === 'Win' ? -21.344 : -0.344
+            ],
             bgSize: [495, 106],
             iconPos: [773.5764, 539.1284],
             iconAnchor: [85.5764, -0.8716],
@@ -9006,7 +9014,10 @@ var createKindergardenLocation = function (lang, mitug) {
             fontSize: 60,
             tracking: -23,
             textPos: [916.7816, 538.4697],
-            textAnchor: [getOS() === 'Win' ? 171.7816 : -171.7816, -22.2803],
+            textAnchor: [
+                getOS() === 'Win' ? 171.7816 : -171.7816,
+                getOS() === 'Win' ? -22.2803 : -5.7803
+            ],
             bgSize: [466, 92],
             iconPos: [1141.2014, 539.5034],
             iconAnchor: [85.5764, -0.8716],
@@ -9098,7 +9109,10 @@ var createMedicalLocation = function (lang, mitug) {
             fontSize: 77.3332,
             tracking: -19,
             textPos: [922.3363, 540.1692],
-            textAnchor: [getOS() === 'Win' ? 75.0863 : -75.0863, -19.0808],
+            textAnchor: [
+                getOS() === 'Win' ? 75.0863 : -65.5863,
+                getOS() === 'Win' ? -19.0808 : -4.2808
+            ],
             bgSize: [296, 110],
             iconPos: [1045.5764, 539.1284],
             iconAnchor: [85.5764, -0.8716],
@@ -9111,7 +9125,10 @@ var createMedicalLocation = function (lang, mitug) {
             fontSize: 77.3332,
             tracking: -31,
             textPos: [1011.831, 537.0827],
-            textAnchor: [getOS() === 'Win' ? 182.081 : -182.081, -27.9173],
+            textAnchor: [
+                getOS() === 'Win' ? 182.081 : -182.081,
+                getOS() === 'Win' ? -27.9173 : -13.9173
+            ],
             bgSize: [484, 106],
             iconPos: [779, 539.1284],
             iconAnchor: [85.5764, -0.8716],
@@ -9124,7 +9141,10 @@ var createMedicalLocation = function (lang, mitug) {
             fontSize: 64,
             tracking: -21,
             textPos: [919.4213, 540.4375],
-            textAnchor: [getOS() === 'Win' ? 80.6712 : -80.6712, -16.3125],
+            textAnchor: [
+                getOS() === 'Win' ? 80.6712 : -80.6712,
+                getOS() === 'Win' ? -16.3125 : -1.4125
+            ],
             bgSize: [284, 91],
             iconPos: [1049.9514, 538.2534],
             iconAnchor: [85.5764, -0.8716],
@@ -16621,6 +16641,250 @@ var createStadiumLocation = function (lang, mitug) {
     ];
     createLocation(args, lang, mitug);
 };
+var createTourismAttractionIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
+    var iconLayer = createIconBase(name);
+    var contents = iconLayer.property('Contents');
+    var createIconCircle = function () {
+        var vertices = [
+            [43.39892578125, 0],
+            [0, 43.39892578125],
+            [-43.39892578125, 0],
+            [0, -43.39892578125]
+        ];
+        var inTangents = [
+            [0, -23.9685668945312],
+            [23.9685668945312, 0],
+            [0, 23.9685668945312],
+            [-23.9685668945312, 0]
+        ];
+        var outTangents = [
+            [0, 23.9685668945312],
+            [-23.9685668945312, 0],
+            [0, -23.9685668945312],
+            [23.9685668945312, 0]
+        ];
+        createPathGrp(contents, 'Icon_Circle', true, false, getColorsFromMitug(mitug).pri, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [0, 0]);
+    };
+    var createDoor = function () {
+        var vertices = [
+            [18.4549865722656, -13.9450073242188],
+            [18.4549865722656, 13.9450073242188],
+            [7.45498657226562, 13.9450073242188],
+            [-0.00497436523438, -0.0050048828125],
+            [-7.08499145507812, 13.9450073242188],
+            [-18.4549865722656, 13.9450073242188],
+            [-18.4549865722656, -13.9450073242188]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [7.739990234375, 0],
+            [0, -13.72998046875],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Door', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [0.155, 9.985]);
+    };
+    var createRoof = function () {
+        var vertices = [
+            [18.4549865722656, -3.70498657226562],
+            [18.4549865722656, 3.70498657226562],
+            [-18.4549865722656, 3.70498657226562],
+            [-18.4549865722656, -3.70498657226562],
+            [-12.3450012207031, -3.70498657226562],
+            [-12.3450012207031, -0.78500366210938],
+            [-7.55502319335938, -0.78500366210938],
+            [-7.55502319335938, -3.70498657226562],
+            [-1.44497680664062, -3.70498657226562],
+            [-1.44497680664062, -0.78500366210938],
+            [1.81497192382812, -0.78500366210938],
+            [1.81497192382812, -3.70498657226562],
+            [7.92501831054688, -3.70498657226562],
+            [7.92501831054688, -0.78500366210938],
+            [12.3450012207031, -0.78500366210938],
+            [12.3450012207031, -3.70498657226562]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Roof', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [0.155, -9.345]);
+    };
+    var createLPole = function () {
+        var vertices = [
+            [-3.34320068359375, 18.4895935058594],
+            [3.34320068359375, 18.4895935058594],
+            [3.34320068359375, -18.4895935058594],
+            [-3.34320068359375, -18.4895935058594]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'L_Pole', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [-23.4511, 5.4359]);
+    };
+    var createRPole = function () {
+        var vertices = [
+            [-3.34320068359375, 18.4895935058594],
+            [3.34320068359375, 18.4895935058594],
+            [3.34320068359375, -18.4895935058594],
+            [-3.34320068359375, -18.4895935058594]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'R_Pole', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [23.4511, 5.4701]);
+    };
+    var createLTriangle = function () {
+        var vertices = [
+            [-3.34320068359375, 4.90119934082031],
+            [3.34320068359375, 4.90119934082031],
+            [0, -4.90119934082031]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'L_Triangle', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [-23.4511, -19.0585]);
+    };
+    var createRTriangle = function () {
+        var vertices = [
+            [-3.34320068359375, 4.90119934082031],
+            [3.34320068359375, 4.90119934082031],
+            [0, -4.90119934082031]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'R_Triangle', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [23.4511, -19.0585]);
+    };
+    createRTriangle();
+    createLTriangle();
+    createRPole();
+    createLPole();
+    createRoof();
+    createDoor();
+    createIconCircle();
+    setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
+    return iconLayer;
+};
+var createTourismAttractionLocation = function (lang, mitug) {
+    var args = [
+        {
+            lang: 'Hebrew',
+            text: 'אתר תיירות',
+            fontSize: 77.3332,
+            tracking: -20,
+            textPos: [907.1527, 538.8648],
+            textAnchor: [getOS() === 'Win' ? 102.1024 : -102.1024, -20.4437],
+            bgSize: [346, 110],
+            iconPos: [1069.75, 539.25],
+            iconAnchor: [0, 0],
+            iconScale: 100,
+            iconId: 'Tourism Attraction'
+        },
+        {
+            lang: 'English',
+            text: 'Tourism Attraction',
+            fontSize: 74.9495,
+            tracking: -20,
+            leading: 50,
+            textPos: [1004.344, 537.3844],
+            textAnchor: [getOS() === 'Win' ? 236.0909 : -236.0909, -26.682],
+            bgSize: [606, 106],
+            iconPos: [717.9375, 538.9375],
+            iconAnchor: [0, 0],
+            iconScale: 98,
+            iconId: 'Tourism Attraction'
+        },
+        {
+            lang: 'Arabic',
+            text: 'موقع سياحي',
+            fontSize: 64.1684,
+            tracking: -19,
+            textPos: [922.5277, 543.2387],
+            textAnchor: [getOS() === 'Win' ? 198.314 : -198.314, -8.7417],
+            bgSize: [522, 91],
+            iconPos: [1169.4061, 539.9027],
+            iconAnchor: [0, 0],
+            iconScale: 83,
+            iconId: 'Tourism Attraction'
+        }
+    ];
+    createLocation(args, lang, mitug);
+};
 var createLocationFromId = function (id, lang, mitug) {
     app.beginUndoGroup("Caspion: Create Location - ".concat(id));
     var comp = app.project.activeItem;
@@ -16682,6 +16946,9 @@ var createLocationFromId = function (id, lang, mitug) {
             break;
         case 'Stadium':
             createStadiumLocation(lang, mitug);
+            break;
+        case 'Tourism Attraction':
+            createTourismAttractionLocation(lang, mitug);
             break;
     }
     app.endUndoGroup();
@@ -17121,7 +17388,8 @@ var createLocationsUI = function (tpanel) {
         'Amusement Park',
         'Hotel',
         'School',
-        'Stadium'
+        'Stadium',
+        'Tourism Attraction'
     ];
     var locationsDD = locationsDDGrp.add('dropdownlist', undefined, locationsList);
     locationsDD.preferredSize[0] = 100;

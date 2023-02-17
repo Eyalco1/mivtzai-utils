@@ -231,6 +231,14 @@ const createLocationIconFromId = (
             return createSchoolIcon(iconPos, iconAnchor, iconScale, id, mitug);
         case 'Stadium':
             return createStadiumIcon(iconPos, iconAnchor, iconScale, id, mitug);
+        case 'Tourism Attraction':
+            return createTourismAttractionIcon(
+                iconPos,
+                iconAnchor,
+                iconScale,
+                id,
+                mitug
+            );
     }
 };
 
@@ -10970,6 +10978,367 @@ const createStadiumLocation = (lang: Lingo, mitug: Mitug): void => {
     createLocation(args, lang, mitug);
 };
 
+const createTourismAttractionIcon: CreateLocationIconFn = (
+    iconPos,
+    iconAnchor,
+    iconScale,
+    name,
+    mitug
+) => {
+    const iconLayer = createIconBase(name);
+
+    const contents = iconLayer.property('Contents') as PropertyGroup;
+
+    const createIconCircle = () => {
+        const vertices: [number, number][] = [
+            [43.39892578125, 0],
+            [0, 43.39892578125],
+            [-43.39892578125, 0],
+            [0, -43.39892578125]
+        ];
+        const inTangents: [number, number][] = [
+            [0, -23.9685668945312],
+            [23.9685668945312, 0],
+            [0, 23.9685668945312],
+            [-23.9685668945312, 0]
+        ];
+        const outTangents: [number, number][] = [
+            [0, 23.9685668945312],
+            [-23.9685668945312, 0],
+            [0, -23.9685668945312],
+            [23.9685668945312, 0]
+        ];
+
+        createPathGrp(
+            contents,
+            'Icon_Circle',
+            true,
+            false,
+            getColorsFromMitug(mitug).pri,
+            [0, 0, 0],
+            0,
+            vertices,
+            inTangents,
+            outTangents,
+            true,
+            [0, 0]
+        );
+    };
+
+    const createDoor = () => {
+        const vertices: [number, number][] = [
+            [18.4549865722656, -13.9450073242188],
+            [18.4549865722656, 13.9450073242188],
+            [7.45498657226562, 13.9450073242188],
+            [-0.00497436523438, -0.0050048828125],
+            [-7.08499145507812, 13.9450073242188],
+            [-18.4549865722656, 13.9450073242188],
+            [-18.4549865722656, -13.9450073242188]
+        ];
+        const inTangents: [number, number][] = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [7.739990234375, 0],
+            [0, -13.72998046875],
+            [0, 0],
+            [0, 0]
+        ];
+        const outTangents: [number, number][] = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+
+        createPathGrp(
+            contents,
+            'Door',
+            true,
+            false,
+            getColorsFromMitug(mitug).bg,
+            [0, 0, 0],
+            0,
+            vertices,
+            inTangents,
+            outTangents,
+            true,
+            [0.155, 9.985]
+        );
+    };
+
+    const createRoof = () => {
+        const vertices: [number, number][] = [
+            [18.4549865722656, -3.70498657226562],
+            [18.4549865722656, 3.70498657226562],
+            [-18.4549865722656, 3.70498657226562],
+            [-18.4549865722656, -3.70498657226562],
+            [-12.3450012207031, -3.70498657226562],
+            [-12.3450012207031, -0.78500366210938],
+            [-7.55502319335938, -0.78500366210938],
+            [-7.55502319335938, -3.70498657226562],
+            [-1.44497680664062, -3.70498657226562],
+            [-1.44497680664062, -0.78500366210938],
+            [1.81497192382812, -0.78500366210938],
+            [1.81497192382812, -3.70498657226562],
+            [7.92501831054688, -3.70498657226562],
+            [7.92501831054688, -0.78500366210938],
+            [12.3450012207031, -0.78500366210938],
+            [12.3450012207031, -3.70498657226562]
+        ];
+        const inTangents: [number, number][] = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        const outTangents: [number, number][] = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+
+        createPathGrp(
+            contents,
+            'Roof',
+            true,
+            false,
+            getColorsFromMitug(mitug).bg,
+            [0, 0, 0],
+            0,
+            vertices,
+            inTangents,
+            outTangents,
+            true,
+            [0.155, -9.345]
+        );
+    };
+
+    const createLPole = () => {
+        const vertices: [number, number][] = [
+            [-3.34320068359375, 18.4895935058594],
+            [3.34320068359375, 18.4895935058594],
+            [3.34320068359375, -18.4895935058594],
+            [-3.34320068359375, -18.4895935058594]
+        ];
+        const inTangents: [number, number][] = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        const outTangents: [number, number][] = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+
+        createPathGrp(
+            contents,
+            'L_Pole',
+            true,
+            false,
+            getColorsFromMitug(mitug).bg,
+            [0, 0, 0],
+            0,
+            vertices,
+            inTangents,
+            outTangents,
+            true,
+            [-23.4511, 5.4359]
+        );
+    };
+
+    const createRPole = () => {
+        const vertices: [number, number][] = [
+            [-3.34320068359375, 18.4895935058594],
+            [3.34320068359375, 18.4895935058594],
+            [3.34320068359375, -18.4895935058594],
+            [-3.34320068359375, -18.4895935058594]
+        ];
+        const inTangents: [number, number][] = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        const outTangents: [number, number][] = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+
+        createPathGrp(
+            contents,
+            'R_Pole',
+            true,
+            false,
+            getColorsFromMitug(mitug).bg,
+            [0, 0, 0],
+            0,
+            vertices,
+            inTangents,
+            outTangents,
+            true,
+            [23.4511, 5.4701]
+        );
+    };
+
+    const createLTriangle = () => {
+        const vertices: [number, number][] = [
+            [-3.34320068359375, 4.90119934082031],
+            [3.34320068359375, 4.90119934082031],
+            [0, -4.90119934082031]
+        ];
+        const inTangents: [number, number][] = [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        const outTangents: [number, number][] = [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+
+        createPathGrp(
+            contents,
+            'L_Triangle',
+            true,
+            false,
+            getColorsFromMitug(mitug).bg,
+            [0, 0, 0],
+            0,
+            vertices,
+            inTangents,
+            outTangents,
+            true,
+            [-23.4511, -19.0585]
+        );
+    };
+
+    const createRTriangle = () => {
+        const vertices: [number, number][] = [
+            [-3.34320068359375, 4.90119934082031],
+            [3.34320068359375, 4.90119934082031],
+            [0, -4.90119934082031]
+        ];
+        const inTangents: [number, number][] = [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        const outTangents: [number, number][] = [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+
+        createPathGrp(
+            contents,
+            'R_Triangle',
+            true,
+            false,
+            getColorsFromMitug(mitug).bg,
+            [0, 0, 0],
+            0,
+            vertices,
+            inTangents,
+            outTangents,
+            true,
+            [23.4511, -19.0585]
+        );
+    };
+
+    createRTriangle();
+    createLTriangle();
+    createRPole();
+    createLPole();
+    createRoof();
+    createDoor();
+    createIconCircle();
+
+    setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
+
+    return iconLayer;
+};
+
+const createTourismAttractionLocation = (lang: Lingo, mitug: Mitug): void => {
+    const args: LocationArgs[] = [
+        {
+            lang: 'Hebrew',
+            text: 'אתר תיירות',
+            fontSize: 77.3332,
+            tracking: -20,
+            textPos: [907.1527, 538.8648],
+            textAnchor: [getOS() === 'Win' ? 102.1024 : -102.1024, -20.4437],
+            bgSize: [346, 110],
+            iconPos: [1069.75, 539.25],
+            iconAnchor: [0, 0],
+            iconScale: 100,
+            iconId: 'Tourism Attraction'
+        },
+        {
+            lang: 'English',
+            text: 'Tourism Attraction',
+            fontSize: 74.9495,
+            tracking: -20,
+            leading: 50,
+            textPos: [1004.344, 537.3844],
+            textAnchor: [getOS() === 'Win' ? 236.0909 : -236.0909, -26.682],
+            bgSize: [606, 106],
+            iconPos: [717.9375, 538.9375],
+            iconAnchor: [0, 0],
+            iconScale: 98,
+            iconId: 'Tourism Attraction'
+        },
+        {
+            lang: 'Arabic',
+            text: 'موقع سياحي',
+            fontSize: 64.1684,
+            tracking: -19,
+            textPos: [922.5277, 541.2387],
+            textAnchor: [getOS() === 'Win' ? 198.314 : -198.314, -8.7417],
+            bgSize: [522, 91],
+            iconPos: [1169.4061, 539.9027],
+            iconAnchor: [0, 0],
+            iconScale: 83,
+            iconId: 'Tourism Attraction'
+        }
+    ];
+    createLocation(args, lang, mitug);
+};
+
 // ====================================
 
 const createLocationFromId = (
@@ -11039,6 +11408,9 @@ const createLocationFromId = (
             break;
         case 'Stadium':
             createStadiumLocation(lang, mitug);
+            break;
+        case 'Tourism Attraction':
+            createTourismAttractionLocation(lang, mitug);
             break;
     }
 
