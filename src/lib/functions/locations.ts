@@ -1074,7 +1074,10 @@ const createMedicalLocation = (lang: Lingo, mitug: Mitug): void => {
             fontSize: 77.3332,
             tracking: -19,
             textPos: [922.3363, 540.1692],
-            textAnchor: [getOS() === 'Win' ? 75.0863 : -75.0863, -19.0808],
+            textAnchor: [
+                getOS() === 'Win' ? 75.0863 : -65.5863,
+                getOS() === 'Win' ? -19.0808 : -4.2808
+            ],
             bgSize: [296, 110],
             iconPos: [1045.5764, 539.1284],
             iconAnchor: [85.5764, -0.8716],
@@ -1087,7 +1090,10 @@ const createMedicalLocation = (lang: Lingo, mitug: Mitug): void => {
             fontSize: 77.3332,
             tracking: -31,
             textPos: [1011.831, 537.0827],
-            textAnchor: [getOS() === 'Win' ? 182.081 : -182.081, -27.9173],
+            textAnchor: [
+                getOS() === 'Win' ? 182.081 : -182.081,
+                getOS() === 'Win' ? -27.9173 : -13.9173
+            ],
             bgSize: [484, 106],
             iconPos: [779, 539.1284],
             iconAnchor: [85.5764, -0.8716],
@@ -1100,7 +1106,10 @@ const createMedicalLocation = (lang: Lingo, mitug: Mitug): void => {
             fontSize: 64,
             tracking: -21,
             textPos: [919.4213, 540.4375],
-            textAnchor: [getOS() === 'Win' ? 80.6712 : -80.6712, -16.3125],
+            textAnchor: [
+                getOS() === 'Win' ? 80.6712 : -80.6712,
+                getOS() === 'Win' ? -16.3125 : -1.4125
+            ],
             bgSize: [284, 91],
             iconPos: [1049.9514, 538.2534],
             iconAnchor: [85.5764, -0.8716],
