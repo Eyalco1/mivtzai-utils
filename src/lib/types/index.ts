@@ -31,7 +31,8 @@ type IconID =
     | 'Rocket Launcher'
     | 'Mask'
     | 'Shoe'
-    | 'Helmet';
+    | 'Helmet'
+    | 'Drone';
 type LocationID =
     | 'Kindergarden'
     | 'Medical Clinic'
@@ -55,7 +56,9 @@ type LocationID =
     | 'Communication Antenna'
     | 'Education and Culture Site'
     | 'Hospital'
-    | 'College';
+    | 'College'
+    | 'Library'
+    | 'Cemetery';
 type TextureID =
     | 'Paper Dark'
     | 'Paper Medium'
