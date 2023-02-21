@@ -251,6 +251,8 @@ const createLocationIconFromId = (
             return createSchoolIcon(iconPos, iconAnchor, iconScale, id, mitug);
         case 'Hospital':
             return createMedicalIcon(iconPos, iconAnchor, iconScale, id, mitug);
+        case 'College':
+            return createSchoolIcon(iconPos, iconAnchor, iconScale, id, mitug);
     }
 };
 
@@ -11681,6 +11683,52 @@ const createHospitalLocation = (lang: Lingo, mitug: Mitug): void => {
     createLocation(args, lang, mitug);
 };
 
+const createCollegeLocation = (lang: Lingo, mitug: Mitug): void => {
+    const args: LocationArgs[] = [
+        {
+            lang: 'Hebrew',
+            text: 'מכללה',
+            fontSize: 77.3332,
+            tracking: -20,
+            textPos: [913.3058, 535.3602],
+            textAnchor: [getOS() === 'Win' ? 58.2556 : -58.2556, -23.9483],
+            bgSize: [270, 110],
+            iconPos: [1032.5, 539.25],
+            iconAnchor: [0, 0],
+            iconScale: 100,
+            iconId: 'College'
+        },
+        {
+            lang: 'English',
+            text: 'College',
+            fontSize: 74.9495,
+            tracking: -20,
+            leading: 59,
+            textPos: [1006.8871, 542.7556],
+            textAnchor: [getOS() === 'Win' ? 97.884 : -97.884, -21.0608],
+            bgSize: [316, 106],
+            iconPos: [862.6106, 539.1526],
+            iconAnchor: [0, 0],
+            iconScale: 97,
+            iconId: 'College'
+        },
+        {
+            lang: 'Arabic',
+            text: 'كلية',
+            fontSize: 64.1684,
+            tracking: -20,
+            textPos: [922.1086, 541.7431],
+            textAnchor: [getOS() === 'Win' ? 67.145 : -67.145, -18.9873],
+            bgSize: [254, 92],
+            iconPos: [1035.406, 539.1528],
+            iconAnchor: [0, 0],
+            iconScale: 83,
+            iconId: 'College'
+        }
+    ];
+    createLocation(args, lang, mitug);
+};
+
 // ====================================
 
 const createLocationFromId = (
@@ -11762,6 +11810,9 @@ const createLocationFromId = (
             break;
         case 'Hospital':
             createHospitalLocation(lang, mitug);
+            break;
+        case 'College':
+            createCollegeLocation(lang, mitug);
             break;
     }
 

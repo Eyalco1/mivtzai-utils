@@ -54,7 +54,8 @@ type LocationID =
     | 'Tourism Attraction'
     | 'Communication Antenna'
     | 'Education and Culture Site'
-    | 'Hospital';
+    | 'Hospital'
+    | 'College';
 type TextureID =
     | 'Paper Dark'
     | 'Paper Medium'
