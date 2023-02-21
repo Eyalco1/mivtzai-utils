@@ -39,7 +39,8 @@ const createLocationsUI = (
         'Stadium',
         'Tourism Attraction',
         'Communication Antenna',
-        'Education and Culture Site'
+        'Education and Culture Site',
+        'Hospital'
     ];
     const locationsDD = locationsDDGrp.add(
         'dropdownlist',
