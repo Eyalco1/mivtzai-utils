@@ -17157,7 +17157,7 @@ var createCollegeLocation = function (lang, mitug) {
             textAnchor: [getOS() === 'Win' ? 97.884 : -97.884, -21.0608],
             bgSize: [316, 106],
             iconPos: [862.6106, 539.1526],
-            iconAnchor: [85.5764, -0.8716],
+            iconAnchor: [0, 0],
             iconScale: 97,
             iconId: 'College'
         },
