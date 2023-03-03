@@ -18,6 +18,7 @@ const createLocationBG = (
     const comp = app.project.activeItem as CompItem;
     const layer = comp.layers.addShape();
     layer.name = `${id}_BG`;
+    layer.inPoint = comp.time;
     const contents = layer.property('ADBE Root Vectors Group') as PropertyGroup;
     const grp = contents.addProperty('ADBE Vector Group');
     grp.name = `${id}_BG`;
@@ -64,6 +65,7 @@ const createLocationText = (
 ): TextLayer => {
     const comp = app.project.activeItem as CompItem;
     const textLayer = comp.layers.addText();
+    textLayer.inPoint = comp.time;
     const srcText = textLayer
         .property('ADBE Text Properties')
         .property('ADBE Text Document') as Property<any>;
@@ -98,6 +100,7 @@ const createIconBase = (name: string): ShapeLayer => {
     const comp = app.project.activeItem as CompItem;
     const iconLayer = comp.layers.addShape();
     iconLayer.name = formatLayerName(`${name}_Icon`);
+    iconLayer.inPoint = comp.time;
 
     return iconLayer;
 };

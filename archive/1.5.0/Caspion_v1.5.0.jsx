@@ -8801,6 +8801,7 @@ var createLocationBG = function (id, size, mitug) {
     var comp = app.project.activeItem;
     var layer = comp.layers.addShape();
     layer.name = "".concat(id, "_BG");
+    layer.inPoint = comp.time;
     var contents = layer.property('ADBE Root Vectors Group');
     var grp = contents.addProperty('ADBE Vector Group');
     grp.name = "".concat(id, "_BG");
@@ -8822,6 +8823,7 @@ var createLocationBG = function (id, size, mitug) {
 var createLocationText = function (lang, text, fontSize, tracking, leading, textPos, textAnchor, mitug) {
     var comp = app.project.activeItem;
     var textLayer = comp.layers.addText();
+    textLayer.inPoint = comp.time;
     var srcText = textLayer
         .property('ADBE Text Properties')
         .property('ADBE Text Document');
@@ -8851,6 +8853,7 @@ var createIconBase = function (name) {
     var comp = app.project.activeItem;
     var iconLayer = comp.layers.addShape();
     iconLayer.name = formatLayerName("".concat(name, "_Icon"));
+    iconLayer.inPoint = comp.time;
     return iconLayer;
 };
 var setLayerTransform = function (layer, pos, anchor, scale) {
