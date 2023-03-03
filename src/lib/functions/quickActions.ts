@@ -570,7 +570,14 @@ const createCountingText = (): void => {
         return;
     }
 
-    const layer = comp.layers.addText();
+    const layer = comp.layers.addSolid(
+        [1, 1, 1],
+        'Numbers',
+        comp.width,
+        comp.height,
+        1
+    );
+    layer.inPoint = comp.time;
     layer.name = 'Numbers';
 
     const fx = layer.property('ADBE Effect Parade') as PropertyGroup;
@@ -591,8 +598,8 @@ const createCountingText = (): void => {
 
     const numValProp = numFx.property('ADBE Numbers2-0003') as Property<number>;
 
-    numValProp.setValueAtTime(0, 0);
-    numValProp.setValueAtTime((1 / comp.frameRate) * 40, 99);
+    numValProp.setValueAtTime(layer.inPoint, 0);
+    numValProp.setValueAtTime((1 / comp.frameRate) * 40 + layer.inPoint, 99);
 
     numValProp.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 20)]);
     numValProp.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 75)]);
