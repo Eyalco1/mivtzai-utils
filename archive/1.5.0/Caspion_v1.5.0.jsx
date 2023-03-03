@@ -1839,7 +1839,7 @@ var createArrow = function () {
     }
     var lineLayer = comp.layers.addShape();
     lineLayer.name = 'Arrow_Line';
-    lineLayer.inPoint = (1 / comp.frameRate) * 7;
+    lineLayer.inPoint = (1 / comp.frameRate) * 7 + comp.time;
     var lineContents = lineLayer.property('ADBE Root Vectors Group');
     createPathGrp(lineContents, 'Arrow_Line', false, true, [0, 0, 0], [255, 255, 255], 73, [
         [-550, -68],
@@ -1856,8 +1856,8 @@ var createArrow = function () {
         .property('ADBE Vectors Group');
     var trimPathsGrp = parentGrp.addProperty('ADBE Vector Filter - Trim');
     var trimPathsEnd = trimPathsGrp.property('ADBE Vector Trim End');
-    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 7, 0);
-    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 20, 100);
+    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 7 + comp.time, 0);
+    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 20 + comp.time, 100);
     trimPathsEnd.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 30)], [new KeyframeEase(0.5, 30)]);
     trimPathsEnd.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 94)], [new KeyframeEase(0.5, 94)]);
     var linePos = lineLayer
@@ -1870,6 +1870,7 @@ var createArrow = function () {
     lineAnchor.setValue([-372, -68]);
     var pointerLayer = comp.layers.addShape();
     pointerLayer.name = 'Arrow_Pointer';
+    pointerLayer.inPoint = comp.time;
     var pointerContents = pointerLayer.property('ADBE Root Vectors Group');
     createPathGrp(pointerContents, 'Arrow_Pointer', true, false, [255, 255, 255], [0, 0, 0], 0, [
         [-207.039474487305, -96],
@@ -1896,16 +1897,16 @@ var createArrow = function () {
     var pointerXPos = pointerLayer
         .property('ADBE Transform Group')
         .property('ADBE Position_0');
-    pointerXPos.setValueAtTime((1 / comp.frameRate) * 7, 410.4605);
-    pointerXPos.setValueAtTime((1 / comp.frameRate) * 20, 753.4605);
+    pointerXPos.setValueAtTime((1 / comp.frameRate) * 7 + comp.time, 410.4605);
+    pointerXPos.setValueAtTime((1 / comp.frameRate) * 20 + comp.time, 753.4605);
     pointerXPos.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 30)], [new KeyframeEase(0.5, 30)]);
     pointerXPos.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 94)], [new KeyframeEase(0.5, 94)]);
     var pointerScale = pointerLayer
         .property('ADBE Transform Group')
         .property('ADBE Scale');
     pointerScale.setValueAtTime(0, [0, 0]);
-    pointerScale.setValueAtTime((1 / comp.frameRate) * 7, [55.4514, 55.4514]);
-    pointerScale.setValueAtTime((1 / comp.frameRate) * 20, [100, 100]);
+    pointerScale.setValueAtTime((1 / comp.frameRate) * 7 + comp.time, [55.4514, 55.4514]);
+    pointerScale.setValueAtTime((1 / comp.frameRate) * 20 + comp.time, [100, 100]);
     pointerScale.setTemporalEaseAtKey(1, [
         new KeyframeEase(0.5, 46),
         new KeyframeEase(0.5, 46),
@@ -1944,6 +1945,7 @@ var createMikra = function () {
     }
     var bgLayer = comp.layers.addShape();
     bgLayer.name = 'Mikra_BG';
+    bgLayer.inPoint = comp.time;
     var xSlider = bgLayer.effect.addProperty('ADBE Slider Control');
     xSlider.name = 'Size X';
     var xSliderProp = xSlider.property('ADBE Slider Control-0001');
@@ -1983,8 +1985,8 @@ var createMikra = function () {
     var layerYPos = bgLayer
         .property('ADBE Transform Group')
         .property('ADBE Position_1');
-    layerYPos.setValueAtTime(0, comp.height + 450);
-    layerYPos.setValueAtTime((1 / comp.frameRate) * 15, comp.height);
+    layerYPos.setValueAtTime(comp.time, comp.height + 450);
+    layerYPos.setValueAtTime((1 / comp.frameRate) * 15 + comp.time, comp.height);
     layerYPos.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 88)]);
     var layerAnchor = bgLayer
         .property('ADBE Transform Group')
@@ -1995,6 +1997,7 @@ var createMikra = function () {
         circleLayer.name = "Mikra_Icon_0".concat(index);
         circleLayer.parent = bgLayer;
         circleLayer.guideLayer = true;
+        circleLayer.inPoint = comp.time;
         var circleContents = circleLayer.property('ADBE Root Vectors Group');
         var circleShapeGrp = circleContents.addProperty('ADBE Vector Group');
         circleShapeGrp.name = 'Circle';
@@ -2022,6 +2025,7 @@ var createMikra = function () {
     var createText = function (text, textPos) {
         var textLayer = comp.layers.addText();
         textLayer.parent = bgLayer;
+        textLayer.inPoint = comp.time;
         var srcText = textLayer
             .property('ADBE Text Properties')
             .property('ADBE Text Document');
@@ -2048,6 +2052,7 @@ var createMikra = function () {
     createText('טקסט 2', [222.1052, 292]);
     createText('טקסט 3', [682.3552, 442]);
     createText('טקסט 4', [222.1052, 442]);
+    bgLayer.selected = true;
     app.endUndoGroup();
 };
 var createText = function (text, font, animation, addTextEvo, addMask) {

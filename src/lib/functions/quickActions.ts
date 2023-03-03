@@ -1233,7 +1233,7 @@ const createArrow = (): void => {
     // === Line ===
     const lineLayer = comp.layers.addShape();
     lineLayer.name = 'Arrow_Line';
-    lineLayer.inPoint = (1 / comp.frameRate) * 7;
+    lineLayer.inPoint = (1 / comp.frameRate) * 7 + comp.time;
 
     const lineContents = lineLayer.property(
         'ADBE Root Vectors Group'
@@ -1270,8 +1270,8 @@ const createArrow = (): void => {
     const trimPathsEnd = trimPathsGrp.property(
         'ADBE Vector Trim End'
     ) as Property<number>;
-    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 7, 0);
-    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 20, 100);
+    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 7 + comp.time, 0);
+    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 20 + comp.time, 100);
 
     trimPathsEnd.setTemporalEaseAtKey(
         1,
@@ -1297,6 +1297,7 @@ const createArrow = (): void => {
     // === Pointer ===
     const pointerLayer = comp.layers.addShape();
     pointerLayer.name = 'Arrow_Pointer';
+    pointerLayer.inPoint = comp.time;
 
     const pointerContents = pointerLayer.property(
         'ADBE Root Vectors Group'
@@ -1343,8 +1344,8 @@ const createArrow = (): void => {
     const pointerXPos = pointerLayer
         .property('ADBE Transform Group')
         .property('ADBE Position_0') as Property<number>;
-    pointerXPos.setValueAtTime((1 / comp.frameRate) * 7, 410.4605);
-    pointerXPos.setValueAtTime((1 / comp.frameRate) * 20, 753.4605);
+    pointerXPos.setValueAtTime((1 / comp.frameRate) * 7 + comp.time, 410.4605);
+    pointerXPos.setValueAtTime((1 / comp.frameRate) * 20 + comp.time, 753.4605);
 
     pointerXPos.setTemporalEaseAtKey(
         1,
@@ -1361,8 +1362,14 @@ const createArrow = (): void => {
         .property('ADBE Transform Group')
         .property('ADBE Scale') as Property<[number, number]>;
     pointerScale.setValueAtTime(0, [0, 0]);
-    pointerScale.setValueAtTime((1 / comp.frameRate) * 7, [55.4514, 55.4514]);
-    pointerScale.setValueAtTime((1 / comp.frameRate) * 20, [100, 100]);
+    pointerScale.setValueAtTime(
+        (1 / comp.frameRate) * 7 + comp.time,
+        [55.4514, 55.4514]
+    );
+    pointerScale.setValueAtTime(
+        (1 / comp.frameRate) * 20 + comp.time,
+        [100, 100]
+    );
 
     pointerScale.setTemporalEaseAtKey(
         1,
@@ -1419,6 +1426,7 @@ const createMikra = (): void => {
     /* BG */
     const bgLayer = comp.layers.addShape();
     bgLayer.name = 'Mikra_BG';
+    bgLayer.inPoint = comp.time;
 
     const xSlider = bgLayer.effect.addProperty(
         'ADBE Slider Control'
@@ -1485,8 +1493,11 @@ const createMikra = (): void => {
         .property('ADBE Transform Group')
         .property('ADBE Position_1') as Property<number>;
     // layerYPos.setValue(comp.height);
-    layerYPos.setValueAtTime(0, comp.height + 450);
-    layerYPos.setValueAtTime((1 / comp.frameRate) * 15, comp.height);
+    layerYPos.setValueAtTime(comp.time, comp.height + 450);
+    layerYPos.setValueAtTime(
+        (1 / comp.frameRate) * 15 + comp.time,
+        comp.height
+    );
 
     layerYPos.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 88)]);
 
@@ -1504,6 +1515,7 @@ const createMikra = (): void => {
         circleLayer.name = `Mikra_Icon_0${index}`;
         circleLayer.parent = bgLayer;
         circleLayer.guideLayer = true;
+        circleLayer.inPoint = comp.time;
 
         const circleContents = circleLayer.property(
             'ADBE Root Vectors Group'
@@ -1552,6 +1564,7 @@ const createMikra = (): void => {
     const createText = (text: string, textPos: [number, number]): TextLayer => {
         const textLayer = comp.layers.addText();
         textLayer.parent = bgLayer;
+        textLayer.inPoint = comp.time;
 
         const srcText = textLayer
             .property('ADBE Text Properties')
@@ -1584,6 +1597,8 @@ const createMikra = (): void => {
     createText('טקסט 2', [222.1052, 292]);
     createText('טקסט 3', [682.3552, 442]);
     createText('טקסט 4', [222.1052, 442]);
+
+    bgLayer.selected = true;
 
     app.endUndoGroup();
 };
