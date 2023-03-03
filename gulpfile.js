@@ -9,9 +9,9 @@ const fse = require('fs-extra');
 const pkg = require('./package.json');
 const jsxbin = require('jsxbin');
 const exeFolder =
-    'C:\\Program Files\\Adobe\\Adobe After Effects 2022\\Support Files\\AfterFX.exe';
+    'C:\\Program Files\\Adobe\\Adobe After Effects 2023\\Support Files\\AfterFX.exe';
 const scriptFolder =
-    'C:\\Program Files\\Adobe\\Adobe After Effects 2022\\Support Files\\Scripts\\ScriptUI Panels';
+    'C:\\Program Files\\Adobe\\Adobe After Effects 2023\\Support Files\\Scripts\\ScriptUI Panels';
 const headerStr =
     `/**\n` +
     ` * @name ${pkg.eyal.name}\n` +
