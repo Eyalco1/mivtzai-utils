@@ -590,6 +590,7 @@ var createAnimatedMap = function (name, vertices, inTangents, outTangents) {
     }
     var shapeLayer = comp.layers.addShape();
     shapeLayer.name = name;
+    shapeLayer.inPoint = comp.time;
     var contents = shapeLayer.property('Contents');
     createPathGrp(contents, "".concat(name, "_Stroke"), false, true, [0, 0, 0], [255, 255, 255], 10, vertices, inTangents, outTangents, true, [0, 0]);
     createPathGrp(contents, "".concat(name, "_Fill"), true, false, [202, 5, 5], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [0, 0]);
@@ -598,8 +599,8 @@ var createAnimatedMap = function (name, vertices, inTangents, outTangents) {
         .property('ADBE Vectors Group')
         .property('ADBE Vector Graphic - Fill')
         .property('ADBE Vector Fill Opacity');
-    fillOpacity.setValueAtTime(0, 0);
-    fillOpacity.setValueAtTime((1 / comp.frameRate) * 14, 50);
+    fillOpacity.setValueAtTime(shapeLayer.inPoint, 0);
+    fillOpacity.setValueAtTime((1 / comp.frameRate) * 14 + shapeLayer.inPoint, 50);
     fillOpacity.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 33)], [new KeyframeEase(0.5, 33)]);
     fillOpacity.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 33)], [new KeyframeEase(0.5, 33)]);
     var myStroke = contents
@@ -622,8 +623,8 @@ var createAnimatedMap = function (name, vertices, inTangents, outTangents) {
         .property('ADBE Vectors Group');
     var trimPathsGrp = parentGrp.addProperty('ADBE Vector Filter - Trim');
     var trimPathsEnd = trimPathsGrp.property('ADBE Vector Trim End');
-    trimPathsEnd.setValueAtTime(0, 0);
-    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 30, 100);
+    trimPathsEnd.setValueAtTime(shapeLayer.inPoint, 0);
+    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 30 + shapeLayer.inPoint, 100);
     trimPathsEnd.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 33)], [new KeyframeEase(0.5, 33)]);
     trimPathsEnd.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 66)], [new KeyframeEase(0.5, 66)]);
 };

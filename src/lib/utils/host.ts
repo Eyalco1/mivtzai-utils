@@ -83,6 +83,7 @@ const createAnimatedMap = (
 
     const shapeLayer = comp.layers.addShape();
     shapeLayer.name = name;
+    shapeLayer.inPoint = comp.time;
     const contents = shapeLayer.property('Contents') as PropertyGroup;
 
     createPathGrp(
@@ -121,8 +122,8 @@ const createAnimatedMap = (
         .property('ADBE Vector Graphic - Fill')
         .property('ADBE Vector Fill Opacity') as Property<number>;
 
-    fillOpacity.setValueAtTime(0, 0);
-    fillOpacity.setValueAtTime((1 / comp.frameRate) * 14, 50);
+    fillOpacity.setValueAtTime(shapeLayer.inPoint, 0);
+    fillOpacity.setValueAtTime((1 / comp.frameRate) * 14 + shapeLayer.inPoint, 50);
 
     fillOpacity.setTemporalEaseAtKey(
         1,
@@ -172,8 +173,8 @@ const createAnimatedMap = (
     const trimPathsEnd = trimPathsGrp.property(
         'ADBE Vector Trim End'
     ) as Property<number>;
-    trimPathsEnd.setValueAtTime(0, 0);
-    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 30, 100);
+    trimPathsEnd.setValueAtTime(shapeLayer.inPoint, 0);
+    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 30 + shapeLayer.inPoint, 100);
 
     trimPathsEnd.setTemporalEaseAtKey(
         1,
