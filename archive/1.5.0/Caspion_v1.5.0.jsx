@@ -17608,18 +17608,18 @@ var loopTexture = function (comp, layer) {
     var rotProp = layer
         .property('ADBE Transform Group')
         .property('ADBE Rotate Z');
-    posProp.setValueAtTime(0, [960, 540]);
-    scaleProp.setValueAtTime(0, [100, 100]);
-    rotProp.setValueAtTime(0, 0);
-    posProp.setValueAtTime((1 / comp.frameRate) * 10, [840, 804]);
-    scaleProp.setValueAtTime((1 / comp.frameRate) * 10, [100, 100]);
-    rotProp.setValueAtTime((1 / comp.frameRate) * 10, 50);
-    posProp.setValueAtTime((1 / comp.frameRate) * 20, [1284, 913]);
-    scaleProp.setValueAtTime((1 / comp.frameRate) * 20, [116, 116]);
-    rotProp.setValueAtTime((1 / comp.frameRate) * 20, -35);
-    posProp.setValueAtTime((1 / comp.frameRate) * 30, [960, 540]);
-    scaleProp.setValueAtTime((1 / comp.frameRate) * 30, [100, 100]);
-    rotProp.setValueAtTime((1 / comp.frameRate) * 30, 0);
+    posProp.setValueAtTime(layer.inPoint, [960, 540]);
+    scaleProp.setValueAtTime(layer.inPoint, [100, 100]);
+    rotProp.setValueAtTime(layer.inPoint, 0);
+    posProp.setValueAtTime((1 / comp.frameRate) * 10 + layer.inPoint, [840, 804]);
+    scaleProp.setValueAtTime((1 / comp.frameRate) * 10 + layer.inPoint, [100, 100]);
+    rotProp.setValueAtTime((1 / comp.frameRate) * 10 + layer.inPoint, 50);
+    posProp.setValueAtTime((1 / comp.frameRate) * 20 + layer.inPoint, [1284, 913]);
+    scaleProp.setValueAtTime((1 / comp.frameRate) * 20 + layer.inPoint, [116, 116]);
+    rotProp.setValueAtTime((1 / comp.frameRate) * 20 + layer.inPoint, -35);
+    posProp.setValueAtTime((1 / comp.frameRate) * 30 + layer.inPoint, [960, 540]);
+    scaleProp.setValueAtTime((1 / comp.frameRate) * 30 + layer.inPoint, [100, 100]);
+    rotProp.setValueAtTime((1 / comp.frameRate) * 30 + layer.inPoint, 0);
     posProp.setInterpolationTypeAtKey(1, KeyframeInterpolationType.HOLD);
     posProp.setInterpolationTypeAtKey(2, KeyframeInterpolationType.HOLD);
     posProp.setInterpolationTypeAtKey(3, KeyframeInterpolationType.HOLD);
@@ -17661,6 +17661,7 @@ var createTexture = function (id, loop, fit) {
     if (!comp || !(comp instanceof CompItem))
         return;
     var textureLayer = comp.layers.add(textureItem);
+    textureLayer.inPoint = comp.time;
     textureLayer.label = parsePrefs().texLabelRandom
         ? Math.floor(Math.random() * 16) + 1
         : parsePrefs().texLabelIndex + 1;
