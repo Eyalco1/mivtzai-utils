@@ -123,7 +123,10 @@ const createAnimatedMap = (
         .property('ADBE Vector Fill Opacity') as Property<number>;
 
     fillOpacity.setValueAtTime(shapeLayer.inPoint, 0);
-    fillOpacity.setValueAtTime((1 / comp.frameRate) * 14 + shapeLayer.inPoint, 50);
+    fillOpacity.setValueAtTime(
+        (1 / comp.frameRate) * 14 + shapeLayer.inPoint,
+        50
+    );
 
     fillOpacity.setTemporalEaseAtKey(
         1,
@@ -174,7 +177,10 @@ const createAnimatedMap = (
         'ADBE Vector Trim End'
     ) as Property<number>;
     trimPathsEnd.setValueAtTime(shapeLayer.inPoint, 0);
-    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 30 + shapeLayer.inPoint, 100);
+    trimPathsEnd.setValueAtTime(
+        (1 / comp.frameRate) * 30 + shapeLayer.inPoint,
+        100
+    );
 
     trimPathsEnd.setTemporalEaseAtKey(
         1,
@@ -228,29 +234,7 @@ const createIconCircle = (
     );
 };
 
-const getFontFromLanguage = (lang: Lingo) => {
-    if (lang === 'English') {
-        return 'TradeGothicLT-BoldCondTwenty';
-    } else if (lang === 'Hebrew') {
-        return 'NarkisBlockCondensedMF-Bold';
-    } else if (lang === 'Arabic') {
-        return 'DroidArabicKufi-Bold';
-    }
-};
 
-const getFontFromName = (name: CaspionFont) => {
-    if (name === 'Trade Gothic') {
-        return 'TradeGothicLT-BoldCondTwenty';
-    } else if (name === 'Narkis') {
-        return 'NarkisBlockCondensedMF-Bold';
-    } else if (name === 'Almoni') {
-        return 'AlmoniNeueDL4.0AAA-Bold';
-    } else if (name === 'Droid') {
-        return 'DroidArabicKufi-Bold';
-    } else if (name === 'Janna') {
-        return 'JannaLT-Bold';
-    }
-};
 
 const importGoogleMaps = (location: GoogleMapsLocation): void => {
     const keyState = ScriptUI.environment.keyboardState;
@@ -268,6 +252,7 @@ const importGoogleMaps = (location: GoogleMapsLocation): void => {
     if (!comp || !(comp instanceof CompItem)) return;
 
     const mapLayer = comp.layers.add(mapItem);
+    mapLayer.inPoint = comp.time;
 
     // Fit To Comp Height
     mapLayer.selected = true;

@@ -649,34 +649,6 @@ var createIconCircle = function (contents, circleColorRgb, size) {
     ];
     createPathGrp(contents, 'Circle', true, false, circleColorRgb, circleColorRgb, 0, vertices, inTangents, outTangents, true, [0, 0]);
 };
-var getFontFromLanguage = function (lang) {
-    if (lang === 'English') {
-        return 'TradeGothicLT-BoldCondTwenty';
-    }
-    else if (lang === 'Hebrew') {
-        return 'NarkisBlockCondensedMF-Bold';
-    }
-    else if (lang === 'Arabic') {
-        return 'DroidArabicKufi-Bold';
-    }
-};
-var getFontFromName = function (name) {
-    if (name === 'Trade Gothic') {
-        return 'TradeGothicLT-BoldCondTwenty';
-    }
-    else if (name === 'Narkis') {
-        return 'NarkisBlockCondensedMF-Bold';
-    }
-    else if (name === 'Almoni') {
-        return 'AlmoniNeueDL4.0AAA-Bold';
-    }
-    else if (name === 'Droid') {
-        return 'DroidArabicKufi-Bold';
-    }
-    else if (name === 'Janna') {
-        return 'JannaLT-Bold';
-    }
-};
 var importGoogleMaps = function (location) {
     var keyState = ScriptUI.environment.keyboardState;
     var modKey = getOS() === 'Win' ? keyState.ctrlKey : keyState.metaKey;
@@ -686,6 +658,7 @@ var importGoogleMaps = function (location) {
     if (!comp || !(comp instanceof CompItem))
         return;
     var mapLayer = comp.layers.add(mapItem);
+    mapLayer.inPoint = comp.time;
     mapLayer.selected = true;
     app.executeCommand(2732);
 };
@@ -1000,10 +973,37 @@ var introduceTextEvo = function () {
     };
     applyTextEvo();
 };
-var generateCaspiQuote = function () {
-    var quotes = ['1', '2', '3', '4'];
-    var theQuote = quotes[Math.floor(Math.random() * quotes.length)];
-    alert(theQuote, 'Caspi Says:');
+var containsHebrew = function (str) { return /[\u0590-\u05FF]/.test(str); };
+var containsArabic = function (str) {
+    return /[\u0600-\u06FF\u0750-\u077F]/.test(str);
+};
+var getFontFromLanguage = function (lang) {
+    if (lang === 'English') {
+        return 'TradeGothicLT-BoldCondTwenty';
+    }
+    else if (lang === 'Hebrew') {
+        return 'NarkisBlockCondensedMF-Bold';
+    }
+    else if (lang === 'Arabic') {
+        return 'DroidArabicKufi-Bold';
+    }
+};
+var getFontFromName = function (name) {
+    if (name === 'Trade Gothic') {
+        return 'TradeGothicLT-BoldCondTwenty';
+    }
+    else if (name === 'Narkis') {
+        return 'NarkisBlockCondensedMF-Bold';
+    }
+    else if (name === 'Almoni') {
+        return 'AlmoniNeueDL4.0AAA-Bold';
+    }
+    else if (name === 'Droid') {
+        return 'DroidArabicKufi-Bold';
+    }
+    else if (name === 'Janna') {
+        return 'JannaLT-Bold';
+    }
 };
 var createTvaiStroke = function () {
     app.beginUndoGroup('Caspion: Create Tunnel Stroke');
@@ -1014,6 +1014,7 @@ var createTvaiStroke = function () {
     }
     var layer = comp.layers.addShape();
     layer.name = 'Tunnel';
+    layer.inPoint = comp.time;
     var contents = layer.property('ADBE Root Vectors Group');
     var shapeGrp = contents.addProperty('ADBE Vector Group');
     shapeGrp.name = 'Tunnel_Stroke';
@@ -1510,6 +1511,7 @@ var createAnimatedFrame = function () {
     }
     var layer = comp.layers.addShape();
     layer.name = 'Frame';
+    layer.inPoint = comp.time;
     var contents = layer.property('ADBE Root Vectors Group');
     var shapeGrp = contents.addProperty('ADBE Vector Group');
     shapeGrp.name = 'Frame';
@@ -1586,6 +1588,7 @@ var createTatzaPath = function () {
     }
     var layer = comp.layers.addShape();
     layer.name = 'Location_Mark';
+    layer.inPoint = comp.time;
     var contents = layer.property('ADBE Root Vectors Group');
     var shapeGrp = contents.addProperty('ADBE Vector Group');
     shapeGrp.name = 'Location_Mark_Stroke';
@@ -1643,6 +1646,7 @@ var recScaleX = function () {
     }
     var layer = comp.layers.addShape();
     layer.name = 'Rec';
+    layer.inPoint = comp.time;
     var xSlider = layer.effect.addProperty('ADBE Slider Control');
     xSlider.name = 'Size X';
     var xSliderProp = xSlider.property('ADBE Slider Control-0001');
@@ -1683,6 +1687,7 @@ var createTextOnLocation = function () {
     app.beginUndoGroup('Caspion: Text On Location');
     var circleLayer = comp.layers.addShape();
     circleLayer.name = "".concat(promptVal, " - Circle");
+    circleLayer.inPoint = comp.time;
     var circleContents = circleLayer.property('ADBE Root Vectors Group');
     var circleShapeGrp = circleContents.addProperty('ADBE Vector Group');
     circleShapeGrp.name = 'Circle';
@@ -1696,12 +1701,12 @@ var createTextOnLocation = function () {
     var circleScale = circleLayer
         .property('ADBE Transform Group')
         .property('ADBE Scale');
-    circleScale.setValueAtTime(0, [0, 0]);
-    circleScale.setValueAtTime((1 / comp.frameRate) * 7, [114.3096, 114.3096]);
-    circleScale.setValueAtTime((1 / comp.frameRate) * 15, [92.2582, 92.2582]);
-    circleScale.setValueAtTime((1 / comp.frameRate) * 22, [104.8933, 104.8933]);
-    circleScale.setValueAtTime((1 / comp.frameRate) * 28, [98.3702, 98.3702]);
-    circleScale.setValueAtTime((1 / comp.frameRate) * 36, [100, 100]);
+    circleScale.setValueAtTime(comp.time, [0, 0]);
+    circleScale.setValueAtTime((1 / comp.frameRate) * 7 + comp.time, [114.3096, 114.3096]);
+    circleScale.setValueAtTime((1 / comp.frameRate) * 15 + comp.time, [92.2582, 92.2582]);
+    circleScale.setValueAtTime((1 / comp.frameRate) * 22 + comp.time, [104.8933, 104.8933]);
+    circleScale.setValueAtTime((1 / comp.frameRate) * 28 + comp.time, [98.3702, 98.3702]);
+    circleScale.setValueAtTime((1 / comp.frameRate) * 36 + comp.time, [100, 100]);
     var scaleEase1 = new KeyframeEase(0.5, 56);
     var scaleEase2 = new KeyframeEase(0.5, 57);
     var scaleEase3 = new KeyframeEase(0.5, 52.5);
@@ -1720,7 +1725,7 @@ var createTextOnLocation = function () {
     circlePos.setValue([621.2241, 597.2879]);
     var lineLayer = comp.layers.addShape();
     lineLayer.name = "".concat(promptVal, " - Line");
-    lineLayer.inPoint = (1 / comp.frameRate) * 3;
+    lineLayer.inPoint = (1 / comp.frameRate) * 3 + comp.time;
     var lineContents = lineLayer.property('ADBE Root Vectors Group');
     createPathGrp(lineContents, 'Line', false, true, [0, 0, 0], [255, 255, 255], 14, [
         [-311, 27.7985687255859],
@@ -1748,8 +1753,8 @@ var createTextOnLocation = function () {
         .property('ADBE Vectors Group');
     var trimPathsGrp = parentGrp.addProperty('ADBE Vector Filter - Trim');
     var trimPathsEnd = trimPathsGrp.property('ADBE Vector Trim End');
-    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 3, 0);
-    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 16, 100);
+    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 3 + comp.time, 0);
+    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 16 + comp.time, 100);
     trimPathsEnd.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 44)], [new KeyframeEase(0.5, 44)]);
     trimPathsEnd.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 93)], [new KeyframeEase(0.5, 93)]);
     var linePos = lineLayer
@@ -1762,7 +1767,7 @@ var createTextOnLocation = function () {
     lineAnchor.setValue([-108, -89]);
     var recLayer = comp.layers.addShape();
     recLayer.name = "".concat(promptVal, " - Rectangle");
-    recLayer.inPoint = (1 / comp.frameRate) * 12;
+    recLayer.inPoint = (1 / comp.frameRate) * 12 + comp.time;
     var recContents = recLayer.property('ADBE Root Vectors Group');
     var recShapeGrp = recContents.addProperty('ADBE Vector Group');
     recShapeGrp.name = 'Rectangle';
@@ -1780,8 +1785,8 @@ var createTextOnLocation = function () {
         .property('ADBE Vector Shape - Rect')
         .property('ADBE Vector Rect Size');
     recRectangleSize.setValue([467, 169]);
-    recRectangleSize.setValueAtTime((1 / comp.frameRate) * 12, [0, 169]);
-    recRectangleSize.setValueAtTime((1 / comp.frameRate) * 41, [467, 169]);
+    recRectangleSize.setValueAtTime((1 / comp.frameRate) * 12 + comp.time, [0, 169]);
+    recRectangleSize.setValueAtTime((1 / comp.frameRate) * 41 + comp.time, [467, 169]);
     var easeOut = new KeyframeEase(0.5, 44);
     var easeIn = new KeyframeEase(0.5, 93);
     recRectangleSize.setTemporalEaseAtKey(1, [easeOut, easeOut], [easeOut, easeOut]);
@@ -1791,13 +1796,21 @@ var createTextOnLocation = function () {
         .property('ADBE Position');
     recPos.setValue([1055.9803, 280.3122]);
     var textLayer = comp.layers.addText();
-    textLayer.inPoint = (1 / comp.frameRate) * 12;
+    textLayer.inPoint = (1 / comp.frameRate) * 12 + comp.time;
     var srcText = textLayer
         .property('ADBE Text Properties')
         .property('ADBE Text Document');
     srcText.setValue(promptVal);
     var textDoc = srcText.value;
-    textDoc.font = getFontFromLanguage('Hebrew');
+    if (containsHebrew(promptVal[0])) {
+        textDoc.font = getFontFromLanguage('Hebrew');
+    }
+    else if (containsArabic(promptVal[0])) {
+        textDoc.font = getFontFromLanguage('Arabic');
+    }
+    else {
+        textDoc.font = getFontFromLanguage('English');
+    }
     textDoc.fontSize = 145;
     textDoc.applyFill = true;
     textDoc.fillColor = [0, 0, 0];
