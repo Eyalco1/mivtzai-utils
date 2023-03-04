@@ -2159,10 +2159,6 @@ var setUpIcon = function (name, circleColor, iconColor) {
     var contents = layer.property('Contents');
     var circleColorRgb = colorNameToRGB(circleColor);
     var iconColorRgb = colorNameToRGB(iconColor);
-    alert('Circle Color: ');
-    alert(circleColorRgb.toString());
-    alert('Icon Color:');
-    alert(iconColorRgb.toString());
     return { layer: layer, contents: contents, circleColorRgb: circleColorRgb, iconColorRgb: iconColorRgb };
 };
 var iconAftermath = function (hasCircle, contents, circleColorRgb, scale, layer, circleSize) {
@@ -18033,14 +18029,9 @@ var createColoredButton = function (container, color, size) {
     };
     return btn;
 };
-var createHelpWindow = function () {
-    var helpWin = new Window('dialog', 'Help & Info');
-    if (helpWin == null) {
-        helpWin;
-    }
-    var tpanel = helpWin.add('tabbedpanel');
+var createAboutTab = function (tpanel) {
     var aboutTab = tpanel.add('tab', undefined, ['About']);
-    var banner = aboutTab.add('image', [0, 0, 300, 110], bannerBinary);
+    aboutTab.add('image', [0, 0, 300, 110], bannerBinary);
     var abtStr = '‹ Caspion - version 1.6.0 - Created By Eyal Cohen ›';
     var aboutEditGrp = aboutTab.add('group');
     aboutEditGrp.add('edittext', [0, 0, 380, 200], abtStr, {
@@ -18049,6 +18040,28 @@ var createHelpWindow = function () {
         scrollable: true
     });
     aboutEditGrp.margins.left = 10;
+    return aboutTab;
+};
+var createIconColorRow = function (container, colorName, colorHex) {
+    var colorGrp = container.add('group');
+    var colorNameStatic = colorGrp.add('statictext', undefined, 'Name:');
+    var colorNameEdit = colorGrp.add('edittext', undefined, colorName);
+    var colorHexStatic = colorGrp.add('statictext', undefined, 'Hex Color:');
+    var colorHash = colorGrp.add('statictext', undefined, '#');
+    var colorHexEdit = colorGrp.add('edittext', undefined, colorHex);
+    colorHash.addEventListener('click', function () {
+        openColorPickerForEditText(colorHexEdit);
+    });
+    return { colorNameEdit: colorNameEdit, colorHexEdit: colorHexEdit };
+};
+var createHelpWindow = function () {
+    var helpWin = new Window('dialog', 'Help & Info');
+    if (helpWin == null) {
+        helpWin;
+    }
+    var tpanel = helpWin.add('tabbedpanel');
+    createAboutTab(tpanel);
+    var prefs = parsePrefs();
     var labelNames = getLabelNamesFromPrefs();
     var labelColors = getLabelsFromPrefs().map(function (hex) { return hexToRgb(hex); });
     var settingsTab = tpanel.add('tab', undefined, ['Settings']);
@@ -18066,7 +18079,7 @@ var createHelpWindow = function () {
     iconStaticGrp.margins.right = 22;
     var iconlabelsGrp = iconlabelsSettingGrp.add('group');
     var iconLabelsDD = iconlabelsGrp.add('dropdownlist', undefined, labelNames);
-    iconLabelsDD.selection = parsePrefs().iconsLabelIndex;
+    iconLabelsDD.selection = prefs.iconsLabelIndex;
     var iconSelection = iconLabelsDD.selection;
     var iconTheLabel = createColoredButton(iconlabelsGrp, labelColors[iconSelection.index], [20, 20]);
     iconLabelsDD.onChange = function () {
@@ -18074,7 +18087,7 @@ var createHelpWindow = function () {
         iconTheLabel.fillBrush = iconTheLabel.graphics.newBrush(iconTheLabel.graphics.BrushType.SOLID_COLOR, labelColors[selection.index], 1);
     };
     var iconRandomCheck = iconlabelsSettingGrp.add('checkbox', undefined, 'Random');
-    iconRandomCheck.value = parsePrefs().iconsLabelRandom;
+    iconRandomCheck.value = prefs.iconsLabelRandom;
     var updateFromIconCheck = function (val) {
         iconlabelsGrp.enabled = !val;
         iconTheLabel.fillBrush = iconTheLabel.graphics.newBrush(iconTheLabel.graphics.BrushType.SOLID_COLOR, val ? [0.2, 0.2, 0.2, 1] : labelColors[iconSelection.index], 1);
@@ -18088,7 +18101,7 @@ var createHelpWindow = function () {
     locStaticGrp.add('statictext', undefined, 'Locations Label Color:');
     var loclabelsGrp = locLabelsSettingGrp.add('group');
     var locLabelsDD = loclabelsGrp.add('dropdownlist', undefined, labelNames);
-    locLabelsDD.selection = parsePrefs().locsLabelIndex;
+    locLabelsDD.selection = prefs.locsLabelIndex;
     var locSelection = locLabelsDD.selection;
     var locTheLabel = createColoredButton(loclabelsGrp, labelColors[locSelection.index], [20, 20]);
     locLabelsDD.onChange = function () {
@@ -18096,7 +18109,7 @@ var createHelpWindow = function () {
         locTheLabel.fillBrush = locTheLabel.graphics.newBrush(locTheLabel.graphics.BrushType.SOLID_COLOR, labelColors[selection.index], 1);
     };
     var locRandomCheck = locLabelsSettingGrp.add('checkbox', undefined, 'Random');
-    locRandomCheck.value = parsePrefs().locsLabelRandom;
+    locRandomCheck.value = prefs.locsLabelRandom;
     var updateFromLocCheck = function (val) {
         loclabelsGrp.enabled = !val;
         locTheLabel.fillBrush = locTheLabel.graphics.newBrush(locTheLabel.graphics.BrushType.SOLID_COLOR, val ? [0.2, 0.2, 0.2, 1] : labelColors[locSelection.index], 1);
@@ -18111,7 +18124,7 @@ var createHelpWindow = function () {
     texStaticGrp.margins.right = 5;
     var texlabelsGrp = texlabelsSettingGrp.add('group');
     var texLabelsDD = texlabelsGrp.add('dropdownlist', undefined, labelNames);
-    texLabelsDD.selection = parsePrefs().texLabelIndex;
+    texLabelsDD.selection = prefs.texLabelIndex;
     var texLabelColors = getLabelsFromPrefs().map(function (hex) { return hexToRgb(hex); });
     var texSelection = texLabelsDD.selection;
     var texTheLabel = createColoredButton(texlabelsGrp, texLabelColors[texSelection.index], [20, 20]);
@@ -18120,7 +18133,7 @@ var createHelpWindow = function () {
         texTheLabel.fillBrush = texTheLabel.graphics.newBrush(texTheLabel.graphics.BrushType.SOLID_COLOR, labelColors[selection.index], 1);
     };
     var texRandomCheck = texlabelsSettingGrp.add('checkbox', undefined, 'Random');
-    texRandomCheck.value = parsePrefs().texLabelRandom;
+    texRandomCheck.value = prefs.texLabelRandom;
     var updateFromTexCheck = function (val) {
         texlabelsGrp.enabled = !val;
         texTheLabel.fillBrush = texTheLabel.graphics.newBrush(texTheLabel.graphics.BrushType.SOLID_COLOR, val ? [0.2, 0.2, 0.2, 1] : labelColors[texSelection.index], 1);
@@ -18131,7 +18144,7 @@ var createHelpWindow = function () {
     };
     var helpTipSettingGrp = settingsTab.add('group');
     var showHelpTipsCheck = helpTipSettingGrp.add('checkbox', undefined, 'Show Help Tips');
-    showHelpTipsCheck.value = parsePrefs().showHelpTips;
+    showHelpTipsCheck.value = prefs.showHelpTips;
     var updateQAHelpTips = function (show) {
         allQABtns.forEach(function (iconData) {
             iconData[0].helpTip = show ? iconData[1] : '';
@@ -18139,16 +18152,9 @@ var createHelpWindow = function () {
     };
     var iconColorsSettingsGrp = settingsTab.add('group');
     iconColorsSettingsGrp.orientation = 'column';
-    var color1Grp = iconColorsSettingsGrp.add('group');
-    var color1NameStatic = color1Grp.add('statictext', undefined, 'Name:');
-    var color1NameEdit = color1Grp.add('edittext', undefined, 'Color 1 Temp');
-    var color1HexStatic = color1Grp.add('statictext', undefined, 'Hex Color:');
-    var color1Hash = color1Grp.add('statictext', undefined, '#');
-    var color1HexEdit = color1Grp.add('edittext', undefined, '#temptemp');
-    color1Hash.addEventListener('click', function () {
-        alert('Click!');
-        openColorPickerForEditText(color1HexEdit);
-    });
+    var _a = createIconColorRow(iconColorsSettingsGrp, prefs.iconColor1Name, prefs.iconColor1Hex), colorName1Edit = _a.colorNameEdit, colorHex1Edit = _a.colorHexEdit;
+    var _b = createIconColorRow(iconColorsSettingsGrp, prefs.iconColor2Name, prefs.iconColor2Hex), colorName2Edit = _b.colorNameEdit, colorHex2Edit = _b.colorHexEdit;
+    var _c = createIconColorRow(iconColorsSettingsGrp, prefs.iconColor3Name, prefs.iconColor3Hex), colorName3Edit = _c.colorNameEdit, colorHex3Edit = _c.colorHexEdit;
     var okBtn = helpWin.add('button', undefined, 'Ok', { name: 'Ok' });
     okBtn.onClick = function () {
         writePrefsToMemory({
@@ -18158,7 +18164,13 @@ var createHelpWindow = function () {
             locsLabelRandom: locRandomCheck.value,
             texLabelIndex: texLabelsDD.selection.index,
             texLabelRandom: texRandomCheck.value,
-            showHelpTips: showHelpTipsCheck.value
+            showHelpTips: showHelpTipsCheck.value,
+            iconColor1Name: colorName1Edit.text,
+            iconColor1Hex: colorHex1Edit.text,
+            iconColor2Name: colorName2Edit.text,
+            iconColor2Hex: colorHex2Edit.text,
+            iconColor3Name: colorName3Edit.text,
+            iconColor3Hex: colorHex3Edit.text
         });
         updateQAHelpTips(showHelpTipsCheck.value);
         helpWin.close();

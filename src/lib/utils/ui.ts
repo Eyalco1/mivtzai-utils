@@ -21,18 +21,9 @@ const createColoredButton = (
     return btn;
 };
 
-const createHelpWindow = () => {
-    const helpWin = new Window('dialog', 'Help & Info');
-    if (helpWin == null) {
-        helpWin;
-    }
-
-    const tpanel = helpWin.add('tabbedpanel');
-
-    // === About ===
-
+const createAboutTab = (tpanel: TabbedPanel): Tab => {
     const aboutTab = tpanel.add('tab', undefined, ['About']);
-    const banner = aboutTab.add('image', [0, 0, 300, 110], bannerBinary);
+    aboutTab.add('image', [0, 0, 300, 110], bannerBinary);
     const abtStr = '‹ @@name - version @@version - Created By Eyal Cohen ›';
     const aboutEditGrp = aboutTab.add('group');
     aboutEditGrp.add('edittext', [0, 0, 380, 200], abtStr, {
@@ -43,7 +34,41 @@ const createHelpWindow = () => {
     // @ts-ignore
     aboutEditGrp.margins.left = 10;
 
+    return aboutTab;
+};
+
+const createIconColorRow = (
+    container: Group,
+    colorName: string,
+    colorHex: string
+): { colorNameEdit: EditText; colorHexEdit: EditText } => {
+    const colorGrp = container.add('group');
+    const colorNameStatic = colorGrp.add('statictext', undefined, 'Name:');
+    const colorNameEdit = colorGrp.add('edittext', undefined, colorName);
+    const colorHexStatic = colorGrp.add('statictext', undefined, 'Hex Color:');
+    const colorHash = colorGrp.add('statictext', undefined, '#');
+    const colorHexEdit = colorGrp.add('edittext', undefined, colorHex);
+
+    colorHash.addEventListener('click', () => {
+        openColorPickerForEditText(colorHexEdit);
+    });
+
+    return { colorNameEdit, colorHexEdit };
+};
+
+const createHelpWindow = () => {
+    const helpWin = new Window('dialog', 'Help & Info');
+    if (helpWin == null) {
+        helpWin;
+    }
+
+    const tpanel = helpWin.add('tabbedpanel');
+
+    // === About ===
+    createAboutTab(tpanel);
+
     // === Settings ===
+    const prefs = parsePrefs();
     const labelNames = getLabelNamesFromPrefs();
     const labelColors = getLabelsFromPrefs().map(hex => hexToRgb(hex));
 
@@ -74,7 +99,7 @@ const createHelpWindow = () => {
         undefined,
         labelNames
     );
-    iconLabelsDD.selection = parsePrefs().iconsLabelIndex;
+    iconLabelsDD.selection = prefs.iconsLabelIndex;
 
     const iconSelection = iconLabelsDD.selection as unknown as ListItem;
     const iconTheLabel = createColoredButton(
@@ -97,7 +122,7 @@ const createHelpWindow = () => {
         undefined,
         'Random'
     );
-    iconRandomCheck.value = parsePrefs().iconsLabelRandom;
+    iconRandomCheck.value = prefs.iconsLabelRandom;
     const updateFromIconCheck = (val: boolean) => {
         iconlabelsGrp.enabled = !val;
         (<any>iconTheLabel).fillBrush = (<any>iconTheLabel).graphics.newBrush(
@@ -118,7 +143,7 @@ const createHelpWindow = () => {
 
     const loclabelsGrp = locLabelsSettingGrp.add('group');
     const locLabelsDD = loclabelsGrp.add('dropdownlist', undefined, labelNames);
-    locLabelsDD.selection = parsePrefs().locsLabelIndex;
+    locLabelsDD.selection = prefs.locsLabelIndex;
 
     const locSelection = locLabelsDD.selection as unknown as ListItem;
     const locTheLabel = createColoredButton(
@@ -141,7 +166,7 @@ const createHelpWindow = () => {
         undefined,
         'Random'
     );
-    locRandomCheck.value = parsePrefs().locsLabelRandom;
+    locRandomCheck.value = prefs.locsLabelRandom;
     const updateFromLocCheck = (val: boolean) => {
         loclabelsGrp.enabled = !val;
         (<any>locTheLabel).fillBrush = (<any>locTheLabel).graphics.newBrush(
@@ -164,7 +189,7 @@ const createHelpWindow = () => {
 
     const texlabelsGrp = texlabelsSettingGrp.add('group');
     const texLabelsDD = texlabelsGrp.add('dropdownlist', undefined, labelNames);
-    texLabelsDD.selection = parsePrefs().texLabelIndex;
+    texLabelsDD.selection = prefs.texLabelIndex;
     const texLabelColors = getLabelsFromPrefs().map(hex => hexToRgb(hex));
 
     const texSelection = texLabelsDD.selection as unknown as ListItem;
@@ -188,7 +213,7 @@ const createHelpWindow = () => {
         undefined,
         'Random'
     );
-    texRandomCheck.value = parsePrefs().texLabelRandom;
+    texRandomCheck.value = prefs.texLabelRandom;
     const updateFromTexCheck = (val: boolean) => {
         texlabelsGrp.enabled = !val;
         (<any>texTheLabel).fillBrush = (<any>texTheLabel).graphics.newBrush(
@@ -209,7 +234,7 @@ const createHelpWindow = () => {
         undefined,
         'Show Help Tips'
     );
-    showHelpTipsCheck.value = parsePrefs().showHelpTips;
+    showHelpTipsCheck.value = prefs.showHelpTips;
 
     const updateQAHelpTips = (show: boolean): void => {
         allQABtns.forEach(iconData => {
@@ -221,21 +246,26 @@ const createHelpWindow = () => {
     const iconColorsSettingsGrp = settingsTab.add('group');
     iconColorsSettingsGrp.orientation = 'column';
 
-    const color1Grp = iconColorsSettingsGrp.add('group');
-    const color1NameStatic = color1Grp.add('statictext', undefined, 'Name:');
-    const color1NameEdit = color1Grp.add('edittext', undefined, 'Color 1 Temp');
-    const color1HexStatic = color1Grp.add(
-        'statictext',
-        undefined,
-        'Hex Color:'
-    );
-    const color1Hash = color1Grp.add('statictext', undefined, '#');
-    const color1HexEdit = color1Grp.add('edittext', undefined, '#temptemp');
+    const { colorNameEdit: colorName1Edit, colorHexEdit: colorHex1Edit } =
+        createIconColorRow(
+            iconColorsSettingsGrp,
+            prefs.iconColor1Name,
+            prefs.iconColor1Hex
+        );
 
-    color1Hash.addEventListener('click', () => {
-        alert('Click!');
-        openColorPickerForEditText(color1HexEdit);
-    });
+    const { colorNameEdit: colorName2Edit, colorHexEdit: colorHex2Edit } =
+        createIconColorRow(
+            iconColorsSettingsGrp,
+            prefs.iconColor2Name,
+            prefs.iconColor2Hex
+        );
+
+    const { colorNameEdit: colorName3Edit, colorHexEdit: colorHex3Edit } =
+        createIconColorRow(
+            iconColorsSettingsGrp,
+            prefs.iconColor3Name,
+            prefs.iconColor3Hex
+        );
 
     // === Ok Button ===
     const okBtn = helpWin.add('button', undefined, 'Ok', { name: 'Ok' });
@@ -247,7 +277,13 @@ const createHelpWindow = () => {
             locsLabelRandom: locRandomCheck.value,
             texLabelIndex: (<ListItem>texLabelsDD.selection).index,
             texLabelRandom: texRandomCheck.value,
-            showHelpTips: showHelpTipsCheck.value
+            showHelpTips: showHelpTipsCheck.value,
+            iconColor1Name: colorName1Edit.text,
+            iconColor1Hex: colorHex1Edit.text,
+            iconColor2Name: colorName2Edit.text,
+            iconColor2Hex: colorHex2Edit.text,
+            iconColor3Name: colorName3Edit.text,
+            iconColor3Hex: colorHex3Edit.text
         });
 
         updateQAHelpTips(showHelpTipsCheck.value);
