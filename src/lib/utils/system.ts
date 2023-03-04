@@ -53,7 +53,13 @@ const setUpPrefs = (): void => {
         iconsLabelIndex: 5,
         locsLabelIndex: 13,
         texLabelIndex: 2,
-        showHelpTips: true
+        showHelpTips: true,
+        iconColor1Name: 'Black',
+        iconColor1Hex: '000000',
+        iconColor2Name: 'White',
+        iconColor2Hex: 'ffffff',
+        iconColor3Name: 'Red',
+        iconColor3Hex: 'c51818'
     };
 
     if (myJSON.exists) {

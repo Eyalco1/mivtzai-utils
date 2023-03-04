@@ -94,6 +94,12 @@ interface Prefs {
     texLabelIndex?: number;
     texLabelRandom?: boolean;
     showHelpTips?: boolean;
+    iconColor1Name?: string;
+    iconColor1Hex?: string;
+    iconColor2Name?: string;
+    iconColor2Hex?: string;
+    iconColor3Name?: string;
+    iconColor3Hex?: string;
 }
 
 type GoogleMapsLocation = 'Israel' | 'Gaza';

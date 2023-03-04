@@ -311,13 +311,35 @@ const scaleWithOvershoot = (layers: Layer[]): void => {
     });
 };
 
+// !
 const colorNameToRGB = (name: ColorDropdown): [number, number, number] => {
-    if (name === 'White') {
-        return [255, 255, 255];
-    } else if (name === 'Black') {
-        return [0, 0, 0];
-    } else if (name === 'Red') {
-        return [197, 24, 24];
+    const {
+        iconColor1Name,
+        iconColor1Hex,
+        iconColor2Name,
+        iconColor2Hex,
+        iconColor3Name,
+        iconColor3Hex
+    } = parsePrefs();
+
+    if (name === iconColor1Name) {
+        return hexToRgb(iconColor1Hex).map(n => n * 255) as [
+            number,
+            number,
+            number
+        ];
+    } else if (name === iconColor2Name) {
+        return hexToRgb(iconColor2Hex).map(n => n * 255) as [
+            number,
+            number,
+            number
+        ];
+    } else if (name === iconColor3Name) {
+        return hexToRgb(iconColor3Hex).map(n => n * 255) as [
+            number,
+            number,
+            number
+        ];
     }
 };
 
@@ -369,7 +391,7 @@ const getLabelNamesFromPrefs = (): string[] => {
     return outputArray;
 };
 
-const hexToRgb = (hex: string): [number, number, number] => {
+const hexToRgb = (hex: string): [number, number, number] | null => {
     const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
     return result
         ? [

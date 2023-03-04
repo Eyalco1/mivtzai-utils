@@ -515,7 +515,13 @@ var setUpPrefs = function () {
         iconsLabelIndex: 5,
         locsLabelIndex: 13,
         texLabelIndex: 2,
-        showHelpTips: true
+        showHelpTips: true,
+        iconColor1Name: 'Black',
+        iconColor1Hex: '000000',
+        iconColor2Name: 'White',
+        iconColor2Hex: 'ffffff',
+        iconColor3Name: 'Red',
+        iconColor3Hex: 'c51818'
     };
     if (myJSON.exists) {
         var parsedPrefs = parsePrefs();
@@ -698,14 +704,15 @@ var scaleWithOvershoot = function (layers) {
     });
 };
 var colorNameToRGB = function (name) {
-    if (name === 'White') {
-        return [255, 255, 255];
+    var _a = parsePrefs(), iconColor1Name = _a.iconColor1Name, iconColor1Hex = _a.iconColor1Hex, iconColor2Name = _a.iconColor2Name, iconColor2Hex = _a.iconColor2Hex, iconColor3Name = _a.iconColor3Name, iconColor3Hex = _a.iconColor3Hex;
+    if (name === iconColor1Name) {
+        return hexToRgb(iconColor1Hex).map(function (n) { return n * 255; });
     }
-    else if (name === 'Black') {
-        return [0, 0, 0];
+    else if (name === iconColor2Name) {
+        return hexToRgb(iconColor2Hex).map(function (n) { return n * 255; });
     }
-    else if (name === 'Red') {
-        return [197, 24, 24];
+    else if (name === iconColor3Name) {
+        return hexToRgb(iconColor3Hex).map(function (n) { return n * 255; });
     }
 };
 var getLabelsFromPrefs = function () {
@@ -2152,6 +2159,10 @@ var setUpIcon = function (name, circleColor, iconColor) {
     var contents = layer.property('Contents');
     var circleColorRgb = colorNameToRGB(circleColor);
     var iconColorRgb = colorNameToRGB(iconColor);
+    alert('Circle Color: ');
+    alert(circleColorRgb.toString());
+    alert('Icon Color:');
+    alert(iconColorRgb.toString());
     return { layer: layer, contents: contents, circleColorRgb: circleColorRgb, iconColorRgb: iconColorRgb };
 };
 var iconAftermath = function (hasCircle, contents, circleColorRgb, scale, layer, circleSize) {
@@ -18314,20 +18325,21 @@ var createIconsUI = function (tpanel) {
     var iconDD = iconDDGrp.add('dropdownlist', undefined, iconsList);
     iconDD.preferredSize[0] = 100;
     iconDD.selection = 0;
+    var _a = parsePrefs(), iconColor1Name = _a.iconColor1Name, iconColor2Name = _a.iconColor2Name, iconColor3Name = _a.iconColor3Name;
     var circleColorGrp = iconCircleGrp.add('group');
     circleColorGrp.add('statictext', undefined, 'Circle Color:');
     var circleColorDD = circleColorGrp.add('dropdownlist', undefined, [
-        'White',
-        'Black',
-        'Red'
+        iconColor1Name,
+        iconColor2Name,
+        iconColor3Name
     ]);
     var colorChecksGrp = iconsGrp.add('group');
     var iconColorGrp = colorChecksGrp.add('group');
     iconColorGrp.add('statictext', undefined, 'Icon Color:');
     var iconColorDD = iconColorGrp.add('dropdownlist', undefined, [
-        'Black',
-        'White',
-        'Red'
+        iconColor2Name,
+        iconColor1Name,
+        iconColor3Name
     ]);
     iconColorDD.preferredSize[0] = 71;
     circleColorDD.selection = iconColorDD.selection = 0;

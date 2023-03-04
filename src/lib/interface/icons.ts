@@ -46,12 +46,15 @@ const createIconsUI = (
     iconDD.preferredSize[0] = 100;
     iconDD.selection = 0;
 
+    const { iconColor1Name, iconColor2Name, iconColor3Name } = parsePrefs();
+
     const circleColorGrp = iconCircleGrp.add('group');
     circleColorGrp.add('statictext', undefined, 'Circle Color:');
+
     const circleColorDD = circleColorGrp.add('dropdownlist', undefined, [
-        'White',
-        'Black',
-        'Red'
+        iconColor1Name,
+        iconColor2Name,
+        iconColor3Name
     ]);
 
     const colorChecksGrp = iconsGrp.add('group');
@@ -59,9 +62,9 @@ const createIconsUI = (
     const iconColorGrp = colorChecksGrp.add('group');
     iconColorGrp.add('statictext', undefined, 'Icon Color:');
     const iconColorDD = iconColorGrp.add('dropdownlist', undefined, [
-        'Black',
-        'White',
-        'Red'
+        iconColor2Name,
+        iconColor1Name,
+        iconColor3Name
     ]);
     iconColorDD.preferredSize[0] = 71;
 
