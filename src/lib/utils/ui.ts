@@ -49,9 +49,21 @@ const createIconColorRow = (
     const colorHash = colorGrp.add('statictext', undefined, '#');
     const colorHexEdit = colorGrp.add('edittext', undefined, colorHex);
 
-    colorHash.addEventListener('click', () => {
+    const colorWheelBtn = colorGrp.add(
+        'iconbutton',
+        undefined,
+        colorWheelBinary,
+        { style: 'toolbutton' }
+    );
+    colorWheelBtn.helpTip = parsePrefs().showHelpTips ? '123' : '';
+
+    colorWheelBtn.onClick = () => {
         openColorPickerForEditText(colorHexEdit);
-    });
+    };
+
+    // colorHash.addEventListener('click', () => {
+    //     openColorPickerForEditText(colorHexEdit);
+    // });
 
     return { colorNameEdit, colorHexEdit };
 };
