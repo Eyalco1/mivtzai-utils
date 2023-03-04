@@ -50,7 +50,7 @@ const createIconColorRow = (
 
     const theColor: [number, number, number] = hexToRgb(colorHex);
     const coloredBtn = createColoredButton(colorGrp, theColor, [20, 20]);
-    const colorHexEdit = colorGrp.add('edittext', undefined, '#' + colorHex, {
+    const colorHexEdit = colorGrp.add('edittext', undefined, colorHex, {
         readonly: true
     });
     colorHexEdit.preferredSize[0] = 60;
@@ -95,9 +95,7 @@ const createHelpWindow = () => {
 
     const labelSettingsGrp = settingsTab.add('group');
 
-    settingsTab.margins = 16;
-    // @ts-ignore
-    labelSettingsGrp.margins.bottom = 20;
+    settingsTab.margins = 10;
 
     // == Settings - Icons ==
     const iconlabelsSettingGrp = labelSettingsGrp.add('group');
@@ -243,6 +241,8 @@ const createHelpWindow = () => {
 
     // === Settings - Help Tips ===
     const helpTipSettingGrp = settingsTab.add('group');
+    // @ts-ignore
+    helpTipSettingGrp.margins.top = helpTipSettingGrp.margins.bottom = 8;
     const showHelpTipsCheck = helpTipSettingGrp.add(
         'checkbox',
         undefined,
@@ -268,6 +268,8 @@ const createHelpWindow = () => {
         iconColorsSettingsGrp.alignChildren =
             ['left', 'top'];
 
+    iconColorsSettingsGrp.add('statictext', undefined, '▶ Icon Colors:');
+
     const { colorNameEdit: colorName1Edit, colorHexEdit: colorHex1Edit } =
         createIconColorRow(
             iconColorsSettingsGrp,
@@ -288,6 +290,14 @@ const createHelpWindow = () => {
             prefs.iconColor3Name,
             prefs.iconColor3Hex
         );
+
+    const warnStaticGrp = settingsTab.add('group');
+    warnStaticGrp.add(
+        'statictext',
+        undefined,
+        'You may need to restart the script to see the changes'
+    );
+    warnStaticGrp.alignment = ['fill', 'bottom'];
 
     // === Ok Button ===
     const okBtn = helpWin.add('button', undefined, 'Ok', { name: 'Ok' });

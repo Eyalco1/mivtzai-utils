@@ -18045,13 +18045,13 @@ var createAboutTab = function (tpanel) {
 };
 var createIconColorRow = function (container, colorName, colorHex) {
     var colorGrp = container.add('group');
-    var colorNameStatic = colorGrp.add('statictext', undefined, 'Name:');
+    colorGrp.add('statictext', undefined, 'Name:');
     var colorNameEdit = colorGrp.add('edittext', undefined, colorName);
     colorNameEdit.preferredSize[0] = 80;
-    var colorHexStatic = colorGrp.add('statictext', undefined, 'Hex Color:');
+    colorGrp.add('statictext', undefined, 'Hex Color:');
     var theColor = hexToRgb(colorHex);
     var coloredBtn = createColoredButton(colorGrp, theColor, [20, 20]);
-    var colorHexEdit = colorGrp.add('edittext', undefined, '#' + colorHex, {
+    var colorHexEdit = colorGrp.add('edittext', undefined, colorHex, {
         readonly: true
     });
     colorHexEdit.preferredSize[0] = 60;
@@ -18076,8 +18076,7 @@ var createHelpWindow = function () {
     var labelColors = getLabelsFromPrefs().map(function (hex) { return hexToRgb(hex); });
     var settingsTab = tpanel.add('tab', undefined, ['Settings']);
     var labelSettingsGrp = settingsTab.add('group');
-    settingsTab.margins = 16;
-    labelSettingsGrp.margins.bottom = 20;
+    settingsTab.margins = 10;
     var iconlabelsSettingGrp = labelSettingsGrp.add('group');
     var iconStaticGrp = iconlabelsSettingGrp.add('group');
     iconStaticGrp.add('statictext', undefined, 'Icons Label Color:');
@@ -18148,6 +18147,7 @@ var createHelpWindow = function () {
         updateFromTexCheck(texRandomCheck.value);
     };
     var helpTipSettingGrp = settingsTab.add('group');
+    helpTipSettingGrp.margins.top = helpTipSettingGrp.margins.bottom = 8;
     var showHelpTipsCheck = helpTipSettingGrp.add('checkbox', undefined, 'Show Help Tips');
     showHelpTipsCheck.value = prefs.showHelpTips;
     var updateQAHelpTips = function (show) {
@@ -18164,9 +18164,13 @@ var createHelpWindow = function () {
         labelSettingsGrp.alignChildren =
             iconColorsSettingsGrp.alignChildren =
                 ['left', 'top'];
+    iconColorsSettingsGrp.add('statictext', undefined, '▶ Icon Colors:');
     var _a = createIconColorRow(iconColorsSettingsGrp, prefs.iconColor1Name, prefs.iconColor1Hex), colorName1Edit = _a.colorNameEdit, colorHex1Edit = _a.colorHexEdit;
     var _b = createIconColorRow(iconColorsSettingsGrp, prefs.iconColor2Name, prefs.iconColor2Hex), colorName2Edit = _b.colorNameEdit, colorHex2Edit = _b.colorHexEdit;
     var _c = createIconColorRow(iconColorsSettingsGrp, prefs.iconColor3Name, prefs.iconColor3Hex), colorName3Edit = _c.colorNameEdit, colorHex3Edit = _c.colorHexEdit;
+    var warnStaticGrp = settingsTab.add('group');
+    warnStaticGrp.add('statictext', undefined, 'You may need to restart the script to see the changes');
+    warnStaticGrp.alignment = ['fill', 'bottom'];
     var okBtn = helpWin.add('button', undefined, 'Ok', { name: 'Ok' });
     okBtn.onClick = function () {
         writePrefsToMemory({
