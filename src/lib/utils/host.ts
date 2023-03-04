@@ -311,8 +311,7 @@ const scaleWithOvershoot = (layers: Layer[]): void => {
     });
 };
 
-// !
-const colorNameToRGB = (name: ColorDropdown): [number, number, number] => {
+const colorNameToRGB = (name: string): [number, number, number] => {
     const {
         iconColor1Name,
         iconColor1Hex,

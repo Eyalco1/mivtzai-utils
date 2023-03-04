@@ -1,7 +1,7 @@
 const setUpIcon = (
     name: string,
-    circleColor: ColorDropdown,
-    iconColor: ColorDropdown
+    circleColor: string,
+    iconColor: string
 ) => {
     const comp = app.project.activeItem as CompItem;
     const layer = comp.layers.addShape();
@@ -8844,8 +8844,8 @@ const createAirplaneIcon: CreateIconFn = (
 
 const createIconFromId = (
     id: IconID,
-    circleColor: ColorDropdown,
-    iconColor: ColorDropdown,
+    circleColor: string,
+    iconColor: string,
     hasCircle: boolean,
     scale: boolean
 ): void => {

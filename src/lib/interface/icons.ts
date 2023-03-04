@@ -87,8 +87,8 @@ const createIconsUI = (
         const id = iconDD.selection.toString() as IconID;
         createIconFromId(
             id,
-            circleColorDD.selection.toString() as ColorDropdown,
-            iconColorDD.selection.toString() as ColorDropdown,
+            circleColorDD.selection.toString(),
+            iconColorDD.selection.toString(),
             circleCheck.value,
             scaleCheck.value
         );

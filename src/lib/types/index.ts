@@ -1,7 +1,5 @@
 type OS = 'Win' | 'Mac';
 
-type ColorDropdown = 'White' | 'Black' | 'Red';
-
 type Lingo = 'Hebrew' | 'Arabic' | 'English';
 
 type Mitug = 'Pakmaz' | 'Gaza' | 'Lebanon';
@@ -105,8 +103,8 @@ interface Prefs {
 type GoogleMapsLocation = 'Israel' | 'Gaza';
 
 type CreateIconFn = (
-    circleColor: ColorDropdown,
-    iconColor: ColorDropdown,
+    circleColor: string,
+    iconColor: string,
     hasCircle: boolean,
     scale: boolean
 ) => void;
