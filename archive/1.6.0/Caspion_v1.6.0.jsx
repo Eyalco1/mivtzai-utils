@@ -18047,13 +18047,20 @@ var createIconColorRow = function (container, colorName, colorHex) {
     var colorGrp = container.add('group');
     var colorNameStatic = colorGrp.add('statictext', undefined, 'Name:');
     var colorNameEdit = colorGrp.add('edittext', undefined, colorName);
+    colorNameEdit.preferredSize[0] = 80;
     var colorHexStatic = colorGrp.add('statictext', undefined, 'Hex Color:');
-    var colorHash = colorGrp.add('statictext', undefined, '#');
-    var colorHexEdit = colorGrp.add('edittext', undefined, colorHex);
-    var colorWheelBtn = colorGrp.add('iconbutton', undefined, colorWheelBinary, { style: 'toolbutton' });
-    colorWheelBtn.helpTip = parsePrefs().showHelpTips ? '123' : '';
-    colorWheelBtn.onClick = function () {
-        openColorPickerForEditText(colorHexEdit);
+    var theColor = hexToRgb(colorHex);
+    var coloredBtn = createColoredButton(colorGrp, theColor, [20, 20]);
+    var colorHexEdit = colorGrp.add('edittext', undefined, '#' + colorHex, {
+        readonly: true
+    });
+    colorHexEdit.preferredSize[0] = 60;
+    coloredBtn.onClick = function () {
+        var colorPicked = openColorPicker(hexToRgb(colorHex));
+        coloredBtn.fillBrush = coloredBtn.graphics.newBrush(coloredBtn.graphics.BrushType.SOLID_COLOR, colorPicked, 1);
+        colorHexEdit.text =
+            '#' +
+                rgbToHex(colorPicked[0] * 255, colorPicked[1] * 255, colorPicked[2] * 255);
     };
     return { colorNameEdit: colorNameEdit, colorHexEdit: colorHexEdit };
 };
@@ -18069,11 +18076,6 @@ var createHelpWindow = function () {
     var labelColors = getLabelsFromPrefs().map(function (hex) { return hexToRgb(hex); });
     var settingsTab = tpanel.add('tab', undefined, ['Settings']);
     var labelSettingsGrp = settingsTab.add('group');
-    settingsTab.orientation = labelSettingsGrp.orientation = 'column';
-    settingsTab.alignChildren = labelSettingsGrp.alignChildren = [
-        'left',
-        'top'
-    ];
     settingsTab.margins = 16;
     labelSettingsGrp.margins.bottom = 20;
     var iconlabelsSettingGrp = labelSettingsGrp.add('group');
@@ -18154,7 +18156,14 @@ var createHelpWindow = function () {
         });
     };
     var iconColorsSettingsGrp = settingsTab.add('group');
-    iconColorsSettingsGrp.orientation = 'column';
+    settingsTab.orientation =
+        labelSettingsGrp.orientation =
+            iconColorsSettingsGrp.orientation =
+                'column';
+    settingsTab.alignChildren =
+        labelSettingsGrp.alignChildren =
+            iconColorsSettingsGrp.alignChildren =
+                ['left', 'top'];
     var _a = createIconColorRow(iconColorsSettingsGrp, prefs.iconColor1Name, prefs.iconColor1Hex), colorName1Edit = _a.colorNameEdit, colorHex1Edit = _a.colorHexEdit;
     var _b = createIconColorRow(iconColorsSettingsGrp, prefs.iconColor2Name, prefs.iconColor2Hex), colorName2Edit = _b.colorNameEdit, colorHex2Edit = _b.colorHexEdit;
     var _c = createIconColorRow(iconColorsSettingsGrp, prefs.iconColor3Name, prefs.iconColor3Hex), colorName3Edit = _c.colorNameEdit, colorHex3Edit = _c.colorHexEdit;

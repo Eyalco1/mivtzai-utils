@@ -43,27 +43,34 @@ const createIconColorRow = (
     colorHex: string
 ): { colorNameEdit: EditText; colorHexEdit: EditText } => {
     const colorGrp = container.add('group');
-    const colorNameStatic = colorGrp.add('statictext', undefined, 'Name:');
+    colorGrp.add('statictext', undefined, 'Name:');
     const colorNameEdit = colorGrp.add('edittext', undefined, colorName);
-    const colorHexStatic = colorGrp.add('statictext', undefined, 'Hex Color:');
-    const colorHash = colorGrp.add('statictext', undefined, '#');
-    const colorHexEdit = colorGrp.add('edittext', undefined, colorHex);
+    colorNameEdit.preferredSize[0] = 80;
+    colorGrp.add('statictext', undefined, 'Hex Color:');
 
-    const colorWheelBtn = colorGrp.add(
-        'iconbutton',
-        undefined,
-        colorWheelBinary,
-        { style: 'toolbutton' }
-    );
-    colorWheelBtn.helpTip = parsePrefs().showHelpTips ? '123' : '';
+    const theColor: [number, number, number] = hexToRgb(colorHex);
+    const coloredBtn = createColoredButton(colorGrp, theColor, [20, 20]);
+    const colorHexEdit = colorGrp.add('edittext', undefined, '#' + colorHex, {
+        readonly: true
+    });
+    colorHexEdit.preferredSize[0] = 60;
 
-    colorWheelBtn.onClick = () => {
-        openColorPickerForEditText(colorHexEdit);
+    coloredBtn.onClick = () => {
+        const colorPicked = openColorPicker(hexToRgb(colorHex));
+        (<any>coloredBtn).fillBrush = (<any>coloredBtn).graphics.newBrush(
+            (<any>coloredBtn).graphics.BrushType.SOLID_COLOR,
+            colorPicked,
+            1
+        );
+
+        colorHexEdit.text =
+            '#' +
+            rgbToHex(
+                colorPicked[0] * 255,
+                colorPicked[1] * 255,
+                colorPicked[2] * 255
+            );
     };
-
-    // colorHash.addEventListener('click', () => {
-    //     openColorPickerForEditText(colorHexEdit);
-    // });
 
     return { colorNameEdit, colorHexEdit };
 };
@@ -88,11 +95,6 @@ const createHelpWindow = () => {
 
     const labelSettingsGrp = settingsTab.add('group');
 
-    settingsTab.orientation = labelSettingsGrp.orientation = 'column';
-    settingsTab.alignChildren = labelSettingsGrp.alignChildren = [
-        'left',
-        'top'
-    ];
     settingsTab.margins = 16;
     // @ts-ignore
     labelSettingsGrp.margins.bottom = 20;
@@ -256,7 +258,15 @@ const createHelpWindow = () => {
 
     // === Settings - Icon Colors ===
     const iconColorsSettingsGrp = settingsTab.add('group');
-    iconColorsSettingsGrp.orientation = 'column';
+
+    settingsTab.orientation =
+        labelSettingsGrp.orientation =
+        iconColorsSettingsGrp.orientation =
+            'column';
+    settingsTab.alignChildren =
+        labelSettingsGrp.alignChildren =
+        iconColorsSettingsGrp.alignChildren =
+            ['left', 'top'];
 
     const { colorNameEdit: colorName1Edit, colorHexEdit: colorHex1Edit } =
         createIconColorRow(
