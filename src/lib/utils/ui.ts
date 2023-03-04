@@ -217,6 +217,26 @@ const createHelpWindow = () => {
         });
     };
 
+    // === Settings - Icon Colors ===
+    const iconColorsSettingsGrp = settingsTab.add('group');
+    iconColorsSettingsGrp.orientation = 'column';
+
+    const color1Grp = iconColorsSettingsGrp.add('group');
+    const color1NameStatic = color1Grp.add('statictext', undefined, 'Name:');
+    const color1NameEdit = color1Grp.add('edittext', undefined, 'Color 1 Temp');
+    const color1HexStatic = color1Grp.add(
+        'statictext',
+        undefined,
+        'Hex Color:'
+    );
+    const color1Hash = color1Grp.add('statictext', undefined, '#');
+    const color1HexEdit = color1Grp.add('edittext', undefined, '#temptemp');
+
+    color1Hash.addEventListener('click', () => {
+        alert('Click!');
+        openColorPickerForEditText(color1HexEdit);
+    });
+
     // === Ok Button ===
     const okBtn = helpWin.add('button', undefined, 'Ok', { name: 'Ok' });
     okBtn.onClick = () => {

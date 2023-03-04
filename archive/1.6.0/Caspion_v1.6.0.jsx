@@ -754,6 +754,13 @@ var hexToRgb = function (hex) {
         ]
         : null;
 };
+var rgbToHex = function (r, g, b) {
+    var componentToHex = function (c) {
+        var hex = c.toString(16);
+        return hex.length == 1 ? '0' + hex : hex;
+    };
+    return componentToHex(r) + componentToHex(g) + componentToHex(b);
+};
 var formatLayerName = function (str) {
     var capitalize = function (str) {
         return str
@@ -765,6 +772,36 @@ var formatLayerName = function (str) {
     };
     str = capitalize(str).replace(/ /g, '_');
     return str;
+};
+var openColorPicker = function (startValue) {
+    if (!startValue || startValue.length != 3) {
+        startValue = [1, 1, 1];
+    }
+    var comp = app.project.items.addComp('Color Picker Temp Comp', 100, 100, 1, 10, 24);
+    comp.openInViewer();
+    comp.hideShyLayers = true;
+    var newShape = comp.layers.addShape();
+    var newShapeParade = newShape.property('ADBE Effect Parade');
+    var newColorControl = newShapeParade.addProperty('ADBE Color Control');
+    var theColorProp = newColorControl.property('ADBE Color Control-0001');
+    newShape.name = 'Color Picker Null';
+    newShape.enabled = false;
+    newShape.shy = true;
+    theColorProp.setValue(startValue);
+    var editValueID = app.findMenuCommandId('Edit Value...');
+    theColorProp.selected = true;
+    app.executeCommand(editValueID);
+    var result = theColorProp.value;
+    newShape.remove();
+    comp.remove();
+    var startValueInRgba = [startValue[0], startValue[1], startValue[2], 1];
+    return result.toString() == startValueInRgba.toString() ? null : result;
+};
+var openColorPickerForEditText = function (hexEdit) {
+    var colorFromPicker = openColorPicker([1, 1, 1]);
+    if (colorFromPicker == null)
+        return;
+    hexEdit.text = rgbToHex(colorFromPicker[0] * 255, colorFromPicker[1] * 255, colorFromPicker[2] * 255);
 };
 var introduceTextEvo = function () {
     var textevo = {
@@ -18089,6 +18126,18 @@ var createHelpWindow = function () {
             iconData[0].helpTip = show ? iconData[1] : '';
         });
     };
+    var iconColorsSettingsGrp = settingsTab.add('group');
+    iconColorsSettingsGrp.orientation = 'column';
+    var color1Grp = iconColorsSettingsGrp.add('group');
+    var color1NameStatic = color1Grp.add('statictext', undefined, 'Name:');
+    var color1NameEdit = color1Grp.add('edittext', undefined, 'Color 1 Temp');
+    var color1HexStatic = color1Grp.add('statictext', undefined, 'Hex Color:');
+    var color1Hash = color1Grp.add('statictext', undefined, '#');
+    var color1HexEdit = color1Grp.add('edittext', undefined, '#temptemp');
+    color1Hash.addEventListener('click', function () {
+        alert('Click!');
+        openColorPickerForEditText(color1HexEdit);
+    });
     var okBtn = helpWin.add('button', undefined, 'Ok', { name: 'Ok' });
     okBtn.onClick = function () {
         writePrefsToMemory({

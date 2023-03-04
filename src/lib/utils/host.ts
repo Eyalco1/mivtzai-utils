@@ -234,8 +234,6 @@ const createIconCircle = (
     );
 };
 
-
-
 const importGoogleMaps = (location: GoogleMapsLocation): void => {
     const keyState = ScriptUI.environment.keyboardState;
     const modKey = getOS() === 'Win' ? keyState.ctrlKey : keyState.metaKey;
@@ -382,6 +380,14 @@ const hexToRgb = (hex: string): [number, number, number] => {
         : null;
 };
 
+const rgbToHex = (r: number, g: number, b: number): string => {
+    const componentToHex = (c: number) => {
+        const hex = c.toString(16);
+        return hex.length == 1 ? '0' + hex : hex;
+    };
+    return componentToHex(r) + componentToHex(g) + componentToHex(b);
+};
+
 const formatLayerName = (str: string): string => {
     const capitalize = (str: string) => {
         return str
@@ -395,4 +401,71 @@ const formatLayerName = (str: string): string => {
     str = capitalize(str).replace(/ /g, '_');
 
     return str;
+};
+
+const openColorPicker = (
+    startValue: [number, number, number]
+): [number, number, number] | null => {
+    // https://community.adobe.com/t5/after-effects/calling-the-after-effects-color-picker-through-script/td-p/11954317
+
+    if (!startValue || startValue.length != 3) {
+        startValue = [1, 1, 1];
+    }
+
+    const comp = app.project.items.addComp(
+        'Color Picker Temp Comp',
+        100,
+        100,
+        1,
+        10,
+        24
+    );
+
+    comp.openInViewer();
+    comp.hideShyLayers = true;
+
+    // add a temp null;
+    const newShape = comp.layers.addShape();
+    const newShapeParade = newShape.property(
+        'ADBE Effect Parade'
+    ) as PropertyGroup;
+    const newColorControl = newShapeParade.addProperty('ADBE Color Control');
+    const theColorProp = newColorControl.property(
+        'ADBE Color Control-0001'
+    ) as Property<[number, number, number]>;
+
+    newShape.name = 'Color Picker Null';
+    newShape.enabled = false;
+    newShape.shy = true;
+
+    // set the value given by the function arguments
+    theColorProp.setValue(startValue);
+
+    // prepare to execute
+    const editValueID = app.findMenuCommandId('Edit Value...');
+    theColorProp.selected = true;
+
+    app.executeCommand(editValueID);
+
+    // harvest the result
+    const result = theColorProp.value;
+
+    // remove the null and comp
+    newShape.remove();
+    comp.remove();
+
+    // if the user click cancel, the function will return the start value but as RGBA. In that case, return null
+    const startValueInRgba = [startValue[0], startValue[1], startValue[2], 1];
+    return result.toString() == startValueInRgba.toString() ? null : result;
+};
+
+const openColorPickerForEditText = (hexEdit: EditText) => {
+    const colorFromPicker = openColorPicker([1, 1, 1]);
+    if (colorFromPicker == null) return;
+
+    hexEdit.text = rgbToHex(
+        colorFromPicker[0] * 255,
+        colorFromPicker[1] * 255,
+        colorFromPicker[2] * 255
+    );
 };
