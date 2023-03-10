@@ -299,8 +299,17 @@ const createHelpWindow = () => {
     );
     warnStaticGrp.alignment = ['fill', 'bottom'];
 
-    // === Ok Button ===
-    const okBtn = helpWin.add('button', undefined, 'Ok', { name: 'Ok' });
+    // === Ok And Cancel Buttons ===
+    const okCancelBtnsGrp = helpWin.add('group');
+    okCancelBtnsGrp.spacing = 250;
+    const cancelBtn = okCancelBtnsGrp.add('button', undefined, 'Cancel');
+    cancelBtn.onClick = () => {
+        helpWin.close();
+    };
+
+    const okBtn = okCancelBtnsGrp.add('button', undefined, 'Ok', {
+        name: 'Ok'
+    });
     okBtn.onClick = () => {
         writePrefsToMemory({
             iconsLabelIndex: (<ListItem>iconLabelsDD.selection).index,

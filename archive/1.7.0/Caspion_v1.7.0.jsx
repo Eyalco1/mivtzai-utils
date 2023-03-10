@@ -18035,7 +18035,7 @@ var createAboutTab = function (tpanel) {
     aboutTab.add('image', [0, 0, 300, 110], bannerBinary);
     var abtStr = '‹ Caspion - version 1.7.0 - Created By Eyal Cohen ›';
     var aboutEditGrp = aboutTab.add('group');
-    aboutEditGrp.add('edittext', [0, 0, 380, 200], abtStr, {
+    aboutEditGrp.add('edittext', [0, 0, 400, 200], abtStr, {
         multiline: true,
         readonly: true,
         scrollable: true
@@ -18171,7 +18171,15 @@ var createHelpWindow = function () {
     var warnStaticGrp = settingsTab.add('group');
     warnStaticGrp.add('statictext', undefined, 'You may need to restart the script to see the changes');
     warnStaticGrp.alignment = ['fill', 'bottom'];
-    var okBtn = helpWin.add('button', undefined, 'Ok', { name: 'Ok' });
+    var okCancelBtnsGrp = helpWin.add('group');
+    okCancelBtnsGrp.spacing = 250;
+    var cancelBtn = okCancelBtnsGrp.add('button', undefined, 'Cancel');
+    cancelBtn.onClick = function () {
+        helpWin.close();
+    };
+    var okBtn = okCancelBtnsGrp.add('button', undefined, 'Ok', {
+        name: 'Ok'
+    });
     okBtn.onClick = function () {
         writePrefsToMemory({
             iconsLabelIndex: iconLabelsDD.selection.index,
