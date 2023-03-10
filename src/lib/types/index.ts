@@ -73,6 +73,7 @@ interface LocationArgs {
     fontSize: number;
     tracking: number;
     leading?: number;
+    justification?: ParagraphJustification;
     textPos: [number, number];
     textAnchor: [number, number];
     bgSize: [number, number];

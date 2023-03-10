@@ -9160,7 +9160,7 @@ var createLocationBG = function (id, size, mitug) {
     sizeProp.setValue(size);
     return layer;
 };
-var createLocationText = function (lang, text, fontSize, tracking, leading, textPos, textAnchor, mitug) {
+var createLocationText = function (lang, text, fontSize, tracking, leading, justification, textPos, textAnchor, mitug) {
     var comp = app.project.activeItem;
     var textLayer = comp.layers.addText();
     textLayer.inPoint = comp.time;
@@ -9177,6 +9177,9 @@ var createLocationText = function (lang, text, fontSize, tracking, leading, text
     textDoc.tracking = tracking;
     if (leading) {
         textDoc.leading = leading;
+    }
+    if (justification) {
+        textDoc.justification = justification;
     }
     srcText.setValue(textDoc);
     var posProp = textLayer
@@ -9260,10 +9263,10 @@ var createLocationIconFromId = function (id, iconPos, iconAnchor, iconScale, mit
     }
 };
 var createLocation = function (argsArr, inputLang, mitug) {
-    var _a = argsArr.find(function (args) { return args.lang === inputLang; }), bgSize = _a.bgSize, fontSize = _a.fontSize, lang = _a.lang, text = _a.text, textAnchor = _a.textAnchor, textPos = _a.textPos, tracking = _a.tracking, leading = _a.leading, iconAnchor = _a.iconAnchor, iconPos = _a.iconPos, iconScale = _a.iconScale, iconId = _a.iconId;
+    var _a = argsArr.find(function (args) { return args.lang === inputLang; }), bgSize = _a.bgSize, fontSize = _a.fontSize, lang = _a.lang, text = _a.text, textAnchor = _a.textAnchor, textPos = _a.textPos, tracking = _a.tracking, leading = _a.leading, justification = _a.justification, iconAnchor = _a.iconAnchor, iconPos = _a.iconPos, iconScale = _a.iconScale, iconId = _a.iconId;
     var bgLayer = createLocationBG(iconId, bgSize, mitug);
     var iconLayer = createLocationIconFromId(iconId, iconPos, iconAnchor, iconScale, mitug);
-    var textLayer = createLocationText(lang, text, fontSize, tracking, leading, textPos, textAnchor, mitug);
+    var textLayer = createLocationText(lang, text, fontSize, tracking, leading, justification, textPos, textAnchor, mitug);
     iconLayer.parent = textLayer.parent = bgLayer;
     bgLayer.label =
         iconLayer.label =
@@ -10222,6 +10225,7 @@ var createSportsLocation = function (lang, mitug) {
             fontSize: 59,
             tracking: -31,
             leading: 53,
+            justification: ParagraphJustification.LEFT_JUSTIFY,
             textPos: [1001.1015, 542.921],
             textAnchor: [getOS() === 'Win' ? 201.1015 : -201.1015, 9.921],
             bgSize: [555, 134],
@@ -15576,7 +15580,8 @@ var createGovernmentBuildingLocation = function (lang, mitug) {
             iconAnchor: [0, 0],
             iconScale: 97,
             iconId: 'Government Building',
-            leading: 59
+            leading: 59,
+            justification: ParagraphJustification.LEFT_JUSTIFY
         },
         {
             lang: 'Arabic',
@@ -16335,6 +16340,7 @@ var createResidentialNeighborhoodLocation = function (lang, mitug) {
             fontSize: 59,
             tracking: -18,
             leading: 50,
+            justification: ParagraphJustification.LEFT_JUSTIFY,
             textPos: [1007.2187, 546.5324],
             textAnchor: [getOS() === 'Win' ? 143.3405 : -143.3405, 8.716],
             bgSize: [422, 136],
@@ -17695,6 +17701,7 @@ var createCommunicationAntennaLocation = function (lang, mitug) {
             fontSize: 59.2903,
             tracking: -20,
             leading: 49,
+            justification: ParagraphJustification.LEFT_JUSTIFY,
             textPos: [1006.0533, 537.1626],
             textAnchor: [getOS() === 'Win' ? 159.5502 : -159.5502, 3.0962],
             bgSize: [454, 124],
@@ -17740,6 +17747,7 @@ var createEducationAndCultureSiteLocation = function (lang, mitug) {
             fontSize: 64.7,
             tracking: -20,
             leading: 59,
+            justification: ParagraphJustification.LEFT_JUSTIFY,
             textPos: [1010.9239, 542.0332],
             textAnchor: [getOS() === 'Win' ? 159.4208 : -159.4208, 6.4668],
             bgSize: [446, 150],
@@ -18035,7 +18043,7 @@ var createAboutTab = function (tpanel) {
     aboutTab.add('image', [0, 0, 300, 110], bannerBinary);
     var abtStr = '‹ Caspion - version 1.7.0 - Created By Eyal Cohen ›';
     var aboutEditGrp = aboutTab.add('group');
-    aboutEditGrp.add('edittext', [0, 0, 400, 200], abtStr, {
+    aboutEditGrp.add('edittext', [0, 0, 380, 200], abtStr, {
         multiline: true,
         readonly: true,
         scrollable: true

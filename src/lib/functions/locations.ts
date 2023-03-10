@@ -59,6 +59,7 @@ const createLocationText = (
     fontSize: number,
     tracking: number,
     leading: number,
+    justification: ParagraphJustification,
     textPos: [number, number],
     textAnchor: [number, number],
     mitug: Mitug
@@ -71,15 +72,22 @@ const createLocationText = (
         .property('ADBE Text Document') as Property<any>;
 
     srcText.setValue(text);
-    const textDoc = srcText.value;
+    const textDoc = srcText.value as TextDocument;
     textDoc.font = getFontFromLanguage(lang);
     textDoc.fontSize = fontSize;
     textDoc.applyFill = true;
-    textDoc.fillColor = getColorsFromMitug(mitug).pri.map(c => c / 255);
+    textDoc.fillColor = getColorsFromMitug(mitug).pri.map(c => c / 255) as [
+        number,
+        number,
+        number
+    ];
     textDoc.applyStroke = false;
     textDoc.tracking = tracking;
     if (leading) {
         textDoc.leading = leading;
+    }
+    if (justification) {
+        textDoc.justification = justification;
     }
     srcText.setValue(textDoc);
 
@@ -273,6 +281,7 @@ const createLocation = (
         textPos,
         tracking,
         leading,
+        justification,
         iconAnchor,
         iconPos,
         iconScale,
@@ -293,6 +302,7 @@ const createLocation = (
         fontSize,
         tracking,
         leading,
+        justification,
         textPos,
         textAnchor,
         mitug
@@ -1791,6 +1801,7 @@ const createSportsLocation = (lang: Lingo, mitug: Mitug): void => {
             fontSize: 59,
             tracking: -31,
             leading: 53,
+            justification: ParagraphJustification.LEFT_JUSTIFY,
             textPos: [1001.1015, 542.921],
             textAnchor: [getOS() === 'Win' ? 201.1015 : -201.1015, 9.921],
             bgSize: [555, 134],
@@ -8496,7 +8507,8 @@ const createGovernmentBuildingLocation = (lang: Lingo, mitug: Mitug): void => {
             iconAnchor: [0, 0],
             iconScale: 97,
             iconId: 'Government Building',
-            leading: 59
+            leading: 59,
+            justification: ParagraphJustification.LEFT_JUSTIFY
         },
         {
             lang: 'Arabic',
@@ -9576,6 +9588,7 @@ const createResidentialNeighborhoodLocation = (
             fontSize: 59,
             tracking: -18,
             leading: 50,
+            justification: ParagraphJustification.LEFT_JUSTIFY,
             textPos: [1007.2187, 546.5324],
             textAnchor: [getOS() === 'Win' ? 143.3405 : -143.3405, 8.716],
             bgSize: [422, 136],
@@ -11566,6 +11579,7 @@ const createCommunicationAntennaLocation = (
             fontSize: 59.2903,
             tracking: -20,
             leading: 49,
+            justification: ParagraphJustification.LEFT_JUSTIFY,
             textPos: [1006.0533, 537.1626],
             textAnchor: [getOS() === 'Win' ? 159.5502 : -159.5502, 3.0962],
             bgSize: [454, 124],
@@ -11615,6 +11629,7 @@ const createEducationAndCultureSiteLocation = (
             fontSize: 64.7,
             tracking: -20,
             leading: 59,
+            justification: ParagraphJustification.LEFT_JUSTIFY,
             textPos: [1010.9239, 542.0332],
             textAnchor: [getOS() === 'Win' ? 159.4208 : -159.4208, 6.4668],
             bgSize: [446, 150],
