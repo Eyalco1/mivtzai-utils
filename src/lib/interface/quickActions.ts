@@ -96,6 +96,7 @@ const createQAUI = (
     );
     createQABtn(rowFive, arrowBinary, 'Arrow', createArrow);
     createQABtn(rowFive, mikraBinary, 'Mikra', createMikra);
+    createQABtn(rowFive, cameraNullBinary, 'Camera Null', createCameraNull);
 
     bigRowOne.orientation = bigRowTwo.orientation = 'column';
 

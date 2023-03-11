@@ -1602,3 +1602,38 @@ const createMikra = (): void => {
 
     app.endUndoGroup();
 };
+
+const createCameraNull = (): void => {
+    app.beginUndoGroup('@@name: Create Camera Null');
+
+    const comp = app.project.activeItem as CompItem;
+    if (!comp || !(comp instanceof CompItem)) {
+        alert('No Composition Selected');
+        return;
+    }
+
+    const theNull = comp.layers.addNull();
+    theNull.name = theNull.source.name = 'Camera';
+    const nullScale = theNull
+        .property('ADBE Transform Group')
+        .property('ADBE Scale') as Property<[number, number]>;
+
+    nullScale.expression =
+        'var t = value[0] + time * effect("Camera Zoom Speed")("Slider");\n[t, t]';
+
+    const slider = theNull.effect.addProperty('ADBE Slider Control');
+    slider.name = 'Camera Zoom Speed';
+    const sliderVal = slider.property(
+        'ADBE Slider Control-0001'
+    ) as Property<number>;
+    sliderVal.setValue(1.5);
+
+    theNull.selected = false;
+    for (let i = 2; i <= comp.numLayers; i++) {
+        comp.layer(i).selected = !comp.layer(i).parent;
+    }
+
+    comp.time = 0;
+
+    app.endUndoGroup();
+};

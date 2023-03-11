@@ -2098,6 +2098,31 @@ var createMikra = function () {
     bgLayer.selected = true;
     app.endUndoGroup();
 };
+var createCameraNull = function () {
+    app.beginUndoGroup('Caspion: Create Camera Null');
+    var comp = app.project.activeItem;
+    if (!comp || !(comp instanceof CompItem)) {
+        alert('No Composition Selected');
+        return;
+    }
+    var theNull = comp.layers.addNull();
+    theNull.name = theNull.source.name = 'Camera';
+    var nullScale = theNull
+        .property('ADBE Transform Group')
+        .property('ADBE Scale');
+    nullScale.expression =
+        'var t = value[0] + time * effect("Camera Zoom Speed")("Slider");\n[t, t]';
+    var slider = theNull.effect.addProperty('ADBE Slider Control');
+    slider.name = 'Camera Zoom Speed';
+    var sliderVal = slider.property('ADBE Slider Control-0001');
+    sliderVal.setValue(1.5);
+    theNull.selected = false;
+    for (var i = 2; i <= comp.numLayers; i++) {
+        comp.layer(i).selected = !comp.layer(i).parent;
+    }
+    comp.time = 0;
+    app.endUndoGroup();
+};
 var createText = function (text, font, animation, addTextEvo, addMask) {
     var comp = app.project.activeItem;
     if (!comp || !(comp instanceof CompItem)) {
@@ -18240,6 +18265,7 @@ var createQAUI = function (tpanel) {
     createQABtn(rowFive, textPopBinary, 'Text On Location', createTextOnLocation);
     createQABtn(rowFive, arrowBinary, 'Arrow', createArrow);
     createQABtn(rowFive, mikraBinary, 'Mikra', createMikra);
+    createQABtn(rowFive, cameraNullBinary, 'Camera Null', createCameraNull);
     bigRowOne.orientation = bigRowTwo.orientation = 'column';
     return { qaTab: qaTab, QABtnsGrp: QABtnsGrp, bigRowOne: bigRowOne, bigRowTwo: bigRowTwo, bigRowThree: bigRowThree };
 };
