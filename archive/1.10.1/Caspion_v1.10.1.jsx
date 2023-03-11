@@ -20153,8 +20153,8 @@ var createLocationsUI = function (tpanel) {
     animationDDGrp.add('statictext', undefined, 'Animation:');
     var animationTypes = [
         'None',
-        'Open',
         'Scale',
+        'Open',
         'Scale & Open'
     ];
     var animationDD = animationDDGrp.add('dropdownlist', undefined, animationTypes);

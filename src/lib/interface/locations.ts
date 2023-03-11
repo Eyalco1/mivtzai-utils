@@ -86,8 +86,8 @@ const createLocationsUI = (
     animationDDGrp.add('statictext', undefined, 'Animation:');
     const animationTypes: LocationAnimation[] = [
         'None',
-        'Open',
         'Scale',
+        'Open',
         'Scale & Open'
     ];
     const animationDD = animationDDGrp.add(
