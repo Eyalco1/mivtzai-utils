@@ -43,7 +43,8 @@ const createIconsUI = (
         'Airplane',
         'Submarine',
         'Ambulance',
-        'Tank'
+        'Tank',
+        'Grenade'
     ];
     const iconDD = iconDDGrp.add('dropdownlist', undefined, iconsList);
     iconDD.preferredSize[0] = 100;
