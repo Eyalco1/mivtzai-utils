@@ -9066,6 +9066,111 @@ var createAirplaneIcon = function (circleColor, iconColor, hasCircle, scale) {
     createAirplane();
     iconAftermath(hasCircle, contents, circleColorRgb, scale, layer, 170);
 };
+var createSubmarineIcon = function (circleColor, iconColor, hasCircle, scale) {
+    var _a = setUpIcon('Submarine', circleColor, iconColor), layer = _a.layer, contents = _a.contents, circleColorRgb = _a.circleColorRgb, iconColorRgb = _a.iconColorRgb;
+    var createBody = function () {
+        var vertices = [
+            [126.16682434082, 0.12257385253906],
+            [96.1533203125, -38.1096343994141],
+            [-63.5599517822266, -38.1096343994141],
+            [-86.0728759765625, -25.2462615966797],
+            [-108.580047607422, -53.473876953125],
+            [-118.942276000977, -53.473876953125],
+            [-110.007995605469, -9.16934204101562],
+            [-126.16682434082, -0.12257385253906],
+            [-125.915893554688, 0.02392578125],
+            [-126.084915161133, 0.12257385253906],
+            [-110.087020874023, 9.16934204101562],
+            [-119.021011352539, 53.473876953125],
+            [-108.656188964844, 53.473876953125],
+            [-86.1490173339844, 25.2491455078125],
+            [-63.6389770507812, 38.1096343994141],
+            [96.0774688720703, 38.1096343994141],
+            [126.07942199707, 0.12257385253906]
+        ];
+        var inTangents = [
+            [0, 0],
+            [17.5080413818359, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [-0.0986328125, 20.9693298339844]
+        ];
+        var outTangents = [
+            [0, -21.0820922851562],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [17.4373779296875, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Body', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [0, 39.849]);
+    };
+    var createTop = function () {
+        var vertices = [
+            [20.9002532958984, -42.1525726318359],
+            [20.9002532958984, -30.0047607421875],
+            [8.0400390625, -11.4266967773438],
+            [8.39767456054688, 15.7306060791016],
+            [18.7570343017578, 19.66259765625],
+            [29.1218566894531, 42.1726379394531],
+            [-29.1218566894531, 42.1726379394531],
+            [-24.1195526123047, 21.8032073974609],
+            [-6.61180114746094, 15.0153350830078],
+            [-6.61180114746094, -13.2122802734375]
+        ];
+        var inTangents = [
+            [-20.3665313720703, -0.71527099609375],
+            [0, 0],
+            [0, -17.1472320556641],
+            [0, 0],
+            [-3.21382141113281, -5.71757507324219],
+            [0, 0],
+            [0, 0],
+            [-2.85906982421875, 10.0072021484375],
+            [-6.07261657714844, 0],
+            [0, 11.0774993896484]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 17.1529998779297],
+            [0, 0],
+            [3.21641540527344, 5.71498107910156],
+            [0, 0],
+            [0, 0],
+            [2.85877990722656, -10.0042877197266],
+            [0, 0],
+            [0, -11.0749053955078]
+        ];
+        createPathGrp(contents, 'Top', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [32.3765, -51.1502]);
+    };
+    createBody();
+    createTop();
+    iconAftermath(hasCircle, contents, circleColorRgb, scale, layer, 170);
+};
 var createIconFromId = function (id, circleColor, iconColor, hasCircle, scale) {
     app.beginUndoGroup("Caspion: Create Icon - ".concat(id));
     var comp = app.project.activeItem;
@@ -9145,6 +9250,9 @@ var createIconFromId = function (id, circleColor, iconColor, hasCircle, scale) {
             break;
         case 'Airplane':
             createAirplaneIcon(circleColor, iconColor, hasCircle, scale);
+            break;
+        case 'Submarine':
+            createSubmarineIcon(circleColor, iconColor, hasCircle, scale);
             break;
     }
     app.endUndoGroup();
@@ -18438,7 +18546,8 @@ var createIconsUI = function (tpanel) {
         'Helmet',
         'Drone',
         'Tent',
-        'Airplane'
+        'Airplane',
+        'Submarine'
     ];
     var iconDD = iconDDGrp.add('dropdownlist', undefined, iconsList);
     iconDD.preferredSize[0] = 100;

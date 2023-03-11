@@ -40,7 +40,8 @@ const createIconsUI = (
         'Helmet',
         'Drone',
         'Tent',
-        'Airplane'
+        'Airplane',
+        'Submarine'
     ];
     const iconDD = iconDDGrp.add('dropdownlist', undefined, iconsList);
     iconDD.preferredSize[0] = 100;
