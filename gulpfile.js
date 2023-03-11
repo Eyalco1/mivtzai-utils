@@ -83,6 +83,14 @@ task('buildAssets', done => {
     done();
 });
 
+task('buildGuide', done => {
+    fse.copySync(
+        'src/assets/Caspion_User_Guide.pdf',
+        'dist/Caspion_User_Guide.pdf'
+    );
+    done();
+});
+
 task('runScript', done => {
     const absPath = join(
         __dirname,
@@ -144,6 +152,7 @@ task(
         'createHeader',
         'renameWithVersion',
         'buildAssets',
+        'buildGuide',
         'jsxbin',
         'addToHost',
         'zip',
@@ -160,7 +169,7 @@ task(
         'tsc',
         'createHeader',
         'renameWithVersion',
-        'buildAssets',
+        'buildGuide',
         'runScript',
         'jsxbin',
         'addToHost',
