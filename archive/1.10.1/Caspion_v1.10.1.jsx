@@ -1127,11 +1127,11 @@ var importLogos = function () {
     if (!comp || !(comp instanceof CompItem))
         return;
     var idfLayer = comp.layers.add(idfItem);
-    var padding = 200;
+    var padding = 120;
     var idfScale = idfLayer
         .property('ADBE Transform Group')
         .property('ADBE Scale');
-    idfScale.setValue([4, 4]);
+    idfScale.setValue([3, 3]);
     var idfPos = idfLayer
         .property('ADBE Transform Group')
         .property('ADBE Position');
@@ -1140,7 +1140,7 @@ var importLogos = function () {
     var dotzScale = dotzLayer
         .property('ADBE Transform Group')
         .property('ADBE Scale');
-    dotzScale.setValue([67, 67]);
+    dotzScale.setValue([50, 50]);
     var dotzPos = dotzLayer
         .property('ADBE Transform Group')
         .property('ADBE Position');

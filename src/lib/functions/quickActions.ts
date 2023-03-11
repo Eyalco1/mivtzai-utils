@@ -124,12 +124,12 @@ const importLogos = (): void => {
 
     const idfLayer = comp.layers.add(idfItem);
 
-    const padding = 200;
+    const padding = 120;
 
     const idfScale = idfLayer
         .property('ADBE Transform Group')
         .property('ADBE Scale') as Property<any>;
-    idfScale.setValue([4, 4]);
+    idfScale.setValue([3, 3]);
     const idfPos = idfLayer
         .property('ADBE Transform Group')
         .property('ADBE Position') as Property<any>;
@@ -139,7 +139,7 @@ const importLogos = (): void => {
     const dotzScale = dotzLayer
         .property('ADBE Transform Group')
         .property('ADBE Scale') as Property<any>;
-    dotzScale.setValue([67, 67]);
+    dotzScale.setValue([50, 50]);
     const dotzPos = dotzLayer
         .property('ADBE Transform Group')
         .property('ADBE Position') as Property<any>;
