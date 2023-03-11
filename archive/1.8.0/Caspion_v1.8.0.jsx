@@ -9160,7 +9160,7 @@ var createLocationBG = function (id, size, mitug) {
     sizeProp.setValue(size);
     return layer;
 };
-var createLocationText = function (lang, text, fontSize, tracking, leading, justification, textPos, textAnchor, mitug) {
+var createLocationText = function (lang, text, fontSize, tracking, leading, textPos, textAnchor, mitug) {
     var comp = app.project.activeItem;
     var textLayer = comp.layers.addText();
     textLayer.inPoint = comp.time;
@@ -9178,9 +9178,7 @@ var createLocationText = function (lang, text, fontSize, tracking, leading, just
     if (leading) {
         textDoc.leading = leading;
     }
-    if (justification) {
-        textDoc.justification = justification;
-    }
+    textDoc.justification = ParagraphJustification.LEFT_JUSTIFY;
     srcText.setValue(textDoc);
     var posProp = textLayer
         .property('ADBE Transform Group')
@@ -9263,10 +9261,10 @@ var createLocationIconFromId = function (id, iconPos, iconAnchor, iconScale, mit
     }
 };
 var createLocation = function (argsArr, inputLang, mitug) {
-    var _a = argsArr.find(function (args) { return args.lang === inputLang; }), bgSize = _a.bgSize, fontSize = _a.fontSize, lang = _a.lang, text = _a.text, textAnchor = _a.textAnchor, textPos = _a.textPos, tracking = _a.tracking, leading = _a.leading, justification = _a.justification, iconAnchor = _a.iconAnchor, iconPos = _a.iconPos, iconScale = _a.iconScale, iconId = _a.iconId;
+    var _a = argsArr.find(function (args) { return args.lang === inputLang; }), bgSize = _a.bgSize, fontSize = _a.fontSize, lang = _a.lang, text = _a.text, textAnchor = _a.textAnchor, textPos = _a.textPos, tracking = _a.tracking, leading = _a.leading, iconAnchor = _a.iconAnchor, iconPos = _a.iconPos, iconScale = _a.iconScale, iconId = _a.iconId;
     var bgLayer = createLocationBG(iconId, bgSize, mitug);
     var iconLayer = createLocationIconFromId(iconId, iconPos, iconAnchor, iconScale, mitug);
-    var textLayer = createLocationText(lang, text, fontSize, tracking, leading, justification, textPos, textAnchor, mitug);
+    var textLayer = createLocationText(lang, text, fontSize, tracking, leading, textPos, textAnchor, mitug);
     iconLayer.parent = textLayer.parent = bgLayer;
     bgLayer.label =
         iconLayer.label =
@@ -9659,10 +9657,7 @@ var createKindergardenLocation = function (lang, mitug) {
             fontSize: 77.3332,
             tracking: -19,
             textPos: [922.3363, 540.1692],
-            textAnchor: [
-                getOS() === 'Win' ? 75.0863 : -71.0863,
-                getOS() === 'Win' ? -19.0808 : -2.3808
-            ],
+            textAnchor: [0, -19.0808],
             bgSize: [296, 110],
             iconPos: [1045.5764, 539.1284],
             iconAnchor: [85.5764, -0.8716],
@@ -10225,7 +10220,6 @@ var createSportsLocation = function (lang, mitug) {
             fontSize: 59,
             tracking: -31,
             leading: 53,
-            justification: ParagraphJustification.LEFT_JUSTIFY,
             textPos: [1001.1015, 542.921],
             textAnchor: [getOS() === 'Win' ? 201.1015 : -201.1015, 9.921],
             bgSize: [555, 134],
@@ -15580,8 +15574,7 @@ var createGovernmentBuildingLocation = function (lang, mitug) {
             iconAnchor: [0, 0],
             iconScale: 97,
             iconId: 'Government Building',
-            leading: 59,
-            justification: ParagraphJustification.LEFT_JUSTIFY
+            leading: 59
         },
         {
             lang: 'Arabic',
@@ -16340,7 +16333,6 @@ var createResidentialNeighborhoodLocation = function (lang, mitug) {
             fontSize: 59,
             tracking: -18,
             leading: 50,
-            justification: ParagraphJustification.LEFT_JUSTIFY,
             textPos: [1007.2187, 546.5324],
             textAnchor: [getOS() === 'Win' ? 143.3405 : -143.3405, 8.716],
             bgSize: [422, 136],
@@ -17701,7 +17693,6 @@ var createCommunicationAntennaLocation = function (lang, mitug) {
             fontSize: 59.2903,
             tracking: -20,
             leading: 49,
-            justification: ParagraphJustification.LEFT_JUSTIFY,
             textPos: [1006.0533, 537.1626],
             textAnchor: [getOS() === 'Win' ? 159.5502 : -159.5502, 3.0962],
             bgSize: [454, 124],
@@ -17747,7 +17738,6 @@ var createEducationAndCultureSiteLocation = function (lang, mitug) {
             fontSize: 64.7,
             tracking: -20,
             leading: 59,
-            justification: ParagraphJustification.LEFT_JUSTIFY,
             textPos: [1010.9239, 542.0332],
             textAnchor: [getOS() === 'Win' ? 159.4208 : -159.4208, 6.4668],
             bgSize: [446, 150],
