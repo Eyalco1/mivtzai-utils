@@ -18043,7 +18043,7 @@ var createAboutTab = function (tpanel) {
     aboutTab.add('image', [0, 0, 300, 110], bannerBinary);
     var abtStr = '‹ Caspion - version 1.8.0 - Created By Eyal Cohen ›';
     var aboutEditGrp = aboutTab.add('group');
-    aboutEditGrp.add('edittext', [0, 0, 380, 200], abtStr, {
+    aboutEditGrp.add('edittext', [0, 0, 380, 240], abtStr, {
         multiline: true,
         readonly: true,
         scrollable: true
@@ -18059,10 +18059,12 @@ var createIconColorRow = function (container, colorName, colorHex) {
     colorGrp.add('statictext', undefined, 'Hex Color:');
     var theColor = hexToRgb(colorHex);
     var coloredBtn = createColoredButton(colorGrp, theColor, [20, 20]);
+    coloredBtn.helpTip = 'Click To Edit';
     var colorHexEdit = colorGrp.add('edittext', undefined, colorHex, {
         readonly: true
     });
     colorHexEdit.preferredSize[0] = 60;
+    colorHexEdit.helpTip = 'Click The Color Swatch To Edit';
     coloredBtn.onClick = function () {
         var colorPicked = openColorPicker(hexToRgb(colorHex));
         coloredBtn.fillBrush = coloredBtn.graphics.newBrush(coloredBtn.graphics.BrushType.SOLID_COLOR, colorPicked, 1);
@@ -18082,9 +18084,12 @@ var createHelpWindow = function () {
     var prefs = parsePrefs();
     var labelNames = getLabelNamesFromPrefs();
     var labelColors = getLabelsFromPrefs().map(function (hex) { return hexToRgb(hex); });
+    var SETTINGS_SPACING = 15;
     var settingsTab = tpanel.add('tab', undefined, ['Settings']);
-    var labelSettingsGrp = settingsTab.add('group');
     settingsTab.margins = 10;
+    var labelSettingsGrp = settingsTab.add('group');
+    labelSettingsGrp.margins.bottom = SETTINGS_SPACING;
+    labelSettingsGrp.add('statictext', undefined, '★ Label Colors ★');
     var iconlabelsSettingGrp = labelSettingsGrp.add('group');
     var iconStaticGrp = iconlabelsSettingGrp.add('group');
     iconStaticGrp.add('statictext', undefined, 'Icons Label Color:');
@@ -18154,16 +18159,8 @@ var createHelpWindow = function () {
     texRandomCheck.onClick = function () {
         updateFromTexCheck(texRandomCheck.value);
     };
-    var helpTipSettingGrp = settingsTab.add('group');
-    helpTipSettingGrp.margins.top = helpTipSettingGrp.margins.bottom = 8;
-    var showHelpTipsCheck = helpTipSettingGrp.add('checkbox', undefined, 'Show Help Tips');
-    showHelpTipsCheck.value = prefs.showHelpTips;
-    var updateQAHelpTips = function (show) {
-        allQABtns.forEach(function (iconData) {
-            iconData[0].helpTip = show ? iconData[1] : '';
-        });
-    };
     var iconColorsSettingsGrp = settingsTab.add('group');
+    iconColorsSettingsGrp.margins.bottom = SETTINGS_SPACING;
     settingsTab.orientation =
         labelSettingsGrp.orientation =
             iconColorsSettingsGrp.orientation =
@@ -18172,12 +18169,21 @@ var createHelpWindow = function () {
         labelSettingsGrp.alignChildren =
             iconColorsSettingsGrp.alignChildren =
                 ['left', 'top'];
-    iconColorsSettingsGrp.add('statictext', undefined, '▶ Icon Colors:');
+    iconColorsSettingsGrp.add('statictext', undefined, '★ Icon Colors ★');
     var _a = createIconColorRow(iconColorsSettingsGrp, prefs.iconColor1Name, prefs.iconColor1Hex), colorName1Edit = _a.colorNameEdit, colorHex1Edit = _a.colorHexEdit;
     var _b = createIconColorRow(iconColorsSettingsGrp, prefs.iconColor2Name, prefs.iconColor2Hex), colorName2Edit = _b.colorNameEdit, colorHex2Edit = _b.colorHexEdit;
     var _c = createIconColorRow(iconColorsSettingsGrp, prefs.iconColor3Name, prefs.iconColor3Hex), colorName3Edit = _c.colorNameEdit, colorHex3Edit = _c.colorHexEdit;
+    var helpTipSettingGrp = settingsTab.add('group');
+    helpTipSettingGrp.margins.bottom = SETTINGS_SPACING;
+    var showHelpTipsCheck = helpTipSettingGrp.add('checkbox', undefined, 'Show Help Tips');
+    showHelpTipsCheck.value = prefs.showHelpTips;
+    var updateQAHelpTips = function (show) {
+        allQABtns.forEach(function (iconData) {
+            iconData[0].helpTip = show ? iconData[1] : '';
+        });
+    };
     var warnStaticGrp = settingsTab.add('group');
-    warnStaticGrp.add('statictext', undefined, 'You may need to restart the script to see the changes');
+    warnStaticGrp.add('statictext', undefined, '☛ You may need to restart the script to see the changes');
     warnStaticGrp.alignment = ['fill', 'bottom'];
     var okCancelBtnsGrp = helpWin.add('group');
     okCancelBtnsGrp.spacing = 250;

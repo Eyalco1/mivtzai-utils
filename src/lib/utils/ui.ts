@@ -26,7 +26,7 @@ const createAboutTab = (tpanel: TabbedPanel): Tab => {
     aboutTab.add('image', [0, 0, 300, 110], bannerBinary);
     const abtStr = '‹ @@name - version @@version - Created By Eyal Cohen ›';
     const aboutEditGrp = aboutTab.add('group');
-    aboutEditGrp.add('edittext', [0, 0, 380, 200], abtStr, {
+    aboutEditGrp.add('edittext', [0, 0, 380, 240], abtStr, {
         multiline: true,
         readonly: true,
         scrollable: true
@@ -50,10 +50,12 @@ const createIconColorRow = (
 
     const theColor: [number, number, number] = hexToRgb(colorHex);
     const coloredBtn = createColoredButton(colorGrp, theColor, [20, 20]);
+    coloredBtn.helpTip = 'Click To Edit';
     const colorHexEdit = colorGrp.add('edittext', undefined, colorHex, {
         readonly: true
     });
     colorHexEdit.preferredSize[0] = 60;
+    colorHexEdit.helpTip = 'Click The Color Swatch To Edit';
 
     coloredBtn.onClick = () => {
         const colorPicked = openColorPicker(hexToRgb(colorHex));
@@ -90,14 +92,18 @@ const createHelpWindow = () => {
     const prefs = parsePrefs();
     const labelNames = getLabelNamesFromPrefs();
     const labelColors = getLabelsFromPrefs().map(hex => hexToRgb(hex));
+    const SETTINGS_SPACING = 15;
 
     const settingsTab = tpanel.add('tab', undefined, ['Settings']);
-
-    const labelSettingsGrp = settingsTab.add('group');
-
     settingsTab.margins = 10;
 
-    // == Settings - Icons ==
+    const labelSettingsGrp = settingsTab.add('group');
+    // @ts-ignore
+    labelSettingsGrp.margins.bottom = SETTINGS_SPACING;
+
+    labelSettingsGrp.add('statictext', undefined, '★ Label Colors ★');
+
+    // == Settings - Labels - Icons ==
     const iconlabelsSettingGrp = labelSettingsGrp.add('group');
     const iconStaticGrp = iconlabelsSettingGrp.add('group');
     iconStaticGrp.add('statictext', undefined, 'Icons Label Color:');
@@ -148,7 +154,7 @@ const createHelpWindow = () => {
         updateFromIconCheck(iconRandomCheck.value);
     };
 
-    // == Settings - Locations ==
+    // == Settings - Labels - Locations ==
     const locLabelsSettingGrp = labelSettingsGrp.add('group');
     const locStaticGrp = locLabelsSettingGrp.add('group');
     locStaticGrp.add('statictext', undefined, 'Locations Label Color:');
@@ -192,7 +198,7 @@ const createHelpWindow = () => {
         updateFromLocCheck(locRandomCheck.value);
     };
 
-    // == Settings - Textures ==
+    // == Settings - Labels - Textures ==
     const texlabelsSettingGrp = labelSettingsGrp.add('group');
     const texStaticGrp = texlabelsSettingGrp.add('group');
     texStaticGrp.add('statictext', undefined, 'Textures Label Color:');
@@ -239,25 +245,10 @@ const createHelpWindow = () => {
         updateFromTexCheck(texRandomCheck.value);
     };
 
-    // === Settings - Help Tips ===
-    const helpTipSettingGrp = settingsTab.add('group');
-    // @ts-ignore
-    helpTipSettingGrp.margins.top = helpTipSettingGrp.margins.bottom = 8;
-    const showHelpTipsCheck = helpTipSettingGrp.add(
-        'checkbox',
-        undefined,
-        'Show Help Tips'
-    );
-    showHelpTipsCheck.value = prefs.showHelpTips;
-
-    const updateQAHelpTips = (show: boolean): void => {
-        allQABtns.forEach(iconData => {
-            iconData[0].helpTip = show ? iconData[1] : '';
-        });
-    };
-
     // === Settings - Icon Colors ===
     const iconColorsSettingsGrp = settingsTab.add('group');
+    // @ts-ignore
+    iconColorsSettingsGrp.margins.bottom = SETTINGS_SPACING;
 
     settingsTab.orientation =
         labelSettingsGrp.orientation =
@@ -268,7 +259,7 @@ const createHelpWindow = () => {
         iconColorsSettingsGrp.alignChildren =
             ['left', 'top'];
 
-    iconColorsSettingsGrp.add('statictext', undefined, '▶ Icon Colors:');
+    iconColorsSettingsGrp.add('statictext', undefined, '★ Icon Colors ★');
 
     const { colorNameEdit: colorName1Edit, colorHexEdit: colorHex1Edit } =
         createIconColorRow(
@@ -291,11 +282,28 @@ const createHelpWindow = () => {
             prefs.iconColor3Hex
         );
 
+    // === Settings - Help Tips ===
+    const helpTipSettingGrp = settingsTab.add('group');
+    // @ts-ignore
+    helpTipSettingGrp.margins.bottom = SETTINGS_SPACING;
+    const showHelpTipsCheck = helpTipSettingGrp.add(
+        'checkbox',
+        undefined,
+        'Show Help Tips'
+    );
+    showHelpTipsCheck.value = prefs.showHelpTips;
+
+    const updateQAHelpTips = (show: boolean): void => {
+        allQABtns.forEach(iconData => {
+            iconData[0].helpTip = show ? iconData[1] : '';
+        });
+    };
+
     const warnStaticGrp = settingsTab.add('group');
     warnStaticGrp.add(
         'statictext',
         undefined,
-        'You may need to restart the script to see the changes'
+        '☛ You may need to restart the script to see the changes'
     );
     warnStaticGrp.alignment = ['fill', 'bottom'];
 
