@@ -9289,6 +9289,13 @@ var createLocation = function (argsArr, inputLang, mitug) {
     var iconLayer = createLocationIconFromId(iconId, iconPos, iconAnchor, iconScale, mitug);
     var textLayer = createLocationText(lang, text, fontSize, tracking, leading, textPos, textAnchor, mitug);
     iconLayer.parent = textLayer.parent = bgLayer;
+    var addSetMatte = function (layer, value) {
+        var setMatteEffect = layer.effect.addProperty('ADBE Set Matte3');
+        var setMatteLayer = setMatteEffect.property('ADBE Set Matte3-0001');
+        setMatteLayer.setValue(value);
+    };
+    addSetMatte(iconLayer, bgLayer.index);
+    addSetMatte(textLayer, bgLayer.index);
     bgLayer.label =
         iconLayer.label =
             textLayer.label =

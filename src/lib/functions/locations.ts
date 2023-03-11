@@ -304,6 +304,18 @@ const createLocation = (
     );
 
     iconLayer.parent = textLayer.parent = bgLayer;
+
+    const addSetMatte = (layer: AVLayer, value: number) => {
+        const setMatteEffect = layer.effect.addProperty('ADBE Set Matte3');
+        const setMatteLayer = setMatteEffect.property(
+            'ADBE Set Matte3-0001'
+        ) as Property<number>;
+        setMatteLayer.setValue(value);
+    };
+
+    addSetMatte(iconLayer, bgLayer.index);
+    addSetMatte(textLayer, bgLayer.index);
+
     bgLayer.label =
         iconLayer.label =
         textLayer.label =
