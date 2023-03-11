@@ -267,7 +267,8 @@ const createLocationIconFromId = (
 const createLocation = (
     argsArr: LocationArgs[],
     inputLang: Lingo,
-    mitug: Mitug
+    mitug: Mitug,
+    animation: LocationAnimation
 ): void => {
     const {
         bgSize,
@@ -315,6 +316,123 @@ const createLocation = (
 
     addSetMatte(iconLayer, bgLayer.index);
     addSetMatte(textLayer, bgLayer.index);
+
+    const comp = app.project.activeItem as CompItem;
+
+    if (animation === 'Scale') {
+        scaleWithOvershoot([bgLayer]);
+    } else if (animation === 'Open') {
+        const sizeProp = bgLayer
+            .property('ADBE Root Vectors Group')
+            .property('ADBE Vector Group')
+            .property('ADBE Vectors Group')
+            .property('ADBE Vector Shape - Rect')
+            .property('ADBE Vector Rect Size') as Property<[number, number]>;
+
+        const origSizeValue = sizeProp.value;
+
+        sizeProp.setValueAtTime(comp.time, [0, origSizeValue[1]]);
+        sizeProp.setValueAtTime(
+            comp.time + (1 / comp.frameRate) * 14,
+            origSizeValue
+        );
+
+        const ease1 = new KeyframeEase(0, 40);
+        const ease2 = new KeyframeEase(0, 100);
+        sizeProp.setTemporalEaseAtKey(1, [ease1, ease1], [ease1, ease1]);
+        sizeProp.setTemporalEaseAtKey(2, [ease2, ease2], [ease2, ease2]);
+    } else if (animation === 'Scale & Open') {
+        // == Scale ==
+        const scaleProp = bgLayer
+            .property('ADBE Transform Group')
+            .property('ADBE Scale') as Property<[number, number]>;
+
+        scaleProp.setValueAtTime(comp.time, [0, 0]);
+        scaleProp.setValueAtTime(
+            comp.time + (1 / comp.frameRate) * 12,
+            [102, 102]
+        );
+        scaleProp.setValueAtTime(
+            comp.time + (1 / comp.frameRate) * 17,
+            [100, 100]
+        );
+
+        const scaleEase = new KeyframeEase(0, 66);
+        scaleProp.setTemporalEaseAtKey(
+            1,
+            [scaleEase, scaleEase, scaleEase],
+            [scaleEase, scaleEase, scaleEase]
+        );
+        scaleProp.setTemporalEaseAtKey(
+            2,
+            [scaleEase, scaleEase, scaleEase],
+            [scaleEase, scaleEase, scaleEase]
+        );
+        scaleProp.setTemporalEaseAtKey(
+            3,
+            [scaleEase, scaleEase, scaleEase],
+            [scaleEase, scaleEase, scaleEase]
+        );
+
+        // == Size ==
+        const sizeProp = bgLayer
+            .property('ADBE Root Vectors Group')
+            .property('ADBE Vector Group')
+            .property('ADBE Vectors Group')
+            .property('ADBE Vector Shape - Rect')
+            .property('ADBE Vector Rect Size') as Property<[number, number]>;
+
+        const origSizeValue = sizeProp.value;
+
+        sizeProp.setValueAtTime(comp.time, [0, origSizeValue[1]]);
+        sizeProp.setValueAtTime(comp.time + (1 / comp.frameRate) * 12, [
+            origSizeValue[0] - 5,
+            origSizeValue[1]
+        ]);
+        sizeProp.setValueAtTime(
+            comp.time + (1 / comp.frameRate) * 17,
+            origSizeValue
+        );
+
+        const sizeEase1 = new KeyframeEase(0, 85);
+        const sizeEase3 = new KeyframeEase(0, 66);
+        sizeProp.setTemporalEaseAtKey(
+            1,
+            [sizeEase1, sizeEase1],
+            [sizeEase1, sizeEase1]
+        );
+        sizeProp.setTemporalEaseAtKey(
+            2,
+            [new KeyframeEase(100, 65), new KeyframeEase(0, 65)],
+            [new KeyframeEase(100, 15), new KeyframeEase(0, 15)]
+        );
+        sizeProp.setTemporalEaseAtKey(
+            3,
+            [sizeEase3, sizeEase3],
+            [sizeEase3, sizeEase3]
+        );
+
+        // == Roundness ==
+        const roundProp = bgLayer
+            .property('ADBE Root Vectors Group')
+            .property('ADBE Vector Group')
+            .property('ADBE Vectors Group')
+            .property('ADBE Vector Shape - Rect')
+            .property('ADBE Vector Rect Roundness') as Property<number>;
+
+        const origRoundVal = roundProp.value;
+
+        roundProp.setValueAtTime(comp.time, 55);
+        roundProp.setValueAtTime(
+            comp.time + (1 / comp.frameRate) * 12,
+            origRoundVal
+        );
+
+        const roundEase1 = new KeyframeEase(0, 85);
+        const roundEase2 = new KeyframeEase(0, 66);
+        roundProp.setTemporalEaseAtKey(1, [roundEase1], [roundEase1]);
+        roundProp.setTemporalEaseAtKey(2, [roundEase2], [roundEase2]);
+    }
 
     bgLayer.label =
         iconLayer.label =
@@ -937,7 +1055,11 @@ const createKindergardenIcon: CreateLocationIconFn = (
     return iconLayer;
 };
 
-const createKindergardenLocation = (lang: Lingo, mitug: Mitug): void => {
+const createKindergardenLocation: CreateLocationFn = (
+    lang,
+    mitug,
+    animation
+) => {
     const args: LocationArgs[] = [
         {
             lang: 'Hebrew',
@@ -979,7 +1101,7 @@ const createKindergardenLocation = (lang: Lingo, mitug: Mitug): void => {
             iconId: 'Kindergarden'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 
 const createMedicalIcon: CreateLocationIconFn = (
@@ -1099,7 +1221,7 @@ const createMedicalIcon: CreateLocationIconFn = (
     return iconLayer;
 };
 
-const createMedicalLocation = (lang: Lingo, mitug: Mitug): void => {
+const createMedicalLocation: CreateLocationFn = (lang, mitug, animation) => {
     const args: LocationArgs[] = [
         {
             lang: 'Hebrew',
@@ -1141,7 +1263,7 @@ const createMedicalLocation = (lang: Lingo, mitug: Mitug): void => {
             iconId: 'Medical Clinic'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 
 const createSportsIcon: CreateLocationIconFn = (
@@ -1769,7 +1891,7 @@ const createSportsIcon: CreateLocationIconFn = (
     return iconLayer;
 };
 
-const createSportsLocation = (lang: Lingo, mitug: Mitug): void => {
+const createSportsLocation: CreateLocationFn = (lang, mitug, animation) => {
     const args: LocationArgs[] = [
         {
             lang: 'Hebrew',
@@ -1812,7 +1934,7 @@ const createSportsLocation = (lang: Lingo, mitug: Mitug): void => {
             iconId: 'Sports'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 
 const createUniversityIcon: CreateLocationIconFn = (
@@ -2024,7 +2146,7 @@ const createUniversityIcon: CreateLocationIconFn = (
     return iconLayer;
 };
 
-const createUniversityLocation = (lang: Lingo, mitug: Mitug): void => {
+const createUniversityLocation: CreateLocationFn = (lang, mitug, animation) => {
     const args: LocationArgs[] = [
         {
             lang: 'Hebrew',
@@ -2066,7 +2188,7 @@ const createUniversityLocation = (lang: Lingo, mitug: Mitug): void => {
             iconId: 'University'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 
 const createMosqueIcon: CreateLocationIconFn = (
@@ -2586,7 +2708,7 @@ const createMosqueIcon: CreateLocationIconFn = (
     return iconLayer;
 };
 
-const createMosqueLocation = (lang: Lingo, mitug: Mitug): void => {
+const createMosqueLocation: CreateLocationFn = (lang, mitug, animation) => {
     const args: LocationArgs[] = [
         {
             lang: 'Hebrew',
@@ -2628,7 +2750,7 @@ const createMosqueLocation = (lang: Lingo, mitug: Mitug): void => {
             iconId: 'Mosque'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 
 const createUNBuildingIcon: CreateLocationIconFn = (
@@ -6843,7 +6965,7 @@ const createUNBuildingIcon: CreateLocationIconFn = (
     return iconLayer;
 };
 
-const createUNBuildingLocation = (lang: Lingo, mitug: Mitug): void => {
+const createUNBuildingLocation: CreateLocationFn = (lang, mitug, animation) => {
     const args: LocationArgs[] = [
         {
             lang: 'Hebrew',
@@ -6885,7 +7007,7 @@ const createUNBuildingLocation = (lang: Lingo, mitug: Mitug): void => {
             iconId: 'U.N. Building'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 
 const createDiplomaticBuildingIcon: CreateLocationIconFn = (
@@ -7556,7 +7678,11 @@ const createDiplomaticBuildingIcon: CreateLocationIconFn = (
     return iconLayer;
 };
 
-const createDiplomaticBuildingLocation = (lang: Lingo, mitug: Mitug): void => {
+const createDiplomaticBuildingLocation: CreateLocationFn = (
+    lang,
+    mitug,
+    animation
+) => {
     const args: LocationArgs[] = [
         {
             lang: 'Hebrew',
@@ -7598,7 +7724,7 @@ const createDiplomaticBuildingLocation = (lang: Lingo, mitug: Mitug): void => {
             iconId: 'Diplomatic Building'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 
 const createGasStationIcon: CreateLocationIconFn = (
@@ -7813,7 +7939,7 @@ const createGasStationIcon: CreateLocationIconFn = (
     return iconLayer;
 };
 
-const createGasStationLocation = (lang: Lingo, mitug: Mitug): void => {
+const createGasStationLocation: CreateLocationFn = (lang, mitug, animation) => {
     const args: LocationArgs[] = [
         {
             lang: 'Hebrew',
@@ -7855,7 +7981,7 @@ const createGasStationLocation = (lang: Lingo, mitug: Mitug): void => {
             iconId: 'Gas Station'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 
 const createGovernmentBuildingIcon: CreateLocationIconFn = (
@@ -8468,7 +8594,11 @@ const createGovernmentBuildingIcon: CreateLocationIconFn = (
     return iconLayer;
 };
 
-const createGovernmentBuildingLocation = (lang: Lingo, mitug: Mitug): void => {
+const createGovernmentBuildingLocation: CreateLocationFn = (
+    lang,
+    mitug,
+    animation
+) => {
     const args: LocationArgs[] = [
         {
             lang: 'Hebrew',
@@ -8504,14 +8634,14 @@ const createGovernmentBuildingLocation = (lang: Lingo, mitug: Mitug): void => {
             tracking: -19,
             textPos: [918, 540],
             textAnchor: [197.2936, -11.3438],
-            bgSize: [512, 91],
-            iconPos: [1164.7981, 544.6018],
+            bgSize: [512, 105],
+            iconPos: [1164.7981, 539.6018],
             iconAnchor: [0, 0],
             iconScale: 83,
             iconId: 'Government Building'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 
 const createPumpingStationIcon: CreateLocationIconFn = (
@@ -8712,7 +8842,11 @@ const createPumpingStationIcon: CreateLocationIconFn = (
     return iconLayer;
 };
 
-const createPumpingStationLocation = (lang: Lingo, mitug: Mitug): void => {
+const createPumpingStationLocation: CreateLocationFn = (
+    lang,
+    mitug,
+    animation
+) => {
     const args: LocationArgs[] = [
         {
             lang: 'Hebrew',
@@ -8754,7 +8888,7 @@ const createPumpingStationLocation = (lang: Lingo, mitug: Mitug): void => {
             iconId: 'Pumping Station'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 
 const createPoliceIcon: CreateLocationIconFn = (
@@ -9000,7 +9134,7 @@ const createPoliceIcon: CreateLocationIconFn = (
     return iconLayer;
 };
 
-const createPoliceLocation = (lang: Lingo, mitug: Mitug): void => {
+const createPoliceLocation: CreateLocationFn = (lang, mitug, animation) => {
     const args: LocationArgs[] = [
         {
             lang: 'Hebrew',
@@ -9042,7 +9176,7 @@ const createPoliceLocation = (lang: Lingo, mitug: Mitug): void => {
             iconId: 'Police'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 
 const createWaterFacilityIcon: CreateLocationIconFn = (
@@ -9130,7 +9264,11 @@ const createWaterFacilityIcon: CreateLocationIconFn = (
     return iconLayer;
 };
 
-const createWaterFacilityLocation = (lang: Lingo, mitug: Mitug): void => {
+const createWaterFacilityLocation: CreateLocationFn = (
+    lang,
+    mitug,
+    animation
+) => {
     const args: LocationArgs[] = [
         {
             lang: 'Hebrew',
@@ -9172,7 +9310,7 @@ const createWaterFacilityLocation = (lang: Lingo, mitug: Mitug): void => {
             iconId: 'Water Facility'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 
 const createResidentialNeighborhoodIcon: CreateLocationIconFn = (
@@ -9551,10 +9689,11 @@ const createResidentialNeighborhoodIcon: CreateLocationIconFn = (
     return iconLayer;
 };
 
-const createResidentialNeighborhoodLocation = (
-    lang: Lingo,
-    mitug: Mitug
-): void => {
+const createResidentialNeighborhoodLocation: CreateLocationFn = (
+    lang,
+    mitug,
+    animation
+) => {
     const args: LocationArgs[] = [
         {
             lang: 'Hebrew',
@@ -9597,7 +9736,7 @@ const createResidentialNeighborhoodLocation = (
             iconId: 'Residential Neighborhood'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 
 const createAmusementParkIcon: CreateLocationIconFn = (
@@ -10012,7 +10151,11 @@ const createAmusementParkIcon: CreateLocationIconFn = (
     return iconLayer;
 };
 
-const createAmusementParkLocation = (lang: Lingo, mitug: Mitug): void => {
+const createAmusementParkLocation: CreateLocationFn = (
+    lang,
+    mitug,
+    animation
+) => {
     const args: LocationArgs[] = [
         {
             lang: 'Hebrew',
@@ -10055,7 +10198,7 @@ const createAmusementParkLocation = (lang: Lingo, mitug: Mitug): void => {
             iconId: 'Amusement Park'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 
 const createHotelIcon: CreateLocationIconFn = (
@@ -10254,7 +10397,7 @@ const createHotelIcon: CreateLocationIconFn = (
     return iconLayer;
 };
 
-const createHotelLocation = (lang: Lingo, mitug: Mitug): void => {
+const createHotelLocation: CreateLocationFn = (lang, mitug, animation) => {
     const args: LocationArgs[] = [
         {
             lang: 'Hebrew',
@@ -10297,7 +10440,7 @@ const createHotelLocation = (lang: Lingo, mitug: Mitug): void => {
             iconId: 'Hotel'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 
 const createSchoolIcon: CreateLocationIconFn = (
@@ -10479,7 +10622,7 @@ const createSchoolIcon: CreateLocationIconFn = (
     return iconLayer;
 };
 
-const createSchoolLocation = (lang: Lingo, mitug: Mitug): void => {
+const createSchoolLocation: CreateLocationFn = (lang, mitug, animation) => {
     const args: LocationArgs[] = [
         {
             lang: 'Hebrew',
@@ -10522,7 +10665,7 @@ const createSchoolLocation = (lang: Lingo, mitug: Mitug): void => {
             iconId: 'School'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 
 const createStadiumIcon: CreateLocationIconFn = (
@@ -10948,7 +11091,7 @@ const createStadiumIcon: CreateLocationIconFn = (
     return iconLayer;
 };
 
-const createStadiumLocation = (lang: Lingo, mitug: Mitug): void => {
+const createStadiumLocation: CreateLocationFn = (lang, mitug, animation) => {
     const args: LocationArgs[] = [
         {
             lang: 'Hebrew',
@@ -10991,7 +11134,7 @@ const createStadiumLocation = (lang: Lingo, mitug: Mitug): void => {
             iconId: 'Stadium'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 
 const createTourismAttractionIcon: CreateLocationIconFn = (
@@ -11309,7 +11452,11 @@ const createTourismAttractionIcon: CreateLocationIconFn = (
     return iconLayer;
 };
 
-const createTourismAttractionLocation = (lang: Lingo, mitug: Mitug): void => {
+const createTourismAttractionLocation: CreateLocationFn = (
+    lang,
+    mitug,
+    animation
+) => {
     const args: LocationArgs[] = [
         {
             lang: 'Hebrew',
@@ -11352,7 +11499,7 @@ const createTourismAttractionLocation = (lang: Lingo, mitug: Mitug): void => {
             iconId: 'Tourism Attraction'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 
 const createCommunicationAntennaIcon: CreateLocationIconFn = (
@@ -11541,10 +11688,11 @@ const createCommunicationAntennaIcon: CreateLocationIconFn = (
     return iconLayer;
 };
 
-const createCommunicationAntennaLocation = (
-    lang: Lingo,
-    mitug: Mitug
-): void => {
+const createCommunicationAntennaLocation: CreateLocationFn = (
+    lang,
+    mitug,
+    animation
+) => {
     const args: LocationArgs[] = [
         {
             lang: 'Hebrew',
@@ -11587,13 +11735,14 @@ const createCommunicationAntennaLocation = (
             iconId: 'Communication Antenna'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 
-const createEducationAndCultureSiteLocation = (
-    lang: Lingo,
-    mitug: Mitug
-): void => {
+const createEducationAndCultureSiteLocation: CreateLocationFn = (
+    lang,
+    mitug,
+    animation
+) => {
     const args: LocationArgs[] = [
         {
             lang: 'Hebrew',
@@ -11636,10 +11785,10 @@ const createEducationAndCultureSiteLocation = (
             iconId: 'Education and Culture Site'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 
-const createHospitalLocation = (lang: Lingo, mitug: Mitug): void => {
+const createHospitalLocation: CreateLocationFn = (lang, mitug, animation) => {
     const args: LocationArgs[] = [
         {
             lang: 'Hebrew',
@@ -11682,10 +11831,10 @@ const createHospitalLocation = (lang: Lingo, mitug: Mitug): void => {
             iconId: 'Hospital'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 
-const createCollegeLocation = (lang: Lingo, mitug: Mitug): void => {
+const createCollegeLocation: CreateLocationFn = (lang, mitug, animation) => {
     const args: LocationArgs[] = [
         {
             lang: 'Hebrew',
@@ -11728,7 +11877,7 @@ const createCollegeLocation = (lang: Lingo, mitug: Mitug): void => {
             iconId: 'College'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 
 // ====================================
@@ -11736,7 +11885,8 @@ const createCollegeLocation = (lang: Lingo, mitug: Mitug): void => {
 const createLocationFromId = (
     id: LocationID,
     lang: Lingo,
-    mitug: Mitug
+    mitug: Mitug,
+    animation: LocationAnimation
 ): void => {
     app.beginUndoGroup(`@@name: Create Location - ${id}`);
 
@@ -11748,73 +11898,73 @@ const createLocationFromId = (
 
     switch (id) {
         case 'Kindergarden':
-            createKindergardenLocation(lang, mitug);
+            createKindergardenLocation(lang, mitug, animation);
             break;
         case 'Medical Clinic':
-            createMedicalLocation(lang, mitug);
+            createMedicalLocation(lang, mitug, animation);
             break;
         case 'Sports':
-            createSportsLocation(lang, mitug);
+            createSportsLocation(lang, mitug, animation);
             break;
         case 'University':
-            createUniversityLocation(lang, mitug);
+            createUniversityLocation(lang, mitug, animation);
             break;
         case 'Mosque':
-            createMosqueLocation(lang, mitug);
+            createMosqueLocation(lang, mitug, animation);
             break;
         case 'U.N. Building':
-            createUNBuildingLocation(lang, mitug);
+            createUNBuildingLocation(lang, mitug, animation);
             break;
         case 'Diplomatic Building':
-            createDiplomaticBuildingLocation(lang, mitug);
+            createDiplomaticBuildingLocation(lang, mitug, animation);
             break;
         case 'Gas Station':
-            createGasStationLocation(lang, mitug);
+            createGasStationLocation(lang, mitug, animation);
             break;
         case 'Government Building':
-            createGovernmentBuildingLocation(lang, mitug);
+            createGovernmentBuildingLocation(lang, mitug, animation);
             break;
         case 'Factory':
             alert('...');
             break;
         case 'Pumping Station':
-            createPumpingStationLocation(lang, mitug);
+            createPumpingStationLocation(lang, mitug, animation);
             break;
         case 'Police':
-            createPoliceLocation(lang, mitug);
+            createPoliceLocation(lang, mitug, animation);
             break;
         case 'Water Facility':
-            createWaterFacilityLocation(lang, mitug);
+            createWaterFacilityLocation(lang, mitug, animation);
             break;
         case 'Residential Neighborhood':
-            createResidentialNeighborhoodLocation(lang, mitug);
+            createResidentialNeighborhoodLocation(lang, mitug, animation);
             break;
         case 'Amusement Park':
-            createAmusementParkLocation(lang, mitug);
+            createAmusementParkLocation(lang, mitug, animation);
             break;
         case 'Hotel':
-            createHotelLocation(lang, mitug);
+            createHotelLocation(lang, mitug, animation);
             break;
         case 'School':
-            createSchoolLocation(lang, mitug);
+            createSchoolLocation(lang, mitug, animation);
             break;
         case 'Stadium':
-            createStadiumLocation(lang, mitug);
+            createStadiumLocation(lang, mitug, animation);
             break;
         case 'Tourism Attraction':
-            createTourismAttractionLocation(lang, mitug);
+            createTourismAttractionLocation(lang, mitug, animation);
             break;
         case 'Communication Antenna':
-            createCommunicationAntennaLocation(lang, mitug);
+            createCommunicationAntennaLocation(lang, mitug, animation);
             break;
         case 'Education and Culture Site':
-            createEducationAndCultureSiteLocation(lang, mitug);
+            createEducationAndCultureSiteLocation(lang, mitug, animation);
             break;
         case 'Hospital':
-            createHospitalLocation(lang, mitug);
+            createHospitalLocation(lang, mitug, animation);
             break;
         case 'College':
-            createCollegeLocation(lang, mitug);
+            createCollegeLocation(lang, mitug, animation);
             break;
     }
 

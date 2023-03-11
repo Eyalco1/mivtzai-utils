@@ -67,6 +67,22 @@ const createLocationsUI = (
     mitugDD.preferredSize[0] = 100;
     mitugDD.selection = 0;
 
+    const animationDDGrp = dropdownsGrp.add('group');
+    animationDDGrp.add('statictext', undefined, 'Animation:');
+    const animationTypes: LocationAnimation[] = [
+        'None',
+        'Open',
+        'Scale',
+        'Scale & Open'
+    ];
+    const animationDD = animationDDGrp.add(
+        'dropdownlist',
+        undefined,
+        animationTypes
+    );
+    animationDD.preferredSize[0] = 100;
+    animationDD.selection = 0;
+
     const locationsCreateBtn = locationsGrp.add(
         'button',
         undefined,
@@ -78,7 +94,8 @@ const createLocationsUI = (
         const id = locationsDD.selection.toString() as LocationID;
         const lang = langDD.selection.toString() as Lingo;
         const mitug = mitugDD.selection.toString() as Mitug;
-        createLocationFromId(id, lang, mitug);
+        const animation = animationDD.selection.toString() as LocationAnimation;
+        createLocationFromId(id, lang, mitug, animation);
     };
 
     return { locTab, dropdownsGrp };

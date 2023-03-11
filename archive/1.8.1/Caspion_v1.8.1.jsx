@@ -606,8 +606,8 @@ var createAnimatedMap = function (name, vertices, inTangents, outTangents) {
         .property('ADBE Vector Fill Opacity');
     fillOpacity.setValueAtTime(shapeLayer.inPoint, 0);
     fillOpacity.setValueAtTime((1 / comp.frameRate) * 14 + shapeLayer.inPoint, 50);
-    fillOpacity.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 33)], [new KeyframeEase(0.5, 33)]);
-    fillOpacity.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 33)], [new KeyframeEase(0.5, 33)]);
+    fillOpacity.setTemporalEaseAtKey(1, [new KeyframeEase(0, 33)], [new KeyframeEase(0, 33)]);
+    fillOpacity.setTemporalEaseAtKey(2, [new KeyframeEase(0, 33)], [new KeyframeEase(0, 33)]);
     var myStroke = contents
         .property("".concat(name, "_Stroke"))
         .property('ADBE Vectors Group')
@@ -630,8 +630,8 @@ var createAnimatedMap = function (name, vertices, inTangents, outTangents) {
     var trimPathsEnd = trimPathsGrp.property('ADBE Vector Trim End');
     trimPathsEnd.setValueAtTime(shapeLayer.inPoint, 0);
     trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 30 + shapeLayer.inPoint, 100);
-    trimPathsEnd.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 33)], [new KeyframeEase(0.5, 33)]);
-    trimPathsEnd.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 66)], [new KeyframeEase(0.5, 66)]);
+    trimPathsEnd.setTemporalEaseAtKey(1, [new KeyframeEase(0, 33)], [new KeyframeEase(0, 33)]);
+    trimPathsEnd.setTemporalEaseAtKey(2, [new KeyframeEase(0, 66)], [new KeyframeEase(0, 66)]);
 };
 var createIconCircle = function (contents, circleColorRgb, size) {
     var vertices = [
@@ -695,7 +695,7 @@ var scaleWithOvershoot = function (layers) {
             origVal[1] + 3
         ]);
         scaleProp.setValueAtTime(comp.time + (1 / comp.frameRate) * 14, origVal);
-        var easeIn = new KeyframeEase(0.5, 66);
+        var easeIn = new KeyframeEase(0, 66);
         var easeOut = new KeyframeEase(0.75, 66);
         scaleProp.setTemporalEaseAtKey(beforeKeys + 1, [easeIn, easeIn, easeIn], [easeOut, easeOut, easeOut]);
         scaleProp.setTemporalEaseAtKey(beforeKeys + 2, [easeIn, easeIn, easeIn], [easeOut, easeOut, easeOut]);
@@ -1095,8 +1095,8 @@ var createTvaiStroke = function () {
     var trimPathsEnd = trimPathsGrp.property('ADBE Vector Trim End');
     trimPathsEnd.setValueAtTime(0, 0);
     trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 30, 100);
-    trimPathsEnd.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 33)], [new KeyframeEase(0.5, 33)]);
-    trimPathsEnd.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 88)], [new KeyframeEase(0.5, 88)]);
+    trimPathsEnd.setTemporalEaseAtKey(1, [new KeyframeEase(0, 33)], [new KeyframeEase(0, 33)]);
+    trimPathsEnd.setTemporalEaseAtKey(2, [new KeyframeEase(0, 88)], [new KeyframeEase(0, 88)]);
     layer
         .property('ADBE Root Vectors Group')
         .property('ADBE Vector Group')
@@ -1531,8 +1531,8 @@ var createCountingText = function () {
     var numValProp = numFx.property('ADBE Numbers2-0003');
     numValProp.setValueAtTime(layer.inPoint, 0);
     numValProp.setValueAtTime((1 / comp.frameRate) * 40 + layer.inPoint, 99);
-    numValProp.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 20)]);
-    numValProp.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 75)]);
+    numValProp.setTemporalEaseAtKey(1, [new KeyframeEase(0, 20)]);
+    numValProp.setTemporalEaseAtKey(2, [new KeyframeEase(0, 75)]);
     app.endUndoGroup();
 };
 var importIsraelGoogleMaps = function () {
@@ -1583,13 +1583,13 @@ var createAnimatedFrame = function () {
     var trimPathsEnd = trimPathsGrp.property('ADBE Vector Trim End');
     trimPathsEnd.setValueAtTime(0, 0);
     trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 30, 100);
-    trimPathsEnd.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 34)], [new KeyframeEase(0.5, 34)]);
-    trimPathsEnd.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 92)], [new KeyframeEase(0.5, 92)]);
+    trimPathsEnd.setTemporalEaseAtKey(1, [new KeyframeEase(0, 34)], [new KeyframeEase(0, 34)]);
+    trimPathsEnd.setTemporalEaseAtKey(2, [new KeyframeEase(0, 92)], [new KeyframeEase(0, 92)]);
     var trimPathsOffset = trimPathsGrp.property('ADBE Vector Trim Offset');
     trimPathsOffset.setValueAtTime(0, -324);
     trimPathsOffset.setValueAtTime((1 / comp.frameRate) * 32, 0);
-    trimPathsOffset.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 24)], [new KeyframeEase(0.5, 24)]);
-    trimPathsOffset.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 72)], [new KeyframeEase(0.5, 72)]);
+    trimPathsOffset.setTemporalEaseAtKey(1, [new KeyframeEase(0, 24)], [new KeyframeEase(0, 24)]);
+    trimPathsOffset.setTemporalEaseAtKey(2, [new KeyframeEase(0, 72)], [new KeyframeEase(0, 72)]);
     app.endUndoGroup();
 };
 var openProjectInFinder = function () {
@@ -1671,8 +1671,8 @@ var createTatzaPath = function () {
     var trimPathsEnd = trimPathsGrp.property('ADBE Vector Trim End');
     trimPathsEnd.setValueAtTime(0, 0);
     trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 30, 100);
-    trimPathsEnd.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 33)], [new KeyframeEase(0.5, 33)]);
-    trimPathsEnd.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 88)], [new KeyframeEase(0.5, 88)]);
+    trimPathsEnd.setTemporalEaseAtKey(1, [new KeyframeEase(0, 33)], [new KeyframeEase(0, 33)]);
+    trimPathsEnd.setTemporalEaseAtKey(2, [new KeyframeEase(0, 88)], [new KeyframeEase(0, 88)]);
     layer
         .property('ADBE Root Vectors Group')
         .property('ADBE Vector Group')
@@ -1714,8 +1714,8 @@ var recScaleX = function () {
         .property('ADBE Scale');
     scaleProp.setValueAtTime(0, [0, 100]);
     scaleProp.setValueAtTime((1 / comp.frameRate) * 14, [100, 100]);
-    var ease1 = new KeyframeEase(0.5, 65);
-    var ease2 = new KeyframeEase(0.5, 92);
+    var ease1 = new KeyframeEase(0, 65);
+    var ease2 = new KeyframeEase(0, 92);
     scaleProp.setTemporalEaseAtKey(1, [ease1, ease1, ease1], [ease1, ease1, ease1]);
     scaleProp.setTemporalEaseAtKey(2, [ease2, ease2, ease2], [ease2, ease2, ease2]);
     app.endUndoGroup();
@@ -1750,12 +1750,12 @@ var createTextOnLocation = function () {
     circleScale.setValueAtTime((1 / comp.frameRate) * 22 + comp.time, [104.8933, 104.8933]);
     circleScale.setValueAtTime((1 / comp.frameRate) * 28 + comp.time, [98.3702, 98.3702]);
     circleScale.setValueAtTime((1 / comp.frameRate) * 36 + comp.time, [100, 100]);
-    var scaleEase1 = new KeyframeEase(0.5, 56);
-    var scaleEase2 = new KeyframeEase(0.5, 57);
-    var scaleEase3 = new KeyframeEase(0.5, 52.5);
-    var scaleEase4 = new KeyframeEase(0.5, 48);
-    var scaleEase5 = new KeyframeEase(0.5, 45);
-    var scaleEase6 = new KeyframeEase(0.5, 47);
+    var scaleEase1 = new KeyframeEase(0, 56);
+    var scaleEase2 = new KeyframeEase(0, 57);
+    var scaleEase3 = new KeyframeEase(0, 52.5);
+    var scaleEase4 = new KeyframeEase(0, 48);
+    var scaleEase5 = new KeyframeEase(0, 45);
+    var scaleEase6 = new KeyframeEase(0, 47);
     circleScale.setTemporalEaseAtKey(1, [scaleEase1, scaleEase1, scaleEase1], [scaleEase1, scaleEase1, scaleEase1]);
     circleScale.setTemporalEaseAtKey(2, [scaleEase2, scaleEase2, scaleEase2], [scaleEase2, scaleEase2, scaleEase2]);
     circleScale.setTemporalEaseAtKey(3, [scaleEase3, scaleEase3, scaleEase3], [scaleEase3, scaleEase3, scaleEase3]);
@@ -1798,8 +1798,8 @@ var createTextOnLocation = function () {
     var trimPathsEnd = trimPathsGrp.property('ADBE Vector Trim End');
     trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 3 + comp.time, 0);
     trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 16 + comp.time, 100);
-    trimPathsEnd.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 44)], [new KeyframeEase(0.5, 44)]);
-    trimPathsEnd.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 93)], [new KeyframeEase(0.5, 93)]);
+    trimPathsEnd.setTemporalEaseAtKey(1, [new KeyframeEase(0, 44)], [new KeyframeEase(0, 44)]);
+    trimPathsEnd.setTemporalEaseAtKey(2, [new KeyframeEase(0, 93)], [new KeyframeEase(0, 93)]);
     var linePos = lineLayer
         .property('ADBE Transform Group')
         .property('ADBE Position');
@@ -1830,8 +1830,8 @@ var createTextOnLocation = function () {
     recRectangleSize.setValue([467, 169]);
     recRectangleSize.setValueAtTime((1 / comp.frameRate) * 12 + comp.time, [0, 169]);
     recRectangleSize.setValueAtTime((1 / comp.frameRate) * 41 + comp.time, [467, 169]);
-    var easeOut = new KeyframeEase(0.5, 44);
-    var easeIn = new KeyframeEase(0.5, 93);
+    var easeOut = new KeyframeEase(0, 44);
+    var easeIn = new KeyframeEase(0, 93);
     recRectangleSize.setTemporalEaseAtKey(1, [easeOut, easeOut], [easeOut, easeOut]);
     recRectangleSize.setTemporalEaseAtKey(2, [easeIn, easeIn], [easeIn, easeIn]);
     var recPos = recLayer
@@ -1901,8 +1901,8 @@ var createArrow = function () {
     var trimPathsEnd = trimPathsGrp.property('ADBE Vector Trim End');
     trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 7 + comp.time, 0);
     trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 20 + comp.time, 100);
-    trimPathsEnd.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 30)], [new KeyframeEase(0.5, 30)]);
-    trimPathsEnd.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 94)], [new KeyframeEase(0.5, 94)]);
+    trimPathsEnd.setTemporalEaseAtKey(1, [new KeyframeEase(0, 30)], [new KeyframeEase(0, 30)]);
+    trimPathsEnd.setTemporalEaseAtKey(2, [new KeyframeEase(0, 94)], [new KeyframeEase(0, 94)]);
     var linePos = lineLayer
         .property('ADBE Transform Group')
         .property('ADBE Position');
@@ -1942,8 +1942,8 @@ var createArrow = function () {
         .property('ADBE Position_0');
     pointerXPos.setValueAtTime((1 / comp.frameRate) * 7 + comp.time, 410.4605);
     pointerXPos.setValueAtTime((1 / comp.frameRate) * 20 + comp.time, 753.4605);
-    pointerXPos.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 30)], [new KeyframeEase(0.5, 30)]);
-    pointerXPos.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 94)], [new KeyframeEase(0.5, 94)]);
+    pointerXPos.setTemporalEaseAtKey(1, [new KeyframeEase(0, 30)], [new KeyframeEase(0, 30)]);
+    pointerXPos.setTemporalEaseAtKey(2, [new KeyframeEase(0, 94)], [new KeyframeEase(0, 94)]);
     var pointerScale = pointerLayer
         .property('ADBE Transform Group')
         .property('ADBE Scale');
@@ -1951,31 +1951,31 @@ var createArrow = function () {
     pointerScale.setValueAtTime((1 / comp.frameRate) * 7 + comp.time, [55.4514, 55.4514]);
     pointerScale.setValueAtTime((1 / comp.frameRate) * 20 + comp.time, [100, 100]);
     pointerScale.setTemporalEaseAtKey(1, [
-        new KeyframeEase(0.5, 46),
-        new KeyframeEase(0.5, 46),
-        new KeyframeEase(0.5, 46)
+        new KeyframeEase(0, 46),
+        new KeyframeEase(0, 46),
+        new KeyframeEase(0, 46)
     ], [
-        new KeyframeEase(0.5, 46),
-        new KeyframeEase(0.5, 46),
-        new KeyframeEase(0.5, 46)
+        new KeyframeEase(0, 46),
+        new KeyframeEase(0, 46),
+        new KeyframeEase(0, 46)
     ]);
     pointerScale.setTemporalEaseAtKey(2, [
-        new KeyframeEase(0.5, 63),
-        new KeyframeEase(0.5, 63),
-        new KeyframeEase(0.5, 63)
+        new KeyframeEase(0, 63),
+        new KeyframeEase(0, 63),
+        new KeyframeEase(0, 63)
     ], [
-        new KeyframeEase(0.5, 30),
-        new KeyframeEase(0.5, 30),
-        new KeyframeEase(0.5, 30)
+        new KeyframeEase(0, 30),
+        new KeyframeEase(0, 30),
+        new KeyframeEase(0, 30)
     ]);
     pointerScale.setTemporalEaseAtKey(3, [
-        new KeyframeEase(0.5, 94),
-        new KeyframeEase(0.5, 94),
-        new KeyframeEase(0.5, 94)
+        new KeyframeEase(0, 94),
+        new KeyframeEase(0, 94),
+        new KeyframeEase(0, 94)
     ], [
-        new KeyframeEase(0.5, 94),
-        new KeyframeEase(0.5, 94),
-        new KeyframeEase(0.5, 94)
+        new KeyframeEase(0, 94),
+        new KeyframeEase(0, 94),
+        new KeyframeEase(0, 94)
     ]);
     app.endUndoGroup();
 };
@@ -2030,7 +2030,7 @@ var createMikra = function () {
         .property('ADBE Position_1');
     layerYPos.setValueAtTime(comp.time, comp.height + 450);
     layerYPos.setValueAtTime((1 / comp.frameRate) * 15 + comp.time, comp.height);
-    layerYPos.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 88)]);
+    layerYPos.setTemporalEaseAtKey(2, [new KeyframeEase(0, 88)]);
     var layerAnchor = bgLayer
         .property('ADBE Transform Group')
         .property('ADBE Anchor Point');
@@ -9283,7 +9283,7 @@ var createLocationIconFromId = function (id, iconPos, iconAnchor, iconScale, mit
             return createSchoolIcon(iconPos, iconAnchor, iconScale, id, mitug);
     }
 };
-var createLocation = function (argsArr, inputLang, mitug) {
+var createLocation = function (argsArr, inputLang, mitug, animation) {
     var _a = argsArr.find(function (args) { return args.lang === inputLang; }), bgSize = _a.bgSize, fontSize = _a.fontSize, lang = _a.lang, text = _a.text, textAnchor = _a.textAnchor, textPos = _a.textPos, tracking = _a.tracking, leading = _a.leading, iconAnchor = _a.iconAnchor, iconPos = _a.iconPos, iconScale = _a.iconScale, iconId = _a.iconId;
     var bgLayer = createLocationBG(iconId, bgSize, mitug);
     var iconLayer = createLocationIconFromId(iconId, iconPos, iconAnchor, iconScale, mitug);
@@ -9296,6 +9296,68 @@ var createLocation = function (argsArr, inputLang, mitug) {
     };
     addSetMatte(iconLayer, bgLayer.index);
     addSetMatte(textLayer, bgLayer.index);
+    var comp = app.project.activeItem;
+    if (animation === 'Scale') {
+        scaleWithOvershoot([bgLayer]);
+    }
+    else if (animation === 'Open') {
+        var sizeProp = bgLayer
+            .property('ADBE Root Vectors Group')
+            .property('ADBE Vector Group')
+            .property('ADBE Vectors Group')
+            .property('ADBE Vector Shape - Rect')
+            .property('ADBE Vector Rect Size');
+        var origSizeValue = sizeProp.value;
+        sizeProp.setValueAtTime(comp.time, [0, origSizeValue[1]]);
+        sizeProp.setValueAtTime(comp.time + (1 / comp.frameRate) * 14, origSizeValue);
+        var ease1 = new KeyframeEase(0, 40);
+        var ease2 = new KeyframeEase(0, 100);
+        sizeProp.setTemporalEaseAtKey(1, [ease1, ease1], [ease1, ease1]);
+        sizeProp.setTemporalEaseAtKey(2, [ease2, ease2], [ease2, ease2]);
+    }
+    else if (animation === 'Scale & Open') {
+        var scaleProp = bgLayer
+            .property('ADBE Transform Group')
+            .property('ADBE Scale');
+        scaleProp.setValueAtTime(comp.time, [0, 0]);
+        scaleProp.setValueAtTime(comp.time + (1 / comp.frameRate) * 12, [102, 102]);
+        scaleProp.setValueAtTime(comp.time + (1 / comp.frameRate) * 17, [100, 100]);
+        var scaleEase = new KeyframeEase(0, 66);
+        scaleProp.setTemporalEaseAtKey(1, [scaleEase, scaleEase, scaleEase], [scaleEase, scaleEase, scaleEase]);
+        scaleProp.setTemporalEaseAtKey(2, [scaleEase, scaleEase, scaleEase], [scaleEase, scaleEase, scaleEase]);
+        scaleProp.setTemporalEaseAtKey(3, [scaleEase, scaleEase, scaleEase], [scaleEase, scaleEase, scaleEase]);
+        var sizeProp = bgLayer
+            .property('ADBE Root Vectors Group')
+            .property('ADBE Vector Group')
+            .property('ADBE Vectors Group')
+            .property('ADBE Vector Shape - Rect')
+            .property('ADBE Vector Rect Size');
+        var origSizeValue = sizeProp.value;
+        sizeProp.setValueAtTime(comp.time, [0, origSizeValue[1]]);
+        sizeProp.setValueAtTime(comp.time + (1 / comp.frameRate) * 12, [
+            origSizeValue[0] - 5,
+            origSizeValue[1]
+        ]);
+        sizeProp.setValueAtTime(comp.time + (1 / comp.frameRate) * 17, origSizeValue);
+        var sizeEase1 = new KeyframeEase(0, 85);
+        var sizeEase3 = new KeyframeEase(0, 66);
+        sizeProp.setTemporalEaseAtKey(1, [sizeEase1, sizeEase1], [sizeEase1, sizeEase1]);
+        sizeProp.setTemporalEaseAtKey(2, [new KeyframeEase(100, 65), new KeyframeEase(0, 65)], [new KeyframeEase(100, 15), new KeyframeEase(0, 15)]);
+        sizeProp.setTemporalEaseAtKey(3, [sizeEase3, sizeEase3], [sizeEase3, sizeEase3]);
+        var roundProp = bgLayer
+            .property('ADBE Root Vectors Group')
+            .property('ADBE Vector Group')
+            .property('ADBE Vectors Group')
+            .property('ADBE Vector Shape - Rect')
+            .property('ADBE Vector Rect Roundness');
+        var origRoundVal = roundProp.value;
+        roundProp.setValueAtTime(comp.time, 55);
+        roundProp.setValueAtTime(comp.time + (1 / comp.frameRate) * 12, origRoundVal);
+        var roundEase1 = new KeyframeEase(0, 85);
+        var roundEase2 = new KeyframeEase(0, 66);
+        roundProp.setTemporalEaseAtKey(1, [roundEase1], [roundEase1]);
+        roundProp.setTemporalEaseAtKey(2, [roundEase2], [roundEase2]);
+    }
     bgLayer.label =
         iconLayer.label =
             textLayer.label =
@@ -9679,7 +9741,7 @@ var createKindergardenIcon = function (iconPos, iconAnchor, iconScale, name, mit
     setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
     return iconLayer;
 };
-var createKindergardenLocation = function (lang, mitug) {
+var createKindergardenLocation = function (lang, mitug, animation) {
     var args = [
         {
             lang: 'Hebrew',
@@ -9721,7 +9783,7 @@ var createKindergardenLocation = function (lang, mitug) {
             iconId: 'Kindergarden'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 var createMedicalIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     var iconLayer = createIconBase(name);
@@ -9797,7 +9859,7 @@ var createMedicalIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
     return iconLayer;
 };
-var createMedicalLocation = function (lang, mitug) {
+var createMedicalLocation = function (lang, mitug, animation) {
     var args = [
         {
             lang: 'Hebrew',
@@ -9839,7 +9901,7 @@ var createMedicalLocation = function (lang, mitug) {
             iconId: 'Medical Clinic'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 var createSportsIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     var iconLayer = createIconBase(name);
@@ -10214,7 +10276,7 @@ var createSportsIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
     return iconLayer;
 };
-var createSportsLocation = function (lang, mitug) {
+var createSportsLocation = function (lang, mitug, animation) {
     var args = [
         {
             lang: 'Hebrew',
@@ -10257,7 +10319,7 @@ var createSportsLocation = function (lang, mitug) {
             iconId: 'Sports'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 var createUniversityIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     var iconLayer = createIconBase(name);
@@ -10381,7 +10443,7 @@ var createUniversityIcon = function (iconPos, iconAnchor, iconScale, name, mitug
     setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
     return iconLayer;
 };
-var createUniversityLocation = function (lang, mitug) {
+var createUniversityLocation = function (lang, mitug, animation) {
     var args = [
         {
             lang: 'Hebrew',
@@ -10423,7 +10485,7 @@ var createUniversityLocation = function (lang, mitug) {
             iconId: 'University'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 var createMosqueIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     var iconLayer = createIconBase(name);
@@ -10870,7 +10932,7 @@ var createMosqueIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
     return iconLayer;
 };
-var createMosqueLocation = function (lang, mitug) {
+var createMosqueLocation = function (lang, mitug, animation) {
     var args = [
         {
             lang: 'Hebrew',
@@ -10912,7 +10974,7 @@ var createMosqueLocation = function (lang, mitug) {
             iconId: 'Mosque'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     var iconLayer = createIconBase(name);
@@ -14349,7 +14411,7 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name, mitug
     setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
     return iconLayer;
 };
-var createUNBuildingLocation = function (lang, mitug) {
+var createUNBuildingLocation = function (lang, mitug, animation) {
     var args = [
         {
             lang: 'Hebrew',
@@ -14391,7 +14453,7 @@ var createUNBuildingLocation = function (lang, mitug) {
             iconId: 'U.N. Building'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 var createDiplomaticBuildingIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     var iconLayer = createIconBase(name);
@@ -14839,7 +14901,7 @@ var createDiplomaticBuildingIcon = function (iconPos, iconAnchor, iconScale, nam
     setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
     return iconLayer;
 };
-var createDiplomaticBuildingLocation = function (lang, mitug) {
+var createDiplomaticBuildingLocation = function (lang, mitug, animation) {
     var args = [
         {
             lang: 'Hebrew',
@@ -14881,7 +14943,7 @@ var createDiplomaticBuildingLocation = function (lang, mitug) {
             iconId: 'Diplomatic Building'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 var createGasStationIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     var iconLayer = createIconBase(name);
@@ -15039,7 +15101,7 @@ var createGasStationIcon = function (iconPos, iconAnchor, iconScale, name, mitug
     setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
     return iconLayer;
 };
-var createGasStationLocation = function (lang, mitug) {
+var createGasStationLocation = function (lang, mitug, animation) {
     var args = [
         {
             lang: 'Hebrew',
@@ -15081,7 +15143,7 @@ var createGasStationLocation = function (lang, mitug) {
             iconId: 'Gas Station'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 var createGovernmentBuildingIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     var iconLayer = createIconBase(name);
@@ -15562,7 +15624,7 @@ var createGovernmentBuildingIcon = function (iconPos, iconAnchor, iconScale, nam
     setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
     return iconLayer;
 };
-var createGovernmentBuildingLocation = function (lang, mitug) {
+var createGovernmentBuildingLocation = function (lang, mitug, animation) {
     var args = [
         {
             lang: 'Hebrew',
@@ -15598,14 +15660,14 @@ var createGovernmentBuildingLocation = function (lang, mitug) {
             tracking: -19,
             textPos: [918, 540],
             textAnchor: [197.2936, -11.3438],
-            bgSize: [512, 91],
-            iconPos: [1164.7981, 544.6018],
+            bgSize: [512, 105],
+            iconPos: [1164.7981, 539.6018],
             iconAnchor: [0, 0],
             iconScale: 83,
             iconId: 'Government Building'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 var createPumpingStationIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     var iconLayer = createIconBase(name);
@@ -15734,7 +15796,7 @@ var createPumpingStationIcon = function (iconPos, iconAnchor, iconScale, name, m
     setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
     return iconLayer;
 };
-var createPumpingStationLocation = function (lang, mitug) {
+var createPumpingStationLocation = function (lang, mitug, animation) {
     var args = [
         {
             lang: 'Hebrew',
@@ -15776,7 +15838,7 @@ var createPumpingStationLocation = function (lang, mitug) {
             iconId: 'Pumping Station'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 var createPoliceIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     var iconLayer = createIconBase(name);
@@ -15950,7 +16012,7 @@ var createPoliceIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
     return iconLayer;
 };
-var createPoliceLocation = function (lang, mitug) {
+var createPoliceLocation = function (lang, mitug, animation) {
     var args = [
         {
             lang: 'Hebrew',
@@ -15992,7 +16054,7 @@ var createPoliceLocation = function (lang, mitug) {
             iconId: 'Police'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 var createWaterFacilityIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     var iconLayer = createIconBase(name);
@@ -16038,7 +16100,7 @@ var createWaterFacilityIcon = function (iconPos, iconAnchor, iconScale, name, mi
     setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
     return iconLayer;
 };
-var createWaterFacilityLocation = function (lang, mitug) {
+var createWaterFacilityLocation = function (lang, mitug, animation) {
     var args = [
         {
             lang: 'Hebrew',
@@ -16080,7 +16142,7 @@ var createWaterFacilityLocation = function (lang, mitug) {
             iconId: 'Water Facility'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 var createResidentialNeighborhoodIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     var iconLayer = createIconBase(name);
@@ -16327,7 +16389,7 @@ var createResidentialNeighborhoodIcon = function (iconPos, iconAnchor, iconScale
     setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
     return iconLayer;
 };
-var createResidentialNeighborhoodLocation = function (lang, mitug) {
+var createResidentialNeighborhoodLocation = function (lang, mitug, animation) {
     var args = [
         {
             lang: 'Hebrew',
@@ -16370,7 +16432,7 @@ var createResidentialNeighborhoodLocation = function (lang, mitug) {
             iconId: 'Residential Neighborhood'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 var createAmusementParkIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     var iconLayer = createIconBase(name);
@@ -16608,7 +16670,7 @@ var createAmusementParkIcon = function (iconPos, iconAnchor, iconScale, name, mi
     setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
     return iconLayer;
 };
-var createAmusementParkLocation = function (lang, mitug) {
+var createAmusementParkLocation = function (lang, mitug, animation) {
     var args = [
         {
             lang: 'Hebrew',
@@ -16651,7 +16713,7 @@ var createAmusementParkLocation = function (lang, mitug) {
             iconId: 'Amusement Park'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 var createHotelIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     var iconLayer = createIconBase(name);
@@ -16763,7 +16825,7 @@ var createHotelIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
     return iconLayer;
 };
-var createHotelLocation = function (lang, mitug) {
+var createHotelLocation = function (lang, mitug, animation) {
     var args = [
         {
             lang: 'Hebrew',
@@ -16806,7 +16868,7 @@ var createHotelLocation = function (lang, mitug) {
             iconId: 'Hotel'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 var createSchoolIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     var iconLayer = createIconBase(name);
@@ -16931,7 +16993,7 @@ var createSchoolIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
     return iconLayer;
 };
-var createSchoolLocation = function (lang, mitug) {
+var createSchoolLocation = function (lang, mitug, animation) {
     var args = [
         {
             lang: 'Hebrew',
@@ -16974,7 +17036,7 @@ var createSchoolLocation = function (lang, mitug) {
             iconId: 'School'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 var createStadiumIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     var iconLayer = createIconBase(name);
@@ -17283,7 +17345,7 @@ var createStadiumIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
     return iconLayer;
 };
-var createStadiumLocation = function (lang, mitug) {
+var createStadiumLocation = function (lang, mitug, animation) {
     var args = [
         {
             lang: 'Hebrew',
@@ -17326,7 +17388,7 @@ var createStadiumLocation = function (lang, mitug) {
             iconId: 'Stadium'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 var createTourismAttractionIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     var iconLayer = createIconBase(name);
@@ -17527,7 +17589,7 @@ var createTourismAttractionIcon = function (iconPos, iconAnchor, iconScale, name
     setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
     return iconLayer;
 };
-var createTourismAttractionLocation = function (lang, mitug) {
+var createTourismAttractionLocation = function (lang, mitug, animation) {
     var args = [
         {
             lang: 'Hebrew',
@@ -17570,7 +17632,7 @@ var createTourismAttractionLocation = function (lang, mitug) {
             iconId: 'Tourism Attraction'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 var createCommunicationAntennaIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     var iconLayer = createIconBase(name);
@@ -17687,7 +17749,7 @@ var createCommunicationAntennaIcon = function (iconPos, iconAnchor, iconScale, n
     setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
     return iconLayer;
 };
-var createCommunicationAntennaLocation = function (lang, mitug) {
+var createCommunicationAntennaLocation = function (lang, mitug, animation) {
     var args = [
         {
             lang: 'Hebrew',
@@ -17730,9 +17792,9 @@ var createCommunicationAntennaLocation = function (lang, mitug) {
             iconId: 'Communication Antenna'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
-var createEducationAndCultureSiteLocation = function (lang, mitug) {
+var createEducationAndCultureSiteLocation = function (lang, mitug, animation) {
     var args = [
         {
             lang: 'Hebrew',
@@ -17775,9 +17837,9 @@ var createEducationAndCultureSiteLocation = function (lang, mitug) {
             iconId: 'Education and Culture Site'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
-var createHospitalLocation = function (lang, mitug) {
+var createHospitalLocation = function (lang, mitug, animation) {
     var args = [
         {
             lang: 'Hebrew',
@@ -17820,9 +17882,9 @@ var createHospitalLocation = function (lang, mitug) {
             iconId: 'Hospital'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
-var createCollegeLocation = function (lang, mitug) {
+var createCollegeLocation = function (lang, mitug, animation) {
     var args = [
         {
             lang: 'Hebrew',
@@ -17865,9 +17927,9 @@ var createCollegeLocation = function (lang, mitug) {
             iconId: 'College'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
-var createLocationFromId = function (id, lang, mitug) {
+var createLocationFromId = function (id, lang, mitug, animation) {
     app.beginUndoGroup("Caspion: Create Location - ".concat(id));
     var comp = app.project.activeItem;
     if (!comp || !(comp instanceof CompItem)) {
@@ -17876,73 +17938,73 @@ var createLocationFromId = function (id, lang, mitug) {
     }
     switch (id) {
         case 'Kindergarden':
-            createKindergardenLocation(lang, mitug);
+            createKindergardenLocation(lang, mitug, animation);
             break;
         case 'Medical Clinic':
-            createMedicalLocation(lang, mitug);
+            createMedicalLocation(lang, mitug, animation);
             break;
         case 'Sports':
-            createSportsLocation(lang, mitug);
+            createSportsLocation(lang, mitug, animation);
             break;
         case 'University':
-            createUniversityLocation(lang, mitug);
+            createUniversityLocation(lang, mitug, animation);
             break;
         case 'Mosque':
-            createMosqueLocation(lang, mitug);
+            createMosqueLocation(lang, mitug, animation);
             break;
         case 'U.N. Building':
-            createUNBuildingLocation(lang, mitug);
+            createUNBuildingLocation(lang, mitug, animation);
             break;
         case 'Diplomatic Building':
-            createDiplomaticBuildingLocation(lang, mitug);
+            createDiplomaticBuildingLocation(lang, mitug, animation);
             break;
         case 'Gas Station':
-            createGasStationLocation(lang, mitug);
+            createGasStationLocation(lang, mitug, animation);
             break;
         case 'Government Building':
-            createGovernmentBuildingLocation(lang, mitug);
+            createGovernmentBuildingLocation(lang, mitug, animation);
             break;
         case 'Factory':
             alert('...');
             break;
         case 'Pumping Station':
-            createPumpingStationLocation(lang, mitug);
+            createPumpingStationLocation(lang, mitug, animation);
             break;
         case 'Police':
-            createPoliceLocation(lang, mitug);
+            createPoliceLocation(lang, mitug, animation);
             break;
         case 'Water Facility':
-            createWaterFacilityLocation(lang, mitug);
+            createWaterFacilityLocation(lang, mitug, animation);
             break;
         case 'Residential Neighborhood':
-            createResidentialNeighborhoodLocation(lang, mitug);
+            createResidentialNeighborhoodLocation(lang, mitug, animation);
             break;
         case 'Amusement Park':
-            createAmusementParkLocation(lang, mitug);
+            createAmusementParkLocation(lang, mitug, animation);
             break;
         case 'Hotel':
-            createHotelLocation(lang, mitug);
+            createHotelLocation(lang, mitug, animation);
             break;
         case 'School':
-            createSchoolLocation(lang, mitug);
+            createSchoolLocation(lang, mitug, animation);
             break;
         case 'Stadium':
-            createStadiumLocation(lang, mitug);
+            createStadiumLocation(lang, mitug, animation);
             break;
         case 'Tourism Attraction':
-            createTourismAttractionLocation(lang, mitug);
+            createTourismAttractionLocation(lang, mitug, animation);
             break;
         case 'Communication Antenna':
-            createCommunicationAntennaLocation(lang, mitug);
+            createCommunicationAntennaLocation(lang, mitug, animation);
             break;
         case 'Education and Culture Site':
-            createEducationAndCultureSiteLocation(lang, mitug);
+            createEducationAndCultureSiteLocation(lang, mitug, animation);
             break;
         case 'Hospital':
-            createHospitalLocation(lang, mitug);
+            createHospitalLocation(lang, mitug, animation);
             break;
         case 'College':
-            createCollegeLocation(lang, mitug);
+            createCollegeLocation(lang, mitug, animation);
             break;
     }
     app.endUndoGroup();
@@ -18467,13 +18529,25 @@ var createLocationsUI = function (tpanel) {
     var mitugDD = mitugDDGrp.add('dropdownlist', undefined, mitugim);
     mitugDD.preferredSize[0] = 100;
     mitugDD.selection = 0;
+    var animationDDGrp = dropdownsGrp.add('group');
+    animationDDGrp.add('statictext', undefined, 'Animation:');
+    var animationTypes = [
+        'None',
+        'Open',
+        'Scale',
+        'Scale & Open'
+    ];
+    var animationDD = animationDDGrp.add('dropdownlist', undefined, animationTypes);
+    animationDD.preferredSize[0] = 100;
+    animationDD.selection = 0;
     var locationsCreateBtn = locationsGrp.add('button', undefined, 'Create Location');
     locationsCreateBtn.preferredSize[0] = 100;
     locationsCreateBtn.onClick = function () {
         var id = locationsDD.selection.toString();
         var lang = langDD.selection.toString();
         var mitug = mitugDD.selection.toString();
-        createLocationFromId(id, lang, mitug);
+        var animation = animationDD.selection.toString();
+        createLocationFromId(id, lang, mitug, animation);
     };
     return { locTab: locTab, dropdownsGrp: dropdownsGrp };
 };

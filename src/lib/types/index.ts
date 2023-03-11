@@ -4,6 +4,8 @@ type Lingo = 'Hebrew' | 'Arabic' | 'English';
 
 type Mitug = 'Pakmaz' | 'Gaza' | 'Lebanon';
 
+type LocationAnimation = 'None' | 'Scale' | 'Open' | 'Scale & Open';
+
 type CaspionFont = 'Narkis' | 'Almoni' | 'Trade Gothic' | 'Droid' | 'Janna';
 
 type TextAnimation = 'Y Position' | 'X Position' | 'Scale' | 'Opacity';
@@ -107,6 +109,12 @@ type CreateIconFn = (
     iconColor: string,
     hasCircle: boolean,
     scale: boolean
+) => void;
+
+type CreateLocationFn = (
+    lang: Lingo,
+    mitug: Mitug,
+    animation: LocationAnimation
 ) => void;
 
 type CreateLocationIconFn = (

@@ -130,13 +130,13 @@ const createAnimatedMap = (
 
     fillOpacity.setTemporalEaseAtKey(
         1,
-        [new KeyframeEase(0.5, 33)],
-        [new KeyframeEase(0.5, 33)]
+        [new KeyframeEase(0, 33)],
+        [new KeyframeEase(0, 33)]
     );
     fillOpacity.setTemporalEaseAtKey(
         2,
-        [new KeyframeEase(0.5, 33)],
-        [new KeyframeEase(0.5, 33)]
+        [new KeyframeEase(0, 33)],
+        [new KeyframeEase(0, 33)]
     );
 
     const myStroke = contents
@@ -184,13 +184,13 @@ const createAnimatedMap = (
 
     trimPathsEnd.setTemporalEaseAtKey(
         1,
-        [new KeyframeEase(0.5, 33)],
-        [new KeyframeEase(0.5, 33)]
+        [new KeyframeEase(0, 33)],
+        [new KeyframeEase(0, 33)]
     );
     trimPathsEnd.setTemporalEaseAtKey(
         2,
-        [new KeyframeEase(0.5, 66)],
-        [new KeyframeEase(0.5, 66)]
+        [new KeyframeEase(0, 66)],
+        [new KeyframeEase(0, 66)]
     );
 };
 
@@ -291,7 +291,7 @@ const scaleWithOvershoot = (layers: Layer[]): void => {
             origVal
         );
 
-        const easeIn = new KeyframeEase(0.5, 66);
+        const easeIn = new KeyframeEase(0, 66);
         const easeOut = new KeyframeEase(0.75, 66);
         scaleProp.setTemporalEaseAtKey(
             beforeKeys + 1,

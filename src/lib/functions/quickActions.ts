@@ -73,13 +73,13 @@ const createTvaiStroke = (): void => {
 
     trimPathsEnd.setTemporalEaseAtKey(
         1,
-        [new KeyframeEase(0.5, 33)],
-        [new KeyframeEase(0.5, 33)]
+        [new KeyframeEase(0, 33)],
+        [new KeyframeEase(0, 33)]
     );
     trimPathsEnd.setTemporalEaseAtKey(
         2,
-        [new KeyframeEase(0.5, 88)],
-        [new KeyframeEase(0.5, 88)]
+        [new KeyframeEase(0, 88)],
+        [new KeyframeEase(0, 88)]
     );
 
     layer
@@ -602,8 +602,8 @@ const createCountingText = (): void => {
     numValProp.setValueAtTime(layer.inPoint, 0);
     numValProp.setValueAtTime((1 / comp.frameRate) * 40 + layer.inPoint, 99);
 
-    numValProp.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 20)]);
-    numValProp.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 75)]);
+    numValProp.setTemporalEaseAtKey(1, [new KeyframeEase(0, 20)]);
+    numValProp.setTemporalEaseAtKey(2, [new KeyframeEase(0, 75)]);
 
     app.endUndoGroup();
 };
@@ -688,13 +688,13 @@ const createAnimatedFrame = (): void => {
 
     trimPathsEnd.setTemporalEaseAtKey(
         1,
-        [new KeyframeEase(0.5, 34)],
-        [new KeyframeEase(0.5, 34)]
+        [new KeyframeEase(0, 34)],
+        [new KeyframeEase(0, 34)]
     );
     trimPathsEnd.setTemporalEaseAtKey(
         2,
-        [new KeyframeEase(0.5, 92)],
-        [new KeyframeEase(0.5, 92)]
+        [new KeyframeEase(0, 92)],
+        [new KeyframeEase(0, 92)]
     );
 
     const trimPathsOffset = trimPathsGrp.property(
@@ -705,13 +705,13 @@ const createAnimatedFrame = (): void => {
 
     trimPathsOffset.setTemporalEaseAtKey(
         1,
-        [new KeyframeEase(0.5, 24)],
-        [new KeyframeEase(0.5, 24)]
+        [new KeyframeEase(0, 24)],
+        [new KeyframeEase(0, 24)]
     );
     trimPathsOffset.setTemporalEaseAtKey(
         2,
-        [new KeyframeEase(0.5, 72)],
-        [new KeyframeEase(0.5, 72)]
+        [new KeyframeEase(0, 72)],
+        [new KeyframeEase(0, 72)]
     );
 
     app.endUndoGroup();
@@ -829,13 +829,13 @@ const createTatzaPath = (): void => {
 
     trimPathsEnd.setTemporalEaseAtKey(
         1,
-        [new KeyframeEase(0.5, 33)],
-        [new KeyframeEase(0.5, 33)]
+        [new KeyframeEase(0, 33)],
+        [new KeyframeEase(0, 33)]
     );
     trimPathsEnd.setTemporalEaseAtKey(
         2,
-        [new KeyframeEase(0.5, 88)],
-        [new KeyframeEase(0.5, 88)]
+        [new KeyframeEase(0, 88)],
+        [new KeyframeEase(0, 88)]
     );
 
     layer
@@ -905,8 +905,8 @@ const recScaleX = (): void => {
     scaleProp.setValueAtTime(0, [0, 100]);
     scaleProp.setValueAtTime((1 / comp.frameRate) * 14, [100, 100]);
 
-    const ease1 = new KeyframeEase(0.5, 65);
-    const ease2 = new KeyframeEase(0.5, 92);
+    const ease1 = new KeyframeEase(0, 65);
+    const ease2 = new KeyframeEase(0, 92);
     scaleProp.setTemporalEaseAtKey(
         1,
         [ease1, ease1, ease1],
@@ -988,12 +988,12 @@ const createTextOnLocation = (): void => {
         [100, 100]
     );
 
-    const scaleEase1 = new KeyframeEase(0.5, 56);
-    const scaleEase2 = new KeyframeEase(0.5, 57);
-    const scaleEase3 = new KeyframeEase(0.5, 52.5);
-    const scaleEase4 = new KeyframeEase(0.5, 48);
-    const scaleEase5 = new KeyframeEase(0.5, 45);
-    const scaleEase6 = new KeyframeEase(0.5, 47);
+    const scaleEase1 = new KeyframeEase(0, 56);
+    const scaleEase2 = new KeyframeEase(0, 57);
+    const scaleEase3 = new KeyframeEase(0, 52.5);
+    const scaleEase4 = new KeyframeEase(0, 48);
+    const scaleEase5 = new KeyframeEase(0, 45);
+    const scaleEase6 = new KeyframeEase(0, 47);
     circleScale.setTemporalEaseAtKey(
         1,
         [scaleEase1, scaleEase1, scaleEase1],
@@ -1093,13 +1093,13 @@ const createTextOnLocation = (): void => {
 
     trimPathsEnd.setTemporalEaseAtKey(
         1,
-        [new KeyframeEase(0.5, 44)],
-        [new KeyframeEase(0.5, 44)]
+        [new KeyframeEase(0, 44)],
+        [new KeyframeEase(0, 44)]
     );
     trimPathsEnd.setTemporalEaseAtKey(
         2,
-        [new KeyframeEase(0.5, 93)],
-        [new KeyframeEase(0.5, 93)]
+        [new KeyframeEase(0, 93)],
+        [new KeyframeEase(0, 93)]
     );
 
     const linePos = lineLayer
@@ -1158,8 +1158,8 @@ const createTextOnLocation = (): void => {
         [467, 169]
     );
 
-    const easeOut = new KeyframeEase(0.5, 44);
-    const easeIn = new KeyframeEase(0.5, 93);
+    const easeOut = new KeyframeEase(0, 44);
+    const easeIn = new KeyframeEase(0, 93);
     recRectangleSize.setTemporalEaseAtKey(
         1,
         [easeOut, easeOut],
@@ -1275,13 +1275,13 @@ const createArrow = (): void => {
 
     trimPathsEnd.setTemporalEaseAtKey(
         1,
-        [new KeyframeEase(0.5, 30)],
-        [new KeyframeEase(0.5, 30)]
+        [new KeyframeEase(0, 30)],
+        [new KeyframeEase(0, 30)]
     );
     trimPathsEnd.setTemporalEaseAtKey(
         2,
-        [new KeyframeEase(0.5, 94)],
-        [new KeyframeEase(0.5, 94)]
+        [new KeyframeEase(0, 94)],
+        [new KeyframeEase(0, 94)]
     );
 
     const linePos = lineLayer
@@ -1349,13 +1349,13 @@ const createArrow = (): void => {
 
     pointerXPos.setTemporalEaseAtKey(
         1,
-        [new KeyframeEase(0.5, 30)],
-        [new KeyframeEase(0.5, 30)]
+        [new KeyframeEase(0, 30)],
+        [new KeyframeEase(0, 30)]
     );
     pointerXPos.setTemporalEaseAtKey(
         2,
-        [new KeyframeEase(0.5, 94)],
-        [new KeyframeEase(0.5, 94)]
+        [new KeyframeEase(0, 94)],
+        [new KeyframeEase(0, 94)]
     );
 
     const pointerScale = pointerLayer
@@ -1374,40 +1374,40 @@ const createArrow = (): void => {
     pointerScale.setTemporalEaseAtKey(
         1,
         [
-            new KeyframeEase(0.5, 46),
-            new KeyframeEase(0.5, 46),
-            new KeyframeEase(0.5, 46)
+            new KeyframeEase(0, 46),
+            new KeyframeEase(0, 46),
+            new KeyframeEase(0, 46)
         ],
         [
-            new KeyframeEase(0.5, 46),
-            new KeyframeEase(0.5, 46),
-            new KeyframeEase(0.5, 46)
+            new KeyframeEase(0, 46),
+            new KeyframeEase(0, 46),
+            new KeyframeEase(0, 46)
         ]
     );
     pointerScale.setTemporalEaseAtKey(
         2,
         [
-            new KeyframeEase(0.5, 63),
-            new KeyframeEase(0.5, 63),
-            new KeyframeEase(0.5, 63)
+            new KeyframeEase(0, 63),
+            new KeyframeEase(0, 63),
+            new KeyframeEase(0, 63)
         ],
         [
-            new KeyframeEase(0.5, 30),
-            new KeyframeEase(0.5, 30),
-            new KeyframeEase(0.5, 30)
+            new KeyframeEase(0, 30),
+            new KeyframeEase(0, 30),
+            new KeyframeEase(0, 30)
         ]
     );
     pointerScale.setTemporalEaseAtKey(
         3,
         [
-            new KeyframeEase(0.5, 94),
-            new KeyframeEase(0.5, 94),
-            new KeyframeEase(0.5, 94)
+            new KeyframeEase(0, 94),
+            new KeyframeEase(0, 94),
+            new KeyframeEase(0, 94)
         ],
         [
-            new KeyframeEase(0.5, 94),
-            new KeyframeEase(0.5, 94),
-            new KeyframeEase(0.5, 94)
+            new KeyframeEase(0, 94),
+            new KeyframeEase(0, 94),
+            new KeyframeEase(0, 94)
         ]
     );
 
@@ -1499,7 +1499,7 @@ const createMikra = (): void => {
         comp.height
     );
 
-    layerYPos.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 88)]);
+    layerYPos.setTemporalEaseAtKey(2, [new KeyframeEase(0, 88)]);
 
     const layerAnchor = bgLayer
         .property('ADBE Transform Group')
