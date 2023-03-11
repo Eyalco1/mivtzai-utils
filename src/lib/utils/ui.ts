@@ -303,7 +303,7 @@ const createHelpWindow = () => {
     warnStaticGrp.add(
         'statictext',
         undefined,
-        '☛ You may need to restart the script to see the changes'
+        '☛ You may need to close and open the script to see the changes'
     );
     warnStaticGrp.alignment = ['fill', 'bottom'];
 

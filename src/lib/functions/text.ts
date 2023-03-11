@@ -11,6 +11,11 @@ const createText = (
         return;
     }
 
+    if (!text) {
+        alert('Please Type Some Text');
+        return;
+    }
+
     app.beginUndoGroup('@@name: Create Text');
 
     const textLayer = comp.layers.addText();
@@ -19,13 +24,14 @@ const createText = (
         .property('ADBE Text Document') as Property<any>;
 
     srcText.setValue(text);
-    const textDoc = srcText.value;
+    const textDoc = srcText.value as TextDocument;
     textDoc.font = getFontFromName(font);
     textDoc.fontSize = 100;
     textDoc.applyFill = true;
     textDoc.fillColor = [1, 1, 1];
     textDoc.applyStroke = false;
     textDoc.tracking = 0;
+    textDoc.justification = ParagraphJustification.LEFT_JUSTIFY;
     srcText.setValue(textDoc);
 
     if (addMask) {

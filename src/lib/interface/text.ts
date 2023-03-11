@@ -4,7 +4,13 @@ const createTextUI = (
 ): { textTab: Tab; optionsGrp: Group; textDropdownsGrp: Group } => {
     const textTab = tpanel.add('tab', undefined, ['Text']);
 
-    const mainTextGrp = textTab.add('group');
+    const textTabGrp = textTab.add('group');
+    textTabGrp.alignChildren = 'left';
+    textTabGrp.alignment = 'left';
+    textTabGrp.orientation = 'column';
+    textTabGrp.margins = 4;
+
+    const mainTextGrp = textTabGrp.add('group');
     mainTextGrp.alignChildren = ['fill', 'top'];
     mainTextGrp.alignment = ['fill', 'top'];
 
@@ -14,10 +20,10 @@ const createTextUI = (
     mainTextEdit.preferredSize = [160, 60];
     mainTextEdit.alignment = ['fill', 'top'];
 
-    const optionsGrp = textTab.add('group');
+    const optionsGrp = textTabGrp.add('group');
     // @ts-ignore
-    optionsGrp.margins.top = optionsGrp.margins.bottom = 14;
-    optionsGrp.alignment = 'center';
+    optionsGrp.margins.top = 8;
+    optionsGrp.alignment = 'left';
 
     const textDropdownsGrp = optionsGrp.add('group');
     textDropdownsGrp.alignChildren = ['left', 'center'];
@@ -63,14 +69,16 @@ const createTextUI = (
     animationDD.selection = 0;
 
     const checksGrp = optionsGrp.add('group');
-    checksGrp.alignChildren = ['left', 'center'];
+    checksGrp.alignChildren = 'left';
+    checksGrp.alignment = 'left';
     checksGrp.spacing = 10;
     checksGrp.margins = 0;
 
     const addTextEvoCheck = checksGrp.add('checkbox', undefined, 'Text Evo');
     const maskCheck = checksGrp.add('checkbox', undefined, 'Mask');
 
-    const createBtn = textTab.add('button', undefined, 'Create Text');
+    const createBtn = textTabGrp.add('button', undefined, 'Create Text');
+    createBtn.alignment = 'left';
 
     animationDDGrp.enabled = addTextEvoCheck.value;
     addTextEvoCheck.onClick = () => {

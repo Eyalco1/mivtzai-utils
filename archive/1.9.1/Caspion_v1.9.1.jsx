@@ -2129,6 +2129,10 @@ var createText = function (text, font, animation, addTextEvo, addMask) {
         alert('No Composition Selected');
         return;
     }
+    if (!text) {
+        alert('Please Type Some Text');
+        return;
+    }
     app.beginUndoGroup('Caspion: Create Text');
     var textLayer = comp.layers.addText();
     var srcText = textLayer
@@ -2142,6 +2146,7 @@ var createText = function (text, font, animation, addTextEvo, addMask) {
     textDoc.fillColor = [1, 1, 1];
     textDoc.applyStroke = false;
     textDoc.tracking = 0;
+    textDoc.justification = ParagraphJustification.LEFT_JUSTIFY;
     srcText.setValue(textDoc);
     if (addMask) {
         var id = app.findMenuCommandId('New Mask');
@@ -18358,7 +18363,7 @@ var createHelpWindow = function () {
         });
     };
     var warnStaticGrp = settingsTab.add('group');
-    warnStaticGrp.add('statictext', undefined, '☛ You may need to restart the script to see the changes');
+    warnStaticGrp.add('statictext', undefined, '☛ You may need to close and open the script to see the changes');
     warnStaticGrp.alignment = ['fill', 'bottom'];
     var okCancelBtnsGrp = helpWin.add('group');
     okCancelBtnsGrp.spacing = 250;
@@ -18448,7 +18453,12 @@ var createQAUI = function (tpanel) {
 };
 var createTextUI = function (tpanel) {
     var textTab = tpanel.add('tab', undefined, ['Text']);
-    var mainTextGrp = textTab.add('group');
+    var textTabGrp = textTab.add('group');
+    textTabGrp.alignChildren = 'left';
+    textTabGrp.alignment = 'left';
+    textTabGrp.orientation = 'column';
+    textTabGrp.margins = 4;
+    var mainTextGrp = textTabGrp.add('group');
     mainTextGrp.alignChildren = ['fill', 'top'];
     mainTextGrp.alignment = ['fill', 'top'];
     var mainTextEdit = mainTextGrp.add('edittext', undefined, '', {
@@ -18456,9 +18466,9 @@ var createTextUI = function (tpanel) {
     });
     mainTextEdit.preferredSize = [160, 60];
     mainTextEdit.alignment = ['fill', 'top'];
-    var optionsGrp = textTab.add('group');
-    optionsGrp.margins.top = optionsGrp.margins.bottom = 14;
-    optionsGrp.alignment = 'center';
+    var optionsGrp = textTabGrp.add('group');
+    optionsGrp.margins.top = 8;
+    optionsGrp.alignment = 'left';
     var textDropdownsGrp = optionsGrp.add('group');
     textDropdownsGrp.alignChildren = ['left', 'center'];
     textDropdownsGrp.spacing = 10;
@@ -18491,12 +18501,14 @@ var createTextUI = function (tpanel) {
     var animationDD = animationDDGrp.add('dropdownlist', undefined, animationDDList);
     animationDD.selection = 0;
     var checksGrp = optionsGrp.add('group');
-    checksGrp.alignChildren = ['left', 'center'];
+    checksGrp.alignChildren = 'left';
+    checksGrp.alignment = 'left';
     checksGrp.spacing = 10;
     checksGrp.margins = 0;
     var addTextEvoCheck = checksGrp.add('checkbox', undefined, 'Text Evo');
     var maskCheck = checksGrp.add('checkbox', undefined, 'Mask');
-    var createBtn = textTab.add('button', undefined, 'Create Text');
+    var createBtn = textTabGrp.add('button', undefined, 'Create Text');
+    createBtn.alignment = 'left';
     animationDDGrp.enabled = addTextEvoCheck.value;
     addTextEvoCheck.onClick = function () {
         animationDDGrp.enabled = addTextEvoCheck.value;
@@ -18595,9 +18607,17 @@ var createLocationsUI = function (tpanel) {
     locationsGrp.margins = 4;
     locationsGrp.margins.left = 10;
     var dropdownsGrp = locationsGrp.add('group');
-    dropdownsGrp.alignChildren = 'left';
-    dropdownsGrp.alignment = 'left';
-    var locationsDDGrp = dropdownsGrp.add('group');
+    var locLangDDGrp = dropdownsGrp.add('group');
+    var mitugAnimDDGrp = dropdownsGrp.add('group');
+    dropdownsGrp.alignChildren =
+        locLangDDGrp.alignChildren =
+            mitugAnimDDGrp.alignChildren =
+                'left';
+    dropdownsGrp.alignment =
+        locLangDDGrp.alignment =
+            mitugAnimDDGrp.alignment =
+                'left';
+    var locationsDDGrp = locLangDDGrp.add('group');
     locationsDDGrp.add('statictext', undefined, 'Location:');
     var locationsList = [
         'Kindergarden',
@@ -18626,19 +18646,19 @@ var createLocationsUI = function (tpanel) {
     var locationsDD = locationsDDGrp.add('dropdownlist', undefined, locationsList);
     locationsDD.preferredSize[0] = 100;
     locationsDD.selection = 0;
-    var langDDGrp = dropdownsGrp.add('group');
+    var langDDGrp = locLangDDGrp.add('group');
     langDDGrp.add('statictext', undefined, 'Language:');
     var langs = ['Hebrew', 'English', 'Arabic'];
     var langDD = langDDGrp.add('dropdownlist', undefined, langs);
     langDD.preferredSize[0] = 100;
     langDD.selection = 0;
-    var mitugDDGrp = dropdownsGrp.add('group');
+    var mitugDDGrp = mitugAnimDDGrp.add('group');
     mitugDDGrp.add('statictext', undefined, 'Mitug:');
     var mitugim = ['Gaza', 'Pakmaz', 'Lebanon'];
     var mitugDD = mitugDDGrp.add('dropdownlist', undefined, mitugim);
     mitugDD.preferredSize[0] = 100;
     mitugDD.selection = 0;
-    var animationDDGrp = dropdownsGrp.add('group');
+    var animationDDGrp = mitugAnimDDGrp.add('group');
     animationDDGrp.add('statictext', undefined, 'Animation:');
     var animationTypes = [
         'None',
@@ -18658,7 +18678,7 @@ var createLocationsUI = function (tpanel) {
         var animation = animationDD.selection.toString();
         createLocationFromId(id, lang, mitug, animation);
     };
-    return { locTab: locTab, dropdownsGrp: dropdownsGrp };
+    return { locTab: locTab, dropdownsGrp: dropdownsGrp, locLangDDGrp: locLangDDGrp, mitugAnimDDGrp: mitugAnimDDGrp };
 };
 var createTexturesUI = function (tpanel) {
     var texTab = tpanel.add('tab', undefined, ['Textures']);
@@ -18754,7 +18774,7 @@ var init = function (thisObj) {
     var _a = createQAUI(tpanel), qaTab = _a.qaTab, QABtnsGrp = _a.QABtnsGrp, bigRowOne = _a.bigRowOne, bigRowTwo = _a.bigRowTwo, bigRowThree = _a.bigRowThree;
     var _b = createTextUI(tpanel), textTab = _b.textTab, optionsGrp = _b.optionsGrp, textDropdownsGrp = _b.textDropdownsGrp;
     var _c = createIconsUI(tpanel), iconsTab = _c.iconsTab, iconCircleGrp = _c.iconCircleGrp, colorChecksGrp = _c.colorChecksGrp;
-    var _d = createLocationsUI(tpanel), locTab = _d.locTab, dropdownsGrp = _d.dropdownsGrp;
+    var _d = createLocationsUI(tpanel), locTab = _d.locTab, dropdownsGrp = _d.dropdownsGrp, locLangDDGrp = _d.locLangDDGrp, mitugAnimDDGrp = _d.mitugAnimDDGrp;
     var _e = createTexturesUI(tpanel), texTab = _e.texTab, dropdownChecksGrp = _e.dropdownChecksGrp;
     createSideBtns(qaTab, textTab, iconsTab, locTab, texTab);
     w.layout.layout(true);
@@ -18766,7 +18786,7 @@ var init = function (thisObj) {
                     bigRowThree.orientation =
                         w.size.width > 400 ? 'row' : 'column';
             QABtnsGrp.orientation =
-                w.size.width > 880 ? 'row' : 'column';
+                w.size.width > 940 ? 'row' : 'column';
             optionsGrp.orientation =
                 w.size.width > 450 ? 'row' : 'column';
             textDropdownsGrp.orientation =
@@ -18774,7 +18794,9 @@ var init = function (thisObj) {
             iconCircleGrp.orientation = colorChecksGrp.orientation =
                 w.size.width > 350 ? 'row' : 'column';
             dropdownsGrp.orientation =
-                w.size.width > 520 ? 'row' : 'column';
+                w.size.width > 380 ? 'row' : 'column';
+            locLangDDGrp.orientation = mitugAnimDDGrp.orientation =
+                w.size.width > 710 ? 'row' : 'column';
             dropdownChecksGrp.orientation =
                 w.size.width > 350 ? 'row' : 'column';
             w.layout.layout(true);

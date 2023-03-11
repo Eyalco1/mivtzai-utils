@@ -72,7 +72,8 @@ const init = (thisObj: typeof globalThis) => {
         createQAUI(tpanel);
     const { textTab, optionsGrp, textDropdownsGrp } = createTextUI(tpanel);
     const { iconsTab, iconCircleGrp, colorChecksGrp } = createIconsUI(tpanel);
-    const { locTab, dropdownsGrp } = createLocationsUI(tpanel);
+    const { locTab, dropdownsGrp, locLangDDGrp, mitugAnimDDGrp } =
+        createLocationsUI(tpanel);
     const { texTab, dropdownChecksGrp } = createTexturesUI(tpanel);
 
     createSideBtns(qaTab, textTab, iconsTab, locTab, texTab);
@@ -162,7 +163,7 @@ const init = (thisObj: typeof globalThis) => {
                 bigRowThree.orientation =
                     (<Dimension>w.size).width > 400 ? 'row' : 'column';
             QABtnsGrp.orientation =
-                (<Dimension>w.size).width > 880 ? 'row' : 'column';
+                (<Dimension>w.size).width > 940 ? 'row' : 'column';
             // Text
             optionsGrp.orientation =
                 (<Dimension>w.size).width > 450 ? 'row' : 'column';
@@ -173,7 +174,9 @@ const init = (thisObj: typeof globalThis) => {
                 (<Dimension>w.size).width > 350 ? 'row' : 'column';
             // Locations
             dropdownsGrp.orientation =
-                (<Dimension>w.size).width > 520 ? 'row' : 'column';
+                (<Dimension>w.size).width > 380 ? 'row' : 'column';
+            locLangDDGrp.orientation = mitugAnimDDGrp.orientation =
+                (<Dimension>w.size).width > 710 ? 'row' : 'column';
             // Textures
             dropdownChecksGrp.orientation =
                 (<Dimension>w.size).width > 350 ? 'row' : 'column';

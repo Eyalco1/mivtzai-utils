@@ -1,7 +1,12 @@
 // UI
 const createLocationsUI = (
     tpanel: TabbedPanel
-): { locTab: Tab; dropdownsGrp: Group } => {
+): {
+    locTab: Tab;
+    dropdownsGrp: Group;
+    locLangDDGrp: Group;
+    mitugAnimDDGrp: Group;
+} => {
     const locTab = tpanel.add('tab', undefined, ['Locations']);
 
     const locationsGrp = locTab.add('group');
@@ -13,10 +18,20 @@ const createLocationsUI = (
     locationsGrp.margins.left = 10;
 
     const dropdownsGrp = locationsGrp.add('group');
-    dropdownsGrp.alignChildren = 'left';
-    dropdownsGrp.alignment = 'left';
 
-    const locationsDDGrp = dropdownsGrp.add('group');
+    const locLangDDGrp = dropdownsGrp.add('group');
+    const mitugAnimDDGrp = dropdownsGrp.add('group');
+
+    dropdownsGrp.alignChildren =
+        locLangDDGrp.alignChildren =
+        mitugAnimDDGrp.alignChildren =
+            'left';
+    dropdownsGrp.alignment =
+        locLangDDGrp.alignment =
+        mitugAnimDDGrp.alignment =
+            'left';
+
+    const locationsDDGrp = locLangDDGrp.add('group');
     locationsDDGrp.add('statictext', undefined, 'Location:');
     const locationsList: LocationID[] = [
         'Kindergarden',
@@ -53,21 +68,21 @@ const createLocationsUI = (
     locationsDD.preferredSize[0] = 100;
     locationsDD.selection = 0;
 
-    const langDDGrp = dropdownsGrp.add('group');
+    const langDDGrp = locLangDDGrp.add('group');
     langDDGrp.add('statictext', undefined, 'Language:');
     const langs: Lingo[] = ['Hebrew', 'English', 'Arabic'];
     const langDD = langDDGrp.add('dropdownlist', undefined, langs);
     langDD.preferredSize[0] = 100;
     langDD.selection = 0;
 
-    const mitugDDGrp = dropdownsGrp.add('group');
+    const mitugDDGrp = mitugAnimDDGrp.add('group');
     mitugDDGrp.add('statictext', undefined, 'Mitug:');
     const mitugim: Mitug[] = ['Gaza', 'Pakmaz', 'Lebanon'];
     const mitugDD = mitugDDGrp.add('dropdownlist', undefined, mitugim);
     mitugDD.preferredSize[0] = 100;
     mitugDD.selection = 0;
 
-    const animationDDGrp = dropdownsGrp.add('group');
+    const animationDDGrp = mitugAnimDDGrp.add('group');
     animationDDGrp.add('statictext', undefined, 'Animation:');
     const animationTypes: LocationAnimation[] = [
         'None',
@@ -98,5 +113,5 @@ const createLocationsUI = (
         createLocationFromId(id, lang, mitug, animation);
     };
 
-    return { locTab, dropdownsGrp };
+    return { locTab, dropdownsGrp, locLangDDGrp, mitugAnimDDGrp };
 };
