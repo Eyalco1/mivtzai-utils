@@ -22,6 +22,7 @@ const createTexturesUI = (
         'Paper Dark',
         'Paper Medium',
         'Paper Light',
+        'Grunge',
         'Smoke',
         'Noise',
         'Dust'

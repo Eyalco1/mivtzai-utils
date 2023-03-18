@@ -20188,6 +20188,7 @@ var createTexturesUI = function (tpanel) {
         'Paper Dark',
         'Paper Medium',
         'Paper Light',
+        'Grunge',
         'Smoke',
         'Noise',
         'Dust'

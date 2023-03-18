@@ -72,7 +72,8 @@ type TextureID =
     | 'Paper Light'
     | 'Smoke'
     | 'Noise'
-    | 'Dust';
+    | 'Dust'
+    | 'Grunge';
 
 interface LocationArgs {
     lang: Lingo;
