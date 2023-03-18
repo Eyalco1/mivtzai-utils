@@ -1,3 +1,17 @@
+const BOILERPLATE_PREFS: Prefs = {
+    version: '@@version',
+    iconsLabelIndex: 5,
+    locsLabelIndex: 13,
+    texLabelIndex: 2,
+    showHelpTips: true,
+    iconColor1Name: 'Black',
+    iconColor1Hex: '#000000',
+    iconColor2Name: 'White',
+    iconColor2Hex: '#ffffff',
+    iconColor3Name: 'Red',
+    iconColor3Hex: '#c51818'
+};
+
 const getOS = (): OS => {
     if ($.os.indexOf('Win') != -1) return 'Win';
     return 'Mac';
@@ -48,31 +62,17 @@ const setUpPrefs = (): void => {
     createFolder(Folder(docsFolder + '/@@name/Prefs'));
     const myJSON = File(docsFolder + '/@@name/Prefs/Prefs.json');
 
-    const boilerplatePrefs: Prefs = {
-        version: '@@version',
-        iconsLabelIndex: 5,
-        locsLabelIndex: 13,
-        texLabelIndex: 2,
-        showHelpTips: true,
-        iconColor1Name: 'Black',
-        iconColor1Hex: '000000',
-        iconColor2Name: 'White',
-        iconColor2Hex: 'ffffff',
-        iconColor3Name: 'Red',
-        iconColor3Hex: 'c51818'
-    };
-
     if (myJSON.exists) {
         const parsedPrefs = parsePrefs();
         parsedPrefs.version = '@@version';
         myJSON.open('w');
         myJSON.write(
-            JSON.stringify({ ...boilerplatePrefs, ...parsedPrefs }, null, 2)
+            JSON.stringify({ ...BOILERPLATE_PREFS, ...parsedPrefs }, null, 2)
         );
         myJSON.close();
     } else {
         myJSON.open('w');
-        myJSON.write(JSON.stringify(boilerplatePrefs, null, 2));
+        myJSON.write(JSON.stringify(BOILERPLATE_PREFS, null, 2));
         myJSON.close();
     }
 };

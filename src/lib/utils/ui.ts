@@ -41,7 +41,11 @@ const createIconColorRow = (
     container: Group,
     colorName: string,
     colorHex: string
-): { colorNameEdit: EditText; colorHexStat: StaticText } => {
+): {
+    colorNameEdit: EditText;
+    colorHexStat: StaticText;
+    coloredBtn: IconButton;
+} => {
     const colorGrp = container.add('group');
     colorGrp.add('statictext', undefined, 'Name:');
     const colorNameEdit = colorGrp.add('edittext', undefined, colorName);
@@ -72,7 +76,7 @@ const createIconColorRow = (
             );
     };
 
-    return { colorNameEdit, colorHexStat };
+    return { colorNameEdit, colorHexStat, coloredBtn };
 };
 
 const createHelpWindow = () => {
@@ -99,7 +103,16 @@ const createHelpWindow = () => {
     // @ts-ignore
     labelSettingsGrp.margins.bottom = SETTINGS_SPACING;
 
-    labelSettingsGrp.add('statictext', undefined, '★ Label Colors ★');
+    const titleAndRestartGrp = labelSettingsGrp.add('group');
+    titleAndRestartGrp.spacing = 260;
+
+    titleAndRestartGrp.add('statictext', undefined, '★ Label Colors ★');
+    const restartBtn = titleAndRestartGrp.add(
+        'iconbutton',
+        undefined,
+        restartBinary,
+        { style: 'toolbutton' }
+    );
 
     // == Settings - Labels - Icons ==
     const iconlabelsSettingGrp = labelSettingsGrp.add('group');
@@ -259,26 +272,35 @@ const createHelpWindow = () => {
 
     iconColorsSettingsGrp.add('statictext', undefined, '★ Icon Colors ★');
 
-    const { colorNameEdit: colorName1Edit, colorHexStat: colorHex1Stat } =
-        createIconColorRow(
-            iconColorsSettingsGrp,
-            prefs.iconColor1Name,
-            prefs.iconColor1Hex
-        );
+    const {
+        colorNameEdit: colorName1Edit,
+        colorHexStat: colorHex1Stat,
+        coloredBtn: coloredBtn1
+    } = createIconColorRow(
+        iconColorsSettingsGrp,
+        prefs.iconColor1Name,
+        prefs.iconColor1Hex
+    );
 
-    const { colorNameEdit: colorName2Edit, colorHexStat: colorHex2Stat } =
-        createIconColorRow(
-            iconColorsSettingsGrp,
-            prefs.iconColor2Name,
-            prefs.iconColor2Hex
-        );
+    const {
+        colorNameEdit: colorName2Edit,
+        colorHexStat: colorHex2Stat,
+        coloredBtn: coloredBtn2
+    } = createIconColorRow(
+        iconColorsSettingsGrp,
+        prefs.iconColor2Name,
+        prefs.iconColor2Hex
+    );
 
-    const { colorNameEdit: colorName3Edit, colorHexStat: colorHex3Stat } =
-        createIconColorRow(
-            iconColorsSettingsGrp,
-            prefs.iconColor3Name,
-            prefs.iconColor3Hex
-        );
+    const {
+        colorNameEdit: colorName3Edit,
+        colorHexStat: colorHex3Stat,
+        coloredBtn: coloredBtn3
+    } = createIconColorRow(
+        iconColorsSettingsGrp,
+        prefs.iconColor3Name,
+        prefs.iconColor3Hex
+    );
 
     // === Settings - Help Tips ===
     const helpTipSettingGrp = settingsTab.add('group');
@@ -297,13 +319,78 @@ const createHelpWindow = () => {
         });
     };
 
-    const warnStaticGrp = settingsTab.add('group');
-    warnStaticGrp.add(
+    const warnRestartGrp = settingsTab.add('group');
+    warnRestartGrp.alignment = ['fill', 'bottom'];
+    warnRestartGrp.spacing = 40;
+    warnRestartGrp.add(
         'statictext',
         undefined,
         '☛ You may need to close and open the script to see the changes'
     );
-    warnStaticGrp.alignment = ['fill', 'bottom'];
+
+    restartBtn.onClick = () => {
+        iconLabelsDD.selection = BOILERPLATE_PREFS.iconsLabelIndex;
+        iconRandomCheck.value = BOILERPLATE_PREFS.iconsLabelRandom;
+        locLabelsDD.selection = BOILERPLATE_PREFS.locsLabelIndex;
+        locRandomCheck.value = BOILERPLATE_PREFS.locsLabelRandom;
+        texLabelsDD.selection = BOILERPLATE_PREFS.texLabelIndex;
+        texRandomCheck.value = BOILERPLATE_PREFS.texLabelRandom;
+        colorName1Edit.text = BOILERPLATE_PREFS.iconColor1Name;
+        colorHex1Stat.text = BOILERPLATE_PREFS.iconColor1Hex;
+        colorName2Edit.text = BOILERPLATE_PREFS.iconColor2Name;
+        colorHex2Stat.text = BOILERPLATE_PREFS.iconColor2Hex;
+        colorName3Edit.text = BOILERPLATE_PREFS.iconColor3Name;
+        colorHex3Stat.text = BOILERPLATE_PREFS.iconColor3Hex;
+        (<any>iconTheLabel).fillBrush = (<any>iconTheLabel).graphics.newBrush(
+            (<any>iconTheLabel).graphics.BrushType.SOLID_COLOR,
+            labelColors[BOILERPLATE_PREFS.iconsLabelIndex],
+            1
+        );
+        (<any>locTheLabel).fillBrush = (<any>locTheLabel).graphics.newBrush(
+            (<any>locTheLabel).graphics.BrushType.SOLID_COLOR,
+            labelColors[BOILERPLATE_PREFS.locsLabelIndex],
+            1
+        );
+        (<any>texTheLabel).fillBrush = (<any>texTheLabel).graphics.newBrush(
+            (<any>texTheLabel).graphics.BrushType.SOLID_COLOR,
+            labelColors[BOILERPLATE_PREFS.texLabelIndex],
+            1
+        );
+        iconRandomCheck.value = BOILERPLATE_PREFS.iconsLabelRandom;
+        locRandomCheck.value = BOILERPLATE_PREFS.locsLabelRandom;
+        texRandomCheck.value = BOILERPLATE_PREFS.texLabelRandom;
+        (<any>coloredBtn1).fillBrush = (<any>coloredBtn1).graphics.newBrush(
+            (<any>coloredBtn1).graphics.BrushType.SOLID_COLOR,
+            hexToRgb(BOILERPLATE_PREFS.iconColor1Hex),
+            1
+        );
+        (<any>coloredBtn2).fillBrush = (<any>coloredBtn2).graphics.newBrush(
+            (<any>coloredBtn2).graphics.BrushType.SOLID_COLOR,
+            hexToRgb(BOILERPLATE_PREFS.iconColor2Hex),
+            1
+        );
+        (<any>coloredBtn3).fillBrush = (<any>coloredBtn3).graphics.newBrush(
+            (<any>coloredBtn3).graphics.BrushType.SOLID_COLOR,
+            hexToRgb(BOILERPLATE_PREFS.iconColor3Hex),
+            1
+        );
+        iconTheLabel.enabled =
+            locTheLabel.enabled =
+            texTheLabel.enabled =
+            coloredBtn1.enabled =
+            coloredBtn2.enabled =
+            coloredBtn3.enabled =
+                false;
+        iconTheLabel.enabled =
+            locTheLabel.enabled =
+            texTheLabel.enabled =
+            coloredBtn1.enabled =
+            coloredBtn2.enabled =
+            coloredBtn3.enabled =
+                true;
+
+        showHelpTipsCheck.value = BOILERPLATE_PREFS.showHelpTips;
+    };
 
     // === Ok And Cancel Buttons ===
     const okCancelBtnsGrp = helpWin.add('group');
