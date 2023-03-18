@@ -326,14 +326,13 @@ var popBinary = '\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x18\x00\x00\x
 var frameBinary = "\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x18\x00\x00\x00\x18\b\x06\x00\x00\x00\u00E0w=\u00F8\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x00\u008DIDATH\u0089c\u00FC\u00FF\u00FF?\x03-\x01\x13MMg```! \u00DF@\u00A9\x05\u0084\u0082\u0088\u00E2\u00F0#\u00E4\u0083F2\u00CDU```\u0088g \u00C2\x07\u00E4\x02\x07\x06\x06\u0086\u00FD\f\u00F4\u0088\u00E4Q\x0B\b\x02ZE\u00B2\x00\x03\x03\u0083\x01\x03\r-\u0080\x03\u00BA\x14\x15\x0EP\u00F6\x05\x06\x06\u0086\x0F\u00D4\u00B6\x00\x14D\u00B00rd``8@m\x0BF\u00F3\u00C1\u00C0[\u0080\x1C\u00C9\x0B\x19\x18\x18\x1E\u0090i\x0E\u00CE\u008A\t\u00D9\x02J\x00#.\u00BD,\x14T*D\u0081!^T000\x00\x00\x1D\u009F'T\x1DC\u00D4<\x00\x00\x00\x00IEND\u00AEB`\u0082";
 var folderBinary = '\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x18\x00\x00\x00\x18\b\x06\x00\x00\x00\u00E0w=\u00F8\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x00\u00D2IDATH\u0089\u00ED\u0095\u00DD\r\u00C20\f\u0084\u00BFV\fP&`\x04V(\x1B0BVb\x13Fh7\u0080\r\u00C2\x06e\x02#W\tDyhJ\u00E5\u00F0\u00C4IV\u00FBP\u009D}\u00E7\u009F6"BM\u00B4U\u00D9\x7F\u0095\u00C0\x01\x13 \u0085p[\x12h\x0F<pX\u00F9\u00FD%\x14S\u00C2\x10\x02\u00A4\x1E\u009C\x0E\u00D0.\u00A9\u00E4\t\\\x01\u00BF\u00C5\u008A%\u008B\u00E2\u009C\u009E\u00DE\u00B2\f\u0091\u008Ei$\u00EF\u0083\u008AR\u00D3K\u00A1\x1C.U\u00D0\u0084\u00E7\r8\x1Ai\x18\u00F3E\u00EB\f\u00C9g\u00BE<AoH\u00AE\x18\u00AA\'\u00C8{`\u00E9\u00BFb\u009F*\u00B0\u00F6\u00FF\u00AE[\u009F&8\x1B\u0092\x13\u00C7>M`\u00EE?\u00D9&?\u00BE8zk0\u00EFU\u00AA\u00C0\u0092|\u008C/m\u00A8\u00DC\x1A\u009F\u009B\x16\u00CE\u00EAdx\u00B4\u00BD\u0088t\u00EA\u00BC\u00C6\u00FF\u00A7\u00BF\f\u00E0\x05\u00BB\u00A4\x03\u00F3\u00D1~\x02\u00D0\x00\x00\x00\x00IEND\u00AEB`\u0082';
 var helpBinary = "\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x10\x00\x00\x00\x10\b\x06\x00\x00\x00\x1F\u00F3\u00FFa\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x00\u00ACIDAT8\u008D\u00A5\u0091a\r\u00C3 \x14\u0084\u00AFSP\x07\u00AD\x04$LB%TJ\u00E7`\x12\u0090\u00B09\u0098\x04$ \u0081)\u00B8\u0085\u00E55\u00A1/\u00F4\u0095\u00AD\u0097\u00BC\x1F\u0085\u00BB\u008F\u0083\u0082\u00A4\u009E\u0091\u00A4'\u0099\u00B8\u00D5\u0083\u00E4U\u00FBux\u00E6\u00B1&\x0B\x10\x1B\x00\u00D1\x028\u00A9\u009E\u00A4\u00CD(k\x1A\u00BC\x0BX!\u00AE\u00F8\u00EEI\u0086_\x00z\u00BC\n\u00FBV@>\u00F9\u00A5\u00C2A\u00D6\u009B\x00\u00F7\u00CAo\u00EC\u00B5\u00CF\x02$\u00EB\u00E4u.\u00D8W(v<\u0080TsZ\u0080\x1Cz\x03x*\u00D8F\u00DD\u00F7\x1E'd5p\x00\u00A2\u00CC\u00FCO\u0083\x1C\x1CJo\u00CDd5h\u0092\x05X\u00E4\x11\u00B3nU\x07\u0080\x0F\u00AE|\u00F2\u00F6\x1C\u008E\u00B6\u00DF\x00\x00\x00\x00IEND\u00AEB`\u0082";
-var quoteBinary = '\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x10\x00\x00\x00\x10\b\x06\x00\x00\x00\x1F\u00F3\u00FFa\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x00xIDAT8\u008Dc\u00FC\u00FF\u00FF?\x03%\u0080\u0089"\u00DD\f\f\f,\f\f\f\x07\u00F0\u00C8;@i\u009Cj@^\u00C0\u00E7\x07F(\u008DS\r\u00C5^\x185\x00\x12\u008D\u008EH\u00FC\r\f\f\f\u00FCP\u00F6C$q\u00DCj@\u00B1\b\u00C5\t\u00FFQA\x02\u0092\x1CN5\u00C8\u0092\x0F\u0090$\x1E`\u00D1\u008CU\rE\u00B6\u0083\u00C4Aa\x00\x02\u00A0${\x10\u00CA\u00FE\u00C0\u00C0\u00C0\u00B0\x00Kx\x19`S3\u00C0\u00B9\u0091\u0081\u0081\x01\x00\b\u00F8\u00BB\u0088y\u00F5\x0B\u00D9\x00\x00\x00\x00IEND\u00AEB`\u0082';
 var tatzaBinary = "\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x18\x00\x00\x00\x18\b\x06\x00\x00\x00\u00E0w=\u00F8\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x00\u00EDIDATH\u0089\u00BDU\u0081\r\u00830\f3\u0088\x03\u00F8h\u009C\u00C0\t\u009C\u00B0\x13v\x02'\u00F4\u0084\u009E\u00C0\t;\u0081\x13\u00F8\u00C0SX2U\x13\x15PZ,E\u0088\u0094\u00C6u\x1C\x15\u0090|\u0092\u00F4$;\u0092\u00C8\x1D\r\u0080\x1E\u00C0\x03\u00C0\x02`BfT$\x07\x00-\x00\x0F`V\"\x1F\u00C4%\b\u00C1\u00FF\u00FE>\u0088\u00F6\u00B2\u009E\x03=w$gQ\u009A\u00E2O-\x1C\x1A1x\u00F5f\f\u00D6\u00A5\u008DN\u0095\u00EE*0\u009C9\u0099\u00D3=\u00F3\u00DE\u00B7Mbg\x07}\u00DA\u00D4\u00C5\x07#\u00D3\u00DC\u00F7\u00AAj\u00D1\u00F7\u00D6\u00D6\u00B6\u00A6(\x07\u00C4\u009FN\u0094\x1E19\x05^G\u00FC%\n\u00ACx\u0095\u0099d\u009D\u00BA\u0092\x04+R\u00A7\u00E8\bh\x04ENn\u00A8K\x16\u0087*(\u00E5A\u0085;<\u00B8\u00A5EEM.\u00D9\u00A2\u009F\x07v3\u00BA\u00CC\x04\u00DF\u00BA$'\u00BD\x05\u00C7\u00E0v\f\u00B1\u0095\u008B\u00E5-'\u00B5\u00A4\u00E6$\n.\u00FF\u00D8#x\x03\u00F0\x1FE\u00EB\u00AD\u00CE\u0092\u00C4\f\\\x00\x00\x00\x00IEND\u00AEB`\u0082";
 var recScaleXBinary = '\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x18\x00\x00\x00\x18\b\x06\x00\x00\x00\u00E0w=\u00F8\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x01JIDATH\u0089\u00C5V\u00B1\u0091\u00C2@\f\\\x18r\\\u0082C2(\u0080\u00C0\x1D\u00BC;xw\u0080\x0B \u0080\x0E(\u0081\x0E\u00A0\x04\x07_\u00C0\u0087do2B\x7F\x05\u00FA\u00D1\u00CC\x1E\u0088\u009B3\u0098\u00F3\u00FB_3\x1A\u00DFI\u00BA]\u009FNgy$"\x18R\u00C6\u00C4N\x01\u00EC\x01\x1C\x01\u00E4=\u00F8rb\u00EC\u0088\t\u0088H*"\u008D\u00DCK\u00AE;{Qs\x0FC1\u00D3\t\u0080\x02\u00C0\u00D4{\u0093\u00C3/dM1\u008Bq\u0087\u00C0~\u00D2\u0092\u00A22"Ee(E\u00CE\u00B9\x10\u0091\x0B\x1D\u00EB\bp\u00A7kb\\\u0088y\u00AD\u00A2O\x00\'\u008E?LJ*\u00DD\u00A4\u00D1\u008Cjm\u0095\u0089wkO\u00C4\u00C4\u00E4I~\u00B5\x00\u00BE\u00BCy\x12\u0088i\u0095g\u0087\\\x03\u00D8\u009A\u00F9;\u008073\u00DF2&\u009A\x00\u00BC4\u00E7\u0080\u00FDL\u00DFC\u00E9B\u00D0\x00(\x03\u00F6\u0092\u00BE\u00DE\x04\u00E0\u00C1v\u00B1E\x11(\u00D0*`_\u00B5\x10\u00BFL`\u00F3\u00FCM\r\u00F9\u00A2\b4\u00CFs\x0F\u00D0\u0082\u00CE[\u00CE\u00E7&\u00E6\x16V\u00BC\u0085\x19\u00E7\u00FE\'D\u00C7\t\u00D5\u00B7\u00A7\\\u0093\u00D1V9\\\u00B7\u0083\x05\u0080\x19\u00C7K>k^\u00AA\x115a\u00D54\x01{\u00ED\u00AD\u009D\x11\u00F3o>v\x1B\x19N6\u00FF\u00D6\x0FbZf\u00F1\u00A8\x1F(\u00C9ND\u008E\u0091\u00E0\u00B6/+\u00C6\u00DEU\u00D6\u00B0\u00BF-\x00~\x00L\u00DB\u00BCGD\u00F6\x02\u008A\x00\x00\x00\x00IEND\u00AEB`\u0082';
 var textPopBinary = "\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x18\x00\x00\x00\x18\b\x06\x00\x00\x00\u00E0w=\u00F8\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x00\u00EAIDATH\u0089\u00EDU\u00C1\r\u00C20\x103\u00A8\x0F~t\x046\u0080\r(\x1Bt\x03\u00D8\u0080\u008C\u00C0\be\x03\u00D8\u00A4O\u009Ee\x03F(\x13\x18\x05\u008CTE%JP\u008AT\u0089\u0093\u00F2i\u00EFl\u00F7\u00E2\u00BBNHb\u00C8\u0098\x0E\u008A\u00FE\x0B\u0082\u00AC\u00E7\u00D9\n@\u0095\x00\u00BB\x01`\\\x02\x0B^\x03\u0098' X\x03\u00C8\u00DD\x16\u0095\u0089\u00C0\u00DF\u00B1\x1D\u00FF%\u008F\u009F\u00C0\u009D\u00E4\\.Z&\u00C2?\u00F7\u00AD\nKb<E3\u00BD\u00B7B.\u009E\u00BC\u00F69O\u0096 \u00F2T$[\u0092yH],\u00F8\u0082\u00AF8\u0084\u00D6\u00C4\x12\u009CH\u00DEB\u00D5w\t\n\u00A9*=\u00C9\u0085\u00D4\u00EFbDA\u00C0\u00DD\u00A8>$\u00D7R\x1F\u00F5\u00D5\u0099\x1Cq\u00D7\x1E\u00B2[t/\x07\u00B8\u00CE\u00B2\u00CBk\x13\u00EB\u00D3L\u00CB\u00ED\u00AA\u00F5\u00DAh\x06\u008A\u009E\u00DC\u00A3\u00AC\x19\x17j\te=\u00AA\x15\u00DF\u00D8\u00D7{\u00C9F\u00C0&\u00C6!!\u00E7\u00FF\u00D3\u00F7\x07\u0080\x07Z\x1F'f6E?T\x00\x00\x00\x00IEND\u00AEB`\u0082";
 var arrowBinary = '\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x18\x00\x00\x00\x18\b\x06\x00\x00\x00\u00E0w=\u00F8\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x00uIDATH\u0089c\u00FC\u00FF\u00FF?\x03-\x01\x13MM\x1F\u00B5\u0080\u009E\x16$\u00E0\u0094\x01\u00A5"*`\x10H\u00C0f\x0E5-\u00C0j\t\u00B5-\u00C0\u00B0\u0084\u0085\u0081\u0081\u00C1\u0080\u0081\u0081A\u0080Jq\x01\x02\u00F3\u00A1\u00F4\x02X\x1C\x1C\u00F8O\x1B\u0090\x00\u00F3\x01\u00AD\x00\u00D8\'C\u00BA\u00A8H\x04\u00C5\x03\u00A84\u00A5F$\u00EF\u00C7f8\u0098E\u00EBd:\u00A42\x1AM\u008B\n\u00AC\u0086\u0083\u00F0h\u00959\u00DC-```\x00\x00h\u00AFq\x15)\u00A8}\u00A0\x00\x00\x00\x00IEND\u00AEB`\u0082';
 var mikraBinary = '\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x18\x00\x00\x00\x18\b\x06\x00\x00\x00\u00E0w=\u00F8\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x00\u00F4IDATH\u0089\u00D5\u0096\u00E1\r\u00820\x10F\x1F\u0086\u00FF0\x02#\u00B8\u00818\u0081n\u0080#\u00B8\u0081\u00B0\u0081\x1B\u00C8\b:\x01\u00BA\u0081#0\x02Np\u0086\u00A4hi\x02\u00C9\t%\u00F1K\u009A\u00B4\x07\u00B9\u00D7\u00DE\x1DW\x02\x11\u00C1\u00A7V^\u00BD\x03!p\u00F7\thC\u00E45F\u00A15/f\u00F4\u009B\x00\x19\u00CE\t\u0082\x19\x01)P1S\u0092\x0F@\r\u00B4\x1B-\u0081\u00D8~\x18:/\u00A7\n\u00C7\u00B5\t\u00C5\u00C5\u00B2e\x06p\x1E\x02T\n\u00C0P\u00CEvc\u0080\u0087\x02P\u00BB\u00E10z\u00F5V\u00F2\x15?\u008CXD\x1A\u00E9+\x17\u0091\u00B4\u00B3\u00B8\'\u00D0\u00AA\x01\u00D6&\u00D1\u00AD\u009E\u00C0\u00D5\u00CE\u00E5"\u00ADb\u008Ab\u00B3\u00EB\u00C8\u00F2Q\u00D8\u00ED\u00C7\x05h\u00FARW\u00F3\u0091c?\u008E\x016\n\u00C0\u00D0fz@\x17\u00B0U\x00\u00BA\x0F\u00ED\u00E4\u00D8o\u00BD\u00D5\u00C42m\u00C7^Dj\u00E3\u00A34\u00A5\u00FB)S\u00EF\u00CD\u00CE\x0EQ># \u00E9&\u008B\\8\u009A\u00FE\u00A3\u00D6\u009F\u00FFU\x00oU\u00A0\u00D0\u00BAk9\u00F1)\x00\x00\x00\x00IEND\u00AEB`\u0082';
-var danBinary = '\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00(\x00\x00\x00(\b\x06\x00\x00\x00\u008C\u00FE\u00B8m\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x02\u00CFIDATX\u0085\u00CDY;n\u00DC0\x10\u009D,\\\u00A4\u00B3\u00CAtV\u0091\u00DE,\u00D2\u00AFn\x10\u00DD :\u0082\u008B\u00F4\u00D1\r\u00B2\u00B9\u0081\u00D2\u00A5T\u00E3\u009E\u00AE\u00D2*p\u00E5N\u00BE\u0081\u00B6K\u00C7\u0080\u008B\u00C7\x05C\u00F33\u00A3\u0095\x01?\u0080\u00F0ZKr\u009E\u00E6\u00C7\x19\u00EE;c\f\u00AD@ED\r\u0086\u00C2\u00B8\x0E\u00B69\x12\u00D1\u0084\u00A11\x16\u00B1(KP0\x1Ac\u00CC`\u00D6a\u00C1\u00DAF"\u0093;\u00B16\u00C6\u00E8\u0095\u00C4b\u00D0\u00D8s\x13\u0082\u00FD\u0086\u00C4B\u00F4\u0097\x10\u00AC\u0084Z\u00D3\x108\tIj\u00C8\x12\x11\u00AC"\u0082\u00BA\u00E0\u0099\u00F5\u00A9\x03|*&\u00A0\u00C1\u009A\u0091ArJ\u0091\u00E4\u00923\u00D0N\u0085\u00BF}\u00EE\u00AD\x13>\\"\x1A%\x19\u00DB,e\u00D6\x05\x1A\u0091F\u00BE?\u00EE\n$u\u00B8f\x17d\u009D\u009E\u0088\u00F6\u0099\u00ACT\u00AFI\u009A\x1E\x0ED\u00F4#\u00F3\u00FD\x1E\x1C\u00A2y\u00B0N\u00BC\u00D5(\u00CD]\u008CQ\n\u00BEs\n\u00E2\u0098\u00D6\u0099WmH\u00B0\u00C2\u009EES\u00FB\x11\x17\u00C3\u0080\u00C9[\u0092s\u00A3+hQ\u00F9>\u00D8%|\u00C2\u009E\u00B1\x03\x11\u00CD\x17\u00FA^\fc\u00E1\u00FB;\u00E7\u0083%u[\x1C^A\u0083v\u00CC\x05\u00B7\u00AAv\u00A8H\u00C2J$\u0084\u00BC\n\u00E1!g\x19\u00CB\u00A9q\x04/\u00C1p6G\x1C]FF.\u00A5Y4W\u00F0\u00B3\x12R\x02,\u00B9/\u00A8\x0F\x15\u00E6ihfDN\u00FBLD?\u00F1\u00FD\u00EC\u00F9\x1EG\u00AE"\u0086\u00FF9\u00D4\u0088\u00F6\x19\'\x02w]l\x1Fb\u00D6\u0095\x0B\t6\x1E2\u00E9H\u0082!s(\u00BC\u00C0\u0095\u00C0\u00F7Z\u0098\u00D4\u0087+\u00EB\tf\u00BE\u00C5\u00E7g/\x00\u00EC\u00F1x\x13\u00EC\u00A3\u00B9B%\x04mT}\u00F4\u00FE\u00B7$|\u00C26\u00D2\u00BF\u00E3\u00F3\x1C\u0090\u00A8A\u00EC\x1A\u00A3}\r\u0082\x14\x10\u00B4Z\u00F9\u0096\u0098\u00B7/Dh\u00C5\x15\u00B8\u0083\u0099\u00B8\u00F8 \u0098\u009B\x03\u00B7*:\u00EE<\x1F\u00E2\u00E0\u00EF\x06\u00E4\x1E\x02\u009F\u00CCa\u0092\x12|\u00BF\x01A\u00C9\u00B9~"\u00C8\u008E(\u0098\u00E6y\x05)\x1FO\u0082\u00B9ZJ\u0090.\u00ACl\u00FE\x10\u00D1#s\u00EE\u00D1\x11\\p\x14q\u00A0P\u00B6\u00AF\u00C1\x11\u00E7\u00F2\'\u00E6\u00DA\u00F1\u00C4\u00ADP\u00B0\u00C6@^\u0087vo\u008C\u00B9\u00C13\u0085"\u00B4\u00C7Q\u00D8\u00E0\u00C4p\u008D\u00BF+z\u00B9}\u00F3i\u00BE\u00CB\u0083\x1A\u00D1U\u00AA.\bZ\u00E8\u00B0\u00E67L\u00EEN\u008E\t\x16QH\u00C6\u00F6\u00F3/\u00EC=\u00E1\u00F9-C\u00C6\u00C39x\x19MS\u0088\x19E\u00AE\u009D\u00FF\u0095\u00A9\t\x15h\u00BE\u0084h\u00D3D\u0082{\u0098\u00D1[3\u00A2\u00B2iaV7&<w\u00F3Z\u00E6\u00DE\u00FF\u00DD\u00D7H\x1A\u00F7\u00D4F\u00EE\u00E6\u00AB\u008D\u00BCl\u00E7\u00F9\'\u00A7<{\u00D1\u00B8\u00A7ZB\u00AE#\x17o\u00A7\x18\u00DD\u009B\x03\u00FB\u00EACJ2\u00D7P\u00D5L\u00CD\u0089.\u008F|\u0092\\s\x0F\u0091\u00F5\r\u00F3%W]\u00BF\u00AD\t\u009C\x19\u00C2\u00F4\u0096.\u00C2\u00ED_\u00DF\u00F4\x15ph\u00B6ae\u00C3\u00E4.\u00D1E\u00D7(o\u00FBg\b"\u00FA\x07,,\u00F8n\x0E\u00D6\u00EF)\x00\x00\x00\x00IEND\u00AEB`\u0082';
 var bannerBinary = '\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x01\x19\x00\x00\x00V\b\x06\x00\x00\x00\u00FBi\u00E2\x1A\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x0E\u00B5IDATx\u009C\u00ED\u009D\u00FFq\u00DB\u00B8\x12\u00C7\u00917\u00F7\u00BF\u0098\n\u00C4T ^\x05V*\u00B0R\u0081\u00E9\n\u00A2\u00AB z\x15X\u00A9 r\x05\'WpT\x05\u00A1*8\u00A9\u0082\'U\u00C07\u009AY\u00CC\u00EC\u00E1@`\x01,(2\u00DE\u00CF\f\u00E7\u0092\u009C\u00CD\u009F\u00C0\x17\u008B\u00DD\u00C5\u00E2C\u00D7uJ\x10\x04!\x17\u00BF\u008D\u00F8\u00CD.\u0095R\u0085R\u00AA\u0082\u00BF\u0097p`Z\u00A5\u00D4\x05\u00FE\u00DE\u00C0\u009F\u00DB\u00FB\u00DC\u00AE \b6\u00C6b\u00C9\u0094 *\u00FA\u0098\'\u009E\u00EF\b\u00A2s\x13\u009C=\x12"A\x10\x06\u00E6\u009E"s\x13\u0096\u00B5Rj\u00C5 *>n\u00A2\u00B3\x03\u00C19e\u00BE\u0096 \b\u0088{\u0088L\r\u00E2\u00B2\u00B8\u00D3\u0087xSJm\u00C1\u00D2\x11\x04!3C\u0089L\x01\u00C2R\x0F`\u00B5P9+\u00A56`\u00E1\b\u0082\u0090\u0089!D\u00A6\u0086\u00CE<\x16q19\u0082\x00\u008Ae#\b\x19\u00C8)2\x15X\t\u00F7\u009A\x16\u0085\u00F2\x06b#>\x1BA`\u00E4?\u0099^\u00E6\u00CDr\u00F99!\u0081\u00B9\u00F1\b\u00D1\u00A8\u00F5\b\u00EEE\x10~\x19\u00B8-\u0099\x12"8S\x12\x17\x1Bo0\u00CD\u0093\u00D0\u00B7 $\u00C2)2+\u0098\x1E\u00CD\u0098?\u00CA\x19,\f\u009DdW\u00C11D\u00D8\u00BB\u0096\u00E4>AH\u0083Kdn\u009D\u00F1G\u00CF\u00FF\u00BB\u0082S\u00F51\u00F0\u009Cg\u00E4\x1F\u00D9[r\\*\u00B8n\x05\u00D1\u00AB\x1C\u00D6\u00D3\x15\u00C4S\u009C\u00C2\u0082\x10\t\u0087\u00C8\u00DC\u00AC\u0097\'\u00C7\u00FF?@^\u00CA\u009F\u0084s\u00BD\u0082\u00984\u0091S\x15m\u00E5\u00AC"D\u00CD\u00C5\u00B3\u0084\u00BA\x05!\u008ET\u00C7\u00AFO`\x14\b\u00C6\x1E\x04\u00A4\u008F\u00EFJ\u00A9\u008F`\u0099\u00A4,\x03h\u00E1\u009EVp\u00BEg\u00B0\u0088R\u00F9\x01\u00F7&\bB )"C\x11\x18\x05k\u0091\x14t\u00D2g\u00F0uhn\x02\u00F0\x19":\u00DCN\u00D6\x0B\u00DCc\t\u00D7\u00BD&\u009EO\u0084F\x10"\u0088\u009D.\u00B9|06~\x1F\u0081\x03\u00B5\x00\u00D1I\u009DF\u008D\u00E1Y\x04a2\u00C4X2\u00AB@\u0081Q0\x05\u00AA\b?\u0097\u0093\x0B\u00DC\u00BBk\u00DAF\u00A1\x19\u00C1\u00B3\b\u00C2d\b\x15\u00992\u00D2\x01:\u0087\u00CE\u00B9\x19\u00C1\u008B\u00A9\x13\u0085f\x06\u00EF\u00A0`\u00BC\'A\u00F8e\t\x15\u0099}B\x1E\u00CClD\x1D\u00B3\u0086\u0084\u00BBX\x16\x101\x13\x04\u00C1C\u0088\u00C8l\b\u00B9(6\u00E7\u00EA\x19,\u0087\u00CF#K\u00D9\u00AF\x13#OO0\u00FD\x12\x04\u00C1\x01\u00D5\u00F1[\u00C1Z$\nS\u00CA)\u00A9`\x1A\x17k\u009D]a\n)\u00CB\x0F\x04\u00A1\x07\u00AA%\x13"\x1A?\u00A0\u00E3\u00D6\u0096\u009A\u00BCc\u00A3M\u00B4Ff#\u00F13\t\u00C2h\u00A1X2\u00A1\u00E1j\u0093\u00F3\x04\u00C4\u00E6&\x14\u00DF\x12~_\u00C2\u00DA\u0082\u00D0\x03EdN\u0089\u008B\x11\u00A7\u00D2\x01\u00DB\u0084\u00F5O\x07\u0094t(\b\x02\u00C27]J)\u0097y\x05g\u00EFTF\u00F8\x14\u00A7\u00F4\u0083\u0088\u008C \u00D8\u00F1\u0089L\u0088\u00BF\u00E1\x00\u00FF\u00D5\u00D1\u00A4rb\u00AB\u0097\x1Bc\u00C9C(R\u00ECJ\x10,\u00B86w\u008B\u00B1b>L\u00FC%o\x13\u00FCO\u008F \u00ACR\u00BES\x10\x10.K&t1\u00E0\x03$\u00EBM9\x136\u00D5\u00F2\x12kF\x10\f\u00FA\x1C\u00BF\u00B7\x11\u00F9\u00EF\u0084\u0097u\u0080\u00DC\u0091)\u0096\u00B0\u00BC$\u00E6\u00CD\u00E4\x10\u00D9\n\u00BE\u0089\u00B9f\u00AA\x05\u00CBi\u00CA\u0091\u00AD\x12=\x1B~wz\x0B\u00E2\u00F7X0l\u00D9\u00B3-s\x03\u00DF{Z\u00D6\u00F2Md,\u00C7\u00BA\u00E3\u00A1\u00E89\u00FF\u0098\u008F&\u00F1\u00C9WL\u00CFVw]\u00B7\u00EF\u00BA\u00EEB\u00B8\u00E6\u00A9\u00EB\u00BAm\u00D7ue\u00E2\u00F5\u00A84\u0089\u00CFV\u00C2\u00FD\u009E\u0088\u00D7k\u0089\u00CF\u00C7A\x03\u00D7\u00AA<\u00D7\u00A2\u00B4\u0093\u0098\u00EFM\u00E1\u00D6&v]\u00D7-\x03\u00CE\u00BF$\u00B6#J\u009F\u00F5\u00B1\u00C1?\u00DFw\u0092\u0096\u00E1c\u009D&(0\u00D4\u00C6\u00E3b\u0097x\u00FDU@\u00E7\u00B3\u00B1\u008B\x14wj\x03\u00D7\u00C4\n\u00DA&\u00F1\u00FD6\u008E\u00CE\u00C5\u00CD\u00DE\u00F1.\u00B9D\u00A6N\u00FC\u00DE\rA\x10\u00A9"\u00D3\x11\u00DB\u00AF\u008F\x7F\u0088\u008C\u00CD\'S2\u00D5\u00CB}\u00AF\x0E\u00D0\u00D8Pv\x01>\u00AD?\x13\u00F3\u0092\u009E`\u00AA\x11R\u008E\u00A2\u008C\u00A8\u00B3\x13\u00EA\u00B3+\u00E0\u00BER\u0092\x1E\x15\u00F8\u00FE\u00FE\x1A\u00C8\u00FF\u00F7\b\u00ED8Gi\u008F\x02\u00A6??\x12\u00BF\u00F7\x03,\u00F9\u00E1\u00CA<g_\u0093g\x13\u00991\u00E4{L\u00D9y<\u008Fh\u0094Ed\u00B1u\u00D7=\u0084\u00D4\u00BD\u0089iT\u00A1"\u00C3\u00BDU\u00CE\u00E3@\u00FE\u009A\x19\\\u0087\u00B3MV ^\x0F\u008C\u00E7\u00FC\u00C6\u00B8f\u0090\u00B5\u0094IN\u0091IQ\u00FF-|\u0084M\u00C2\u00C3V\u0091\u00E5\x188>|\u00C8;\u00D4\x02\u00C3\u00BD\u00DB\u00C2,`\u00B4\u008F\u0089\u008A\u00CD\x03\u009E\u00B3f\u00EEP\u009A\u00A1\u00A2y3\u00C6\u00D2\x1Ee\u00E2\u00A2\\\x17OLB3\u00E3\\\u00E4l\x13\x19.\u00D30\u00B6~L\x05/k\x0E\u00EA\u008C\u00EF\u0087z>\u00BD\u00BA\u00FAk\u00E0=p={\u00C8yrn\u00E5;\'4\u0096\u0094=\u00AC\u00A8\u00D6L\u008EE\u00A4\u00FF\x1D8\u00F2\u00F4\u00C4\u00B4\x06/\u00A5&\x13\u0085\'\u00A6\u00F7\u00FD\u00C8%\u00E26\u0091\u00E1l\u00F0\u00A1fxat\u008A#Z\u00D1}\u00B3l\u00FE\u0087v$\u00D8\u00C0H\u00BA4:\u00F5\u00DA\x18)\u00F4=\u00D4p\u00B8D\u0087\u00CB\u008A\u00A36\u00C6%\u00F3\u00D6-6\x1E=\u00CF\u0095\u00D2\u0090(\u00DF\u0097*bWH}\u00A0d]\x1F\u00EE\u00B4\u00FA=\u00D5WA\u00A9\u00C9\u00C4\u00C17&A\u00DC\u00B0\u009C\'\u00D2\x03Meo\u009C\u00BF\u00EC\u00F1\u0084\u00EB\x7F\u00C7\x1E\u00FB\x16B\u00E9\x14\u00CF\u00FB\x06\u00CEa\u00F3\u00F8\u00EF\u008D\u00F0\u00EC\u00C9\u00E1\u008DO\u00F1\u00F2\u009BP"\x0B!\u00D7\u00D3!K\u00FD\u00AE\u00EA\u0080H\u0098+b@\t\u0091\u00BB\u00A8\t\u00D1\u0093\u0098\u00FB[B(\u00D9\u00BC\u00BF\u008B#\u00E2\u00E3\u00A3\u0085\u00F3\u009A\u00C7\u008A\x18Q\u00C5\u00A1\u00FB\u00D0\u00E8R\x11\u00F0\u00AE/\u00F0\u00ECK\u00F8\u00BD\n\u00EEqG\u00FC\u00FD\u00CE\u00F2Nc\u00FB\u00B6-]\u00C1\u00873\u0084\u00CD-2\u009D\x11\u00EA\u00D4\u00E7\u00C7\x1D}\u008F\u00FE\r\x13\u00D2\x01}\u00E1W\u00B3A\u00D8\u00C2\u00EB\u00DC\u00CF\u00EE\x0B\u00F1R\u00AF\u00D7zB\u0094\u00AE\u009C\u00A6\u00C6#\x02+\u00C2\u00F5}\u00EF\u00D6\x1CH\u00CC\u0083\x12\u00B2^{\u00CE\u00B1F\x1D\u00D4\u0095\x1B\u00E2\u00C3\u0095\u00DFS\x04\u00FE~\u00A8\u00C8P\u00F3\u0090ZO\n\u00C22@\u00ACl}/\x06\u00F3\u00FB\u00F8p\u0086\u00B0sD\u0096\u00B0Y\u00AB3S\u00E7\u0096\u00B0\u009BiR\u0087\u00F8\t|S\x0E\u00D3\u00E98\u00B7\u00F8\x13\u00B8\u00CDo\u009F\u0099I1\u00BD\u00AF\u00F0M\\\x19\u00BD[\u00D8\x1C\x0Fs\u0080\x15\u00F0K\u008FO\u00C6\u00E7Sy#\u00F8t\x1E=\u00CFJ\u00C9\u00F8~\x01_\u00C5\u00BA\u00A7\rn\u00E1\x1A_2\u00FAa.h\u0091o\x1F)\u00CEk\u008A\u00FF\u00EA\b\u00CF\u00EFzg\r\u00FC\fe\x1F1\u00AEP\u00F4K\u008A\u00BF2u\x07I\n\u00D8af\u00BE\u00BCow\f\u0099\u00E3\x0F\u00B0\u00CC\x14\u00FDpAyn\u00EA\u00A6w\x1Bht\u00AFP\u00BFgI\u00E8\u008C\x05A\u009C\u00F5\x1E\u00E4\u00BE\x06\u00EDj\u00CC\u00D4%\x0F\u008F\u00D0\u0098o90\x1D\u00F2\u00BD\u00ADQ\u0089\u00D3=\u00F1\\1T\u00846\u0090\u00B2J\u009F\u00D2\u00BE\u00A8\u00CBpZb\u00B4\u008B\u00B3oEG\u009B\u0086\x10\x19\u00E5\u00B1\x12rz\u00DA]\u00E0\x0F\u0090\u00C3\u0089\u00E8\u00B3d(E\u00D9\u00A9\x1F\u00F6\x02\u00A2Q\x07tj\u00CA\u00C8\u00BA7\u00FE\x1Bs\u00AE&r\u00F7\u00CE\x05\fP/\u00B0\u008E\u00EE\x04\u0082\u0093\u0092\u00BFQ\u00A0`\x01>\u00D6D\x0B)v\x1D\x1E\u00A5\u00B3\x1F\x03\u00D7\u00A0QD\u00863\u0089p\x11\u00DBOL\u0091\u00C9\u00B5i\u00D9\x13\u00FA\u00C0ca\u00866\u00E8\u00CFa\u00C5\u00B8D\u0086\u00E2\u00B1\u00CF\x1D\u009E\u00A5L\u0095t\u00A7\u00F2\u0089\u00CC\u00C2\u00D3v8rL\u00E6 8\u00A7\u0084\u0088\u00D8\x02,%\u00F3x!\x0Ev9\u00BFI\u00A8\u0095v!XV)\u0099\u00C46\u00A2f\x1E\u00A6\u00C8\u00E4\u00CC\u00B4\u00F5\t\u00D8\x01r\x1F\u009E\u00C1\u009Fp;>A\u008D\u009A\u00DB\u00F1\u0087\u00E5w\u008E\u00F0s\u00FAg>\u00C2\u00DF\u00BF\u0080\u009F\u00C2\u00B7\u00E5\u00C9\u00EAN\u00C2G\x11\u0099\u009C+\u00AB)KG\u00F6=\x7F\u00EE\u00C3%Z\u009B\u00C4\u00A9\x06f\x06\u00A2p\u008F\x1D1r^3f\x19\x0Ew\u0085\x03\u00CA7\n~\x07CM\u0097\u0094\u00A33\x1FAL\u0096\u00D0\x18\u00F5\u00CB\u00BE\x18/\u00DE6\x1A\u009A\u00A5\x00.h\u00EE\u00AE\u00E7\u00F2\u009F\x1Db\u00B3\x1C\u0099u5\x14\x14K\u00C0\x14\x16\u00DFfx>\u00CBh\u0099\u00B8\u00A1\u009E\u00C9\u00D3\u00C0\u00F5{^3\u00AF\u00C7\x1B\u00C3R\x1A\u00CA`\x10l\x1D\u0099"\u0093\u00F3%\u00DAF\u00EF+X\x13+\x18\u00B9;d\u00C6\u00FE\u0084\u00BF\u009F@Hl\u00A3i\x05\u00A2\u00D2\u00A1\u00E3\'\u00FAs\u008B\u00CE\u00DF\u00F7\u00F2\u00EE\u00F1q)VJN\u00F1\u00F3E\x1D\x0E\u0096Q\u00D2g\u00CD\u00CC<\u00E7\u00D5{\u0091\x7Fa\u00B4jR\u0096\u009D\u0084p\x1E@\u00D0b\u0092\u00DE\u00B8w\x01\u00B9D\u00ACI\u00F3ro\u0091iA@^\x1C\u00E6\u00FB\x1C|&\u00B6H\u00C8\u00CC3\u0097^\u00C0\u00D2\u0082\u009F=\u00A6e\u00CE\u00E7u\t\t\u00C5\u00CC}\b\u00EC@TQZ\x11F#\u009B\u00A0P\u00A6L\u0094\u0090\u00E9\x1E\x06\u0087\u00DFaz\u00EC\x0B\x1B\u00BB\u00F0\t\x1B\x07g\u00B8F\u00CA\u00D4\u0084\u00D2\u00CEB\u009F\u0083\u0092I\x1D\u00F3n[\u00F8.l\f9]\u00B2u\u0098\u0087\f\u00CE\u00A9>l\u00CE\u00DD\\\u00CB\u00F8\x15\u00A1QR\x1A\x00u\u00F4,\u00C1\u00FA\u00BB\x10FwJc~1\u00AC\u00C3\x0E\u0096t\u00F8x\u00F2\\\u00BBD\u00D7o\u00D1\u00D2\u0090\x0F0\u00AD}\x06_Z\u0088\u00A5\u0093sO\u00AF\u00EF\u00D0>R\u00FDc\'B\u0084\u00CD\u0096\u00BB\u00E5\u0082\x12\u00E9\u0089\x1DD9}h\u00FF\x12\u0099\u009C\u00A52\u0087X\u00B3\x11JJ\u00A9\u00CDT(\u0096\x01\u00D5\u009B\u00AF\u009Dq3\u00F8\u009D\x13J`\u00C3\x14\x03\u008C\u00FC\u00AE\u00F3\u00EF\u00A0^\u008E\u00CD\u00BF\u00D6\u00A0\u00BC\u0098\n\u00FCt\u009C>\x1C\x1Fz\u00ED\u00D4\x1B\x04\x19>\x06\u00E4)Q\u00A0D\u00A6\u00B6\u00C4A\u00AF&\u00AEyK\u0089\u0086\u00D5\u0091\u00A9\x07\u00FF\u00C2\x14\u0099\u00DC\u00B5b\u00C7V\u00C8*\u00E7\u00F3\u00FA>05d\u00F9\u0097\u00C3\u00A2\u00D1e\x03L+m\x06\u00D3\u00C4\u00BF\u00A1\u00E3j\u00B1Y\r \u00AA}\u00F7\u00BAA\u00F7\u00F9\x15\u00DA\u0082k\u00E4N\tU\u00F7q@\u0091H\u00F3\u00D0)\x16+\u00E8\u00EC\u00DC\x03.%*3C\x19\u00BD6\nx\u008F\u0094\x1D5B\u00F2\u00ACl\u00B4\\\u00F9c\u00E6\u0096(\u00EF\u00AD\u009A]\u00AE\u00E7\u00A5\u008C\x00\'\u0088X<\x11~\u00F6\x05:\u00DC\x1E5\u00FE\u0092\u00F8\u00BB\u00FAg\u00EA\x1CN=\x0B\x0B\u00CB\u00D60\u0095\u00A5"\u00DE\x1C:\u00CB\x06\u009E\u00AB1\u008A\u00A2\u00AF\u0088\u008D|*\u0085\u00EA\u00F7\u00E0\u00DF\u00F1\u00B9\x07f0\u00B0\x1C\u008D\u0081\u00A8\f\x1C$8r\u0093\u00B6p\u00CD\u00A4<\u00B2\u00A1E\u00A6\u0084\u00977\u0096\u00A9S\u00AE\u00F9<\u00D5B\u00DA\x10\u0085BA\u00E3\u00FC\x1Aq/W\u00B4d\x7F\u00A8\u00A5\x135\x12\b\u00B3|\u0087\u0089~\u00AE\u0098gS\x13\u00DB\u00CD\u00A0\x06\x01\u00A1\u00B0H\u00E8\'W\u00C6"[:\u008B<\u00DA\x02\u00B69~S\u00BC\u00FD\x14\u00C62\u00F2\u00B09\u00B6,PE\u00E6\u00D4\u0093d\u00C8\u0089\u00CE=\u00CA\u00ED\u008B\u00C1`\u008B)g\r\u0095\u00F3\u00C4\u00B6\u0083i\u00C0z\u00CDMj4\f\u0093<m\u00B5\u0089L\u00EEL\u00D3\u00B14\u008A\u009CV[\u00C8\u00E8\u00BA\u00CD\u00D8\u00F0\u00DE\u00D0\u00886d\u00E2\u009A.\u00CDY%X(\x14\u00A6\u00B8\u0099^\u009Dy\u0080{\u00CE`\u00DD\u00EDR\u009C\u00F0\u00B6mj\u009B\u008C\r\u00A3\x1C\u0091%\u00C3]\x1C\x1A\x13*\u00A4z\u00E4\u00A7N\u009D(\x1C\u00D1y)9\x15\u00D7\x00k\u00A7&\u00DC\u00AB\u00F6\x01}\u00CF\u00D4\u009E^3\u00AF\u00CA\u00CE\u0089.\u00C1\u00C1]\x15\u00F19\u00E3\u00D2\x07]\u009D2x\u00DAd\u00B3dr\u00CFq\u00C72\u0087\x0E\u00A9\u00E6\x1F\u00C21\u00D2J\u00AA\u00A1\u0091p\u0084\r_Q6\u00B4\nXF\u00D0\x10\x0FJC\u00D6\u0082\u00B5\u00F6,\u00ED\u0088\u00E1u \'v.t\u00F63W\u00D2\u00DB\x19\u00DEq\u00CE\u00B5U\u00D1\u00D9\u00C06\u0091\u00B9d\u00CCO\x18\u008B%\u00A3\u00E7\u00F29,\u0099\x14\x11\u00D5\u00E1\u00E6\u00D8\u00E9\u0093nlfc\u00A0X(!\u00F7M)\u00DF0C\u00F7\u00D1\u00C0s=\'\u008A\u00CD\x19\u0096%LY`0\x1B\u00C8\x07\u008A\u00FD\u00DEW\x10\u00AAj\u00A0\u00C1{\x1Fs\u00AF\u00B6\u00E9\u0092>Y\u008E\x02\u00D7c\u00F0\u00C9\u00E0iA\x0EK&u4\u00D1#\u00C6\x1A\u00AD\u00BBZ:\u00CC\u00D43Jd\u00B354j\u00C6j\u00E8\u00D4cKH\x144\u00A3w;8*\u00F4\\\u0095\u00C7\x04?\u00A3\u00B5k\u00BE{\u00F4\x05-8\u00DB\x1E\u00D7\u00B9N(\x1A\u00B7B\u008Bv}\u00DF\u009B\u00F2>0\u0094\u00CA\x7F\x14\x03@\u00D7\u00F4q\r\u00D0\u00FF\u00B0\u00E4\u00FB6\u00DC/\u0088i\u00E4\u00A1\x1C\u00D0|\u0094\u00D3\u00FF@\u00C5,gi}\u00F8\x04\u008E\x19\u0097)(\u00A3S_&\u00BE\u00D1\u00BE\u0089\u00B9\u00E1\u00FE\u00AF\u00F6|\u00A1\x14F[\u009A\u00EC\u00FB\u00E8\x13\x19\u0095I\b\u00AE\u00F0\u00F2J\u00C8F\x1D\x12S`\u0096\x019\x0BT\u00FE`\u00CCO\x10\u0084_\x02\u0097\u00C8\u00E4\u00E8\u0084\nR\u00B9\x15\u0098\u0087\u00B6}\u0091\u00CFh\u00CAqA\u00A6\u0099\u00AB\u0082\u00DD\x11e\u008B\u00EA\u00F4p\u009C\u009Ba+\u00C8\u00BDe\u008Ez\\G\x16=\x13\u0084Q\u00E0\x12\x19\u00D5\u00B3.&\u0095Oh\u00CEf\u009E\u00FF@H$Z\u00A1\u00BD\u0084[\u0087\t\u00A9\u00D7\u00F5\u00CC!\u008CjFXN\u00CC+\u00C0m\u00D7\x10\u0084w\u008FOdrX38\u0096_\u00A0\u00D8\u00BB\u00F6gl\u00D0\u00FC3\u00D5c\u00AE\u00AD\u00A5O\u0096\u00B54?\x13\u00CFmb^C\x10\u00DE=\u00CA\x11]\u00D24`]pZ3\u00B51\x1DZ\x1AE\u00A5\u00CC)\u00D4\x19Y-f\u00B9M\u0085\u00A6R\x15\n\u00E5\u00E12\u009E\u00B6\u00B2\u0089\u00DC\x16\u00C7w\x11\x18A\u00B0\u00E3\u00B3dT&k\u00E6\u00B3!\x165\u00AC\u00C8\u00FD\b\u00FF\u009E\u00BA\u00D6E[E;CpT\u0086\u00C8\u0099\u00F8b\x04\u00C1\x01\u00A52^\u008EE]f.\u00C9\x0E\u00A6Q+\u00A6\u00A4"\u009D\u009F\u00B1\x1F\u00C0\u008A\u00D9\u0088\u00C0\bB?\x14KF\x19\u00BE\x13.\u00FA\x1C\u00A5+\u00A8\u009E\u00A6\u00C0"i<\u0091%=\u009D\u00C2I]\u0087\u009ED1\u00EE\u00D0y\u00DFu\x04A\x00\u00A85~sT1\u00FF\u00DA\u00D3A\u00F1\u00B6\u00A8\x0B\x10\u0090\u00A5\u00A3\u00A2Y\t\u00E1h,\u0080}\u00FE\x11\u00CE\u00B5\x1DW\u0089&\t\u0082\u009F\u0090B\u00E2Q\u00EB\x16\b\u00E7\u00B4\x15\u008E\u00C2\tm/\u0084\u00B57f\u0096\u00ADML6\u00CC\x0E\u00EC\u00CD;\u00CFH\x15\x04\x12\u00A1\u00BB\x15\u00AC\u0099ka\u00CC@h\u00CCu\x10[\u00E3:>+\u00EA\x04S\x17\u00BD\x0B\u00A5\u00E9\u00D7\u00A9{\x12\u00FFby\u0095\u00CC^A\u00A0A\u00F5\u00C9`\u00CA\u00D4r|\x16\u008E0%\u00C2\x0ET=\r*@\u00DCb\u00AD\u0086\u009AXx9\u00E5^\x05A\u00E8!Fd\x14\u00CAG\u00C9-4\u00A9p\u00AF\u00BF:\x1BuZ\x04A\u00F0\x10\u00BB\u00B9[\u009B\u00C1\u00E9\u00B9`\u00AEV\u00C7-0W\u00E6\u00DA\u00A9\u0082\u00F0.H\u00D9AR\u00E7\u00B6p\u00B2`*&\u00B5\u00CE 0\u00E6\x02KA\x10\b\u00C4N\u00970+\x10\u009C\u00B1L\u009D\u00B8sa\u00F4^\u00C8"0\u0082\x10\x01\u0087\u00C8\u00A8\x11\u00F9h\n\u00A6e\t)\u00F7 \b\x02\u0082k\u00C3\u00FD\x16m\u00DC\u00C6\u0085\u009E:Q3j\u00F5t\u0086K`^E`\x04!\x1D.K\x06\u00C3]\fJ\u00A1\u00ED/\x1A\u00A3\u00D3\u00EBz\u00A85cm\x18\u009D\u00C9\u009B\u00B3\u00F2\u00BB \u00BC\x1Br\u0088\u008CBu|9\u008BB\r\u00C1\x01\u00ED/#\b\x02\x03\\\u00D3%\x13\u00BD\u00A8\u0091k_\u0099\u00DC\\\u00A1>\u00EFR\x04F\x10x\u00C9e\u00C9`\u00CA\u00C0\u008D\u00E5\u0087DoL\u00BE\x15\u00DF\u008B \u00E4a\b\u0091\u00D1\u008CIl\u00B4\u00B8\u00EC\u00C4r\x11\u0084\u00BC\f)2\u009A\x12\u00ED\u0093<\u00B4\u00CF\u00E6\b\u00E2\u00B2\x17\u00CBE\x10\u0086\u00E1\x1E"\u0083\u00A9@lV\x19\x05\u00E7\b\x16\u008B\u00ADJ\u009E \b\u0099\u00B9\u00B7\u00C8`J\u00B4m\u00A9\u00AB\x12\u009E\u008B+\u00DA\u00E5\u00A0\u00B5\u0084\u00BC\x05A\x18\u00981\u0089L\x1F8\x19\x0Foe\u008A\u00B7\u00ED|\u00EF[\u009A\n\u00C2h\u0099\u0082\u00C8\b\u00820U\u0094R\u00FF\x07\u00D9\x17)\t\bz\u008B\u0083\x00\x00\x00\x00IEND\u00AEB`\u0082';
+var cameraNullBinary = '\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x18\x00\x00\x00\x18\b\x06\x00\x00\x00\u00E0w=\u00F8\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x011IDATH\u0089\u00BDU\u00C1\u0091\u00C20\f\\\u0098\u00FB\u0093\x12\u00D2\x01-\u00A4\u0084t@J\u00B8\x0E\u008E\x12(\x01:H\x07G\t\u00A1\x03J0\x15\u00EC\u008Dn\u00E4\x1BE\x17\x07\u009B\x00;\u00A3\u0087mi7\u00F1*\nH\x0E\x1C#\u0090\u00ACH\u00A20\u00AA\t\u00AEa\r`\u008B1\u00AEx\x1E\u00B6+\u0091Q\u00BA\u00D5\x13\u0089\x05\u00BF\u00BC\x1F\u0099\u00C9\u009F\x00Z\u00B3\x0E\x00\x0E\x00\u00CE\u00F7e\u00C8\u00AB\u00DE]\u00EA^\u008FL\u00E30\u00E3\u0089p\u0086HbM\u00DD\u00AB\u00D1\x16\u00B2nI6\x1Am"g\u00EF\x1E\u00AE\u00F6\u00AA\u00DD\u00C4\u00B3\x06\u00DD\u009F\u00CA\u00F5"\u00F4\u00B9\u00BE\u00A8\u008F\u00EDU\u00D8\u00AA\u00B6E{{\u00E6M\u00AE\u008C\u00A9\u00C1\u009D5\x1APs\u00AD\u00C1Ak\u00BE\r\x07J\u00BA\u00E8\b`g\u00D6_\x00N\x00\u00BA{\u0085\u00EB\f\u00F2\u00C6\u0090\u00DF4\u00A0{\u00CDL]\u0091@$\u008F\u00D7tsg\u008B\x04\x16!G \u009A\u00B91\u00E6n\u00DC\u00D9\u00A278\u00AB\u00A1Q$\u0092\u009Fr\x04r\u00BB\u00A8\u00D3NJ\u00B5i\x1A\u00AF\u00FE\u00D0rFE)\u00FE\u008D\u008A:c\u00D8\u00E5\u00C0\x0F;\u00C4a\x17f\u00C6\u00F5\u0092\u0090\u00AB\n/\u00FF\u00A3\u00BD\u00F5C\x13E\u0089\u00FEA.\u0099\u00A2\u0083\u00E1\u00F9\x13\u00B8\u00B8D\u00E9\u00F5\u00FAA\u0081q\x1Dp\u00F9\x01\u00C0\u00B2\x0B\u00B2$x\u0089\u00B7\x00\x00\x00\x00IEND\u00AEB`\u0082';
 var table1252 = {
     "€": 128,
     "‚": 130,
@@ -515,7 +514,13 @@ var setUpPrefs = function () {
         iconsLabelIndex: 5,
         locsLabelIndex: 13,
         texLabelIndex: 2,
-        showHelpTips: true
+        showHelpTips: true,
+        iconColor1Name: 'Black',
+        iconColor1Hex: '000000',
+        iconColor2Name: 'White',
+        iconColor2Hex: 'ffffff',
+        iconColor3Name: 'Red',
+        iconColor3Hex: 'c51818'
     };
     if (myJSON.exists) {
         var parsedPrefs = parsePrefs();
@@ -590,6 +595,7 @@ var createAnimatedMap = function (name, vertices, inTangents, outTangents) {
     }
     var shapeLayer = comp.layers.addShape();
     shapeLayer.name = name;
+    shapeLayer.inPoint = comp.time;
     var contents = shapeLayer.property('Contents');
     createPathGrp(contents, "".concat(name, "_Stroke"), false, true, [0, 0, 0], [255, 255, 255], 10, vertices, inTangents, outTangents, true, [0, 0]);
     createPathGrp(contents, "".concat(name, "_Fill"), true, false, [202, 5, 5], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [0, 0]);
@@ -598,10 +604,10 @@ var createAnimatedMap = function (name, vertices, inTangents, outTangents) {
         .property('ADBE Vectors Group')
         .property('ADBE Vector Graphic - Fill')
         .property('ADBE Vector Fill Opacity');
-    fillOpacity.setValueAtTime(0, 0);
-    fillOpacity.setValueAtTime((1 / comp.frameRate) * 14, 50);
-    fillOpacity.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 33)], [new KeyframeEase(0.5, 33)]);
-    fillOpacity.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 33)], [new KeyframeEase(0.5, 33)]);
+    fillOpacity.setValueAtTime(shapeLayer.inPoint, 0);
+    fillOpacity.setValueAtTime((1 / comp.frameRate) * 14 + shapeLayer.inPoint, 50);
+    fillOpacity.setTemporalEaseAtKey(1, [new KeyframeEase(0, 33)], [new KeyframeEase(0, 33)]);
+    fillOpacity.setTemporalEaseAtKey(2, [new KeyframeEase(0, 33)], [new KeyframeEase(0, 33)]);
     var myStroke = contents
         .property("".concat(name, "_Stroke"))
         .property('ADBE Vectors Group')
@@ -622,10 +628,10 @@ var createAnimatedMap = function (name, vertices, inTangents, outTangents) {
         .property('ADBE Vectors Group');
     var trimPathsGrp = parentGrp.addProperty('ADBE Vector Filter - Trim');
     var trimPathsEnd = trimPathsGrp.property('ADBE Vector Trim End');
-    trimPathsEnd.setValueAtTime(0, 0);
-    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 30, 100);
-    trimPathsEnd.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 33)], [new KeyframeEase(0.5, 33)]);
-    trimPathsEnd.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 66)], [new KeyframeEase(0.5, 66)]);
+    trimPathsEnd.setValueAtTime(shapeLayer.inPoint, 0);
+    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 30 + shapeLayer.inPoint, 100);
+    trimPathsEnd.setTemporalEaseAtKey(1, [new KeyframeEase(0, 33)], [new KeyframeEase(0, 33)]);
+    trimPathsEnd.setTemporalEaseAtKey(2, [new KeyframeEase(0, 66)], [new KeyframeEase(0, 66)]);
 };
 var createIconCircle = function (contents, circleColorRgb, size) {
     var vertices = [
@@ -648,34 +654,6 @@ var createIconCircle = function (contents, circleColorRgb, size) {
     ];
     createPathGrp(contents, 'Circle', true, false, circleColorRgb, circleColorRgb, 0, vertices, inTangents, outTangents, true, [0, 0]);
 };
-var getFontFromLanguage = function (lang) {
-    if (lang === 'English') {
-        return 'TradeGothicLT-BoldCondTwenty';
-    }
-    else if (lang === 'Hebrew') {
-        return 'NarkisBlockCondensedMF-Bold';
-    }
-    else if (lang === 'Arabic') {
-        return 'DroidArabicKufi-Bold';
-    }
-};
-var getFontFromName = function (name) {
-    if (name === 'Trade Gothic') {
-        return 'TradeGothicLT-BoldCondTwenty';
-    }
-    else if (name === 'Narkis') {
-        return 'NarkisBlockCondensedMF-Bold';
-    }
-    else if (name === 'Almoni') {
-        return 'AlmoniNeueDL4.0AAA-Bold';
-    }
-    else if (name === 'Droid') {
-        return 'DroidArabicKufi-Bold';
-    }
-    else if (name === 'Janna') {
-        return 'JannaLT-Bold';
-    }
-};
 var importGoogleMaps = function (location) {
     var keyState = ScriptUI.environment.keyboardState;
     var modKey = getOS() === 'Win' ? keyState.ctrlKey : keyState.metaKey;
@@ -685,6 +663,7 @@ var importGoogleMaps = function (location) {
     if (!comp || !(comp instanceof CompItem))
         return;
     var mapLayer = comp.layers.add(mapItem);
+    mapLayer.inPoint = comp.time;
     mapLayer.selected = true;
     app.executeCommand(2732);
 };
@@ -716,7 +695,7 @@ var scaleWithOvershoot = function (layers) {
             origVal[1] + 3
         ]);
         scaleProp.setValueAtTime(comp.time + (1 / comp.frameRate) * 14, origVal);
-        var easeIn = new KeyframeEase(0.5, 66);
+        var easeIn = new KeyframeEase(0, 66);
         var easeOut = new KeyframeEase(0.75, 66);
         scaleProp.setTemporalEaseAtKey(beforeKeys + 1, [easeIn, easeIn, easeIn], [easeOut, easeOut, easeOut]);
         scaleProp.setTemporalEaseAtKey(beforeKeys + 2, [easeIn, easeIn, easeIn], [easeOut, easeOut, easeOut]);
@@ -724,14 +703,15 @@ var scaleWithOvershoot = function (layers) {
     });
 };
 var colorNameToRGB = function (name) {
-    if (name === 'White') {
-        return [255, 255, 255];
+    var _a = parsePrefs(), iconColor1Name = _a.iconColor1Name, iconColor1Hex = _a.iconColor1Hex, iconColor2Name = _a.iconColor2Name, iconColor2Hex = _a.iconColor2Hex, iconColor3Name = _a.iconColor3Name, iconColor3Hex = _a.iconColor3Hex;
+    if (name === iconColor1Name) {
+        return hexToRgb(iconColor1Hex).map(function (n) { return n * 255; });
     }
-    else if (name === 'Black') {
-        return [0, 0, 0];
+    else if (name === iconColor2Name) {
+        return hexToRgb(iconColor2Hex).map(function (n) { return n * 255; });
     }
-    else if (name === 'Red') {
-        return [197, 24, 24];
+    else if (name === iconColor3Name) {
+        return hexToRgb(iconColor3Hex).map(function (n) { return n * 255; });
     }
 };
 var getLabelsFromPrefs = function () {
@@ -787,14 +767,47 @@ var rgbToHex = function (r, g, b) {
     };
     return componentToHex(r) + componentToHex(g) + componentToHex(b);
 };
-var effectExists = function (matchName) {
-    var fx = app.effects;
-    var matches = fx.map(function (f) {
-        return f.matchName;
-    });
-    alert(matches.toString());
-    alert(matches.indexOf('Pseudo/textevo').toString());
-    return matches.indexOf('Pseudo/textevo') > 0;
+var formatLayerName = function (str) {
+    var capitalize = function (str) {
+        return str
+            .split(' ')
+            .map(function (word) {
+            return word.charAt(0).toUpperCase() + word.slice(1);
+        })
+            .join(' ');
+    };
+    str = capitalize(str).replace(/ /g, '_');
+    return str;
+};
+var openColorPicker = function (startValue) {
+    if (!startValue || startValue.length != 3) {
+        startValue = [1, 1, 1];
+    }
+    var comp = app.project.items.addComp('Color Picker Temp Comp', 100, 100, 1, 10, 24);
+    comp.openInViewer();
+    comp.hideShyLayers = true;
+    var newShape = comp.layers.addShape();
+    var newShapeParade = newShape.property('ADBE Effect Parade');
+    var newColorControl = newShapeParade.addProperty('ADBE Color Control');
+    var theColorProp = newColorControl.property('ADBE Color Control-0001');
+    newShape.name = 'Color Picker Null';
+    newShape.enabled = false;
+    newShape.shy = true;
+    theColorProp.setValue(startValue);
+    var editValueID = app.findMenuCommandId('Edit Value...');
+    theColorProp.selected = true;
+    app.executeCommand(editValueID);
+    var result = theColorProp.value;
+    newShape.remove();
+    comp.remove();
+    var startValueInRgba = [startValue[0], startValue[1], startValue[2], 1];
+    return result.toString() == startValueInRgba.toString() ? null : result;
+};
+var openColorPickerForEditText = function (hexEdit) {
+    var colorFromPicker = openColorPicker([1, 1, 1]);
+    if (colorFromPicker == null)
+        return;
+    hexEdit.text = rgbToHex(colorFromPicker[0] * 255, colorFromPicker[1] * 255, colorFromPicker[2] * 255);
 };
 var introduceTextEvo = function () {
     var textevo = {
@@ -1003,10 +1016,37 @@ var introduceTextEvo = function () {
     };
     applyTextEvo();
 };
-var generateCaspiQuote = function () {
-    var quotes = ['1', '2', '3', '4'];
-    var theQuote = quotes[Math.floor(Math.random() * quotes.length)];
-    alert(theQuote, 'Caspi Says:');
+var containsHebrew = function (str) { return /[\u0590-\u05FF]/.test(str); };
+var containsArabic = function (str) {
+    return /[\u0600-\u06FF\u0750-\u077F]/.test(str);
+};
+var getFontFromLanguage = function (lang) {
+    if (lang === 'English') {
+        return 'TradeGothicLT-BoldCondTwenty';
+    }
+    else if (lang === 'Hebrew') {
+        return 'NarkisBlockCondensedMF-Bold';
+    }
+    else if (lang === 'Arabic') {
+        return 'DroidArabicKufi-Bold';
+    }
+};
+var getFontFromName = function (name) {
+    if (name === 'Trade Gothic') {
+        return 'TradeGothicLT-BoldCondTwenty';
+    }
+    else if (name === 'Narkis') {
+        return 'NarkisBlockCondensedMF-Bold';
+    }
+    else if (name === 'Almoni') {
+        return 'AlmoniNeueDL4.0AAA-Bold';
+    }
+    else if (name === 'Droid') {
+        return 'DroidArabicKufi-Bold';
+    }
+    else if (name === 'Janna') {
+        return 'JannaLT-Bold';
+    }
 };
 var createTvaiStroke = function () {
     app.beginUndoGroup('Caspion: Create Tunnel Stroke');
@@ -1017,6 +1057,7 @@ var createTvaiStroke = function () {
     }
     var layer = comp.layers.addShape();
     layer.name = 'Tunnel';
+    layer.inPoint = comp.time;
     var contents = layer.property('ADBE Root Vectors Group');
     var shapeGrp = contents.addProperty('ADBE Vector Group');
     shapeGrp.name = 'Tunnel_Stroke';
@@ -1054,8 +1095,8 @@ var createTvaiStroke = function () {
     var trimPathsEnd = trimPathsGrp.property('ADBE Vector Trim End');
     trimPathsEnd.setValueAtTime(0, 0);
     trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 30, 100);
-    trimPathsEnd.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 33)], [new KeyframeEase(0.5, 33)]);
-    trimPathsEnd.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 88)], [new KeyframeEase(0.5, 88)]);
+    trimPathsEnd.setTemporalEaseAtKey(1, [new KeyframeEase(0, 33)], [new KeyframeEase(0, 33)]);
+    trimPathsEnd.setTemporalEaseAtKey(2, [new KeyframeEase(0, 88)], [new KeyframeEase(0, 88)]);
     layer
         .property('ADBE Root Vectors Group')
         .property('ADBE Vector Group')
@@ -1086,11 +1127,11 @@ var importLogos = function () {
     if (!comp || !(comp instanceof CompItem))
         return;
     var idfLayer = comp.layers.add(idfItem);
-    var padding = 200;
+    var padding = 120;
     var idfScale = idfLayer
         .property('ADBE Transform Group')
         .property('ADBE Scale');
-    idfScale.setValue([4, 4]);
+    idfScale.setValue([3, 3]);
     var idfPos = idfLayer
         .property('ADBE Transform Group')
         .property('ADBE Position');
@@ -1099,7 +1140,7 @@ var importLogos = function () {
     var dotzScale = dotzLayer
         .property('ADBE Transform Group')
         .property('ADBE Scale');
-    dotzScale.setValue([67, 67]);
+    dotzScale.setValue([50, 50]);
     var dotzPos = dotzLayer
         .property('ADBE Transform Group')
         .property('ADBE Position');
@@ -1134,7 +1175,7 @@ var createIllusText = function () {
     layerPos.setValue([-boundingBox.left + padding, comp.height - padding]);
     app.endUndoGroup();
 };
-var formatLayerName = function () {
+var formatLayerNameQA = function () {
     app.beginUndoGroup('Caspion: Format Layer Name');
     var comp = app.project.activeItem;
     if (!comp || !(comp instanceof CompItem)) {
@@ -1149,15 +1190,8 @@ var formatLayerName = function () {
     for (var i = 0; i < selLayers.length; i++) {
         var cur = selLayers[i];
         var name = cur.name;
-        var capitalize = function (str) {
-            return str
-                .split(' ')
-                .map(function (word) {
-                return word.charAt(0).toUpperCase() + word.slice(1);
-            })
-                .join(' ');
-        };
-        cur.name = capitalize(name).replace(/ /g, '_');
+        var formatted = formatLayerName(name);
+        cur.name = formatted;
         if (cur instanceof AVLayer) {
             cur.source.name = cur.name;
         }
@@ -1483,7 +1517,8 @@ var createCountingText = function () {
         alert('No Composition Selected');
         return;
     }
-    var layer = comp.layers.addText();
+    var layer = comp.layers.addSolid([1, 1, 1], 'Numbers', comp.width, comp.height, 1);
+    layer.inPoint = comp.time;
     layer.name = 'Numbers';
     var fx = layer.property('ADBE Effect Parade');
     var numFx = fx.addProperty('ADBE Numbers2');
@@ -1494,10 +1529,10 @@ var createCountingText = function () {
     var sizeProp = numFx.property('ADBE Numbers2-0006');
     sizeProp.setValue(150);
     var numValProp = numFx.property('ADBE Numbers2-0003');
-    numValProp.setValueAtTime(0, 0);
-    numValProp.setValueAtTime((1 / comp.frameRate) * 40, 99);
-    numValProp.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 20)]);
-    numValProp.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 75)]);
+    numValProp.setValueAtTime(layer.inPoint, 0);
+    numValProp.setValueAtTime((1 / comp.frameRate) * 40 + layer.inPoint, 99);
+    numValProp.setTemporalEaseAtKey(1, [new KeyframeEase(0, 20)]);
+    numValProp.setTemporalEaseAtKey(2, [new KeyframeEase(0, 75)]);
     app.endUndoGroup();
 };
 var importIsraelGoogleMaps = function () {
@@ -1519,6 +1554,7 @@ var createAnimatedFrame = function () {
     }
     var layer = comp.layers.addShape();
     layer.name = 'Frame';
+    layer.inPoint = comp.time;
     var contents = layer.property('ADBE Root Vectors Group');
     var shapeGrp = contents.addProperty('ADBE Vector Group');
     shapeGrp.name = 'Frame';
@@ -1547,13 +1583,13 @@ var createAnimatedFrame = function () {
     var trimPathsEnd = trimPathsGrp.property('ADBE Vector Trim End');
     trimPathsEnd.setValueAtTime(0, 0);
     trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 30, 100);
-    trimPathsEnd.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 34)], [new KeyframeEase(0.5, 34)]);
-    trimPathsEnd.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 92)], [new KeyframeEase(0.5, 92)]);
+    trimPathsEnd.setTemporalEaseAtKey(1, [new KeyframeEase(0, 34)], [new KeyframeEase(0, 34)]);
+    trimPathsEnd.setTemporalEaseAtKey(2, [new KeyframeEase(0, 92)], [new KeyframeEase(0, 92)]);
     var trimPathsOffset = trimPathsGrp.property('ADBE Vector Trim Offset');
     trimPathsOffset.setValueAtTime(0, -324);
     trimPathsOffset.setValueAtTime((1 / comp.frameRate) * 32, 0);
-    trimPathsOffset.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 24)], [new KeyframeEase(0.5, 24)]);
-    trimPathsOffset.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 72)], [new KeyframeEase(0.5, 72)]);
+    trimPathsOffset.setTemporalEaseAtKey(1, [new KeyframeEase(0, 24)], [new KeyframeEase(0, 24)]);
+    trimPathsOffset.setTemporalEaseAtKey(2, [new KeyframeEase(0, 72)], [new KeyframeEase(0, 72)]);
     app.endUndoGroup();
 };
 var openProjectInFinder = function () {
@@ -1595,6 +1631,7 @@ var createTatzaPath = function () {
     }
     var layer = comp.layers.addShape();
     layer.name = 'Location_Mark';
+    layer.inPoint = comp.time;
     var contents = layer.property('ADBE Root Vectors Group');
     var shapeGrp = contents.addProperty('ADBE Vector Group');
     shapeGrp.name = 'Location_Mark_Stroke';
@@ -1634,8 +1671,8 @@ var createTatzaPath = function () {
     var trimPathsEnd = trimPathsGrp.property('ADBE Vector Trim End');
     trimPathsEnd.setValueAtTime(0, 0);
     trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 30, 100);
-    trimPathsEnd.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 33)], [new KeyframeEase(0.5, 33)]);
-    trimPathsEnd.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 88)], [new KeyframeEase(0.5, 88)]);
+    trimPathsEnd.setTemporalEaseAtKey(1, [new KeyframeEase(0, 33)], [new KeyframeEase(0, 33)]);
+    trimPathsEnd.setTemporalEaseAtKey(2, [new KeyframeEase(0, 88)], [new KeyframeEase(0, 88)]);
     layer
         .property('ADBE Root Vectors Group')
         .property('ADBE Vector Group')
@@ -1652,6 +1689,7 @@ var recScaleX = function () {
     }
     var layer = comp.layers.addShape();
     layer.name = 'Rec';
+    layer.inPoint = comp.time;
     var xSlider = layer.effect.addProperty('ADBE Slider Control');
     xSlider.name = 'Size X';
     var xSliderProp = xSlider.property('ADBE Slider Control-0001');
@@ -1676,8 +1714,8 @@ var recScaleX = function () {
         .property('ADBE Scale');
     scaleProp.setValueAtTime(0, [0, 100]);
     scaleProp.setValueAtTime((1 / comp.frameRate) * 14, [100, 100]);
-    var ease1 = new KeyframeEase(0.5, 65);
-    var ease2 = new KeyframeEase(0.5, 92);
+    var ease1 = new KeyframeEase(0, 65);
+    var ease2 = new KeyframeEase(0, 92);
     scaleProp.setTemporalEaseAtKey(1, [ease1, ease1, ease1], [ease1, ease1, ease1]);
     scaleProp.setTemporalEaseAtKey(2, [ease2, ease2, ease2], [ease2, ease2, ease2]);
     app.endUndoGroup();
@@ -1692,6 +1730,7 @@ var createTextOnLocation = function () {
     app.beginUndoGroup('Caspion: Text On Location');
     var circleLayer = comp.layers.addShape();
     circleLayer.name = "".concat(promptVal, " - Circle");
+    circleLayer.inPoint = comp.time;
     var circleContents = circleLayer.property('ADBE Root Vectors Group');
     var circleShapeGrp = circleContents.addProperty('ADBE Vector Group');
     circleShapeGrp.name = 'Circle';
@@ -1705,18 +1744,18 @@ var createTextOnLocation = function () {
     var circleScale = circleLayer
         .property('ADBE Transform Group')
         .property('ADBE Scale');
-    circleScale.setValueAtTime(0, [0, 0]);
-    circleScale.setValueAtTime((1 / comp.frameRate) * 7, [114.3096, 114.3096]);
-    circleScale.setValueAtTime((1 / comp.frameRate) * 15, [92.2582, 92.2582]);
-    circleScale.setValueAtTime((1 / comp.frameRate) * 22, [104.8933, 104.8933]);
-    circleScale.setValueAtTime((1 / comp.frameRate) * 28, [98.3702, 98.3702]);
-    circleScale.setValueAtTime((1 / comp.frameRate) * 36, [100, 100]);
-    var scaleEase1 = new KeyframeEase(0.5, 56);
-    var scaleEase2 = new KeyframeEase(0.5, 57);
-    var scaleEase3 = new KeyframeEase(0.5, 52.5);
-    var scaleEase4 = new KeyframeEase(0.5, 48);
-    var scaleEase5 = new KeyframeEase(0.5, 45);
-    var scaleEase6 = new KeyframeEase(0.5, 47);
+    circleScale.setValueAtTime(comp.time, [0, 0]);
+    circleScale.setValueAtTime((1 / comp.frameRate) * 7 + comp.time, [114.3096, 114.3096]);
+    circleScale.setValueAtTime((1 / comp.frameRate) * 15 + comp.time, [92.2582, 92.2582]);
+    circleScale.setValueAtTime((1 / comp.frameRate) * 22 + comp.time, [104.8933, 104.8933]);
+    circleScale.setValueAtTime((1 / comp.frameRate) * 28 + comp.time, [98.3702, 98.3702]);
+    circleScale.setValueAtTime((1 / comp.frameRate) * 36 + comp.time, [100, 100]);
+    var scaleEase1 = new KeyframeEase(0, 56);
+    var scaleEase2 = new KeyframeEase(0, 57);
+    var scaleEase3 = new KeyframeEase(0, 52.5);
+    var scaleEase4 = new KeyframeEase(0, 48);
+    var scaleEase5 = new KeyframeEase(0, 45);
+    var scaleEase6 = new KeyframeEase(0, 47);
     circleScale.setTemporalEaseAtKey(1, [scaleEase1, scaleEase1, scaleEase1], [scaleEase1, scaleEase1, scaleEase1]);
     circleScale.setTemporalEaseAtKey(2, [scaleEase2, scaleEase2, scaleEase2], [scaleEase2, scaleEase2, scaleEase2]);
     circleScale.setTemporalEaseAtKey(3, [scaleEase3, scaleEase3, scaleEase3], [scaleEase3, scaleEase3, scaleEase3]);
@@ -1729,7 +1768,7 @@ var createTextOnLocation = function () {
     circlePos.setValue([621.2241, 597.2879]);
     var lineLayer = comp.layers.addShape();
     lineLayer.name = "".concat(promptVal, " - Line");
-    lineLayer.inPoint = (1 / comp.frameRate) * 3;
+    lineLayer.inPoint = (1 / comp.frameRate) * 3 + comp.time;
     var lineContents = lineLayer.property('ADBE Root Vectors Group');
     createPathGrp(lineContents, 'Line', false, true, [0, 0, 0], [255, 255, 255], 14, [
         [-311, 27.7985687255859],
@@ -1757,10 +1796,10 @@ var createTextOnLocation = function () {
         .property('ADBE Vectors Group');
     var trimPathsGrp = parentGrp.addProperty('ADBE Vector Filter - Trim');
     var trimPathsEnd = trimPathsGrp.property('ADBE Vector Trim End');
-    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 3, 0);
-    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 16, 100);
-    trimPathsEnd.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 44)], [new KeyframeEase(0.5, 44)]);
-    trimPathsEnd.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 93)], [new KeyframeEase(0.5, 93)]);
+    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 3 + comp.time, 0);
+    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 16 + comp.time, 100);
+    trimPathsEnd.setTemporalEaseAtKey(1, [new KeyframeEase(0, 44)], [new KeyframeEase(0, 44)]);
+    trimPathsEnd.setTemporalEaseAtKey(2, [new KeyframeEase(0, 93)], [new KeyframeEase(0, 93)]);
     var linePos = lineLayer
         .property('ADBE Transform Group')
         .property('ADBE Position');
@@ -1771,7 +1810,7 @@ var createTextOnLocation = function () {
     lineAnchor.setValue([-108, -89]);
     var recLayer = comp.layers.addShape();
     recLayer.name = "".concat(promptVal, " - Rectangle");
-    recLayer.inPoint = (1 / comp.frameRate) * 12;
+    recLayer.inPoint = (1 / comp.frameRate) * 12 + comp.time;
     var recContents = recLayer.property('ADBE Root Vectors Group');
     var recShapeGrp = recContents.addProperty('ADBE Vector Group');
     recShapeGrp.name = 'Rectangle';
@@ -1789,10 +1828,10 @@ var createTextOnLocation = function () {
         .property('ADBE Vector Shape - Rect')
         .property('ADBE Vector Rect Size');
     recRectangleSize.setValue([467, 169]);
-    recRectangleSize.setValueAtTime((1 / comp.frameRate) * 12, [0, 169]);
-    recRectangleSize.setValueAtTime((1 / comp.frameRate) * 41, [467, 169]);
-    var easeOut = new KeyframeEase(0.5, 44);
-    var easeIn = new KeyframeEase(0.5, 93);
+    recRectangleSize.setValueAtTime((1 / comp.frameRate) * 12 + comp.time, [0, 169]);
+    recRectangleSize.setValueAtTime((1 / comp.frameRate) * 41 + comp.time, [467, 169]);
+    var easeOut = new KeyframeEase(0, 44);
+    var easeIn = new KeyframeEase(0, 93);
     recRectangleSize.setTemporalEaseAtKey(1, [easeOut, easeOut], [easeOut, easeOut]);
     recRectangleSize.setTemporalEaseAtKey(2, [easeIn, easeIn], [easeIn, easeIn]);
     var recPos = recLayer
@@ -1800,13 +1839,21 @@ var createTextOnLocation = function () {
         .property('ADBE Position');
     recPos.setValue([1055.9803, 280.3122]);
     var textLayer = comp.layers.addText();
-    textLayer.inPoint = (1 / comp.frameRate) * 12;
+    textLayer.inPoint = (1 / comp.frameRate) * 12 + comp.time;
     var srcText = textLayer
         .property('ADBE Text Properties')
         .property('ADBE Text Document');
     srcText.setValue(promptVal);
     var textDoc = srcText.value;
-    textDoc.font = getFontFromLanguage('Hebrew');
+    if (containsHebrew(promptVal[0])) {
+        textDoc.font = getFontFromLanguage('Hebrew');
+    }
+    else if (containsArabic(promptVal[0])) {
+        textDoc.font = getFontFromLanguage('Arabic');
+    }
+    else {
+        textDoc.font = getFontFromLanguage('English');
+    }
     textDoc.fontSize = 145;
     textDoc.applyFill = true;
     textDoc.fillColor = [0, 0, 0];
@@ -1835,7 +1882,7 @@ var createArrow = function () {
     }
     var lineLayer = comp.layers.addShape();
     lineLayer.name = 'Arrow_Line';
-    lineLayer.inPoint = (1 / comp.frameRate) * 7;
+    lineLayer.inPoint = (1 / comp.frameRate) * 7 + comp.time;
     var lineContents = lineLayer.property('ADBE Root Vectors Group');
     createPathGrp(lineContents, 'Arrow_Line', false, true, [0, 0, 0], [255, 255, 255], 73, [
         [-550, -68],
@@ -1852,10 +1899,10 @@ var createArrow = function () {
         .property('ADBE Vectors Group');
     var trimPathsGrp = parentGrp.addProperty('ADBE Vector Filter - Trim');
     var trimPathsEnd = trimPathsGrp.property('ADBE Vector Trim End');
-    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 7, 0);
-    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 20, 100);
-    trimPathsEnd.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 30)], [new KeyframeEase(0.5, 30)]);
-    trimPathsEnd.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 94)], [new KeyframeEase(0.5, 94)]);
+    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 7 + comp.time, 0);
+    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 20 + comp.time, 100);
+    trimPathsEnd.setTemporalEaseAtKey(1, [new KeyframeEase(0, 30)], [new KeyframeEase(0, 30)]);
+    trimPathsEnd.setTemporalEaseAtKey(2, [new KeyframeEase(0, 94)], [new KeyframeEase(0, 94)]);
     var linePos = lineLayer
         .property('ADBE Transform Group')
         .property('ADBE Position');
@@ -1866,6 +1913,7 @@ var createArrow = function () {
     lineAnchor.setValue([-372, -68]);
     var pointerLayer = comp.layers.addShape();
     pointerLayer.name = 'Arrow_Pointer';
+    pointerLayer.inPoint = comp.time;
     var pointerContents = pointerLayer.property('ADBE Root Vectors Group');
     createPathGrp(pointerContents, 'Arrow_Pointer', true, false, [255, 255, 255], [0, 0, 0], 0, [
         [-207.039474487305, -96],
@@ -1892,42 +1940,42 @@ var createArrow = function () {
     var pointerXPos = pointerLayer
         .property('ADBE Transform Group')
         .property('ADBE Position_0');
-    pointerXPos.setValueAtTime((1 / comp.frameRate) * 7, 410.4605);
-    pointerXPos.setValueAtTime((1 / comp.frameRate) * 20, 753.4605);
-    pointerXPos.setTemporalEaseAtKey(1, [new KeyframeEase(0.5, 30)], [new KeyframeEase(0.5, 30)]);
-    pointerXPos.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 94)], [new KeyframeEase(0.5, 94)]);
+    pointerXPos.setValueAtTime((1 / comp.frameRate) * 7 + comp.time, 410.4605);
+    pointerXPos.setValueAtTime((1 / comp.frameRate) * 20 + comp.time, 753.4605);
+    pointerXPos.setTemporalEaseAtKey(1, [new KeyframeEase(0, 30)], [new KeyframeEase(0, 30)]);
+    pointerXPos.setTemporalEaseAtKey(2, [new KeyframeEase(0, 94)], [new KeyframeEase(0, 94)]);
     var pointerScale = pointerLayer
         .property('ADBE Transform Group')
         .property('ADBE Scale');
     pointerScale.setValueAtTime(0, [0, 0]);
-    pointerScale.setValueAtTime((1 / comp.frameRate) * 7, [55.4514, 55.4514]);
-    pointerScale.setValueAtTime((1 / comp.frameRate) * 20, [100, 100]);
+    pointerScale.setValueAtTime((1 / comp.frameRate) * 7 + comp.time, [55.4514, 55.4514]);
+    pointerScale.setValueAtTime((1 / comp.frameRate) * 20 + comp.time, [100, 100]);
     pointerScale.setTemporalEaseAtKey(1, [
-        new KeyframeEase(0.5, 46),
-        new KeyframeEase(0.5, 46),
-        new KeyframeEase(0.5, 46)
+        new KeyframeEase(0, 46),
+        new KeyframeEase(0, 46),
+        new KeyframeEase(0, 46)
     ], [
-        new KeyframeEase(0.5, 46),
-        new KeyframeEase(0.5, 46),
-        new KeyframeEase(0.5, 46)
+        new KeyframeEase(0, 46),
+        new KeyframeEase(0, 46),
+        new KeyframeEase(0, 46)
     ]);
     pointerScale.setTemporalEaseAtKey(2, [
-        new KeyframeEase(0.5, 63),
-        new KeyframeEase(0.5, 63),
-        new KeyframeEase(0.5, 63)
+        new KeyframeEase(0, 63),
+        new KeyframeEase(0, 63),
+        new KeyframeEase(0, 63)
     ], [
-        new KeyframeEase(0.5, 30),
-        new KeyframeEase(0.5, 30),
-        new KeyframeEase(0.5, 30)
+        new KeyframeEase(0, 30),
+        new KeyframeEase(0, 30),
+        new KeyframeEase(0, 30)
     ]);
     pointerScale.setTemporalEaseAtKey(3, [
-        new KeyframeEase(0.5, 94),
-        new KeyframeEase(0.5, 94),
-        new KeyframeEase(0.5, 94)
+        new KeyframeEase(0, 94),
+        new KeyframeEase(0, 94),
+        new KeyframeEase(0, 94)
     ], [
-        new KeyframeEase(0.5, 94),
-        new KeyframeEase(0.5, 94),
-        new KeyframeEase(0.5, 94)
+        new KeyframeEase(0, 94),
+        new KeyframeEase(0, 94),
+        new KeyframeEase(0, 94)
     ]);
     app.endUndoGroup();
 };
@@ -1940,6 +1988,7 @@ var createMikra = function () {
     }
     var bgLayer = comp.layers.addShape();
     bgLayer.name = 'Mikra_BG';
+    bgLayer.inPoint = comp.time;
     var xSlider = bgLayer.effect.addProperty('ADBE Slider Control');
     xSlider.name = 'Size X';
     var xSliderProp = xSlider.property('ADBE Slider Control-0001');
@@ -1979,9 +2028,9 @@ var createMikra = function () {
     var layerYPos = bgLayer
         .property('ADBE Transform Group')
         .property('ADBE Position_1');
-    layerYPos.setValueAtTime(0, comp.height + 450);
-    layerYPos.setValueAtTime((1 / comp.frameRate) * 15, comp.height);
-    layerYPos.setTemporalEaseAtKey(2, [new KeyframeEase(0.5, 88)]);
+    layerYPos.setValueAtTime(comp.time, comp.height + 450);
+    layerYPos.setValueAtTime((1 / comp.frameRate) * 15 + comp.time, comp.height);
+    layerYPos.setTemporalEaseAtKey(2, [new KeyframeEase(0, 88)]);
     var layerAnchor = bgLayer
         .property('ADBE Transform Group')
         .property('ADBE Anchor Point');
@@ -1991,6 +2040,7 @@ var createMikra = function () {
         circleLayer.name = "Mikra_Icon_0".concat(index);
         circleLayer.parent = bgLayer;
         circleLayer.guideLayer = true;
+        circleLayer.inPoint = comp.time;
         var circleContents = circleLayer.property('ADBE Root Vectors Group');
         var circleShapeGrp = circleContents.addProperty('ADBE Vector Group');
         circleShapeGrp.name = 'Circle';
@@ -2018,6 +2068,7 @@ var createMikra = function () {
     var createText = function (text, textPos) {
         var textLayer = comp.layers.addText();
         textLayer.parent = bgLayer;
+        textLayer.inPoint = comp.time;
         var srcText = textLayer
             .property('ADBE Text Properties')
             .property('ADBE Text Document');
@@ -2044,12 +2095,42 @@ var createMikra = function () {
     createText('טקסט 2', [222.1052, 292]);
     createText('טקסט 3', [682.3552, 442]);
     createText('טקסט 4', [222.1052, 442]);
+    bgLayer.selected = true;
+    app.endUndoGroup();
+};
+var createCameraNull = function () {
+    app.beginUndoGroup('Caspion: Create Camera Null');
+    var comp = app.project.activeItem;
+    if (!comp || !(comp instanceof CompItem)) {
+        alert('No Composition Selected');
+        return;
+    }
+    var theNull = comp.layers.addNull();
+    theNull.name = theNull.source.name = 'Camera';
+    var nullScale = theNull
+        .property('ADBE Transform Group')
+        .property('ADBE Scale');
+    nullScale.expression =
+        'var t = value[0] + time * effect("Camera Zoom Speed")("Slider");\n[t, t]';
+    var slider = theNull.effect.addProperty('ADBE Slider Control');
+    slider.name = 'Camera Zoom Speed';
+    var sliderVal = slider.property('ADBE Slider Control-0001');
+    sliderVal.setValue(1.5);
+    theNull.selected = false;
+    for (var i = 2; i <= comp.numLayers; i++) {
+        comp.layer(i).selected = !comp.layer(i).parent;
+    }
+    comp.time = 0;
     app.endUndoGroup();
 };
 var createText = function (text, font, animation, addTextEvo, addMask) {
     var comp = app.project.activeItem;
     if (!comp || !(comp instanceof CompItem)) {
         alert('No Composition Selected');
+        return;
+    }
+    if (!text) {
+        alert('Please Type Some Text');
         return;
     }
     app.beginUndoGroup('Caspion: Create Text');
@@ -2065,6 +2146,7 @@ var createText = function (text, font, animation, addTextEvo, addMask) {
     textDoc.fillColor = [1, 1, 1];
     textDoc.applyStroke = false;
     textDoc.tracking = 0;
+    textDoc.justification = ParagraphJustification.LEFT_JUSTIFY;
     srcText.setValue(textDoc);
     if (addMask) {
         var id = app.findMenuCommandId('New Mask');
@@ -2098,7 +2180,7 @@ var createText = function (text, font, animation, addTextEvo, addMask) {
 var setUpIcon = function (name, circleColor, iconColor) {
     var comp = app.project.activeItem;
     var layer = comp.layers.addShape();
-    layer.name = name;
+    layer.name = formatLayerName(name);
     layer.inPoint = comp.time;
     layer.label = parsePrefs().iconsLabelRandom
         ? Math.floor(Math.random() * 16) + 1
@@ -7805,6 +7887,2976 @@ var createHelmetIcon = function (circleColor, iconColor, hasCircle, scale) {
     createHelmetTop();
     iconAftermath(hasCircle, contents, circleColorRgb, scale, layer);
 };
+var createRunningWithM16Icon = function (circleColor, iconColor, hasCircle, scale) {
+    var _a = setUpIcon('Running With M16', circleColor, iconColor), layer = _a.layer, contents = _a.contents, circleColorRgb = _a.circleColorRgb, iconColorRgb = _a.iconColorRgb;
+    var createBody = function () {
+        var vertices = [
+            [-112.426223754883, 92.5795745849609],
+            [-97.9319763183594, 77.8319702148438],
+            [-49.4823760986328, 47.4068756103516],
+            [-46.4323272705078, 42.8886108398438],
+            [-38.4660949707031, -0.35137939453125],
+            [-36.8851776123047, -5.24737548828125],
+            [6.10946655273438, -99.8761749267578],
+            [36.7722015380859, -111.243118286133],
+            [66.6426239013672, -97.4080200195312],
+            [78.7846527099609, -66.5413818359375],
+            [79.1910247802734, -63.3890838623047],
+            [82.0041198730469, -59.7902526855469],
+            [62.9147796630859, -55.8725738525391],
+            [58.1524353027344, -59.1194610595703],
+            [52.8610382080078, -74.1751403808594],
+            [54.0639495849609, -48.7123565673828],
+            [56.428955078125, -46.6899871826172],
+            [101.744079589844, -33.6977844238281],
+            [112.425430297852, -20.3093109130859],
+            [103.01188659668, -6.97785949707031],
+            [94.1098022460938, -6.88980102539062],
+            [37.9207458496094, -22.9569396972656],
+            [26.7787933349609, -37.3346099853516],
+            [25.1080474853516, -70.3237457275391],
+            [24.4043426513672, -72.4245758056641],
+            [19.1839599609375, -48.5726013183594],
+            [16.5473937988281, -35.9197692871094],
+            [14.1225891113281, -33.5236358642578],
+            [-3.29081726074219, -29.9604339599609],
+            [-16.9640045166016, -9.20619201660156],
+            [-13.3678283691406, 8.20149230957031],
+            [-8.261962890625, 17.7016754150391],
+            [-7.05726623535156, 21.6361083984375],
+            [-13.8439331054688, 57.8597259521484],
+            [-23.1189880371094, 71.9060668945312],
+            [-84.6015472412109, 110.749938964844],
+            [-111.848785400391, 101.050247192383],
+            [-112.426223754883, 100.355545043945]
+        ];
+        var inTangents = [
+            [0, 2.59199523925781],
+            [-6.08999633789062, 3.77340698242188],
+            [-16.1884918212891, 10.0797424316406],
+            [-0.365478515625, 2.0068359375],
+            [-2.66670227050781, 14.4112701416016],
+            [-0.72198486328125, 1.58645629882812],
+            [-14.3258056640625, 31.5455474853516],
+            [-13.1468658447266, -6.06570434570312],
+            [-9.97087097167969, -4.58110046386719],
+            [5.89630126953125, -14.0601654052734],
+            [-0.97071838378906, -1.01828002929688],
+            [-1.08683776855469, -1.41046142578125],
+            [6.3111572265625, -1.04669189453125],
+            [0.73167419433594, 2.72215270996094],
+            [2.14225769042969, 4.9158935546875],
+            [-0.342041015625, -8.48997497558594],
+            [-1.11137390136719, -0.31776428222656],
+            [-15.0945892333984, -4.3668212890625],
+            [-0.06613159179688, -6.32377624511719],
+            [5.74870300292969, -1.99455261230469],
+            [2.97908020019531, 0.85142517089844],
+            [18.718017578125, 5.39619445800781],
+            [0.38520812988281, 7.70712280273438],
+            [0.56338500976562, 10.9960479736328],
+            [0.55419921875, 0.73114013671875],
+            [1.72848510742188, -7.95318603515625],
+            [0.75076293945312, -4.24034118652344],
+            [1.48565673828125, -0.28349304199219],
+            [5.7913818359375, -1.24974060058594],
+            [-2.01731872558594, -9.98823547363281],
+            [-1.13461303710938, -5.81507873535156],
+            [-2.83171081542969, -2.5064697265625],
+            [0.322021484375, -1.66146850585938],
+            [2.10737609863281, -12.1017456054688],
+            [5.2972412109375, -3.31947326660156],
+            [20.3691711425781, -13.1419982910156],
+            [2.57928466796875, 10.8191375732422],
+            [0.19818115234375, 0.23020935058594]
+        ];
+        var outTangents = [
+            [2.51608276367188, -7.19697570800781],
+            [16.2102966308594, -10.0440826416016],
+            [1.85075378417969, -1.15237426757812],
+            [2.62586975097656, -14.4187316894531],
+            [0.31410217285156, -1.69741821289062],
+            [14.3509979248047, -31.5340881347656],
+            [5.96858215332031, -13.1428985595703],
+            [9.96359252929688, 4.59701538085938],
+            [13.8972778320312, 6.38508605957031],
+            [-0.52276611328125, 1.24659729003906],
+            [0.9573974609375, 1.00433349609375],
+            [-6.54115295410156, 1.37763977050781],
+            [-2.05946350097656, 0.341552734375],
+            [-1.37696838378906, -5.12300109863281],
+            [0.41143798828125, 8.4871826171875],
+            [0.06990051269531, 1.73524475097656],
+            [15.1081848144531, 4.31980895996094],
+            [6.56407165527344, 1.89897155761719],
+            [0.06343078613281, 6.06716918945312],
+            [-2.961669921875, 1.02757263183594],
+            [-18.7304229736328, -5.35319519042969],
+            [-7.31805419921875, -2.10969543457031],
+            [-0.54963684082031, -10.9967498779297],
+            [-0.03518676757812, -0.68687438964844],
+            [-1.74136352539062, 7.95039367675781],
+            [-0.9150390625, 4.21040344238281],
+            [-0.27662658691406, 1.56239318847656],
+            [-5.81930541992188, 1.11044311523438],
+            [-10.0334625244141, 2.16514587402344],
+            [1.17300415039062, 5.80780029296875],
+            [0.72628784179688, 3.72230529785156],
+            [1.32591247558594, 1.17362976074219],
+            [-2.33750915527344, 12.0602569580078],
+            [-1.06781005859375, 6.1319580078125],
+            [-20.5419006347656, 12.8723754882812],
+            [-11.41259765625, 7.36332702636719],
+            [-0.06259155273438, -0.26255798339844],
+            [0, -2.59199523925781]
+        ];
+        createPathGrp(contents, 'Body', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [-53.4611, 28.5644]);
+    };
+    var createRLeg = function () {
+        var vertices = [
+            [-36.4159240722656, -36.2896575927734],
+            [0.18609619140625, -54.5562591552734],
+            [5.24899291992188, -54.6132049560547],
+            [25.7752227783203, -44.4268951416016],
+            [36.3846282958984, -27.3234710693359],
+            [36.3619689941406, 37.1324005126953],
+            [20.8439483642578, 55.2081146240234],
+            [1.95535278320312, 41.5594177246094],
+            [1.58444213867188, 36.4136199951172],
+            [1.65119934082031, -14.1138610839844],
+            [-1.596923828125, -19.1658172607422]
+        ];
+        var inTangents = [
+            [11.6434478759766, 5.74180603027344],
+            [-12.1006317138672, 6.12417602539062],
+            [-1.85182189941406, -0.95578002929688],
+            [-6.84953308105469, -3.38108825683594],
+            [-0.00755310058594, -7.86526489257812],
+            [0.0916748046875, -21.4849243164062],
+            [8.8824462890625, -0.81326293945312],
+            [1.9649658203125, 8.84284973144531],
+            [0.00259399414062, 1.71812438964844],
+            [-0.16444396972656, 16.8411407470703],
+            [2.2568359375, 1.09333801269531]
+        ];
+        var outTangents = [
+            [12.3391571044922, -6.13996887207031],
+            [1.8148193359375, -0.91844177246094],
+            [6.78668212890625, 3.50276184082031],
+            [7.08619689941406, 3.49789428710938],
+            [0.02059936523438, 21.4853057861328],
+            [-0.0416259765625, 9.75718688964844],
+            [-9.05293273925781, 0.828857421875],
+            [-0.3692626953125, -1.66181945800781],
+            [-0.0255126953125, -16.8427276611328],
+            [0.02676391601562, -2.74067687988281],
+            [-11.6180267333984, -5.62857055664062]
+        ];
+        createPathGrp(contents, 'R_Leg', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [-9.4068, 87.3026]);
+    };
+    var createHead = function () {
+        var vertices = [
+            [31.2649383544922, -0.05308532714844],
+            [0.06922912597656, 31.2880706787109],
+            [-31.2645721435547, 0.05278015136719],
+            [-0.04360961914062, -31.2880096435547]
+        ];
+        var inTangents = [
+            [-0.03712463378906, -17.3032684326172],
+            [17.2919464111328, -0.05267333984375],
+            [0.09197998046875, 17.3253173828125],
+            [-17.2840728759766, 0.0626220703125]
+        ];
+        var outTangents = [
+            [0.03707885742188, 17.2826538085938],
+            [-17.2353363037109, 0.052490234375],
+            [-0.09129333496094, -17.1961517333984],
+            [17.2443084716797, -0.06248474121094]
+        ];
+        createPathGrp(contents, 'Head', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [26.4224, -111.3031]);
+    };
+    var createM16Top = function () {
+        var vertices = [
+            [3.55961608886719, 7.17466735839844],
+            [7.6522216796875, 11.4467620849609],
+            [1.87889099121094, 19.8394317626953],
+            [-28.8368225097656, 26.1351165771484],
+            [-32.2675476074219, 24.7341003417969],
+            [-45.1245269775391, 15.9963531494141],
+            [-69.2481842041016, 9.03141784667969],
+            [-53.6650085449219, 5.76966857910156],
+            [36.6334381103516, -12.4796142578125],
+            [39.1605834960938, -17.7775268554688],
+            [46.5835418701172, -26.0654754638672],
+            [51.5973510742188, -19.6704254150391],
+            [56.2350311279297, -16.5531463623047],
+            [61.9317016601562, -17.6854553222656],
+            [69.1845245361328, -12.3954925537109],
+            [63.9355621337891, -5.35377502441406],
+            [38.92822265625, -0.18934631347656],
+            [6.61550903320312, 6.36882019042969]
+        ];
+        var inTangents = [
+            [1.24903869628906, -0.33245849609375],
+            [-0.59196472167969, -1.98512268066406],
+            [4.64898681640625, -0.95655822753906],
+            [10.2193908691406, -2.18794250488281],
+            [0.94415283203125, 1.27908325195312],
+            [5.25469970703125, 1.502197265625],
+            [8.63679504394531, 2.49581909179688],
+            [-4.92704772949219, 1.002685546875],
+            [-30.1303558349609, 5.92620849609375],
+            [0.51806640625, 2.44602966308594],
+            [-4.9351806640625, -1.12055969238281],
+            [-0.23208618164062, -3.05796813964844],
+            [-3.0389404296875, 0.9952392578125],
+            [-1.92036437988281, 0.20481872558594],
+            [-0.49386596679688, -3.4844970703125],
+            [3.60922241210938, -0.77719116210938],
+            [8.34030151367188, -1.69967651367188],
+            [10.7693176269531, -2.19386291503906]
+        ];
+        var outTangents = [
+            [1.93939208984375, 1.15879821777344],
+            [1.19287109375, 4.00016784667969],
+            [-10.2371215820312, 2.10635375976562],
+            [-1.7021484375, 0.36444091796875],
+            [-3.24549865722656, -4.39674377441406],
+            [-7.74894714355469, -2.21524047851562],
+            [5.73997497558594, -1.2030029296875],
+            [30.0914001464844, -6.12393188476562],
+            [4.10990905761719, -0.808349609375],
+            [-1.13441467285156, -5.35624694824219],
+            [3.34609985351562, 0.75975036621094],
+            [0.252685546875, 3.3294677734375],
+            [1.82855224609375, -0.59884643554688],
+            [3.8272705078125, -0.40817260742188],
+            [0.46383666992188, 3.2725830078125],
+            [-8.32066345214844, 1.79167175292969],
+            [-10.7691650390625, 2.19462585449219],
+            [-0.91372680664062, 0.18614196777344]
+        ];
+        createPathGrp(contents, 'M16_Top', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [96.6392, -30.9853]);
+    };
+    var createM16Bottom = function () {
+        var vertices = [
+            [29.4790191650391, -2.853515625],
+            [-9.61445617675781, 16.7855377197266],
+            [-26.5176544189453, 8.40226745605469],
+            [-29.2888488769531, -5.53448486328125],
+            [-22.9286041259766, -15.5811004638672],
+            [-5.19541931152344, -19.1757659912109],
+            [-2.957275390625, -18.1382446289062],
+            [10.0404510498047, -8.43539428710938]
+        ];
+        var inTangents = [
+            [-7.07809448242188, -2.04452514648438],
+            [12.5193939208984, -6.84977722167969],
+            [1.21629333496094, 10.9260559082031],
+            [0.90086364746094, 4.65199279785156],
+            [-4.75759887695312, 1.08135986328125],
+            [-5.90170288085938, 1.24363708496094],
+            [-0.5478515625, -1.13551330566406],
+            [-5.6817626953125, -1.50828552246094]
+        ];
+        var outTangents = [
+            [-13.5962677001953, 6.77742004394531],
+            [-9.19235229492188, 5.02940368652344],
+            [-0.52210998535156, -4.69000244140625],
+            [-0.92912292480469, -4.79791259765625],
+            [5.87950134277344, -1.33627319335938],
+            [1.1536865234375, -0.24311828613281],
+            [2.6356201171875, 5.46273803710938],
+            [6.21199035644531, 1.6490478515625]
+        ];
+        createPathGrp(contents, 'M16_Bottom', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [-32.5757, 22.8265]);
+    };
+    var createRHand = function () {
+        var vertices = [
+            [15.7018737792969, -5.04953002929688],
+            [5.26484680175781, 2.65328979492188],
+            [-13.3794555664062, 4.82839965820312],
+            [-15.6500549316406, 3.70761108398438],
+            [-14.0944213867188, 0.90434265136719]
+        ];
+        var inTangents = [
+            [-10.1698608398438, 2.04397583007812],
+            [4.60586547851562, -0.66334533691406],
+            [6.21833801269531, -0.69754028320312],
+            [0.0936279296875, 1.95742797851562],
+            [-1.89579772949219, 0.36663818359375]
+        ];
+        var outTangents = [
+            [-2.30854797363281, 4.59469604492188],
+            [-6.19085693359375, 0.89166259765625],
+            [-0.95414733886719, 0.10704040527344],
+            [-0.0650634765625, -1.35978698730469],
+            [9.82389831542969, -1.89984130859375]
+        ];
+        createPathGrp(contents, 'R_Hand', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [84.8898, 2.3984]);
+    };
+    createRHand();
+    createM16Bottom();
+    createM16Top();
+    createHead();
+    createRLeg();
+    createBody();
+    iconAftermath(hasCircle, contents, circleColorRgb, scale, layer, 220);
+};
+var createCrouchingWithM16Icon = function (circleColor, iconColor, hasCircle, scale) {
+    var _a = setUpIcon('Crouching With M16', circleColor, iconColor), layer = _a.layer, contents = _a.contents, circleColorRgb = _a.circleColorRgb, iconColorRgb = _a.iconColorRgb;
+    var createM16 = function () {
+        var vertices = [
+            [114.406814575195, -20.4551391601562],
+            [107.558364868164, -15.7241973876953],
+            [51.3649139404297, -4.26710510253906],
+            [48.8287658691406, -3.33200073242188],
+            [52.6322784423828, 4.38600158691406],
+            [45.7724151611328, 9.4007568359375],
+            [-0.89439392089844, 18.9436645507812],
+            [-6.50015258789062, 17.7509613037109],
+            [-30.3699798583984, 14.2151794433594],
+            [-89.3620910644531, 34.7115478515625],
+            [-97.5578460693359, 36.3651733398438],
+            [-111.498275756836, 37.0146026611328],
+            [-114.072570800781, 33.6849212646484],
+            [-107.236038208008, 27.5370330810547],
+            [-56.4315490722656, 17.2422027587891],
+            [-39.9302368164062, 13.9010620117188],
+            [-40.5143280029297, 12.9894409179688],
+            [-43.7469329833984, 6.18717956542969],
+            [-38.1873779296875, 1.02996826171875],
+            [-19.1390991210938, -2.86758422851562],
+            [82.4623870849609, -23.5495300292969],
+            [84.5990600585938, -26.5872192382812],
+            [83.9280090332031, -30.0785827636719],
+            [89.0165100097656, -36.9294281005859],
+            [96.1815643310547, -32.7738494873047],
+            [96.3255004882812, -32.1411895751953],
+            [103.853607177734, -27.9219055175781],
+            [114.406814575195, -23.7043609619141]
+        ];
+        var inTangents = [
+            [0, -1.08306884765625],
+            [3.13702392578125, -0.62158203125],
+            [18.7282867431641, -3.83367919921875],
+            [0.80705261230469, -0.75230407714844],
+            [0.85542297363281, -3.49858093261719],
+            [3.09141540527344, -0.62614440917969],
+            [15.5469665527344, -3.22271728515625],
+            [1.87548828125, 1.47311401367188],
+            [8.57583618164062, -2.9794921875],
+            [19.6604156494141, -6.84254455566406],
+            [2.86038208007812, -0.05177307128906],
+            [4.62104797363281, -0.47567749023438],
+            [-0.67047119140625, 2.2032470703125],
+            [-3.52459716796875, 0.71028137207031],
+            [-16.934326171875, 3.43415832519531],
+            [-5.49114990234375, 1.11174011230469],
+            [0.31700134277344, 0.1903076171875],
+            [-0.57925415039062, 3.01693725585938],
+            [-2.891357421875, 0.59393310546875],
+            [-6.35002136230469, 1.29624938964844],
+            [-33.8787994384766, 6.83633422851562],
+            [0.81050109863281, 2.18873596191406],
+            [0.10990905761719, 1.17742919921875],
+            [-3.28433227539062, 0.66543579101562],
+            [-1.09934997558594, -3.07931518554688],
+            [-0.06117248535156, -0.20706176757812],
+            [-5.89617919921875, 1.30375671386719],
+            [-2.28370666503906, -4.76947021484375]
+        ];
+        var outTangents = [
+            [-1.51095581054688, 2.69660949707031],
+            [-18.7516479492188, 3.71556091308594],
+            [-0.84310913085938, 0.17257690429688],
+            [3.123779296875, 1.67826843261719],
+            [-0.85594177246094, 3.50074768066406],
+            [-15.5615234375, 3.15187072753906],
+            [-2.11674499511719, 0.43878173828125],
+            [-7.21044921875, -5.66342163085938],
+            [-19.6641235351562, 6.83189392089844],
+            [-2.66264343261719, 0.92669677734375],
+            [-4.65118408203125, 0.08419799804688],
+            [-3.14605712890625, 0.32383728027344],
+            [1.03245544433594, -3.39283752441406],
+            [16.9384918212891, -3.41348266601562],
+            [5.50474548339844, -1.11631774902344],
+            [0.22010803222656, -0.58668518066406],
+            [-2.5894775390625, -1.55455017089844],
+            [0.58326721191406, -3.03794860839844],
+            [6.34841918945312, -1.3040771484375],
+            [33.8634185791016, -6.91259765625],
+            [2.02326965332031, -0.40827941894531],
+            [-0.40650939941406, -1.09768676757812],
+            [-0.3155517578125, -3.38023376464844],
+            [3.11659240722656, -0.63143920898438],
+            [0.07218933105469, 0.20219421386719],
+            [1.63140869140625, 5.52317810058594],
+            [6.21296691894531, -1.37380981445312],
+            [0, 1.08306884765625]
+        ];
+        createPathGrp(contents, 'M16', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [52.2731, -96.1919]);
+    };
+    var createBody = function () {
+        var vertices = [
+            [-18.2429656982422, -60.8072967529297],
+            [10.8074340820312, -47.6115417480469],
+            [12.7822723388672, -43.6678161621094],
+            [5.20391845703125, 2.17286682128906],
+            [23.6801452636719, -1.58079528808594],
+            [44.2853851318359, 11.5037231445312],
+            [61.8495941162109, 76.20556640625],
+            [63.0651397705078, 90.1854095458984],
+            [50.0789489746094, 102.390869140625],
+            [33.2238464355469, 95.7367401123047],
+            [32.3244476318359, 92.2133483886719],
+            [25.25537109375, 68.346435546875],
+            [23.4595336914062, 64.6338806152344],
+            [16.264404296875, 37.7264556884766],
+            [12.3569030761719, 35.3927459716797],
+            [-15.8574676513672, 41.3509216308594],
+            [-22.8273162841797, 40.1351013183594],
+            [-28.8280639648438, 36.8961181640625],
+            [-26.7115936279297, 39.9068298339844],
+            [12.4074249267578, 72.076416015625],
+            [18.4773101806641, 88.8392333984375],
+            [0.68244934082031, 102.280364990234],
+            [-78.9021148681641, 102.291213989258],
+            [-88.6446685791016, 102.226119995117],
+            [-103.471099853516, 92.7962493896484],
+            [-102.387634277344, 76.1646881103516],
+            [-87.82421875, 68.4646453857422],
+            [-49.8185272216797, 68.4616394042969],
+            [-46.3020324707031, 68.4616088867188],
+            [-48.7635040283203, 65.8384857177734],
+            [-67.7572174072266, 50.0876159667969],
+            [-77.4673004150391, 24.1064910888672],
+            [-61.0843353271484, -76.7392730712891],
+            [-36.8056182861328, -93.9627075195312],
+            [22.1050872802734, -81.1958312988281],
+            [28.1002197265625, -81.5593872070312],
+            [86.8361663818359, -101.874923706055],
+            [104.954681396484, -92.19091796875],
+            [95.8866271972656, -76.3043212890625],
+            [66.2417907714844, -65.9640808105469],
+            [34.7859497070312, -54.9419250488281],
+            [16.7033233642578, -54.4149475097656],
+            [-14.4595794677734, -60.5834045410156]
+        ];
+        var inTangents = [
+            [1.91716003417969, 0.10490417480469],
+            [-9.4251708984375, -4.16860961914062],
+            [0.35322570800781, -2.06492614746094],
+            [2.55599975585938, -15.5783386230469],
+            [-6.08700561523438, 1.09724426269531],
+            [-2.72007751464844, -9.99430847167969],
+            [-5.88192749023438, -21.5598602294922],
+            [1.54179382324219, -4.83494567871094],
+            [6.78271484375, -1.33544921875],
+            [4.37562561035156, 5.37294006347656],
+            [-0.27891540527344, 1.49459838867188],
+            [6.44895935058594, 6.71896362304688],
+            [0.36308288574219, 1.34159851074219],
+            [2.27772521972656, 8.99972534179688],
+            [2.42169189453125, -0.54452514648438],
+            [9.3782958984375, -2.10415649414062],
+            [2.20280456542969, 1.46150207519531],
+            [2.15690612792969, 1.14662170410156],
+            [-0.81968688964844, -0.67619323730469],
+            [-13.0099945068359, -10.7590637207031],
+            [1.42182922363281, -6.75758361816406],
+            [9.35121154785156, -0.01202392578125],
+            [26.5281982421875, 0.00263977050781],
+            [3.2376708984375, 0.18994140625],
+            [3.01341247558594, 6.07756042480469],
+            [-3.51380920410156, 5.24948120117188],
+            [-6.20648193359375, 0.00259399414062],
+            [-12.6685638427734, 0.00048828125],
+            [-1.38876342773438, 0],
+            [0.84025573730469, 0.7000732421875],
+            [6.31185913085938, 5.27348327636719],
+            [-1.71568298339844, 10.5324249267578],
+            [-5.47233581542969, 33.6134033203125],
+            [-11.7816009521484, -2.42796325683594],
+            [-19.6202545166016, -4.33224487304688],
+            [-2.00468444824219, 0.6973876953125],
+            [-19.6017761230469, 6.70433044433594],
+            [-2.01615905761719, -8.23443603515625],
+            [7.00627136230469, -2.5230712890625],
+            [9.88623046875, -3.43377685546875],
+            [10.3627471923828, -3.99211120605469],
+            [6.12571716308594, 1.31594848632812],
+            [10.3951568603516, 2.0191650390625]
+        ];
+        var outTangents = [
+            [10.2753753662109, 4.688232421875],
+            [-2.58638000488281, 15.1183166503906],
+            [1.99583435058594, 0.88272094726562],
+            [6.34906005859375, -1.29922485351562],
+            [10.1883697509766, -1.83659362792969],
+            [5.86878967285156, 21.5634307861328],
+            [1.255859375, 4.60330200195312],
+            [-2.06710815429688, 6.48225402832031],
+            [-6.94436645507812, 1.36724853515625],
+            [-0.84791564941406, -1.04116821289062],
+            [1.70135498046875, -9.11668395996094],
+            [-1.05435180664062, -1.09848022460938],
+            [-2.42549133300781, -8.96212768554688],
+            [-0.6090087890625, -2.40628051757812],
+            [-9.37725830078125, 2.10844421386719],
+            [-2.64366149902344, 0.5931396484375],
+            [-1.81643676757812, -1.20516967773438],
+            [-0.06045532226562, 1.97483825683594],
+            [13.0228271484375, 10.74365234375],
+            [5.26422119140625, 4.35342407226562],
+            [-1.77413940429688, 8.43197631835938],
+            [-26.5281524658203, 0.03408813476562],
+            [-3.24812316894531, -0.00033569335938],
+            [-6.6463623046875, -0.38992309570312],
+            [-2.82499694824219, -5.69760131835938],
+            [3.41561889648438, -5.102783203125],
+            [12.6685638427734, -0.00534057617188],
+            [1.06385803222656, -0.00006103515625],
+            [-0.55056762695312, -1.37489318847656],
+            [-6.31907653808594, -5.264892578125],
+            [-8.15101623535156, -6.81005859375],
+            [5.47538757324219, -33.6129150390625],
+            [1.94731140136719, -11.9612121582031],
+            [19.6783752441406, 4.05534362792969],
+            [2.11405944824219, 0.466796875],
+            [19.5665130615234, -6.80682373046875],
+            [8.27552795410156, -2.83045959472656],
+            [1.6361083984375, 6.68226623535156],
+            [-9.84599304199219, 3.54566955566406],
+            [-10.496337890625, 3.64570617675781],
+            [-6.12852478027344, 2.36094665527344],
+            [-10.3517303466797, -2.22380065917969],
+            [-0.91032409667969, -0.17683410644531]
+        ];
+        createPathGrp(contents, 'Body', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [-60.7939, 29.8704]);
+    };
+    var createHead = function () {
+        var vertices = [
+            [-13.4357299804688, 28.9772338867188],
+            [-29.4022674560547, -6.72044372558594],
+            [2.60710144042969, -28.88671875],
+            [30.3855895996094, -2.01850891113281],
+            [30.4932098388672, 4.77635192871094],
+            [26.983154296875, 8.71430969238281],
+            [2.80833435058594, 13.4156341552734]
+        ];
+        var inTangents = [
+            [1.88044738769531, -9.04072570800781],
+            [-3.98115539550781, 14.1634368896484],
+            [-14.5939788818359, -1.11811828613281],
+            [-1.61392211914062, -14.2208709716797],
+            [0.05400085449219, -2.27436828613281],
+            [2.44789123535156, -0.43898010253906],
+            [8.07565307617188, -1.47203063964844]
+        ];
+        var outTangents = [
+            [-13.387451171875, -6.63441467285156],
+            [3.91758728027344, -13.9372711181641],
+            [14.2317199707031, 1.09036254882812],
+            [0.25759887695312, 2.26974487304688],
+            [-0.05972290039062, 2.51481628417969],
+            [-8.07945251464844, 1.44883728027344],
+            [-8.81629943847656, 1.60704040527344]
+        ];
+        createPathGrp(contents, 'Head', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [-57.897, -91.5925]);
+    };
+    createHead();
+    createBody();
+    createM16();
+    iconAftermath(hasCircle, contents, circleColorRgb, scale, layer, 220);
+};
+var createDroneIcon = function (circleColor, iconColor, hasCircle, scale) {
+    var _a = setUpIcon('Drone', circleColor, iconColor), layer = _a.layer, contents = _a.contents, circleColorRgb = _a.circleColorRgb, iconColorRgb = _a.iconColorRgb;
+    var createDrone = function () {
+        var vertices = [
+            [166.69921875, -22.0413208007812],
+            [144.672119140625, -24.6941528320312],
+            [139.252685546875, -22.4027099609375],
+            [133.51416015625, -27.059326171875],
+            [126.81201171875, -23.8638305664062],
+            [122.047119140625, -27.4744262695312],
+            [100.02001953125, -30.127197265625],
+            [93.419677734375, -24.9457397460938],
+            [98.60107421875, -18.3453369140625],
+            [120.628173828125, -15.6925048828125],
+            [126.078857421875, -18.0238037109375],
+            [127.276245117188, -15.8048706054688],
+            [117.7529296875, -4.8201904296875],
+            [117.391723632812, -1.82110595703125],
+            [71.8065185546875, -7.31109619140625],
+            [72.8186187744141, -15.7147216796875],
+            [59.1074066162109, -33.1807250976562],
+            [-56.8676147460938, -47.1480102539062],
+            [-74.3335571289062, -33.436767578125],
+            [-75.3456573486328, -25.0331420898438],
+            [-122.264892578125, -30.683837890625],
+            [-121.755676269531, -34.9120483398438],
+            [-128.398620605469, -47.8436889648438],
+            [-126.767578125, -49.622802734375],
+            [-122.047058105469, -46.1102905273438],
+            [-100.02001953125, -43.45751953125],
+            [-93.4196166992188, -48.6389770507812],
+            [-98.60107421875, -55.2393798828125],
+            [-120.628112792969, -57.8922119140625],
+            [-126.047607421875, -55.6007690429688],
+            [-131.786071777344, -60.2573852539062],
+            [-138.488159179688, -57.0618896484375],
+            [-143.253173828125, -60.6724853515625],
+            [-165.280212402344, -63.3252563476562],
+            [-171.880615234375, -58.143798828125],
+            [-166.699157714844, -51.5433959960938],
+            [-144.672119140625, -48.8905639648438],
+            [-139.221374511719, -51.2218627929688],
+            [-138.023986816406, -49.0029296875],
+            [-147.547302246094, -38.0182495117188],
+            [-148.056518554688, -33.7899780273438],
+            [-160.670959472656, -35.3092041015625],
+            [-168.761901855469, -28.9575805664062],
+            [-170.297302246094, -16.208984375],
+            [-163.945678710938, -8.1180419921875],
+            [-78.620361328125, 2.15802001953125],
+            [-80.5955810546875, 18.5590209960938],
+            [-67.2755126953125, 35.957763671875],
+            [-68.1929321289062, 43.5751342773438],
+            [-62.3897094726562, 50.9675903320312],
+            [-62.3896484375, 50.9675903320312],
+            [-54.9971923828125, 45.1643676757812],
+            [-54.0822296142578, 37.5668334960938],
+            [35.2887573242188, 48.3300170898438],
+            [34.3737640380859, 55.9276123046875],
+            [40.1770172119141, 63.320068359375],
+            [47.5694580078125, 57.5167846679688],
+            [48.4844818115234, 49.9192504882812],
+            [49.0906372070312, 49.9922485351562],
+            [66.5566558837891, 36.2810668945312],
+            [68.53173828125, 19.8800659179688],
+            [154.080322265625, 30.1829833984375],
+            [162.17138671875, 23.8313598632812],
+            [163.706787109375, 11.082763671875],
+            [157.355102539062, 2.9918212890625],
+            [143.183349609375, 1.28509521484375],
+            [143.544555664062, -1.7139892578125],
+            [136.901611328125, -14.6456298828125],
+            [138.53271484375, -16.4248046875],
+            [143.253173828125, -12.9122314453125],
+            [165.2802734375, -10.2594604492188],
+            [171.880615234375, -15.44091796875]
+        ];
+        var inTangents = [
+            [3.25341796875, 0.39178466796875],
+            [0, 0],
+            [1.23388671875, -1.611328125],
+            [2.737060546875, 0.32965087890625],
+            [1.3876953125, -2.19696044921875],
+            [2.19921875, 0.264892578125],
+            [0, 0],
+            [0.3917236328125, -3.25347900390625],
+            [-3.25341796875, -0.39178466796875],
+            [0, 0],
+            [-1.23095703125, 1.6361083984375],
+            [-0.5284423828125, -0.656005859375],
+            [0.652587890625, -5.41937255859375],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [8.60939025878906, 1.036865234375],
+            [0, 0],
+            [1.036865234375, -8.609375],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [4.50640869140625, 2.4786376953125],
+            [-0.4395751953125, 0.6868896484375],
+            [-2.1610107421875, -0.26025390625],
+            [0, 0],
+            [-0.39178466796875, 3.25347900390625],
+            [3.25347900390625, 0.39178466796875],
+            [0, 0],
+            [1.2340087890625, -1.611328125],
+            [2.737060546875, 0.32958984375],
+            [1.3876953125, -2.19696044921875],
+            [2.19927978515625, 0.264892578125],
+            [0, 0],
+            [0.391845703125, -3.25347900390625],
+            [-3.25347900390625, -0.39178466796875],
+            [0, 0],
+            [-1.23089599609375, 1.6361083984375],
+            [-0.52850341796875, -0.656005859375],
+            [0.6527099609375, -5.41937255859375],
+            [0, 0],
+            [0, 0],
+            [0.48028564453125, -3.98822021484375],
+            [0, 0],
+            [-3.98822021484375, -0.48028564453125],
+            [0, 0],
+            [0, 0],
+            [-8.40032958984375, -1.22552490234375],
+            [0, 0],
+            [-3.64385986328125, -0.4388427734375],
+            [0, 0],
+            [-0.4388427734375, 3.64385986328125],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [-3.64393615722656, -0.4388427734375],
+            [-0.4388427734375, 3.6439208984375],
+            [0, 0],
+            [0, 0],
+            [-1.036865234375, 8.609375],
+            [0, 0],
+            [0, 0],
+            [-0.4803466796875, 3.98822021484375],
+            [0, 0],
+            [3.9881591796875, 0.48028564453125],
+            [0, 0],
+            [0, 0],
+            [4.50634765625, 2.4786376953125],
+            [-0.439697265625, 0.68682861328125],
+            [-2.1610107421875, -0.26025390625],
+            [0, 0],
+            [-0.391845703125, 3.25347900390625]
+        ];
+        var outTangents = [
+            [0, 0],
+            [-2.1610107421875, -0.26025390625],
+            [-0.8363037109375, -2.4447021484375],
+            [-2.7515869140625, -0.33135986328125],
+            [-0.796875, -1.9078369140625],
+            [0, 0],
+            [-3.25341796875, -0.391845703125],
+            [-0.391845703125, 3.25347900390625],
+            [0, 0],
+            [2.178955078125, 0.26239013671875],
+            [0.26318359375, 0.81121826171875],
+            [-4.966064453125, 1.33782958984375],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [1.036865234375, -8.609375],
+            [0, 0],
+            [-8.60931396484375, -1.03680419921875],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0.65264892578125, -5.41937255859375],
+            [0.6405029296875, -0.4898681640625],
+            [0.816162109375, 1.8582763671875],
+            [0, 0],
+            [3.25347900390625, 0.391845703125],
+            [0.391845703125, -3.25347900390625],
+            [0, 0],
+            [-2.1610107421875, -0.26025390625],
+            [-0.83624267578125, -2.44476318359375],
+            [-2.7515869140625, -0.33135986328125],
+            [-0.796875, -1.9078369140625],
+            [0, 0],
+            [-3.25347900390625, -0.391845703125],
+            [-0.391845703125, 3.25347900390625],
+            [0, 0],
+            [2.17901611328125, 0.26239013671875],
+            [0.26324462890625, 0.81121826171875],
+            [-4.966064453125, 1.337890625],
+            [0, 0],
+            [0, 0],
+            [-3.9881591796875, -0.48028564453125],
+            [0, 0],
+            [-0.48028564453125, 3.98822021484375],
+            [0, 0],
+            [0, 0],
+            [-1.02088928222656, 8.4764404296875],
+            [0, 0],
+            [-0.43885803222656, 3.64385986328125],
+            [0, 0],
+            [3.64385986328125, 0.4388427734375],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [-0.4388427734375, 3.64385986328125],
+            [3.64390563964844, 0.4388427734375],
+            [0, 0],
+            [0, 0],
+            [8.60931396484375, 1.036865234375],
+            [0, 0],
+            [0, 0],
+            [3.98828125, 0.48028564453125],
+            [0, 0],
+            [0.480224609375, -3.98822021484375],
+            [0, 0],
+            [0, 0],
+            [0.6527099609375, -5.41937255859375],
+            [0.640380859375, -0.4898681640625],
+            [0.816162109375, 1.8582763671875],
+            [0, 0],
+            [3.25341796875, 0.391845703125],
+            [0.391845703125, -3.25347900390625]
+        ];
+        createPathGrp(contents, 'Drone', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [0, 0]);
+    };
+    createDrone();
+    iconAftermath(hasCircle, contents, circleColorRgb, scale, layer, 200);
+};
+var createTentIcon = function (circleColor, iconColor, hasCircle, scale) {
+    var _a = setUpIcon('Tent', circleColor, iconColor), layer = _a.layer, contents = _a.contents, circleColorRgb = _a.circleColorRgb, iconColorRgb = _a.iconColorRgb;
+    var createTent = function () {
+        var vertices = [
+            [-98.5404815673828, 48.0601501464844],
+            [-126.751678466797, 73.2512664794922],
+            [-133.593780517578, 82.4936828613281],
+            [-138.805953979492, 65.1069793701172],
+            [-130.075408935547, 60.671875],
+            [-128.058120727539, 60.6524658203125],
+            [-95.8792724609375, 31.8505859375],
+            [-90.6877746582031, 20.6207122802734],
+            [-29.0709838867188, -42.6084899902344],
+            [-5.01272583007812, -78.7591400146484],
+            [-0.35118103027344, -82.5047454833984],
+            [4.65562438964844, -79.2748565673828],
+            [85.2505493164062, 15.6759033203125],
+            [96.3676605224609, 32.4019012451172],
+            [127.294677734375, 60.0970153808594],
+            [130.385711669922, 60.3466949462891],
+            [138.558013916016, 64.0049896240234],
+            [133.440307617188, 82.4944458007812],
+            [128.408233642578, 77.5966186523438],
+            [125.580444335938, 72.2987976074219],
+            [98.3235321044922, 48.0645141601562],
+            [98.2917633056641, 80.2535247802734],
+            [35.5873870849609, 80.3302001953125],
+            [5.00822448730469, 22.3052368164062],
+            [-5.15403747558594, 22.2933807373047],
+            [-16.3853759765625, 50.3178558349609],
+            [-34.8841247558594, 80.3104705810547],
+            [-97.5891571044922, 80.2596588134766]
+        ];
+        var inTangents = [
+            [0.55801391601562, 7.64497375488281],
+            [9.61685180664062, -8.53497314453125],
+            [5.72807312011719, 0.45405578613281],
+            [0.74252319335938, 5.44680786132812],
+            [-3.36799621582031, -3.62947082519531],
+            [-0.74887084960938, 0.672607421875],
+            [-10.7431793212891, 9.58172607421875],
+            [-4.10333251953125, 2.77845764160156],
+            [-19.1983489990234, 22.3808441162109],
+            [-4.77114868164062, 13.8418426513672],
+            [-2.39659118652344, 0.13294982910156],
+            [-0.70997619628906, -2.22795104980469],
+            [-28.6686859130859, -29.5264282226562],
+            [-4.6649169921875, -9.77412414550781],
+            [-10.2880249023438, -9.25474548339844],
+            [-1.46942138671875, 1.197021484375],
+            [-0.26287841796875, -4.26425170898438],
+            [8.30789184570312, -0.81883239746094],
+            [-0.02999877929688, 2.93020629882812],
+            [1.64727783203125, 1.45846557617188],
+            [9.37977600097656, 8.03341674804688],
+            [11.207275390625, -1.06886291503906],
+            [20.8995361328125, -0.1292724609375],
+            [2.4552001953125, 10.4587860107422],
+            [0.88127136230469, -6.08683776855469],
+            [4.47587585449219, -9.03457641601562],
+            [7.09922790527344, -3.24432373046875],
+            [20.9010925292969, 0.01742553710938]
+        ];
+        var outTangents = [
+            [-9.86557006835938, 8.717529296875],
+            [-2.97483825683594, 2.86474609375],
+            [-7.9901123046875, -0.45719909667969],
+            [-0.51533508300781, -4.66273498535156],
+            [0.8153076171875, 0.79910278320312],
+            [10.7098236083984, -9.61897277832031],
+            [2.32661437988281, -3.64486694335938],
+            [21.5007019042969, -20.1364898681641],
+            [9.11459350585938, -11.1642761230469],
+            [0.64530944824219, -2.25236511230469],
+            [2.40107727050781, -0.13319396972656],
+            [17.5132446289062, 37.9862213134766],
+            [10.1730346679688, 8.54708862304688],
+            [10.3310546875, 9.20767211914062],
+            [1.03582763671875, 0.93177795410156],
+            [3.2799072265625, -2.67192077636719],
+            [-0.48712158203125, 5.78956604003906],
+            [-2.70480346679688, -0.01434326171875],
+            [0.02557373046875, -2.49809265136719],
+            [-9.2523193359375, -8.095458984375],
+            [-0.21180725097656, 8.10723876953125],
+            [-20.8996887207031, 0.04722595214844],
+            [-8.75579833984375, -2.29208374023438],
+            [-0.87789916992188, -6.09564208984375],
+            [-2.11538696289062, 9.99588012695312],
+            [-4.88917541503906, 7.39175415039062],
+            [-20.9027557373047, -0.06454467773438],
+            [-12.7110290527344, 0.46697998046875]
+        ];
+        createPathGrp(contents, 'Tent', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [0, 0]);
+    };
+    createTent();
+    iconAftermath(hasCircle, contents, circleColorRgb, scale, layer, 180);
+};
+var createAirplaneIcon = function (circleColor, iconColor, hasCircle, scale) {
+    var _a = setUpIcon('Airplane', circleColor, iconColor), layer = _a.layer, contents = _a.contents, circleColorRgb = _a.circleColorRgb, iconColorRgb = _a.iconColorRgb;
+    var createAirplane = function () {
+        var vertices = [
+            [73.7751617431641, 43.9639892578125],
+            [73.7751617431641, 34.1128540039062],
+            [50.7967681884766, 25.4818878173828],
+            [50.7967681884766, 29.9192962646484],
+            [56.8526763916016, 33.60791015625],
+            [58.8245086669922, 43.5684661865234],
+            [50.7967681884766, 40.1464080810547],
+            [50.7967681884766, 48.28076171875],
+            [42.1798706054688, 48.28076171875],
+            [42.1798706054688, 40.9793701171875],
+            [35.4411773681641, 42.4889068603516],
+            [37.5294189453125, 32.4889068603516],
+            [42.1798706054688, 29.5519409179688],
+            [42.1798706054688, 22.0262298583984],
+            [16.1860961914062, 10.2144775390625],
+            [14.4833984375, 79.9995574951172],
+            [42.8585510253906, 93.5476226806641],
+            [47.8319396972656, 108.697265625],
+            [12.4638824462891, 109.704299926758],
+            [10.9631042480469, 120.088226318359],
+            [-8.41629028320312, 120.088226318359],
+            [-10.0095520019531, 109.704299926758],
+            [-45.4700927734375, 108.287673950195],
+            [-40.6819763183594, 93.3456878662109],
+            [-12.6744842529297, 79.8955841064453],
+            [-17.4315795898438, 10.1610412597656],
+            [-46.8613891601562, 21.8633728027344],
+            [-46.8613891601562, 29.5519409179688],
+            [-39.8714141845703, 33.60791015625],
+            [-40.1434173583984, 43.5684661865234],
+            [-46.8613891601562, 40.9793701171875],
+            [-46.8613891601562, 48.28076171875],
+            [-52.6059875488281, 48.28076171875],
+            [-52.6059875488281, 40.1464080810547],
+            [-58.272216796875, 43.5684661865234],
+            [-56.5976257324219, 33.6078796386719],
+            [-52.6059875488281, 25.3193206787109],
+            [-75.5843811035156, 33.9557495117188],
+            [-75.5843811035156, 43.9639892578125],
+            [-68.6702270507812, 48.01708984375],
+            [-68.9169616699219, 57.9805145263672],
+            [-75.5843811035156, 55.3885498046875],
+            [-75.5843811035156, 59.7699584960938],
+            [-81.3289794921875, 59.7699584960938],
+            [-81.3289794921875, 54.56103515625],
+            [-87.7356872558594, 57.9805145263672],
+            [-86.8070678710938, 48.01708984375],
+            [-84.2012786865234, 44.3313446044922],
+            [-84.2012786865234, 37.4085388183594],
+            [-105.081497192383, 46.5220489501953],
+            [-124.163909912109, 33.5714263916016],
+            [-84.2012786865234, 1.14578247070312],
+            [-84.2012634277344, -33.8990783691406],
+            [-75.5843811035156, -33.8994445800781],
+            [-75.5843811035156, -5.26348876953125],
+            [-52.6059875488281, -21.2940673828125],
+            [-52.6059112548828, -48.31396484375],
+            [-46.8613891601562, -48.3143615722656],
+            [-46.8613891601562, -27.7090606689453],
+            [-26.7552947998047, -42.1349029541016],
+            [-26.7552947998047, -80.9726867675781],
+            [-12.9042663574219, -80.9726867675781],
+            [1.50749206542969, -120.088226318359],
+            [15.4510803222656, -80.9726867675781],
+            [27.8183898925781, -80.9726867675781],
+            [27.8183898925781, -42.1349029541016],
+            [42.1798706054688, -27.6725921630859],
+            [42.1798858642578, -48.3139953613281],
+            [50.7967681884766, -48.3143615722656],
+            [50.7967681884766, -21.2463989257812],
+            [73.7751617431641, -5.17645263671875],
+            [73.7751770019531, -33.8990783691406],
+            [82.3920593261719, -33.8994445800781],
+            [82.3920593261719, 1.24974060058594],
+            [124.163909912109, 33.5714263916016],
+            [104.492340087891, 46.5220489501953],
+            [82.3920593261719, 37.5630645751953],
+            [82.3920593261719, 44.3313446044922],
+            [87.0370941162109, 48.01708984375],
+            [87.5980529785156, 57.9805145263672],
+            [79.5197601318359, 54.56103515625],
+            [79.5197601318359, 59.7699584960938],
+            [73.7751617431641, 59.7699584960938],
+            [73.7751617431641, 55.3885498046875],
+            [67.4411773681641, 57.3712615966797],
+            [70.4280395507812, 46.2443695068359]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [4.83345031738281, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [-1.0286865234375, -0.63050842285156],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0.000244140625, 0.00003051757812],
+            [0.24946594238281, 5.86605834960938],
+            [0, 0],
+            [0, 0],
+            [-1.00566101074219, -0.61988830566406],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [-0.00001525878906, -0.0003662109375],
+            [-0.00762939453125, -5.33209228515625],
+            [0, 0],
+            [0, 0],
+            [-0.00007629394531, -0.00039672851562],
+            [0.66188049316406, -5.39064025878906],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [-1.91926574707031, 0],
+            [0, -38.7148742675781],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [-0.00001525878906, -0.0003662109375],
+            [-0.0089111328125, -5.32771301269531],
+            [0, 0],
+            [0, 0],
+            [-0.00001525878906, -0.0003662109375],
+            [-0.00570678710938, -5.33154296875],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [-4.82231140136719, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [1.24998474121094, -0.17985534667969],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [3.95182800292969, -3.8297119140625],
+            [0, 0],
+            [0, 0],
+            [1.22146606445312, -0.17207336425781],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0.00691223144531, -5.33914184570312],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [-0.66242980957031, -5.395751953125],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, -39.1968383789062],
+            [1.91926574707031, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0.01011657714844, -5.33335876464844],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0.00885009765625, -5.33969116210938],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Airplane', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [0, 0]);
+    };
+    createAirplane();
+    iconAftermath(hasCircle, contents, circleColorRgb, scale, layer, 170);
+};
+var createSubmarineIcon = function (circleColor, iconColor, hasCircle, scale) {
+    var _a = setUpIcon('Submarine', circleColor, iconColor), layer = _a.layer, contents = _a.contents, circleColorRgb = _a.circleColorRgb, iconColorRgb = _a.iconColorRgb;
+    var createBody = function () {
+        var vertices = [
+            [126.16682434082, 0.12257385253906],
+            [96.1533203125, -38.1096343994141],
+            [-63.5599517822266, -38.1096343994141],
+            [-86.0728759765625, -25.2462615966797],
+            [-108.580047607422, -53.473876953125],
+            [-118.942276000977, -53.473876953125],
+            [-110.007995605469, -9.16934204101562],
+            [-126.16682434082, -0.12257385253906],
+            [-125.915893554688, 0.02392578125],
+            [-126.084915161133, 0.12257385253906],
+            [-110.087020874023, 9.16934204101562],
+            [-119.021011352539, 53.473876953125],
+            [-108.656188964844, 53.473876953125],
+            [-86.1490173339844, 25.2491455078125],
+            [-63.6389770507812, 38.1096343994141],
+            [96.0774688720703, 38.1096343994141],
+            [126.07942199707, 0.12257385253906]
+        ];
+        var inTangents = [
+            [0, 0],
+            [17.5080413818359, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [-0.0986328125, 20.9693298339844]
+        ];
+        var outTangents = [
+            [0, -21.0820922851562],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [17.4373779296875, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Body', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [0, 39.849]);
+    };
+    var createTop = function () {
+        var vertices = [
+            [20.9002532958984, -42.1525726318359],
+            [20.9002532958984, -30.0047607421875],
+            [8.0400390625, -11.4266967773438],
+            [8.39767456054688, 15.7306060791016],
+            [18.7570343017578, 19.66259765625],
+            [29.1218566894531, 42.1726379394531],
+            [-29.1218566894531, 42.1726379394531],
+            [-24.1195526123047, 21.8032073974609],
+            [-6.61180114746094, 15.0153350830078],
+            [-6.61180114746094, -13.2122802734375]
+        ];
+        var inTangents = [
+            [-20.3665313720703, -0.71527099609375],
+            [0, 0],
+            [0, -17.1472320556641],
+            [0, 0],
+            [-3.21382141113281, -5.71757507324219],
+            [0, 0],
+            [0, 0],
+            [-2.85906982421875, 10.0072021484375],
+            [-6.07261657714844, 0],
+            [0, 11.0774993896484]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 17.1529998779297],
+            [0, 0],
+            [3.21641540527344, 5.71498107910156],
+            [0, 0],
+            [0, 0],
+            [2.85877990722656, -10.0042877197266],
+            [0, 0],
+            [0, -11.0749053955078]
+        ];
+        createPathGrp(contents, 'Top', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [32.3765, -51.1502]);
+    };
+    createBody();
+    createTop();
+    iconAftermath(hasCircle, contents, circleColorRgb, scale, layer, 170);
+};
+var createAmbulanceIcon = function (circleColor, iconColor, hasCircle, scale) {
+    var _a = setUpIcon('Ambulance', circleColor, iconColor), layer = _a.layer, contents = _a.contents, circleColorRgb = _a.circleColorRgb, iconColorRgb = _a.iconColorRgb;
+    var createMagenDavidTriangle01 = function () {
+        var vertices = [
+            [-0.16081237792969, 5.48185729980469],
+            [-6.32545471191406, -5.48185729980469],
+            [6.32545471191406, -5.48185729980469],
+            [-0.16081237792969, 5.48185729980469]
+        ];
+        var inTangents = [
+            [0, 0],
+            [1.86613464355469, 3.94403076171875],
+            [0, 0],
+            [1.2091064453125, -0.99722290039062]
+        ];
+        var outTangents = [
+            [-1.95480346679688, -3.62483215332031],
+            [0, 0],
+            [-0.96000671386719, 2.6815185546875],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Magen_David_Triangle_01', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [-27.5958, -8.7497]);
+    };
+    var createMagenDavidTriangle02 = function () {
+        var vertices = [
+            [6.32398986816406, 5.41439819335938],
+            [-6.32398986816406, 5.41439819335938],
+            [-0.1317138671875, -5.41439819335938],
+            [6.32398986816406, 5.41439819335938]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [-2.11988830566406, 3.70222473144531],
+            [-2.22962951660156, -3.58761596679688]
+        ];
+        var outTangents = [
+            [0, 0],
+            [2.11273193359375, -3.69258117675781],
+            [2.5579833984375, 3.50660705566406],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Magen_David_Triangle_02', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [-0.094, -28.1453]);
+    };
+    var createMagenDavidTriangle03 = function () {
+        var vertices = [
+            [-6.29634094238281, -5.49713134765625],
+            [6.29634094238281, -5.49713134765625],
+            [-0.0782470703125, 5.49713134765625],
+            [-6.29634094238281, -5.49713134765625]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [2.20867919921875, -3.81378173828125],
+            [1.93623352050781, 3.75079345703125]
+        ];
+        var outTangents = [
+            [0, 0],
+            [-2.14378356933594, 3.69258117675781],
+            [-2.17146301269531, -3.84193420410156],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Magen_David_Triangle_03', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [-0.0496, -55.831]);
+    };
+    var createMagenDavidTriangle04 = function () {
+        var vertices = [
+            [0.09658813476562, -5.72538757324219],
+            [6.50126647949219, 5.72538757324219],
+            [-6.50126647949219, 5.72538757324219],
+            [0.09658813476562, -5.72538757324219]
+        ];
+        var inTangents = [
+            [0, 0],
+            [-1.85224914550781, -3.87437438964844],
+            [0, 0],
+            [-2.266845703125, 3.93258666992188]
+        ];
+        var outTangents = [
+            [2.061767578125, 4.15159606933594],
+            [0, 0],
+            [2.28549194335938, -3.96540832519531],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Magen_David_Triangle_04', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [-27.5574, -75.562]);
+    };
+    var createMagenDavidTriangle05 = function () {
+        var vertices = [
+            [-0.06321716308594, 5.37258911132812],
+            [-6.16917419433594, -5.37258911132812],
+            [6.16917419433594, -5.37258911132812],
+            [-0.06321716308594, 5.37258911132812]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0.40031433105469, 1.61701965332031],
+            [0, 0],
+            [2.02928161621094, -3.4921875]
+        ];
+        var outTangents = [
+            [-1.87992858886719, -2.33894348144531],
+            [0, 0],
+            [-2.22251892089844, 3.83047485351562],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Magen_David_Triangle_05', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [-54.6842, -55.9675]);
+    };
+    var createMagenDavidTriangle06 = function () {
+        var vertices = [
+            [6.23335266113281, 5.29911804199219],
+            [-6.23335266113281, 5.29911804199219],
+            [0.11785888671875, -5.29911804199219],
+            [6.23335266113281, 5.29911804199219]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [-1.29782104492188, 1.264892578125],
+            [-2.14093017578125, -3.71835327148438]
+        ];
+        var outTangents = [
+            [0, 0],
+            [1.21623229980469, -2.896240234375],
+            [1.99397277832031, 3.45497131347656],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Magen_David_Triangle_06', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [-54.7856, -28.0391]);
+    };
+    var createAmbulanceBottom = function () {
+        var vertices = [
+            [222.270568847656, 36.9149475097656],
+            [222.810607910156, 17.4549255371094],
+            [217.390563964844, -5.16506958007812],
+            [208.100524902344, -16.5250549316406],
+            [179.890563964844, -28.7150573730469],
+            [171.500549316406, -37.9750671386719],
+            [163.120544433594, -65.9850769042969],
+            [143.490539550781, -65.9850769042969],
+            [143.890563964844, -64.5350646972656],
+            [154.230529785156, -25.6350402832031],
+            [111.880554199219, -25.6350402832031],
+            [111.880554199219, -65.9850769042969],
+            [13.550537109375, -65.9850769042969],
+            [5.9105224609375, -52.8750305175781],
+            [5.93055725097656, -48.4450378417969],
+            [18.9205322265625, -25.9750671386719],
+            [20.29052734375, -23.9850769042969],
+            [20.29052734375, -23.0950622558594],
+            [17.6305541992188, -22.9850769042969],
+            [-8.8094482421875, -22.9750671386719],
+            [-11.2494506835938, -22.9750671386719],
+            [-27.449462890625, 4.88491821289062],
+            [-30.2794799804688, 0.47494506835938],
+            [-39.9894409179688, -16.4950256347656],
+            [-42.7394409179688, -21.3150329589844],
+            [-45.7594604492188, -23.0150451660156],
+            [-72.8694458007812, -22.9850769042969],
+            [-75.3094482421875, -23.0950622558594],
+            [-75.3094482421875, -23.9850769042969],
+            [-70.5094604492188, -31.9450378417969],
+            [-60.6494750976562, -49.0550842285156],
+            [-60.6294555664062, -52.2850646972656],
+            [-68.5694580078125, -65.9850769042969],
+            [-216.819458007812, -65.9850769042969],
+            [-216.819458007812, 26.3649597167969],
+            [-220.469421386719, 37.5049743652344],
+            [-221.409423828125, 62.6949157714844],
+            [-215.16943359375, 65.7449645996094],
+            [-154.469421386719, 65.9449157714844],
+            [-148.429443359375, 59.8849182128906],
+            [-144.649475097656, 44.7249450683594],
+            [-95.3594360351562, 20.7949523925781],
+            [-58.95947265625, 59.0949401855469],
+            [-52.0294799804688, 65.9849548339844],
+            [81.8306274414062, 65.8249206542969],
+            [85.6205444335938, 65.1749572753906],
+            [103.980529785156, 27.9349670410156],
+            [133.010559082031, 19.7149353027344],
+            [177.860534667969, 65.0249328613281],
+            [183.210510253906, 65.8549499511719],
+            [216.470520019531, 65.9549255371094],
+            [224.050598144531, 59.2649230957031],
+            [222.590637207031, 47.9849548339844]
+        ];
+        var inTangents = [
+            [-1.4200439453125, 3.760009765625],
+            [2.0599365234375, 6.69000244140625],
+            [1.5198974609375, 7.60003662109375],
+            [5.6199951171875, 2.1500244140625],
+            [9.489990234375, 3.8499755859375],
+            [1.3800048828125, 4.72003173828125],
+            [2.8299560546875, 9.33001708984375],
+            [0, 0],
+            [-0.1300048828125, -0.47998046875],
+            [-3.550048828125, -13.4200439453125],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [2.60003662109375, -4.33001708984375],
+            [-0.96998596191406, -1.6300048828125],
+            [-4.32000732421875, -7.489990234375],
+            [-0.45997619628906, -0.65997314453125],
+            [0, 0],
+            [0.89002990722656, 0],
+            [8.80999755859375, 0],
+            [0, 0],
+            [5.60003662109375, -9.42999267578125],
+            [0.7900390625, 1.3900146484375],
+            [3.239990234375, 5.65997314453125],
+            [0.8399658203125, 1.64996337890625],
+            [1.44000244140625, -0.010009765625],
+            [9.03997802734375, 0.010009765625],
+            [0.80999755859375, 0.03997802734375],
+            [0, 0],
+            [-1.54998779296875, 2.67999267578125],
+            [-3.3499755859375, 5.6700439453125],
+            [0.67999267578125, 1.1500244140625],
+            [2.6400146484375, 4.57000732421875],
+            [0, 0],
+            [0, 0],
+            [3.66998291015625, -3.4300537109375],
+            [-4.010009765625, -4.97998046875],
+            [-2.1300048828125, -0.030029296875],
+            [-20.2400512695312, -0.12994384765625],
+            [-0.60003662109375, 3.82000732421875],
+            [-2.1199951171875, 4.66998291015625],
+            [-21.5599975585938, -3.33001708984375],
+            [-2.219970703125, -21.02001953125],
+            [-5.18994140625, 0.02001953125],
+            [-44.6200561523438, 0.0400390625],
+            [-1.6500244140625, 0.28997802734375],
+            [-12.8499755859375, 9.1099853515625],
+            [-10.4000244140625, -0.33001708984375],
+            [-6.7000732421875, -30.7699584960938],
+            [-1.8499755859375, -0.010009765625],
+            [-11.0899658203125, -0.199951171875],
+            [-0.090087890625, 4.57000732421875],
+            [1.579833984375, 3.25]
+        ];
+        var outTangents = [
+            [2.419921875, -6.41998291015625],
+            [-2.280029296875, -7.39996337890625],
+            [-1.1099853515625, -5.5999755859375],
+            [-9.5599365234375, -3.65997314453125],
+            [-4.510009765625, -1.82000732421875],
+            [-2.719970703125, -9.3599853515625],
+            [0, 0],
+            [0.1400146484375, 0.48004150390625],
+            [3.4400634765625, 12.72998046875],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [-2.53999328613281, 4.3699951171875],
+            [-0.9599609375, 1.5899658203125],
+            [4.41001892089844, 7.44000244140625],
+            [0.4000244140625, 0.69000244140625],
+            [0, 0],
+            [-0.8800048828125, 0.03997802734375],
+            [-8.80999755859375, 0.010009765625],
+            [0, 0],
+            [-5.45001220703125, 9.21002197265625],
+            [-1.1099853515625, -1.719970703125],
+            [-3.25994873046875, -5.6400146484375],
+            [-0.91998291015625, -1.60003662109375],
+            [-0.6600341796875, -1.30999755859375],
+            [-9.02996826171875, 0.07000732421875],
+            [-0.80999755859375, 0],
+            [0, 0],
+            [1.6099853515625, -2.64996337890625],
+            [3.30999755859375, -5.69000244140625],
+            [0.71002197265625, -1.199951171875],
+            [-2.66998291015625, -4.55999755859375],
+            [0, 0],
+            [0, 0],
+            [0, 4.1099853515625],
+            [-4.73004150390625, 4.40997314453125],
+            [1.3299560546875, 1.6600341796875],
+            [20.22998046875, 0.22998046875],
+            [4.42999267578125, 0.030029296875],
+            [0.80999755859375, -5.13995361328125],
+            [8.1700439453125, -17.989990234375],
+            [20.5999755859375, 3.16998291015625],
+            [0.49005126953125, 4.6400146484375],
+            [44.6200561523438, -0.1600341796875],
+            [1.0699462890625, 0],
+            [1.5599365234375, -14.6000366210938],
+            [8.760009765625, -6.22003173828125],
+            [24.5999755859375, 0.760009765625],
+            [1.6600341796875, 0.27001953125],
+            [11.090087890625, 0.08001708984375],
+            [4.8701171875, 0.09002685546875],
+            [0.0699462890625, -3.78997802734375],
+            [-1.9400634765625, -3.989990234375]
+        ];
+        createPathGrp(contents, 'Ambulance_Bottom', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [-0.0005, 8.6351]);
+    };
+    var createAmbulanceTop = function () {
+        var vertices = [
+            [177.115020751953, -15.6649780273438],
+            [174.405059814453, -36.2050170898438],
+            [-192.714996337891, -36.614990234375],
+            [-192.714996337891, 36.614990234375],
+            [-37.2749938964844, 36.614990234375],
+            [-36.5450134277344, 35.35498046875],
+            [-36.5249938964844, 32.125],
+            [-48.7649841308594, 11.0050048828125],
+            [-51.2049865722656, 7.06500244140625],
+            [-51.2049865722656, 6.17498779296875],
+            [-48.1050109863281, 6.05499267578125],
+            [-21.8649597167969, 6.09503173828125],
+            [-18.5049743652344, 4.19500732421875],
+            [-4.96499633789062, -19.2849731445312],
+            [-3.33499145507812, -21.7449951171875],
+            [12.8949737548828, 6.05499267578125],
+            [41.7350311279297, 6.05499267578125],
+            [44.3949737548828, 6.17498779296875],
+            [44.3949737548828, 7.06500244140625],
+            [39.0650329589844, 16.0050048828125],
+            [30.0149841308594, 31.5350341796875],
+            [30.0350036621094, 35.9650268554688],
+            [30.4150085449219, 36.614990234375],
+            [135.985015869141, 36.614990234375],
+            [135.985015869141, -15.2249755859375],
+            [150.704986572266, -15.3049926757812],
+            [160.435089111328, -8.10498046875],
+            [167.995025634766, 19.875],
+            [172.475006103516, 36.614990234375],
+            [192.714996337891, 36.614990234375]
+        ];
+        var inTangents = [
+            [4.929931640625, 17.5],
+            [0.93994140625, 7.510009765625],
+            [85.9700317382812, 0],
+            [0, 0],
+            [0, 0],
+            [-0.25, 0.4200439453125],
+            [0.67999267578125, 1.1500244140625],
+            [4.0899658203125, 7.03997802734375],
+            [0.82000732421875, 1.32000732421875],
+            [0, 0],
+            [-1.02996826171875, 0.010009765625],
+            [-8.74005126953125, -0.07000732421875],
+            [-0.79998779296875, 1.3900146484375],
+            [-4.52996826171875, 7.82000732421875],
+            [-0.67999267578125, 1.02001953125],
+            [-5.54998779296875, -9.16998291015625],
+            [0, 0],
+            [-0.87998962402344, -0.03997802734375],
+            [0, 0],
+            [1.75, -2.989990234375],
+            [3.08001708984375, -5.1300048828125],
+            [-0.969970703125, -1.6300048828125],
+            [-0.11997985839844, -0.219970703125],
+            [0, 0],
+            [0, 0],
+            [-4.6500244140625, 0.3900146484375],
+            [-1.25, -5.94000244140625],
+            [-2.510009765625, -9.33001708984375],
+            [-1.489990234375, -5.6199951171875],
+            [0, 0]
+        ];
+        var outTangents = [
+            [-1.760009765625, -6.27001953125],
+            [-10.7000732421875, 0],
+            [0, 0],
+            [0, 0],
+            [0.239990234375, -0.41998291015625],
+            [0.71002197265625, -1.199951171875],
+            [-4.1099853515625, -7.02996826171875],
+            [-0.77001953125, -1.33001708984375],
+            [0, 0],
+            [1.03997802734375, -0.03997802734375],
+            [8.75, 0],
+            [1.6099853515625, 0.00994873046875],
+            [4.469970703125, -7.8499755859375],
+            [0.42999267578125, -0.739990234375],
+            [5.68000793457031, 9.32000732421875],
+            [0, 0],
+            [0.8900146484375, 0],
+            [0, 0],
+            [-1.77995300292969, 2.97998046875],
+            [-3.030029296875, 5.16998291015625],
+            [-0.95994567871094, 1.5899658203125],
+            [0.13002014160156, 0.219970703125],
+            [0, 0],
+            [0, 0],
+            [5.3699951171875, 0],
+            [5.6099853515625, -0.469970703125],
+            [1.97998046875, 9.44000244140625],
+            [1.5, 5.55999755859375],
+            [0, 0],
+            [-5.2000732421875, -17.4299926757812]
+        ];
+        createPathGrp(contents, 'Ambulance_Top', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [-24.105, -75.775]);
+    };
+    var createAmbulanceMagenDavidCenter = function () {
+        var vertices = [
+            [-21.770751953125, -1.52590942382812],
+            [-12.360595703125, -17.8970489501953],
+            [-9.49250793457031, -19.4721832275391],
+            [-0.15965270996094, -19.4487152099609],
+            [9.846923828125, -19.4630279541016],
+            [12.1696319580078, -18.1370544433594],
+            [21.8035278320312, -1.37904357910156],
+            [21.8546142578125, 1.28874206542969],
+            [12.4215698242188, 17.6436614990234],
+            [9.23426818847656, 19.4725341796875],
+            [-9.21055603027344, 19.4725341796875],
+            [-12.5376129150391, 17.5013732910156],
+            [-21.7497863769531, 1.5311279296875],
+            [-21.770751953125, -1.52590942382812]
+        ];
+        var inTangents = [
+            [0, 0],
+            [-3.07754516601562, 5.49130249023438],
+            [-1.32124328613281, -0.02328491210938],
+            [-3.11000061035156, 0],
+            [-3.33616638183594, 0.04437255859375],
+            [-0.54060363769531, -0.95285034179688],
+            [-3.24546813964844, -5.56344604492188],
+            [0.56826782226562, -0.96954345703125],
+            [3.10757446289062, -5.47279357910156],
+            [1.55642700195312, 0.01850891113281],
+            [6.14607238769531, -0.09065246582031],
+            [0.7734375, 1.3795166015625],
+            [3.12434387207031, 5.29290771484375],
+            [-0.65225219726562, 1.10696411132812]
+        ];
+        var outTangents = [
+            [3.18968200683594, -5.42613220214844],
+            [0.68278503417969, -1.21145629882812],
+            [3.11000061035156, 0.06785583496094],
+            [3.33663940429688, 0],
+            [1.08787536621094, -0.01393127441406],
+            [3.18252563476562, 5.60305786132812],
+            [0.54731750488281, 0.93911743164062],
+            [-3.17774963378906, 5.42842102050781],
+            [-0.73431396484375, 1.28828430175781],
+            [-6.14364624023438, -0.09065246582031],
+            [-1.64274597167969, 0.02328491210938],
+            [-3.01457214355469, -5.3538818359375],
+            [-0.64982604980469, -1.10696411132812],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Magen_David_Center', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [-27.4877, -42.0192]);
+    };
+    var createLWheel = function () {
+        var vertices = [
+            [-0.23692321777344, -38.5895233154297],
+            [38.8475036621094, -0.42788696289062],
+            [-0.30181884765625, 38.5892639160156],
+            [-38.8504028320312, -0.09722900390625],
+            [-0.23692321777344, -38.5895233154297]
+        ];
+        var inTangents = [
+            [0, 0],
+            [-0.26766967773438, -21.2217407226562],
+            [21.6363830566406, 0.09065246582031],
+            [-0.02815246582031, 21.3271942138672],
+            [-21.5223388671875, 0.04867553710938]
+        ];
+        var outTangents = [
+            [21.4250030517578, -0.0467529296875],
+            [0.26576232910156, 21.39208984375],
+            [-21.3667907714844, -0.08636474609375],
+            [0.02767944335938, -21.43359375],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'L_Wheel', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [-102.5389, 73.8054]);
+    };
+    var createRWheel = function () {
+        var vertices = [
+            [0.13703918457031, -38.5860137939453],
+            [38.7767639160156, -0.01881408691406],
+            [0.07878112792969, 38.586181640625],
+            [-38.7727508544922, -0.5054931640625],
+            [0.13703918457031, -38.5860137939453]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0.05583190917969, -21.1333770751953],
+            [21.2151031494141, -0.06059265136719],
+            [-0.31208801269531, 21.6951599121094],
+            [-21.695068359375, -0.08589172363281]
+        ];
+        var outTangents = [
+            [21.3128356933594, 0.08645629882812],
+            [-0.06298828125, 21.1617279052734],
+            [-21.8090667724609, 0.06298828125],
+            [0.31013488769531, -21.6248321533203],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'R_Wheel', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [130.5129, 73.806]);
+    };
+    createRWheel();
+    createLWheel();
+    createAmbulanceMagenDavidCenter();
+    createAmbulanceTop();
+    createAmbulanceBottom();
+    createMagenDavidTriangle06();
+    createMagenDavidTriangle05();
+    createMagenDavidTriangle04();
+    createMagenDavidTriangle03();
+    createMagenDavidTriangle02();
+    createMagenDavidTriangle01();
+    iconAftermath(hasCircle, contents, circleColorRgb, scale, layer, 280);
+};
+var createTankIcon = function (circleColor, iconColor, hasCircle, scale) {
+    var _a = setUpIcon('Tank', circleColor, iconColor), layer = _a.layer, contents = _a.contents, circleColorRgb = _a.circleColorRgb, iconColorRgb = _a.iconColorRgb;
+    var createWheelsBottom = function () {
+        var vertices = [
+            [126.225067138672, -23.5299987792969],
+            [103.485076904297, -23.5299987792969],
+            [107.665008544922, -11.5099792480469],
+            [88.2749938964844, 7.87002563476562],
+            [68.8850402832031, -11.5099792480469],
+            [73.0650329589844, -23.5299987792969],
+            [44.9750061035156, -23.5299987792969],
+            [49.1549987792969, -11.5099792480469],
+            [29.7650451660156, 7.87002563476562],
+            [10.3750305175781, -11.5099792480469],
+            [14.5550231933594, -23.5299987792969],
+            [-13.5350036621094, -23.5299987792969],
+            [-9.35501098632812, -11.5099792480469],
+            [-28.7449645996094, 7.87002563476562],
+            [-48.1349792480469, -11.5099792480469],
+            [-43.9549865722656, -23.5299987792969],
+            [-72.0449523925781, -23.5299987792969],
+            [-67.8649597167969, -11.5099792480469],
+            [-87.2549743652344, 7.87002563476562],
+            [-106.644989013672, -11.5099792480469],
+            [-102.464996337891, -23.5299987792969],
+            [-126.225006103516, -23.5299987792969],
+            [-128.415008544922, -11.3399963378906],
+            [-93.5449523925781, 23.5299987792969],
+            [93.5450134277344, 23.5299987792969],
+            [128.415008544922, -11.3399963378906]
+        ];
+        var inTangents = [
+            [1.419921875, 3.78997802734375],
+            [0, 0],
+            [0, -4.5400390625],
+            [10.7100830078125, 0],
+            [0, 10.699951171875],
+            [-2.6199951171875, 3.29998779296875],
+            [0, 0],
+            [0, -4.5400390625],
+            [10.7099609375, 0],
+            [0, 10.699951171875],
+            [-2.6199951171875, 3.29998779296875],
+            [0, 0],
+            [0, -4.5400390625],
+            [10.7000122070312, 0],
+            [0, 10.699951171875],
+            [-2.6199951171875, 3.29998779296875],
+            [0, 0],
+            [0, -4.5400390625],
+            [10.7100219726562, 0],
+            [0, 10.699951171875],
+            [-2.6199951171875, 3.29998779296875],
+            [0, 0],
+            [0, -4.28997802734375],
+            [-19.260009765625, 0],
+            [0, 0],
+            [0, 19.260009765625]
+        ];
+        var outTangents = [
+            [0, 0],
+            [2.619873046875, 3.29998779296875],
+            [0, 10.699951171875],
+            [-10.7099609375, 0],
+            [0, -4.5400390625],
+            [0, 0],
+            [2.6199951171875, 3.29998779296875],
+            [0, 10.699951171875],
+            [-10.7100219726562, 0],
+            [0, -4.5400390625],
+            [0, 0],
+            [2.6199951171875, 3.29998779296875],
+            [0, 10.699951171875],
+            [-10.7100219726562, 0],
+            [0, -4.5400390625],
+            [0, 0],
+            [2.6199951171875, 3.29998779296875],
+            [0, 10.699951171875],
+            [-10.7100219726562, 0],
+            [0, -4.5400390625],
+            [0, 0],
+            [-1.41998291015625, 3.78997802734375],
+            [0, 19.260009765625],
+            [0, 0],
+            [19.260009765625, 0],
+            [0, -4.28997802734375]
+        ];
+        createPathGrp(contents, 'Wheels_Bottom', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [-15.925, 84.14]);
+    };
+    var createWheelsTop = function () {
+        var vertices = [
+            [93.5450134277344, -20.4349975585938],
+            [-93.5449523925781, -20.4349975585938],
+            [-128.415008544922, 14.4349975585938],
+            [-105.634979248047, 20.4349975585938],
+            [-127.904998779297, 20.4349975585938],
+            [-106.644989013672, 14.2650146484375],
+            [-87.2549743652344, -5.125],
+            [-67.8649597167969, 14.2650146484375],
+            [-68.8749694824219, 20.4349975585938],
+            [-47.1249694824219, 20.4349975585938],
+            [-48.1349792480469, 14.2650146484375],
+            [-28.7449645996094, -5.125],
+            [-9.35501098632812, 14.2650146484375],
+            [-10.3649597167969, 20.4349975585938],
+            [11.3850402832031, 20.4349975585938],
+            [10.3750305175781, 14.2650146484375],
+            [29.7650451660156, -5.125],
+            [49.1549987792969, 14.2650146484375],
+            [48.1449890136719, 20.4349975585938],
+            [69.8949890136719, 20.4349975585938],
+            [68.8850402832031, 14.2650146484375],
+            [88.2749938964844, -5.125],
+            [107.665008544922, 14.2650146484375],
+            [106.654998779297, 20.4349975585938],
+            [127.904998779297, 20.4349975585938],
+            [128.415008544922, 14.4349975585938]
+        ];
+        var inTangents = [
+            [19.260009765625, 0],
+            [0, 0],
+            [0, -19.260009765625],
+            [-0.3299560546875, -1.95001220703125],
+            [0, 0],
+            [0, 2.15997314453125],
+            [-10.7100219726562, 0],
+            [0, -10.7100219726562],
+            [0.65997314453125, -1.94000244140625],
+            [0, 0],
+            [0, 2.15997314453125],
+            [-10.7100219726562, 0],
+            [0, -10.7100219726562],
+            [0.65997314453125, -1.94000244140625],
+            [0, 0],
+            [0, 2.15997314453125],
+            [-10.7100219726562, 0],
+            [0, -10.7100219726562],
+            [0.6600341796875, -1.94000244140625],
+            [0, 0],
+            [0, 2.15997314453125],
+            [-10.7099609375, 0],
+            [0, -10.7100219726562],
+            [0.6600341796875, -1.94000244140625],
+            [0, 0],
+            [0, 2.04998779296875]
+        ];
+        var outTangents = [
+            [0, 0],
+            [-19.260009765625, 0],
+            [0, 2.04998779296875],
+            [0, 0],
+            [-0.65997314453125, -1.94000244140625],
+            [0, -10.7100219726562],
+            [10.7100219726562, 0],
+            [0, 2.15997314453125],
+            [0, 0],
+            [-0.6600341796875, -1.94000244140625],
+            [0, -10.7100219726562],
+            [10.7000122070312, 0],
+            [0, 2.15997314453125],
+            [0, 0],
+            [-0.6600341796875, -1.94000244140625],
+            [0, -10.7100219726562],
+            [10.7099609375, 0],
+            [0, 2.15997314453125],
+            [0, 0],
+            [-0.65997314453125, -1.94000244140625],
+            [0, -10.7100219726562],
+            [10.7100830078125, 0],
+            [0, 2.15997314453125],
+            [0, 0],
+            [0.330078125, -1.95001220703125],
+            [0, -19.260009765625]
+        ];
+        createPathGrp(contents, 'Wheels_Top', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [-15.925, 58.365]);
+    };
+    var createHead = function () {
+        var vertices = [
+            [42.0399780273438, -16.4983215332031],
+            [15.8468475341797, -16.4983215332031],
+            [4.28257751464844, -28.7445678710938],
+            [-13.7481231689453, -29.0339660644531],
+            [-13.7481231689453, -29.0853881835938],
+            [-14.5982666015625, -29.0561065673828],
+            [-15.4487915039062, -29.0853881835938],
+            [-15.4487915039062, -29.0339660644531],
+            [-33.4753112792969, -28.7445678710938],
+            [-45.0399475097656, -16.4983215332031],
+            [-65.1154479980469, -16.4983215332031],
+            [-74.2974243164062, -6.29353332519531],
+            [-74.2974243164062, 29.0853881835938],
+            [74.3546142578125, 29.0853881835938],
+            [74.3546142578125, 2.89219665527344]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [7.39305114746094, 0],
+            [3.34317016601562, 0.0953369140625],
+            [0, 0],
+            [0.53523254394531, -0.01463317871094],
+            [0, 0],
+            [0, 0],
+            [6.95695495605469, 0],
+            [0.97138977050781, -3.43812561035156],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 19.04931640625]
+        ];
+        var outTangents = [
+            [0, 0],
+            [-0.971435546875, -3.43812561035156],
+            [-6.96075439453125, 0],
+            [0, 0],
+            [0, 0],
+            [-0.53523254394531, -0.01463317871094],
+            [0, 0],
+            [-3.34278869628906, 0.0953369140625],
+            [-7.3968505859375, 0],
+            [0, 0],
+            [-10.5418395996094, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, -19.0459442138672]
+        ];
+        createPathGrp(contents, 'Head', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [-36.3671, -78.5798]);
+    };
+    var createCanon = function () {
+        var vertices = [
+            [24.8316345214844, -18.3710784912109],
+            [24.8316345214844, -11.5646362304688],
+            [-60.8921813964844, -11.5646362304688],
+            [-60.8921813964844, 10.8863983154297],
+            [24.8316345214844, 10.8863983154297],
+            [24.8316345214844, 18.3710784912109],
+            [60.8921813964844, 18.3710784912109],
+            [60.8921813964844, -18.3710784912109]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Canon', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [112.4858, -67.1838]);
+    };
+    var createBody = function () {
+        var vertices = [
+            [-152.505477905273, -45.9939727783203],
+            [-120.869140625, -53.8198394775391],
+            [69.6240692138672, -53.8198394775391],
+            [157.730163574219, -11.2970428466797],
+            [157.393127441406, 34.2862854003906],
+            [141.741394042969, 54.3546600341797],
+            [128.476440429688, 21.0175933837891],
+            [79.8284759521484, 4.69174194335938],
+            [-94.3385162353516, 5.37336730957031],
+            [-141.62287902832, 51.9757385253906],
+            [-157.611663818359, 33.2638549804688],
+            [-157.611663818359, -33.75146484375]
+        ];
+        var inTangents = [
+            [-6.46229553222656, 7.14012145996094],
+            [-15.3067932128906, 0],
+            [-18.0268707275391, 0],
+            [0, -18.7085113525391],
+            [0, -5.10202026367188],
+            [13.26904296875, -2.37890625],
+            [13.9469604492188, 14.6251678466797],
+            [21.4357452392578, 0],
+            [11.9050750732422, 0],
+            [0, -33.3370666503906],
+            [0, 16.3296051025391],
+            [0, 0]
+        ];
+        var outTangents = [
+            [10.3256378173828, -11.4145050048828],
+            [15.3067932128906, 0],
+            [33.3408355712891, 0],
+            [0, 26.8714294433594],
+            [0, 5.10238647460938],
+            [0, 0],
+            [-13.9472961425781, -14.6251678466797],
+            [-21.4282531738281, 0],
+            [-11.9054565429688, 0],
+            [0, 0],
+            [0, -16.3258514404297],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Body', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [-15.6478, 18.2724]);
+    };
+    createBody();
+    createCanon();
+    createHead();
+    createWheelsTop();
+    createWheelsBottom();
+    iconAftermath(hasCircle, contents, circleColorRgb, scale, layer, 220);
+};
+var createGrenadeIcon = function (circleColor, iconColor, hasCircle, scale) {
+    var _a = setUpIcon('Grenade', circleColor, iconColor), layer = _a.layer, contents = _a.contents, circleColorRgb = _a.circleColorRgb, iconColorRgb = _a.iconColorRgb;
+    var createPinL = function () {
+        var vertices = [
+            [26.0745544433594, -45.4534759521484],
+            [26.0745544433594, -53.2334442138672],
+            [6.87454223632812, -22.5534515380859],
+            [-24.9054260253906, 22.0765533447266],
+            [-20.7354431152344, 53.2265777587891],
+            [-12.3854675292969, 32.9965362548828],
+            [26.0745544433594, -7.44346618652344],
+            [26.0745544433594, -33.5134735107422],
+            [15.0045471191406, -27.8734588623047],
+            [18.5045471191406, -42.3034515380859]
+        ];
+        var inTangents = [
+            [-2.80999755859375, 0.11004638671875],
+            [0, 0],
+            [-4.66998291015625, -22.7799682617188],
+            [1.5999755859375, -22.469970703125],
+            [-6.739990234375, -0.32000732421875],
+            [-4.5, 9.6400146484375],
+            [-25.5700073242188, 12.9100341796875],
+            [0, 0],
+            [0, 0],
+            [-5.239990234375, 5.239990234375]
+        ];
+        var outTangents = [
+            [0, 0],
+            [-11.8800048828125, 1.79998779296875],
+            [0, 0],
+            [-1.61004638671875, 22.47998046875],
+            [6.739990234375, 0.3199462890625],
+            [3.47003173828125, -7.44000244140625],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [2.030029296875, -2.02996826171875]
+        ];
+        createPathGrp(contents, 'Pin_L', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [-66.1946, -48.7166]);
+    };
+    var createPinR = function () {
+        var vertices = [
+            [33.5700988769531, -27.0899963378906],
+            [-5.60989379882812, -27.0899963378906],
+            [-12.0299377441406, -20.3399963378906],
+            [-12.0299377441406, -11.9900207519531],
+            [-18.7699279785156, -10.0699768066406],
+            [-37.7099304199219, -21.3100280761719],
+            [-43.2799377441406, -20.2300109863281],
+            [-43.2799377441406, -12.3299865722656],
+            [-26.9898986816406, -7.44003295898438],
+            [-43.2799377441406, 0.86996459960938],
+            [-43.2799377441406, 27.0899963378906],
+            [-11.7099304199219, 15.6199645996094],
+            [-11.7099304199219, 24.6800231933594],
+            [43.2001037597656, 24.6199645996094],
+            [43.2001037597656, -21.6300354003906]
+        ];
+        var inTangents = [
+            [11.239990234375, 0],
+            [0, 0],
+            [0, -5.46002197265625],
+            [0, 0],
+            [0, 0],
+            [12.2000122070312, -1.5999755859375],
+            [1.83001708984375, -0.489990234375],
+            [0, 0],
+            [-3.48004150390625, -5.40997314453125],
+            [0, 0],
+            [0, 0],
+            [-12.7999877929688, 2.47003173828125],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [-4.80999755859375, 0],
+            [0, 5.4599609375],
+            [0, 0],
+            [0, 0],
+            [-1.8599853515625, 0.25],
+            [0, 0],
+            [5.4100341796875, -2.48004150390625],
+            [0, 0],
+            [0, 0],
+            [8.4000244140625, -4.8800048828125],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Pin_R', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [-1.3701, -80.79]);
+    };
+    var createBody01 = function () {
+        var vertices = [
+            [20.9558868408203, -22.4761047363281],
+            [6.05081176757812, -22.4761047363281],
+            [-24.2216796875, 19.6765441894531],
+            [-14.2087249755859, 22.23681640625],
+            [13.9681396484375, 22.23681640625],
+            [16.5313110351562, 10.3621368408203],
+            [23.5161590576172, -17.8176116943359]
+        ];
+        var inTangents = [
+            [2.56027221679688, 0],
+            [3.26144409179688, 0],
+            [0, -13.0407562255859],
+            [-5.12342834472656, 0],
+            [-3.95736694335938, 0],
+            [0, 4.8895263671875],
+            [-1.74607849121094, 1.74636840820312]
+        ];
+        var outTangents = [
+            [-5.3570556640625, 0],
+            [-3.25881958007812, 0],
+            [0, 3.95736694335938],
+            [5.12313842773438, 0],
+            [3.9599609375, 0],
+            [0, -4.89241027832031],
+            [1.74925231933594, -1.74636840820312]
+        ];
+        createPathGrp(contents, 'Body_01', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [-33.7163, -25.4653]);
+    };
+    var createBody02 = function () {
+        var vertices = [
+            [-20.9551086425781, -22.4761047363281],
+            [-6.05003356933594, -22.4761047363281],
+            [24.2224578857422, 19.6765441894531],
+            [14.2095031738281, 22.23681640625],
+            [-13.9702301025391, 22.23681640625],
+            [-16.5305023193359, 10.3621368408203],
+            [-23.5182647705078, -17.8176116943359]
+        ];
+        var inTangents = [
+            [-2.56315612792969, 0],
+            [-3.26141357421875, 0],
+            [0, -13.0407562255859],
+            [5.12342834472656, 0],
+            [3.96025085449219, 0],
+            [1.74896240234375, 1.74636840820312],
+            [0, 4.8895263671875]
+        ];
+        var outTangents = [
+            [5.3570556640625, 0],
+            [3.25881958007812, 0],
+            [0, 3.95736694335938],
+            [-5.12313842773438, 0],
+            [-3.95707702636719, 0],
+            [0, -4.89241027832031],
+            [-1.74636840820312, -1.74636840820312]
+        ];
+        createPathGrp(contents, 'Body_02', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [63.1603, -25.4653]);
+    };
+    var createBody03 = function () {
+        var vertices = [
+            [-20.9553985595703, 22.4761047363281],
+            [-6.05291748046875, 22.4761047363281],
+            [24.2224578857422, -19.6765441894531],
+            [14.2095336914062, -22.23681640625],
+            [-13.9702453613281, -22.23681640625],
+            [-16.5334014892578, -10.3592529296875],
+            [-23.5182495117188, 17.8176116943359]
+        ];
+        var inTangents = [
+            [-2.56285095214844, 0],
+            [-3.25881958007812, 0],
+            [0, 13.0436401367188],
+            [5.1234130859375, 0],
+            [3.9599609375, 0],
+            [0, -4.89241027832031],
+            [1.74604797363281, -1.74636840820312]
+        ];
+        var outTangents = [
+            [5.35444641113281, 0],
+            [3.26170349121094, 0],
+            [0, -3.95736694335938],
+            [-5.12345886230469, 0],
+            [-3.9599609375, 0],
+            [0, 4.8895263671875],
+            [-1.74638366699219, 1.74636840820312]
+        ];
+        createPathGrp(contents, 'Body_03', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [62.6956, 84.223]);
+    };
+    var createBody04 = function () {
+        var vertices = [
+            [20.9558868408203, 22.4761047363281],
+            [6.05081176757812, 22.4761047363281],
+            [-24.2216796875, -19.6765441894531],
+            [-14.2090148925781, -22.23681640625],
+            [13.9707336425781, -22.23681640625],
+            [16.5310211181641, -10.3592529296875],
+            [23.5161590576172, 17.8176116943359]
+        ];
+        var inTangents = [
+            [2.56027221679688, 0],
+            [3.26141357421875, 0],
+            [0, 13.0436401367188],
+            [-5.12313842773438, 0],
+            [-3.9599609375, 0],
+            [0, -4.89241027832031],
+            [-1.74636840820312, -1.74636840820312]
+        ];
+        var outTangents = [
+            [-5.3570556640625, 0],
+            [-3.25881958007812, 0],
+            [0, -3.95736694335938],
+            [5.12342834472656, 0],
+            [3.95736694335938, 0],
+            [0, 4.8895263671875],
+            [1.74925231933594, 1.74636840820312]
+        ];
+        createPathGrp(contents, 'Body_04', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [-33.4853, 84.223]);
+    };
+    var createBody05 = function () {
+        var vertices = [
+            [-12.3831024169922, -22.8578186035156],
+            [12.0674133300781, -22.8578186035156],
+            [22.7817993164062, 7.64828491210938],
+            [20.9171752929688, 23.0182952880859],
+            [-19.6047668457031, 23.0182952880859],
+            [-23.7957458496094, 13.005615234375],
+            [-19.1372528076172, -13.3097991943359]
+        ];
+        var inTangents = [
+            [-3.49531555175781, 0.23101806640625],
+            [-5.12313842773438, 0],
+            [-1.09280395507812, -11.3589935302734],
+            [4.89241027832031, 0],
+            [3.26170349121094, 0],
+            [-1.16346740722656, 10.9451141357422],
+            [-1.63070678710938, 5.12342834472656]
+        ];
+        var outTangents = [
+            [6.03860473632812, -0.405517578125],
+            [5.12342834472656, 0],
+            [1.1632080078125, 12.1085968017578],
+            [-4.8895263671875, 0],
+            [-3.25881958007812, 0],
+            [1.16606140136719, -10.9454040527344],
+            [1.63070678710938, -5.12313842773438]
+        ];
+        createPathGrp(contents, 'Body_05', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [15.2266, -26.0132]);
+    };
+    var createBody06 = function () {
+        var vertices = [
+            [-12.3831024169922, 22.8597564697266],
+            [12.0674133300781, 22.8597564697266],
+            [22.7817993164062, -7.6463623046875],
+            [20.9171752929688, -23.0192413330078],
+            [-19.6047668457031, -23.0192413330078],
+            [-23.7957458496094, -13.0034027099609],
+            [-19.1372528076172, 13.3117218017578]
+        ];
+        var inTangents = [
+            [-3.49531555175781, -0.23361206054688],
+            [-5.12313842773438, 0],
+            [-1.09280395507812, 11.3563995361328],
+            [4.89241027832031, 0],
+            [3.26170349121094, 0],
+            [-1.16346740722656, -10.9451141357422],
+            [-1.63070678710938, -5.12342834472656]
+        ];
+        var outTangents = [
+            [6.03860473632812, 0.40292358398438],
+            [5.12342834472656, 0],
+            [1.1632080078125, -12.1111907958984],
+            [-4.8895263671875, 0],
+            [-3.25881958007812, 0],
+            [1.16606140136719, 10.9451141357422],
+            [1.63070678710938, 5.12342834472656]
+        ];
+        createPathGrp(contents, 'Body_06', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [15.2266, 84.8364]);
+    };
+    var createBody07 = function () {
+        var vertices = [
+            [21.3086547851562, 18.8118286132812],
+            [15.7205963134766, 24.2196350097656],
+            [-15.7179870605469, 24.2196350097656],
+            [-21.3086547851562, 18.8118286132812],
+            [-21.3086547851562, -18.8118286132812],
+            [-15.7179870605469, -24.2196350097656],
+            [15.7205963134766, -24.2196350097656],
+            [21.3086547851562, -18.8118286132812]
+        ];
+        var inTangents = [
+            [0, 0],
+            [3.08430480957031, 0],
+            [0, 0],
+            [0, 2.98828125],
+            [0, 0],
+            [-3.08692932128906, 0],
+            [0, 0],
+            [0, -2.98857116699219]
+        ];
+        var outTangents = [
+            [0, 2.98828125],
+            [0, 0],
+            [-3.08692932128906, 0],
+            [0, 0],
+            [0, -2.98857116699219],
+            [0, 0],
+            [3.08430480957031, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Body_07', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [-40.1246, 29.1423]);
+    };
+    var createBody08 = function () {
+        var vertices = [
+            [21.3087921142578, 18.8118286132812],
+            [15.7178344726562, 24.2196350097656],
+            [-15.7207183837891, 24.2196350097656],
+            [-21.3087921142578, 18.8118286132812],
+            [-21.3087921142578, -18.8118286132812],
+            [-15.7207183837891, -24.2196350097656],
+            [15.7178344726562, -24.2196350097656],
+            [21.3087921142578, -18.8118286132812]
+        ];
+        var inTangents = [
+            [0, 0],
+            [3.08694458007812, 0],
+            [0, 0],
+            [0, 2.98828125],
+            [0, 0],
+            [-3.08401489257812, 0],
+            [0, 0],
+            [0, -2.98857116699219]
+        ];
+        var outTangents = [
+            [0, 2.98828125],
+            [0, 0],
+            [-3.08401489257812, 0],
+            [0, 0],
+            [0, -2.98857116699219],
+            [0, 0],
+            [3.08694458007812, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Body_08', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [70.9608, 29.1423]);
+    };
+    var createBody09 = function () {
+        var vertices = [
+            [26.0829467773438, 18.8118286132812],
+            [20.4948883056641, 24.2196350097656],
+            [-20.4919891357422, 24.2196350097656],
+            [-26.0829467773438, 18.8118286132812],
+            [-26.0829467773438, -18.8118286132812],
+            [-20.4919891357422, -24.2196350097656],
+            [20.4948883056641, -24.2196350097656],
+            [26.0829467773438, -18.8118286132812]
+        ];
+        var inTangents = [
+            [0, 0],
+            [3.08404541015625, 0],
+            [0, 0],
+            [0, 2.98828125],
+            [0, 0],
+            [-3.08692932128906, 0],
+            [0, 0],
+            [0, -2.98857116699219]
+        ];
+        var outTangents = [
+            [0, 2.98828125],
+            [0, 0],
+            [-3.08692932128906, 0],
+            [0, 0],
+            [0, -2.98857116699219],
+            [0, 0],
+            [3.08404541015625, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Body_09', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [15.1843, 29.1423]);
+    };
+    createBody09();
+    createBody08();
+    createBody07();
+    createBody06();
+    createBody05();
+    createBody04();
+    createBody03();
+    createBody02();
+    createBody01();
+    createPinR();
+    createPinL();
+    iconAftermath(hasCircle, contents, circleColorRgb, scale, layer, 160);
+};
+var createBoatIcon = function (circleColor, iconColor, hasCircle, scale) {
+    var _a = setUpIcon('Boat', circleColor, iconColor), layer = _a.layer, contents = _a.contents, circleColorRgb = _a.circleColorRgb, iconColorRgb = _a.iconColorRgb;
+    var createBodyL = function () {
+        var vertices = [
+            [-4.43502807617188, -21.1676940917969],
+            [50.8450012207031, -35.6177062988281],
+            [52.7149963378906, -35.9576721191406],
+            [52.7149963378906, -52.5476989746094],
+            [51.0049743652344, -52.3177185058594],
+            [-33.1050109863281, -30.3476867675781],
+            [-36.3949890136719, -24.0276794433594],
+            [-15.1349792480469, 29.6623229980469],
+            [-14.4750061035156, 31.4723205566406],
+            [-24.5650329589844, 33.3022766113281],
+            [-34.0350036621094, 37.2422790527344],
+            [-45.1150207519531, 39.9823303222656],
+            [-52.7149963378906, 44.6822814941406],
+            [-52.7149963378906, 47.5622863769531],
+            [-44.4250183105469, 52.3523254394531],
+            [-28.0550231933594, 48.0522766113281],
+            [-21.0550231933594, 45.1423034667969],
+            [1.41500854492188, 48.0522766113281],
+            [38.0450134277344, 48.0722961425781],
+            [45.0450134277344, 45.1523132324219],
+            [52.7149963378906, 44.1723327636719],
+            [52.7149963378906, -23.1076965332031],
+            [51.4750061035156, -22.9477233886719],
+            [-0.43502807617188, -9.43771362304688],
+            [-7.41500854492188, -11.1277160644531],
+            [-8.63497924804688, -17.2577209472656]
+        ];
+        var inTangents = [
+            [-2.04998779296875, 0.53997802734375],
+            [-18.4299926757812, 4.80999755859375],
+            [-0.760009765625, 0.1300048828125],
+            [0, 0],
+            [0.5400390625, -0.13995361328125],
+            [28.0399780273438, -7.34002685546875],
+            [-1.4200439453125, -3.59002685546875],
+            [-7.09002685546875, -17.8900146484375],
+            [-0.16998291015625, -0.47003173828125],
+            [3.1800537109375, -0.94000244140625],
+            [3.09002685546875, -1.4599609375],
+            [3.8900146484375, 0.0699462890625],
+            [1.44000244140625, -3.3299560546875],
+            [0, 0],
+            [-4.65997314453125, 0.199951171875],
+            [-5.15997314453125, 2.61004638671875],
+            [-2.41998291015625, 0.6300048828125],
+            [-7.260009765625, -3.65997314453125],
+            [-12.2200317382812, 5.85003662109375],
+            [-2.4200439453125, 0.6199951171875],
+            [-2.510009765625, -0.010009765625],
+            [0, 0],
+            [0.3800048828125, -0.1099853515625],
+            [17.2900390625, -4.51995849609375],
+            [1.9100341796875, 2.1400146484375],
+            [-0.80999755859375, 2.27001953125]
+        ];
+        var outTangents = [
+            [18.4200439453125, -4.83001708984375],
+            [0.53997802734375, -0.1400146484375],
+            [0, 0],
+            [-0.59002685546875, 0.010009765625],
+            [-28.0399780273438, 7.2900390625],
+            [-3.79998779296875, 0.989990234375],
+            [7.0799560546875, 17.8999633789062],
+            [0.25994873046875, 0.66998291015625],
+            [-3.52001953125, 0.6099853515625],
+            [-3.25994873046875, 0.97003173828125],
+            [-3.530029296875, 1.6700439453125],
+            [-3.65997314453125, -0.07000732421875],
+            [0, 0],
+            [2.02001953125, 4.11004638671875],
+            [5.780029296875, -0.25],
+            [2.260009765625, -1.12994384765625],
+            [7.84002685546875, -2.03997802734375],
+            [12.1099853515625, 6.11004638671875],
+            [2.27996826171875, -1.0899658203125],
+            [2.5999755859375, -0.66998291015625],
+            [0, 0],
+            [-0.41998291015625, 0],
+            [-17.3099975585938, 4.47003173828125],
+            [-2.65997314453125, 0.69000244140625],
+            [-1.5899658203125, -1.77996826171875],
+            [0.72998046875, -2.00994873046875]
+        ];
+        createPathGrp(contents, 'Body_L', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [-52.715, 39.7177]);
+    };
+    var createBodyR = function () {
+        var vertices = [
+            [51.7008972167969, 40.1351776123047],
+            [36.1609802246094, 36.0151824951172],
+            [24.0809020996094, 32.2151947021484],
+            [19.1209411621094, 31.7051849365234],
+            [19.9709167480469, 29.4351654052734],
+            [41.1109313964844, -23.8648223876953],
+            [37.8709411621094, -30.3748321533203],
+            [-46.2391052246094, -52.3548126220703],
+            [-49.6291198730469, -52.3148345947266],
+            [-57.5091247558594, -50.2548370361328],
+            [-57.5091247558594, -33.5948028564453],
+            [-49.7890930175781, -35.6148223876953],
+            [-47.7190856933594, -35.9948272705078],
+            [-40.7591247558594, -34.2747955322266],
+            [7.96090698242188, -21.5348052978516],
+            [13.7809143066406, -14.5147857666016],
+            [5.33090209960938, -9.41481018066406],
+            [-11.9690856933594, -13.9448394775391],
+            [-46.5790710449219, -22.9448394775391],
+            [-49.1590881347656, -22.9448394775391],
+            [-57.5091247558594, -20.7747955322266],
+            [-57.5091247558594, 45.7651824951172],
+            [-55.5890808105469, 45.1551971435547],
+            [-33.2991027832031, 47.9451751708984],
+            [3.89089965820312, 47.9351654052734],
+            [10.5108947753906, 45.1652069091797],
+            [30.5408630371094, 46.9351654052734],
+            [50.1509704589844, 52.3751678466797],
+            [52.7908630371094, 52.1551971435547],
+            [57.4908142089844, 45.7651824951172]
+        ];
+        var inTangents = [
+            [3.1500244140625, 0.02001953125],
+            [5, 2.27001953125],
+            [4.070068359375, 1.1199951171875],
+            [1.77001953125, 0.16998291015625],
+            [-0.27001953125, 0.69000244140625],
+            [-7.0400390625, 17.77001953125],
+            [3.909912109375, 1.030029296875],
+            [28.0499877929688, 7.28997802734375],
+            [1.07000732421875, -0.27996826171875],
+            [2.6300048828125, -0.69000244140625],
+            [0, 0],
+            [-2.57000732421875, 0.66998291015625],
+            [-0.8599853515625, 0.1600341796875],
+            [-2.37994384765625, -0.6199951171875],
+            [-16.239990234375, -4.260009765625],
+            [0.41998291015625, -3.30999755859375],
+            [4.32000732421875, 1.1099853515625],
+            [5.760009765625, 1.510009765625],
+            [11.5399780273438, 2.97003173828125],
+            [0.80999755859375, -0.2099609375],
+            [2.780029296875, -0.73004150390625],
+            [0, 0],
+            [-0.6500244140625, 0.16998291015625],
+            [-7.20001220703125, -3.64996337890625],
+            [-12.4099731445312, 6.02001953125],
+            [-2.29998779296875, 0.57000732421875],
+            [-6.39990234375, -3.3299560546875],
+            [-7.0400390625, -0.010009765625],
+            [-0.8499755859375, 0.20001220703125],
+            [0.2301025390625, 2.95001220703125]
+        ];
+        var outTangents = [
+            [-5.5699462890625, -0.02001953125],
+            [-3.820068359375, -1.739990234375],
+            [-1.530029296875, -0.41998291015625],
+            [0.3299560546875, -0.8900146484375],
+            [7.0499267578125, -17.7699584960938],
+            [1.5, -3.77001953125],
+            [-28.030029296875, -7.3499755859375],
+            [-1.05999755859375, -0.27001953125],
+            [-2.6300048828125, 0.67999267578125],
+            [0, 0],
+            [2.57000732421875, -0.67999267578125],
+            [0.5899658203125, -0.14996337890625],
+            [2.17999267578125, 0.5400390625],
+            [16.2400512695312, 4.239990234375],
+            [4.07000732421875, 1.07000732421875],
+            [-0.5, 4],
+            [-5.77001953125, -1.489990234375],
+            [-11.5400390625, -3.00994873046875],
+            [-0.80999755859375, -0.2099609375],
+            [-2.780029296875, 0.72003173828125],
+            [0, 0],
+            [0.6300048828125, -0.22998046875],
+            [7.75, -2],
+            [12.2999877929688, 6.25],
+            [2.1500244140625, -1.03997802734375],
+            [6.83001708984375, -1.71002197265625],
+            [6.1700439453125, 3.20001220703125],
+            [0.8798828125, 0.010009765625],
+            [2.969970703125, -0.72003173828125],
+            [-0.239990234375, -3.07000732421875]
+        ];
+        createPathGrp(contents, 'Body_R', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [47.9191, 39.7148]);
+    };
+    var createTop = function () {
+        var vertices = [
+            [63.3962707519531, 21.9317779541016],
+            [50.8375244140625, 18.6717224121094],
+            [3.10945129394531, 6.24430847167969],
+            [-2.91607666015625, 6.21824645996094],
+            [-61.1870574951172, 21.3812713623047],
+            [-63.3962707519531, 21.8983917236328],
+            [-63.3962707519531, 19.6806640625],
+            [-63.3948211669922, -16.5524597167969],
+            [-57.9493408203125, -21.9302520751953],
+            [57.9554443359375, -21.9302368164062],
+            [63.394775390625, -16.5447235107422],
+            [63.3962707519531, 19.6884307861328]
+        ];
+        var inTangents = [
+            [0, -0.91094970703125],
+            [4.0965576171875, 1.07182312011719],
+            [15.9325714111328, 4.05116271972656],
+            [1.8935546875, -0.48391723632812],
+            [19.4185638427734, -5.0743408203125],
+            [0.90135192871094, -0.21003723144531],
+            [0, 0.66706848144531],
+            [-0.00401306152344, 12.0776977539062],
+            [-4.1571044921875, 0.00021362304688],
+            [-38.6349334716797, -0.00205993652344],
+            [-0.00138854980469, -4.10676574707031],
+            [-0.00001525878906, -12.0777130126953]
+        ];
+        var outTangents = [
+            [-4.36158752441406, -1.13174438476562],
+            [-15.9046020507812, -4.16130065917969],
+            [-1.89913940429688, -0.48289489746094],
+            [-19.4453430175781, 4.96952819824219],
+            [-0.64968872070312, 0.16976928710938],
+            [0, -0.88360595703125],
+            [0.00001525878906, -12.0776977539062],
+            [0.00135803222656, -4.10643005371094],
+            [38.6349334716797, -0.00201416015625],
+            [4.14678955078125, 0.00021362304688],
+            [0.00407409667969, 12.0777130126953],
+            [0, 0.66619873046875]
+        ];
+        createPathGrp(contents, 'Top', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [-0.0001, -31.2544]);
+    };
+    var createTip = function () {
+        var vertices = [
+            [-18.4707336425781, 13.2768249511719],
+            [-18.3688049316406, -4.39266967773438],
+            [-8.01081848144531, -13.1809692382812],
+            [8.03118896484375, -13.1760711669922],
+            [18.5675506591797, -2.30752563476562],
+            [18.5779113769531, 13.2768249511719]
+        ];
+        var inTangents = [
+            [12.3791198730469, 0],
+            [-0.43601989746094, 5.8421630859375],
+            [-5.31050109863281, 0.11810302734375],
+            [-5.34397888183594, -0.14308166503906],
+            [-0.06076049804688, -6.17549133300781],
+            [0, -5.30625915527344]
+        ];
+        var outTangents = [
+            [0, -5.92770385742188],
+            [0.3729248046875, -4.99673461914062],
+            [5.34513854980469, -0.11886596679688],
+            [6.15740966796875, 0.16485595703125],
+            [0.05058288574219, 5.13859558105469],
+            [-12.3861236572266, 0]
+        ];
+        createPathGrp(contents, 'Tip', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [0.0083, -78.9876]);
+    };
+    createTip();
+    createTop();
+    createBodyR();
+    createBodyL();
+    iconAftermath(hasCircle, contents, circleColorRgb, scale, layer, 160);
+};
+var createBinocularsIcon = function (circleColor, iconColor, hasCircle, scale) {
+    var _a = setUpIcon('Binoculars', circleColor, iconColor), layer = _a.layer, contents = _a.contents, circleColorRgb = _a.circleColorRgb, iconColorRgb = _a.iconColorRgb;
+    var createRReflection = function () {
+        var vertices = [
+            [-20.6352386474609, -23.5617218017578],
+            [25.5631866455078, 13.0690155029297],
+            [-3.18147277832031, 22.63671875]
+        ];
+        var inTangents = [
+            [-10.2652893066406, 9.23968505859375],
+            [-45.1728210449219, 10.9662780761719],
+            [18.9906311035156, 4.61984252929688]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [-21.9682769775391, -5.34793090820312]
+        ];
+        createPathGrp(contents, 'R_Reflection', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [73.3153, 23.0336]);
+    };
+    var createLReflection = function () {
+        var vertices = [
+            [-20.6352081298828, -23.5617218017578],
+            [25.5632171630859, 13.0690155029297],
+            [-3.18144226074219, 22.63671875]
+        ];
+        var inTangents = [
+            [-10.2652893066406, 9.23968505859375],
+            [-45.1728210449219, 10.9662780761719],
+            [18.9906311035156, 4.61984252929688]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [-21.9685821533203, -5.34793090820312]
+        ];
+        createPathGrp(contents, 'L_Reflection', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [-81.8193, 23.0336]);
+    };
+    var createBinocularsTop = function () {
+        var vertices = [
+            [101.570037841797, -3.88533020019531],
+            [101.820037841797, -5.18531799316406],
+            [64.1900482177734, -28.6552886962891],
+            [59.8100433349609, -28.1053009033203],
+            [31.9400482177734, -43.3853302001953],
+            [19.4500427246094, -12.3953399658203],
+            [-13.5099792480469, -12.3953399658203],
+            [-28.5199890136719, -43.0753326416016],
+            [-56.3899841308594, -27.7953033447266],
+            [-60.7699890136719, -28.3452911376953],
+            [-98.1199645996094, -6.50532531738281],
+            [-137.660003662109, 43.9946746826172],
+            [-117.939971923828, 43.9946746826172],
+            [-77.2999572753906, 9.31468200683594],
+            [-36.6499938964844, 43.9946746826172],
+            [-15.7999572753906, 43.9946746826172],
+            [-18.9100036621094, 33.0546722412109],
+            [1.86001586914062, 12.2847137451172],
+            [22.6300354003906, 33.0546722412109],
+            [19.5199890136719, 43.9946746826172],
+            [37.5700378417969, 43.9946746826172],
+            [78.2099304199219, 9.31468200683594],
+            [118.860076904297, 43.9946746826172],
+            [137.660003662109, 43.9946746826172]
+        ];
+        var inTangents = [
+            [19.3299560546875, 8.19000244140625],
+            [0, 0.47003173828125],
+            [13.3599700927734, 0],
+            [1.41996765136719, -0.34002685546875],
+            [8.16996765136719, -3.489990234375],
+            [2.989990234375, -5.5699462890625],
+            [0, 0],
+            [20.4100341796875, -0.30999755859375],
+            [3.77001953125, -6.4100341796875],
+            [1.5, 0],
+            [2.72998046875, -8.39996337890625],
+            [2.48004150390625, -23.3499755859375],
+            [0, 0],
+            [-20.52001953125, 0],
+            [-3.0999755859375, -19.6499633789062],
+            [0, 0],
+            [0, 4.010009765625],
+            [-11.469970703125, 0],
+            [0, -11.47998046875],
+            [1.97003173828125, -3.17999267578125],
+            [0, 0],
+            [-20.5198974609375, 0],
+            [-3.10009765625, -19.6499633789062],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0.159912109375, -0.39996337890625],
+            [0, -8.15997314453125],
+            [-1.50001525878906, 0],
+            [-3.77003479003906, -6.4100341796875],
+            [-16.9500274658203, 7.23004150390625],
+            [0, 0],
+            [-3.05999755859375, -5.47998046875],
+            [-8.8900146484375, 0.1400146484375],
+            [-1.41998291015625, -0.34002685546875],
+            [-12.52001953125, 0],
+            [-21.3099975585938, 7.79998779296875],
+            [0, 0],
+            [3.0999755859375, -19.6499633789062],
+            [20.5299682617188, 0],
+            [0, 0],
+            [-1.97003173828125, -3.17999267578125],
+            [0, -11.47998046875],
+            [11.47998046875, 0],
+            [0, 4.010009765625],
+            [0, 0],
+            [3.0999755859375, -19.6499633789062],
+            [20.5300445556641, 0],
+            [0, 0],
+            [-2.6199951171875, -21.6199951171875]
+        ];
+        createPathGrp(contents, 'Binoculars_Top', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [-0.05, -33.5847]);
+    };
+    var createBinocularsBottom = function () {
+        var vertices = [
+            [134.969940185547, -39.4399719238281],
+            [115.090057373047, -39.4399719238281],
+            [119.310028076172, -21.2699890136719],
+            [78.1598815917969, 19.8799743652344],
+            [37.0199890136719, -21.2699890136719],
+            [41.2399597167969, -39.4399719238281],
+            [22.5599670410156, -39.4399719238281],
+            [22.5799865722656, -38.6700134277344],
+            [1.80996704101562, -17.8999938964844],
+            [-18.9600524902344, -38.6700134277344],
+            [-18.9400329589844, -39.4399719238281],
+            [-40.4200134277344, -39.4399719238281],
+            [-36.2000427246094, -21.2699890136719],
+            [-77.3500061035156, 19.8799743652344],
+            [-118.490020751953, -21.2699890136719],
+            [-114.270050048828, -39.4399719238281],
+            [-135.270050048828, -39.4399719238281],
+            [-138.050018310547, -21.2699890136719],
+            [-77.3500061035156, 39.4399719238281],
+            [-17.2000427246094, -13.4599914550781],
+            [1.80996704101562, -7.06002807617188],
+            [18.9199523925781, -12.1200256347656],
+            [78.1598815917969, 39.4399719238281],
+            [138.050018310547, -20.4499816894531]
+        ];
+        var inTangents = [
+            [2, 5.969970703125],
+            [0, 0],
+            [0, -6.52001953125],
+            [22.7301025390625, 0],
+            [0, 22.72998046875],
+            [-2.69999694824219, 5.47998046875],
+            [0, 0],
+            [0, -0.260009765625],
+            [11.4799957275391, 0],
+            [0, 11.4700317382812],
+            [-0.02001953125, 0.25],
+            [0, 0],
+            [0, -6.52001953125],
+            [22.72998046875, 0],
+            [0, 22.72998046875],
+            [-2.699951171875, 5.47998046875],
+            [0, 0],
+            [0, -6.33001708984375],
+            [-33.52001953125, 0],
+            [-3.83001708984375, 29.8300170898438],
+            [-7.1400146484375, 0],
+            [-4.92999267578125, 3.19000244140625],
+            [-30.2399291992188, 0],
+            [0, 33.0799560546875]
+        ];
+        var outTangents = [
+            [0, 0],
+            [2.699951171875, 5.47998046875],
+            [0, 22.72998046875],
+            [-22.7199096679688, 0],
+            [0, -6.52001953125],
+            [0, 0],
+            [0.02001953125, 0.25],
+            [0, 11.4700317382812],
+            [-11.469970703125, 0],
+            [0, -0.260009765625],
+            [0, 0],
+            [2.70001220703125, 5.47998046875],
+            [0, 22.72998046875],
+            [-22.7200317382812, 0],
+            [0, -6.52001953125],
+            [0, 0],
+            [-1.80999755859375, 5.72998046875],
+            [0, 33.5299682617188],
+            [30.8800048828125, 0],
+            [5.29998779296875, 4],
+            [6.30999755859375, 0],
+            [4.05999755859375, 29.1200561523438],
+            [33.080078125, 0],
+            [0, -6.6300048828125]
+        ];
+        createPathGrp(contents, 'Binoculars_Bottom', true, false, iconColorRgb, iconColorRgb, 0, vertices, inTangents, outTangents, true, [0, 38.14]);
+    };
+    createBinocularsBottom();
+    createBinocularsTop();
+    createLReflection();
+    createRReflection();
+    iconAftermath(hasCircle, contents, circleColorRgb, scale, layer, 180);
+};
 var createIconFromId = function (id, circleColor, iconColor, hasCircle, scale) {
     app.beginUndoGroup("Caspion: Create Icon - ".concat(id));
     var comp = app.project.activeItem;
@@ -7855,6 +10907,12 @@ var createIconFromId = function (id, circleColor, iconColor, hasCircle, scale) {
         case 'Shooting M16':
             createShootingM16Icon(circleColor, iconColor, hasCircle, scale);
             break;
+        case 'Running With M16':
+            createRunningWithM16Icon(circleColor, iconColor, hasCircle, scale);
+            break;
+        case 'Crouching With M16':
+            createCrouchingWithM16Icon(circleColor, iconColor, hasCircle, scale);
+            break;
         case 'Rocket':
             createRocketIcon(circleColor, iconColor, hasCircle, scale);
             break;
@@ -7869,6 +10927,33 @@ var createIconFromId = function (id, circleColor, iconColor, hasCircle, scale) {
             break;
         case 'Helmet':
             createHelmetIcon(circleColor, iconColor, hasCircle, scale);
+            break;
+        case 'Drone':
+            createDroneIcon(circleColor, iconColor, hasCircle, scale);
+            break;
+        case 'Tent':
+            createTentIcon(circleColor, iconColor, hasCircle, scale);
+            break;
+        case 'Airplane':
+            createAirplaneIcon(circleColor, iconColor, hasCircle, scale);
+            break;
+        case 'Submarine':
+            createSubmarineIcon(circleColor, iconColor, hasCircle, scale);
+            break;
+        case 'Ambulance':
+            createAmbulanceIcon(circleColor, iconColor, hasCircle, scale);
+            break;
+        case 'Tank':
+            createTankIcon(circleColor, iconColor, hasCircle, scale);
+            break;
+        case 'Grenade':
+            createGrenadeIcon(circleColor, iconColor, hasCircle, scale);
+            break;
+        case 'Boat':
+            createBoatIcon(circleColor, iconColor, hasCircle, scale);
+            break;
+        case 'Binoculars':
+            createBinocularsIcon(circleColor, iconColor, hasCircle, scale);
             break;
     }
     app.endUndoGroup();
@@ -7888,6 +10973,7 @@ var createLocationBG = function (id, size, mitug) {
     var comp = app.project.activeItem;
     var layer = comp.layers.addShape();
     layer.name = "".concat(id, "_BG");
+    layer.inPoint = comp.time;
     var contents = layer.property('ADBE Root Vectors Group');
     var grp = contents.addProperty('ADBE Vector Group');
     grp.name = "".concat(id, "_BG");
@@ -7909,6 +10995,7 @@ var createLocationBG = function (id, size, mitug) {
 var createLocationText = function (lang, text, fontSize, tracking, leading, textPos, textAnchor, mitug) {
     var comp = app.project.activeItem;
     var textLayer = comp.layers.addText();
+    textLayer.inPoint = comp.time;
     var srcText = textLayer
         .property('ADBE Text Properties')
         .property('ADBE Text Document');
@@ -7923,6 +11010,7 @@ var createLocationText = function (lang, text, fontSize, tracking, leading, text
     if (leading) {
         textDoc.leading = leading;
     }
+    textDoc.justification = ParagraphJustification.LEFT_JUSTIFY;
     srcText.setValue(textDoc);
     var posProp = textLayer
         .property('ADBE Transform Group')
@@ -7937,7 +11025,8 @@ var createLocationText = function (lang, text, fontSize, tracking, leading, text
 var createIconBase = function (name) {
     var comp = app.project.activeItem;
     var iconLayer = comp.layers.addShape();
-    iconLayer.name = "".concat(name, "_Icon");
+    iconLayer.name = formatLayerName("".concat(name, "_Icon"));
+    iconLayer.inPoint = comp.time;
     return iconLayer;
 };
 var setLayerTransform = function (layer, pos, anchor, scale) {
@@ -7985,14 +11074,99 @@ var createLocationIconFromId = function (id, iconPos, iconAnchor, iconScale, mit
             return createResidentialNeighborhoodIcon(iconPos, iconAnchor, iconScale, id, mitug);
         case 'Amusement Park':
             return createAmusementParkIcon(iconPos, iconAnchor, iconScale, id, mitug);
+        case 'Hotel':
+            return createHotelIcon(iconPos, iconAnchor, iconScale, id, mitug);
+        case 'School':
+            return createSchoolIcon(iconPos, iconAnchor, iconScale, id, mitug);
+        case 'Stadium':
+            return createStadiumIcon(iconPos, iconAnchor, iconScale, id, mitug);
+        case 'Tourism Attraction':
+            return createTourismAttractionIcon(iconPos, iconAnchor, iconScale, id, mitug);
+        case 'Communication Antenna':
+            return createCommunicationAntennaIcon(iconPos, iconAnchor, iconScale, id, mitug);
+        case 'Education and Culture Site':
+            return createSchoolIcon(iconPos, iconAnchor, iconScale, id, mitug);
+        case 'Hospital':
+            return createMedicalIcon(iconPos, iconAnchor, iconScale, id, mitug);
+        case 'College':
+            return createSchoolIcon(iconPos, iconAnchor, iconScale, id, mitug);
     }
 };
-var createLocation = function (argsArr, inputLang, mitug) {
+var createLocation = function (argsArr, inputLang, mitug, animation) {
     var _a = argsArr.find(function (args) { return args.lang === inputLang; }), bgSize = _a.bgSize, fontSize = _a.fontSize, lang = _a.lang, text = _a.text, textAnchor = _a.textAnchor, textPos = _a.textPos, tracking = _a.tracking, leading = _a.leading, iconAnchor = _a.iconAnchor, iconPos = _a.iconPos, iconScale = _a.iconScale, iconId = _a.iconId;
     var bgLayer = createLocationBG(iconId, bgSize, mitug);
     var iconLayer = createLocationIconFromId(iconId, iconPos, iconAnchor, iconScale, mitug);
     var textLayer = createLocationText(lang, text, fontSize, tracking, leading, textPos, textAnchor, mitug);
     iconLayer.parent = textLayer.parent = bgLayer;
+    var addSetMatte = function (layer, value) {
+        var setMatteEffect = layer.effect.addProperty('ADBE Set Matte3');
+        var setMatteLayer = setMatteEffect.property('ADBE Set Matte3-0001');
+        setMatteLayer.setValue(value);
+    };
+    addSetMatte(iconLayer, bgLayer.index);
+    addSetMatte(textLayer, bgLayer.index);
+    var comp = app.project.activeItem;
+    if (animation === 'Scale') {
+        scaleWithOvershoot([bgLayer]);
+    }
+    else if (animation === 'Open') {
+        var sizeProp = bgLayer
+            .property('ADBE Root Vectors Group')
+            .property('ADBE Vector Group')
+            .property('ADBE Vectors Group')
+            .property('ADBE Vector Shape - Rect')
+            .property('ADBE Vector Rect Size');
+        var origSizeValue = sizeProp.value;
+        sizeProp.setValueAtTime(comp.time, [0, origSizeValue[1]]);
+        sizeProp.setValueAtTime(comp.time + (1 / comp.frameRate) * 14, origSizeValue);
+        var ease1 = new KeyframeEase(0, 40);
+        var ease2 = new KeyframeEase(0, 100);
+        sizeProp.setTemporalEaseAtKey(1, [ease1, ease1], [ease1, ease1]);
+        sizeProp.setTemporalEaseAtKey(2, [ease2, ease2], [ease2, ease2]);
+    }
+    else if (animation === 'Scale & Open') {
+        var scaleProp = bgLayer
+            .property('ADBE Transform Group')
+            .property('ADBE Scale');
+        scaleProp.setValueAtTime(comp.time, [0, 0]);
+        scaleProp.setValueAtTime(comp.time + (1 / comp.frameRate) * 12, [102, 102]);
+        scaleProp.setValueAtTime(comp.time + (1 / comp.frameRate) * 17, [100, 100]);
+        var scaleEase = new KeyframeEase(0, 66);
+        scaleProp.setTemporalEaseAtKey(1, [scaleEase, scaleEase, scaleEase], [scaleEase, scaleEase, scaleEase]);
+        scaleProp.setTemporalEaseAtKey(2, [scaleEase, scaleEase, scaleEase], [scaleEase, scaleEase, scaleEase]);
+        scaleProp.setTemporalEaseAtKey(3, [scaleEase, scaleEase, scaleEase], [scaleEase, scaleEase, scaleEase]);
+        var sizeProp = bgLayer
+            .property('ADBE Root Vectors Group')
+            .property('ADBE Vector Group')
+            .property('ADBE Vectors Group')
+            .property('ADBE Vector Shape - Rect')
+            .property('ADBE Vector Rect Size');
+        var origSizeValue = sizeProp.value;
+        sizeProp.setValueAtTime(comp.time, [0, origSizeValue[1]]);
+        sizeProp.setValueAtTime(comp.time + (1 / comp.frameRate) * 12, [
+            origSizeValue[0] - 5,
+            origSizeValue[1]
+        ]);
+        sizeProp.setValueAtTime(comp.time + (1 / comp.frameRate) * 17, origSizeValue);
+        var sizeEase1 = new KeyframeEase(0, 85);
+        var sizeEase3 = new KeyframeEase(0, 66);
+        sizeProp.setTemporalEaseAtKey(1, [sizeEase1, sizeEase1], [sizeEase1, sizeEase1]);
+        sizeProp.setTemporalEaseAtKey(2, [new KeyframeEase(100, 65), new KeyframeEase(0, 65)], [new KeyframeEase(100, 15), new KeyframeEase(0, 15)]);
+        sizeProp.setTemporalEaseAtKey(3, [sizeEase3, sizeEase3], [sizeEase3, sizeEase3]);
+        var roundProp = bgLayer
+            .property('ADBE Root Vectors Group')
+            .property('ADBE Vector Group')
+            .property('ADBE Vectors Group')
+            .property('ADBE Vector Shape - Rect')
+            .property('ADBE Vector Rect Roundness');
+        var origRoundVal = roundProp.value;
+        roundProp.setValueAtTime(comp.time, 55);
+        roundProp.setValueAtTime(comp.time + (1 / comp.frameRate) * 12, origRoundVal);
+        var roundEase1 = new KeyframeEase(0, 85);
+        var roundEase2 = new KeyframeEase(0, 66);
+        roundProp.setTemporalEaseAtKey(1, [roundEase1], [roundEase1]);
+        roundProp.setTemporalEaseAtKey(2, [roundEase2], [roundEase2]);
+    }
     bgLayer.label =
         iconLayer.label =
             textLayer.label =
@@ -8376,15 +11550,15 @@ var createKindergardenIcon = function (iconPos, iconAnchor, iconScale, name, mit
     setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
     return iconLayer;
 };
-var createKindergardenLocation = function (lang, mitug) {
+var createKindergardenLocation = function (lang, mitug, animation) {
     var args = [
         {
             lang: 'Hebrew',
             text: 'גן ילדים',
             fontSize: 77.3332,
             tracking: -19,
-            textPos: [922.3363, 540.1692],
-            textAnchor: [getOS() === 'Win' ? 75.0863 : -75.0863, -19.0808],
+            textPos: [916, 540],
+            textAnchor: [69.209, -19.0808],
             bgSize: [296, 110],
             iconPos: [1045.5764, 539.1284],
             iconAnchor: [85.5764, -0.8716],
@@ -8396,8 +11570,8 @@ var createKindergardenLocation = function (lang, mitug) {
             text: 'Kindergarden',
             fontSize: 77.3332,
             tracking: -26,
-            textPos: [1019.7664, 549.906],
-            textAnchor: [getOS() === 'Win' ? 180.7664 : -180.7664, -21.344],
+            textPos: [1006, 540],
+            textAnchor: [177.789, -21.344],
             bgSize: [495, 106],
             iconPos: [773.5764, 539.1284],
             iconAnchor: [85.5764, -0.8716],
@@ -8409,8 +11583,8 @@ var createKindergardenLocation = function (lang, mitug) {
             text: 'روضة أطفال',
             fontSize: 60,
             tracking: -23,
-            textPos: [916.7816, 538.4697],
-            textAnchor: [getOS() === 'Win' ? 171.7816 : -171.7816, -22.2803],
+            textPos: [916, 540],
+            textAnchor: [171.7816, -22.2803],
             bgSize: [466, 92],
             iconPos: [1141.2014, 539.5034],
             iconAnchor: [85.5764, -0.8716],
@@ -8418,7 +11592,7 @@ var createKindergardenLocation = function (lang, mitug) {
             iconId: 'Kindergarden'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 var createMedicalIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     var iconLayer = createIconBase(name);
@@ -8494,15 +11668,15 @@ var createMedicalIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
     return iconLayer;
 };
-var createMedicalLocation = function (lang, mitug) {
+var createMedicalLocation = function (lang, mitug, animation) {
     var args = [
         {
             lang: 'Hebrew',
             text: 'מרפאה',
             fontSize: 77.3332,
             tracking: -19,
-            textPos: [922.3363, 540.1692],
-            textAnchor: [getOS() === 'Win' ? 75.0863 : -75.0863, -19.0808],
+            textPos: [911, 540],
+            textAnchor: [64.1329, -20.4437],
             bgSize: [296, 110],
             iconPos: [1045.5764, 539.1284],
             iconAnchor: [85.5764, -0.8716],
@@ -8514,8 +11688,8 @@ var createMedicalLocation = function (lang, mitug) {
             text: 'Medical Clinic',
             fontSize: 77.3332,
             tracking: -31,
-            textPos: [1011.831, 537.0827],
-            textAnchor: [getOS() === 'Win' ? 182.081 : -182.081, -27.9173],
+            textPos: [1011, 540],
+            textAnchor: [182.081, -27.9173],
             bgSize: [484, 106],
             iconPos: [779, 539.1284],
             iconAnchor: [85.5764, -0.8716],
@@ -8527,8 +11701,8 @@ var createMedicalLocation = function (lang, mitug) {
             text: 'عيادة',
             fontSize: 64,
             tracking: -21,
-            textPos: [919.4213, 540.4375],
-            textAnchor: [getOS() === 'Win' ? 80.6712 : -80.6712, -16.3125],
+            textPos: [919, 540],
+            textAnchor: [80.6712, -16.3125],
             bgSize: [284, 91],
             iconPos: [1049.9514, 538.2534],
             iconAnchor: [85.5764, -0.8716],
@@ -8536,7 +11710,7 @@ var createMedicalLocation = function (lang, mitug) {
             iconId: 'Medical Clinic'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 var createSportsIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     var iconLayer = createIconBase(name);
@@ -8911,15 +12085,15 @@ var createSportsIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
     return iconLayer;
 };
-var createSportsLocation = function (lang, mitug) {
+var createSportsLocation = function (lang, mitug, animation) {
     var args = [
         {
             lang: 'Hebrew',
             text: 'מתחם ספורט ופנאי',
             fontSize: 77.3332,
             tracking: -19,
-            textPos: [812.8363, 540.1692],
-            textAnchor: [getOS() === 'Win' ? 75.0863 : -75.0863, -19.0808],
+            textPos: [907, 540],
+            textAnchor: [170.002, -20.21],
             bgSize: [480, 110],
             iconPos: [1045.5764, 539.1284],
             iconAnchor: [85.5764, -0.8716],
@@ -8932,8 +12106,8 @@ var createSportsLocation = function (lang, mitug) {
             fontSize: 59,
             tracking: -31,
             leading: 53,
-            textPos: [1001.1015, 542.921],
-            textAnchor: [getOS() === 'Win' ? 201.1015 : -201.1015, 9.921],
+            textPos: [1001, 540],
+            textAnchor: [201.1015, 9.921],
             bgSize: [555, 134],
             iconPos: [743.8515, 536.0034],
             iconAnchor: [177.6913, -0.8716],
@@ -8945,8 +12119,8 @@ var createSportsLocation = function (lang, mitug) {
             text: 'ملعب رياضة',
             fontSize: 64,
             tracking: -19,
-            textPos: [918.5146, 540.4375],
-            textAnchor: [getOS() === 'Win' ? 173.2645 : -173.2645, -16.3125],
+            textPos: [919, 540],
+            textAnchor: [173.8405, -16.3125],
             bgSize: [466, 92],
             iconPos: [1141.5318, 540.1284],
             iconAnchor: [177.6913, -0.8716],
@@ -8954,7 +12128,7 @@ var createSportsLocation = function (lang, mitug) {
             iconId: 'Sports'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 var createUniversityIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     var iconLayer = createIconBase(name);
@@ -9078,15 +12252,15 @@ var createUniversityIcon = function (iconPos, iconAnchor, iconScale, name, mitug
     setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
     return iconLayer;
 };
-var createUniversityLocation = function (lang, mitug) {
+var createUniversityLocation = function (lang, mitug, animation) {
     var args = [
         {
             lang: 'Hebrew',
             text: 'אוניברסיטה',
             fontSize: 77.3332,
             tracking: -19,
-            textPos: [907.7467, 539.0399],
-            textAnchor: [getOS() === 'Win' ? 102.9967 : -102.9967, -20.21],
+            textPos: [907, 540],
+            textAnchor: [102.9967, -20.21],
             bgSize: [344, 110],
             iconPos: [1045.5764, 539.1284],
             iconAnchor: [85.5764, -0.8716],
@@ -9098,8 +12272,8 @@ var createUniversityLocation = function (lang, mitug) {
             text: 'University',
             fontSize: 77,
             tracking: -29,
-            textPos: [1006.8615, 543.4595],
-            textAnchor: [getOS() === 'Win' ? 130.8615 : -130.8615, -21.2905],
+            textPos: [1006, 540],
+            textAnchor: [130.8615, -21.2905],
             bgSize: [388, 106],
             iconPos: [826.9122, 539.0034],
             iconAnchor: [110.002, -0.8716],
@@ -9111,8 +12285,8 @@ var createUniversityLocation = function (lang, mitug) {
             text: 'جامعة',
             fontSize: 64,
             tracking: -19,
-            textPos: [920.9957, 540.4375],
-            textAnchor: [getOS() === 'Win' ? 90.2456 : -90.2456, -16.3125],
+            textPos: [920, 540],
+            textAnchor: [90.2456, -16.3125],
             bgSize: [302, 92],
             iconPos: [1058.9747, 540.1284],
             iconAnchor: [110.002, -0.8716],
@@ -9120,7 +12294,7 @@ var createUniversityLocation = function (lang, mitug) {
             iconId: 'University'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 var createMosqueIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     var iconLayer = createIconBase(name);
@@ -9567,15 +12741,15 @@ var createMosqueIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
     return iconLayer;
 };
-var createMosqueLocation = function (lang, mitug) {
+var createMosqueLocation = function (lang, mitug, animation) {
     var args = [
         {
             lang: 'Hebrew',
             text: 'מסגד',
             fontSize: 77.3332,
             tracking: -19,
-            textPos: [907.9708, 539.3514],
-            textAnchor: [getOS() === 'Win' ? 45.7208 : -45.7208, -19.8985],
+            textPos: [907, 540],
+            textAnchor: [45.7208, -19.8985],
             bgSize: [238, 110],
             iconPos: [1016.1489, 539.5],
             iconAnchor: [43.3989, 0],
@@ -9587,8 +12761,8 @@ var createMosqueLocation = function (lang, mitug) {
             text: 'Mosque',
             fontSize: 77,
             tracking: -29,
-            textPos: [1007.486, 548.998],
-            textAnchor: [getOS() === 'Win' ? 101.486 : -101.486, -21.252],
+            textPos: [1007, 540],
+            textAnchor: [101.486, -21.252],
             bgSize: [325, 106],
             iconPos: [857.3072, 538.8489],
             iconAnchor: [43.3989, 0],
@@ -9600,8 +12774,8 @@ var createMosqueLocation = function (lang, mitug) {
             text: 'مسجد',
             fontSize: 64,
             tracking: -19,
-            textPos: [920.9957, 540.4375],
-            textAnchor: [getOS() === 'Win' ? 90.2456 : -90.2456, -16.3125],
+            textPos: [919, 540],
+            textAnchor: [93.5469, -10.4375],
             bgSize: [306, 92],
             iconPos: [1060.6942, 539.6018],
             iconAnchor: [43.3989, 0],
@@ -9609,7 +12783,7 @@ var createMosqueLocation = function (lang, mitug) {
             iconId: 'Mosque'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     var iconLayer = createIconBase(name);
@@ -13046,15 +16220,15 @@ var createUNBuildingIcon = function (iconPos, iconAnchor, iconScale, name, mitug
     setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
     return iconLayer;
 };
-var createUNBuildingLocation = function (lang, mitug) {
+var createUNBuildingLocation = function (lang, mitug, animation) {
     var args = [
         {
             lang: 'Hebrew',
             text: 'מבנה או“ם',
             fontSize: 77.3332,
             tracking: -19,
-            textPos: [909.5429, 535.3016],
-            textAnchor: [getOS() === 'Win' ? 94.2928 : -94.2928, -23.9483],
+            textPos: [909, 538],
+            textAnchor: [94.2928, -23.9483],
             bgSize: [332, 110],
             iconPos: [1063.6489, 539],
             iconAnchor: [43.3989, 0],
@@ -13066,8 +16240,8 @@ var createUNBuildingLocation = function (lang, mitug) {
             text: 'U.N. Building',
             fontSize: 77,
             tracking: -29,
-            textPos: [1006.127, 547.998],
-            textAnchor: [getOS() === 'Win' ? 165.627 : -165.627, -21.252],
+            textPos: [1006, 542],
+            textAnchor: [165.627, -21.252],
             bgSize: [462, 106],
             iconPos: [790.3072, 539.3489],
             iconAnchor: [43.3989, 0],
@@ -13079,8 +16253,8 @@ var createUNBuildingLocation = function (lang, mitug) {
             text: 'مبنى تابع للأمم المتحدة',
             fontSize: 64,
             tracking: -19,
-            textPos: [918.9665, 538.3125],
-            textAnchor: [getOS() === 'Win' ? 352.2164 : -352.2164, -18.4375],
+            textPos: [918, 540],
+            textAnchor: [352.2164, -18.4375],
             bgSize: [826, 92],
             iconPos: [1321.6942, 539.8518],
             iconAnchor: [43.3989, 0],
@@ -13088,7 +16262,7 @@ var createUNBuildingLocation = function (lang, mitug) {
             iconId: 'U.N. Building'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 var createDiplomaticBuildingIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     var iconLayer = createIconBase(name);
@@ -13536,15 +16710,15 @@ var createDiplomaticBuildingIcon = function (iconPos, iconAnchor, iconScale, nam
     setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
     return iconLayer;
 };
-var createDiplomaticBuildingLocation = function (lang, mitug) {
+var createDiplomaticBuildingLocation = function (lang, mitug, animation) {
     var args = [
         {
             lang: 'Hebrew',
             text: 'מבנה דיפלומטי',
             fontSize: 77.3332,
             tracking: -19,
-            textPos: [905.2402, 535.3016],
-            textAnchor: [getOS() === 'Win' ? 131.4901 : -131.4901, -23.9483],
+            textPos: [907.5, 537.5],
+            textAnchor: [131.4901, -23.9483],
             bgSize: [400, 110],
             iconPos: [1097.25, 539],
             iconAnchor: [0, 0],
@@ -13556,8 +16730,8 @@ var createDiplomaticBuildingLocation = function (lang, mitug) {
             text: 'Diplomatic Building',
             fontSize: 77,
             tracking: -29,
-            textPos: [1009.4835, 543.498],
-            textAnchor: [getOS() === 'Win' ? 252.9835 : -252.9835, -21.252],
+            textPos: [1009, 540],
+            textAnchor: [252.9835, -21.252],
             bgSize: [632, 106],
             iconPos: [703.7103, 539.0989],
             iconAnchor: [0, 0],
@@ -13569,8 +16743,8 @@ var createDiplomaticBuildingLocation = function (lang, mitug) {
             text: 'مبنى دبلوماسي',
             fontSize: 64,
             tracking: -19,
-            textPos: [913.9072, 541.0312],
-            textAnchor: [getOS() === 'Win' ? 241.6572 : -241.6572, -8.7188],
+            textPos: [916, 540],
+            textAnchor: [241.6572, -8.7188],
             bgSize: [605, 90],
             iconPos: [1211.4231, 538.8518],
             iconAnchor: [0, 0],
@@ -13578,7 +16752,7 @@ var createDiplomaticBuildingLocation = function (lang, mitug) {
             iconId: 'Diplomatic Building'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 var createGasStationIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     var iconLayer = createIconBase(name);
@@ -13736,15 +16910,15 @@ var createGasStationIcon = function (iconPos, iconAnchor, iconScale, name, mitug
     setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
     return iconLayer;
 };
-var createGasStationLocation = function (lang, mitug) {
+var createGasStationLocation = function (lang, mitug, animation) {
     var args = [
         {
             lang: 'Hebrew',
             text: 'תחנת דלק',
             fontSize: 77.3332,
             tracking: -19,
-            textPos: [912.9691, 540.1691],
-            textAnchor: [getOS() === 'Win' ? 89.969 : -89.969, -19.0808],
+            textPos: [912, 540],
+            textAnchor: [89.969, -19.0808],
             bgSize: [332, 110],
             iconPos: [1064.5, 538.5],
             iconAnchor: [0, 0],
@@ -13756,8 +16930,8 @@ var createGasStationLocation = function (lang, mitug) {
             text: 'Gas station',
             fontSize: 77,
             tracking: -29,
-            textPos: [1006.895, 536.953],
-            textAnchor: [getOS() === 'Win' ? 145.145 : -145.145, -27.797],
+            textPos: [1006, 540],
+            textAnchor: [145.145, -27.797],
             bgSize: [428, 106],
             iconPos: [806.7103, 539.0989],
             iconAnchor: [0, 0],
@@ -13769,8 +16943,8 @@ var createGasStationLocation = function (lang, mitug) {
             text: 'محطة وقود',
             fontSize: 64,
             tracking: -19,
-            textPos: [918.4655, 540.125],
-            textAnchor: [getOS() === 'Win' ? 175.4655 : -175.4655, -16.625],
+            textPos: [918, 540],
+            textAnchor: [175.4655, -16.625],
             bgSize: [474, 92],
             iconPos: [1145.6731, 540.1018],
             iconAnchor: [0, 0],
@@ -13778,7 +16952,7 @@ var createGasStationLocation = function (lang, mitug) {
             iconId: 'Gas Station'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 var createGovernmentBuildingIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     var iconLayer = createIconBase(name);
@@ -14259,15 +17433,15 @@ var createGovernmentBuildingIcon = function (iconPos, iconAnchor, iconScale, nam
     setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
     return iconLayer;
 };
-var createGovernmentBuildingLocation = function (lang, mitug) {
+var createGovernmentBuildingLocation = function (lang, mitug, animation) {
     var args = [
         {
             lang: 'Hebrew',
             text: 'מבנה ממשל',
             fontSize: 77.3332,
             tracking: -19,
-            textPos: [908.4594, 535.3016],
-            textAnchor: [getOS() === 'Win' ? 104.9593 : -104.9593, -23.9483],
+            textPos: [908, 536],
+            textAnchor: [104.9593, -23.9483],
             bgSize: [356, 110],
             iconPos: [1075, 539],
             iconAnchor: [0, 0],
@@ -14279,8 +17453,8 @@ var createGovernmentBuildingLocation = function (lang, mitug) {
             text: 'Government\nBuilding',
             fontSize: 70.0703,
             tracking: -19,
-            textPos: [1006.895, 536.953],
-            textAnchor: [getOS() === 'Win' ? 144.895 : -144.895, -0.197],
+            textPos: [1006, 530],
+            textAnchor: [144.895, -0.197],
             bgSize: [424, 146],
             iconPos: [808.4603, 539.3489],
             iconAnchor: [0, 0],
@@ -14293,16 +17467,16 @@ var createGovernmentBuildingLocation = function (lang, mitug) {
             text: 'مبنى حكومي',
             fontSize: 64,
             tracking: -19,
-            textPos: [918.2936, 545.4062],
-            textAnchor: [getOS() === 'Win' ? 197.2936 : -197.2936, -11.3438],
-            bgSize: [512, 91],
-            iconPos: [1164.7981, 544.6018],
+            textPos: [918, 540],
+            textAnchor: [197.2936, -11.3438],
+            bgSize: [512, 105],
+            iconPos: [1164.7981, 539.6018],
             iconAnchor: [0, 0],
             iconScale: 83,
             iconId: 'Government Building'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 var createPumpingStationIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     var iconLayer = createIconBase(name);
@@ -14431,15 +17605,15 @@ var createPumpingStationIcon = function (iconPos, iconAnchor, iconScale, name, m
     setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
     return iconLayer;
 };
-var createPumpingStationLocation = function (lang, mitug) {
+var createPumpingStationLocation = function (lang, mitug, animation) {
     var args = [
         {
             lang: 'Hebrew',
             text: 'תחנת שאיבה',
             fontSize: 77.3332,
             tracking: -19,
-            textPos: [-54.5092 + 960, -1.1351 + 540],
-            textAnchor: [getOS() === 'Win' ? 117.1903 : -117.1903, -20.4437],
+            textPos: [906, 540],
+            textAnchor: [117.1903, -20.4437],
             bgSize: [372, 110],
             iconPos: [1083, 539],
             iconAnchor: [0, 0],
@@ -14451,8 +17625,8 @@ var createPumpingStationLocation = function (lang, mitug) {
             text: 'Pumping Station',
             fontSize: 74.9495,
             tracking: -20,
-            textPos: [1008.1195, 548.5892],
-            textAnchor: [getOS() === 'Win' ? 212.3694 : -212.3694, -21.0608],
+            textPos: [1008, 540],
+            textAnchor: [212.3694, -21.0608],
             bgSize: [556, 106],
             iconPos: [742, 539],
             iconAnchor: [0, 0],
@@ -14464,8 +17638,8 @@ var createPumpingStationLocation = function (lang, mitug) {
             text: 'محطة ضخ',
             fontSize: 64,
             tracking: -19,
-            textPos: [915.8832, 542.875],
-            textAnchor: [getOS() === 'Win' ? 144.3833 : -144.3833, -13.875],
+            textPos: [915, 540],
+            textAnchor: [144.3833, -13.875],
             bgSize: [404, 91],
             iconPos: [1110.625, 540],
             iconAnchor: [0, 0],
@@ -14473,7 +17647,7 @@ var createPumpingStationLocation = function (lang, mitug) {
             iconId: 'Pumping Station'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 var createPoliceIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     var iconLayer = createIconBase(name);
@@ -14647,15 +17821,15 @@ var createPoliceIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
     return iconLayer;
 };
-var createPoliceLocation = function (lang, mitug) {
+var createPoliceLocation = function (lang, mitug, animation) {
     var args = [
         {
             lang: 'Hebrew',
             text: 'משטרה',
             fontSize: 77.3332,
             tracking: -19,
-            textPos: [914.9214, 538.8649],
-            textAnchor: [getOS() === 'Win' ? 69.1209 : -69.1209, -20.4437],
+            textPos: [914, 540],
+            textAnchor: [69.1209, -20.4437],
             bgSize: [294, 110],
             iconPos: [1044.5, 539],
             iconAnchor: [0, 0],
@@ -14667,8 +17841,8 @@ var createPoliceLocation = function (lang, mitug) {
             text: 'Police',
             fontSize: 74.9495,
             tracking: -20,
-            textPos: [1013.4949, 542.9679],
-            textAnchor: [getOS() === 'Win' ? 81.9948 : -81.9948, -26.682],
+            textPos: [1009, 540],
+            textAnchor: [81.9948, -26.682],
             bgSize: [284, 106],
             iconPos: [878, 539],
             iconAnchor: [0, 0],
@@ -14680,8 +17854,8 @@ var createPoliceLocation = function (lang, mitug) {
             text: 'مبنى شرطة',
             fontSize: 64,
             tracking: -13,
-            textPos: [919.7453, 536.4375],
-            textAnchor: [getOS() === 'Win' ? 180.4954 : -180.4954, -20.3125],
+            textPos: [919, 540],
+            textAnchor: [180.4954, -20.3125],
             bgSize: [486, 91],
             iconPos: [1151.125, 540],
             iconAnchor: [0, 0],
@@ -14689,7 +17863,7 @@ var createPoliceLocation = function (lang, mitug) {
             iconId: 'Police'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 var createWaterFacilityIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     var iconLayer = createIconBase(name);
@@ -14735,15 +17909,15 @@ var createWaterFacilityIcon = function (iconPos, iconAnchor, iconScale, name, mi
     setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
     return iconLayer;
 };
-var createWaterFacilityLocation = function (lang, mitug) {
+var createWaterFacilityLocation = function (lang, mitug, animation) {
     var args = [
         {
             lang: 'Hebrew',
             text: 'מתקן מים',
             fontSize: 77.3332,
             tracking: -19,
-            textPos: [909.074, 543.7325],
-            textAnchor: [getOS() === 'Win' ? 87.0235 : -87.0235, -15.5761],
+            textPos: [909, 543],
+            textAnchor: [87.0235, -15.5761],
             bgSize: [318, 110],
             iconPos: [1056, 539],
             iconAnchor: [0, 0],
@@ -14755,8 +17929,8 @@ var createWaterFacilityLocation = function (lang, mitug) {
             text: 'Water Facility',
             fontSize: 74.9495,
             tracking: -20,
-            textPos: [1013.4949, 542.9679],
-            textAnchor: [getOS() === 'Win' ? 179.2417 : -179.2417, -20.7235],
+            textPos: [1008, 543.5],
+            textAnchor: [179.2417, -20.7235],
             bgSize: [486, 106],
             iconPos: [777, 539],
             iconAnchor: [0, 0],
@@ -14768,8 +17942,8 @@ var createWaterFacilityLocation = function (lang, mitug) {
             text: 'مجمع مياه',
             fontSize: 64,
             tracking: -19,
-            textPos: [918.1465, 541.375],
-            textAnchor: [getOS() === 'Win' ? 154.3966 : -154.3966, -13.875],
+            textPos: [918, 540],
+            textAnchor: [154.3966, -13.875],
             bgSize: [424, 91],
             iconPos: [1119.625, 539.25],
             iconAnchor: [0, 0],
@@ -14777,7 +17951,7 @@ var createWaterFacilityLocation = function (lang, mitug) {
             iconId: 'Water Facility'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 var createResidentialNeighborhoodIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     var iconLayer = createIconBase(name);
@@ -15024,15 +18198,15 @@ var createResidentialNeighborhoodIcon = function (iconPos, iconAnchor, iconScale
     setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
     return iconLayer;
 };
-var createResidentialNeighborhoodLocation = function (lang, mitug) {
+var createResidentialNeighborhoodLocation = function (lang, mitug, animation) {
     var args = [
         {
             lang: 'Hebrew',
             text: 'שכונת מגורים',
             fontSize: 77.3332,
             tracking: -20,
-            textPos: [905.9881, 539.4101],
-            textAnchor: [getOS() === 'Win' ? 122.4377 : -122.4377, -19.8985],
+            textPos: [905, 540],
+            textAnchor: [122.4377, -19.8985],
             bgSize: [380, 110],
             iconPos: [1090, 539],
             iconAnchor: [0, 0],
@@ -15045,8 +18219,8 @@ var createResidentialNeighborhoodLocation = function (lang, mitug) {
             fontSize: 59,
             tracking: -18,
             leading: 50,
-            textPos: [1007.2187, 546.5324],
-            textAnchor: [getOS() === 'Win' ? 143.3405 : -143.3405, 8.716],
+            textPos: [1007, 540],
+            textAnchor: [143.3405, 8.716],
             bgSize: [422, 136],
             iconPos: [809.6875, 542.4375],
             iconAnchor: [0, 0],
@@ -15058,8 +18232,8 @@ var createResidentialNeighborhoodLocation = function (lang, mitug) {
             text: 'حي سكني',
             fontSize: 59.991,
             tracking: -19,
-            textPos: [918.1465, 541.375],
-            textAnchor: [getOS() === 'Win' ? 147.1732 : -147.1732, -10.6332],
+            textPos: [918, 540],
+            textAnchor: [147.1732, -10.6332],
             bgSize: [410, 91],
             iconPos: [1114.875, 541.5],
             iconAnchor: [0, 0],
@@ -15067,7 +18241,7 @@ var createResidentialNeighborhoodLocation = function (lang, mitug) {
             iconId: 'Residential Neighborhood'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
 var createAmusementParkIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
     var iconLayer = createIconBase(name);
@@ -15305,15 +18479,15 @@ var createAmusementParkIcon = function (iconPos, iconAnchor, iconScale, name, mi
     setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
     return iconLayer;
 };
-var createAmusementParkLocation = function (lang, mitug) {
+var createAmusementParkLocation = function (lang, mitug, animation) {
     var args = [
         {
             lang: 'Hebrew',
             text: 'פארק משחקים',
             fontSize: 77.3332,
             tracking: -20,
-            textPos: [913.0949, 543.7325],
-            textAnchor: [getOS() === 'Win' ? 134.5445 : -134.5445, -15.5761],
+            textPos: [913, 544],
+            textAnchor: [134.5445, -15.5761],
             bgSize: [422, 110],
             iconPos: [1108.25, 541.0954],
             iconAnchor: [0, -0.4046],
@@ -15326,8 +18500,8 @@ var createAmusementParkLocation = function (lang, mitug) {
             fontSize: 74.9495,
             tracking: -20,
             leading: 50,
-            textPos: [1009.3293, 542.8844],
-            textAnchor: [getOS() === 'Win' ? 220.9511 : -220.9511, -26.682],
+            textPos: [1009, 540],
+            textAnchor: [220.9511, -26.682],
             bgSize: [570, 106],
             iconPos: [735.1875, 541.0329],
             iconAnchor: [0, -0.4046],
@@ -15339,8 +18513,8 @@ var createAmusementParkLocation = function (lang, mitug) {
             text: 'ملعب',
             fontSize: 64.1684,
             tracking: -19,
-            textPos: [918.1465, 541.375],
-            textAnchor: [getOS() === 'Win' ? 81.5578 : -81.5578, -16.3554],
+            textPos: [918, 540],
+            textAnchor: [81.5578, -16.3554],
             bgSize: [282, 91],
             iconPos: [1048.7811, 541.2777],
             iconAnchor: [0, -0.4046],
@@ -15348,9 +18522,1223 @@ var createAmusementParkLocation = function (lang, mitug) {
             iconId: 'Amusement Park'
         }
     ];
-    createLocation(args, lang, mitug);
+    createLocation(args, lang, mitug, animation);
 };
-var createLocationFromId = function (id, lang, mitug) {
+var createHotelIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
+    var iconLayer = createIconBase(name);
+    var contents = iconLayer.property('Contents');
+    var createIconCircle = function () {
+        var vertices = [
+            [43.39892578125, 0],
+            [0, 43.39892578125],
+            [-43.39892578125, 0],
+            [0, -43.39892578125]
+        ];
+        var inTangents = [
+            [0, -23.9685668945312],
+            [23.9685668945312, 0],
+            [0, 23.9685668945312],
+            [-23.9685668945312, 0]
+        ];
+        var outTangents = [
+            [0, 23.9685668945312],
+            [-23.9685668945312, 0],
+            [0, -23.9685668945312],
+            [23.9685668945312, 0]
+        ];
+        createPathGrp(contents, 'Icon_Circle', true, false, getColorsFromMitug(mitug).pri, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [0, 0]);
+    };
+    var createSide = function () {
+        var vertices = [
+            [0, -20.0343933105469],
+            [0, 20.0343933105469]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Side', false, true, [0, 0, 0], getColorsFromMitug(mitug).bg, 3, vertices, inTangents, outTangents, false, [-26.9079, 0]);
+    };
+    var createBed = function () {
+        var vertices = [
+            [28.9371948242188, 6.33441162109375],
+            [28.9371948242188, -6.33441162109375],
+            [-28.9371948242188, -6.33441162109375]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Bed', false, true, [0, 0, 0], getColorsFromMitug(mitug).bg, 3, vertices, inTangents, outTangents, false, [2.0293, 13.7]);
+    };
+    var createBody = function () {
+        var vertices = [
+            [16.4273681640625, 8.02848815917969],
+            [16.4273681640625, 8.02847290039062],
+            [0.37040710449219, -8.02848815917969],
+            [-16.4273681640625, -8.02848815917969],
+            [-16.4273681640625, 8.02848815917969]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [8.86801147460938, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, -8.86801147460938],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Body', false, true, [0, 0, 0], getColorsFromMitug(mitug).bg, 3, vertices, inTangents, outTangents, false, [14.5391, -3.1672]);
+    };
+    var createHead = function () {
+        var vertices = [
+            [5.22111511230469, 0],
+            [0, -5.22111511230469],
+            [-5.22111511230469, 0],
+            [0, 5.22111511230469]
+        ];
+        var inTangents = [
+            [0, 2.883544921875],
+            [2.883544921875, 0],
+            [0, -2.883544921875],
+            [-2.883544921875, 0]
+        ];
+        var outTangents = [
+            [0, -2.883544921875],
+            [-2.883544921875, 0],
+            [0, 2.883544921875],
+            [2.883544921875, 0]
+        ];
+        createPathGrp(contents, 'Head', false, true, [0, 0, 0], getColorsFromMitug(mitug).bg, 3, vertices, inTangents, outTangents, true, [-14.6074, -5.9745]);
+    };
+    createHead();
+    createBody();
+    createBed();
+    createSide();
+    createIconCircle();
+    setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
+    return iconLayer;
+};
+var createHotelLocation = function (lang, mitug, animation) {
+    var args = [
+        {
+            lang: 'Hebrew',
+            text: 'בית מלון',
+            fontSize: 77.3332,
+            tracking: -20,
+            textPos: [909, 540],
+            textAnchor: [74.2847, -19.0808],
+            bgSize: [286, 110],
+            iconPos: [1040.25, 539],
+            iconAnchor: [0, 0],
+            iconScale: 100,
+            iconId: 'Hotel'
+        },
+        {
+            lang: 'English',
+            text: 'Hotel',
+            fontSize: 74.9495,
+            tracking: -20,
+            leading: 50,
+            textPos: [1007, 540],
+            textAnchor: [67.9417, -26.682],
+            bgSize: [262, 106],
+            iconPos: [888.4375, 538.6875],
+            iconAnchor: [0, 0],
+            iconScale: 100,
+            iconId: 'Hotel'
+        },
+        {
+            lang: 'Arabic',
+            text: 'فندق',
+            fontSize: 64.1684,
+            tracking: -19,
+            textPos: [915, 540],
+            textAnchor: [82.1273, -15.5565],
+            bgSize: [282, 91],
+            iconPos: [1048.7811, 540.0277],
+            iconAnchor: [0, 0],
+            iconScale: 83,
+            iconId: 'Hotel'
+        }
+    ];
+    createLocation(args, lang, mitug, animation);
+};
+var createSchoolIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
+    var iconLayer = createIconBase(name);
+    var contents = iconLayer.property('Contents');
+    var createIconCircle = function () {
+        var vertices = [
+            [43.39892578125, 0],
+            [0, 43.39892578125],
+            [-43.39892578125, 0],
+            [0, -43.39892578125]
+        ];
+        var inTangents = [
+            [0, -23.9685668945312],
+            [23.9685668945312, 0],
+            [0, 23.9685668945312],
+            [-23.9685668945312, 0]
+        ];
+        var outTangents = [
+            [0, 23.9685668945312],
+            [-23.9685668945312, 0],
+            [0, -23.9685668945312],
+            [23.9685668945312, 0]
+        ];
+        createPathGrp(contents, 'Icon_Circle', true, false, getColorsFromMitug(mitug).pri, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [0, 0]);
+    };
+    var createBottom = function () {
+        var vertices = [
+            [20.3099975585938, -11.0762634277344],
+            [20.3099975585938, -3.42623901367188],
+            [16.25, 3.37374877929688],
+            [3.65997314453125, 10.1537780761719],
+            [-3.6600341796875, 10.1537780761719],
+            [-16.2400512695312, 3.37374877929688],
+            [-20.3099975585938, -3.42623901367188],
+            [-20.3099975585938, -11.0762634277344],
+            [-3.32000732421875, -2.19625854492188],
+            [3.3299560546875, -2.19625854492188]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [2.5, -1.3399658203125],
+            [0, 0],
+            [2.2900390625, 1.22998046875],
+            [0, 0],
+            [0, 2.8499755859375],
+            [0, 0],
+            [0, 0],
+            [-2.0899658203125, 1.08001708984375]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 2.8499755859375],
+            [0, 0],
+            [0, 0],
+            [-2.27996826171875, 1.22998046875],
+            [-2.50994873046875, -1.3399658203125],
+            [0, 0],
+            [0, 0],
+            [2.0799560546875, 1.08001708984375],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Bottom', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [-1.29, 10.6663]);
+    };
+    var createTop = function () {
+        var vertices = [
+            [27.7323913574219, 18.5894165039062],
+            [27.7323913574219, -9.3232421875],
+            [28.2428894042969, -9.5899658203125],
+            [28.2429504394531, -12.1514282226562],
+            [2.44888305664062, -25.6307373046875],
+            [-4.12387084960938, -25.630859375],
+            [-29.9180603027344, -12.1526489257812],
+            [-29.9180603027344, -9.59112548828125],
+            [-4.12399291992188, 3.88812255859375],
+            [2.44869995117188, 3.88824462890625],
+            [25.6533508300781, -8.23687744140625],
+            [25.6533508300781, 18.5894165039062],
+            [22.6918640136719, 22.4367065429688],
+            [26.6928405761719, 26.4376831054688],
+            [30.6938781738281, 22.4367065429688]
+        ];
+        var inTangents = [
+            [1.7022705078125, 0.4599609375],
+            [0, 0],
+            [0, 0],
+            [1.03436279296875, 0.54052734375],
+            [0, 0],
+            [2.058837890625, -1.0758056640625],
+            [0, 0],
+            [-1.034423828125, -0.54058837890625],
+            [0, 0],
+            [-2.058837890625, 1.0758056640625],
+            [0, 0],
+            [0, 0],
+            [0, -1.8477783203125],
+            [-2.20965576171875, 0],
+            [0, 2.209716796875]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [1.034423828125, -0.54052734375],
+            [0, 0],
+            [-2.058837890625, -1.07586669921875],
+            [0, 0],
+            [-1.034423828125, 0.54052734375],
+            [0, 0],
+            [2.05877685546875, 1.07586669921875],
+            [0, 0],
+            [0, 0],
+            [-1.70233154296875, 0.45989990234375],
+            [0, 2.209716796875],
+            [2.209716796875, 0],
+            [0, -1.84771728515625]
+        ];
+        createPathGrp(contents, 'Top', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [-0.4487, 0.3506]);
+    };
+    createTop();
+    createBottom();
+    createIconCircle();
+    setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
+    return iconLayer;
+};
+var createSchoolLocation = function (lang, mitug, animation) {
+    var args = [
+        {
+            lang: 'Hebrew',
+            text: 'בית ספר',
+            fontSize: 77.3332,
+            tracking: -20,
+            textPos: [907, 540],
+            textAnchor: [73.0018, -20.21],
+            bgSize: [288, 110],
+            iconPos: [1041.5, 539.25],
+            iconAnchor: [0, 0],
+            iconScale: 100,
+            iconId: 'School'
+        },
+        {
+            lang: 'English',
+            text: 'School',
+            fontSize: 74.9495,
+            tracking: -20,
+            leading: 50,
+            textPos: [1006, 538],
+            textAnchor: [86.7541, -27.0568],
+            bgSize: [316, 106],
+            iconPos: [863.4375, 538.6875],
+            iconAnchor: [0, 0],
+            iconScale: 100,
+            iconId: 'School'
+        },
+        {
+            lang: 'Arabic',
+            text: 'مدرسة',
+            fontSize: 64.1684,
+            tracking: -19,
+            textPos: [921, 540],
+            textAnchor: [106.6752, -16.3868],
+            bgSize: [334, 91],
+            iconPos: [1075.7811, 540.0277],
+            iconAnchor: [0, 0],
+            iconScale: 83,
+            iconId: 'School'
+        }
+    ];
+    createLocation(args, lang, mitug, animation);
+};
+var createStadiumIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
+    var iconLayer = createIconBase(name);
+    var contents = iconLayer.property('Contents');
+    var createIconCircle = function () {
+        var vertices = [
+            [43.39892578125, 0],
+            [0, 43.39892578125],
+            [-43.39892578125, 0],
+            [0, -43.39892578125]
+        ];
+        var inTangents = [
+            [0, -23.9685668945312],
+            [23.9685668945312, 0],
+            [0, 23.9685668945312],
+            [-23.9685668945312, 0]
+        ];
+        var outTangents = [
+            [0, 23.9685668945312],
+            [-23.9685668945312, 0],
+            [0, -23.9685668945312],
+            [23.9685668945312, 0]
+        ];
+        createPathGrp(contents, 'Icon_Circle', true, false, getColorsFromMitug(mitug).pri, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [0, 0]);
+    };
+    var createLine01 = function () {
+        var vertices = [
+            [26.1199951171875, -5.77999877929688],
+            [12.219970703125, -5.77999877929688],
+            [26.1400146484375, -1.92001342773438],
+            [0, 2.57998657226562],
+            [-26.1599731445312, -1.86001586914062],
+            [-12.22998046875, -5.77999877929688],
+            [-26.1199951171875, -5.77999877929688],
+            [-29.3499755859375, -1.92001342773438],
+            [0, 5.77999877929688],
+            [29.3499755859375, -1.92001342773438]
+        ];
+        var inTangents = [
+            [2.010009765625, 1.02001953125],
+            [0, 0],
+            [-0.5400390625, -1.1300048828125],
+            [15.9299926757812, 0],
+            [0.5699462890625, 1.48004150390625],
+            [-8.61004638671875, 0.95001220703125],
+            [0, 0],
+            [0, -1.57000732421875],
+            [-10.9000244140625, 0],
+            [0, 6.08001708984375]
+        ];
+        var outTangents = [
+            [0, 0],
+            [8.48004150390625, 0.94000244140625],
+            [-0.760009765625, 1.60003662109375],
+            [-16.1099853515625, 0],
+            [0.40997314453125, -1.1400146484375],
+            [0, 0],
+            [-2.010009765625, 1.02001953125],
+            [0, 6.08001708984375],
+            [10.9000244140625, 0],
+            [0, -1.57000732421875]
+        ];
+        createPathGrp(contents, 'Line_01', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [0, -2.23]);
+    };
+    var createLine02 = function () {
+        var vertices = [
+            [0.71876525878906, 3.55006408691406],
+            [-26.3150177001953, -0.52500915527344],
+            [-25.2608337402344, -3.5458984375],
+            [25.2816619873047, -3.55006408691406],
+            [26.3150177001953, -0.52084350585938]
+        ];
+        var inTangents = [
+            [7.79595947265625, 0],
+            [0.69792175292969, 0.24375915527344],
+            [0, 0],
+            [-25.2816619873047, 8.61056518554688],
+            [0, 0]
+        ];
+        var outTangents = [
+            [-15.1210784912109, 0],
+            [0, 0],
+            [0.25209045410156, 0.08749389648438],
+            [0, 0],
+            [-8.96473693847656, 3.05213928222656]
+        ];
+        createPathGrp(contents, 'Line_02', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [-0.1604, 7.1348]);
+    };
+    var createLine03 = function () {
+        var vertices = [
+            [16.0648498535156, 3.660888671875],
+            [-16.2044372558594, 3.39630126953125],
+            [-17.6857147216797, 0.56083679199219],
+            [17.6857147216797, 0.90251159667969]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0.16874694824219, -0.08958435058594],
+            [0, 0],
+            [-16.7898559570312, -9.85848999023438]
+        ];
+        var outTangents = [
+            [-15.2377471923828, -8.94805908203125],
+            [0, 0],
+            [0.75001525878906, -0.39167785644531],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Line_03', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [-0.8667, -1.447]);
+    };
+    var createEntrance = function () {
+        var vertices = [
+            [6.48760986328125, 5.0755615234375],
+            [3.28755187988281, 5.0755615234375],
+            [0.31459045410156, -1.85163879394531],
+            [-1.5250244140625, -1.28703308105469],
+            [-3.28755187988281, 5.0755615234375],
+            [-6.48760986328125, 5.0755615234375],
+            [-3.52922058105469, -3.78291320800781],
+            [0.61042785644531, -5.02668762207031],
+            [3.82505798339844, -3.47248840332031]
+        ];
+        var inTangents = [
+            [0, -3.94172668457031],
+            [0, 0],
+            [0.12083435058594, 0.00625610351562],
+            [0.76667785644531, -0.67918395996094],
+            [0, -3.10212707519531],
+            [0, 0],
+            [-1.96253967285156, 1.64378356933594],
+            [-0.22084045410156, -0.03958129882812],
+            [-1.60835266113281, -1.57293701171875]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, -6.70635986328125],
+            [-0.26458740234375, -0.02082824707031],
+            [-1.13751220703125, 1.00210571289062],
+            [0, 0],
+            [0, -4.2333984375],
+            [1.89794921875, -1.5875244140625],
+            [-0.11666870117188, -0.03541564941406],
+            [1.76669311523438, 1.73127746582031]
+        ];
+        createPathGrp(contents, 'Entrance', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [-0.3312, 19.1367]);
+    };
+    var createOutside = function () {
+        var vertices = [
+            [26.1951904296875, -15.172119140625],
+            [22.3875732421875, 1.4954833984375],
+            [1.71978759765625, 3.97406005859375],
+            [1.6072998046875, 7.174072265625],
+            [3.6031494140625, 7.2073974609375],
+            [21.5902709960938, 4.985595703125],
+            [20.7638549804688, 8.603271484375],
+            [-21.541015625, 8.66162109375],
+            [-22.2766723632812, 4.88531494140625],
+            [-4.86572265625, 6.8636474609375],
+            [0.1781005859375, 6.607421875],
+            [-0.167724609375, 3.42822265625],
+            [-22.9429931640625, 1.4652099609375],
+            [-26.1744384765625, -15.1221313476562],
+            [-29.3161010742188, -14.5095825195312],
+            [-24.3472900390625, 10.9908447265625],
+            [-23.5597534179688, 11.3200073242188],
+            [-0.83026123046875, 15.172119140625],
+            [22.6243286132812, 11.36376953125],
+            [23.4805908203125, 11.0803833007812],
+            [29.3161010742188, -14.4595947265625]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [8.86663818359375, 0.33319091796875],
+            [0, 0],
+            [-0.66455078125, 0],
+            [-3.6357421875, 0.8511962890625],
+            [0, 0],
+            [3.8209228515625, 1.35003662109375],
+            [0, 0],
+            [-6.8807373046875, 0],
+            [-1.63751220703125, 0.17913818359375],
+            [0, 0],
+            [3.2850341796875, 0.72674560546875],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [-13.3043823242188, 0],
+            [-8.63348388671875, 2.85418701171875],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [-2.81756591796875, 0.7247314453125],
+            [0, 0],
+            [7.36016845703125, 0],
+            [0.66668701171875, 0.02294921875],
+            [0, 0],
+            [-21.1482543945312, 6.69805908203125],
+            [0, 0],
+            [3.5657958984375, 0.74237060546875],
+            [1.70416259765625, 0],
+            [0, 0],
+            [-8.648193359375, 0.93536376953125],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0.55206298828125, 0.23126220703125],
+            [6.82720947265625, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Outside', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [-0.0052, 10.6672]);
+    };
+    var createFlags = function () {
+        var vertices = [
+            [14.2940063476562, 4.54046630859375],
+            [14.2940063476562, 2.4276123046875],
+            [22.9420166015625, -0.1578369140625],
+            [11.0939331054688, -6.61419677734375],
+            [11.0939331054688, 4.189453125],
+            [0.875, 3.683349609375],
+            [0.875, 0.50048828125],
+            [9.181396484375, -2.28704833984375],
+            [-2.32501220703125, -12.468505859375],
+            [-2.32501220703125, 3.70263671875],
+            [-14.3877563476562, 4.5528564453125],
+            [-14.3877563476562, 3.0921630859375],
+            [-5.697998046875, -0.955810546875],
+            [-17.5877685546875, -7.66009521484375],
+            [-17.5877685546875, 5.0323486328125],
+            [-29.3499755859375, 11.3784790039062],
+            [-29.1400146484375, 12.468505859375],
+            [-24.77001953125, 12.468505859375],
+            [-26.1599731445312, 11.4384765625],
+            [0, 6.87847900390625],
+            [26.1400146484375, 11.3784790039062],
+            [24.6400146484375, 12.468505859375],
+            [29.1400146484375, 12.468505859375],
+            [29.3499755859375, 11.3784790039062]
+        ];
+        var inTangents = [
+            [7.9775390625, 1.0186767578125],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [3.073486328125, 0.02386474609375],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [4.053955078125, -0.5223388671875],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, -3.2364501953125],
+            [-0.1400146484375, -0.35003662109375],
+            [0, 0],
+            [0.1099853515625, 0.29998779296875],
+            [-16.1099853515625, 0],
+            [-0.760009765625, -1.5999755859375],
+            [0.8399658203125, -0.3900146484375],
+            [0, 0],
+            [0, 0.3800048828125]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [-3.56787109375, -0.332763671875],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [-3.71954345703125, 0.0736083984375],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [-6.53399658203125, 1.13726806640625],
+            [0, 0.3800048828125],
+            [0, 0],
+            [-0.80999755859375, -0.3800048828125],
+            [0.5699462890625, -1.5999755859375],
+            [15.9299926757812, 0],
+            [-0.1500244140625, 0.32000732421875],
+            [0, 0],
+            [0.1400146484375, -0.35003662109375],
+            [0, -3.76568603515625]
+        ];
+        createPathGrp(contents, 'Flags', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [0, -15.5285]);
+    };
+    createFlags();
+    createOutside();
+    createEntrance();
+    createLine03();
+    createLine02();
+    createLine01();
+    createIconCircle();
+    setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
+    return iconLayer;
+};
+var createStadiumLocation = function (lang, mitug, animation) {
+    var args = [
+        {
+            lang: 'Hebrew',
+            text: 'איצטדיון',
+            fontSize: 77.3332,
+            tracking: -20,
+            textPos: [910, 544.5],
+            textAnchor: [77.7861, -15.5761],
+            bgSize: [302, 110],
+            iconPos: [1048.5, 539.25],
+            iconAnchor: [0, 0],
+            iconScale: 100,
+            iconId: 'Stadium'
+        },
+        {
+            lang: 'English',
+            text: 'Stadium',
+            fontSize: 74.9495,
+            tracking: -20,
+            leading: 50,
+            textPos: [1008, 540],
+            textAnchor: [104.7794, -27.0568],
+            bgSize: [336, 106],
+            iconPos: [852.4375, 538.9375],
+            iconAnchor: [0, 0],
+            iconScale: 98,
+            iconId: 'Stadium'
+        },
+        {
+            lang: 'Arabic',
+            text: 'ملعب',
+            fontSize: 64.1684,
+            tracking: -19,
+            textPos: [921, 540],
+            textAnchor: [81.5578, -16.3554],
+            bgSize: [280, 91],
+            iconPos: [1048.2811, 540.0277],
+            iconAnchor: [0, 0],
+            iconScale: 83,
+            iconId: 'Stadium'
+        }
+    ];
+    createLocation(args, lang, mitug, animation);
+};
+var createTourismAttractionIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
+    var iconLayer = createIconBase(name);
+    var contents = iconLayer.property('Contents');
+    var createIconCircle = function () {
+        var vertices = [
+            [43.39892578125, 0],
+            [0, 43.39892578125],
+            [-43.39892578125, 0],
+            [0, -43.39892578125]
+        ];
+        var inTangents = [
+            [0, -23.9685668945312],
+            [23.9685668945312, 0],
+            [0, 23.9685668945312],
+            [-23.9685668945312, 0]
+        ];
+        var outTangents = [
+            [0, 23.9685668945312],
+            [-23.9685668945312, 0],
+            [0, -23.9685668945312],
+            [23.9685668945312, 0]
+        ];
+        createPathGrp(contents, 'Icon_Circle', true, false, getColorsFromMitug(mitug).pri, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [0, 0]);
+    };
+    var createDoor = function () {
+        var vertices = [
+            [18.4549865722656, -13.9450073242188],
+            [18.4549865722656, 13.9450073242188],
+            [7.45498657226562, 13.9450073242188],
+            [-0.00497436523438, -0.0050048828125],
+            [-7.08499145507812, 13.9450073242188],
+            [-18.4549865722656, 13.9450073242188],
+            [-18.4549865722656, -13.9450073242188]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [7.739990234375, 0],
+            [0, -13.72998046875],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Door', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [0.155, 9.985]);
+    };
+    var createRoof = function () {
+        var vertices = [
+            [18.4549865722656, -3.70498657226562],
+            [18.4549865722656, 3.70498657226562],
+            [-18.4549865722656, 3.70498657226562],
+            [-18.4549865722656, -3.70498657226562],
+            [-12.3450012207031, -3.70498657226562],
+            [-12.3450012207031, -0.78500366210938],
+            [-7.55502319335938, -0.78500366210938],
+            [-7.55502319335938, -3.70498657226562],
+            [-1.44497680664062, -3.70498657226562],
+            [-1.44497680664062, -0.78500366210938],
+            [1.81497192382812, -0.78500366210938],
+            [1.81497192382812, -3.70498657226562],
+            [7.92501831054688, -3.70498657226562],
+            [7.92501831054688, -0.78500366210938],
+            [12.3450012207031, -0.78500366210938],
+            [12.3450012207031, -3.70498657226562]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'Roof', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [0.155, -9.345]);
+    };
+    var createLPole = function () {
+        var vertices = [
+            [-3.34320068359375, 18.4895935058594],
+            [3.34320068359375, 18.4895935058594],
+            [3.34320068359375, -18.4895935058594],
+            [-3.34320068359375, -18.4895935058594]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'L_Pole', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [-23.4511, 5.4359]);
+    };
+    var createRPole = function () {
+        var vertices = [
+            [-3.34320068359375, 18.4895935058594],
+            [3.34320068359375, 18.4895935058594],
+            [3.34320068359375, -18.4895935058594],
+            [-3.34320068359375, -18.4895935058594]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'R_Pole', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [23.4511, 5.4701]);
+    };
+    var createLTriangle = function () {
+        var vertices = [
+            [-3.34320068359375, 4.90119934082031],
+            [3.34320068359375, 4.90119934082031],
+            [0, -4.90119934082031]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'L_Triangle', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [-23.4511, -19.0585]);
+    };
+    var createRTriangle = function () {
+        var vertices = [
+            [-3.34320068359375, 4.90119934082031],
+            [3.34320068359375, 4.90119934082031],
+            [0, -4.90119934082031]
+        ];
+        var inTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        var outTangents = [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ];
+        createPathGrp(contents, 'R_Triangle', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [23.4511, -19.0585]);
+    };
+    createRTriangle();
+    createLTriangle();
+    createRPole();
+    createLPole();
+    createRoof();
+    createDoor();
+    createIconCircle();
+    setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
+    return iconLayer;
+};
+var createTourismAttractionLocation = function (lang, mitug, animation) {
+    var args = [
+        {
+            lang: 'Hebrew',
+            text: 'אתר תיירות',
+            fontSize: 77.3332,
+            tracking: -20,
+            textPos: [907, 540],
+            textAnchor: [102.1024, -20.4437],
+            bgSize: [346, 110],
+            iconPos: [1069.75, 539.25],
+            iconAnchor: [0, 0],
+            iconScale: 100,
+            iconId: 'Tourism Attraction'
+        },
+        {
+            lang: 'English',
+            text: 'Tourism Attraction',
+            fontSize: 74.9495,
+            tracking: -20,
+            leading: 50,
+            textPos: [1004, 540],
+            textAnchor: [236.0909, -26.682],
+            bgSize: [606, 106],
+            iconPos: [717.9375, 538.9375],
+            iconAnchor: [0, 0],
+            iconScale: 98,
+            iconId: 'Tourism Attraction'
+        },
+        {
+            lang: 'Arabic',
+            text: 'موقع سياحي',
+            fontSize: 64.1684,
+            tracking: -19,
+            textPos: [922, 540],
+            textAnchor: [198.314, -8.7417],
+            bgSize: [522, 91],
+            iconPos: [1169.4061, 539.9027],
+            iconAnchor: [0, 0],
+            iconScale: 83,
+            iconId: 'Tourism Attraction'
+        }
+    ];
+    createLocation(args, lang, mitug, animation);
+};
+var createCommunicationAntennaIcon = function (iconPos, iconAnchor, iconScale, name, mitug) {
+    var iconLayer = createIconBase(name);
+    var contents = iconLayer.property('Contents');
+    var createIconCircle = function () {
+        var vertices = [
+            [43.39892578125, 0],
+            [0, 43.39892578125],
+            [-43.39892578125, 0],
+            [0, -43.39892578125]
+        ];
+        var inTangents = [
+            [0, -23.9685668945312],
+            [23.9685668945312, 0],
+            [0, 23.9685668945312],
+            [-23.9685668945312, 0]
+        ];
+        var outTangents = [
+            [0, 23.9685668945312],
+            [-23.9685668945312, 0],
+            [0, -23.9685668945312],
+            [23.9685668945312, 0]
+        ];
+        createPathGrp(contents, 'Icon_Circle', true, false, getColorsFromMitug(mitug).pri, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [0, 0]);
+    };
+    var createEllipse = function () {
+        var vertices = [
+            [14.0630950927734, -14.0630950927734],
+            [22.0389709472656, 22.0389709472656],
+            [-14.0630950927734, 14.0630950927734],
+            [-22.0389709472656, -22.0389709472656]
+        ];
+        var inTangents = [
+            [-12.1717834472656, -12.1717834472656],
+            [7.76683044433594, -7.76683044433594],
+            [12.1717834472656, 12.1717834472656],
+            [-7.76683044433594, 7.76683044433594]
+        ];
+        var outTangents = [
+            [12.1717834472656, 12.1717834472656],
+            [-7.76683044433594, 7.76683044433594],
+            [-12.1717834472656, -12.1717834472656],
+            [7.76683044433594, -7.76683044433594]
+        ];
+        createPathGrp(contents, 'Ellipse', true, false, getColorsFromMitug(mitug).bg, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [-0.3879, 0]);
+    };
+    var createLittleCircle = function () {
+        var vertices = [
+            [1.2359619140625, -1.96054077148438],
+            [1.96054077148438, 1.2359619140625],
+            [-1.2359619140625, 1.96054077148438],
+            [-1.96054077148438, -1.2359619140625]
+        ];
+        var inTangents = [
+            [-1.08277893066406, -0.68260192871094],
+            [0.68260192871094, -1.08277893066406],
+            [1.08277893066406, 0.68260192871094],
+            [-0.68260192871094, 1.08277893066406]
+        ];
+        var outTangents = [
+            [1.08277893066406, 0.68260192871094],
+            [-0.68260192871094, 1.08277893066406],
+            [-1.08277893066406, -0.68260192871094],
+            [0.68260192871094, -1.08277893066406]
+        ];
+        createPathGrp(contents, 'Little_Circle', false, true, [0, 0, 0], getColorsFromMitug(mitug).pri, 2, vertices, inTangents, outTangents, true, [5.9136, -7.1401]);
+    };
+    var createTick = function () {
+        var vertices = [
+            [-0.34214782714844, 7.32533264160156],
+            [-1.23081970214844, 5.86830139160156],
+            [-0.79771423339844, 7.21498107910156],
+            [3.65199279785156, -3.64390563964844],
+            [-5.63414001464844, 1.97377014160156],
+            [-7.00718688964844, 1.63587951660156],
+            [-6.66929626464844, 0.26283264160156],
+            [5.63441467285156, -7.18052673339844],
+            [6.83363342285156, -7.05650329589844],
+            [7.04164123535156, -5.86851501464844],
+            [0.54847717285156, 6.78236389160156]
+        ];
+        var inTangents = [
+            [0.36328125, 0],
+            [0.14599609375, 0.0751953125],
+            [-0.25244140625, 0.4921875],
+            [0, 0],
+            [0, 0],
+            [0.2861328125, 0.4716796875],
+            [-0.47265625, 0.2861328125],
+            [0, 0],
+            [-0.3271484375, -0.30615234375],
+            [0.2041015625, -0.39794921875],
+            [0, 0]
+        ];
+        var outTangents = [
+            [-0.1533203125, 0],
+            [-0.4912109375, -0.251953125],
+            [0, 0],
+            [0, 0],
+            [-0.47216796875, 0.2841796875],
+            [-0.2861328125, -0.47265625],
+            [0.380859375, -0.2314453125],
+            [0, 0],
+            [0.3271484375, 0.30517578125],
+            [0, 0],
+            [-0.17724609375, 0.3447265625]
+        ];
+        createPathGrp(contents, 'Tick', true, false, getColorsFromMitug(mitug).pri, [0, 0, 0], 0, vertices, inTangents, outTangents, true, [-1.4742, 1.1454]);
+    };
+    createTick();
+    createLittleCircle();
+    createEllipse();
+    createIconCircle();
+    setLayerTransform(iconLayer, iconPos, iconAnchor, iconScale);
+    return iconLayer;
+};
+var createCommunicationAntennaLocation = function (lang, mitug, animation) {
+    var args = [
+        {
+            lang: 'Hebrew',
+            text: 'אנטנת תקשורת',
+            fontSize: 77.3332,
+            tracking: -20,
+            textPos: [913, 544.5],
+            textAnchor: [139.4543, -15.5761],
+            bgSize: [420, 110],
+            iconPos: [1113.5, 539.25],
+            iconAnchor: [0, 0],
+            iconScale: 100,
+            iconId: 'Communication Antenna'
+        },
+        {
+            lang: 'English',
+            text: 'Communication\nAntenna',
+            fontSize: 59.2903,
+            tracking: -20,
+            leading: 49,
+            textPos: [1006, 540],
+            textAnchor: [159.5502, 3.0962],
+            bgSize: [454, 124],
+            iconPos: [793.1875, 535.6875],
+            iconAnchor: [0, 0],
+            iconScale: 100,
+            iconId: 'Communication Antenna'
+        },
+        {
+            lang: 'Arabic',
+            text: 'هوائي اتصال',
+            fontSize: 60,
+            tracking: -19,
+            textPos: [920, 540],
+            textAnchor: [185.4781, -9.1846],
+            bgSize: [522, 91],
+            iconPos: [1157.1561, 539.1527],
+            iconAnchor: [0, 0],
+            iconScale: 83,
+            iconId: 'Communication Antenna'
+        }
+    ];
+    createLocation(args, lang, mitug, animation);
+};
+var createEducationAndCultureSiteLocation = function (lang, mitug, animation) {
+    var args = [
+        {
+            lang: 'Hebrew',
+            text: 'אתר חינוך ותרבות',
+            fontSize: 77.3332,
+            tracking: -20,
+            textPos: [910, 543],
+            textAnchor: [155.3849, -15.5761],
+            bgSize: [458, 110],
+            iconPos: [1126, 539.25],
+            iconAnchor: [0, 0],
+            iconScale: 100,
+            iconId: 'Education and Culture Site'
+        },
+        {
+            lang: 'English',
+            text: 'Education and\nCulture Site',
+            fontSize: 64.7,
+            tracking: -20,
+            leading: 59,
+            textPos: [1010, 540],
+            textAnchor: [159.4208, 6.4668],
+            bgSize: [446, 150],
+            iconPos: [797.4375, 536.4375],
+            iconAnchor: [0, 0],
+            iconScale: 101,
+            iconId: 'Education and Culture Site'
+        },
+        {
+            lang: 'Arabic',
+            text: 'مركز تعليم وثقافة',
+            fontSize: 64.1684,
+            tracking: -20,
+            textPos: [918, 540],
+            textAnchor: [273.6814, -17.4521],
+            bgSize: [666, 91],
+            iconPos: [1240.9061, 539.1527],
+            iconAnchor: [0, 0],
+            iconScale: 83,
+            iconId: 'Education and Culture Site'
+        }
+    ];
+    createLocation(args, lang, mitug, animation);
+};
+var createHospitalLocation = function (lang, mitug, animation) {
+    var args = [
+        {
+            lang: 'Hebrew',
+            text: 'בית חולים',
+            fontSize: 77.3332,
+            tracking: -20,
+            textPos: [911, 537],
+            textAnchor: [87.8567, -23.9483],
+            bgSize: [322, 110],
+            iconPos: [1058.5764, 538.8784],
+            iconAnchor: [85.5764, -0.8716],
+            iconScale: 100,
+            iconId: 'Hospital'
+        },
+        {
+            lang: 'English',
+            text: 'Hospital',
+            fontSize: 74.9495,
+            tracking: -20,
+            leading: 59,
+            textPos: [1007, 543],
+            textAnchor: [105.2291, -20.6861],
+            bgSize: [340, 106],
+            iconPos: [850.3697, 539.0572],
+            iconAnchor: [85.5764, -0.8716],
+            iconScale: 97,
+            iconId: 'Hospital'
+        },
+        {
+            lang: 'Arabic',
+            text: 'مستشفى',
+            fontSize: 64.1684,
+            tracking: -20,
+            textPos: [922.5, 540],
+            textAnchor: [155.7212, -20.0056],
+            bgSize: [434, 90],
+            iconPos: [1124.9345, 539.42937],
+            iconAnchor: [85.5764, -0.8716],
+            iconScale: 83,
+            iconId: 'Hospital'
+        }
+    ];
+    createLocation(args, lang, mitug, animation);
+};
+var createCollegeLocation = function (lang, mitug, animation) {
+    var args = [
+        {
+            lang: 'Hebrew',
+            text: 'מכללה',
+            fontSize: 77.3332,
+            tracking: -20,
+            textPos: [913, 537],
+            textAnchor: [58.2556, -23.9483],
+            bgSize: [270, 110],
+            iconPos: [1032.5, 539.25],
+            iconAnchor: [0, 0],
+            iconScale: 100,
+            iconId: 'College'
+        },
+        {
+            lang: 'English',
+            text: 'College',
+            fontSize: 74.9495,
+            tracking: -20,
+            leading: 59,
+            textPos: [1008.25, 541.25],
+            textAnchor: [97.884, -21.0608],
+            bgSize: [316, 106],
+            iconPos: [862.6106, 539.1526],
+            iconAnchor: [0, 0],
+            iconScale: 97,
+            iconId: 'College'
+        },
+        {
+            lang: 'Arabic',
+            text: 'كلية',
+            fontSize: 64.1684,
+            tracking: -20,
+            textPos: [922, 540],
+            textAnchor: [67.145, -18.9873],
+            bgSize: [254, 92],
+            iconPos: [1035.406, 539.1528],
+            iconAnchor: [0, 0],
+            iconScale: 83,
+            iconId: 'College'
+        }
+    ];
+    createLocation(args, lang, mitug, animation);
+};
+var createLocationFromId = function (id, lang, mitug, animation) {
     app.beginUndoGroup("Caspion: Create Location - ".concat(id));
     var comp = app.project.activeItem;
     if (!comp || !(comp instanceof CompItem)) {
@@ -15359,49 +19747,73 @@ var createLocationFromId = function (id, lang, mitug) {
     }
     switch (id) {
         case 'Kindergarden':
-            createKindergardenLocation(lang, mitug);
+            createKindergardenLocation(lang, mitug, animation);
             break;
         case 'Medical Clinic':
-            createMedicalLocation(lang, mitug);
+            createMedicalLocation(lang, mitug, animation);
             break;
         case 'Sports':
-            createSportsLocation(lang, mitug);
+            createSportsLocation(lang, mitug, animation);
             break;
         case 'University':
-            createUniversityLocation(lang, mitug);
+            createUniversityLocation(lang, mitug, animation);
             break;
         case 'Mosque':
-            createMosqueLocation(lang, mitug);
+            createMosqueLocation(lang, mitug, animation);
             break;
         case 'U.N. Building':
-            createUNBuildingLocation(lang, mitug);
+            createUNBuildingLocation(lang, mitug, animation);
             break;
         case 'Diplomatic Building':
-            createDiplomaticBuildingLocation(lang, mitug);
+            createDiplomaticBuildingLocation(lang, mitug, animation);
             break;
         case 'Gas Station':
-            createGasStationLocation(lang, mitug);
+            createGasStationLocation(lang, mitug, animation);
             break;
         case 'Government Building':
-            createGovernmentBuildingLocation(lang, mitug);
+            createGovernmentBuildingLocation(lang, mitug, animation);
             break;
         case 'Factory':
             alert('...');
             break;
         case 'Pumping Station':
-            createPumpingStationLocation(lang, mitug);
+            createPumpingStationLocation(lang, mitug, animation);
             break;
         case 'Police':
-            createPoliceLocation(lang, mitug);
+            createPoliceLocation(lang, mitug, animation);
             break;
         case 'Water Facility':
-            createWaterFacilityLocation(lang, mitug);
+            createWaterFacilityLocation(lang, mitug, animation);
             break;
         case 'Residential Neighborhood':
-            createResidentialNeighborhoodLocation(lang, mitug);
+            createResidentialNeighborhoodLocation(lang, mitug, animation);
             break;
         case 'Amusement Park':
-            createAmusementParkLocation(lang, mitug);
+            createAmusementParkLocation(lang, mitug, animation);
+            break;
+        case 'Hotel':
+            createHotelLocation(lang, mitug, animation);
+            break;
+        case 'School':
+            createSchoolLocation(lang, mitug, animation);
+            break;
+        case 'Stadium':
+            createStadiumLocation(lang, mitug, animation);
+            break;
+        case 'Tourism Attraction':
+            createTourismAttractionLocation(lang, mitug, animation);
+            break;
+        case 'Communication Antenna':
+            createCommunicationAntennaLocation(lang, mitug, animation);
+            break;
+        case 'Education and Culture Site':
+            createEducationAndCultureSiteLocation(lang, mitug, animation);
+            break;
+        case 'Hospital':
+            createHospitalLocation(lang, mitug, animation);
+            break;
+        case 'College':
+            createCollegeLocation(lang, mitug, animation);
             break;
     }
     app.endUndoGroup();
@@ -15420,18 +19832,18 @@ var loopTexture = function (comp, layer) {
     var rotProp = layer
         .property('ADBE Transform Group')
         .property('ADBE Rotate Z');
-    posProp.setValueAtTime(0, [960, 540]);
-    scaleProp.setValueAtTime(0, [100, 100]);
-    rotProp.setValueAtTime(0, 0);
-    posProp.setValueAtTime((1 / comp.frameRate) * 10, [840, 804]);
-    scaleProp.setValueAtTime((1 / comp.frameRate) * 10, [100, 100]);
-    rotProp.setValueAtTime((1 / comp.frameRate) * 10, 50);
-    posProp.setValueAtTime((1 / comp.frameRate) * 20, [1284, 913]);
-    scaleProp.setValueAtTime((1 / comp.frameRate) * 20, [116, 116]);
-    rotProp.setValueAtTime((1 / comp.frameRate) * 20, -35);
-    posProp.setValueAtTime((1 / comp.frameRate) * 30, [960, 540]);
-    scaleProp.setValueAtTime((1 / comp.frameRate) * 30, [100, 100]);
-    rotProp.setValueAtTime((1 / comp.frameRate) * 30, 0);
+    posProp.setValueAtTime(layer.inPoint, [960, 540]);
+    scaleProp.setValueAtTime(layer.inPoint, [100, 100]);
+    rotProp.setValueAtTime(layer.inPoint, 0);
+    posProp.setValueAtTime((1 / comp.frameRate) * 10 + layer.inPoint, [840, 804]);
+    scaleProp.setValueAtTime((1 / comp.frameRate) * 10 + layer.inPoint, [100, 100]);
+    rotProp.setValueAtTime((1 / comp.frameRate) * 10 + layer.inPoint, 50);
+    posProp.setValueAtTime((1 / comp.frameRate) * 20 + layer.inPoint, [1284, 913]);
+    scaleProp.setValueAtTime((1 / comp.frameRate) * 20 + layer.inPoint, [116, 116]);
+    rotProp.setValueAtTime((1 / comp.frameRate) * 20 + layer.inPoint, -35);
+    posProp.setValueAtTime((1 / comp.frameRate) * 30 + layer.inPoint, [960, 540]);
+    scaleProp.setValueAtTime((1 / comp.frameRate) * 30 + layer.inPoint, [100, 100]);
+    rotProp.setValueAtTime((1 / comp.frameRate) * 30 + layer.inPoint, 0);
     posProp.setInterpolationTypeAtKey(1, KeyframeInterpolationType.HOLD);
     posProp.setInterpolationTypeAtKey(2, KeyframeInterpolationType.HOLD);
     posProp.setInterpolationTypeAtKey(3, KeyframeInterpolationType.HOLD);
@@ -15473,6 +19885,7 @@ var createTexture = function (id, loop, fit) {
     if (!comp || !(comp instanceof CompItem))
         return;
     var textureLayer = comp.layers.add(textureItem);
+    textureLayer.inPoint = comp.time;
     textureLayer.label = parsePrefs().texLabelRandom
         ? Math.floor(Math.random() * 16) + 1
         : parsePrefs().texLabelIndex + 1;
@@ -15501,40 +19914,63 @@ var createColoredButton = function (container, color, size) {
     };
     return btn;
 };
+var createAboutTab = function (tpanel) {
+    var aboutTab = tpanel.add('tab', undefined, ['About']);
+    aboutTab.add('image', [0, 0, 300, 110], bannerBinary);
+    var abtStr = '‹ Caspion - version 1.0.0 - Created By Eyal Cohen ›';
+    var aboutEditGrp = aboutTab.add('group');
+    aboutEditGrp.add('edittext', [0, 0, 380, 240], abtStr, {
+        multiline: true,
+        readonly: true,
+        scrollable: true
+    });
+    aboutEditGrp.margins.left = 10;
+    return aboutTab;
+};
+var createIconColorRow = function (container, colorName, colorHex) {
+    var colorGrp = container.add('group');
+    colorGrp.add('statictext', undefined, 'Name:');
+    var colorNameEdit = colorGrp.add('edittext', undefined, colorName);
+    colorNameEdit.preferredSize[0] = 80;
+    colorGrp.add('statictext', undefined, 'Hex Color:');
+    var theColor = hexToRgb(colorHex);
+    var coloredBtn = createColoredButton(colorGrp, theColor, [20, 20]);
+    coloredBtn.helpTip = 'Click To Edit';
+    var colorHexStat = colorGrp.add('statictext', undefined, colorHex);
+    colorHexStat.characters = 10;
+    colorHexStat.helpTip = 'Click The Color Swatch To Edit';
+    coloredBtn.onClick = function () {
+        var colorPicked = openColorPicker(hexToRgb(colorHex));
+        coloredBtn.fillBrush = coloredBtn.graphics.newBrush(coloredBtn.graphics.BrushType.SOLID_COLOR, colorPicked, 1);
+        colorHexStat.text =
+            '#' +
+                rgbToHex(colorPicked[0] * 255, colorPicked[1] * 255, colorPicked[2] * 255);
+    };
+    return { colorNameEdit: colorNameEdit, colorHexStat: colorHexStat };
+};
 var createHelpWindow = function () {
     var helpWin = new Window('dialog', 'Help & Info');
     if (helpWin == null) {
         helpWin;
     }
     var tpanel = helpWin.add('tabbedpanel');
-    var aboutTab = tpanel.add('tab', undefined, ['About']);
-    var banner = aboutTab.add('image', [0, 0, 300, 110], bannerBinary);
-    var abtStr = '‹ Caspion - version 1.0.0 - Created By Eyal Cohen ›';
-    var aboutEditGrp = aboutTab.add('group');
-    aboutEditGrp.add('edittext', [0, 0, 380, 200], abtStr, {
-        multiline: true,
-        readonly: true,
-        scrollable: true
-    });
-    aboutEditGrp.margins.left = 10;
+    createAboutTab(tpanel);
+    var prefs = parsePrefs();
     var labelNames = getLabelNamesFromPrefs();
     var labelColors = getLabelsFromPrefs().map(function (hex) { return hexToRgb(hex); });
+    var SETTINGS_SPACING = 15;
     var settingsTab = tpanel.add('tab', undefined, ['Settings']);
+    settingsTab.margins = 10;
     var labelSettingsGrp = settingsTab.add('group');
-    settingsTab.orientation = labelSettingsGrp.orientation = 'column';
-    settingsTab.alignChildren = labelSettingsGrp.alignChildren = [
-        'left',
-        'top'
-    ];
-    settingsTab.margins = 16;
-    labelSettingsGrp.margins.bottom = 20;
+    labelSettingsGrp.margins.bottom = SETTINGS_SPACING;
+    labelSettingsGrp.add('statictext', undefined, '★ Label Colors ★');
     var iconlabelsSettingGrp = labelSettingsGrp.add('group');
     var iconStaticGrp = iconlabelsSettingGrp.add('group');
     iconStaticGrp.add('statictext', undefined, 'Icons Label Color:');
     iconStaticGrp.margins.right = 22;
     var iconlabelsGrp = iconlabelsSettingGrp.add('group');
     var iconLabelsDD = iconlabelsGrp.add('dropdownlist', undefined, labelNames);
-    iconLabelsDD.selection = parsePrefs().iconsLabelIndex;
+    iconLabelsDD.selection = prefs.iconsLabelIndex;
     var iconSelection = iconLabelsDD.selection;
     var iconTheLabel = createColoredButton(iconlabelsGrp, labelColors[iconSelection.index], [20, 20]);
     iconLabelsDD.onChange = function () {
@@ -15542,7 +19978,7 @@ var createHelpWindow = function () {
         iconTheLabel.fillBrush = iconTheLabel.graphics.newBrush(iconTheLabel.graphics.BrushType.SOLID_COLOR, labelColors[selection.index], 1);
     };
     var iconRandomCheck = iconlabelsSettingGrp.add('checkbox', undefined, 'Random');
-    iconRandomCheck.value = parsePrefs().iconsLabelRandom;
+    iconRandomCheck.value = prefs.iconsLabelRandom;
     var updateFromIconCheck = function (val) {
         iconlabelsGrp.enabled = !val;
         iconTheLabel.fillBrush = iconTheLabel.graphics.newBrush(iconTheLabel.graphics.BrushType.SOLID_COLOR, val ? [0.2, 0.2, 0.2, 1] : labelColors[iconSelection.index], 1);
@@ -15556,7 +19992,7 @@ var createHelpWindow = function () {
     locStaticGrp.add('statictext', undefined, 'Locations Label Color:');
     var loclabelsGrp = locLabelsSettingGrp.add('group');
     var locLabelsDD = loclabelsGrp.add('dropdownlist', undefined, labelNames);
-    locLabelsDD.selection = parsePrefs().locsLabelIndex;
+    locLabelsDD.selection = prefs.locsLabelIndex;
     var locSelection = locLabelsDD.selection;
     var locTheLabel = createColoredButton(loclabelsGrp, labelColors[locSelection.index], [20, 20]);
     locLabelsDD.onChange = function () {
@@ -15564,7 +20000,7 @@ var createHelpWindow = function () {
         locTheLabel.fillBrush = locTheLabel.graphics.newBrush(locTheLabel.graphics.BrushType.SOLID_COLOR, labelColors[selection.index], 1);
     };
     var locRandomCheck = locLabelsSettingGrp.add('checkbox', undefined, 'Random');
-    locRandomCheck.value = parsePrefs().locsLabelRandom;
+    locRandomCheck.value = prefs.locsLabelRandom;
     var updateFromLocCheck = function (val) {
         loclabelsGrp.enabled = !val;
         locTheLabel.fillBrush = locTheLabel.graphics.newBrush(locTheLabel.graphics.BrushType.SOLID_COLOR, val ? [0.2, 0.2, 0.2, 1] : labelColors[locSelection.index], 1);
@@ -15579,7 +20015,7 @@ var createHelpWindow = function () {
     texStaticGrp.margins.right = 5;
     var texlabelsGrp = texlabelsSettingGrp.add('group');
     var texLabelsDD = texlabelsGrp.add('dropdownlist', undefined, labelNames);
-    texLabelsDD.selection = parsePrefs().texLabelIndex;
+    texLabelsDD.selection = prefs.texLabelIndex;
     var texLabelColors = getLabelsFromPrefs().map(function (hex) { return hexToRgb(hex); });
     var texSelection = texLabelsDD.selection;
     var texTheLabel = createColoredButton(texlabelsGrp, texLabelColors[texSelection.index], [20, 20]);
@@ -15588,7 +20024,7 @@ var createHelpWindow = function () {
         texTheLabel.fillBrush = texTheLabel.graphics.newBrush(texTheLabel.graphics.BrushType.SOLID_COLOR, labelColors[selection.index], 1);
     };
     var texRandomCheck = texlabelsSettingGrp.add('checkbox', undefined, 'Random');
-    texRandomCheck.value = parsePrefs().texLabelRandom;
+    texRandomCheck.value = prefs.texLabelRandom;
     var updateFromTexCheck = function (val) {
         texlabelsGrp.enabled = !val;
         texTheLabel.fillBrush = texTheLabel.graphics.newBrush(texTheLabel.graphics.BrushType.SOLID_COLOR, val ? [0.2, 0.2, 0.2, 1] : labelColors[texSelection.index], 1);
@@ -15597,15 +20033,41 @@ var createHelpWindow = function () {
     texRandomCheck.onClick = function () {
         updateFromTexCheck(texRandomCheck.value);
     };
+    var iconColorsSettingsGrp = settingsTab.add('group');
+    iconColorsSettingsGrp.margins.bottom = SETTINGS_SPACING;
+    settingsTab.orientation =
+        labelSettingsGrp.orientation =
+            iconColorsSettingsGrp.orientation =
+                'column';
+    settingsTab.alignChildren =
+        labelSettingsGrp.alignChildren =
+            iconColorsSettingsGrp.alignChildren =
+                ['left', 'top'];
+    iconColorsSettingsGrp.add('statictext', undefined, '★ Icon Colors ★');
+    var _a = createIconColorRow(iconColorsSettingsGrp, prefs.iconColor1Name, prefs.iconColor1Hex), colorName1Edit = _a.colorNameEdit, colorHex1Stat = _a.colorHexStat;
+    var _b = createIconColorRow(iconColorsSettingsGrp, prefs.iconColor2Name, prefs.iconColor2Hex), colorName2Edit = _b.colorNameEdit, colorHex2Stat = _b.colorHexStat;
+    var _c = createIconColorRow(iconColorsSettingsGrp, prefs.iconColor3Name, prefs.iconColor3Hex), colorName3Edit = _c.colorNameEdit, colorHex3Stat = _c.colorHexStat;
     var helpTipSettingGrp = settingsTab.add('group');
+    helpTipSettingGrp.margins.bottom = SETTINGS_SPACING;
     var showHelpTipsCheck = helpTipSettingGrp.add('checkbox', undefined, 'Show Help Tips');
-    showHelpTipsCheck.value = parsePrefs().showHelpTips;
+    showHelpTipsCheck.value = prefs.showHelpTips;
     var updateQAHelpTips = function (show) {
         allQABtns.forEach(function (iconData) {
             iconData[0].helpTip = show ? iconData[1] : '';
         });
     };
-    var okBtn = helpWin.add('button', undefined, 'Ok', { name: 'Ok' });
+    var warnStaticGrp = settingsTab.add('group');
+    warnStaticGrp.add('statictext', undefined, '☛ You may need to close and open the script to see the changes');
+    warnStaticGrp.alignment = ['fill', 'bottom'];
+    var okCancelBtnsGrp = helpWin.add('group');
+    okCancelBtnsGrp.spacing = 250;
+    var cancelBtn = okCancelBtnsGrp.add('button', undefined, 'Cancel');
+    cancelBtn.onClick = function () {
+        helpWin.close();
+    };
+    var okBtn = okCancelBtnsGrp.add('button', undefined, 'Ok', {
+        name: 'Ok'
+    });
     okBtn.onClick = function () {
         writePrefsToMemory({
             iconsLabelIndex: iconLabelsDD.selection.index,
@@ -15614,7 +20076,13 @@ var createHelpWindow = function () {
             locsLabelRandom: locRandomCheck.value,
             texLabelIndex: texLabelsDD.selection.index,
             texLabelRandom: texRandomCheck.value,
-            showHelpTips: showHelpTipsCheck.value
+            showHelpTips: showHelpTipsCheck.value,
+            iconColor1Name: colorName1Edit.text,
+            iconColor1Hex: colorHex1Stat.text,
+            iconColor2Name: colorName2Edit.text,
+            iconColor2Hex: colorHex2Stat.text,
+            iconColor3Name: colorName3Edit.text,
+            iconColor3Hex: colorHex3Stat.text
         });
         updateQAHelpTips(showHelpTipsCheck.value);
         helpWin.close();
@@ -15632,7 +20100,7 @@ var createQABtn = function (container, binary, helpTip, onClick) {
     });
     btn.helpTip = parsePrefs().showHelpTips ? helpTip : '';
     btn.onClick = onClick;
-    allQABtns.push([btn, helpTip]);
+    allQABtns.push([btn, helpTip, onClick]);
     return btn;
 };
 var createQAUI = function (tpanel) {
@@ -15643,6 +20111,8 @@ var createQAUI = function (tpanel) {
     QABtnsGrp.alignChildren = 'left';
     QABtnsGrp.alignment = 'left';
     QABtnsGrp.margins = 4;
+    var fsNameFromOs = getOS() === 'Win' ? 'Explorer' : 'Finder';
+    var metaKeyNameFromOs = getOS() === 'Win' ? 'CTRL' : 'CMD';
     var bigRowOne = QABtnsGrp.add('group');
     var rowOne = bigRowOne.add('group');
     createQABtn(rowOne, bgBinary, 'Background', createBg);
@@ -15653,16 +20123,16 @@ var createQAUI = function (tpanel) {
     createQABtn(rowTwo, israelShapeBinary, 'Israel Map Shape', createIsraelMap);
     createQABtn(rowTwo, gazaShapeBinary, 'Gaza Map Shape', createGazaMap);
     createQABtn(rowTwo, numsBinary, 'Counting Numbers', createCountingText);
-    createQABtn(rowTwo, ILMapPhotoBinary, 'Israel Map Photo\n\nCLICK: Clean Map\nCTRL + CLICK: Map With Labels', importIsraelGoogleMaps);
+    createQABtn(rowTwo, ILMapPhotoBinary, "Israel Map Photo\n\nCLICK: Clean Map\n".concat(metaKeyNameFromOs, " + CLICK: Map With Labels"), importIsraelGoogleMaps);
     var bigRowTwo = QABtnsGrp.add('group');
     var rowThree = bigRowTwo.add('group');
-    createQABtn(rowThree, GAMapPhotoBinary, 'Gaza Map Photo\n\nCLICK: Clean Map\nCTRL + CLICK: Map With Labels', importGazaGoogleMaps);
+    createQABtn(rowThree, GAMapPhotoBinary, "Gaza Map Photo\n\nCLICK: Clean Map\n".concat(metaKeyNameFromOs, " + CLICK: Map With Labels"), importGazaGoogleMaps);
     createQABtn(rowThree, textReverseBinary, 'Reverse Text', textReverse);
-    createQABtn(rowThree, formatBinary, 'Format Layer Name', formatLayerName);
+    createQABtn(rowThree, formatBinary, 'Format Layer Name', formatLayerNameQA);
     createQABtn(rowThree, tvaiBinary, 'Tunnel Illustration', createTvaiStroke);
     var rowFour = bigRowTwo.add('group');
     createQABtn(rowFour, frameBinary, 'Animated Frame', createAnimatedFrame);
-    createQABtn(rowFour, folderBinary, "Open Project Folder in ".concat(getOS() === 'Win' ? 'Explorer' : 'Finder', "\n\nClick: Open Project Folder\nCTRL + CLICK: Choose New Project Folder"), openProjectInFinder);
+    createQABtn(rowFour, folderBinary, "Open Project Folder in ".concat(fsNameFromOs, "\n\nClick: Open Project Folder\n").concat(metaKeyNameFromOs, " + CLICK: Choose New Project Folder"), openProjectInFinder);
     createQABtn(rowFour, tatzaBinary, 'Location Mark', createTatzaPath);
     createQABtn(rowFour, recScaleXBinary, 'Rectangle X Scale', recScaleX);
     var bigRowThree = QABtnsGrp.add('group');
@@ -15671,12 +20141,18 @@ var createQAUI = function (tpanel) {
     createQABtn(rowFive, textPopBinary, 'Text On Location', createTextOnLocation);
     createQABtn(rowFive, arrowBinary, 'Arrow', createArrow);
     createQABtn(rowFive, mikraBinary, 'Mikra', createMikra);
+    createQABtn(rowFive, cameraNullBinary, 'Camera Null', createCameraNull);
     bigRowOne.orientation = bigRowTwo.orientation = 'column';
     return { qaTab: qaTab, QABtnsGrp: QABtnsGrp, bigRowOne: bigRowOne, bigRowTwo: bigRowTwo, bigRowThree: bigRowThree };
 };
 var createTextUI = function (tpanel) {
     var textTab = tpanel.add('tab', undefined, ['Text']);
-    var mainTextGrp = textTab.add('group');
+    var textTabGrp = textTab.add('group');
+    textTabGrp.alignChildren = 'left';
+    textTabGrp.alignment = 'left';
+    textTabGrp.orientation = 'column';
+    textTabGrp.margins = 4;
+    var mainTextGrp = textTabGrp.add('group');
     mainTextGrp.alignChildren = ['fill', 'top'];
     mainTextGrp.alignment = ['fill', 'top'];
     var mainTextEdit = mainTextGrp.add('edittext', undefined, '', {
@@ -15684,9 +20160,9 @@ var createTextUI = function (tpanel) {
     });
     mainTextEdit.preferredSize = [160, 60];
     mainTextEdit.alignment = ['fill', 'top'];
-    var optionsGrp = textTab.add('group');
-    optionsGrp.margins.top = optionsGrp.margins.bottom = 14;
-    optionsGrp.alignment = 'center';
+    var optionsGrp = textTabGrp.add('group');
+    optionsGrp.margins.top = 8;
+    optionsGrp.alignment = 'left';
     var textDropdownsGrp = optionsGrp.add('group');
     textDropdownsGrp.alignChildren = ['left', 'center'];
     textDropdownsGrp.spacing = 10;
@@ -15719,12 +20195,14 @@ var createTextUI = function (tpanel) {
     var animationDD = animationDDGrp.add('dropdownlist', undefined, animationDDList);
     animationDD.selection = 0;
     var checksGrp = optionsGrp.add('group');
-    checksGrp.alignChildren = ['left', 'center'];
+    checksGrp.alignChildren = 'left';
+    checksGrp.alignment = 'left';
     checksGrp.spacing = 10;
     checksGrp.margins = 0;
     var addTextEvoCheck = checksGrp.add('checkbox', undefined, 'Text Evo');
     var maskCheck = checksGrp.add('checkbox', undefined, 'Mask');
-    var createBtn = textTab.add('button', undefined, 'Create Text');
+    var createBtn = textTabGrp.add('button', undefined, 'Create Text');
+    createBtn.alignment = 'left';
     animationDDGrp.enabled = addTextEvoCheck.value;
     addTextEvoCheck.onClick = function () {
         animationDDGrp.enabled = addTextEvoCheck.value;
@@ -15765,29 +20243,41 @@ var createIconsUI = function (tpanel) {
         'Salute With M16',
         'Holding M16',
         'Shooting M16',
+        'Running With M16',
+        'Crouching With M16',
         'Rocket',
         'Rocket Launcher',
         'Mask',
         'Shoe',
-        'Helmet'
+        'Helmet',
+        'Drone',
+        'Tent',
+        'Airplane',
+        'Submarine',
+        'Ambulance',
+        'Tank',
+        'Grenade',
+        'Boat',
+        'Binoculars'
     ];
     var iconDD = iconDDGrp.add('dropdownlist', undefined, iconsList);
     iconDD.preferredSize[0] = 100;
     iconDD.selection = 0;
+    var _a = parsePrefs(), iconColor1Name = _a.iconColor1Name, iconColor2Name = _a.iconColor2Name, iconColor3Name = _a.iconColor3Name;
     var circleColorGrp = iconCircleGrp.add('group');
     circleColorGrp.add('statictext', undefined, 'Circle Color:');
     var circleColorDD = circleColorGrp.add('dropdownlist', undefined, [
-        'White',
-        'Black',
-        'Red'
+        iconColor1Name,
+        iconColor2Name,
+        iconColor3Name
     ]);
     var colorChecksGrp = iconsGrp.add('group');
     var iconColorGrp = colorChecksGrp.add('group');
     iconColorGrp.add('statictext', undefined, 'Icon Color:');
     var iconColorDD = iconColorGrp.add('dropdownlist', undefined, [
-        'Black',
-        'White',
-        'Red'
+        iconColor2Name,
+        iconColor1Name,
+        iconColor3Name
     ]);
     iconColorDD.preferredSize[0] = 71;
     circleColorDD.selection = iconColorDD.selection = 0;
@@ -15816,9 +20306,17 @@ var createLocationsUI = function (tpanel) {
     locationsGrp.margins = 4;
     locationsGrp.margins.left = 10;
     var dropdownsGrp = locationsGrp.add('group');
-    dropdownsGrp.alignChildren = 'left';
-    dropdownsGrp.alignment = 'left';
-    var locationsDDGrp = dropdownsGrp.add('group');
+    var locLangDDGrp = dropdownsGrp.add('group');
+    var mitugAnimDDGrp = dropdownsGrp.add('group');
+    dropdownsGrp.alignChildren =
+        locLangDDGrp.alignChildren =
+            mitugAnimDDGrp.alignChildren =
+                'left';
+    dropdownsGrp.alignment =
+        locLangDDGrp.alignment =
+            mitugAnimDDGrp.alignment =
+                'left';
+    var locationsDDGrp = locLangDDGrp.add('group');
     locationsDDGrp.add('statictext', undefined, 'Location:');
     var locationsList = [
         'Kindergarden',
@@ -15830,37 +20328,56 @@ var createLocationsUI = function (tpanel) {
         'Diplomatic Building',
         'Gas Station',
         'Government Building',
-        'Factory',
         'Pumping Station',
         'Police',
         'Water Facility',
         'Residential Neighborhood',
-        'Amusement Park'
+        'Amusement Park',
+        'Hotel',
+        'School',
+        'Stadium',
+        'Tourism Attraction',
+        'Communication Antenna',
+        'Education and Culture Site',
+        'Hospital',
+        'College'
     ];
     var locationsDD = locationsDDGrp.add('dropdownlist', undefined, locationsList);
     locationsDD.preferredSize[0] = 100;
     locationsDD.selection = 0;
-    var langDDGrp = dropdownsGrp.add('group');
+    var langDDGrp = locLangDDGrp.add('group');
     langDDGrp.add('statictext', undefined, 'Language:');
     var langs = ['Hebrew', 'English', 'Arabic'];
     var langDD = langDDGrp.add('dropdownlist', undefined, langs);
     langDD.preferredSize[0] = 100;
     langDD.selection = 0;
-    var mitugDDGrp = dropdownsGrp.add('group');
+    var mitugDDGrp = mitugAnimDDGrp.add('group');
     mitugDDGrp.add('statictext', undefined, 'Mitug:');
     var mitugim = ['Gaza', 'Pakmaz', 'Lebanon'];
     var mitugDD = mitugDDGrp.add('dropdownlist', undefined, mitugim);
     mitugDD.preferredSize[0] = 100;
     mitugDD.selection = 0;
+    var animationDDGrp = mitugAnimDDGrp.add('group');
+    animationDDGrp.add('statictext', undefined, 'Animation:');
+    var animationTypes = [
+        'None',
+        'Scale',
+        'Open',
+        'Scale & Open'
+    ];
+    var animationDD = animationDDGrp.add('dropdownlist', undefined, animationTypes);
+    animationDD.preferredSize[0] = 100;
+    animationDD.selection = 0;
     var locationsCreateBtn = locationsGrp.add('button', undefined, 'Create Location');
     locationsCreateBtn.preferredSize[0] = 100;
     locationsCreateBtn.onClick = function () {
         var id = locationsDD.selection.toString();
         var lang = langDD.selection.toString();
         var mitug = mitugDD.selection.toString();
-        createLocationFromId(id, lang, mitug);
+        var animation = animationDD.selection.toString();
+        createLocationFromId(id, lang, mitug, animation);
     };
-    return { locTab: locTab, dropdownsGrp: dropdownsGrp };
+    return { locTab: locTab, dropdownsGrp: dropdownsGrp, locLangDDGrp: locLangDDGrp, mitugAnimDDGrp: mitugAnimDDGrp };
 };
 var createTexturesUI = function (tpanel) {
     var texTab = tpanel.add('tab', undefined, ['Textures']);
@@ -15879,6 +20396,7 @@ var createTexturesUI = function (tpanel) {
         'Paper Dark',
         'Paper Medium',
         'Paper Light',
+        'Grunge',
         'Smoke',
         'Noise',
         'Dust'
@@ -15956,7 +20474,7 @@ var init = function (thisObj) {
     var _a = createQAUI(tpanel), qaTab = _a.qaTab, QABtnsGrp = _a.QABtnsGrp, bigRowOne = _a.bigRowOne, bigRowTwo = _a.bigRowTwo, bigRowThree = _a.bigRowThree;
     var _b = createTextUI(tpanel), textTab = _b.textTab, optionsGrp = _b.optionsGrp, textDropdownsGrp = _b.textDropdownsGrp;
     var _c = createIconsUI(tpanel), iconsTab = _c.iconsTab, iconCircleGrp = _c.iconCircleGrp, colorChecksGrp = _c.colorChecksGrp;
-    var _d = createLocationsUI(tpanel), locTab = _d.locTab, dropdownsGrp = _d.dropdownsGrp;
+    var _d = createLocationsUI(tpanel), locTab = _d.locTab, dropdownsGrp = _d.dropdownsGrp, locLangDDGrp = _d.locLangDDGrp, mitugAnimDDGrp = _d.mitugAnimDDGrp;
     var _e = createTexturesUI(tpanel), texTab = _e.texTab, dropdownChecksGrp = _e.dropdownChecksGrp;
     createSideBtns(qaTab, textTab, iconsTab, locTab, texTab);
     w.layout.layout(true);
@@ -15968,7 +20486,7 @@ var init = function (thisObj) {
                     bigRowThree.orientation =
                         w.size.width > 400 ? 'row' : 'column';
             QABtnsGrp.orientation =
-                w.size.width > 880 ? 'row' : 'column';
+                w.size.width > 940 ? 'row' : 'column';
             optionsGrp.orientation =
                 w.size.width > 450 ? 'row' : 'column';
             textDropdownsGrp.orientation =
@@ -15976,7 +20494,9 @@ var init = function (thisObj) {
             iconCircleGrp.orientation = colorChecksGrp.orientation =
                 w.size.width > 350 ? 'row' : 'column';
             dropdownsGrp.orientation =
-                w.size.width > 520 ? 'row' : 'column';
+                w.size.width > 380 ? 'row' : 'column';
+            locLangDDGrp.orientation = mitugAnimDDGrp.orientation =
+                w.size.width > 710 ? 'row' : 'column';
             dropdownChecksGrp.orientation =
                 w.size.width > 350 ? 'row' : 'column';
             w.layout.layout(true);
