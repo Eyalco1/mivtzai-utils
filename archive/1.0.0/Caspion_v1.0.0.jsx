@@ -19968,6 +19968,7 @@ var createHelpWindow = function () {
     titleAndRestartGrp.spacing = 260;
     titleAndRestartGrp.add('statictext', undefined, '★ Label Colors ★');
     var restartBtn = titleAndRestartGrp.add('iconbutton', undefined, restartBinary, { style: 'toolbutton' });
+    restartBtn.helpTip = 'Restart To Default Settings';
     var iconlabelsSettingGrp = labelSettingsGrp.add('group');
     var iconStaticGrp = iconlabelsSettingGrp.add('group');
     iconStaticGrp.add('statictext', undefined, 'Icons Label Color:');

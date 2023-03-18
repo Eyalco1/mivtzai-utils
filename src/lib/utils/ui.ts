@@ -113,6 +113,7 @@ const createHelpWindow = () => {
         restartBinary,
         { style: 'toolbutton' }
     );
+    restartBtn.helpTip = 'Restart To Default Settings';
 
     // == Settings - Labels - Icons ==
     const iconlabelsSettingGrp = labelSettingsGrp.add('group');
