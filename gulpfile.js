@@ -126,7 +126,7 @@ task('addToHost', done => {
 });
 
 task('zip', done => {
-    src(['dist/**', '!dist/*.jsx'])
+    src(['dist/**'])
         .pipe(zip(`${scriptNameNoSpaces}_v${pkg.version}.zip`))
         .pipe(dest('dist'));
 
@@ -153,7 +153,7 @@ task(
         'renameWithVersion',
         'buildAssets',
         'buildGuide',
-        'jsxbin',
+        // 'jsxbin',
         'addToHost',
         'zip',
         'archive',
@@ -171,7 +171,7 @@ task(
         'renameWithVersion',
         'buildGuide',
         'runScript',
-        'jsxbin',
+        // 'jsxbin',
         'addToHost',
         'zip',
         'archive',
