@@ -41,7 +41,7 @@ const createIconColorRow = (
     container: Group,
     colorName: string,
     colorHex: string
-): { colorNameEdit: EditText; colorHexEdit: EditText } => {
+): { colorNameEdit: EditText; colorHexStat: StaticText } => {
     const colorGrp = container.add('group');
     colorGrp.add('statictext', undefined, 'Name:');
     const colorNameEdit = colorGrp.add('edittext', undefined, colorName);
@@ -51,11 +51,9 @@ const createIconColorRow = (
     const theColor: [number, number, number] = hexToRgb(colorHex);
     const coloredBtn = createColoredButton(colorGrp, theColor, [20, 20]);
     coloredBtn.helpTip = 'Click To Edit';
-    const colorHexEdit = colorGrp.add('edittext', undefined, colorHex, {
-        readonly: true
-    });
-    colorHexEdit.preferredSize[0] = 60;
-    colorHexEdit.helpTip = 'Click The Color Swatch To Edit';
+    const colorHexStat = colorGrp.add('statictext', undefined, colorHex);
+    colorHexStat.characters = 10;
+    colorHexStat.helpTip = 'Click The Color Swatch To Edit';
 
     coloredBtn.onClick = () => {
         const colorPicked = openColorPicker(hexToRgb(colorHex));
@@ -65,7 +63,7 @@ const createIconColorRow = (
             1
         );
 
-        colorHexEdit.text =
+        colorHexStat.text =
             '#' +
             rgbToHex(
                 colorPicked[0] * 255,
@@ -74,7 +72,7 @@ const createIconColorRow = (
             );
     };
 
-    return { colorNameEdit, colorHexEdit };
+    return { colorNameEdit, colorHexStat };
 };
 
 const createHelpWindow = () => {
@@ -261,21 +259,21 @@ const createHelpWindow = () => {
 
     iconColorsSettingsGrp.add('statictext', undefined, '★ Icon Colors ★');
 
-    const { colorNameEdit: colorName1Edit, colorHexEdit: colorHex1Edit } =
+    const { colorNameEdit: colorName1Edit, colorHexStat: colorHex1Stat } =
         createIconColorRow(
             iconColorsSettingsGrp,
             prefs.iconColor1Name,
             prefs.iconColor1Hex
         );
 
-    const { colorNameEdit: colorName2Edit, colorHexEdit: colorHex2Edit } =
+    const { colorNameEdit: colorName2Edit, colorHexStat: colorHex2Stat } =
         createIconColorRow(
             iconColorsSettingsGrp,
             prefs.iconColor2Name,
             prefs.iconColor2Hex
         );
 
-    const { colorNameEdit: colorName3Edit, colorHexEdit: colorHex3Edit } =
+    const { colorNameEdit: colorName3Edit, colorHexStat: colorHex3Stat } =
         createIconColorRow(
             iconColorsSettingsGrp,
             prefs.iconColor3Name,
@@ -328,11 +326,11 @@ const createHelpWindow = () => {
             texLabelRandom: texRandomCheck.value,
             showHelpTips: showHelpTipsCheck.value,
             iconColor1Name: colorName1Edit.text,
-            iconColor1Hex: colorHex1Edit.text,
+            iconColor1Hex: colorHex1Stat.text,
             iconColor2Name: colorName2Edit.text,
-            iconColor2Hex: colorHex2Edit.text,
+            iconColor2Hex: colorHex2Stat.text,
             iconColor3Name: colorName3Edit.text,
-            iconColor3Hex: colorHex3Edit.text
+            iconColor3Hex: colorHex3Stat.text
         });
 
         updateQAHelpTips(showHelpTipsCheck.value);

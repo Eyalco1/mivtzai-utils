@@ -19936,19 +19936,17 @@ var createIconColorRow = function (container, colorName, colorHex) {
     var theColor = hexToRgb(colorHex);
     var coloredBtn = createColoredButton(colorGrp, theColor, [20, 20]);
     coloredBtn.helpTip = 'Click To Edit';
-    var colorHexEdit = colorGrp.add('edittext', undefined, colorHex, {
-        readonly: true
-    });
-    colorHexEdit.preferredSize[0] = 60;
-    colorHexEdit.helpTip = 'Click The Color Swatch To Edit';
+    var colorHexStat = colorGrp.add('statictext', undefined, colorHex);
+    colorHexStat.characters = 10;
+    colorHexStat.helpTip = 'Click The Color Swatch To Edit';
     coloredBtn.onClick = function () {
         var colorPicked = openColorPicker(hexToRgb(colorHex));
         coloredBtn.fillBrush = coloredBtn.graphics.newBrush(coloredBtn.graphics.BrushType.SOLID_COLOR, colorPicked, 1);
-        colorHexEdit.text =
+        colorHexStat.text =
             '#' +
                 rgbToHex(colorPicked[0] * 255, colorPicked[1] * 255, colorPicked[2] * 255);
     };
-    return { colorNameEdit: colorNameEdit, colorHexEdit: colorHexEdit };
+    return { colorNameEdit: colorNameEdit, colorHexStat: colorHexStat };
 };
 var createHelpWindow = function () {
     var helpWin = new Window('dialog', 'Help & Info');
@@ -20046,9 +20044,9 @@ var createHelpWindow = function () {
             iconColorsSettingsGrp.alignChildren =
                 ['left', 'top'];
     iconColorsSettingsGrp.add('statictext', undefined, '★ Icon Colors ★');
-    var _a = createIconColorRow(iconColorsSettingsGrp, prefs.iconColor1Name, prefs.iconColor1Hex), colorName1Edit = _a.colorNameEdit, colorHex1Edit = _a.colorHexEdit;
-    var _b = createIconColorRow(iconColorsSettingsGrp, prefs.iconColor2Name, prefs.iconColor2Hex), colorName2Edit = _b.colorNameEdit, colorHex2Edit = _b.colorHexEdit;
-    var _c = createIconColorRow(iconColorsSettingsGrp, prefs.iconColor3Name, prefs.iconColor3Hex), colorName3Edit = _c.colorNameEdit, colorHex3Edit = _c.colorHexEdit;
+    var _a = createIconColorRow(iconColorsSettingsGrp, prefs.iconColor1Name, prefs.iconColor1Hex), colorName1Edit = _a.colorNameEdit, colorHex1Stat = _a.colorHexStat;
+    var _b = createIconColorRow(iconColorsSettingsGrp, prefs.iconColor2Name, prefs.iconColor2Hex), colorName2Edit = _b.colorNameEdit, colorHex2Stat = _b.colorHexStat;
+    var _c = createIconColorRow(iconColorsSettingsGrp, prefs.iconColor3Name, prefs.iconColor3Hex), colorName3Edit = _c.colorNameEdit, colorHex3Stat = _c.colorHexStat;
     var helpTipSettingGrp = settingsTab.add('group');
     helpTipSettingGrp.margins.bottom = SETTINGS_SPACING;
     var showHelpTipsCheck = helpTipSettingGrp.add('checkbox', undefined, 'Show Help Tips');
@@ -20080,11 +20078,11 @@ var createHelpWindow = function () {
             texLabelRandom: texRandomCheck.value,
             showHelpTips: showHelpTipsCheck.value,
             iconColor1Name: colorName1Edit.text,
-            iconColor1Hex: colorHex1Edit.text,
+            iconColor1Hex: colorHex1Stat.text,
             iconColor2Name: colorName2Edit.text,
-            iconColor2Hex: colorHex2Edit.text,
+            iconColor2Hex: colorHex2Stat.text,
             iconColor3Name: colorName3Edit.text,
-            iconColor3Hex: colorHex3Edit.text
+            iconColor3Hex: colorHex3Stat.text
         });
         updateQAHelpTips(showHelpTipsCheck.value);
         helpWin.close();
