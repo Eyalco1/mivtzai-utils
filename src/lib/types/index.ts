@@ -39,7 +39,8 @@ type IconID =
     | 'Ambulance'
     | 'Tank'
     | 'Grenade'
-    | 'Boat';
+    | 'Boat'
+    | 'Binoculars';
 type LocationID =
     | 'Kindergarden'
     | 'Medical Clinic'
