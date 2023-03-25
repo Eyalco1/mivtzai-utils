@@ -26,7 +26,7 @@ const createAboutTab = (tpanel: TabbedPanel): Tab => {
     aboutTab.add('image', [0, 0, 300, 110], bannerBinary);
     const abtStr = '‹ @@name - version @@version - Created By Eyal Cohen ›';
     const aboutEditGrp = aboutTab.add('group');
-    aboutEditGrp.add('edittext', [0, 0, 380, 240], abtStr, {
+    aboutEditGrp.add('edittext', [0, 0, 380, 230], abtStr, {
         multiline: true,
         readonly: true,
         scrollable: true
@@ -79,7 +79,7 @@ const createIconColorRow = (
     return { colorNameEdit, colorHexStat, coloredBtn };
 };
 
-const createHelpWindow = () => {
+const createHelpWindow = (updateUiFn: () => void) => {
     const helpWin = new Window('dialog', 'Help & Info');
     if (helpWin == null) {
         helpWin;
@@ -94,7 +94,7 @@ const createHelpWindow = () => {
     const prefs = parsePrefs();
     const labelNames = getLabelNamesFromPrefs();
     const labelColors = getLabelsFromPrefs().map(hex => hexToRgb(hex));
-    const SETTINGS_SPACING = 15;
+    const SETTINGS_SPACING = 20;
 
     const settingsTab = tpanel.add('tab', undefined, ['Settings']);
     settingsTab.margins = 10;
@@ -320,14 +320,14 @@ const createHelpWindow = () => {
         });
     };
 
-    const warnRestartGrp = settingsTab.add('group');
-    warnRestartGrp.alignment = ['fill', 'bottom'];
-    warnRestartGrp.spacing = 40;
-    warnRestartGrp.add(
-        'statictext',
-        undefined,
-        '☛ You may need to close and open the script to see the changes'
-    );
+    // const warnGrp = settingsTab.add('group');
+    // warnGrp.alignment = ['fill', 'bottom'];
+    // warnGrp.spacing = 40;
+    // warnGrp.add(
+    //     'statictext',
+    //     undefined,
+    //     '☛ You may need to close and open the script to see the changes'
+    // );
 
     restartBtn.onClick = () => {
         iconLabelsDD.selection = BOILERPLATE_PREFS.iconsLabelIndex;
@@ -422,6 +422,7 @@ const createHelpWindow = () => {
         });
 
         updateQAHelpTips(showHelpTipsCheck.value);
+        updateUiFn();
 
         helpWin.close();
     };

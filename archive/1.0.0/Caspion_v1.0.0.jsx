@@ -325,7 +325,7 @@ var GAMapPhotoBinary = '\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x18\x0
 var popBinary = '\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x18\x00\x00\x00\x18\b\x06\x00\x00\x00\u00E0w=\u00F8\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x00\u00D7IDATH\u0089\u00B5\u0095\u00D1\x11\u00820\f\u0086?=\u00DFe\x146\u00B0\u008E\u00E4\x06\u008C\u00E0H\u00B8AG\u00C1\t\u00E2\x15\u00DB;\u00E4R,m\u00F8\u00EF\u00F2@\u00DA~?\t\x01N"B\u0085z\u00E0Yp\u00CC_j\u00E8@\x07\u00DCJ6\u00D6\x1Ax\u00E0\u00AE\u00E4Ce\x03pM\u0089\u00DA\x16i\n\u00F0q\t\x07^\u00E7\x03\u00E0o\u00E0\u0091\x16j[\u00B4\x05w\u00F1\x19\u00CDj\u00AD@\u0083\u00FB\u00E5\u0086\x16\u0083\u00BF\u00F0\x16\u0083"x\u00ADA1|V\x18\u00D3\x1D\u00D1\u008B\u00C8$_M\u00F1Z;\u00DF\u0089\u0088\x0B\u00EBG\u00C0\x7F\u00E2Px2\u00E8c9\u009D5<\x19\u008C\u00F1\u00B0\u00B3\u0086\u0087\u00D8\u009A\u00A2}\u00D3\u0092Q\u00CE\u00C0\x04N\u00C6\u00C0\f\u00AE\x19\u0098\u00C2\u00D7\x06\u00E6\u00F0Y\u008B)\u0092\u0096i\u00C9\u0085\u00F6?\x18\u00E2\u00F7\u00DC\u00AD\u00F2\u00A1\u009A\u00C9\u00A2\u0082\u009C\u00B4\u00F7\u00A4\u00A8\u0082\u00D2>\u00EF\u00BF{\u00E0\x03\x07\u00DBG\u00B9q4\f\u00D0\x00\x00\x00\x00IEND\u00AEB`\u0082';
 var frameBinary = "\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x18\x00\x00\x00\x18\b\x06\x00\x00\x00\u00E0w=\u00F8\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x00\u008DIDATH\u0089c\u00FC\u00FF\u00FF?\x03-\x01\x13MMg```! \u00DF@\u00A9\x05\u0084\u0082\u0088\u00E2\u00F0#\u00E4\u0083F2\u00CDU```\u0088g \u00C2\x07\u00E4\x02\x07\x06\x06\u0086\u00FD\f\u00F4\u0088\u00E4Q\x0B\b\x02ZE\u00B2\x00\x03\x03\u0083\x01\x03\r-\u0080\x03\u00BA\x14\x15\x0EP\u00F6\x05\x06\x06\u0086\x0F\u00D4\u00B6\x00\x14D\u00B00rd``8@m\x0BF\u00F3\u00C1\u00C0[\u0080\x1C\u00C9\x0B\x19\x18\x18\x1E\u0090i\x0E\u00CE\u008A\t\u00D9\x02J\x00#.\u00BD,\x14T*D\u0081!^T000\x00\x00\x1D\u009F'T\x1DC\u00D4<\x00\x00\x00\x00IEND\u00AEB`\u0082";
 var folderBinary = '\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x18\x00\x00\x00\x18\b\x06\x00\x00\x00\u00E0w=\u00F8\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x00\u00D2IDATH\u0089\u00ED\u0095\u00DD\r\u00C20\f\u0084\u00BFV\fP&`\x04V(\x1B0BVb\x13Fh7\u0080\r\u00C2\x06e\x02#W\tDyhJ\u00E5\u00F0\u00C4IV\u00FBP\u009D}\u00E7\u009F6"BM\u00B4U\u00D9\x7F\u0095\u00C0\x01\x13 \u0085p[\x12h\x0F<pX\u00F9\u00FD%\x14S\u00C2\x10\x02\u00A4\x1E\u009C\x0E\u00D0.\u00A9\u00E4\t\\\x01\u00BF\u00C5\u008A%\u008B\u00E2\u009C\u009E\u00DE\u00B2\f\u0091\u008Ei$\u00EF\u0083\u008AR\u00D3K\u00A1\x1C.U\u00D0\u0084\u00E7\r8\x1Ai\x18\u00F3E\u00EB\f\u00C9g\u00BE<AoH\u00AE\x18\u00AA\'\u00C8{`\u00E9\u00BFb\u009F*\u00B0\u00F6\u00FF\u00AE[\u009F&8\x1B\u0092\x13\u00C7>M`\u00EE?\u00D9&?\u00BE8zk0\u00EFU\u00AA\u00C0\u0092|\u008C/m\u00A8\u00DC\x1A\u009F\u009B\x16\u00CE\u00EAdx\u00B4\u00BD\u0088t\u00EA\u00BC\u00C6\u00FF\u00A7\u00BF\f\u00E0\x05\u00BB\u00A4\x03\u00F3\u00D1~\x02\u00D0\x00\x00\x00\x00IEND\u00AEB`\u0082';
-var helpBinary = "\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x10\x00\x00\x00\x10\b\x06\x00\x00\x00\x1F\u00F3\u00FFa\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x00\u00ACIDAT8\u008D\u00A5\u0091a\r\u00C3 \x14\u0084\u00AFSP\x07\u00AD\x04$LB%TJ\u00E7`\x12\u0090\u00B09\u0098\x04$ \u0081)\u00B8\u0085\u00E55\u00A1/\u00F4\u0095\u00AD\u0097\u00BC\x1F\u0085\u00BB\u008F\u0083\u0082\u00A4\u009E\u0091\u00A4'\u0099\u00B8\u00D5\u0083\u00E4U\u00FBux\u00E6\u00B1&\x0B\x10\x1B\x00\u00D1\x028\u00A9\u009E\u00A4\u00CD(k\x1A\u00BC\x0BX!\u00AE\u00F8\u00EEI\u0086_\x00z\u00BC\n\u00FBV@>\u00F9\u00A5\u00C2A\u00D6\u009B\x00\u00F7\u00CAo\u00EC\u00B5\u00CF\x02$\u00EB\u00E4u.\u00D8W(v<\u0080TsZ\u0080\x1Cz\x03x*\u00D8F\u00DD\u00F7\x1E'd5p\x00\u00A2\u00CC\u00FCO\u0083\x1C\x1CJo\u00CDd5h\u0092\x05X\u00E4\x11\u00B3nU\x07\u0080\x0F\u00AE|\u00F2\u00F6\x1C\u008E\u00B6\u00DF\x00\x00\x00\x00IEND\u00AEB`\u0082";
+var helpBinary = "\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x10\x00\x00\x00\x10\b\x06\x00\x00\x00\x1F\u00F3\u00FFa\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x00\u00C2IDAT8\u008D\u00A5S\u0081\r\u00C20\f3\u0088\x03z\u00C2N(\x1Fp\x02'\u00EC\x04N\x18\x1F\u0094\x0Fv\u00CA\u00F8`'p\u00C2>0\njE\x16\u00D2u\x12\u0096,\u00ADY\u009CE\u00B5\x07\u0092\x1E\x07\u0092/~\u00B1\u0090L$\u0083\u00ED\u00F5\u00C47\u00D61\u00B5\x06\u00C4\u00FC\u00B5\x02\u00D9b6\u00E3\u00AEZs\u00C4\x1A\x01\u00C0\u0092+w\x00\x1D\u0080\b\u00E0\u00A1\u00BA\u00A2V\u00D8\x01S\x16\u009D\x01$Swq\u00AA\u00D4gs\u00EE\u00AB\u00EF*.h\u008E\u00C6\u008D\u00D0rA3\u0099\x0B\u008C{l,\u00EC\u008C\u00B8\u00F7\u00FA\u00B6\x06\\\u0094\u00F8\u00C7\u00FF\u00C2\u00DA%\"\u00DB\u00F9l\u00B9p\u00F8\u00AC\u00F1\x07l\x0E4$T\x03\u00801g\u00C3\u00C7N\u00FB$\u00CEn_k\x03\u00EFy\u008D\u008D\r\u00C4s\u00F9\u0099$<\u00AE\u0085$\u00F1\x06\u00F3\u00AD\u00E4\x19\fy\u00E28\x00\x00\x00\x00IEND\u00AEB`\u0082";
 var tatzaBinary = "\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x18\x00\x00\x00\x18\b\x06\x00\x00\x00\u00E0w=\u00F8\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x00\u00EDIDATH\u0089\u00BDU\u0081\r\u00830\f3\u0088\x03\u00F8h\u009C\u00C0\t\u009C\u00B0\x13v\x02'\u00F4\u0084\u009E\u00C0\t;\u0081\x13\u00F8\u00C0SX2U\x13\x15PZ,E\u0088\u0094\u00C6u\x1C\x15\u0090|\u0092\u00F4$;\u0092\u00C8\x1D\r\u0080\x1E\u00C0\x03\u00C0\x02`BfT$\x07\x00-\x00\x0F`V\"\x1F\u00C4%\b\u00C1\u00FF\u00FE>\u0088\u00F6\u00B2\u009E\x03=w$gQ\u009A\u00E2O-\x1C\x1A1x\u00F5f\f\u00D6\u00A5\u008DN\u0095\u00EE*0\u009C9\u0099\u00D3=\u00F3\u00DE\u00B7Mbg\x07}\u00DA\u00D4\u00C5\x07#\u00D3\u00DC\u00F7\u00AAj\u00D1\u00F7\u00D6\u00D6\u00B6\u00A6(\x07\u00C4\u009FN\u0094\x1E19\x05^G\u00FC%\n\u00ACx\u0095\u0099d\u009D\u00BA\u0092\x04+R\u00A7\u00E8\bh\x04ENn\u00A8K\x16\u0087*(\u00E5A\u0085;<\u00B8\u00A5EEM.\u00D9\u00A2\u009F\x07v3\u00BA\u00CC\x04\u00DF\u00BA$'\u00BD\x05\u00C7\u00E0v\f\u00B1\u0095\u008B\u00E5-'\u00B5\u00A4\u00E6$\n.\u00FF\u00D8#x\x03\u00F0\x1FE\u00EB\u00AD\u00CE\u0092\u00C4\f\\\x00\x00\x00\x00IEND\u00AEB`\u0082";
 var recScaleXBinary = '\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x18\x00\x00\x00\x18\b\x06\x00\x00\x00\u00E0w=\u00F8\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x01JIDATH\u0089\u00C5V\u00B1\u0091\u00C2@\f\\\x18r\\\u0082C2(\u0080\u00C0\x1D\u00BC;xw\u0080\x0B \u0080\x0E(\u0081\x0E\u00A0\x04\x07_\u00C0\u0087do2B\x7F\x05\u00FA\u00D1\u00CC\x1E\u0088\u009B3\u0098\u00F3\u00FB_3\x1A\u00DFI\u00BA]\u009FNgy$"\x18R\u00C6\u00C4N\x01\u00EC\x01\x1C\x01\u00E4=\u00F8rb\u00EC\u0088\t\u0088H*"\u008D\u00DCK\u00AE;{Qs\x0FC1\u00D3\t\u0080\x02\u00C0\u00D4{\u0093\u00C3/dM1\u008Bq\u0087\u00C0~\u00D2\u0092\u00A22"Ee(E\u00CE\u00B9\x10\u0091\x0B\x1D\u00EB\bp\u00A7kb\\\u0088y\u00AD\u00A2O\x00\'\u008E?LJ*\u00DD\u00A4\u00D1\u008Cjm\u0095\u0089wkO\u00C4\u00C4\u00E4I~\u00B5\x00\u00BE\u00BCy\x12\u0088i\u0095g\u0087\\\x03\u00D8\u009A\u00F9;\u008073\u00DF2&\u009A\x00\u00BC4\u00E7\u0080\u00FDL\u00DFC\u00E9B\u00D0\x00(\x03\u00F6\u0092\u00BE\u00DE\x04\u00E0\u00C1v\u00B1E\x11(\u00D0*`_\u00B5\x10\u00BFL`\u00F3\u00FCM\r\u00F9\u00A2\b4\u00CFs\x0F\u00D0\u0082\u00CE[\u00CE\u00E7&\u00E6\x16V\u00BC\u0085\x19\u00E7\u00FE\'D\u00C7\t\u00D5\u00B7\u00A7\\\u0093\u00D1V9\\\u00B7\u0083\x05\u0080\x19\u00C7K>k^\u00AA\x115a\u00D54\x01{\u00ED\u00AD\u009D\x11\u00F3o>v\x1B\x19N6\u00FF\u00D6\x0FbZf\u00F1\u00A8\x1F(\u00C9ND\u008E\u0091\u00E0\u00B6/+\u00C6\u00DEU\u00D6\u00B0\u00BF-\x00~\x00L\u00DB\u00BCGD\u00F6\x02\u008A\x00\x00\x00\x00IEND\u00AEB`\u0082';
 var textPopBinary = "\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x18\x00\x00\x00\x18\b\x06\x00\x00\x00\u00E0w=\u00F8\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x00\u00EAIDATH\u0089\u00EDU\u00C1\r\u00C20\x103\u00A8\x0F~t\x046\u0080\r(\x1Bt\x03\u00D8\u0080\u008C\u00C0\be\x03\u00D8\u00A4O\u009Ee\x03F(\x13\x18\x05\u008CTE%JP\u008AT\u0089\u0093\u00F2i\u00EFl\u00F7\u00E2\u00BBNHb\u00C8\u0098\x0E\u008A\u00FE\x0B\u0082\u00AC\u00E7\u00D9\n@\u0095\x00\u00BB\x01`\\\x02\x0B^\x03\u0098' X\x03\u00C8\u00DD\x16\u0095\u0089\u00C0\u00DF\u00B1\x1D\u00FF%\u008F\u009F\u00C0\u009D\u00E4\\.Z&\u00C2?\u00F7\u00AD\nKb<E3\u00BD\u00B7B.\u009E\u00BC\u00F69O\u0096 \u00F2T$[\u0092yH],\u00F8\u0082\u00AF8\u0084\u00D6\u00C4\x12\u009CH\u00DEB\u00D5w\t\n\u00A9*=\u00C9\u0085\u00D4\u00EFbDA\u00C0\u00DD\u00A8>$\u00D7R\x1F\u00F5\u00D5\u0099\x1Cq\u00D7\x1E\u00B2[t/\x07\u00B8\u00CE\u00B2\u00CBk\x13\u00EB\u00D3L\u00CB\u00ED\u00AA\u00F5\u00DAh\x06\u008A\u009E\u00DC\u00A3\u00AC\x19\x17j\te=\u00AA\x15\u00DF\u00D8\u00D7{\u00C9F\u00C0&\u00C6!!\u00E7\u00FF\u00D3\u00F7\x07\u0080\x07Z\x1F'f6E?T\x00\x00\x00\x00IEND\u00AEB`\u0082";
@@ -334,6 +334,7 @@ var mikraBinary = '\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x18\x00\x00
 var bannerBinary = '\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x01\x19\x00\x00\x00V\b\x06\x00\x00\x00\u00FBi\u00E2\x1A\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x0E\u00B5IDATx\u009C\u00ED\u009D\u00FFq\u00DB\u00B8\x12\u00C7\u00917\u00F7\u00BF\u0098\n\u00C4T ^\x05V*\u00B0R\u0081\u00E9\n\u00A2\u00AB z\x15X\u00A9 r\x05\'WpT\x05\u00A1*8\u00A9\u0082\'U\u00C07\u009AY\u00CC\u00EC\u00E1@`\x01,(2\u00DE\u00CF\f\u00E7\u0092\u009C\u00CD\u009F\u00C0\x17\u008B\u00DD\u00C5\u00E2C\u00D7uJ\x10\x04!\x17\u00BF\u008D\u00F8\u00CD.\u0095R\u0085R\u00AA\u0082\u00BF\u0097p`Z\u00A5\u00D4\x05\u00FE\u00DE\u00C0\u009F\u00DB\u00FB\u00DC\u00AE \b6\u00C6b\u00C9\u0094 *\u00FA\u0098\'\u009E\u00EF\b\u00A2s\x13\u009C=\x12"A\x10\x06\u00E6\u009E"s\x13\u0096\u00B5Rj\u00C5 *>n\u00A2\u00B3\x03\u00C19e\u00BE\u0096 \b\u0088{\u0088L\r\u00E2\u00B2\u00B8\u00D3\u0087xSJm\u00C1\u00D2\x11\x04!3C\u0089L\x01\u00C2R\x0F`\u00B5P9+\u00A56`\u00E1\b\u0082\u0090\u0089!D\u00A6\u0086\u00CE<\x16q19\u0082\x00\u008Ae#\b\x19\u00C8)2\x15X\t\u00F7\u009A\x16\u0085\u00F2\x06b#>\x1BA`\u00E4?\u0099^\u00E6\u00CDr\u00F99!\u0081\u00B9\u00F1\b\u00D1\u00A8\u00F5\b\u00EEE\x10~\x19\u00B8-\u0099\x12"8S\x12\x17\x1Bo0\u00CD\u0093\u00D0\u00B7 $\u00C2)2+\u0098\x1E\u00CD\u0098?\u00CA\x19,\f\u009DdW\u00C11D\u00D8\u00BB\u0096\u00E4>AH\u0083Kdn\u009D\u00F1G\u00CF\u00FF\u00BB\u0082S\u00F51\u00F0\u009Cg\u00E4\x1F\u00D9[r\\*\u00B8n\x05\u00D1\u00AB\x1C\u00D6\u00D3\x15\u00C4S\u009C\u00C2\u0082\x10\t\u0087\u00C8\u00DC\u00AC\u0097\'\u00C7\u00FF?@^\u00CA\u009F\u0084s\u00BD\u0082\u00984\u0091S\x15m\u00E5\u00AC"D\u00CD\u00C5\u00B3\u0084\u00BA\x05!\u008ET\u00C7\u00AFO`\x14\b\u00C6\x1E\x04\u00A4\u008F\u00EFJ\u00A9\u008F`\u0099\u00A4,\x03h\u00E1\u009EVp\u00BEg\u00B0\u0088R\u00F9\x01\u00F7&\bB )"C\x11\x18\x05k\u0091\x14t\u00D2g\u00F0uhn\x02\u00F0\x19":\u00DCN\u00D6\x0B\u00DCc\t\u00D7\u00BD&\u009EO\u0084F\x10"\u0088\u009D.\u00B9|06~\x1F\u0081\x03\u00B5\x00\u00D1I\u009DF\u008D\u00E1Y\x04a2\u00C4X2\u00AB@\u0081Q0\x05\u00AA\b?\u0097\u0093\x0B\u00DC\u00BBk\u00DAF\u00A1\x19\u00C1\u00B3\b\u00C2d\b\x15\u00992\u00D2\x01:\u0087\u00CE\u00B9\x19\u00C1\u008B\u00A9\x13\u0085f\x06\u00EF\u00A0`\u00BC\'A\u00F8e\t\x15\u0099}B\x1E\u00CClD\x1D\u00B3\u0086\u0084\u00BBX\x16\x101\x13\x04\u00C1C\u0088\u00C8l\b\u00B9(6\u00E7\u00EA\x19,\u0087\u00CF#K\u00D9\u00AF\x13#OO0\u00FD\x12\x04\u00C1\x01\u00D5\u00F1[\u00C1Z$\nS\u00CA)\u00A9`\x1A\x17k\u009D]a\n)\u00CB\x0F\x04\u00A1\x07\u00AA%\x13"\x1A?\u00A0\u00E3\u00D6\u0096\u009A\u00BCc\u00A3M\u00B4Ff#\u00F13\t\u00C2h\u00A1X2\u00A1\u00E1j\u0093\u00F3\x04\u00C4\u00E6&\x14\u00DF\x12~_\u00C2\u00DA\u0082\u00D0\x03EdN\u0089\u008B\x11\u00A7\u00D2\x01\u00DB\u0084\u00F5O\x07\u0094t(\b\x02\u00C27]J)\u0097y\x05g\u00EFTF\u00F8\x14\u00A7\u00F4\u0083\u0088\u008C \u00D8\u00F1\u0089L\u0088\u00BF\u00E1\x00\u00FF\u00D5\u00D1\u00A4rb\u00AB\u0097\x1Bc\u00C9C(R\u00ECJ\x10,\u00B86w\u008B\u00B1b>L\u00FC%o\x13\u00FCO\u008F \u00ACR\u00BES\x10\x10.K&t1\u00E0\x03$\u00EBM9\x136\u00D5\u00F2\x12kF\x10\f\u00FA\x1C\u00BF\u00B7\x11\u00F9\u00EF\u0084\u0097u\u0080\u00DC\u0091)\u0096\u00B0\u00BC$\u00E6\u00CD\u00E4\x10\u00D9\n\u00BE\u0089\u00B9f\u00AA\x05\u00CBi\u00CA\u0091\u00AD\x12=\x1B~wz\x0B\u00E2\u00F7X0l\u00D9\u00B3-s\x03\u00DF{Z\u00D6\u00F2Md,\u00C7\u00BA\u00E3\u00A1\u00E89\u00FF\u0098\u008F&\u00F1\u00C9WL\u00CFVw]\u00B7\u00EF\u00BA\u00EEB\u00B8\u00E6\u00A9\u00EB\u00BAm\u00D7ue\u00E2\u00F5\u00A84\u0089\u00CFV\u00C2\u00FD\u009E\u0088\u00D7k\u0089\u00CF\u00C7A\x03\u00D7\u00AA<\u00D7\u00A2\u00B4\u0093\u0098\u00EFM\u00E1\u00D6&v]\u00D7-\x03\u00CE\u00BF$\u00B6#J\u009F\u00F5\u00B1\u00C1?\u00DFw\u0092\u0096\u00E1c\u009D&(0\u00D4\u00C6\u00E3b\u0097x\u00FDU@\u00E7\u00B3\u00B1\u008B\x14wj\x03\u00D7\u00C4\n\u00DA&\u00F1\u00FD6\u008E\u00CE\u00C5\u00CD\u00DE\u00F1.\u00B9D\u00A6N\u00FC\u00DE\rA\x10\u00A9"\u00D3\x11\u00DB\u00AF\u008F\x7F\u0088\u008C\u00CD\'S2\u00D5\u00CB}\u00AF\x0E\u00D0\u00D8Pv\x01>\u00AD?\x13\u00F3\u0092\u009E`\u00AA\x11R\u008E\u00A2\u008C\u00A8\u00B3\x13\u00EA\u00B3+\u00E0\u00BER\u0092\x1E\x15\u00F8\u00FE\u00FE\x1A\u00C8\u00FF\u00F7\b\u00ED8Gi\u008F\x02\u00A6??\x12\u00BF\u00F7\x03,\u00F9\u00E1\u00CA<g_\u0093g\x13\u00991\u00E4{L\u00D9y<\u008Fh\u0094Ed\u00B1u\u00D7=\u0084\u00D4\u00BD\u0089iT\u00A1"\u00C3\u00BDU\u00CE\u00E3@\u00FE\u009A\x19\\\u0087\u00B3MV ^\x0F\u008C\u00E7\u00FC\u00C6\u00B8f\u0090\u00B5\u0094IN\u0091IQ\u00FF-|\u0084M\u00C2\u00C3V\u0091\u00E5\x188>|\u00C8;\u00D4\x02\u00C3\u00BD\u00DB\u00C2,`\u00B4\u008F\u0089\u008A\u00CD\x03\u009E\u00B3f\u00EEP\u009A\u00A1\u00A2y3\u00C6\u00D2\x1Ee\u00E2\u00A2\\\x17OLB3\u00E3\\\u00E4l\x13\x19.\u00D30\u00B6~L\x05/k\x0E\u00EA\u008C\u00EF\u0087z>\u00BD\u00BA\u00FAk\u00E0=p={\u00C8yrn\u00E5;\'4\u0096\u0094=\u00AC\u00A8\u00D6L\u008EE\u00A4\u00FF\x1D8\u00F2\u00F4\u00C4\u00B4\x06/\u00A5&\x13\u0085\'\u00A6\u00F7\u00FD\u00C8%\u00E26\u0091\u00E1l\u00F0\u00A1fxat\u008A#Z\u00D1}\u00B3l\u00FE\u0087v$\u00D8\u00C0H\u00BA4:\u00F5\u00DA\x18)\u00F4=\u00D4p\u00B8D\u0087\u00CB\u008A\u00A36\u00C6%\u00F3\u00D6-6\x1E=\u00CF\u0095\u00D2\u0090(\u00DF\u0097*bWH}\u00A0d]\x1F\u00EE\u00B4\u00FA=\u00D5WA\u00A9\u00C9\u00C4\u00C17&A\u00DC\u00B0\u009C\'\u00D2\x03Meo\u009C\u00BF\u00EC\u00F1\u0084\u00EB\x7F\u00C7\x1E\u00FB\x16B\u00E9\x14\u00CF\u00FB\x06\u00CEa\u00F3\u00F8\u00EF\u008D\u00F0\u00EC\u00C9\u00E1\u008DO\u00F1\u00F2\u009BP"\x0B!\u00D7\u00D3!K\u00FD\u00AE\u00EA\u0080H\u0098+b@\t\u0091\u00BB\u00A8\t\u00D1\u0093\u0098\u00FB[B(\u00D9\u00BC\u00BF\u008B#\u00E2\u00E3\u00A3\u0085\u00F3\u009A\u00C7\u008A\x18Q\u00C5\u00A1\u00FB\u00D0\u00E8R\x11\u00F0\u00AE/\u00F0\u00ECK\u00F8\u00BD\n\u00EEqG\u00FC\u00FD\u00CE\u00F2Nc\u00FB\u00B6-]\u00C1\u00873\u0084\u00CD-2\u009D\x11\u00EA\u00D4\u00E7\u00C7\x1D}\u008F\u00FE\r\x13\u00D2\x01}\u00E1W\u00B3A\u00D8\u00C2\u00EB\u00DC\u00CF\u00EE\x0B\u00F1R\u00AF\u00D7zB\u0094\u00AE\u009C\u00A6\u00C6#\x02+\u00C2\u00F5}\u00EF\u00D6\x1CH\u00CC\u0083\x12\u00B2^{\u00CE\u00B1F\x1D\u00D4\u0095\x1B\u00E2\u00C3\u0095\u00DFS\x04\u00FE~\u00A8\u00C8P\u00F3\u0090ZO\n\u00C22@\u00ACl}/\x06\u00F3\u00FB\u00F8p\u0086\u00B0sD\u0096\u00B0Y\u00AB3S\u00E7\u0096\u00B0\u009BiR\u0087\u00F8\t|S\x0E\u00D3\u00E98\u00B7\u00F8\x13\u00B8\u00CDo\u009F\u0099I1\u00BD\u00AF\u00F0M\\\x19\u00BD[\u00D8\x1C\x0Fs\u0080\x15\u00F0K\u008FO\u00C6\u00E7Sy#\u00F8t\x1E=\u00CFJ\u00C9\u00F8~\x01_\u00C5\u00BA\u00A7\rn\u00E1\x1A_2\u00FAa.h\u0091o\x1F)\u00CEk\u008A\u00FF\u00EA\b\u00CF\u00EFzg\r\u00FC\fe\x1F1\u00AEP\u00F4K\u008A\u00BF2u\x07I\n\u00D8af\u00BE\u00BCow\f\u0099\u00E3\x0F\u00B0\u00CC\x14\u00FDpAyn\u00EA\u00A6w\x1Bht\u00AFP\u00BFgI\u00E8\u008C\x05A\u009C\u00F5\x1E\u00E4\u00BE\x06\u00EDj\u00CC\u00D4%\x0F\u008F\u00D0\u0098o90\x1D\u00F2\u00BD\u00ADQ\u0089\u00D3=\u00F1\\1T\u00846\u0090\u00B2J\u009F\u00D2\u00BE\u00A8\u00CBpZb\u00B4\u008B\u00B3oEG\u009B\u0086\x10\x19\u00E5\u00B1\x12rz\u00DA]\u00E0\x0F\u0090\u00C3\u0089\u00E8\u00B3d(E\u00D9\u00A9\x1F\u00F6\x02\u00A2Q\x07tj\u00CA\u00C8\u00BA7\u00FE\x1Bs\u00AE&r\u00F7\u00CE\x05\fP/\u00B0\u008E\u00EE\x04\u0082\u0093\u0092\u00BFQ\u00A0`\x01>\u00D6D\x0B)v\x1D\x1E\u00A5\u00B3\x1F\x03\u00D7\u00A0QD\u00863\u0089p\x11\u00DBOL\u0091\u00C9\u00B5i\u00D9\x13\u00FA\u00C0ca\u00866\u00E8\u00CFa\u00C5\u00B8D\u0086\u00E2\u00B1\u00CF\x1D\u009E\u00A5L\u0095t\u00A7\u00F2\u0089\u00CC\u00C2\u00D3v8rL\u00E6 8\u00A7\u0084\u0088\u00D8\x02,%\u00F3x!\x0Ev9\u00BFI\u00A8\u0095v!XV)\u0099\u00C46\u00A2f\x1E\u00A6\u00C8\u00E4\u00CC\u00B4\u00F5\t\u00D8\x01r\x1F\u009E\u00C1\u009Fp;>A\u008D\u009A\u00DB\u00F1\u0087\u00E5w\u008E\u00F0s\u00FAg>\u00C2\u00DF\u00BF\u0080\u009F\u00C2\u00B7\u00E5\u00C9\u00EAN\u00C2G\x11\u0099\u009C+\u00AB)KG\u00F6=\x7F\u00EE\u00C3%Z\u009B\u00C4\u00A9\x06f\x06\u00A2p\u008F\x1D1r^3f\x19\x0Ew\u0085\x03\u00CA7\n~\x07CM\u0097\u0094\u00A33\x1FAL\u0096\u00D0\x18\u00F5\u00CB\u00BE\x18/\u00DE6\x1A\u009A\u00A5\x00.h\u00EE\u00AE\u00E7\u00F2\u009F\x1Db\u00B3\x1C\u0099u5\x14\x14K\u00C0\x14\x16\u00DFfx>\u00CBh\u0099\u00B8\u00A1\u009E\u00C9\u00D3\u00C0\u00F5{^3\u00AF\u00C7\x1B\u00C3R\x1A\u00CA`\x10l\x1D\u0099"\u0093\u00F3%\u00DAF\u00EF+X\x13+\x18\u00B9;d\u00C6\u00FE\u0084\u00BF\u009F@Hl\u00A3i\x05\u00A2\u00D2\u00A1\u00E3\'\u00FAs\u008B\u00CE\u00DF\u00F7\u00F2\u00EE\u00F1q)VJN\u00F1\u00F3E\x1D\x0E\u0096Q\u00D2g\u00CD\u00CC<\u00E7\u00D5{\u0091\x7Fa\u00B4jR\u0096\u009D\u0084p\x1E@\u00D0b\u0092\u00DE\u00B8w\x01\u00B9D\u00ACI\u00F3ro\u0091iA@^\x1C\u00E6\u00FB\x1C|&\u00B6H\u00C8\u00CC3\u0097^\u00C0\u00D2\u0082\u009F=\u00A6e\u00CE\u00E7u\t\t\u00C5\u00CC}\b\u00EC@TQZ\x11F#\u009B\u00A0P\u00A6L\u0094\u0090\u00E9\x1E\x06\u0087\u00DFaz\u00EC\x0B\x1B\u00BB\u00F0\t\x1B\x07g\u00B8F\u00CA\u00D4\u0084\u00D2\u00CEB\u009F\u0083\u0092I\x1D\u00F3n[\u00F8.l\f9]\u00B2u\u0098\u0087\f\u00CE\u00A9>l\u00CE\u00DD\\\u00CB\u00F8\x15\u00A1QR\x1A\x00u\u00F4,\u00C1\u00FA\u00BB\x10FwJc~1\u00AC\u00C3\x0E\u0096t\u00F8x\u00F2\\\u00BBD\u00D7o\u00D1\u00D2\u0090\x0F0\u00AD}\x06_Z\u0088\u00A5\u0093sO\u00AF\u00EF\u00D0>R\u00FDc\'B\u0084\u00CD\u0096\u00BB\u00E5\u0082\x12\u00E9\u0089\x1DD9}h\u00FF\x12\u0099\u009C\u00A52\u0087X\u00B3\x11JJ\u00A9\u00CDT(\u0096\x01\u00D5\u009B\u00AF\u009Dq3\u00F8\u009D\x13J`\u00C3\x14\x03\u008C\u00FC\u00AE\u00F3\u00EF\u00A0^\u008E\u00CD\u00BF\u00D6\u00A0\u00BC\u0098\n\u00FCt\u009C>\x1C\x1Fz\u00ED\u00D4\x1B\x04\x19>\x06\u00E4)Q\u00A0D\u00A6\u00B6\u00C4A\u00AF&\u00AEyK\u0089\u0086\u00D5\u0091\u00A9\x07\u00FF\u00C2\x14\u0099\u00DC\u00B5b\u00C7V\u00C8*\u00E7\u00F3\u00FA>05d\u00F9\u0097\u00C3\u00A2\u00D1e\x03L+m\x06\u00D3\u00C4\u00BF\u00A1\u00E3j\u00B1Y\r \u00AA}\u00F7\u00BAA\u00F7\u00F9\x15\u00DA\u0082k\u00E4N\tU\u00F7q@\u0091H\u00F3\u00D0)\x16+\u00E8\u00EC\u00DC\x03.%*3C\x19\u00BD6\nx\u008F\u0094\x1D5B\u00F2\u00ACl\u00B4\\\u00F9c\u00E6\u0096(\u00EF\u00AD\u009A]\u00AE\u00E7\u00A5\u008C\x00\'\u0088X<\x11~\u00F6\x05:\u00DC\x1E5\u00FE\u0092\u00F8\u00BB\u00FAg\u00EA\x1CN=\x0B\x0B\u00CB\u00D60\u0095\u00A5"\u00DE\x1C:\u00CB\x06\u009E\u00AB1\u008A\u00A2\u00AF\u0088\u008D|*\u0085\u00EA\u00F7\u00E0\u00DF\u00F1\u00B9\x07f0\u00B0\x1C\u008D\u0081\u00A8\f\x1C$8r\u0093\u00B6p\u00CD\u00A4<\u00B2\u00A1E\u00A6\u0084\u00977\u0096\u00A9S\u00AE\u00F9<\u00D5B\u00DA\x10\u0085BA\u00E3\u00FC\x1Aq/W\u00B4d\x7F\u00A8\u00A5\x135\x12\b\u00B3|\u0087\u0089~\u00AE\u0098gS\x13\u00DB\u00CD\u00A0\x06\x01\u00A1\u00B0H\u00E8\'W\u00C6"[:\u008B<\u00DA\x02\u00B69~S\u00BC\u00FD\x14\u00C62\u00F2\u00B09\u00B6,PE\u00E6\u00D4\u0093d\u00C8\u0089\u00CE=\u00CA\u00ED\u008B\u00C1`\u008B)g\r\u0095\u00F3\u00C4\u00B6\u0083i\u00C0z\u00CDMj4\f\u0093<m\u00B5\u0089L\u00EEL\u00D3\u00B14\u008A\u009CV[\u00C8\u00E8\u00BA\u00CD\u00D8\u00F0\u00DE\u00D0\u00886d\u00E2\u009A.\u00CDY%X(\x14\u00A6\u00B8\u0099^\u009Dy\u0080{\u00CE`\u00DD\u00EDR\u009C\u00F0\u00B6mj\u009B\u008C\r\u00A3\x1C\u0091%\u00C3]\x1C\x1A\x13*\u00A4z\u00E4\u00A7N\u009D(\x1C\u00D1y)9\x15\u00D7\x00k\u00A7&\u00DC\u00AB\u00F6\x01}\u00CF\u00D4\u009E^3\u00AF\u00CA\u00CE\u0089.\u00C1\u00C1]\x15\u00F19\u00E3\u00D2\x07]\u009D2x\u00DAd\u00B3dr\u00CFq\u00C72\u0087\x0E\u00A9\u00E6\x1F\u00C21\u00D2J\u00AA\u00A1\u0091p\u0084\r_Q6\u00B4\nXF\u00D0\x10\x0FJC\u00D6\u0082\u00B5\u00F6,\u00ED\u0088\u00E1u \'v.t\u00F63W\u00D2\u00DB\x19\u00DEq\u00CE\u00B5U\u00D1\u00D9\u00C06\u0091\u00B9d\u00CCO\x18\u008B%\u00A3\u00E7\u00F29,\u0099\x14\x11\u00D5\u00E1\u00E6\u00D8\u00E9\u0093nlfc\u00A0X(!\u00F7M)\u00DF0C\u00F7\u00D1\u00C0s=\'\u008A\u00CD\x19\u0096%LY`0\x1B\u00C8\x07\u008A\u00FD\u00DEW\x10\u00AAj\u00A0\u00C1{\x1Fs\u00AF\u00B6\u00E9\u0092>Y\u008E\x02\u00D7c\u00F0\u00C9\u00E0iA\x0EK&u4\u00D1#\u00C6\x1A\u00AD\u00BBZ:\u00CC\u00D43Jd\u00B354j\u00C6j\u00E8\u00D4cKH\x144\u00A3w;8*\u00F4\\\u0095\u00C7\x04?\u00A3\u00B5k\u00BE{\u00F4\x05-8\u00DB\x1E\u00D7\u00B9N(\x1A\u00B7B\u008Bv}\u00DF\u009B\u00F2>0\u0094\u00CA\x7F\x14\x03@\u00D7\u00F4q\r\u00D0\u00FF\u00B0\u00E4\u00FB6\u00DC/\u0088i\u00E4\u00A1\x1C\u00D0|\u0094\u00D3\u00FF@\u00C5,gi}\u00F8\x04\u008E\x19\u0097)(\u00A3S_&\u00BE\u00D1\u00BE\u0089\u00B9\u00E1\u00FE\u00AF\u00F6|\u00A1\x14F[\u009A\u00EC\u00FB\u00E8\x13\x19\u0095I\b\u00AE\u00F0\u00F2J\u00C8F\x1D\x12S`\u0096\x019\x0BT\u00FE`\u00CCO\x10\u0084_\x02\u0097\u00C8\u00E4\u00E8\u0084\nR\u00B9\x15\u0098\u0087\u00B6}\u0091\u00CFh\u00CAqA\u00A6\u0099\u00AB\u0082\u00DD\x11e\u008B\u00EA\u00F4p\u009C\u009Ba+\u00C8\u00BDe\u008Ez\\G\x16=\x13\u0084Q\u00E0\x12\x19\u00D5\u00B3.&\u0095Oh\u00CEf\u009E\u00FF@H$Z\u00A1\u00BD\u0084[\u0087\t\u00A9\u00D7\u00F5\u00CC!\u008CjFXN\u00CC+\u00C0m\u00D7\x10\u0084w\u008FOdrX38\u0096_\u00A0\u00D8\u00BB\u00F6gl\u00D0\u00FC3\u00D5c\u00AE\u00AD\u00A5O\u0096\u00B54?\x13\u00CFmb^C\x10\u00DE=\u00CA\x11]\u00D24`]pZ3\u00B51\x1DZ\x1AE\u00A5\u00CC)\u00D4\x19Y-f\u00B9M\u0085\u00A6R\x15\n\u00E5\u00E12\u009E\u00B6\u00B2\u0089\u00DC\x16\u00C7w\x11\x18A\u00B0\u00E3\u00B3dT&k\u00E6\u00B3!\x165\u00AC\u00C8\u00FD\b\u00FF\u009E\u00BA\u00D6E[E;CpT\u0086\u00C8\u0099\u00F8b\x04\u00C1\x01\u00A52^\u008EE]f.\u00C9\x0E\u00A6Q+\u00A6\u00A4"\u009D\u009F\u00B1\x1F\u00C0\u008A\u00D9\u0088\u00C0\bB?\x14KF\x19\u00BE\x13.\u00FA\x1C\u00A5+\u00A8\u009E\u00A6\u00C0"i<\u0091%=\u009D\u00C2I]\u0087\u009ED1\u00EE\u00D0y\u00DFu\x04A\x00\u00A85~sT1\u00FF\u00DA\u00D3A\u00F1\u00B6\u00A8\x0B\x10\u0090\u00A5\u00A3\u00A2Y\t\u00E1h,\u0080}\u00FE\x11\u00CE\u00B5\x1DW\u0089&\t\u0082\u009F\u0090B\u00E2Q\u00EB\x16\b\u00E7\u00B4\x15\u008E\u00C2\tm/\u0084\u00B57f\u0096\u00ADML6\u00CC\x0E\u00EC\u00CD;\u00CFH\x15\x04\x12\u00A1\u00BB\x15\u00AC\u0099ka\u00CC@h\u00CCu\x10[\u00E3:>+\u00EA\x04S\x17\u00BD\x0B\u00A5\u00E9\u00D7\u00A9{\x12\u00FFby\u0095\u00CC^A\u00A0A\u00F5\u00C9`\u00CA\u00D4r|\x16\u008E0%\u00C2\x0ET=\r*@\u00DCb\u00AD\u0086\u009AXx9\u00E5^\x05A\u00E8!Fd\x14\u00CAG\u00C9-4\u00A9p\u00AF\u00BF:\x1BuZ\x04A\u00F0\x10\u00BB\u00B9[\u009B\u00C1\u00E9\u00B9`\u00AEV\u00C7-0W\u00E6\u00DA\u00A9\u0082\u00F0.H\u00D9AR\u00E7\u00B6p\u00B2`*&\u00B5\u00CE 0\u00E6\x02KA\x10\b\u00C4N\u00970+\x10\u009C\u00B1L\u009D\u00B8sa\u00F4^\u00C8"0\u0082\x10\x01\u0087\u00C8\u00A8\x11\u00F9h\n\u00A6e\t)\u00F7 \b\x02\u0082k\u00C3\u00FD\x16m\u00DC\u00C6\u0085\u009E:Q3j\u00F5t\u0086K`^E`\x04!\x1D.K\x06\u00C3]\fJ\u00A1\u00ED/\x1A\u00A3\u00D3\u00EBz\u00A85cm\x18\u009D\u00C9\u009B\u00B3\u00F2\u00BB \u00BC\x1Br\u0088\u008CBu|9\u008BB\r\u00C1\x01\u00ED/#\b\x02\x03\\\u00D3%\x13\u00BD\u00A8\u0091k_\u0099\u00DC\\\u00A1>\u00EFR\x04F\x10x\u00C9e\u00C9`\u00CA\u00C0\u008D\u00E5\u0087DoL\u00BE\x15\u00DF\u008B \u00E4a\b\u0091\u00D1\u008CIl\u00B4\u00B8\u00EC\u00C4r\x11\u0084\u00BC\f)2\u009A\x12\u00ED\u0093<\u00B4\u00CF\u00E6\b\u00E2\u00B2\x17\u00CBE\x10\u0086\u00E1\x1E"\u0083\u00A9@lV\x19\x05\u00E7\b\x16\u008B\u00ADJ\u009E \b\u0099\u00B9\u00B7\u00C8`J\u00B4m\u00A9\u00AB\x12\u009E\u008B+\u00DA\u00E5\u00A0\u00B5\u0084\u00BC\x05A\x18\u00981\u0089L\x1F8\x19\x0Foe\u008A\u00B7\u00ED|\u00EF[\u009A\n\u00C2h\u0099\u0082\u00C8\b\u00820U\u0094R\u00FF\x07\u00D9\x17)\t\bz\u008B\u0083\x00\x00\x00\x00IEND\u00AEB`\u0082';
 var cameraNullBinary = '\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x18\x00\x00\x00\x18\b\x06\x00\x00\x00\u00E0w=\u00F8\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x011IDATH\u0089\u00BDU\u00C1\u0091\u00C20\f\\\u0098\u00FB\u0093\x12\u00D2\x01-\u00A4\u0084t@J\u00B8\x0E\u008E\x12(\x01:H\x07G\t\u00A1\x03J0\x15\u00EC\u008Dn\u00E4\x1BE\x17\x07\u009B\x00;\u00A3\u0087mi7\u00F1*\nH\x0E\x1C#\u0090\u00ACH\u00A20\u00AA\t\u00AEa\r`\u008B1\u00AEx\x1E\u00B6+\u0091Q\u00BA\u00D5\x13\u0089\x05\u00BF\u00BC\x1F\u0099\u00C9\u009F\x00Z\u00B3\x0E\x00\x0E\x00\u00CE\u00F7e\u00C8\u00AB\u00DE]\u00EA^\u008FL\u00E30\u00E3\u0089p\u0086HbM\u00DD\u00AB\u00D1\x16\u00B2nI6\x1Am"g\u00EF\x1E\u00AE\u00F6\u00AA\u00DD\u00C4\u00B3\x06\u00DD\u009F\u00CA\u00F5"\u00F4\u00B9\u00BE\u00A8\u008F\u00EDU\u00D8\u00AA\u00B6E{{\u00E6M\u00AE\u008C\u00A9\u00C1\u009D5\x1APs\u00AD\u00C1Ak\u00BE\r\x07J\u00BA\u00E8\b`g\u00D6_\x00N\x00\u00BA{\u0085\u00EB\f\u00F2\u00C6\u0090\u00DF4\u00A0{\u00CDL]\u0091@$\u008F\u00D7tsg\u008B\x04\x16!G \u009A\u00B91\u00E6n\u00DC\u00D9\u00A278\u00AB\u00A1Q$\u0092\u009Fr\x04r\u00BB\u00A8\u00D3NJ\u00B5i\x1A\u00AF\u00FE\u00D0rFE)\u00FE\u008D\u008A:c\u00D8\u00E5\u00C0\x0F;\u00C4a\x17f\u00C6\u00F5\u0092\u0090\u00AB\n/\u00FF\u00A3\u00BD\u00F5C\x13E\u0089\u00FEA.\u0099\u00A2\u0083\u00E1\u00F9\x13\u00B8\u00B8D\u00E9\u00F5\u00FAA\u0081q\x1Dp\u00F9\x01\u00C0\u00B2\x0B\u00B2$x\u0089\u00B7\x00\x00\x00\x00IEND\u00AEB`\u0082';
 var restartBinary = '\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x0E\x00\x00\x00\x0E\b\x06\x00\x00\x00\x1FH-\u00D1\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x00\u00D5IDAT(\u0091\u0095R\x0B\x11\u0082P\x10\\I@\u0084\u00D7@"\x10\u0081\b4\u0090\bD \u008260\x02\r\u00D4\x04\x12\x01\x13\u009C\u00B3o\u00F6\u0098\u00E7\u00C3\x0F\u00EE\u00CC\r\u00C7\u00B1\u00B7\u00F7cgf\x10\x06\x00\x15\u0080Z\u00CFR\u00F1I\u00F6\n&\u00CA\x1C\u0093\u00AD\u00C1X\u0093p\u00E1\x15\x03\u0080{\u00A2x\x03p\u0096\u00DF\x00\u00D8\u00CB?\x01h\u00A3\'\u0085*\u00AB\u00C1\neR\u00A16\u00B3Y\u00DF\u00FA\u00B4\u00A2+\u00FB|\u00B3\u0094\u00E7\u00A4\x0B\u00C6/\x00\x1E\u00B1\u00C3\u00B4\u00EF\r6\u00A8jW\u00AC\u00B6\u00F5\x1D>wU\u00A8\u0085\u00E1O\u0081\u00C0\u00C4\x1E\u00C0A\x02\u00BF\u00E0\u00B7\u00BD2q\u00D4K\u00B7!\u0091\x0B\u008C\u0089\x1C\u0098k\u00F7U\u00F3,\u009F\u0096\u00D4\u008AC\u00EEr\u00C74\u00D8e\t\x14\u00E6\u00ED\x1C\u00F1\x0Fz\u00A7\u00E8\x02\u00A3\u00CC\u00BB!\u00C8\u0089\u00FC\u00BC\x1D\u00B6z\u00CC\u00C8\u00F4\x19\x0B\x0B\u00CF\fO\u0092\u00C1h\u0085\x17\u0096M\u00DD\x00\x00\x00\x00IEND\u00AEB`\u0082';
+var updateUIBinary = '\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x10\x00\x00\x00\x10\b\x06\x00\x00\x00\x1F\u00F3\u00FFa\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x00\u00E1IDAT8\u008D\u008DS\u00C1\r\u00C20\f\u00BC"\u00FEd\u0084\u008C\u0090\x11\x18\u0085Q:BG\u0080\r\x18\u00A1#\u0094\r\u00CA\x06e\u0082C\u00A9.\u00D4\rITK\u00A9\u00E5(>\u00DBw5H\u00B6\u00CE\u008D\u00E4D\u00D2\u00D5\u00DE\u009C\u00D0\u00B6\t\u0080\x070\x02p\u00C5\u0097\x05\u00D4Xm 9so\u00C5N\u00CE\x19^P\u00B5\u008B\u00B9\u00FBdq\u00B5\u0083\u0088\u00BE\u00A8\u00E6H\u00D2\u008B\x03f\u00D5\u009D\u00ED\u00C4\x02\u00F4&9\u00DD\u00E5$:\u00C5}\t \u00CD\u00EC\x1B\u00AA\x04\u00D3\u00D1z\u00D7\u00AD(\u009AF\u00F3\u0096\u00D96S\u00CBw\u00F1\u0093\u00CBX\'kO\u00EA\u00CF,\u00C0K>4\u0092\u0083\u008A\u00BCK\x00O\u0081\u00CC\u008A\u009D$\u00B5\u0080\u0083\u00FC}\x1Bh/c\u00CE6\u00A5\u0084\u0097:\u0094\u00D4E\x19-PJN\u00FFE\u00B2\x18G%\x0E\u00EFB"5\x12\u00F7\u00D0^\u00C4\u00FD\u00D8\u00AC\u00A2w\u00EA\u00E2\u00AF\u00E2\u00D1m\\\x00\\Eh]\x15\x00_\u008D\u00B0\u00B7\u00C2]P\u009A5\x00\x00\x00\x00IEND\u00AEB`\u0082';
 var table1252 = {
     "€": 128,
     "‚": 130,
@@ -20104,7 +20105,7 @@ var createAboutTab = function (tpanel) {
     aboutTab.add('image', [0, 0, 300, 110], bannerBinary);
     var abtStr = '‹ Caspion - version 1.0.0 - Created By Eyal Cohen ›';
     var aboutEditGrp = aboutTab.add('group');
-    aboutEditGrp.add('edittext', [0, 0, 380, 240], abtStr, {
+    aboutEditGrp.add('edittext', [0, 0, 380, 230], abtStr, {
         multiline: true,
         readonly: true,
         scrollable: true
@@ -20133,7 +20134,7 @@ var createIconColorRow = function (container, colorName, colorHex) {
     };
     return { colorNameEdit: colorNameEdit, colorHexStat: colorHexStat, coloredBtn: coloredBtn };
 };
-var createHelpWindow = function () {
+var createHelpWindow = function (updateUiFn) {
     var helpWin = new Window('dialog', 'Help & Info');
     if (helpWin == null) {
         helpWin;
@@ -20143,7 +20144,7 @@ var createHelpWindow = function () {
     var prefs = parsePrefs();
     var labelNames = getLabelNamesFromPrefs();
     var labelColors = getLabelsFromPrefs().map(function (hex) { return hexToRgb(hex); });
-    var SETTINGS_SPACING = 15;
+    var SETTINGS_SPACING = 20;
     var settingsTab = tpanel.add('tab', undefined, ['Settings']);
     settingsTab.margins = 10;
     var labelSettingsGrp = settingsTab.add('group');
@@ -20245,10 +20246,6 @@ var createHelpWindow = function () {
             iconData[0].helpTip = show ? iconData[1] : '';
         });
     };
-    var warnRestartGrp = settingsTab.add('group');
-    warnRestartGrp.alignment = ['fill', 'bottom'];
-    warnRestartGrp.spacing = 40;
-    warnRestartGrp.add('statictext', undefined, '☛ You may need to close and open the script to see the changes');
     restartBtn.onClick = function () {
         iconLabelsDD.selection = BOILERPLATE_PREFS.iconsLabelIndex;
         iconRandomCheck.value = BOILERPLATE_PREFS.iconsLabelRandom;
@@ -20313,6 +20310,7 @@ var createHelpWindow = function () {
             iconColor3Hex: colorHex3Stat.text
         });
         updateQAHelpTips(showHelpTipsCheck.value);
+        updateUiFn();
         helpWin.close();
     };
     helpWin.layout.layout(true);
@@ -20372,7 +20370,6 @@ var createQAUI = function (tpanel) {
     createQABtn(rowFive, cameraNullBinary, 'Camera Null', createCameraNull);
     bigRowOne.orientation = bigRowTwo.orientation = 'column';
     var updateQAUI = function () {
-        alert('QA Update');
     };
     return { qaTab: qaTab, QABtnsGrp: QABtnsGrp, bigRowOne: bigRowOne, bigRowTwo: bigRowTwo, bigRowThree: bigRowThree, updateQAUI: updateQAUI };
 };
@@ -20447,7 +20444,6 @@ var createTextUI = function (tpanel) {
         createText(text, font, animation, addTextEvo, addMask);
     };
     var updateTextUI = function () {
-        alert('Update Text UI');
     };
     return { textTab: textTab, optionsGrp: optionsGrp, textDropdownsGrp: textDropdownsGrp, updateTextUI: updateTextUI };
 };
@@ -20516,6 +20512,7 @@ var createIconsUI = function (tpanel) {
     ]);
     iconColorDD.preferredSize[0] = 71;
     circleColorDD.selection = iconColorDD.selection = 0;
+    circleColorDD.size = iconColorDD.size = [90, 23];
     var iconsChecksGrp = colorChecksGrp.add('group');
     iconsChecksGrp.spacing = 20;
     var circleCheck = iconsChecksGrp.add('checkbox', undefined, 'Circle');
@@ -20531,7 +20528,26 @@ var createIconsUI = function (tpanel) {
         createIconFromId(id, circleColorDD.selection.toString(), iconColorDD.selection.toString(), circleCheck.value, scaleCheck.value);
     };
     var updateIconsUI = function () {
-        alert('Update Icons UI');
+        var _a = parsePrefs(), iconColor1Name = _a.iconColor1Name, iconColor2Name = _a.iconColor2Name, iconColor3Name = _a.iconColor3Name;
+        circleColorGrp.remove(circleColorDD);
+        circleColorDD = circleColorGrp.add('dropdownlist', undefined, [
+            iconColor1Name,
+            iconColor2Name,
+            iconColor3Name
+        ]);
+        circleColorDD.selection = 0;
+        circleColorGrp.layout.layout(true);
+        circleColorGrp.layout.resize();
+        iconColorGrp.remove(iconColorDD);
+        iconColorDD = iconColorGrp.add('dropdownlist', undefined, [
+            iconColor2Name,
+            iconColor1Name,
+            iconColor3Name
+        ]);
+        iconColorDD.selection = 0;
+        iconColorGrp.layout.layout(true);
+        iconColorGrp.layout.resize();
+        circleColorDD.size = iconColorDD.size = [90, 23];
     };
     return { iconsTab: iconsTab, iconCircleGrp: iconCircleGrp, colorChecksGrp: colorChecksGrp, updateIconsUI: updateIconsUI };
 };
@@ -20616,7 +20632,6 @@ var createLocationsUI = function (tpanel) {
         createLocationFromId(id, lang, mitug, animation);
     };
     var updateLocUI = function () {
-        alert('Update Locations UI');
     };
     return { locTab: locTab, dropdownsGrp: dropdownsGrp, locLangDDGrp: locLangDDGrp, mitugAnimDDGrp: mitugAnimDDGrp, updateLocUI: updateLocUI };
 };
@@ -20661,16 +20676,15 @@ var createTexturesUI = function (tpanel) {
         createTexture(id, loop, fit);
     };
     var updateTexTab = function () {
-        alert('Update Textures UI');
     };
     return { texTab: texTab, dropdownChecksGrp: dropdownChecksGrp, updateTexTab: updateTexTab };
 };
-var createSideBtns = function (qaTab, QAUpdateFn, textTab, textUpdateFn, iconsTab, iconsUpdateFn, locTab, locUpdateFn, texTab, texUpdateFn) {
+var createSideBtns = function (qaTab, textTab, iconsTab, locTab, texTab, updateUIFn) {
     var createTheBtns = function (container, updateUIFn) {
-        var updateUIBtn = container.add('button', undefined, 'Update UI');
-        updateUIBtn.onClick = updateUIFn;
-        var helpBtn = createQABtn(container, helpBinary, 'Help', createHelpWindow);
-        return { helpBtn: helpBtn, updateUIBtn: updateUIBtn };
+        var helpBtn = createQABtn(container, helpBinary, 'Help', function () {
+            createHelpWindow(updateUIFn);
+        });
+        return { helpBtn: helpBtn };
     };
     var extraBtnsQA = qaTab.add('group');
     var extraBtnsText = textTab.add('group');
@@ -20694,22 +20708,17 @@ var createSideBtns = function (qaTab, QAUpdateFn, textTab, textUpdateFn, iconsTa
                                     extraBtnsTextures.alignment =
                                         extraBtnsTextures.alignChildren =
                                             ['fill', 'fill'];
-    var _a = createTheBtns(extraBtnsQA, QAUpdateFn), helpBtnQA = _a.helpBtn, updateUIBtnQA = _a.updateUIBtn;
-    var _b = createTheBtns(extraBtnsText, textUpdateFn), helpBtnText = _b.helpBtn, updateUIBtnText = _b.updateUIBtn;
-    var _c = createTheBtns(extraBtnsIcons, iconsUpdateFn), helpBtnIcons = _c.helpBtn, updateUIBtnIcons = _c.updateUIBtn;
-    var _d = createTheBtns(extraBtnsLocations, locUpdateFn), helpBtnLocs = _d.helpBtn, updateUIBtnLocs = _d.updateUIBtn;
-    var _e = createTheBtns(extraBtnsTextures, texUpdateFn), helpBtnTexs = _e.helpBtn, updateUIBtnTexs = _e.updateUIBtn;
+    var helpBtnQA = createTheBtns(extraBtnsQA, updateUIFn).helpBtn;
+    var helpBtnText = createTheBtns(extraBtnsText, updateUIFn).helpBtn;
+    var helpBtnIcons = createTheBtns(extraBtnsIcons, updateUIFn).helpBtn;
+    var helpBtnLocs = createTheBtns(extraBtnsLocations, updateUIFn).helpBtn;
+    var helpBtnTexs = createTheBtns(extraBtnsTextures, updateUIFn).helpBtn;
     helpBtnQA.alignment =
         helpBtnText.alignment =
             helpBtnIcons.alignment =
                 helpBtnLocs.alignment =
                     helpBtnTexs.alignment =
-                        updateUIBtnQA.alignment =
-                            updateUIBtnText.alignment =
-                                updateUIBtnIcons.alignment =
-                                    updateUIBtnLocs.alignment =
-                                        updateUIBtnTexs.alignment =
-                                            ['right', 'bottom'];
+                        ['right', 'bottom'];
 };
 var init = function (thisObj) {
     var w = thisObj instanceof Panel
@@ -20727,7 +20736,13 @@ var init = function (thisObj) {
     var _c = createIconsUI(tpanel), iconsTab = _c.iconsTab, iconCircleGrp = _c.iconCircleGrp, colorChecksGrp = _c.colorChecksGrp, updateIconsUI = _c.updateIconsUI;
     var _d = createLocationsUI(tpanel), locTab = _d.locTab, dropdownsGrp = _d.dropdownsGrp, locLangDDGrp = _d.locLangDDGrp, mitugAnimDDGrp = _d.mitugAnimDDGrp, updateLocUI = _d.updateLocUI;
     var _e = createTexturesUI(tpanel), texTab = _e.texTab, dropdownChecksGrp = _e.dropdownChecksGrp, updateTexTab = _e.updateTexTab;
-    createSideBtns(qaTab, updateQAUI, textTab, updateTextUI, iconsTab, updateIconsUI, locTab, updateLocUI, texTab, updateTexTab);
+    createSideBtns(qaTab, textTab, iconsTab, locTab, texTab, function () {
+        updateQAUI();
+        updateTextUI();
+        updateIconsUI();
+        updateLocUI();
+        updateTexTab();
+    });
     w.layout.layout(true);
     w.layout.resize();
     w.onResizing = w.onResize = function () {

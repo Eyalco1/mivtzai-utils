@@ -115,7 +115,7 @@ const createLocationsUI = (
     };
 
     const updateLocUI = (): void => {
-        alert('Update Locations UI');
+        // alert('Update Locations UI');
     };
 
     return { locTab, dropdownsGrp, locLangDDGrp, mitugAnimDDGrp, updateLocUI };

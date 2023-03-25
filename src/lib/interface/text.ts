@@ -102,7 +102,7 @@ const createTextUI = (
     };
 
     const updateTextUI = (): void => {
-        alert('Update Text UI');
+        // alert('Update Text UI');
     };
 
     return { textTab, optionsGrp, textDropdownsGrp, updateTextUI };

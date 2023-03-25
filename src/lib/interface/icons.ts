@@ -63,7 +63,7 @@ const createIconsUI = (
     const circleColorGrp = iconCircleGrp.add('group');
     circleColorGrp.add('statictext', undefined, 'Circle Color:');
 
-    const circleColorDD = circleColorGrp.add('dropdownlist', undefined, [
+    let circleColorDD = circleColorGrp.add('dropdownlist', undefined, [
         iconColor1Name,
         iconColor2Name,
         iconColor3Name
@@ -73,7 +73,7 @@ const createIconsUI = (
 
     const iconColorGrp = colorChecksGrp.add('group');
     iconColorGrp.add('statictext', undefined, 'Icon Color:');
-    const iconColorDD = iconColorGrp.add('dropdownlist', undefined, [
+    let iconColorDD = iconColorGrp.add('dropdownlist', undefined, [
         iconColor2Name,
         iconColor1Name,
         iconColor3Name
@@ -81,6 +81,7 @@ const createIconsUI = (
     iconColorDD.preferredSize[0] = 71;
 
     circleColorDD.selection = iconColorDD.selection = 0;
+    circleColorDD.size = iconColorDD.size = [90, 23];
 
     const iconsChecksGrp = colorChecksGrp.add('group');
     iconsChecksGrp.spacing = 20;
@@ -107,7 +108,31 @@ const createIconsUI = (
     };
 
     const updateIconsUI = (): void => {
-        alert('Update Icons UI');
+        const { iconColor1Name, iconColor2Name, iconColor3Name } = parsePrefs();
+
+        // Circle Color
+        circleColorGrp.remove(circleColorDD);
+        circleColorDD = circleColorGrp.add('dropdownlist', undefined, [
+            iconColor1Name,
+            iconColor2Name,
+            iconColor3Name
+        ]);
+        circleColorDD.selection = 0;
+        circleColorGrp.layout.layout(true);
+        circleColorGrp.layout.resize();
+
+        // Icon Color
+        iconColorGrp.remove(iconColorDD);
+        iconColorDD = iconColorGrp.add('dropdownlist', undefined, [
+            iconColor2Name,
+            iconColor1Name,
+            iconColor3Name
+        ]);
+        iconColorDD.selection = 0;
+        iconColorGrp.layout.layout(true);
+        iconColorGrp.layout.resize();
+
+        circleColorDD.size = iconColorDD.size = [90, 23];
     };
 
     return { iconsTab, iconCircleGrp, colorChecksGrp, updateIconsUI };

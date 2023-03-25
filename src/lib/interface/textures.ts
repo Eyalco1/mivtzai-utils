@@ -67,7 +67,7 @@ const createTexturesUI = (
     };
 
     const updateTexTab = (): void => {
-        alert('Update Textures UI');
+        // alert('Update Textures UI');
     };
 
     return { texTab, dropdownChecksGrp, updateTexTab };

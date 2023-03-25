@@ -102,7 +102,7 @@ const createQAUI = (
     bigRowOne.orientation = bigRowTwo.orientation = 'column';
 
     const updateQAUI = (): void => {
-        alert('QA Update');
+        // alert('QA Update');
     };
 
     return { qaTab, QABtnsGrp, bigRowOne, bigRowTwo, bigRowThree, updateQAUI };
