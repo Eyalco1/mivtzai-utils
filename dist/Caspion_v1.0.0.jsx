@@ -20421,7 +20421,7 @@ var createTextUI = function (tpanel) {
     var mainTextEdit = mainTextGrp.add('edittext', undefined, '', {
         multiline: true
     });
-    mainTextEdit.preferredSize = [160, 60];
+    mainTextEdit.size = [160, 60];
     mainTextEdit.alignment = ['fill', 'top'];
     var optionsGrp = textTabGrp.add('group');
     optionsGrp.margins.top = 8;
@@ -20480,7 +20480,13 @@ var createTextUI = function (tpanel) {
     };
     var updateTextUI = function () {
     };
-    return { textTab: textTab, optionsGrp: optionsGrp, textDropdownsGrp: textDropdownsGrp, updateTextUI: updateTextUI };
+    return {
+        textTab: textTab,
+        optionsGrp: optionsGrp,
+        textDropdownsGrp: textDropdownsGrp,
+        mainTextEdit: mainTextEdit,
+        updateTextUI: updateTextUI
+    };
 };
 var createIconsUI = function (tpanel) {
     var iconsTab = tpanel.add('tab', undefined, ['Icons']);
@@ -20767,7 +20773,7 @@ var init = function (thisObj) {
     var tpanel = w.add('tabbedpanel');
     tpanel.alignment = tpanel.alignChildren = ['fill', 'fill'];
     var _a = createQAUI(tpanel), qaTab = _a.qaTab, QABtnsGrp = _a.QABtnsGrp, bigRowOne = _a.bigRowOne, bigRowTwo = _a.bigRowTwo, bigRowThree = _a.bigRowThree, updateQAUI = _a.updateQAUI;
-    var _b = createTextUI(tpanel), textTab = _b.textTab, optionsGrp = _b.optionsGrp, textDropdownsGrp = _b.textDropdownsGrp, updateTextUI = _b.updateTextUI;
+    var _b = createTextUI(tpanel), textTab = _b.textTab, optionsGrp = _b.optionsGrp, textDropdownsGrp = _b.textDropdownsGrp, mainTextEdit = _b.mainTextEdit, updateTextUI = _b.updateTextUI;
     var _c = createIconsUI(tpanel), iconsTab = _c.iconsTab, iconCircleGrp = _c.iconCircleGrp, colorChecksGrp = _c.colorChecksGrp, updateIconsUI = _c.updateIconsUI;
     var _d = createLocationsUI(tpanel), locTab = _d.locTab, dropdownsGrp = _d.dropdownsGrp, locLangDDGrp = _d.locLangDDGrp, mitugAnimDDGrp = _d.mitugAnimDDGrp, updateLocUI = _d.updateLocUI;
     var _e = createTexturesUI(tpanel), texTab = _e.texTab, dropdownChecksGrp = _e.dropdownChecksGrp, updateTexTab = _e.updateTexTab;
@@ -20792,6 +20798,7 @@ var init = function (thisObj) {
                 w.size.width > 450 ? 'row' : 'column';
             textDropdownsGrp.orientation =
                 w.size.width > 340 ? 'row' : 'column';
+            mainTextEdit.size = [w.size.width - 50, 60];
             iconCircleGrp.orientation = colorChecksGrp.orientation =
                 w.size.width > 350 ? 'row' : 'column';
             dropdownsGrp.orientation =

@@ -84,8 +84,13 @@ const init = (thisObj: typeof globalThis) => {
 
     const { qaTab, QABtnsGrp, bigRowOne, bigRowTwo, bigRowThree, updateQAUI } =
         createQAUI(tpanel);
-    const { textTab, optionsGrp, textDropdownsGrp, updateTextUI } =
-        createTextUI(tpanel);
+    const {
+        textTab,
+        optionsGrp,
+        textDropdownsGrp,
+        mainTextEdit,
+        updateTextUI
+    } = createTextUI(tpanel);
     const { iconsTab, iconCircleGrp, colorChecksGrp, updateIconsUI } =
         createIconsUI(tpanel);
     const { locTab, dropdownsGrp, locLangDDGrp, mitugAnimDDGrp, updateLocUI } =
@@ -192,6 +197,14 @@ const init = (thisObj: typeof globalThis) => {
                 (<Dimension>w.size).width > 450 ? 'row' : 'column';
             textDropdownsGrp.orientation =
                 (<Dimension>w.size).width > 340 ? 'row' : 'column';
+            // if ((<Dimension>w.size).width > 450) {
+            //     mainTextEdit.size = [160, 60];
+            // } else if ((<Dimension>w.size).width > 340) {
+            //     mainTextEdit.size = [100, 60];
+            // } else {
+            //     mainTextEdit.size = [60, 60];
+            // }
+            mainTextEdit.size = [(<Dimension>w.size).width - 50, 60];
             // Icons
             iconCircleGrp.orientation = colorChecksGrp.orientation =
                 (<Dimension>w.size).width > 350 ? 'row' : 'column';

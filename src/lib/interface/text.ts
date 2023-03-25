@@ -3,6 +3,7 @@ const createTextUI = (
     tpanel: TabbedPanel
 ): {
     textTab: Tab;
+    mainTextEdit: EditText;
     optionsGrp: Group;
     textDropdownsGrp: Group;
     updateTextUI: () => void;
@@ -22,7 +23,7 @@ const createTextUI = (
     const mainTextEdit = mainTextGrp.add('edittext', undefined, '', {
         multiline: true
     });
-    mainTextEdit.preferredSize = [160, 60];
+    mainTextEdit.size = [160, 60];
     mainTextEdit.alignment = ['fill', 'top'];
 
     const optionsGrp = textTabGrp.add('group');
@@ -105,5 +106,11 @@ const createTextUI = (
         // alert('Update Text UI');
     };
 
-    return { textTab, optionsGrp, textDropdownsGrp, updateTextUI };
+    return {
+        textTab,
+        optionsGrp,
+        textDropdownsGrp,
+        mainTextEdit,
+        updateTextUI
+    };
 };
