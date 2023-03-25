@@ -1,7 +1,12 @@
 // UI
 const createTextUI = (
     tpanel: TabbedPanel
-): { textTab: Tab; optionsGrp: Group; textDropdownsGrp: Group } => {
+): {
+    textTab: Tab;
+    optionsGrp: Group;
+    textDropdownsGrp: Group;
+    updateTextUI: () => void;
+} => {
     const textTab = tpanel.add('tab', undefined, ['Text']);
 
     const textTabGrp = textTab.add('group');
@@ -96,5 +101,9 @@ const createTextUI = (
         createText(text, font, animation, addTextEvo, addMask);
     };
 
-    return { textTab, optionsGrp, textDropdownsGrp };
+    const updateTextUI = (): void => {
+        alert('Update Text UI');
+    };
+
+    return { textTab, optionsGrp, textDropdownsGrp, updateTextUI };
 };

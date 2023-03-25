@@ -1,7 +1,7 @@
 // UI
 const createTexturesUI = (
     tpanel: TabbedPanel
-): { texTab: Tab; dropdownChecksGrp: Group } => {
+): { texTab: Tab; dropdownChecksGrp: Group; updateTexTab: () => void } => {
     const texTab = tpanel.add('tab', undefined, ['Textures']);
 
     const texturesGrp = texTab.add('group');
@@ -66,5 +66,9 @@ const createTexturesUI = (
         createTexture(id, loop, fit);
     };
 
-    return { texTab, dropdownChecksGrp };
+    const updateTexTab = (): void => {
+        alert('Update Textures UI');
+    };
+
+    return { texTab, dropdownChecksGrp, updateTexTab };
 };

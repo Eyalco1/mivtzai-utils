@@ -20371,7 +20371,10 @@ var createQAUI = function (tpanel) {
     createQABtn(rowFive, mikraBinary, 'Mikra', createMikra);
     createQABtn(rowFive, cameraNullBinary, 'Camera Null', createCameraNull);
     bigRowOne.orientation = bigRowTwo.orientation = 'column';
-    return { qaTab: qaTab, QABtnsGrp: QABtnsGrp, bigRowOne: bigRowOne, bigRowTwo: bigRowTwo, bigRowThree: bigRowThree };
+    var updateQAUI = function () {
+        alert('QA Update');
+    };
+    return { qaTab: qaTab, QABtnsGrp: QABtnsGrp, bigRowOne: bigRowOne, bigRowTwo: bigRowTwo, bigRowThree: bigRowThree, updateQAUI: updateQAUI };
 };
 var createTextUI = function (tpanel) {
     var textTab = tpanel.add('tab', undefined, ['Text']);
@@ -20443,7 +20446,10 @@ var createTextUI = function (tpanel) {
         var addMask = maskCheck.value;
         createText(text, font, animation, addTextEvo, addMask);
     };
-    return { textTab: textTab, optionsGrp: optionsGrp, textDropdownsGrp: textDropdownsGrp };
+    var updateTextUI = function () {
+        alert('Update Text UI');
+    };
+    return { textTab: textTab, optionsGrp: optionsGrp, textDropdownsGrp: textDropdownsGrp, updateTextUI: updateTextUI };
 };
 var createIconsUI = function (tpanel) {
     var iconsTab = tpanel.add('tab', undefined, ['Icons']);
@@ -20524,7 +20530,10 @@ var createIconsUI = function (tpanel) {
         var id = iconDD.selection.toString();
         createIconFromId(id, circleColorDD.selection.toString(), iconColorDD.selection.toString(), circleCheck.value, scaleCheck.value);
     };
-    return { iconsTab: iconsTab, iconCircleGrp: iconCircleGrp, colorChecksGrp: colorChecksGrp };
+    var updateIconsUI = function () {
+        alert('Update Icons UI');
+    };
+    return { iconsTab: iconsTab, iconCircleGrp: iconCircleGrp, colorChecksGrp: colorChecksGrp, updateIconsUI: updateIconsUI };
 };
 var createLocationsUI = function (tpanel) {
     var locTab = tpanel.add('tab', undefined, ['Locations']);
@@ -20606,7 +20615,10 @@ var createLocationsUI = function (tpanel) {
         var animation = animationDD.selection.toString();
         createLocationFromId(id, lang, mitug, animation);
     };
-    return { locTab: locTab, dropdownsGrp: dropdownsGrp, locLangDDGrp: locLangDDGrp, mitugAnimDDGrp: mitugAnimDDGrp };
+    var updateLocUI = function () {
+        alert('Update Locations UI');
+    };
+    return { locTab: locTab, dropdownsGrp: dropdownsGrp, locLangDDGrp: locLangDDGrp, mitugAnimDDGrp: mitugAnimDDGrp, updateLocUI: updateLocUI };
 };
 var createTexturesUI = function (tpanel) {
     var texTab = tpanel.add('tab', undefined, ['Textures']);
@@ -20648,12 +20660,17 @@ var createTexturesUI = function (tpanel) {
         var fit = textureFitCheck.value;
         createTexture(id, loop, fit);
     };
-    return { texTab: texTab, dropdownChecksGrp: dropdownChecksGrp };
+    var updateTexTab = function () {
+        alert('Update Textures UI');
+    };
+    return { texTab: texTab, dropdownChecksGrp: dropdownChecksGrp, updateTexTab: updateTexTab };
 };
-var createSideBtns = function (qaTab, textTab, iconsTab, locTab, texTab) {
-    var createTheBtns = function (container) {
+var createSideBtns = function (qaTab, QAUpdateFn, textTab, textUpdateFn, iconsTab, iconsUpdateFn, locTab, locUpdateFn, texTab, texUpdateFn) {
+    var createTheBtns = function (container, updateUIFn) {
+        var updateUIBtn = container.add('button', undefined, 'Update UI');
+        updateUIBtn.onClick = updateUIFn;
         var helpBtn = createQABtn(container, helpBinary, 'Help', createHelpWindow);
-        return helpBtn;
+        return { helpBtn: helpBtn, updateUIBtn: updateUIBtn };
     };
     var extraBtnsQA = qaTab.add('group');
     var extraBtnsText = textTab.add('group');
@@ -20677,17 +20694,22 @@ var createSideBtns = function (qaTab, textTab, iconsTab, locTab, texTab) {
                                     extraBtnsTextures.alignment =
                                         extraBtnsTextures.alignChildren =
                                             ['fill', 'fill'];
-    var helpBtnQA = createTheBtns(extraBtnsQA);
-    var helpBtnText = createTheBtns(extraBtnsText);
-    var helpBtnIcons = createTheBtns(extraBtnsIcons);
-    var helpBtnLocs = createTheBtns(extraBtnsLocations);
-    var helpBtnTexs = createTheBtns(extraBtnsTextures);
+    var _a = createTheBtns(extraBtnsQA, QAUpdateFn), helpBtnQA = _a.helpBtn, updateUIBtnQA = _a.updateUIBtn;
+    var _b = createTheBtns(extraBtnsText, textUpdateFn), helpBtnText = _b.helpBtn, updateUIBtnText = _b.updateUIBtn;
+    var _c = createTheBtns(extraBtnsIcons, iconsUpdateFn), helpBtnIcons = _c.helpBtn, updateUIBtnIcons = _c.updateUIBtn;
+    var _d = createTheBtns(extraBtnsLocations, locUpdateFn), helpBtnLocs = _d.helpBtn, updateUIBtnLocs = _d.updateUIBtn;
+    var _e = createTheBtns(extraBtnsTextures, texUpdateFn), helpBtnTexs = _e.helpBtn, updateUIBtnTexs = _e.updateUIBtn;
     helpBtnQA.alignment =
         helpBtnText.alignment =
             helpBtnIcons.alignment =
                 helpBtnLocs.alignment =
                     helpBtnTexs.alignment =
-                        ['right', 'bottom'];
+                        updateUIBtnQA.alignment =
+                            updateUIBtnText.alignment =
+                                updateUIBtnIcons.alignment =
+                                    updateUIBtnLocs.alignment =
+                                        updateUIBtnTexs.alignment =
+                                            ['right', 'bottom'];
 };
 var init = function (thisObj) {
     var w = thisObj instanceof Panel
@@ -20700,12 +20722,12 @@ var init = function (thisObj) {
     w = w;
     var tpanel = w.add('tabbedpanel');
     tpanel.alignment = tpanel.alignChildren = ['fill', 'fill'];
-    var _a = createQAUI(tpanel), qaTab = _a.qaTab, QABtnsGrp = _a.QABtnsGrp, bigRowOne = _a.bigRowOne, bigRowTwo = _a.bigRowTwo, bigRowThree = _a.bigRowThree;
-    var _b = createTextUI(tpanel), textTab = _b.textTab, optionsGrp = _b.optionsGrp, textDropdownsGrp = _b.textDropdownsGrp;
-    var _c = createIconsUI(tpanel), iconsTab = _c.iconsTab, iconCircleGrp = _c.iconCircleGrp, colorChecksGrp = _c.colorChecksGrp;
-    var _d = createLocationsUI(tpanel), locTab = _d.locTab, dropdownsGrp = _d.dropdownsGrp, locLangDDGrp = _d.locLangDDGrp, mitugAnimDDGrp = _d.mitugAnimDDGrp;
-    var _e = createTexturesUI(tpanel), texTab = _e.texTab, dropdownChecksGrp = _e.dropdownChecksGrp;
-    createSideBtns(qaTab, textTab, iconsTab, locTab, texTab);
+    var _a = createQAUI(tpanel), qaTab = _a.qaTab, QABtnsGrp = _a.QABtnsGrp, bigRowOne = _a.bigRowOne, bigRowTwo = _a.bigRowTwo, bigRowThree = _a.bigRowThree, updateQAUI = _a.updateQAUI;
+    var _b = createTextUI(tpanel), textTab = _b.textTab, optionsGrp = _b.optionsGrp, textDropdownsGrp = _b.textDropdownsGrp, updateTextUI = _b.updateTextUI;
+    var _c = createIconsUI(tpanel), iconsTab = _c.iconsTab, iconCircleGrp = _c.iconCircleGrp, colorChecksGrp = _c.colorChecksGrp, updateIconsUI = _c.updateIconsUI;
+    var _d = createLocationsUI(tpanel), locTab = _d.locTab, dropdownsGrp = _d.dropdownsGrp, locLangDDGrp = _d.locLangDDGrp, mitugAnimDDGrp = _d.mitugAnimDDGrp, updateLocUI = _d.updateLocUI;
+    var _e = createTexturesUI(tpanel), texTab = _e.texTab, dropdownChecksGrp = _e.dropdownChecksGrp, updateTexTab = _e.updateTexTab;
+    createSideBtns(qaTab, updateQAUI, textTab, updateTextUI, iconsTab, updateIconsUI, locTab, updateLocUI, texTab, updateTexTab);
     w.layout.layout(true);
     w.layout.resize();
     w.onResizing = w.onResize = function () {

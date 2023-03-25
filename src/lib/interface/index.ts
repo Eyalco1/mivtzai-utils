@@ -1,11 +1,24 @@
 const createSideBtns = (
     qaTab: Tab,
+    QAUpdateFn: () => void,
     textTab: Tab,
+    textUpdateFn: () => void,
     iconsTab: Tab,
+    iconsUpdateFn: () => void,
     locTab: Tab,
-    texTab: Tab
+    locUpdateFn: () => void,
+    texTab: Tab,
+    texUpdateFn: () => void
 ) => {
-    const createTheBtns = (container: Group): IconButton => {
+    const createTheBtns = (
+        container: Group,
+        updateUIFn: () => void
+    ): { helpBtn: IconButton; updateUIBtn: Button } => {
+        //?
+        const updateUIBtn = container.add('button', undefined, 'Update UI');
+        updateUIBtn.onClick = updateUIFn;
+        //?
+
         const helpBtn = createQABtn(
             container,
             helpBinary,
@@ -13,7 +26,7 @@ const createSideBtns = (
             createHelpWindow
         );
 
-        return helpBtn;
+        return { helpBtn, updateUIBtn };
     };
 
     const extraBtnsQA = qaTab.add('group');
@@ -41,17 +54,29 @@ const createSideBtns = (
         extraBtnsTextures.alignChildren =
             ['fill', 'fill'];
 
-    const helpBtnQA = createTheBtns(extraBtnsQA);
-    const helpBtnText = createTheBtns(extraBtnsText);
-    const helpBtnIcons = createTheBtns(extraBtnsIcons);
-    const helpBtnLocs = createTheBtns(extraBtnsLocations);
-    const helpBtnTexs = createTheBtns(extraBtnsTextures);
+    const { helpBtn: helpBtnQA, updateUIBtn: updateUIBtnQA } = createTheBtns(
+        extraBtnsQA,
+        QAUpdateFn
+    );
+    const { helpBtn: helpBtnText, updateUIBtn: updateUIBtnText } =
+        createTheBtns(extraBtnsText, textUpdateFn);
+    const { helpBtn: helpBtnIcons, updateUIBtn: updateUIBtnIcons } =
+        createTheBtns(extraBtnsIcons, iconsUpdateFn);
+    const { helpBtn: helpBtnLocs, updateUIBtn: updateUIBtnLocs } =
+        createTheBtns(extraBtnsLocations, locUpdateFn);
+    const { helpBtn: helpBtnTexs, updateUIBtn: updateUIBtnTexs } =
+        createTheBtns(extraBtnsTextures, texUpdateFn);
 
     helpBtnQA.alignment =
         helpBtnText.alignment =
         helpBtnIcons.alignment =
         helpBtnLocs.alignment =
         helpBtnTexs.alignment =
+        updateUIBtnQA.alignment =
+        updateUIBtnText.alignment =
+        updateUIBtnIcons.alignment =
+        updateUIBtnLocs.alignment =
+        updateUIBtnTexs.alignment =
             ['right', 'bottom'];
 };
 
@@ -68,15 +93,29 @@ const init = (thisObj: typeof globalThis) => {
     const tpanel = w.add('tabbedpanel');
     tpanel.alignment = tpanel.alignChildren = ['fill', 'fill'];
 
-    const { qaTab, QABtnsGrp, bigRowOne, bigRowTwo, bigRowThree } =
+    const { qaTab, QABtnsGrp, bigRowOne, bigRowTwo, bigRowThree, updateQAUI } =
         createQAUI(tpanel);
-    const { textTab, optionsGrp, textDropdownsGrp } = createTextUI(tpanel);
-    const { iconsTab, iconCircleGrp, colorChecksGrp } = createIconsUI(tpanel);
-    const { locTab, dropdownsGrp, locLangDDGrp, mitugAnimDDGrp } =
+    const { textTab, optionsGrp, textDropdownsGrp, updateTextUI } =
+        createTextUI(tpanel);
+    const { iconsTab, iconCircleGrp, colorChecksGrp, updateIconsUI } =
+        createIconsUI(tpanel);
+    const { locTab, dropdownsGrp, locLangDDGrp, mitugAnimDDGrp, updateLocUI } =
         createLocationsUI(tpanel);
-    const { texTab, dropdownChecksGrp } = createTexturesUI(tpanel);
+    const { texTab, dropdownChecksGrp, updateTexTab } =
+        createTexturesUI(tpanel);
 
-    createSideBtns(qaTab, textTab, iconsTab, locTab, texTab);
+    createSideBtns(
+        qaTab,
+        updateQAUI,
+        textTab,
+        updateTextUI,
+        iconsTab,
+        updateIconsUI,
+        locTab,
+        updateLocUI,
+        texTab,
+        updateTexTab
+    );
 
     // const checkTimeStampDiffBy = (
     //     lastTimeStamp: object,

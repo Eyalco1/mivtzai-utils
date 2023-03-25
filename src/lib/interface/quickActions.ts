@@ -25,6 +25,7 @@ const createQAUI = (
     bigRowOne: Group;
     bigRowTwo: Group;
     bigRowThree: Group;
+    updateQAUI: () => void;
 } => {
     const qaTab = tpanel.add('tab', undefined, ['Quick Actions']);
     qaTab.alignment = qaTab.alignChildren = ['fill', 'fill'];
@@ -100,5 +101,9 @@ const createQAUI = (
 
     bigRowOne.orientation = bigRowTwo.orientation = 'column';
 
-    return { qaTab, QABtnsGrp, bigRowOne, bigRowTwo, bigRowThree };
+    const updateQAUI = (): void => {
+        alert('QA Update');
+    };
+
+    return { qaTab, QABtnsGrp, bigRowOne, bigRowTwo, bigRowThree, updateQAUI };
 };

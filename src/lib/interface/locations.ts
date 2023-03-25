@@ -6,6 +6,7 @@ const createLocationsUI = (
     dropdownsGrp: Group;
     locLangDDGrp: Group;
     mitugAnimDDGrp: Group;
+    updateLocUI: () => void;
 } => {
     const locTab = tpanel.add('tab', undefined, ['Locations']);
 
@@ -113,5 +114,9 @@ const createLocationsUI = (
         createLocationFromId(id, lang, mitug, animation);
     };
 
-    return { locTab, dropdownsGrp, locLangDDGrp, mitugAnimDDGrp };
+    const updateLocUI = (): void => {
+        alert('Update Locations UI');
+    };
+
+    return { locTab, dropdownsGrp, locLangDDGrp, mitugAnimDDGrp, updateLocUI };
 };

@@ -1,7 +1,12 @@
 // UI
 const createIconsUI = (
     tpanel: TabbedPanel
-): { iconsTab: Tab; iconCircleGrp: Group; colorChecksGrp: Group } => {
+): {
+    iconsTab: Tab;
+    iconCircleGrp: Group;
+    colorChecksGrp: Group;
+    updateIconsUI: () => void;
+} => {
     const iconsTab = tpanel.add('tab', undefined, ['Icons']);
 
     const iconsGrp = iconsTab.add('group');
@@ -101,5 +106,9 @@ const createIconsUI = (
         );
     };
 
-    return { iconsTab, iconCircleGrp, colorChecksGrp };
+    const updateIconsUI = (): void => {
+        alert('Update Icons UI');
+    };
+
+    return { iconsTab, iconCircleGrp, colorChecksGrp, updateIconsUI };
 };
