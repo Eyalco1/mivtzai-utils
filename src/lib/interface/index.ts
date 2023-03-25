@@ -197,13 +197,6 @@ const init = (thisObj: typeof globalThis) => {
                 (<Dimension>w.size).width > 450 ? 'row' : 'column';
             textDropdownsGrp.orientation =
                 (<Dimension>w.size).width > 340 ? 'row' : 'column';
-            // if ((<Dimension>w.size).width > 450) {
-            //     mainTextEdit.size = [160, 60];
-            // } else if ((<Dimension>w.size).width > 340) {
-            //     mainTextEdit.size = [100, 60];
-            // } else {
-            //     mainTextEdit.size = [60, 60];
-            // }
             mainTextEdit.size = [(<Dimension>w.size).width - 50, 60];
             // Icons
             iconCircleGrp.orientation = colorChecksGrp.orientation =

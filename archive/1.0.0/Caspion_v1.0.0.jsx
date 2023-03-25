@@ -20560,6 +20560,12 @@ var createIconsUI = function (tpanel) {
     var scaleCheck = iconsChecksGrp.add('checkbox', undefined, 'Scale');
     var iconCreateBtn = iconsGrp.add('button', undefined, 'Create Icon');
     iconCreateBtn.preferredSize[0] = 100;
+    iconCircleGrp.alignment =
+        iconCircleGrp.alignChildren =
+            colorChecksGrp.alignment =
+                colorChecksGrp.alignChildren =
+                    iconCreateBtn.alignment =
+                        'left';
     circleColorGrp.enabled = false;
     circleCheck.onClick = function () {
         circleColorGrp.enabled = circleCheck.value;
