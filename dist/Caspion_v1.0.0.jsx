@@ -475,6 +475,7 @@ var BOILERPLATE_PREFS = {
     iconsLabelIndex: 5,
     locsLabelIndex: 13,
     texLabelIndex: 2,
+    textLabelIndex: 3,
     showHelpTips: true,
     iconColor1Name: 'Black',
     iconColor1Hex: '#000000',
@@ -2137,6 +2138,9 @@ var createText = function (text, font, animation, addTextEvo, addMask) {
     }
     app.beginUndoGroup('Caspion: Create Text');
     var textLayer = comp.layers.addText();
+    textLayer.label = parsePrefs().textLabelRandom
+        ? Math.floor(Math.random() * 16) + 1
+        : parsePrefs().textLabelIndex + 1;
     var srcText = textLayer
         .property('ADBE Text Properties')
         .property('ADBE Text Document');
@@ -20105,7 +20109,7 @@ var createAboutTab = function (tpanel) {
     aboutTab.add('image', [0, 0, 300, 110], bannerBinary);
     var abtStr = '‹ Caspion - version 1.0.0 - Created By Eyal Cohen ›';
     var aboutEditGrp = aboutTab.add('group');
-    aboutEditGrp.add('edittext', [0, 0, 380, 230], abtStr, {
+    aboutEditGrp.add('edittext', [0, 0, 380, 270], abtStr, {
         multiline: true,
         readonly: true,
         scrollable: true
@@ -20154,6 +20158,29 @@ var createHelpWindow = function (updateUiFn) {
     titleAndRestartGrp.add('statictext', undefined, '★ Label Colors ★');
     var restartBtn = titleAndRestartGrp.add('iconbutton', undefined, restartBinary, { style: 'toolbutton' });
     restartBtn.helpTip = 'Restart To Default Settings';
+    var textlabelsSettingGrp = labelSettingsGrp.add('group');
+    var textStaticGrp = textlabelsSettingGrp.add('group');
+    textStaticGrp.add('statictext', undefined, 'Text Label Color:');
+    textStaticGrp.margins.right = 25;
+    var textlabelsGrp = textlabelsSettingGrp.add('group');
+    var textLabelsDD = textlabelsGrp.add('dropdownlist', undefined, labelNames);
+    textLabelsDD.selection = prefs.textLabelIndex;
+    var textSelection = textLabelsDD.selection;
+    var textTheLabel = createColoredButton(textlabelsGrp, labelColors[textSelection.index], [20, 20]);
+    textLabelsDD.onChange = function () {
+        var selection = textLabelsDD.selection;
+        textTheLabel.fillBrush = textTheLabel.graphics.newBrush(textTheLabel.graphics.BrushType.SOLID_COLOR, labelColors[selection.index], 1);
+    };
+    var textRandomCheck = textlabelsSettingGrp.add('checkbox', undefined, 'Random');
+    textRandomCheck.value = prefs.textLabelRandom;
+    var updateFromTextCheck = function (val) {
+        textlabelsGrp.enabled = !val;
+        textTheLabel.fillBrush = textTheLabel.graphics.newBrush(textTheLabel.graphics.BrushType.SOLID_COLOR, val ? [0.2, 0.2, 0.2, 1] : labelColors[textSelection.index], 1);
+    };
+    updateFromTextCheck(textRandomCheck.value);
+    textRandomCheck.onClick = function () {
+        updateFromTextCheck(textRandomCheck.value);
+    };
     var iconlabelsSettingGrp = labelSettingsGrp.add('group');
     var iconStaticGrp = iconlabelsSettingGrp.add('group');
     iconStaticGrp.add('statictext', undefined, 'Icons Label Color:');
@@ -20247,41 +20274,47 @@ var createHelpWindow = function (updateUiFn) {
         });
     };
     restartBtn.onClick = function () {
+        textLabelsDD.selection = BOILERPLATE_PREFS.textLabelIndex;
+        textRandomCheck.value = BOILERPLATE_PREFS.textLabelRandom;
+        textlabelsGrp.enabled = !textRandomCheck.value;
         iconLabelsDD.selection = BOILERPLATE_PREFS.iconsLabelIndex;
         iconRandomCheck.value = BOILERPLATE_PREFS.iconsLabelRandom;
+        iconlabelsGrp.enabled = !iconRandomCheck.value;
         locLabelsDD.selection = BOILERPLATE_PREFS.locsLabelIndex;
         locRandomCheck.value = BOILERPLATE_PREFS.locsLabelRandom;
+        loclabelsGrp.enabled = !locRandomCheck.value;
         texLabelsDD.selection = BOILERPLATE_PREFS.texLabelIndex;
         texRandomCheck.value = BOILERPLATE_PREFS.texLabelRandom;
+        texlabelsGrp.enabled = !texRandomCheck.value;
         colorName1Edit.text = BOILERPLATE_PREFS.iconColor1Name;
         colorHex1Stat.text = BOILERPLATE_PREFS.iconColor1Hex;
         colorName2Edit.text = BOILERPLATE_PREFS.iconColor2Name;
         colorHex2Stat.text = BOILERPLATE_PREFS.iconColor2Hex;
         colorName3Edit.text = BOILERPLATE_PREFS.iconColor3Name;
         colorHex3Stat.text = BOILERPLATE_PREFS.iconColor3Hex;
+        textTheLabel.fillBrush = textTheLabel.graphics.newBrush(textTheLabel.graphics.BrushType.SOLID_COLOR, labelColors[BOILERPLATE_PREFS.textLabelIndex], 1);
         iconTheLabel.fillBrush = iconTheLabel.graphics.newBrush(iconTheLabel.graphics.BrushType.SOLID_COLOR, labelColors[BOILERPLATE_PREFS.iconsLabelIndex], 1);
         locTheLabel.fillBrush = locTheLabel.graphics.newBrush(locTheLabel.graphics.BrushType.SOLID_COLOR, labelColors[BOILERPLATE_PREFS.locsLabelIndex], 1);
         texTheLabel.fillBrush = texTheLabel.graphics.newBrush(texTheLabel.graphics.BrushType.SOLID_COLOR, labelColors[BOILERPLATE_PREFS.texLabelIndex], 1);
-        iconRandomCheck.value = BOILERPLATE_PREFS.iconsLabelRandom;
-        locRandomCheck.value = BOILERPLATE_PREFS.locsLabelRandom;
-        texRandomCheck.value = BOILERPLATE_PREFS.texLabelRandom;
         coloredBtn1.fillBrush = coloredBtn1.graphics.newBrush(coloredBtn1.graphics.BrushType.SOLID_COLOR, hexToRgb(BOILERPLATE_PREFS.iconColor1Hex), 1);
         coloredBtn2.fillBrush = coloredBtn2.graphics.newBrush(coloredBtn2.graphics.BrushType.SOLID_COLOR, hexToRgb(BOILERPLATE_PREFS.iconColor2Hex), 1);
         coloredBtn3.fillBrush = coloredBtn3.graphics.newBrush(coloredBtn3.graphics.BrushType.SOLID_COLOR, hexToRgb(BOILERPLATE_PREFS.iconColor3Hex), 1);
-        iconTheLabel.enabled =
-            locTheLabel.enabled =
-                texTheLabel.enabled =
-                    coloredBtn1.enabled =
-                        coloredBtn2.enabled =
-                            coloredBtn3.enabled =
-                                false;
-        iconTheLabel.enabled =
-            locTheLabel.enabled =
-                texTheLabel.enabled =
-                    coloredBtn1.enabled =
-                        coloredBtn2.enabled =
-                            coloredBtn3.enabled =
-                                true;
+        textTheLabel.enabled =
+            iconTheLabel.enabled =
+                locTheLabel.enabled =
+                    texTheLabel.enabled =
+                        coloredBtn1.enabled =
+                            coloredBtn2.enabled =
+                                coloredBtn3.enabled =
+                                    false;
+        textTheLabel.enabled =
+            iconTheLabel.enabled =
+                locTheLabel.enabled =
+                    texTheLabel.enabled =
+                        coloredBtn1.enabled =
+                            coloredBtn2.enabled =
+                                coloredBtn3.enabled =
+                                    true;
         showHelpTipsCheck.value = BOILERPLATE_PREFS.showHelpTips;
     };
     var okCancelBtnsGrp = helpWin.add('group');
@@ -20295,6 +20328,8 @@ var createHelpWindow = function (updateUiFn) {
     });
     okBtn.onClick = function () {
         writePrefsToMemory({
+            textLabelIndex: textLabelsDD.selection.index,
+            textLabelRandom: textRandomCheck.value,
             iconsLabelIndex: iconLabelsDD.selection.index,
             iconsLabelRandom: iconRandomCheck.value,
             locsLabelIndex: locLabelsDD.selection.index,

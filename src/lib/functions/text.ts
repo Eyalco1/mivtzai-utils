@@ -19,6 +19,11 @@ const createText = (
     app.beginUndoGroup('@@name: Create Text');
 
     const textLayer = comp.layers.addText();
+
+    textLayer.label = parsePrefs().textLabelRandom
+        ? Math.floor(Math.random() * 16) + 1
+        : parsePrefs().textLabelIndex + 1;
+
     const srcText = textLayer
         .property('ADBE Text Properties')
         .property('ADBE Text Document') as Property<any>;

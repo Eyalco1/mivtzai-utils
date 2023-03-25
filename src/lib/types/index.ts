@@ -101,6 +101,8 @@ interface Prefs {
     locsLabelRandom?: boolean;
     texLabelIndex?: number;
     texLabelRandom?: boolean;
+    textLabelIndex?: number;
+    textLabelRandom?: boolean;
     showHelpTips?: boolean;
     iconColor1Name?: string;
     iconColor1Hex?: string;

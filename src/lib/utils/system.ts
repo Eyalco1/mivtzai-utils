@@ -3,6 +3,7 @@ const BOILERPLATE_PREFS: Prefs = {
     iconsLabelIndex: 5,
     locsLabelIndex: 13,
     texLabelIndex: 2,
+    textLabelIndex: 3,
     showHelpTips: true,
     iconColor1Name: 'Black',
     iconColor1Hex: '#000000',

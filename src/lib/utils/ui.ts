@@ -26,7 +26,7 @@ const createAboutTab = (tpanel: TabbedPanel): Tab => {
     aboutTab.add('image', [0, 0, 300, 110], bannerBinary);
     const abtStr = '‹ @@name - version @@version - Created By Eyal Cohen ›';
     const aboutEditGrp = aboutTab.add('group');
-    aboutEditGrp.add('edittext', [0, 0, 380, 230], abtStr, {
+    aboutEditGrp.add('edittext', [0, 0, 380, 270], abtStr, {
         multiline: true,
         readonly: true,
         scrollable: true
@@ -114,6 +114,57 @@ const createHelpWindow = (updateUiFn: () => void) => {
         { style: 'toolbutton' }
     );
     restartBtn.helpTip = 'Restart To Default Settings';
+
+    // == Settings - Labels - Text ==
+    const textlabelsSettingGrp = labelSettingsGrp.add('group');
+    const textStaticGrp = textlabelsSettingGrp.add('group');
+    textStaticGrp.add('statictext', undefined, 'Text Label Color:');
+    // @ts-ignore
+    textStaticGrp.margins.right = 25;
+
+    const textlabelsGrp = textlabelsSettingGrp.add('group');
+
+    const textLabelsDD = textlabelsGrp.add(
+        'dropdownlist',
+        undefined,
+        labelNames
+    );
+    textLabelsDD.selection = prefs.textLabelIndex;
+
+    const textSelection = textLabelsDD.selection as unknown as ListItem;
+    const textTheLabel = createColoredButton(
+        textlabelsGrp,
+        labelColors[textSelection.index],
+        [20, 20]
+    );
+
+    textLabelsDD.onChange = () => {
+        const selection = textLabelsDD.selection as unknown as ListItem;
+        (<any>textTheLabel).fillBrush = (<any>textTheLabel).graphics.newBrush(
+            (<any>textTheLabel).graphics.BrushType.SOLID_COLOR,
+            labelColors[selection.index],
+            1
+        );
+    };
+
+    const textRandomCheck = textlabelsSettingGrp.add(
+        'checkbox',
+        undefined,
+        'Random'
+    );
+    textRandomCheck.value = prefs.textLabelRandom;
+    const updateFromTextCheck = (val: boolean) => {
+        textlabelsGrp.enabled = !val;
+        (<any>textTheLabel).fillBrush = (<any>textTheLabel).graphics.newBrush(
+            (<any>textTheLabel).graphics.BrushType.SOLID_COLOR,
+            val ? [0.2, 0.2, 0.2, 1] : labelColors[textSelection.index],
+            1
+        );
+    };
+    updateFromTextCheck(textRandomCheck.value);
+    textRandomCheck.onClick = () => {
+        updateFromTextCheck(textRandomCheck.value);
+    };
 
     // == Settings - Labels - Icons ==
     const iconlabelsSettingGrp = labelSettingsGrp.add('group');
@@ -330,59 +381,83 @@ const createHelpWindow = (updateUiFn: () => void) => {
     // );
 
     restartBtn.onClick = () => {
+        textLabelsDD.selection = BOILERPLATE_PREFS.textLabelIndex;
+        textRandomCheck.value = BOILERPLATE_PREFS.textLabelRandom;
+        textlabelsGrp.enabled = !textRandomCheck.value;
+
         iconLabelsDD.selection = BOILERPLATE_PREFS.iconsLabelIndex;
         iconRandomCheck.value = BOILERPLATE_PREFS.iconsLabelRandom;
+        iconlabelsGrp.enabled = !iconRandomCheck.value;
+
         locLabelsDD.selection = BOILERPLATE_PREFS.locsLabelIndex;
         locRandomCheck.value = BOILERPLATE_PREFS.locsLabelRandom;
+        loclabelsGrp.enabled = !locRandomCheck.value;
+
         texLabelsDD.selection = BOILERPLATE_PREFS.texLabelIndex;
         texRandomCheck.value = BOILERPLATE_PREFS.texLabelRandom;
+        texlabelsGrp.enabled = !texRandomCheck.value;
+
         colorName1Edit.text = BOILERPLATE_PREFS.iconColor1Name;
         colorHex1Stat.text = BOILERPLATE_PREFS.iconColor1Hex;
+
         colorName2Edit.text = BOILERPLATE_PREFS.iconColor2Name;
         colorHex2Stat.text = BOILERPLATE_PREFS.iconColor2Hex;
+
         colorName3Edit.text = BOILERPLATE_PREFS.iconColor3Name;
         colorHex3Stat.text = BOILERPLATE_PREFS.iconColor3Hex;
+
+        (<any>textTheLabel).fillBrush = (<any>textTheLabel).graphics.newBrush(
+            (<any>textTheLabel).graphics.BrushType.SOLID_COLOR,
+            labelColors[BOILERPLATE_PREFS.textLabelIndex],
+            1
+        );
+
         (<any>iconTheLabel).fillBrush = (<any>iconTheLabel).graphics.newBrush(
             (<any>iconTheLabel).graphics.BrushType.SOLID_COLOR,
             labelColors[BOILERPLATE_PREFS.iconsLabelIndex],
             1
         );
+
         (<any>locTheLabel).fillBrush = (<any>locTheLabel).graphics.newBrush(
             (<any>locTheLabel).graphics.BrushType.SOLID_COLOR,
             labelColors[BOILERPLATE_PREFS.locsLabelIndex],
             1
         );
+
         (<any>texTheLabel).fillBrush = (<any>texTheLabel).graphics.newBrush(
             (<any>texTheLabel).graphics.BrushType.SOLID_COLOR,
             labelColors[BOILERPLATE_PREFS.texLabelIndex],
             1
         );
-        iconRandomCheck.value = BOILERPLATE_PREFS.iconsLabelRandom;
-        locRandomCheck.value = BOILERPLATE_PREFS.locsLabelRandom;
-        texRandomCheck.value = BOILERPLATE_PREFS.texLabelRandom;
+
         (<any>coloredBtn1).fillBrush = (<any>coloredBtn1).graphics.newBrush(
             (<any>coloredBtn1).graphics.BrushType.SOLID_COLOR,
             hexToRgb(BOILERPLATE_PREFS.iconColor1Hex),
             1
         );
+
         (<any>coloredBtn2).fillBrush = (<any>coloredBtn2).graphics.newBrush(
             (<any>coloredBtn2).graphics.BrushType.SOLID_COLOR,
             hexToRgb(BOILERPLATE_PREFS.iconColor2Hex),
             1
         );
+
         (<any>coloredBtn3).fillBrush = (<any>coloredBtn3).graphics.newBrush(
             (<any>coloredBtn3).graphics.BrushType.SOLID_COLOR,
             hexToRgb(BOILERPLATE_PREFS.iconColor3Hex),
             1
         );
-        iconTheLabel.enabled =
+
+        textTheLabel.enabled =
+            iconTheLabel.enabled =
             locTheLabel.enabled =
             texTheLabel.enabled =
             coloredBtn1.enabled =
             coloredBtn2.enabled =
             coloredBtn3.enabled =
                 false;
-        iconTheLabel.enabled =
+        textTheLabel.enabled =
+            iconTheLabel.enabled =
             locTheLabel.enabled =
             texTheLabel.enabled =
             coloredBtn1.enabled =
@@ -406,6 +481,8 @@ const createHelpWindow = (updateUiFn: () => void) => {
     });
     okBtn.onClick = () => {
         writePrefsToMemory({
+            textLabelIndex: (<ListItem>textLabelsDD.selection).index,
+            textLabelRandom: textRandomCheck.value,
             iconsLabelIndex: (<ListItem>iconLabelsDD.selection).index,
             iconsLabelRandom: iconRandomCheck.value,
             locsLabelIndex: (<ListItem>locLabelsDD.selection).index,
