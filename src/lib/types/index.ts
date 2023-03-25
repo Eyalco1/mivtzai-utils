@@ -40,7 +40,8 @@ type IconID =
     | 'Tank'
     | 'Grenade'
     | 'Boat'
-    | 'Binoculars';
+    | 'Binoculars'
+    | 'M16';
 type LocationID =
     | 'Kindergarden'
     | 'Medical Clinic'
