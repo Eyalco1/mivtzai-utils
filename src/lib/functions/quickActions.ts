@@ -111,9 +111,82 @@ const scaleWithOvershootQA = (): void => {
 const importLogos = (): void => {
     app.beginUndoGroup('@@name: Import Logos');
 
-    const idfItem = app.project.importFile(
-        new ImportOptions(File(`${getAssetsPath()}/Logos/IDF_Logo.png`))
-    ) as AVItem;
+    let langExt: 'HE' | 'EN' | 'AR' | 'PR' | 'ES' | 'RS' | 'FR' = null;
+
+    const keyState = ScriptUI.environment.keyboardState;
+    const ctrlOrCmdKey =
+        getOS() === 'Win' ? keyState.ctrlKey : keyState.metaKey;
+
+    if (ctrlOrCmdKey) {
+        if (keyState.shiftKey) {
+            if (keyState.altKey) {
+                langExt = 'FR';
+            } else {
+                langExt = 'PR';
+            }
+        } else if (keyState.altKey) {
+            langExt = 'RS';
+        } else {
+            langExt = 'HE';
+        }
+    } else if (keyState.shiftKey) {
+        if (keyState.altKey) {
+            langExt = 'ES';
+        } else {
+            langExt = 'EN';
+        }
+    } else if (keyState.altKey) {
+        langExt = 'AR';
+    }
+
+    const idfItems: AVItem[] = [];
+    if (langExt !== null) {
+        const idfItem = app.project.importFile(
+            new ImportOptions(
+                File(`${getAssetsPath()}/Logos/IDF_Logo_${langExt}.png`)
+            )
+        ) as AVItem;
+
+        idfItems.push(idfItem);
+    } else {
+        const idfItemHE = app.project.importFile(
+            new ImportOptions(File(`${getAssetsPath()}/Logos/IDF_Logo_HE.png`))
+        ) as AVItem;
+
+        const idfItemEN = app.project.importFile(
+            new ImportOptions(File(`${getAssetsPath()}/Logos/IDF_Logo_EN.png`))
+        ) as AVItem;
+
+        const idfItemAR = app.project.importFile(
+            new ImportOptions(File(`${getAssetsPath()}/Logos/IDF_Logo_AR.png`))
+        ) as AVItem;
+
+        const idfItemES = app.project.importFile(
+            new ImportOptions(File(`${getAssetsPath()}/Logos/IDF_Logo_ES.png`))
+        ) as AVItem;
+
+        const idfItemRS = app.project.importFile(
+            new ImportOptions(File(`${getAssetsPath()}/Logos/IDF_Logo_RS.png`))
+        ) as AVItem;
+
+        const idfItemFR = app.project.importFile(
+            new ImportOptions(File(`${getAssetsPath()}/Logos/IDF_Logo_FR.png`))
+        ) as AVItem;
+
+        const idfItemPR = app.project.importFile(
+            new ImportOptions(File(`${getAssetsPath()}/Logos/IDF_Logo_PR.png`))
+        ) as AVItem;
+
+        idfItems.push(
+            idfItemHE,
+            idfItemEN,
+            idfItemAR,
+            idfItemES,
+            idfItemRS,
+            idfItemFR,
+            idfItemPR
+        );
+    }
 
     const dotzItem = app.project.importFile(
         new ImportOptions(File(`${getAssetsPath()}/Logos/Dotz_Logo.png`))
@@ -122,24 +195,27 @@ const importLogos = (): void => {
     const comp = app.project.activeItem as CompItem;
     if (!comp || !(comp instanceof CompItem)) return;
 
-    const idfLayer = comp.layers.add(idfItem);
+    const padding = (comp.width + comp.height) / 25;
 
-    const padding = 120;
-
-    const idfScale = idfLayer
-        .property('ADBE Transform Group')
-        .property('ADBE Scale') as Property<any>;
-    idfScale.setValue([3, 3]);
-    const idfPos = idfLayer
-        .property('ADBE Transform Group')
-        .property('ADBE Position') as Property<any>;
-    idfPos.setValue([comp.width - padding, 0 + padding]);
+    idfItems.forEach(i => {
+        const idfLayer = comp.layers.add(i);
+        const idfScale = idfLayer
+            .property('ADBE Transform Group')
+            .property('ADBE Scale') as Property<any>;
+        const idfScaleVal = (comp.width + comp.height) / 1000;
+        idfScale.setValue([idfScaleVal, idfScaleVal]);
+        const idfPos = idfLayer
+            .property('ADBE Transform Group')
+            .property('ADBE Position') as Property<any>;
+        idfPos.setValue([comp.width - padding, 0 + padding]);
+    });
 
     const dotzLayer = comp.layers.add(dotzItem);
     const dotzScale = dotzLayer
         .property('ADBE Transform Group')
         .property('ADBE Scale') as Property<any>;
-    dotzScale.setValue([50, 50]);
+    const dotzScaleVal = (comp.width + comp.height) / 60;
+    dotzScale.setValue([dotzScaleVal, dotzScaleVal]);
     const dotzPos = dotzLayer
         .property('ADBE Transform Group')
         .property('ADBE Position') as Property<any>;

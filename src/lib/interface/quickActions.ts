@@ -46,7 +46,12 @@ const createQAUI = (
 
     const rowOne = bigRowOne.add('group');
     createQABtn(rowOne, bgBinary, 'Background', createBg);
-    createQABtn(rowOne, logosBinary, 'Import IDF and Dotz Logos', importLogos);
+    createQABtn(
+        rowOne,
+        logosBinary,
+        `Import IDF and Dotz Logos\n\nCLICK: All IDF Logos\n${metaKeyNameFromOs}: HE\nSHIFT: EN\nALT: AR\n${metaKeyNameFromOs} + SHIFT: PR\nSHIFT + ALT: ES\n${metaKeyNameFromOs} + ALT: RS\n${metaKeyNameFromOs} + SHIFT + ALT: FR`,
+        importLogos
+    );
     createQABtn(rowOne, illusBinary, 'Illustration Text', createIllusText);
     createQABtn(rowOne, popBinary, 'Pop Animation', scaleWithOvershootQA);
 

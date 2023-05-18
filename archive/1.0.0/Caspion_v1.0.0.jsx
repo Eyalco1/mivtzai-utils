@@ -1138,26 +1138,74 @@ var scaleWithOvershootQA = function () {
 };
 var importLogos = function () {
     app.beginUndoGroup('Caspion: Import Logos');
-    var idfItem = app.project.importFile(new ImportOptions(File("".concat(getAssetsPath(), "/Logos/IDF_Logo.png"))));
+    var langExt = null;
+    var keyState = ScriptUI.environment.keyboardState;
+    var ctrlOrCmdKey = getOS() === 'Win' ? keyState.ctrlKey : keyState.metaKey;
+    if (ctrlOrCmdKey) {
+        if (keyState.shiftKey) {
+            if (keyState.altKey) {
+                langExt = 'FR';
+            }
+            else {
+                langExt = 'PR';
+            }
+        }
+        else if (keyState.altKey) {
+            langExt = 'RS';
+        }
+        else {
+            langExt = 'HE';
+        }
+    }
+    else if (keyState.shiftKey) {
+        if (keyState.altKey) {
+            langExt = 'ES';
+        }
+        else {
+            langExt = 'EN';
+        }
+    }
+    else if (keyState.altKey) {
+        langExt = 'AR';
+    }
+    var idfItems = [];
+    if (langExt !== null) {
+        var idfItem = app.project.importFile(new ImportOptions(File("".concat(getAssetsPath(), "/Logos/IDF_Logo_").concat(langExt, ".png"))));
+        idfItems.push(idfItem);
+    }
+    else {
+        var idfItemHE = app.project.importFile(new ImportOptions(File("".concat(getAssetsPath(), "/Logos/IDF_Logo_HE.png"))));
+        var idfItemEN = app.project.importFile(new ImportOptions(File("".concat(getAssetsPath(), "/Logos/IDF_Logo_EN.png"))));
+        var idfItemAR = app.project.importFile(new ImportOptions(File("".concat(getAssetsPath(), "/Logos/IDF_Logo_AR.png"))));
+        var idfItemES = app.project.importFile(new ImportOptions(File("".concat(getAssetsPath(), "/Logos/IDF_Logo_ES.png"))));
+        var idfItemRS = app.project.importFile(new ImportOptions(File("".concat(getAssetsPath(), "/Logos/IDF_Logo_RS.png"))));
+        var idfItemFR = app.project.importFile(new ImportOptions(File("".concat(getAssetsPath(), "/Logos/IDF_Logo_FR.png"))));
+        var idfItemPR = app.project.importFile(new ImportOptions(File("".concat(getAssetsPath(), "/Logos/IDF_Logo_PR.png"))));
+        idfItems.push(idfItemHE, idfItemEN, idfItemAR, idfItemES, idfItemRS, idfItemFR, idfItemPR);
+    }
     var dotzItem = app.project.importFile(new ImportOptions(File("".concat(getAssetsPath(), "/Logos/Dotz_Logo.png"))));
     var comp = app.project.activeItem;
     if (!comp || !(comp instanceof CompItem))
         return;
-    var idfLayer = comp.layers.add(idfItem);
-    var padding = 120;
-    var idfScale = idfLayer
-        .property('ADBE Transform Group')
-        .property('ADBE Scale');
-    idfScale.setValue([3, 3]);
-    var idfPos = idfLayer
-        .property('ADBE Transform Group')
-        .property('ADBE Position');
-    idfPos.setValue([comp.width - padding, 0 + padding]);
+    var padding = (comp.width + comp.height) / 25;
+    idfItems.forEach(function (i) {
+        var idfLayer = comp.layers.add(i);
+        var idfScale = idfLayer
+            .property('ADBE Transform Group')
+            .property('ADBE Scale');
+        var idfScaleVal = (comp.width + comp.height) / 1000;
+        idfScale.setValue([idfScaleVal, idfScaleVal]);
+        var idfPos = idfLayer
+            .property('ADBE Transform Group')
+            .property('ADBE Position');
+        idfPos.setValue([comp.width - padding, 0 + padding]);
+    });
     var dotzLayer = comp.layers.add(dotzItem);
     var dotzScale = dotzLayer
         .property('ADBE Transform Group')
         .property('ADBE Scale');
-    dotzScale.setValue([50, 50]);
+    var dotzScaleVal = (comp.width + comp.height) / 60;
+    dotzScale.setValue([dotzScaleVal, dotzScaleVal]);
     var dotzPos = dotzLayer
         .property('ADBE Transform Group')
         .property('ADBE Position');
@@ -20391,7 +20439,7 @@ var createQAUI = function (tpanel) {
     var bigRowOne = QABtnsGrp.add('group');
     var rowOne = bigRowOne.add('group');
     createQABtn(rowOne, bgBinary, 'Background', createBg);
-    createQABtn(rowOne, logosBinary, 'Import IDF and Dotz Logos', importLogos);
+    createQABtn(rowOne, logosBinary, "Import IDF and Dotz Logos\n\nCLICK: All IDF Logos\n".concat(metaKeyNameFromOs, ": HE\nSHIFT: EN\nALT: AR\n").concat(metaKeyNameFromOs, " + SHIFT: PR\nSHIFT + ALT: ES\n").concat(metaKeyNameFromOs, " + ALT: RS\n").concat(metaKeyNameFromOs, " + SHIFT + ALT: FR"), importLogos);
     createQABtn(rowOne, illusBinary, 'Illustration Text', createIllusText);
     createQABtn(rowOne, popBinary, 'Pop Animation', scaleWithOvershootQA);
     var rowTwo = bigRowOne.add('group');
