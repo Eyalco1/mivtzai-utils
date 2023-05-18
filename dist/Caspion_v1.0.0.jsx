@@ -669,6 +669,20 @@ var importGoogleMaps = function (location) {
     mapLayer.inPoint = comp.time;
     mapLayer.selected = true;
     app.executeCommand(2732);
+    if (location === 'Gaza' && keyState.shiftKey) {
+        var mapPos = mapLayer
+            .property('ADBE Transform Group')
+            .property('ADBE Position');
+        mapPos.setValue([773.25, 526.375]);
+        var mapScale = mapLayer
+            .property('ADBE Transform Group')
+            .property('ADBE Scale');
+        mapScale.setValue([6.8, 6.8]);
+        var mapRot = mapLayer
+            .property('ADBE Transform Group')
+            .property('ADBE Rotate Z');
+        mapRot.setValue(0.5753);
+    }
 };
 var scaleWithOvershoot = function (layers) {
     var comp = app.project.activeItem;
@@ -20387,7 +20401,7 @@ var createQAUI = function (tpanel) {
     createQABtn(rowTwo, ILMapPhotoBinary, "Israel Map Photo\n\nCLICK: Clean Map\n".concat(metaKeyNameFromOs, " + CLICK: Map With Labels"), importIsraelGoogleMaps);
     var bigRowTwo = QABtnsGrp.add('group');
     var rowThree = bigRowTwo.add('group');
-    createQABtn(rowThree, GAMapPhotoBinary, "Gaza Map Photo\n\nCLICK: Clean Map\n".concat(metaKeyNameFromOs, " + CLICK: Map With Labels"), importGazaGoogleMaps);
+    createQABtn(rowThree, GAMapPhotoBinary, "Gaza Map Photo\n\nCLICK: Clean Map\n".concat(metaKeyNameFromOs, " + CLICK: Map With Labels\nHold SHIFT To Fit To Israel Map"), importGazaGoogleMaps);
     createQABtn(rowThree, textReverseBinary, 'Reverse Text', textReverse);
     createQABtn(rowThree, formatBinary, 'Format Layer Name', formatLayerNameQA);
     createQABtn(rowThree, tvaiBinary, 'Tunnel Illustration', createTvaiStroke);

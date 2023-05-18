@@ -255,6 +255,23 @@ const importGoogleMaps = (location: GoogleMapsLocation): void => {
     // Fit To Comp Height
     mapLayer.selected = true;
     app.executeCommand(2732);
+
+    if (location === 'Gaza' && keyState.shiftKey) {
+        const mapPos = mapLayer
+            .property('ADBE Transform Group')
+            .property('ADBE Position') as Property<[number, number]>;
+        mapPos.setValue([773.25, 526.375]);
+
+        const mapScale = mapLayer
+            .property('ADBE Transform Group')
+            .property('ADBE Scale') as Property<[number, number]>;
+        mapScale.setValue([6.8, 6.8]);
+
+        const mapRot = mapLayer
+            .property('ADBE Transform Group')
+            .property('ADBE Rotate Z') as Property<number>;
+        mapRot.setValue(0.5753);
+    }
 };
 
 const scaleWithOvershoot = (layers: Layer[]): void => {

@@ -67,7 +67,7 @@ const createQAUI = (
     createQABtn(
         rowThree,
         GAMapPhotoBinary,
-        `Gaza Map Photo\n\nCLICK: Clean Map\n${metaKeyNameFromOs} + CLICK: Map With Labels`,
+        `Gaza Map Photo\n\nCLICK: Clean Map\n${metaKeyNameFromOs} + CLICK: Map With Labels\nHold SHIFT To Fit To Israel Map`,
         importGazaGoogleMaps
     );
     createQABtn(rowThree, textReverseBinary, 'Reverse Text', textReverse);
