@@ -1223,10 +1223,10 @@ var createIllusText = function () {
     var srcText = textLayer
         .property('ADBE Text Properties')
         .property('ADBE Text Document');
-    srcText.setValue('אילוסטרציה');
+    srcText.setValue('*אילוסטרציה');
     var textDoc = srcText.value;
     textDoc.font = 'NarkisBlockCondensedMF-Bold';
-    textDoc.fontSize = 100;
+    textDoc.fontSize = (comp.width + comp.height) / 30;
     textDoc.applyFill = true;
     textDoc.fillColor = [1, 1, 1];
     textDoc.applyStroke = false;
@@ -1236,8 +1236,16 @@ var createIllusText = function () {
     var layerPos = textLayer
         .property('ADBE Transform Group')
         .property('ADBE Position');
-    var padding = 40;
+    var padding = (comp.width + comp.height) / 75;
     layerPos.setValue([-boundingBox.left + padding, comp.height - padding]);
+    var parade = textLayer.property('ADBE Effect Parade');
+    var dp = parade.addProperty('ADBE Drop Shadow');
+    var dpOpacity = dp.property('ADBE Drop Shadow-0002');
+    dpOpacity.setValue(191.2499330625234);
+    var dpDistance = dp.property('ADBE Drop Shadow-0004');
+    dpDistance.setValue(0);
+    var dpSoftness = dp.property('ADBE Drop Shadow-0005');
+    dpSoftness.setValue(50);
     app.endUndoGroup();
 };
 var formatLayerNameQA = function () {
@@ -20439,7 +20447,7 @@ var createQAUI = function (tpanel) {
     var bigRowOne = QABtnsGrp.add('group');
     var rowOne = bigRowOne.add('group');
     createQABtn(rowOne, bgBinary, 'Background', createBg);
-    createQABtn(rowOne, logosBinary, "Import IDF and Dotz Logos\n\nCLICK: All IDF Logos\n".concat(metaKeyNameFromOs, ": HE\nSHIFT: EN\nALT: AR\n").concat(metaKeyNameFromOs, " + SHIFT: PR\nSHIFT + ALT: ES\n").concat(metaKeyNameFromOs, " + ALT: RS\n").concat(metaKeyNameFromOs, " + SHIFT + ALT: FR"), importLogos);
+    createQABtn(rowOne, logosBinary, "Import IDF and Dotz Logos\n\nCLICK: All IDF Logos\n".concat(metaKeyNameFromOs, ": Hebrew\nSHIFT: English\nALT: Arabic\n").concat(metaKeyNameFromOs, " + SHIFT: Persian\nSHIFT + ALT: Spanish\n").concat(metaKeyNameFromOs, " + ALT: Russian\n").concat(metaKeyNameFromOs, " + SHIFT + ALT: French"), importLogos);
     createQABtn(rowOne, illusBinary, 'Illustration Text', createIllusText);
     createQABtn(rowOne, popBinary, 'Pop Animation', scaleWithOvershootQA);
     var rowTwo = bigRowOne.add('group');

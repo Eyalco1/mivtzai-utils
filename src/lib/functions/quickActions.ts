@@ -238,10 +238,10 @@ const createIllusText = (): void => {
         .property('ADBE Text Properties')
         .property('ADBE Text Document') as Property<any>;
 
-    srcText.setValue('אילוסטרציה');
+    srcText.setValue('*אילוסטרציה');
     const textDoc = srcText.value;
     textDoc.font = 'NarkisBlockCondensedMF-Bold';
-    textDoc.fontSize = 100;
+    textDoc.fontSize = (comp.width + comp.height) / 30;
     textDoc.applyFill = true;
     textDoc.fillColor = [1, 1, 1];
     textDoc.applyStroke = false;
@@ -253,8 +253,17 @@ const createIllusText = (): void => {
         .property('ADBE Transform Group')
         .property('ADBE Position') as Property<any>;
 
-    const padding = 40;
+    const padding = (comp.width + comp.height) / 75;
     layerPos.setValue([-boundingBox.left + padding, comp.height - padding]);
+
+    const parade = textLayer.property('ADBE Effect Parade') as PropertyGroup;
+    const dp = parade.addProperty('ADBE Drop Shadow');
+    const dpOpacity = dp.property('ADBE Drop Shadow-0002') as Property<number>;
+    dpOpacity.setValue(191.2499330625234);
+    const dpDistance = dp.property('ADBE Drop Shadow-0004') as Property<number>;
+    dpDistance.setValue(0);
+    const dpSoftness = dp.property('ADBE Drop Shadow-0005') as Property<number>;
+    dpSoftness.setValue(50);
 
     app.endUndoGroup();
 };
