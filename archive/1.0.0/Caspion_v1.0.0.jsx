@@ -11223,14 +11223,27 @@ var createIconFromId = function (id, circleColor, iconColor, hasCircle, scale) {
     app.endUndoGroup();
 };
 var getColorsFromMitug = function (mitug) {
+    var prefs = parsePrefs();
+    var mapRgb = function (rgb) {
+        return rgb.map(function (c) { return c * 255; });
+    };
     if (mitug === 'Gaza') {
-        return { bg: [255, 255, 255], pri: [22, 39, 92] };
-    }
-    else if (mitug === 'Lebanon') {
-        return { bg: [1, 25, 1], pri: [255, 255, 255] };
+        return {
+            bg: mapRgb(hexToRgb(prefs.mitugGaza.color1)),
+            pri: mapRgb(hexToRgb(prefs.mitugGaza.color2))
+        };
     }
     else if (mitug === 'Pakmaz') {
-        return { bg: [255, 255, 255], pri: [53, 33, 28] };
+        return {
+            bg: mapRgb(hexToRgb(prefs.mitugPakmaz.color1)),
+            pri: mapRgb(hexToRgb(prefs.mitugPakmaz.color2))
+        };
+    }
+    else if (mitug === 'Lebanon') {
+        return {
+            bg: mapRgb(hexToRgb(prefs.mitugLebanon.color1)),
+            pri: mapRgb(hexToRgb(prefs.mitugLebanon.color2))
+        };
     }
 };
 var createLocationBG = function (id, size, mitug) {
