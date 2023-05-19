@@ -1110,8 +1110,8 @@ var createTvaiStroke = function () {
         .property('ADBE Vectors Group');
     var trimPathsGrp = parentGrp.addProperty('ADBE Vector Filter - Trim');
     var trimPathsEnd = trimPathsGrp.property('ADBE Vector Trim End');
-    trimPathsEnd.setValueAtTime(0, 0);
-    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 30, 100);
+    trimPathsEnd.setValueAtTime(comp.time, 0);
+    trimPathsEnd.setValueAtTime(comp.time + (1 / comp.frameRate) * 30, 100);
     trimPathsEnd.setTemporalEaseAtKey(1, [new KeyframeEase(0, 33)], [new KeyframeEase(0, 33)]);
     trimPathsEnd.setTemporalEaseAtKey(2, [new KeyframeEase(0, 88)], [new KeyframeEase(0, 88)]);
     layer
@@ -1646,13 +1646,13 @@ var createAnimatedFrame = function () {
         .property('ADBE Vectors Group');
     var trimPathsGrp = parentGrp.addProperty('ADBE Vector Filter - Trim');
     var trimPathsEnd = trimPathsGrp.property('ADBE Vector Trim End');
-    trimPathsEnd.setValueAtTime(0, 0);
-    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 30, 100);
+    trimPathsEnd.setValueAtTime(comp.time, 0);
+    trimPathsEnd.setValueAtTime(comp.time + (1 / comp.frameRate) * 30, 100);
     trimPathsEnd.setTemporalEaseAtKey(1, [new KeyframeEase(0, 34)], [new KeyframeEase(0, 34)]);
     trimPathsEnd.setTemporalEaseAtKey(2, [new KeyframeEase(0, 92)], [new KeyframeEase(0, 92)]);
     var trimPathsOffset = trimPathsGrp.property('ADBE Vector Trim Offset');
-    trimPathsOffset.setValueAtTime(0, -324);
-    trimPathsOffset.setValueAtTime((1 / comp.frameRate) * 32, 0);
+    trimPathsOffset.setValueAtTime(comp.time, -324);
+    trimPathsOffset.setValueAtTime(comp.time + (1 / comp.frameRate) * 32, 0);
     trimPathsOffset.setTemporalEaseAtKey(1, [new KeyframeEase(0, 24)], [new KeyframeEase(0, 24)]);
     trimPathsOffset.setTemporalEaseAtKey(2, [new KeyframeEase(0, 72)], [new KeyframeEase(0, 72)]);
     app.endUndoGroup();
@@ -1734,8 +1734,8 @@ var createTatzaPath = function () {
         .property('ADBE Vectors Group');
     var trimPathsGrp = parentGrp.addProperty('ADBE Vector Filter - Trim');
     var trimPathsEnd = trimPathsGrp.property('ADBE Vector Trim End');
-    trimPathsEnd.setValueAtTime(0, 0);
-    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 30, 100);
+    trimPathsEnd.setValueAtTime(comp.time, 0);
+    trimPathsEnd.setValueAtTime(comp.time + (1 / comp.frameRate) * 30, 100);
     trimPathsEnd.setTemporalEaseAtKey(1, [new KeyframeEase(0, 33)], [new KeyframeEase(0, 33)]);
     trimPathsEnd.setTemporalEaseAtKey(2, [new KeyframeEase(0, 88)], [new KeyframeEase(0, 88)]);
     layer
@@ -1777,8 +1777,8 @@ var recScaleX = function () {
     var scaleProp = layer
         .property('ADBE Transform Group')
         .property('ADBE Scale');
-    scaleProp.setValueAtTime(0, [0, 100]);
-    scaleProp.setValueAtTime((1 / comp.frameRate) * 14, [100, 100]);
+    scaleProp.setValueAtTime(comp.time, [0, 100]);
+    scaleProp.setValueAtTime(comp.time + (1 / comp.frameRate) * 14, [100, 100]);
     var ease1 = new KeyframeEase(0, 65);
     var ease2 = new KeyframeEase(0, 92);
     scaleProp.setTemporalEaseAtKey(1, [ease1, ease1, ease1], [ease1, ease1, ease1]);
@@ -2012,7 +2012,7 @@ var createArrow = function () {
     var pointerScale = pointerLayer
         .property('ADBE Transform Group')
         .property('ADBE Scale');
-    pointerScale.setValueAtTime(0, [0, 0]);
+    pointerScale.setValueAtTime(comp.time, [0, 0]);
     pointerScale.setValueAtTime((1 / comp.frameRate) * 7 + comp.time, [55.4514, 55.4514]);
     pointerScale.setValueAtTime((1 / comp.frameRate) * 20 + comp.time, [100, 100]);
     pointerScale.setTemporalEaseAtKey(1, [
@@ -2200,6 +2200,7 @@ var createText = function (text, font, animation, addTextEvo, addMask) {
     }
     app.beginUndoGroup('Caspion: Create Text');
     var textLayer = comp.layers.addText();
+    textLayer.inPoint = comp.time;
     textLayer.label = parsePrefs().textLabelRandom
         ? Math.floor(Math.random() * 16) + 1
         : parsePrefs().textLabelIndex + 1;
@@ -20084,18 +20085,18 @@ var loopTexture = function (comp, layer) {
     var rotProp = layer
         .property('ADBE Transform Group')
         .property('ADBE Rotate Z');
-    posProp.setValueAtTime(layer.inPoint, [960, 540]);
-    scaleProp.setValueAtTime(layer.inPoint, [100, 100]);
-    rotProp.setValueAtTime(layer.inPoint, 0);
-    posProp.setValueAtTime((1 / comp.frameRate) * 10 + layer.inPoint, [840, 804]);
-    scaleProp.setValueAtTime((1 / comp.frameRate) * 10 + layer.inPoint, [100, 100]);
-    rotProp.setValueAtTime((1 / comp.frameRate) * 10 + layer.inPoint, 50);
-    posProp.setValueAtTime((1 / comp.frameRate) * 20 + layer.inPoint, [1284, 913]);
-    scaleProp.setValueAtTime((1 / comp.frameRate) * 20 + layer.inPoint, [116, 116]);
-    rotProp.setValueAtTime((1 / comp.frameRate) * 20 + layer.inPoint, -35);
-    posProp.setValueAtTime((1 / comp.frameRate) * 30 + layer.inPoint, [960, 540]);
-    scaleProp.setValueAtTime((1 / comp.frameRate) * 30 + layer.inPoint, [100, 100]);
-    rotProp.setValueAtTime((1 / comp.frameRate) * 30 + layer.inPoint, 0);
+    posProp.setValueAtTime(0, [960, 540]);
+    scaleProp.setValueAtTime(0, [100, 100]);
+    rotProp.setValueAtTime(0, 0);
+    posProp.setValueAtTime((1 / comp.frameRate) * 10, [840, 804]);
+    scaleProp.setValueAtTime((1 / comp.frameRate) * 10, [100, 100]);
+    rotProp.setValueAtTime((1 / comp.frameRate) * 10, 50);
+    posProp.setValueAtTime((1 / comp.frameRate) * 20, [1284, 913]);
+    scaleProp.setValueAtTime((1 / comp.frameRate) * 20, [116, 116]);
+    rotProp.setValueAtTime((1 / comp.frameRate) * 20, -35);
+    posProp.setValueAtTime((1 / comp.frameRate) * 30, [960, 540]);
+    scaleProp.setValueAtTime((1 / comp.frameRate) * 30, [100, 100]);
+    rotProp.setValueAtTime((1 / comp.frameRate) * 30, 0);
     posProp.setInterpolationTypeAtKey(1, KeyframeInterpolationType.HOLD);
     posProp.setInterpolationTypeAtKey(2, KeyframeInterpolationType.HOLD);
     posProp.setInterpolationTypeAtKey(3, KeyframeInterpolationType.HOLD);
@@ -20137,7 +20138,6 @@ var createTexture = function (id, loop, fit) {
     if (!comp || !(comp instanceof CompItem))
         return;
     var textureLayer = comp.layers.add(textureItem);
-    textureLayer.inPoint = comp.time;
     textureLayer.label = parsePrefs().texLabelRandom
         ? Math.floor(Math.random() * 16) + 1
         : parsePrefs().texLabelIndex + 1;

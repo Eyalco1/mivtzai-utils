@@ -19,6 +19,7 @@ const createText = (
     app.beginUndoGroup('@@name: Create Text');
 
     const textLayer = comp.layers.addText();
+    textLayer.inPoint = comp.time;
 
     textLayer.label = parsePrefs().textLabelRandom
         ? Math.floor(Math.random() * 16) + 1

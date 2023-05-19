@@ -68,8 +68,8 @@ const createTvaiStroke = (): void => {
     const trimPathsEnd = trimPathsGrp.property(
         'ADBE Vector Trim End'
     ) as Property<number>;
-    trimPathsEnd.setValueAtTime(0, 0);
-    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 30, 100);
+    trimPathsEnd.setValueAtTime(comp.time, 0);
+    trimPathsEnd.setValueAtTime(comp.time + (1 / comp.frameRate) * 30, 100);
 
     trimPathsEnd.setTemporalEaseAtKey(
         1,
@@ -759,8 +759,8 @@ const createAnimatedFrame = (): void => {
     const trimPathsEnd = trimPathsGrp.property(
         'ADBE Vector Trim End'
     ) as Property<number>;
-    trimPathsEnd.setValueAtTime(0, 0);
-    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 30, 100);
+    trimPathsEnd.setValueAtTime(comp.time, 0);
+    trimPathsEnd.setValueAtTime(comp.time + (1 / comp.frameRate) * 30, 100);
 
     trimPathsEnd.setTemporalEaseAtKey(
         1,
@@ -776,8 +776,8 @@ const createAnimatedFrame = (): void => {
     const trimPathsOffset = trimPathsGrp.property(
         'ADBE Vector Trim Offset'
     ) as Property<number>;
-    trimPathsOffset.setValueAtTime(0, -324);
-    trimPathsOffset.setValueAtTime((1 / comp.frameRate) * 32, 0);
+    trimPathsOffset.setValueAtTime(comp.time, -324);
+    trimPathsOffset.setValueAtTime(comp.time + (1 / comp.frameRate) * 32, 0);
 
     trimPathsOffset.setTemporalEaseAtKey(
         1,
@@ -900,8 +900,8 @@ const createTatzaPath = (): void => {
     const trimPathsEnd = trimPathsGrp.property(
         'ADBE Vector Trim End'
     ) as Property<number>;
-    trimPathsEnd.setValueAtTime(0, 0);
-    trimPathsEnd.setValueAtTime((1 / comp.frameRate) * 30, 100);
+    trimPathsEnd.setValueAtTime(comp.time, 0);
+    trimPathsEnd.setValueAtTime(comp.time + (1 / comp.frameRate) * 30, 100);
 
     trimPathsEnd.setTemporalEaseAtKey(
         1,
@@ -978,8 +978,8 @@ const recScaleX = (): void => {
         .property('ADBE Transform Group')
         .property('ADBE Scale') as Property<[number, number]>;
 
-    scaleProp.setValueAtTime(0, [0, 100]);
-    scaleProp.setValueAtTime((1 / comp.frameRate) * 14, [100, 100]);
+    scaleProp.setValueAtTime(comp.time, [0, 100]);
+    scaleProp.setValueAtTime(comp.time + (1 / comp.frameRate) * 14, [100, 100]);
 
     const ease1 = new KeyframeEase(0, 65);
     const ease2 = new KeyframeEase(0, 92);
@@ -1437,7 +1437,7 @@ const createArrow = (): void => {
     const pointerScale = pointerLayer
         .property('ADBE Transform Group')
         .property('ADBE Scale') as Property<[number, number]>;
-    pointerScale.setValueAtTime(0, [0, 0]);
+    pointerScale.setValueAtTime(comp.time, [0, 0]);
     pointerScale.setValueAtTime(
         (1 / comp.frameRate) * 7 + comp.time,
         [55.4514, 55.4514]

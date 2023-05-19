@@ -49,7 +49,7 @@ const createQAUI = (
     createQABtn(
         rowOne,
         logosBinary,
-        `Import IDF and Dotz Logos\n\nCLICK: All IDF Logos\n${metaKeyNameFromOs}: HE\nSHIFT: EN\nALT: AR\n${metaKeyNameFromOs} + SHIFT: PR\nSHIFT + ALT: ES\n${metaKeyNameFromOs} + ALT: RS\n${metaKeyNameFromOs} + SHIFT + ALT: FR`,
+        `Import IDF and Dotz Logos\n\nCLICK: All IDF Logos\n${metaKeyNameFromOs}: Hebrew\nSHIFT: English\nALT: Arabic\n${metaKeyNameFromOs} + SHIFT: Persian\nSHIFT + ALT: Spanish\n${metaKeyNameFromOs} + ALT: Russian\n${metaKeyNameFromOs} + SHIFT + ALT: French`,
         importLogos
     );
     createQABtn(rowOne, illusBinary, 'Illustration Text', createIllusText);
