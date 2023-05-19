@@ -20340,20 +20340,94 @@ var createHelpWindow = function (updateUiFn) {
     var mitugDD = mitugColorsSettingsGrp.add('dropdownlist', undefined, mitugs);
     mitugDD.selection = 0;
     mitugDD.preferredSize[0] = 100;
-    var mitugColor1Grp = mitugColorsSettingsGrp.add('group');
+    var mitugColorsGrp = mitugColorsSettingsGrp.add('group');
+    mitugColorsGrp.orientation = 'column';
+    var gazaColors = {
+        color1: prefs.mitugGaza.color1,
+        color2: prefs.mitugGaza.color2
+    };
+    var pakmazColors = {
+        color1: prefs.mitugPakmaz.color1,
+        color2: prefs.mitugPakmaz.color2
+    };
+    var lebanonColors = {
+        color1: prefs.mitugLebanon.color1,
+        color2: prefs.mitugLebanon.color2
+    };
+    var mitugColor1Grp = mitugColorsGrp.add('group');
     mitugColor1Grp.alignChildren = ['left', 'center'];
     mitugColor1Grp.spacing = 10;
     mitugColor1Grp.margins = 0;
     mitugColor1Grp.add('statictext', undefined, 'Color 1:');
-    var _d = createColorSwatchAndHexCode(mitugColor1Grp, prefs.mitugGaza.color1), mitugColor1HexStat = _d.colorHexStat, mitugColor1ColoredBtn = _d.coloredBtn;
-    var mitugColor2Grp = mitugColorsSettingsGrp.add('group');
+    var mitugColor1Hex = prefs.mitugGaza.color1;
+    var mitugTheColor1 = hexToRgb(mitugColor1Hex);
+    var mitugColoredBtn1 = createColoredButton(mitugColor1Grp, mitugTheColor1, [20, 20]);
+    mitugColoredBtn1.helpTip = 'Click To Edit';
+    var mitugColorHexStat1 = mitugColor1Grp.add('statictext', undefined, mitugColor1Hex);
+    mitugColorHexStat1.characters = 10;
+    mitugColorHexStat1.helpTip = 'Click The Color Swatch To Edit';
+    mitugColoredBtn1.onClick = function () {
+        var colorPicked = openColorPicker(hexToRgb(mitugColor1Hex));
+        mitugColoredBtn1.fillBrush = (mitugColoredBtn1).graphics.newBrush(mitugColoredBtn1.graphics.BrushType.SOLID_COLOR, colorPicked, 1);
+        mitugColor1Hex =
+            '#' +
+                rgbToHex(colorPicked[0] * 255, colorPicked[1] * 255, colorPicked[2] * 255);
+        mitugColorHexStat1.text = mitugColor1Hex;
+        var chosenMitug = mitugDD.selection.toString();
+        if (chosenMitug === 'Gaza')
+            gazaColors.color1 = mitugColor1Hex;
+        if (chosenMitug === 'Pakmaz')
+            pakmazColors.color1 = mitugColor1Hex;
+        if (chosenMitug === 'Lebanon')
+            lebanonColors.color1 = mitugColor1Hex;
+    };
+    var mitugColor2Grp = mitugColorsGrp.add('group');
     mitugColor2Grp.alignChildren = ['left', 'center'];
     mitugColor2Grp.spacing = 10;
     mitugColor2Grp.margins = 0;
     mitugColor2Grp.add('statictext', undefined, 'Color 2:');
-    var _e = createColorSwatchAndHexCode(mitugColor2Grp, prefs.mitugGaza.color2), mitugColor2HexStat = _e.colorHexStat, mitugColor2ColoredBtn = _e.coloredBtn;
+    var mitugColor2Hex = prefs.mitugGaza.color2;
+    var mitugTheColor2 = hexToRgb(mitugColor2Hex);
+    var mitugColoredBtn2 = createColoredButton(mitugColor2Grp, mitugTheColor2, [20, 20]);
+    mitugColoredBtn2.helpTip = 'Click To Edit';
+    var mitugColorHexStat2 = mitugColor2Grp.add('statictext', undefined, mitugColor2Hex);
+    mitugColorHexStat2.characters = 10;
+    mitugColorHexStat2.helpTip = 'Click The Color Swatch To Edit';
+    mitugColoredBtn2.onClick = function () {
+        var colorPicked = openColorPicker(hexToRgb(mitugColor2Hex));
+        mitugColoredBtn2.fillBrush = (mitugColoredBtn2).graphics.newBrush(mitugColoredBtn2.graphics.BrushType.SOLID_COLOR, colorPicked, 1);
+        mitugColor2Hex =
+            '#' +
+                rgbToHex(colorPicked[0] * 255, colorPicked[1] * 255, colorPicked[2] * 255);
+        mitugColorHexStat2.text = mitugColor2Hex;
+        var chosenMitug = mitugDD.selection.toString();
+        if (chosenMitug === 'Gaza')
+            gazaColors.color2 = mitugColor2Hex;
+        if (chosenMitug === 'Pakmaz')
+            pakmazColors.color2 = mitugColor2Hex;
+        if (chosenMitug === 'Lebanon')
+            lebanonColors.color2 = mitugColor2Hex;
+    };
     mitugDD.onChange = function () {
-        alert(mitugDD.selection.toString());
+        var chosenMitug = mitugDD.selection.toString();
+        var color1hex;
+        var color2hex;
+        if (chosenMitug === 'Gaza') {
+            color1hex = gazaColors.color1;
+            color2hex = gazaColors.color2;
+        }
+        if (chosenMitug === 'Pakmaz') {
+            color1hex = pakmazColors.color1;
+            color2hex = pakmazColors.color2;
+        }
+        if (chosenMitug === 'Lebanon') {
+            color1hex = lebanonColors.color1;
+            color2hex = lebanonColors.color2;
+        }
+        mitugColoredBtn1.fillBrush = (mitugColoredBtn1).graphics.newBrush(mitugColoredBtn1.graphics.BrushType.SOLID_COLOR, hexToRgb(color1hex), 1);
+        mitugColoredBtn2.fillBrush = (mitugColoredBtn2).graphics.newBrush(mitugColoredBtn2.graphics.BrushType.SOLID_COLOR, hexToRgb(color2hex), 1);
+        mitugColorHexStat1.text = color1hex;
+        mitugColorHexStat2.text = color2hex;
     };
     var helpTipSettingGrp = settingsTab.add('group');
     helpTipSettingGrp.margins.bottom = SETTINGS_SPACING;
@@ -20393,8 +20467,15 @@ var createHelpWindow = function (updateUiFn) {
         colorHex2Stat.text = BOILERPLATE_PREFS.iconColor2Hex;
         colorName3Edit.text = BOILERPLATE_PREFS.iconColor3Name;
         colorHex3Stat.text = BOILERPLATE_PREFS.iconColor3Hex;
-        mitugColor1HexStat.text = BOILERPLATE_PREFS.mitugGaza.color1;
-        mitugColor2HexStat.text = BOILERPLATE_PREFS.mitugGaza.color2;
+        gazaColors.color1 = BOILERPLATE_PREFS.mitugGaza.color1;
+        gazaColors.color2 = BOILERPLATE_PREFS.mitugGaza.color2;
+        pakmazColors.color1 = BOILERPLATE_PREFS.mitugPakmaz.color1;
+        pakmazColors.color2 = BOILERPLATE_PREFS.mitugPakmaz.color2;
+        lebanonColors.color1 = BOILERPLATE_PREFS.mitugLebanon.color1;
+        lebanonColors.color2 = BOILERPLATE_PREFS.mitugLebanon.color2;
+        mitugColorHexStat1.text = BOILERPLATE_PREFS.mitugGaza.color1;
+        mitugColorHexStat2.text = BOILERPLATE_PREFS.mitugGaza.color2;
+        mitugDD.selection = 0;
         textTheLabel.fillBrush = textTheLabel.graphics.newBrush(textTheLabel.graphics.BrushType.SOLID_COLOR, labelColors[BOILERPLATE_PREFS.textLabelIndex], 1);
         iconTheLabel.fillBrush = iconTheLabel.graphics.newBrush(iconTheLabel.graphics.BrushType.SOLID_COLOR, labelColors[BOILERPLATE_PREFS.iconsLabelIndex], 1);
         locTheLabel.fillBrush = locTheLabel.graphics.newBrush(locTheLabel.graphics.BrushType.SOLID_COLOR, labelColors[BOILERPLATE_PREFS.locsLabelIndex], 1);
@@ -20402,8 +20483,8 @@ var createHelpWindow = function (updateUiFn) {
         coloredBtn1.fillBrush = coloredBtn1.graphics.newBrush(coloredBtn1.graphics.BrushType.SOLID_COLOR, hexToRgb(BOILERPLATE_PREFS.iconColor1Hex), 1);
         coloredBtn2.fillBrush = coloredBtn2.graphics.newBrush(coloredBtn2.graphics.BrushType.SOLID_COLOR, hexToRgb(BOILERPLATE_PREFS.iconColor2Hex), 1);
         coloredBtn3.fillBrush = coloredBtn3.graphics.newBrush(coloredBtn3.graphics.BrushType.SOLID_COLOR, hexToRgb(BOILERPLATE_PREFS.iconColor3Hex), 1);
-        mitugColor1ColoredBtn.fillBrush = (mitugColor1ColoredBtn).graphics.newBrush(mitugColor1ColoredBtn.graphics.BrushType.SOLID_COLOR, hexToRgb(BOILERPLATE_PREFS.mitugGaza.color1), 1);
-        mitugColor2ColoredBtn.fillBrush = (mitugColor2ColoredBtn).graphics.newBrush(mitugColor2ColoredBtn.graphics.BrushType.SOLID_COLOR, hexToRgb(BOILERPLATE_PREFS.mitugGaza.color2), 1);
+        mitugColoredBtn1.fillBrush = (mitugColoredBtn1).graphics.newBrush(mitugColoredBtn1.graphics.BrushType.SOLID_COLOR, hexToRgb(BOILERPLATE_PREFS.mitugGaza.color1), 1);
+        mitugColoredBtn2.fillBrush = (mitugColoredBtn2).graphics.newBrush(mitugColoredBtn2.graphics.BrushType.SOLID_COLOR, hexToRgb(BOILERPLATE_PREFS.mitugGaza.color2), 1);
         textTheLabel.enabled =
             iconTheLabel.enabled =
                 locTheLabel.enabled =
@@ -20411,8 +20492,8 @@ var createHelpWindow = function (updateUiFn) {
                         coloredBtn1.enabled =
                             coloredBtn2.enabled =
                                 coloredBtn3.enabled =
-                                    mitugColor1ColoredBtn.enabled =
-                                        mitugColor2ColoredBtn.enabled =
+                                    mitugColoredBtn1.enabled =
+                                        mitugColoredBtn2.enabled =
                                             false;
         textTheLabel.enabled =
             iconTheLabel.enabled =
@@ -20421,8 +20502,8 @@ var createHelpWindow = function (updateUiFn) {
                         coloredBtn1.enabled =
                             coloredBtn2.enabled =
                                 coloredBtn3.enabled =
-                                    mitugColor1ColoredBtn.enabled =
-                                        mitugColor2ColoredBtn.enabled =
+                                    mitugColoredBtn1.enabled =
+                                        mitugColoredBtn2.enabled =
                                             true;
         showHelpTipsCheck.value = BOILERPLATE_PREFS.showHelpTips;
     };
@@ -20453,8 +20534,16 @@ var createHelpWindow = function (updateUiFn) {
             iconColor3Name: colorName3Edit.text,
             iconColor3Hex: colorHex3Stat.text,
             mitugGaza: {
-                color1: mitugColor1HexStat.text,
-                color2: mitugColor2HexStat.text
+                color1: gazaColors.color1,
+                color2: gazaColors.color2
+            },
+            mitugPakmaz: {
+                color1: pakmazColors.color1,
+                color2: pakmazColors.color2
+            },
+            mitugLebanon: {
+                color1: lebanonColors.color1,
+                color2: lebanonColors.color2
             }
         });
         updateQAHelpTips(showHelpTipsCheck.value);

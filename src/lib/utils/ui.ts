@@ -364,7 +364,7 @@ const createHelpWindow = (updateUiFn: () => void) => {
 
     mitugColorsSettingsGrp.add('statictext', undefined, '★ Mitug Colors ★');
 
-    const mitugs = ['Gaza', 'Pakmaz', 'Lebanon'];
+    const mitugs: Mitug[] = ['Gaza', 'Pakmaz', 'Lebanon'];
     const mitugDD = mitugColorsSettingsGrp.add(
         'dropdownlist',
         undefined,
@@ -373,32 +373,239 @@ const createHelpWindow = (updateUiFn: () => void) => {
     mitugDD.selection = 0;
     mitugDD.preferredSize[0] = 100;
 
-    const mitugColor1Grp = mitugColorsSettingsGrp.add('group');
+    /*
+    const createMitugColorsGrp = (mitugObj: {
+        color1: string;
+        color2: string;
+    }): {
+        mitugColorsGrp: Group;
+        mitugColor1HexStat: StaticText;
+        mitugColor1ColoredBtn: IconButton;
+        mitugColor2HexStat: StaticText;
+        mitugColor2ColoredBtn: IconButton;
+    } => {
+        const mitugColorsGrp = mitugColorsSettingsGrp.add('group');
+        mitugColorsGrp.orientation = 'column';
+
+        const mitugColor1Grp = mitugColorsGrp.add('group');
+        mitugColor1Grp.alignChildren = ['left', 'center'];
+        mitugColor1Grp.spacing = 10;
+        mitugColor1Grp.margins = 0;
+
+        mitugColor1Grp.add('statictext', undefined, 'Color 1:');
+
+        const {
+            colorHexStat: mitugColor1HexStat,
+            coloredBtn: mitugColor1ColoredBtn
+        } = createColorSwatchAndHexCode(mitugColor1Grp, mitugObj.color1);
+
+        const mitugColor2Grp = mitugColorsGrp.add('group');
+        mitugColor2Grp.alignChildren = ['left', 'center'];
+        mitugColor2Grp.spacing = 10;
+        mitugColor2Grp.margins = 0;
+
+        mitugColor2Grp.add('statictext', undefined, 'Color 2:');
+
+        const {
+            colorHexStat: mitugColor2HexStat,
+            coloredBtn: mitugColor2ColoredBtn
+        } = createColorSwatchAndHexCode(mitugColor2Grp, mitugObj.color2);
+
+        return {
+            mitugColorsGrp,
+            mitugColor1HexStat,
+            mitugColor1ColoredBtn,
+            mitugColor2HexStat,
+            mitugColor2ColoredBtn
+        };
+    };
+    */
+
+    // const {
+    //     mitugColorsGrp: GAZA_mitugColorsGrp,
+    //     mitugColor1ColoredBtn: GAZA_mitugColor1ColoredBtn,
+    //     mitugColor1HexStat: GAZA_mitugColor1HexStat,
+    //     mitugColor2ColoredBtn: GAZA_mitugColor2ColoredBtn,
+    //     mitugColor2HexStat: GAZA_mitugColor2HexStat
+    // } = createMitugColorsGrp(prefs.mitugGaza);
+
+    // const {
+    //     mitugColorsGrp: PAKMAZ_mitugColorsGrp,
+    //     mitugColor1ColoredBtn: PAKMAZ_mitugColor1ColoredBtn,
+    //     mitugColor1HexStat: PAKMAZ_mitugColor1HexStat,
+    //     mitugColor2ColoredBtn: PAKMAZ_mitugColor2ColoredBtn,
+    //     mitugColor2HexStat: PAKMAZ_mitugColor2HexStat
+    // } = createMitugColorsGrp(prefs.mitugPakmaz);
+
+    // const {
+    //     mitugColorsGrp: LEBANON_mitugColorsGrp,
+    //     mitugColor1ColoredBtn: LEBANON_mitugColor1ColoredBtn,
+    //     mitugColor1HexStat: LEBANON_mitugColor1HexStat,
+    //     mitugColor2ColoredBtn: LEBANON_mitugColor2ColoredBtn,
+    //     mitugColor2HexStat: LEBANON_mitugColor2HexStat
+    // } = createMitugColorsGrp(prefs.mitugLebanon);
+
+    // GAZA_mitugColorsGrp.show();
+    // PAKMAZ_mitugColorsGrp.hide();
+    // LEBANON_mitugColorsGrp.hide();
+
+    const mitugColorsGrp = mitugColorsSettingsGrp.add('group');
+    mitugColorsGrp.orientation = 'column';
+
+    const gazaColors = {
+        color1: prefs.mitugGaza.color1,
+        color2: prefs.mitugGaza.color2
+    };
+
+    const pakmazColors = {
+        color1: prefs.mitugPakmaz.color1,
+        color2: prefs.mitugPakmaz.color2
+    };
+
+    const lebanonColors = {
+        color1: prefs.mitugLebanon.color1,
+        color2: prefs.mitugLebanon.color2
+    };
+
+    // Color 1
+    const mitugColor1Grp = mitugColorsGrp.add('group');
     mitugColor1Grp.alignChildren = ['left', 'center'];
     mitugColor1Grp.spacing = 10;
     mitugColor1Grp.margins = 0;
 
     mitugColor1Grp.add('statictext', undefined, 'Color 1:');
 
-    const {
-        colorHexStat: mitugColor1HexStat,
-        coloredBtn: mitugColor1ColoredBtn
-    } = createColorSwatchAndHexCode(mitugColor1Grp, prefs.mitugGaza.color1);
+    let mitugColor1Hex = prefs.mitugGaza.color1;
 
-    const mitugColor2Grp = mitugColorsSettingsGrp.add('group');
+    const mitugTheColor1: [number, number, number] = hexToRgb(mitugColor1Hex);
+    const mitugColoredBtn1 = createColoredButton(
+        mitugColor1Grp,
+        mitugTheColor1,
+        [20, 20]
+    );
+    mitugColoredBtn1.helpTip = 'Click To Edit';
+    const mitugColorHexStat1 = mitugColor1Grp.add(
+        'statictext',
+        undefined,
+        mitugColor1Hex
+    );
+    mitugColorHexStat1.characters = 10;
+    mitugColorHexStat1.helpTip = 'Click The Color Swatch To Edit';
+
+    mitugColoredBtn1.onClick = () => {
+        const colorPicked = openColorPicker(hexToRgb(mitugColor1Hex));
+        (<any>mitugColoredBtn1).fillBrush = (<any>(
+            mitugColoredBtn1
+        )).graphics.newBrush(
+            (<any>mitugColoredBtn1).graphics.BrushType.SOLID_COLOR,
+            colorPicked,
+            1
+        );
+
+        mitugColor1Hex =
+            '#' +
+            rgbToHex(
+                colorPicked[0] * 255,
+                colorPicked[1] * 255,
+                colorPicked[2] * 255
+            );
+
+        mitugColorHexStat1.text = mitugColor1Hex;
+
+        const chosenMitug = mitugDD.selection.toString() as Mitug;
+        if (chosenMitug === 'Gaza') gazaColors.color1 = mitugColor1Hex;
+        if (chosenMitug === 'Pakmaz') pakmazColors.color1 = mitugColor1Hex;
+        if (chosenMitug === 'Lebanon') lebanonColors.color1 = mitugColor1Hex;
+    };
+
+    // Color 1
+    const mitugColor2Grp = mitugColorsGrp.add('group');
     mitugColor2Grp.alignChildren = ['left', 'center'];
     mitugColor2Grp.spacing = 10;
     mitugColor2Grp.margins = 0;
 
     mitugColor2Grp.add('statictext', undefined, 'Color 2:');
 
-    const {
-        colorHexStat: mitugColor2HexStat,
-        coloredBtn: mitugColor2ColoredBtn
-    } = createColorSwatchAndHexCode(mitugColor2Grp, prefs.mitugGaza.color2);
+    let mitugColor2Hex = prefs.mitugGaza.color2;
+
+    const mitugTheColor2: [number, number, number] = hexToRgb(mitugColor2Hex);
+    const mitugColoredBtn2 = createColoredButton(
+        mitugColor2Grp,
+        mitugTheColor2,
+        [20, 20]
+    );
+    mitugColoredBtn2.helpTip = 'Click To Edit';
+    const mitugColorHexStat2 = mitugColor2Grp.add(
+        'statictext',
+        undefined,
+        mitugColor2Hex
+    );
+    mitugColorHexStat2.characters = 10;
+    mitugColorHexStat2.helpTip = 'Click The Color Swatch To Edit';
+
+    mitugColoredBtn2.onClick = () => {
+        const colorPicked = openColorPicker(hexToRgb(mitugColor2Hex));
+        (<any>mitugColoredBtn2).fillBrush = (<any>(
+            mitugColoredBtn2
+        )).graphics.newBrush(
+            (<any>mitugColoredBtn2).graphics.BrushType.SOLID_COLOR,
+            colorPicked,
+            1
+        );
+
+        mitugColor2Hex =
+            '#' +
+            rgbToHex(
+                colorPicked[0] * 255,
+                colorPicked[1] * 255,
+                colorPicked[2] * 255
+            );
+
+        mitugColorHexStat2.text = mitugColor2Hex;
+
+        const chosenMitug = mitugDD.selection.toString() as Mitug;
+        if (chosenMitug === 'Gaza') gazaColors.color2 = mitugColor2Hex;
+        if (chosenMitug === 'Pakmaz') pakmazColors.color2 = mitugColor2Hex;
+        if (chosenMitug === 'Lebanon') lebanonColors.color2 = mitugColor2Hex;
+    };
 
     mitugDD.onChange = () => {
-        alert(mitugDD.selection.toString());
+        const chosenMitug = mitugDD.selection.toString() as Mitug;
+
+        let color1hex: string;
+        let color2hex: string;
+
+        if (chosenMitug === 'Gaza') {
+            color1hex = gazaColors.color1;
+            color2hex = gazaColors.color2;
+        }
+        if (chosenMitug === 'Pakmaz') {
+            color1hex = pakmazColors.color1;
+            color2hex = pakmazColors.color2;
+        }
+        if (chosenMitug === 'Lebanon') {
+            color1hex = lebanonColors.color1;
+            color2hex = lebanonColors.color2;
+        }
+
+        (<any>mitugColoredBtn1).fillBrush = (<any>(
+            mitugColoredBtn1
+        )).graphics.newBrush(
+            (<any>mitugColoredBtn1).graphics.BrushType.SOLID_COLOR,
+            hexToRgb(color1hex),
+            1
+        );
+
+        (<any>mitugColoredBtn2).fillBrush = (<any>(
+            mitugColoredBtn2
+        )).graphics.newBrush(
+            (<any>mitugColoredBtn2).graphics.BrushType.SOLID_COLOR,
+            hexToRgb(color2hex),
+            1
+        );
+
+        mitugColorHexStat1.text = color1hex;
+        mitugColorHexStat2.text = color2hex;
     };
 
     // === Settings - Help Tips ===
@@ -456,8 +663,17 @@ const createHelpWindow = (updateUiFn: () => void) => {
         colorName3Edit.text = BOILERPLATE_PREFS.iconColor3Name;
         colorHex3Stat.text = BOILERPLATE_PREFS.iconColor3Hex;
 
-        mitugColor1HexStat.text = BOILERPLATE_PREFS.mitugGaza.color1;
-        mitugColor2HexStat.text = BOILERPLATE_PREFS.mitugGaza.color2;
+        gazaColors.color1 = BOILERPLATE_PREFS.mitugGaza.color1;
+        gazaColors.color2 = BOILERPLATE_PREFS.mitugGaza.color2;
+        pakmazColors.color1 = BOILERPLATE_PREFS.mitugPakmaz.color1;
+        pakmazColors.color2 = BOILERPLATE_PREFS.mitugPakmaz.color2;
+        lebanonColors.color1 = BOILERPLATE_PREFS.mitugLebanon.color1;
+        lebanonColors.color2 = BOILERPLATE_PREFS.mitugLebanon.color2;
+
+        mitugColorHexStat1.text = BOILERPLATE_PREFS.mitugGaza.color1;
+        mitugColorHexStat2.text = BOILERPLATE_PREFS.mitugGaza.color2;
+
+        mitugDD.selection = 0;
 
         (<any>textTheLabel).fillBrush = (<any>textTheLabel).graphics.newBrush(
             (<any>textTheLabel).graphics.BrushType.SOLID_COLOR,
@@ -501,18 +717,18 @@ const createHelpWindow = (updateUiFn: () => void) => {
             1
         );
 
-        (<any>mitugColor1ColoredBtn).fillBrush = (<any>(
-            mitugColor1ColoredBtn
+        (<any>mitugColoredBtn1).fillBrush = (<any>(
+            mitugColoredBtn1
         )).graphics.newBrush(
-            (<any>mitugColor1ColoredBtn).graphics.BrushType.SOLID_COLOR,
+            (<any>mitugColoredBtn1).graphics.BrushType.SOLID_COLOR,
             hexToRgb(BOILERPLATE_PREFS.mitugGaza.color1),
             1
         );
 
-        (<any>mitugColor2ColoredBtn).fillBrush = (<any>(
-            mitugColor2ColoredBtn
+        (<any>mitugColoredBtn2).fillBrush = (<any>(
+            mitugColoredBtn2
         )).graphics.newBrush(
-            (<any>mitugColor2ColoredBtn).graphics.BrushType.SOLID_COLOR,
+            (<any>mitugColoredBtn2).graphics.BrushType.SOLID_COLOR,
             hexToRgb(BOILERPLATE_PREFS.mitugGaza.color2),
             1
         );
@@ -524,8 +740,8 @@ const createHelpWindow = (updateUiFn: () => void) => {
             coloredBtn1.enabled =
             coloredBtn2.enabled =
             coloredBtn3.enabled =
-            mitugColor1ColoredBtn.enabled =
-            mitugColor2ColoredBtn.enabled =
+            mitugColoredBtn1.enabled =
+            mitugColoredBtn2.enabled =
                 false;
         textTheLabel.enabled =
             iconTheLabel.enabled =
@@ -534,8 +750,8 @@ const createHelpWindow = (updateUiFn: () => void) => {
             coloredBtn1.enabled =
             coloredBtn2.enabled =
             coloredBtn3.enabled =
-            mitugColor1ColoredBtn.enabled =
-            mitugColor2ColoredBtn.enabled =
+            mitugColoredBtn1.enabled =
+            mitugColoredBtn2.enabled =
                 true;
 
         showHelpTipsCheck.value = BOILERPLATE_PREFS.showHelpTips;
@@ -570,8 +786,16 @@ const createHelpWindow = (updateUiFn: () => void) => {
             iconColor3Name: colorName3Edit.text,
             iconColor3Hex: colorHex3Stat.text,
             mitugGaza: {
-                color1: mitugColor1HexStat.text,
-                color2: mitugColor2HexStat.text
+                color1: gazaColors.color1,
+                color2: gazaColors.color2
+            },
+            mitugPakmaz: {
+                color1: pakmazColors.color1,
+                color2: pakmazColors.color2
+            },
+            mitugLebanon: {
+                color1: lebanonColors.color1,
+                color2: lebanonColors.color2
             }
         });
 
