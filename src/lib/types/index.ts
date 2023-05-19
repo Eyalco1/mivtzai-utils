@@ -110,6 +110,9 @@ interface Prefs {
     iconColor2Hex?: string;
     iconColor3Name?: string;
     iconColor3Hex?: string;
+    mitugGaza?: { color1: string; color2: string };
+    mitugPakmaz?: { color1: string; color2: string };
+    mitugLebanon?: { color1: string; color2: string };
 }
 
 type GoogleMapsLocation = 'Israel' | 'Gaza';

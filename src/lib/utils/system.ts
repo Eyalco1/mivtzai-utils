@@ -10,7 +10,10 @@ const BOILERPLATE_PREFS: Prefs = {
     iconColor2Name: 'White',
     iconColor2Hex: '#ffffff',
     iconColor3Name: 'Red',
-    iconColor3Hex: '#c51818'
+    iconColor3Hex: '#c51818',
+    mitugGaza: { color1: '#ffffff', color2: '#16275c' },
+    mitugPakmaz: { color1: '#ffffff', color2: '#35211c' },
+    mitugLebanon: { color1: '#011901', color2: '#ffffff' }
 };
 
 const getOS = (): OS => {

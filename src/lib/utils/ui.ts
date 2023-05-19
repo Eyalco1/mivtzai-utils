@@ -37,6 +37,37 @@ const createAboutTab = (tpanel: TabbedPanel): Tab => {
     return aboutTab;
 };
 
+const createColorSwatchAndHexCode = (
+    container: Group,
+    colorHex: string
+): { colorHexStat: StaticText; coloredBtn: IconButton } => {
+    const theColor: [number, number, number] = hexToRgb(colorHex);
+    const coloredBtn = createColoredButton(container, theColor, [20, 20]);
+    coloredBtn.helpTip = 'Click To Edit';
+    const colorHexStat = container.add('statictext', undefined, colorHex);
+    colorHexStat.characters = 10;
+    colorHexStat.helpTip = 'Click The Color Swatch To Edit';
+
+    coloredBtn.onClick = () => {
+        const colorPicked = openColorPicker(hexToRgb(colorHexStat.text));
+        (<any>coloredBtn).fillBrush = (<any>coloredBtn).graphics.newBrush(
+            (<any>coloredBtn).graphics.BrushType.SOLID_COLOR,
+            colorPicked,
+            1
+        );
+
+        colorHexStat.text =
+            '#' +
+            rgbToHex(
+                colorPicked[0] * 255,
+                colorPicked[1] * 255,
+                colorPicked[2] * 255
+            );
+    };
+
+    return { colorHexStat, coloredBtn };
+};
+
 const createIconColorRow = (
     container: Group,
     colorName: string,
@@ -52,29 +83,10 @@ const createIconColorRow = (
     colorNameEdit.preferredSize[0] = 80;
     colorGrp.add('statictext', undefined, 'Hex Color:');
 
-    const theColor: [number, number, number] = hexToRgb(colorHex);
-    const coloredBtn = createColoredButton(colorGrp, theColor, [20, 20]);
-    coloredBtn.helpTip = 'Click To Edit';
-    const colorHexStat = colorGrp.add('statictext', undefined, colorHex);
-    colorHexStat.characters = 10;
-    colorHexStat.helpTip = 'Click The Color Swatch To Edit';
-
-    coloredBtn.onClick = () => {
-        const colorPicked = openColorPicker(hexToRgb(colorHex));
-        (<any>coloredBtn).fillBrush = (<any>coloredBtn).graphics.newBrush(
-            (<any>coloredBtn).graphics.BrushType.SOLID_COLOR,
-            colorPicked,
-            1
-        );
-
-        colorHexStat.text =
-            '#' +
-            rgbToHex(
-                colorPicked[0] * 255,
-                colorPicked[1] * 255,
-                colorPicked[2] * 255
-            );
-    };
+    const { colorHexStat, coloredBtn } = createColorSwatchAndHexCode(
+        colorGrp,
+        colorHex
+    );
 
     return { colorNameEdit, colorHexStat, coloredBtn };
 };
@@ -313,15 +325,6 @@ const createHelpWindow = (updateUiFn: () => void) => {
     // @ts-ignore
     iconColorsSettingsGrp.margins.bottom = SETTINGS_SPACING;
 
-    settingsTab.orientation =
-        labelSettingsGrp.orientation =
-        iconColorsSettingsGrp.orientation =
-            'column';
-    settingsTab.alignChildren =
-        labelSettingsGrp.alignChildren =
-        iconColorsSettingsGrp.alignChildren =
-            ['left', 'top'];
-
     iconColorsSettingsGrp.add('statictext', undefined, '★ Icon Colors ★');
 
     const {
@@ -354,6 +357,50 @@ const createHelpWindow = (updateUiFn: () => void) => {
         prefs.iconColor3Hex
     );
 
+    // === Settings - Mitug Colors ===
+    const mitugColorsSettingsGrp = settingsTab.add('group');
+    // @ts-ignore
+    mitugColorsSettingsGrp.margins.bottom = SETTINGS_SPACING;
+
+    mitugColorsSettingsGrp.add('statictext', undefined, '★ Mitug Colors ★');
+
+    const mitugs = ['Gaza', 'Pakmaz', 'Lebanon'];
+    const mitugDD = mitugColorsSettingsGrp.add(
+        'dropdownlist',
+        undefined,
+        mitugs
+    );
+    mitugDD.selection = 0;
+    mitugDD.preferredSize[0] = 100;
+
+    const mitugColor1Grp = mitugColorsSettingsGrp.add('group');
+    mitugColor1Grp.alignChildren = ['left', 'center'];
+    mitugColor1Grp.spacing = 10;
+    mitugColor1Grp.margins = 0;
+
+    mitugColor1Grp.add('statictext', undefined, 'Color 1:');
+
+    const {
+        colorHexStat: mitugColor1HexStat,
+        coloredBtn: mitugColor1ColoredBtn
+    } = createColorSwatchAndHexCode(mitugColor1Grp, prefs.mitugGaza.color1);
+
+    const mitugColor2Grp = mitugColorsSettingsGrp.add('group');
+    mitugColor2Grp.alignChildren = ['left', 'center'];
+    mitugColor2Grp.spacing = 10;
+    mitugColor2Grp.margins = 0;
+
+    mitugColor2Grp.add('statictext', undefined, 'Color 2:');
+
+    const {
+        colorHexStat: mitugColor2HexStat,
+        coloredBtn: mitugColor2ColoredBtn
+    } = createColorSwatchAndHexCode(mitugColor2Grp, prefs.mitugGaza.color2);
+
+    mitugDD.onChange = () => {
+        alert(mitugDD.selection.toString());
+    };
+
     // === Settings - Help Tips ===
     const helpTipSettingGrp = settingsTab.add('group');
     // @ts-ignore
@@ -371,14 +418,17 @@ const createHelpWindow = (updateUiFn: () => void) => {
         });
     };
 
-    // const warnGrp = settingsTab.add('group');
-    // warnGrp.alignment = ['fill', 'bottom'];
-    // warnGrp.spacing = 40;
-    // warnGrp.add(
-    //     'statictext',
-    //     undefined,
-    //     '☛ You may need to close and open the script to see the changes'
-    // );
+    // General Layout
+    settingsTab.orientation =
+        labelSettingsGrp.orientation =
+        iconColorsSettingsGrp.orientation =
+        mitugColorsSettingsGrp.orientation =
+            'column';
+    settingsTab.alignChildren =
+        labelSettingsGrp.alignChildren =
+        iconColorsSettingsGrp.alignChildren =
+        mitugColorsSettingsGrp.alignChildren =
+            ['left', 'top'];
 
     restartBtn.onClick = () => {
         textLabelsDD.selection = BOILERPLATE_PREFS.textLabelIndex;
@@ -405,6 +455,9 @@ const createHelpWindow = (updateUiFn: () => void) => {
 
         colorName3Edit.text = BOILERPLATE_PREFS.iconColor3Name;
         colorHex3Stat.text = BOILERPLATE_PREFS.iconColor3Hex;
+
+        mitugColor1HexStat.text = BOILERPLATE_PREFS.mitugGaza.color1;
+        mitugColor2HexStat.text = BOILERPLATE_PREFS.mitugGaza.color2;
 
         (<any>textTheLabel).fillBrush = (<any>textTheLabel).graphics.newBrush(
             (<any>textTheLabel).graphics.BrushType.SOLID_COLOR,
@@ -448,6 +501,22 @@ const createHelpWindow = (updateUiFn: () => void) => {
             1
         );
 
+        (<any>mitugColor1ColoredBtn).fillBrush = (<any>(
+            mitugColor1ColoredBtn
+        )).graphics.newBrush(
+            (<any>mitugColor1ColoredBtn).graphics.BrushType.SOLID_COLOR,
+            hexToRgb(BOILERPLATE_PREFS.mitugGaza.color1),
+            1
+        );
+
+        (<any>mitugColor2ColoredBtn).fillBrush = (<any>(
+            mitugColor2ColoredBtn
+        )).graphics.newBrush(
+            (<any>mitugColor2ColoredBtn).graphics.BrushType.SOLID_COLOR,
+            hexToRgb(BOILERPLATE_PREFS.mitugGaza.color2),
+            1
+        );
+
         textTheLabel.enabled =
             iconTheLabel.enabled =
             locTheLabel.enabled =
@@ -455,6 +524,8 @@ const createHelpWindow = (updateUiFn: () => void) => {
             coloredBtn1.enabled =
             coloredBtn2.enabled =
             coloredBtn3.enabled =
+            mitugColor1ColoredBtn.enabled =
+            mitugColor2ColoredBtn.enabled =
                 false;
         textTheLabel.enabled =
             iconTheLabel.enabled =
@@ -463,6 +534,8 @@ const createHelpWindow = (updateUiFn: () => void) => {
             coloredBtn1.enabled =
             coloredBtn2.enabled =
             coloredBtn3.enabled =
+            mitugColor1ColoredBtn.enabled =
+            mitugColor2ColoredBtn.enabled =
                 true;
 
         showHelpTipsCheck.value = BOILERPLATE_PREFS.showHelpTips;
@@ -495,7 +568,11 @@ const createHelpWindow = (updateUiFn: () => void) => {
             iconColor2Name: colorName2Edit.text,
             iconColor2Hex: colorHex2Stat.text,
             iconColor3Name: colorName3Edit.text,
-            iconColor3Hex: colorHex3Stat.text
+            iconColor3Hex: colorHex3Stat.text,
+            mitugGaza: {
+                color1: mitugColor1HexStat.text,
+                color2: mitugColor2HexStat.text
+            }
         });
 
         updateQAHelpTips(showHelpTipsCheck.value);

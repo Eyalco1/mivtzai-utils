@@ -482,7 +482,10 @@ var BOILERPLATE_PREFS = {
     iconColor2Name: 'White',
     iconColor2Hex: '#ffffff',
     iconColor3Name: 'Red',
-    iconColor3Hex: '#c51818'
+    iconColor3Hex: '#c51818',
+    mitugGaza: { color1: '#ffffff', color2: '#16275c' },
+    mitugPakmaz: { color1: '#ffffff', color2: '#35211c' },
+    mitugLebanon: { color1: '#011901', color2: '#ffffff' }
 };
 var getOS = function () {
     if ($.os.indexOf('Win') != -1)
@@ -20187,25 +20190,29 @@ var createAboutTab = function (tpanel) {
     aboutEditGrp.margins.left = 10;
     return aboutTab;
 };
+var createColorSwatchAndHexCode = function (container, colorHex) {
+    var theColor = hexToRgb(colorHex);
+    var coloredBtn = createColoredButton(container, theColor, [20, 20]);
+    coloredBtn.helpTip = 'Click To Edit';
+    var colorHexStat = container.add('statictext', undefined, colorHex);
+    colorHexStat.characters = 10;
+    colorHexStat.helpTip = 'Click The Color Swatch To Edit';
+    coloredBtn.onClick = function () {
+        var colorPicked = openColorPicker(hexToRgb(colorHexStat.text));
+        coloredBtn.fillBrush = coloredBtn.graphics.newBrush(coloredBtn.graphics.BrushType.SOLID_COLOR, colorPicked, 1);
+        colorHexStat.text =
+            '#' +
+                rgbToHex(colorPicked[0] * 255, colorPicked[1] * 255, colorPicked[2] * 255);
+    };
+    return { colorHexStat: colorHexStat, coloredBtn: coloredBtn };
+};
 var createIconColorRow = function (container, colorName, colorHex) {
     var colorGrp = container.add('group');
     colorGrp.add('statictext', undefined, 'Name:');
     var colorNameEdit = colorGrp.add('edittext', undefined, colorName);
     colorNameEdit.preferredSize[0] = 80;
     colorGrp.add('statictext', undefined, 'Hex Color:');
-    var theColor = hexToRgb(colorHex);
-    var coloredBtn = createColoredButton(colorGrp, theColor, [20, 20]);
-    coloredBtn.helpTip = 'Click To Edit';
-    var colorHexStat = colorGrp.add('statictext', undefined, colorHex);
-    colorHexStat.characters = 10;
-    colorHexStat.helpTip = 'Click The Color Swatch To Edit';
-    coloredBtn.onClick = function () {
-        var colorPicked = openColorPicker(hexToRgb(colorHex));
-        coloredBtn.fillBrush = coloredBtn.graphics.newBrush(coloredBtn.graphics.BrushType.SOLID_COLOR, colorPicked, 1);
-        colorHexStat.text =
-            '#' +
-                rgbToHex(colorPicked[0] * 255, colorPicked[1] * 255, colorPicked[2] * 255);
-    };
+    var _a = createColorSwatchAndHexCode(colorGrp, colorHex), colorHexStat = _a.colorHexStat, coloredBtn = _a.coloredBtn;
     return { colorNameEdit: colorNameEdit, colorHexStat: colorHexStat, coloredBtn: coloredBtn };
 };
 var createHelpWindow = function (updateUiFn) {
@@ -20322,18 +20329,32 @@ var createHelpWindow = function (updateUiFn) {
     };
     var iconColorsSettingsGrp = settingsTab.add('group');
     iconColorsSettingsGrp.margins.bottom = SETTINGS_SPACING;
-    settingsTab.orientation =
-        labelSettingsGrp.orientation =
-            iconColorsSettingsGrp.orientation =
-                'column';
-    settingsTab.alignChildren =
-        labelSettingsGrp.alignChildren =
-            iconColorsSettingsGrp.alignChildren =
-                ['left', 'top'];
     iconColorsSettingsGrp.add('statictext', undefined, '★ Icon Colors ★');
     var _a = createIconColorRow(iconColorsSettingsGrp, prefs.iconColor1Name, prefs.iconColor1Hex), colorName1Edit = _a.colorNameEdit, colorHex1Stat = _a.colorHexStat, coloredBtn1 = _a.coloredBtn;
     var _b = createIconColorRow(iconColorsSettingsGrp, prefs.iconColor2Name, prefs.iconColor2Hex), colorName2Edit = _b.colorNameEdit, colorHex2Stat = _b.colorHexStat, coloredBtn2 = _b.coloredBtn;
     var _c = createIconColorRow(iconColorsSettingsGrp, prefs.iconColor3Name, prefs.iconColor3Hex), colorName3Edit = _c.colorNameEdit, colorHex3Stat = _c.colorHexStat, coloredBtn3 = _c.coloredBtn;
+    var mitugColorsSettingsGrp = settingsTab.add('group');
+    mitugColorsSettingsGrp.margins.bottom = SETTINGS_SPACING;
+    mitugColorsSettingsGrp.add('statictext', undefined, '★ Mitug Colors ★');
+    var mitugs = ['Gaza', 'Pakmaz', 'Lebanon'];
+    var mitugDD = mitugColorsSettingsGrp.add('dropdownlist', undefined, mitugs);
+    mitugDD.selection = 0;
+    mitugDD.preferredSize[0] = 100;
+    var mitugColor1Grp = mitugColorsSettingsGrp.add('group');
+    mitugColor1Grp.alignChildren = ['left', 'center'];
+    mitugColor1Grp.spacing = 10;
+    mitugColor1Grp.margins = 0;
+    mitugColor1Grp.add('statictext', undefined, 'Color 1:');
+    var _d = createColorSwatchAndHexCode(mitugColor1Grp, prefs.mitugGaza.color1), mitugColor1HexStat = _d.colorHexStat, mitugColor1ColoredBtn = _d.coloredBtn;
+    var mitugColor2Grp = mitugColorsSettingsGrp.add('group');
+    mitugColor2Grp.alignChildren = ['left', 'center'];
+    mitugColor2Grp.spacing = 10;
+    mitugColor2Grp.margins = 0;
+    mitugColor2Grp.add('statictext', undefined, 'Color 2:');
+    var _e = createColorSwatchAndHexCode(mitugColor2Grp, prefs.mitugGaza.color2), mitugColor2HexStat = _e.colorHexStat, mitugColor2ColoredBtn = _e.coloredBtn;
+    mitugDD.onChange = function () {
+        alert(mitugDD.selection.toString());
+    };
     var helpTipSettingGrp = settingsTab.add('group');
     helpTipSettingGrp.margins.bottom = SETTINGS_SPACING;
     var showHelpTipsCheck = helpTipSettingGrp.add('checkbox', undefined, 'Show Help Tips');
@@ -20343,6 +20364,16 @@ var createHelpWindow = function (updateUiFn) {
             iconData[0].helpTip = show ? iconData[1] : '';
         });
     };
+    settingsTab.orientation =
+        labelSettingsGrp.orientation =
+            iconColorsSettingsGrp.orientation =
+                mitugColorsSettingsGrp.orientation =
+                    'column';
+    settingsTab.alignChildren =
+        labelSettingsGrp.alignChildren =
+            iconColorsSettingsGrp.alignChildren =
+                mitugColorsSettingsGrp.alignChildren =
+                    ['left', 'top'];
     restartBtn.onClick = function () {
         textLabelsDD.selection = BOILERPLATE_PREFS.textLabelIndex;
         textRandomCheck.value = BOILERPLATE_PREFS.textLabelRandom;
@@ -20362,6 +20393,8 @@ var createHelpWindow = function (updateUiFn) {
         colorHex2Stat.text = BOILERPLATE_PREFS.iconColor2Hex;
         colorName3Edit.text = BOILERPLATE_PREFS.iconColor3Name;
         colorHex3Stat.text = BOILERPLATE_PREFS.iconColor3Hex;
+        mitugColor1HexStat.text = BOILERPLATE_PREFS.mitugGaza.color1;
+        mitugColor2HexStat.text = BOILERPLATE_PREFS.mitugGaza.color2;
         textTheLabel.fillBrush = textTheLabel.graphics.newBrush(textTheLabel.graphics.BrushType.SOLID_COLOR, labelColors[BOILERPLATE_PREFS.textLabelIndex], 1);
         iconTheLabel.fillBrush = iconTheLabel.graphics.newBrush(iconTheLabel.graphics.BrushType.SOLID_COLOR, labelColors[BOILERPLATE_PREFS.iconsLabelIndex], 1);
         locTheLabel.fillBrush = locTheLabel.graphics.newBrush(locTheLabel.graphics.BrushType.SOLID_COLOR, labelColors[BOILERPLATE_PREFS.locsLabelIndex], 1);
@@ -20369,6 +20402,8 @@ var createHelpWindow = function (updateUiFn) {
         coloredBtn1.fillBrush = coloredBtn1.graphics.newBrush(coloredBtn1.graphics.BrushType.SOLID_COLOR, hexToRgb(BOILERPLATE_PREFS.iconColor1Hex), 1);
         coloredBtn2.fillBrush = coloredBtn2.graphics.newBrush(coloredBtn2.graphics.BrushType.SOLID_COLOR, hexToRgb(BOILERPLATE_PREFS.iconColor2Hex), 1);
         coloredBtn3.fillBrush = coloredBtn3.graphics.newBrush(coloredBtn3.graphics.BrushType.SOLID_COLOR, hexToRgb(BOILERPLATE_PREFS.iconColor3Hex), 1);
+        mitugColor1ColoredBtn.fillBrush = (mitugColor1ColoredBtn).graphics.newBrush(mitugColor1ColoredBtn.graphics.BrushType.SOLID_COLOR, hexToRgb(BOILERPLATE_PREFS.mitugGaza.color1), 1);
+        mitugColor2ColoredBtn.fillBrush = (mitugColor2ColoredBtn).graphics.newBrush(mitugColor2ColoredBtn.graphics.BrushType.SOLID_COLOR, hexToRgb(BOILERPLATE_PREFS.mitugGaza.color2), 1);
         textTheLabel.enabled =
             iconTheLabel.enabled =
                 locTheLabel.enabled =
@@ -20376,7 +20411,9 @@ var createHelpWindow = function (updateUiFn) {
                         coloredBtn1.enabled =
                             coloredBtn2.enabled =
                                 coloredBtn3.enabled =
-                                    false;
+                                    mitugColor1ColoredBtn.enabled =
+                                        mitugColor2ColoredBtn.enabled =
+                                            false;
         textTheLabel.enabled =
             iconTheLabel.enabled =
                 locTheLabel.enabled =
@@ -20384,7 +20421,9 @@ var createHelpWindow = function (updateUiFn) {
                         coloredBtn1.enabled =
                             coloredBtn2.enabled =
                                 coloredBtn3.enabled =
-                                    true;
+                                    mitugColor1ColoredBtn.enabled =
+                                        mitugColor2ColoredBtn.enabled =
+                                            true;
         showHelpTipsCheck.value = BOILERPLATE_PREFS.showHelpTips;
     };
     var okCancelBtnsGrp = helpWin.add('group');
@@ -20412,7 +20451,11 @@ var createHelpWindow = function (updateUiFn) {
             iconColor2Name: colorName2Edit.text,
             iconColor2Hex: colorHex2Stat.text,
             iconColor3Name: colorName3Edit.text,
-            iconColor3Hex: colorHex3Stat.text
+            iconColor3Hex: colorHex3Stat.text,
+            mitugGaza: {
+                color1: mitugColor1HexStat.text,
+                color2: mitugColor2HexStat.text
+            }
         });
         updateQAHelpTips(showHelpTipsCheck.value);
         updateUiFn();
