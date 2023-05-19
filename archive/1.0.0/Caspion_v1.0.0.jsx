@@ -20193,9 +20193,15 @@ var createColoredButton = function (container, color, size) {
 var createAboutTab = function (tpanel) {
     var aboutTab = tpanel.add('tab', undefined, ['About']);
     aboutTab.add('image', [0, 0, 300, 110], bannerBinary);
-    var abtStr = '‹ Caspion - version 1.0.0 - Created By Eyal Cohen ›';
+    var abtStr = '‹ Caspion - version 1.0.0 - Created By Eyal Cohen ›\n\n' +
+        'מבצעי... אין מה לעשות, זה חלק מהשירות, וזה לא תמיד כיף.\n' +
+        'כספיון (על שם קצין ההפקה המבצעית שלנו, לא סיפור הילדים המפורסם מאת פאול קור) התחיל כרעיון מאוד שאפתני, שמנסה לפתור בעיה שכל אפטריסט מכיר: אנחנו מבזבזים הרבה זמן בעבודה מיותרת. משחזרים דברים שכבר עשינו, לא מוצאים קבצים בשרת, הולכים לאיבוד בתוך מאגרים של גרפיקאים...\n\n' +
+        'המטרה של הפרוייקט הזה היא לייעל כמה שאפשר את העבודה המבצעית, ובתקווה להפוך את החיים שלנו לקצת יותר פשוטים.\n' +
+        'אז אולי זה לא הדבר שיכריע את המערכה הבאה, אבל אם השטות הזאת שכתבתי עוזרת לכם לעבוד יותר בכיף - מבחינתי עשיתי את שלי :)\n\n' +
+        'אוהב,\n' +
+        'אייל';
     var aboutEditGrp = aboutTab.add('group');
-    aboutEditGrp.add('edittext', [0, 0, 380, 270], abtStr, {
+    aboutEditGrp.add('edittext', [0, 0, 380, 390], abtStr, {
         multiline: true,
         readonly: true,
         scrollable: true

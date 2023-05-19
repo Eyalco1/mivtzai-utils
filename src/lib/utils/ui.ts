@@ -24,9 +24,16 @@ const createColoredButton = (
 const createAboutTab = (tpanel: TabbedPanel): Tab => {
     const aboutTab = tpanel.add('tab', undefined, ['About']);
     aboutTab.add('image', [0, 0, 300, 110], bannerBinary);
-    const abtStr = '‹ @@name - version @@version - Created By Eyal Cohen ›';
+    const abtStr =
+        '‹ @@name - version @@version - Created By Eyal Cohen ›\n\n' +
+        'מבצעי... אין מה לעשות, זה חלק מהשירות, וזה לא תמיד כיף.\n' +
+        'כספיון (על שם קצין ההפקה המבצעית שלנו, לא סיפור הילדים המפורסם מאת פאול קור) התחיל כרעיון מאוד שאפתני, שמנסה לפתור בעיה שכל אפטריסט מכיר: אנחנו מבזבזים הרבה זמן בעבודה מיותרת. משחזרים דברים שכבר עשינו, לא מוצאים קבצים בשרת, הולכים לאיבוד בתוך מאגרים של גרפיקאים...\n\n' +
+        'המטרה של הפרוייקט הזה היא לייעל כמה שאפשר את העבודה המבצעית, ובתקווה להפוך את החיים שלנו לקצת יותר פשוטים.\n' +
+        'אז אולי זה לא הדבר שיכריע את המערכה הבאה, אבל אם השטות הזאת שכתבתי עוזרת לכם לעבוד יותר בכיף - מבחינתי עשיתי את שלי :)\n\n' +
+        'אוהב,\n' +
+        'אייל';
     const aboutEditGrp = aboutTab.add('group');
-    aboutEditGrp.add('edittext', [0, 0, 380, 270], abtStr, {
+    aboutEditGrp.add('edittext', [0, 0, 380, 390], abtStr, {
         multiline: true,
         readonly: true,
         scrollable: true
