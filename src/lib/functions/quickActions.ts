@@ -141,41 +141,48 @@ const importLogos = (): void => {
 
     const idfItems: AVItem[] = [];
     if (langExt !== null) {
-        const idfItem = app.project.importFile(
-            new ImportOptions(
-                File(`${getAssetsPath()}/Logos/IDF_Logo_${langExt}.png`)
-            )
-        ) as AVItem;
+        const idfItem = specialImport(
+            `${getAssetsPath()}/Logos/IDF_Logo_${langExt}.png`,
+            // @ts-ignore
+            `caspion-idf-logo-${langExt.toLowerCase()}`
+        );
 
         idfItems.push(idfItem);
     } else {
-        const idfItemHE = app.project.importFile(
-            new ImportOptions(File(`${getAssetsPath()}/Logos/IDF_Logo_HE.png`))
-        ) as AVItem;
+        const idfItemHE = specialImport(
+            `${getAssetsPath()}/Logos/IDF_Logo_HE.png`,
+            'caspion-idf-logo-he'
+        );
 
-        const idfItemEN = app.project.importFile(
-            new ImportOptions(File(`${getAssetsPath()}/Logos/IDF_Logo_EN.png`))
-        ) as AVItem;
+        const idfItemEN = specialImport(
+            `${getAssetsPath()}/Logos/IDF_Logo_EN.png`,
+            'caspion-idf-logo-en'
+        );
 
-        const idfItemAR = app.project.importFile(
-            new ImportOptions(File(`${getAssetsPath()}/Logos/IDF_Logo_AR.png`))
-        ) as AVItem;
+        const idfItemAR = specialImport(
+            `${getAssetsPath()}/Logos/IDF_Logo_AR.png`,
+            'caspion-idf-logo-ar'
+        );
 
-        const idfItemES = app.project.importFile(
-            new ImportOptions(File(`${getAssetsPath()}/Logos/IDF_Logo_ES.png`))
-        ) as AVItem;
+        const idfItemES = specialImport(
+            `${getAssetsPath()}/Logos/IDF_Logo_ES.png`,
+            'caspion-idf-logo-es'
+        );
 
-        const idfItemRS = app.project.importFile(
-            new ImportOptions(File(`${getAssetsPath()}/Logos/IDF_Logo_RS.png`))
-        ) as AVItem;
+        const idfItemRS = specialImport(
+            `${getAssetsPath()}/Logos/IDF_Logo_RS.png`,
+            'caspion-idf-logo-rs'
+        );
 
-        const idfItemFR = app.project.importFile(
-            new ImportOptions(File(`${getAssetsPath()}/Logos/IDF_Logo_FR.png`))
-        ) as AVItem;
+        const idfItemFR = specialImport(
+            `${getAssetsPath()}/Logos/IDF_Logo_FR.png`,
+            'caspion-idf-logo-fr'
+        );
 
-        const idfItemPR = app.project.importFile(
-            new ImportOptions(File(`${getAssetsPath()}/Logos/IDF_Logo_PR.png`))
-        ) as AVItem;
+        const idfItemPR = specialImport(
+            `${getAssetsPath()}/Logos/IDF_Logo_PR.png`,
+            'caspion-idf-logo-pr'
+        );
 
         idfItems.push(
             idfItemHE,
@@ -188,9 +195,10 @@ const importLogos = (): void => {
         );
     }
 
-    const dotzItem = app.project.importFile(
-        new ImportOptions(File(`${getAssetsPath()}/Logos/Dotz_Logo.png`))
-    ) as AVItem;
+    const dotzItem = specialImport(
+        `${getAssetsPath()}/Logos/Dotz_Logo.png`,
+        'caspion-dotz-logo'
+    );
 
     const comp = app.project.activeItem as CompItem;
     if (!comp || !(comp instanceof CompItem)) return;

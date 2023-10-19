@@ -1,11 +1,3 @@
-const importTexture = (path: string): AVItem => {
-    const textureItem = app.project.importFile(
-        new ImportOptions(File(path))
-    ) as AVItem;
-
-    return textureItem;
-};
-
 const loopTexture = (comp: CompItem, layer: Layer): void => {
     const posProp = layer
         .property('ADBE Transform Group')
@@ -73,7 +65,11 @@ const createTexture = (id: TextureID, loop: Boolean, fit: Boolean) => {
     app.beginUndoGroup(`@@name: Import Texture - ${id}`);
 
     const path = getPathFromTextureID(id);
-    const textureItem = importTexture(path);
+    const textureItem = specialImport(
+        path,
+        // @ts-ignore
+        `caspion-${id.replace(' ', '-').toLowerCase()}`
+    );
 
     const comp = app.project.activeItem as CompItem;
     if (!comp || !(comp instanceof CompItem)) return;

@@ -10,6 +10,27 @@ type CaspionFont = 'Narkis' | 'Almoni' | 'Trade Gothic' | 'Droid' | 'Janna';
 
 type TextAnimation = 'Y Position' | 'X Position' | 'Scale' | 'Opacity';
 
+type AssetID =
+    | 'caspion-idf-logo-he'
+    | 'caspion-idf-logo-en'
+    | 'caspion-idf-logo-ar'
+    | 'caspion-idf-logo-pr'
+    | 'caspion-idf-logo-es'
+    | 'caspion-idf-logo-rs'
+    | 'caspion-idf-logo-fr'
+    | 'caspion-dotz-logo'
+    | 'caspion-israel-map-guide'
+    | 'caspion-israel-map-clean'
+    | 'caspion-gaza-map-guide'
+    | 'caspion-gaza-map-clean'
+    | 'caspion-paper-dark'
+    | 'caspion-paper-medium'
+    | 'caspion-paper-light'
+    | 'caspion-smoke'
+    | 'caspion-noise'
+    | 'caspion-grunge'
+    | 'caspion-dust';
+
 type IconID =
     | 'Boom'
     | 'Tunnel'

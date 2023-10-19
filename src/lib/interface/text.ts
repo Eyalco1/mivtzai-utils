@@ -194,6 +194,8 @@ const createTextUI = (
     );
 
     const applyMaskGrp = textTabGrp.add('group');
+    // @ts-ignore
+    applyMaskGrp.margins.top = 4;
     const applyBtn = applyMaskGrp.add('button', undefined, 'Apply');
     const maskCheck = applyMaskGrp.add('checkbox', undefined, 'Add Mask');
 
