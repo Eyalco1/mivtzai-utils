@@ -240,11 +240,17 @@ const importGoogleMaps = (location: GoogleMapsLocation): void => {
 
     const whichMap = modKey ? 'Guide' : 'Clean';
 
-    const mapItem = app.project.importFile(
-        new ImportOptions(
-            File(`${getAssetsPath()}/Images/${location}_Map_${whichMap}.png`)
-        )
-    ) as AVItem;
+    // const mapItem = app.project.importFile(
+    //     new ImportOptions(
+    //         File(`${getAssetsPath()}/Images/${location}_Map_${whichMap}.png`)
+    //     )
+    // ) as AVItem;
+
+    const mapItem = specialImport(
+        `${getAssetsPath()}/Images/${location}_Map_${whichMap}.png`,
+        // @ts-ignore
+        `caspion-${location.toLowerCase()}-map-${whichMap.toLowerCase()}`
+    );
 
     const comp = app.project.activeItem as CompItem;
     if (!comp || !(comp instanceof CompItem)) return;
@@ -506,4 +512,53 @@ const openColorPickerForEditText = (hexEdit: EditText) => {
         colorFromPicker[1] * 255,
         colorFromPicker[2] * 255
     );
+};
+
+const specialImport = (assetPath: string, id: AssetID): AVItem => {
+    // if ID already exists, reuse file
+    const projItems = app.project.items;
+    for (let i = 1; i <= projItems.length; i++) {
+        const curItem = projItems[i];
+        if (curItem.comment === id) {
+            return curItem as AVItem;
+        }
+    }
+
+    // if project isn't saved, import for ScriptUI
+    if (!app.project.file) {
+        const item = app.project.importFile(
+            new ImportOptions(File(assetPath))
+        ) as AVItem;
+        item.comment = id;
+        return item;
+    }
+
+    // open assets folder next to project
+    const parentDirPath = app.project.file
+        .toString()
+        .split('/')
+        .slice(0, -1)
+        .join('/');
+    const caspionAssetsDir = new Folder(parentDirPath + '/Caspion Assets/');
+    if (!caspionAssetsDir.exists) caspionAssetsDir.create();
+
+    // copy asset to new folder
+    const origFile = new File(assetPath);
+    origFile.copy(
+        `${caspionAssetsDir.absoluteURI}/${assetPath.split('/').pop()}`
+    );
+
+    // import asset from new folder
+    const item = app.project.importFile(
+        new ImportOptions(
+            File(
+                `${caspionAssetsDir.absoluteURI}/${assetPath.split('/').pop()}`
+            )
+        )
+    ) as AVItem;
+
+    // give asset unique ID in project panel
+    item.comment = id;
+
+    return item;
 };

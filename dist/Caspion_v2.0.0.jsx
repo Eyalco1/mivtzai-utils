@@ -664,7 +664,7 @@ var importGoogleMaps = function (location) {
     var keyState = ScriptUI.environment.keyboardState;
     var modKey = getOS() === 'Win' ? keyState.ctrlKey : keyState.metaKey;
     var whichMap = modKey ? 'Guide' : 'Clean';
-    var mapItem = app.project.importFile(new ImportOptions(File("".concat(getAssetsPath(), "/Images/").concat(location, "_Map_").concat(whichMap, ".png"))));
+    var mapItem = specialImport("".concat(getAssetsPath(), "/Images/").concat(location, "_Map_").concat(whichMap, ".png"), "caspion-".concat(location.toLowerCase(), "-map-").concat(whichMap.toLowerCase()));
     var comp = app.project.activeItem;
     if (!comp || !(comp instanceof CompItem))
         return;
@@ -828,6 +828,33 @@ var openColorPickerForEditText = function (hexEdit) {
     if (colorFromPicker == null)
         return;
     hexEdit.text = rgbToHex(colorFromPicker[0] * 255, colorFromPicker[1] * 255, colorFromPicker[2] * 255);
+};
+var specialImport = function (assetPath, id) {
+    var projItems = app.project.items;
+    for (var i = 1; i <= projItems.length; i++) {
+        var curItem = projItems[i];
+        if (curItem.comment === id) {
+            return curItem;
+        }
+    }
+    if (!app.project.file) {
+        var item_1 = app.project.importFile(new ImportOptions(File(assetPath)));
+        item_1.comment = id;
+        return item_1;
+    }
+    var parentDirPath = app.project.file
+        .toString()
+        .split('/')
+        .slice(0, -1)
+        .join('/');
+    var caspionAssetsDir = new Folder(parentDirPath + '/Caspion Assets/');
+    if (!caspionAssetsDir.exists)
+        caspionAssetsDir.create();
+    var origFile = new File(assetPath);
+    origFile.copy("".concat(caspionAssetsDir.absoluteURI, "/").concat(assetPath.split('/').pop()));
+    var item = app.project.importFile(new ImportOptions(File("".concat(caspionAssetsDir.absoluteURI, "/").concat(assetPath.split('/').pop()))));
+    item.comment = id;
+    return item;
 };
 var introduceTextEvo = function () {
     var textevo = {
@@ -1190,20 +1217,20 @@ var importLogos = function () {
     }
     var idfItems = [];
     if (langExt !== null) {
-        var idfItem = app.project.importFile(new ImportOptions(File("".concat(getAssetsPath(), "/Logos/IDF_Logo_").concat(langExt, ".png"))));
+        var idfItem = specialImport("".concat(getAssetsPath(), "/Logos/IDF_Logo_").concat(langExt, ".png"), "caspion-idf-logo-".concat(langExt.toLowerCase()));
         idfItems.push(idfItem);
     }
     else {
-        var idfItemHE = app.project.importFile(new ImportOptions(File("".concat(getAssetsPath(), "/Logos/IDF_Logo_HE.png"))));
-        var idfItemEN = app.project.importFile(new ImportOptions(File("".concat(getAssetsPath(), "/Logos/IDF_Logo_EN.png"))));
-        var idfItemAR = app.project.importFile(new ImportOptions(File("".concat(getAssetsPath(), "/Logos/IDF_Logo_AR.png"))));
-        var idfItemES = app.project.importFile(new ImportOptions(File("".concat(getAssetsPath(), "/Logos/IDF_Logo_ES.png"))));
-        var idfItemRS = app.project.importFile(new ImportOptions(File("".concat(getAssetsPath(), "/Logos/IDF_Logo_RS.png"))));
-        var idfItemFR = app.project.importFile(new ImportOptions(File("".concat(getAssetsPath(), "/Logos/IDF_Logo_FR.png"))));
-        var idfItemPR = app.project.importFile(new ImportOptions(File("".concat(getAssetsPath(), "/Logos/IDF_Logo_PR.png"))));
+        var idfItemHE = specialImport("".concat(getAssetsPath(), "/Logos/IDF_Logo_HE.png"), 'caspion-idf-logo-he');
+        var idfItemEN = specialImport("".concat(getAssetsPath(), "/Logos/IDF_Logo_EN.png"), 'caspion-idf-logo-en');
+        var idfItemAR = specialImport("".concat(getAssetsPath(), "/Logos/IDF_Logo_AR.png"), 'caspion-idf-logo-ar');
+        var idfItemES = specialImport("".concat(getAssetsPath(), "/Logos/IDF_Logo_ES.png"), 'caspion-idf-logo-es');
+        var idfItemRS = specialImport("".concat(getAssetsPath(), "/Logos/IDF_Logo_RS.png"), 'caspion-idf-logo-rs');
+        var idfItemFR = specialImport("".concat(getAssetsPath(), "/Logos/IDF_Logo_FR.png"), 'caspion-idf-logo-fr');
+        var idfItemPR = specialImport("".concat(getAssetsPath(), "/Logos/IDF_Logo_PR.png"), 'caspion-idf-logo-pr');
         idfItems.push(idfItemHE, idfItemEN, idfItemAR, idfItemES, idfItemRS, idfItemFR, idfItemPR);
     }
-    var dotzItem = app.project.importFile(new ImportOptions(File("".concat(getAssetsPath(), "/Logos/Dotz_Logo.png"))));
+    var dotzItem = specialImport("".concat(getAssetsPath(), "/Logos/Dotz_Logo.png"), 'caspion-dotz-logo');
     var comp = app.project.activeItem;
     if (!comp || !(comp instanceof CompItem))
         return;
@@ -20118,10 +20145,6 @@ var createLocationFromId = function (id, lang, mitug, animation) {
     }
     app.endUndoGroup();
 };
-var importTexture = function (path) {
-    var textureItem = app.project.importFile(new ImportOptions(File(path)));
-    return textureItem;
-};
 var loopTexture = function (comp, layer) {
     var posProp = layer
         .property('ADBE Transform Group')
@@ -20180,7 +20203,7 @@ var getCommandId = function (_a, _b) {
 var createTexture = function (id, loop, fit) {
     app.beginUndoGroup("Caspion: Import Texture - ".concat(id));
     var path = getPathFromTextureID(id);
-    var textureItem = importTexture(path);
+    var textureItem = specialImport(path, "caspion-".concat(id.replace(' ', '-').toLowerCase()));
     var comp = app.project.activeItem;
     if (!comp || !(comp instanceof CompItem))
         return;
@@ -20689,6 +20712,7 @@ var createTextUI = function (tpanel) {
     var wordsRadioBtn = basedOnRadioGrp.add('radiobutton', undefined, 'Words');
     var linesRadioBtn = basedOnRadioGrp.add('radiobutton', undefined, 'Lines');
     var applyMaskGrp = textTabGrp.add('group');
+    applyMaskGrp.margins.top = 4;
     var applyBtn = applyMaskGrp.add('button', undefined, 'Apply');
     var maskCheck = applyMaskGrp.add('checkbox', undefined, 'Add Mask');
     applyBtn.onClick = function () {
