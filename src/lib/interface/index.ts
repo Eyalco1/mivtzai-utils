@@ -86,9 +86,7 @@ const init = (thisObj: typeof globalThis) => {
         createQAUI(tpanel);
     const {
         textTab,
-        optionsGrp,
-        textDropdownsGrp,
-        mainTextEdit,
+
         updateTextUI
     } = createTextUI(tpanel);
     const { iconsTab, iconCircleGrp, colorChecksGrp, updateIconsUI } =
@@ -193,11 +191,11 @@ const init = (thisObj: typeof globalThis) => {
             QABtnsGrp.orientation =
                 (<Dimension>w.size).width > 940 ? 'row' : 'column';
             // Text
-            optionsGrp.orientation =
-                (<Dimension>w.size).width > 450 ? 'row' : 'column';
-            textDropdownsGrp.orientation =
-                (<Dimension>w.size).width > 340 ? 'row' : 'column';
-            mainTextEdit.size = [(<Dimension>w.size).width - 50, 60];
+            // optionsGrp.orientation =
+            //     (<Dimension>w.size).width > 450 ? 'row' : 'column';
+            // textDropdownsGrp.orientation =
+            //     (<Dimension>w.size).width > 340 ? 'row' : 'column';
+            // mainTextEdit.size = [(<Dimension>w.size).width - 50, 60];
             // Icons
             iconCircleGrp.orientation = colorChecksGrp.orientation =
                 (<Dimension>w.size).width > 350 ? 'row' : 'column';

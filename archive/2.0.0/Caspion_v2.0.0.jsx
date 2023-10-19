@@ -1068,6 +1068,23 @@ var getFontFromName = function (name) {
         return 'JannaLT-Bold';
     }
 };
+var detectLanguage = function (input) {
+    var hebrewRegExp = /[\u0590-\u05FF]/;
+    var englishRegExp = /[A-Za-z]/;
+    var arabicRegExp = /[\u0600-\u06FF]/;
+    if (hebrewRegExp.test(input)) {
+        return 'Hebrew';
+    }
+    else if (englishRegExp.test(input)) {
+        return 'English';
+    }
+    else if (arabicRegExp.test(input)) {
+        return 'Arabic';
+    }
+    else {
+        return null;
+    }
+};
 var createTvaiStroke = function () {
     app.beginUndoGroup('Caspion: Create Tunnel Stroke');
     var comp = app.project.activeItem;
@@ -2199,63 +2216,69 @@ var createCameraNull = function () {
     comp.time = 0;
     app.endUndoGroup();
 };
-var createText = function (text, font, animation, addTextEvo, addMask) {
+var createText = function (yPosCheck, xPosCheck, scaleCheck, opacityCheck, charsRadioBtn, wordsRadioBtn, linesRadioBtn, maskCheck) {
     var comp = app.project.activeItem;
     if (!comp || !(comp instanceof CompItem)) {
         alert('No Composition Selected');
         return;
     }
-    if (!text) {
-        alert('Please Type Some Text');
+    if (comp.selectedLayers.length !== 1 &&
+        comp.selectedLayers[0] instanceof TextLayer) {
+        alert('Select Only 1 Text Layer');
         return;
     }
-    app.beginUndoGroup('Caspion: Create Text');
-    var textLayer = comp.layers.addText();
-    textLayer.inPoint = comp.time;
-    textLayer.label = parsePrefs().textLabelRandom
-        ? Math.floor(Math.random() * 16) + 1
-        : parsePrefs().textLabelIndex + 1;
-    var srcText = textLayer
-        .property('ADBE Text Properties')
-        .property('ADBE Text Document');
-    srcText.setValue(text);
-    var textDoc = srcText.value;
-    textDoc.font = getFontFromName(font);
-    textDoc.fontSize = 100;
-    textDoc.applyFill = true;
-    textDoc.fillColor = [1, 1, 1];
-    textDoc.applyStroke = false;
-    textDoc.tracking = 0;
-    textDoc.justification = ParagraphJustification.LEFT_JUSTIFY;
-    srcText.setValue(textDoc);
-    if (addMask) {
+    app.beginUndoGroup('Caspion: Apply Text Preset');
+    var selTLayer = comp.selectedLayers[0];
+    if (maskCheck.value) {
         var id = app.findMenuCommandId('New Mask');
         app.executeCommand(id);
     }
-    if (addTextEvo) {
-        introduceTextEvo();
-        var rtl = font !== 'Trade Gothic';
-        var srcRect = textLayer.sourceRectAtTime(0, false);
-        var propId = void 0;
-        var propValue = void 0;
-        if (animation === 'Y Position')
-            (propId = 14), (propValue = Math.ceil(srcRect.height) + 1);
-        else if (animation === 'X Position')
-            (propId = 13),
-                (propValue = rtl
-                    ? -(Math.ceil(srcRect.width) + 1)
-                    : Math.ceil(srcRect.width) + 1);
-        else if (animation === 'Scale')
-            (propId = 18), (propValue = 0);
-        else if (animation === 'Opacity')
-            (propId = 38), (propValue = 0);
-        var theProp = textLayer
-            .property('ADBE Effect Parade')
-            .property('Pseudo/textevo')
-            .property("Pseudo/textevo-00".concat(propId));
-        theProp.setValue(propValue);
+    var presetFile = new File("".concat(getAssetsPath(), "/Presets/Caspion Text Offset.ffx"));
+    selTLayer.applyPreset(presetFile);
+    var srcText = selTLayer
+        .property('ADBE Text Properties')
+        .property('ADBE Text Document');
+    var textLang = detectLanguage(srcText.value);
+    var animatorProps = selTLayer
+        .property('ADBE Text Properties')
+        .property('ADBE Text Animators')
+        .property('ADBE Text Animator')
+        .property('ADBE Text Animator Properties');
+    var srcRect = selTLayer.sourceRectAtTime(0, false);
+    var posProp = animatorProps.property('ADBE Text Position 3D');
+    posProp.setValue([0, 0]);
+    if (xPosCheck.value) {
+        var xVal = textLang === 'English'
+            ? Math.ceil(srcRect.width) + 1
+            : -(Math.ceil(srcRect.width) + 1);
+        posProp.setValue([xVal, posProp.value[1]]);
     }
-    return textLayer;
+    if (yPosCheck.value) {
+        posProp.setValue([posProp.value[0], Math.ceil(srcRect.height) + 40]);
+    }
+    var scaleProp = animatorProps.property('ADBE Text Scale 3D');
+    if (scaleCheck.value) {
+        scaleProp.setValue([0, 0]);
+    }
+    var opacityProp = animatorProps.property('ADBE Text Opacity');
+    if (opacityCheck.value) {
+        opacityProp.setValue(0);
+    }
+    var basedOnProp = selTLayer
+        .property('ADBE Text Properties')
+        .property('ADBE Text Animators')
+        .property('ADBE Text Animator')
+        .property('ADBE Text Selectors')
+        .property('ADBE Text Selector')
+        .property('ADBE Text Range Advanced')
+        .property('ADBE Text Range Type2');
+    if (charsRadioBtn.value)
+        basedOnProp.setValue(1);
+    if (wordsRadioBtn.value)
+        basedOnProp.setValue(3);
+    if (linesRadioBtn.value)
+        basedOnProp.setValue(4);
+    app.endUndoGroup();
 };
 var setUpIcon = function (name, circleColor, iconColor) {
     var comp = app.project.activeItem;
@@ -20632,82 +20655,48 @@ var createQAUI = function (tpanel) {
 var createTextUI = function (tpanel) {
     var textTab = tpanel.add('tab', undefined, ['Text']);
     var textTabGrp = textTab.add('group');
+    textTabGrp.orientation = 'column';
     textTabGrp.alignChildren = 'left';
     textTabGrp.alignment = 'left';
-    textTabGrp.orientation = 'column';
     textTabGrp.margins = 4;
-    var mainTextGrp = textTabGrp.add('group');
-    mainTextGrp.alignChildren = ['fill', 'top'];
-    mainTextGrp.alignment = ['fill', 'top'];
-    var mainTextEdit = mainTextGrp.add('edittext', undefined, '', {
-        multiline: true
-    });
-    mainTextEdit.size = [160, 60];
-    mainTextEdit.alignment = ['fill', 'top'];
-    var optionsGrp = textTabGrp.add('group');
-    optionsGrp.margins.top = 8;
-    optionsGrp.alignment = 'left';
-    var textDropdownsGrp = optionsGrp.add('group');
-    textDropdownsGrp.alignChildren = ['left', 'center'];
-    textDropdownsGrp.spacing = 10;
-    textDropdownsGrp.margins = 0;
-    var fontDDGrp = textDropdownsGrp.add('group');
-    fontDDGrp.alignChildren = ['left', 'center'];
-    fontDDGrp.spacing = 10;
-    fontDDGrp.margins = 0;
-    fontDDGrp.add('statictext', undefined, 'Font:');
-    var fontDDList = [
-        'Narkis',
-        'Almoni',
-        'Trade Gothic',
-        'Droid',
-        'Janna'
-    ];
-    var fontDD = fontDDGrp.add('dropdownlist', undefined, fontDDList);
-    fontDD.selection = 0;
-    var animationDDGrp = textDropdownsGrp.add('group');
-    animationDDGrp.alignChildren = ['left', 'center'];
-    animationDDGrp.spacing = 10;
-    animationDDGrp.margins = 0;
-    animationDDGrp.add('statictext', undefined, 'Animation:');
-    var animationDDList = [
-        'Y Position',
-        'X Position',
-        'Scale',
-        'Opacity'
-    ];
-    var animationDD = animationDDGrp.add('dropdownlist', undefined, animationDDList);
-    animationDD.selection = 0;
-    var checksGrp = optionsGrp.add('group');
-    checksGrp.alignChildren = 'left';
-    checksGrp.alignment = 'left';
-    checksGrp.spacing = 10;
-    checksGrp.margins = 0;
-    var addTextEvoCheck = checksGrp.add('checkbox', undefined, 'Text Evo');
-    var maskCheck = checksGrp.add('checkbox', undefined, 'Mask');
-    var createBtn = textTabGrp.add('button', undefined, 'Create Text');
-    createBtn.alignment = 'left';
-    animationDDGrp.enabled = addTextEvoCheck.value;
-    addTextEvoCheck.onClick = function () {
-        animationDDGrp.enabled = addTextEvoCheck.value;
-    };
-    createBtn.onClick = function () {
-        var text = mainTextEdit.text;
-        var font = fontDD.selection.toString();
-        var animation = animationDD.selection.toString();
-        var addTextEvo = addTextEvoCheck.value;
-        var addMask = maskCheck.value;
-        createText(text, font, animation, addTextEvo, addMask);
+    textTabGrp.margins.left = 10;
+    var animationGrp = textTabGrp.add('group');
+    animationGrp.orientation = 'column';
+    animationGrp.alignChildren = ['left', 'center'];
+    animationGrp.spacing = 10;
+    animationGrp.margins = 0;
+    animationGrp.add('statictext', undefined, 'Animation:');
+    var animationCheckGrp = animationGrp.add('group');
+    animationCheckGrp.alignChildren = ['left', 'center'];
+    animationCheckGrp.spacing = 10;
+    animationCheckGrp.margins = 0;
+    var yPosCheck = animationCheckGrp.add('checkbox', undefined, 'Y Position');
+    var xPosCheck = animationCheckGrp.add('checkbox', undefined, 'X Position');
+    var scaleCheck = animationCheckGrp.add('checkbox', undefined, 'Scale');
+    var opacityCheck = animationCheckGrp.add('checkbox', undefined, 'Opacity');
+    var basedOnGrp = textTabGrp.add('group');
+    basedOnGrp.orientation = 'column';
+    basedOnGrp.alignChildren = ['left', 'center'];
+    basedOnGrp.spacing = 10;
+    basedOnGrp.margins = 0;
+    basedOnGrp.add('statictext', undefined, 'Based On:');
+    var basedOnRadioGrp = basedOnGrp.add('group');
+    basedOnRadioGrp.alignChildren = ['left', 'center'];
+    basedOnRadioGrp.spacing = 10;
+    basedOnRadioGrp.margins = 0;
+    var charsRadioBtn = basedOnRadioGrp.add('radiobutton', undefined, 'Characters');
+    charsRadioBtn.value = true;
+    var wordsRadioBtn = basedOnRadioGrp.add('radiobutton', undefined, 'Words');
+    var linesRadioBtn = basedOnRadioGrp.add('radiobutton', undefined, 'Lines');
+    var applyMaskGrp = textTabGrp.add('group');
+    var applyBtn = applyMaskGrp.add('button', undefined, 'Apply');
+    var maskCheck = applyMaskGrp.add('checkbox', undefined, 'Add Mask');
+    applyBtn.onClick = function () {
+        createText(yPosCheck, xPosCheck, scaleCheck, opacityCheck, charsRadioBtn, wordsRadioBtn, linesRadioBtn, maskCheck);
     };
     var updateTextUI = function () {
     };
-    return {
-        textTab: textTab,
-        optionsGrp: optionsGrp,
-        textDropdownsGrp: textDropdownsGrp,
-        mainTextEdit: mainTextEdit,
-        updateTextUI: updateTextUI
-    };
+    return { textTab: textTab, updateTextUI: updateTextUI };
 };
 var createIconsUI = function (tpanel) {
     var iconsTab = tpanel.add('tab', undefined, ['Icons']);
@@ -21000,7 +20989,7 @@ var init = function (thisObj) {
     var tpanel = w.add('tabbedpanel');
     tpanel.alignment = tpanel.alignChildren = ['fill', 'fill'];
     var _a = createQAUI(tpanel), qaTab = _a.qaTab, QABtnsGrp = _a.QABtnsGrp, bigRowOne = _a.bigRowOne, bigRowTwo = _a.bigRowTwo, bigRowThree = _a.bigRowThree, updateQAUI = _a.updateQAUI;
-    var _b = createTextUI(tpanel), textTab = _b.textTab, optionsGrp = _b.optionsGrp, textDropdownsGrp = _b.textDropdownsGrp, mainTextEdit = _b.mainTextEdit, updateTextUI = _b.updateTextUI;
+    var _b = createTextUI(tpanel), textTab = _b.textTab, updateTextUI = _b.updateTextUI;
     var _c = createIconsUI(tpanel), iconsTab = _c.iconsTab, iconCircleGrp = _c.iconCircleGrp, colorChecksGrp = _c.colorChecksGrp, updateIconsUI = _c.updateIconsUI;
     var _d = createLocationsUI(tpanel), locTab = _d.locTab, dropdownsGrp = _d.dropdownsGrp, locLangDDGrp = _d.locLangDDGrp, mitugAnimDDGrp = _d.mitugAnimDDGrp, updateLocUI = _d.updateLocUI;
     var _e = createTexturesUI(tpanel), texTab = _e.texTab, dropdownChecksGrp = _e.dropdownChecksGrp, updateTexTab = _e.updateTexTab;
@@ -21021,11 +21010,6 @@ var init = function (thisObj) {
                         w.size.width > 400 ? 'row' : 'column';
             QABtnsGrp.orientation =
                 w.size.width > 940 ? 'row' : 'column';
-            optionsGrp.orientation =
-                w.size.width > 450 ? 'row' : 'column';
-            textDropdownsGrp.orientation =
-                w.size.width > 340 ? 'row' : 'column';
-            mainTextEdit.size = [w.size.width - 50, 60];
             iconCircleGrp.orientation = colorChecksGrp.orientation =
                 w.size.width > 350 ? 'row' : 'column';
             dropdownsGrp.orientation =
