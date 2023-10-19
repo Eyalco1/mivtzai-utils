@@ -2249,7 +2249,7 @@ var createText = function (yPosCheck, xPosCheck, scaleCheck, opacityCheck, chars
         return;
     }
     if (comp.selectedLayers.length !== 1 ||
-        comp.selectedLayers[0] instanceof TextLayer) {
+        !(comp.selectedLayers[0] instanceof TextLayer)) {
         alert('Select Only 1 Text Layer');
         return;
     }
