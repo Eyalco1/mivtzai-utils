@@ -93,7 +93,7 @@ const createAnimatedMap = (
         true,
         [0, 0, 0],
         [255, 255, 255],
-        10,
+        5,
         vertices,
         inTangents,
         outTangents,
@@ -106,7 +106,11 @@ const createAnimatedMap = (
         `${name}_Fill`,
         true,
         false,
-        [202, 5, 5],
+        hexToRgb(parsePrefs().iconColor3Hex).map(c => c * 255) as [
+            number,
+            number,
+            number
+        ],
         [0, 0, 0],
         0,
         vertices,
@@ -159,15 +163,21 @@ const createAnimatedMap = (
     ) as Property<number>;
     dashOffset.expression = 'time * -50';
 
-    const lineCapProp = myStroke.property(
-        'ADBE Vector Stroke Line Cap'
+    const strokeWidthProp = myStroke.property(
+        'ADBE Vector Stroke Width'
     ) as Property<number>;
-    lineCapProp.setValue(2);
+    strokeWidthProp.expression =
+        'value / length(toComp([0,0]), toComp([0.7071,0.7071])) || 0.001;';
 
-    const lineJoinProp = myStroke.property(
-        'ADBE Vector Stroke Line Join'
-    ) as Property<number>;
-    lineJoinProp.setValue(2);
+    // const lineCapProp = myStroke.property(
+    //     'ADBE Vector Stroke Line Cap'
+    // ) as Property<number>;
+    // lineCapProp.setValue(2);
+
+    // const lineJoinProp = myStroke.property(
+    //     'ADBE Vector Stroke Line Join'
+    // ) as Property<number>;
+    // lineJoinProp.setValue(2);
 
     const parentGrp = contents
         .property(`${name}_Stroke`)

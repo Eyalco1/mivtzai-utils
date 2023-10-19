@@ -603,8 +603,8 @@ var createAnimatedMap = function (name, vertices, inTangents, outTangents) {
     shapeLayer.name = name;
     shapeLayer.inPoint = comp.time;
     var contents = shapeLayer.property('Contents');
-    createPathGrp(contents, "".concat(name, "_Stroke"), false, true, [0, 0, 0], [255, 255, 255], 10, vertices, inTangents, outTangents, true, [0, 0]);
-    createPathGrp(contents, "".concat(name, "_Fill"), true, false, [202, 5, 5], [0, 0, 0], 0, vertices, inTangents, outTangents, true, [0, 0]);
+    createPathGrp(contents, "".concat(name, "_Stroke"), false, true, [0, 0, 0], [255, 255, 255], 5, vertices, inTangents, outTangents, true, [0, 0]);
+    createPathGrp(contents, "".concat(name, "_Fill"), true, false, hexToRgb(parsePrefs().iconColor3Hex).map(function (c) { return c * 255; }), [0, 0, 0], 0, vertices, inTangents, outTangents, true, [0, 0]);
     var fillOpacity = contents
         .property("".concat(name, "_Fill"))
         .property('ADBE Vectors Group')
@@ -625,10 +625,9 @@ var createAnimatedMap = function (name, vertices, inTangents, outTangents) {
     gapOne.setValue(25);
     var dashOffset = dashesProp.addProperty('ADBE Vector Stroke Offset');
     dashOffset.expression = 'time * -50';
-    var lineCapProp = myStroke.property('ADBE Vector Stroke Line Cap');
-    lineCapProp.setValue(2);
-    var lineJoinProp = myStroke.property('ADBE Vector Stroke Line Join');
-    lineJoinProp.setValue(2);
+    var strokeWidthProp = myStroke.property('ADBE Vector Stroke Width');
+    strokeWidthProp.expression =
+        'value / length(toComp([0,0]), toComp([0.7071,0.7071])) || 0.001;';
     var parentGrp = contents
         .property("".concat(name, "_Stroke"))
         .property('ADBE Vectors Group');
