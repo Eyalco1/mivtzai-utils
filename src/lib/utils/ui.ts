@@ -23,7 +23,7 @@ const createColoredButton = (
 
 const createAboutTab = (tpanel: TabbedPanel): Tab => {
     const aboutTab = tpanel.add('tab', undefined, ['About']);
-    aboutTab.add('image', [0, 0, 300, 110], bannerBinary);
+    aboutTab.add('image', [0, 0, 300, 110], logoBannerBinary);
     const abtStr =
         '‹ @@name - version @@version - Created By Eyal Cohen ›\n\n' +
         'מבצעי... אין מה לעשות, זה חלק מהשירות, וזה לא תמיד כיף.\n' +
