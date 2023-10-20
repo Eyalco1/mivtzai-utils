@@ -80,23 +80,19 @@ const createText = (
 
 // V2.0.0
 const createText = (
-    yPosCheck: Checkbox,
-    xPosCheck: Checkbox,
-    scaleCheck: Checkbox,
-    opacityCheck: Checkbox,
-    charsRadioBtn: RadioButton,
-    wordsRadioBtn: RadioButton,
-    linesRadioBtn: RadioButton,
-    maskCheck: Checkbox
+    yPosCheck: Boolean,
+    xPosCheck: Boolean,
+    scaleCheck: Boolean,
+    opacityCheck: Boolean,
+    grouping: 'Characters' | 'Words' | 'Lines',
+    maskCheck: Boolean
 ) => {
-    // check if no comp
     const comp = app.project.activeItem as CompItem;
     if (!comp || !(comp instanceof CompItem)) {
         alert('No Composition Selected');
         return;
     }
 
-    // check if no layers are selected
     if (
         comp.selectedLayers.length !== 1 ||
         !(comp.selectedLayers[0] instanceof TextLayer)
@@ -107,10 +103,32 @@ const createText = (
 
     app.beginUndoGroup('@@name: Apply Text Preset');
 
+    createTextAction(
+        comp,
+        yPosCheck,
+        xPosCheck,
+        scaleCheck,
+        opacityCheck,
+        grouping,
+        maskCheck
+    );
+
+    app.endUndoGroup();
+};
+
+const createTextAction = (
+    comp: CompItem,
+    yPosCheck: Boolean,
+    xPosCheck: Boolean,
+    scaleCheck: Boolean,
+    opacityCheck: Boolean,
+    grouping: 'Characters' | 'Words' | 'Lines',
+    maskCheck: Boolean
+) => {
     const selTLayer = comp.selectedLayers[0] as TextLayer;
 
     // add mask
-    if (maskCheck.value) {
+    if (maskCheck) {
         const id = app.findMenuCommandId('New Mask');
         app.executeCommand(id);
     }
@@ -140,14 +158,14 @@ const createText = (
         [number, number, number?]
     >;
     posProp.setValue([0, 0]);
-    if (xPosCheck.value) {
+    if (xPosCheck) {
         const xVal =
             textLang === 'English'
                 ? Math.ceil(srcRect.width) + 1
                 : -(Math.ceil(srcRect.width) + 1);
         posProp.setValue([xVal, posProp.value[1]]);
     }
-    if (yPosCheck.value) {
+    if (yPosCheck) {
         posProp.setValue([posProp.value[0], Math.ceil(srcRect.height) + 40]);
     }
 
@@ -155,7 +173,7 @@ const createText = (
         [number, number, number?]
     >;
 
-    if (scaleCheck.value) {
+    if (scaleCheck) {
         scaleProp.setValue([0, 0]);
     }
 
@@ -163,7 +181,7 @@ const createText = (
         'ADBE Text Opacity'
     ) as Property<number>;
 
-    if (opacityCheck.value) {
+    if (opacityCheck) {
         opacityProp.setValue(0);
     }
 
@@ -177,9 +195,7 @@ const createText = (
         .property('ADBE Text Range Advanced')
         .property('ADBE Text Range Type2') as Property<number>;
 
-    if (charsRadioBtn.value) basedOnProp.setValue(1);
-    if (wordsRadioBtn.value) basedOnProp.setValue(3);
-    if (linesRadioBtn.value) basedOnProp.setValue(4);
-
-    app.endUndoGroup();
+    if (grouping === 'Characters') basedOnProp.setValue(1);
+    if (grouping === 'Words') basedOnProp.setValue(3);
+    if (grouping === 'Lines') basedOnProp.setValue(4);
 };

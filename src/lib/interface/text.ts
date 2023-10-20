@@ -199,16 +199,34 @@ const createTextUI = (
     const applyBtn = applyMaskGrp.add('button', undefined, 'Apply');
     const maskCheck = applyMaskGrp.add('checkbox', undefined, 'Add Mask');
 
+    let grouping: 'Characters' | 'Words' | 'Lines';
+
     applyBtn.onClick = () => {
+        if (
+            !yPosCheck.value &&
+            !xPosCheck.value &&
+            !scaleCheck.value &&
+            !opacityCheck.value
+        ) {
+            alert('Please Select At Least One Animation Property');
+            return;
+        }
+
+        if (charsRadioBtn.value) {
+            grouping = 'Characters';
+        } else if (wordsRadioBtn.value) {
+            grouping = 'Words';
+        } else if (linesRadioBtn.value) {
+            grouping = 'Lines';
+        }
+
         createText(
-            yPosCheck,
-            xPosCheck,
-            scaleCheck,
-            opacityCheck,
-            charsRadioBtn,
-            wordsRadioBtn,
-            linesRadioBtn,
-            maskCheck
+            yPosCheck.value,
+            xPosCheck.value,
+            scaleCheck.value,
+            opacityCheck.value,
+            grouping,
+            maskCheck.value
         );
     };
 

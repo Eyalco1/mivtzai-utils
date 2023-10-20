@@ -50,7 +50,7 @@ const createQAUI = (
         rowOne,
         logosBinary,
         `Import IDF and Dotz Logos\n\nCLICK: All IDF Logos\n${metaKeyNameFromOs}: Hebrew\nSHIFT: English\nALT: Arabic\n${metaKeyNameFromOs} + SHIFT: Persian\nSHIFT + ALT: Spanish\n${metaKeyNameFromOs} + ALT: Russian\n${metaKeyNameFromOs} + SHIFT + ALT: French`,
-        importLogos
+        importLogosQA
     );
     createQABtn(rowOne, illusBinary, 'Illustration Text', createIllusText);
     createQABtn(rowOne, popBinary, 'Pop Animation', scaleWithOvershootQA);
@@ -93,7 +93,6 @@ const createQAUI = (
     const bigRowThree = QABtnsGrp.add('group');
 
     const rowFive = bigRowThree.add('group');
-    rowFive.alignment = 'left';
     createQABtn(
         rowFive,
         textPopBinary,
@@ -103,6 +102,10 @@ const createQAUI = (
     createQABtn(rowFive, arrowBinary, 'Arrow', createArrow);
     createQABtn(rowFive, mikraBinary, 'Mikra', createMikra);
     createQABtn(rowFive, cameraNullBinary, 'Camera Null', createCameraNull);
+
+    const rowSix = bigRowThree.add('group');
+    rowSix.alignment = 'left';
+    createQABtn(rowSix, bannerBinary, 'Create Banner', createBanner);
 
     bigRowOne.orientation = bigRowTwo.orientation = 'column';
 

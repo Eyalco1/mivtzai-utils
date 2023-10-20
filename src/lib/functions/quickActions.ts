@@ -108,14 +108,19 @@ const scaleWithOvershootQA = (): void => {
     app.endUndoGroup();
 };
 
-const importLogos = (): void => {
-    app.beginUndoGroup('@@name: Import Logos');
-
-    let langExt: 'HE' | 'EN' | 'AR' | 'PR' | 'ES' | 'RS' | 'FR' = null;
-
+const getLogosLangFromKeyboard = ():
+    | 'HE'
+    | 'EN'
+    | 'AR'
+    | 'PR'
+    | 'ES'
+    | 'RS'
+    | 'FR' => {
     const keyState = ScriptUI.environment.keyboardState;
     const ctrlOrCmdKey =
         getOS() === 'Win' ? keyState.ctrlKey : keyState.metaKey;
+
+    let langExt: 'HE' | 'EN' | 'AR' | 'PR' | 'ES' | 'RS' | 'FR';
 
     if (ctrlOrCmdKey) {
         if (keyState.shiftKey) {
@@ -138,6 +143,12 @@ const importLogos = (): void => {
     } else if (keyState.altKey) {
         langExt = 'AR';
     }
+
+    return langExt || null;
+};
+
+const importLogos = (useKeyboard: Boolean = true): void => {
+    const langExt = useKeyboard ? getLogosLangFromKeyboard() : 'HE';
 
     const idfItems: AVItem[] = [];
     if (langExt !== null) {
@@ -228,7 +239,11 @@ const importLogos = (): void => {
         .property('ADBE Transform Group')
         .property('ADBE Position') as Property<any>;
     dotzPos.setValue([0 + padding, 0 + padding]);
+};
 
+const importLogosQA = (useKeyboard: Boolean = true): void => {
+    app.beginUndoGroup('@@name: Import Logos');
+    importLogos(useKeyboard);
     app.endUndoGroup();
 };
 
@@ -1738,6 +1753,142 @@ const createCameraNull = (): void => {
     }
 
     comp.time = 0;
+
+    app.endUndoGroup();
+};
+
+const createBanner = (): void => {
+    const comp = app.project.activeItem as CompItem;
+    if (!comp || !(comp instanceof CompItem)) {
+        alert('No Composition Selected');
+        return;
+    }
+
+    app.beginUndoGroup('@@name: Create Banner');
+
+    /* BG */
+    const bannerBG = comp.layers.addShape();
+    bannerBG.name = 'Banner_BG';
+
+    const bgContents = bannerBG.property(
+        'ADBE Root Vectors Group'
+    ) as PropertyGroup;
+    const bgGrp = bgContents.addProperty('ADBE Vector Group') as PropertyGroup;
+    bgGrp.name = 'Rectangle 1';
+    const bgRecGrp = bgGrp.property('ADBE Vectors Group') as PropertyGroup;
+
+    const bgRecShape = bgRecGrp.addProperty('ADBE Vector Shape - Rect');
+    const bgRecSize = bgRecShape.property('ADBE Vector Rect Size') as Property<
+        [number, number]
+    >;
+    bgRecSize.setValue([comp.width, comp.height / 4.5]);
+
+    const bgFill = bgRecGrp.addProperty(
+        'ADBE Vector Graphic - Fill'
+    ) as PropertyGroup;
+    const bgFillColor = bgFill.property('ADBE Vector Fill Color') as Property<
+        [number, number, number]
+    >;
+    bgFillColor.setValue([65 / 255, 18 / 255, 17 / 255]);
+
+    const bgLayerPos = bannerBG
+        .property('ADBE Transform Group')
+        .property('ADBE Position') as Property<[number, number]>;
+
+    bgLayerPos.setValue([960, comp.height / 4.5 / 2]);
+
+    /* Text Box */
+    const textBoxLayer = comp.layers.addShape();
+    textBoxLayer.name = 'Text_Box';
+
+    const tbContents = textBoxLayer.property(
+        'ADBE Root Vectors Group'
+    ) as PropertyGroup;
+    const tbGrp = tbContents.addProperty('ADBE Vector Group') as PropertyGroup;
+    tbGrp.name = 'Rectangle 1';
+    const tbRecGrp = tbGrp.property('ADBE Vectors Group') as PropertyGroup;
+
+    const tbRecShape = tbRecGrp.addProperty('ADBE Vector Shape - Rect');
+    const tbRecSize = tbRecShape.property('ADBE Vector Rect Size') as Property<
+        [number, number]
+    >;
+    tbRecSize.setValueAtTime(comp.time, [0, (comp.height / 4.5) * 0.65]);
+    tbRecSize.setValueAtTime(comp.time + (1 / comp.frameRate) * 19, [
+        comp.width * 0.75,
+        (comp.height / 4.5) * 0.65
+    ]);
+
+    const ease1 = new KeyframeEase(0, 65);
+    const ease2 = new KeyframeEase(0, 92);
+    tbRecSize.setTemporalEaseAtKey(1, [ease1, ease1], [ease1, ease1]);
+    tbRecSize.setTemporalEaseAtKey(2, [ease2, ease2], [ease2, ease2]);
+
+    const tbFill = tbRecGrp.addProperty(
+        'ADBE Vector Graphic - Fill'
+    ) as PropertyGroup;
+    const tbFillColor = tbFill.property('ADBE Vector Fill Color') as Property<
+        [number, number, number]
+    >;
+    tbFillColor.setValue([122 / 255, 19 / 255, 21 / 255]);
+
+    const tbLayerPos = textBoxLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Position') as Property<[number, number]>;
+
+    tbLayerPos.setValue([960, comp.height / 4.5 / 2]);
+
+    /* Banner Text */
+    const bannerTextLayer = comp.layers.addText();
+    bannerTextLayer.inPoint = (1 / comp.frameRate) * 11;
+    let origCompTime = comp.time;
+    comp.time = (1 / comp.frameRate) * 11;
+
+    const srcText = bannerTextLayer
+        .property('ADBE Text Properties')
+        .property('ADBE Text Document') as Property<any>;
+
+    srcText.setValue('טקסט להמחשה בלבד');
+    const textDoc = srcText.value as TextDocument;
+    textDoc.font = getFontFromName('Almoni');
+    textDoc.fontSize = 115;
+    textDoc.applyFill = true;
+    textDoc.fillColor = [1, 1, 1];
+    textDoc.applyStroke = false;
+    textDoc.tracking = 0;
+    textDoc.justification = ParagraphJustification.CENTER_JUSTIFY;
+    srcText.setValue(textDoc);
+
+    const textLayerAnchorProp = bannerTextLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Anchor Point') as Property<[number, number]>;
+
+    textLayerAnchorProp.setValue([0, -30.4012]);
+
+    const textLayerPosProp = bannerTextLayer
+        .property('ADBE Transform Group')
+        .property('ADBE Position') as Property<[number, number]>;
+
+    textLayerPosProp.setValue([959.8164, 121.1134]);
+
+    for (var i = 1; i <= comp.numLayers; i++) {
+        comp.layer(i).selected = false;
+    }
+
+    bannerTextLayer.selected = true;
+
+    createTextAction(comp, true, false, false, false, 'Words', true);
+
+    comp.time = origCompTime;
+
+    /* Additional Properties */
+    textBoxLayer.parent = bannerBG;
+    bannerTextLayer.parent = textBoxLayer;
+
+    bannerTextLayer.trackMatteType = TrackMatteType.ALPHA;
+    (<any>bannerTextLayer).trackMatte = textBoxLayer.index;
+
+    importLogos(false);
+    comp.layer(1).parent = comp.layer(2).parent = bannerBG;
 
     app.endUndoGroup();
 };
