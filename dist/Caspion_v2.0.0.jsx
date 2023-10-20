@@ -560,6 +560,9 @@ var writeBinaryImageDataToFile = function (binary, path) {
     file.close();
     return file;
 };
+var getProjParentDirPath = function () {
+    return app.project.file.toString().split('/').slice(0, -1).join('/');
+};
 var createPathGrp = function (contents, name, hasFill, hasStroke, fillColor, strokeColor, strokeSize, vertices, inTangents, outTangents, pathClosed, position) {
     var grp = contents.addProperty('ADBE Vector Group');
     grp.name = name;
@@ -841,11 +844,7 @@ var specialImport = function (assetPath, id) {
         item_1.comment = id;
         return item_1;
     }
-    var parentDirPath = app.project.file
-        .toString()
-        .split('/')
-        .slice(0, -1)
-        .join('/');
+    var parentDirPath = getProjParentDirPath();
     var caspionAssetsDir = new Folder(parentDirPath + '/Caspion Assets/');
     if (!caspionAssetsDir.exists)
         caspionAssetsDir.create();
@@ -1712,33 +1711,12 @@ var createAnimatedFrame = function () {
     app.endUndoGroup();
 };
 var openProjectInFinder = function () {
-    var containsHebrew = function (str) { return /[\u0590-\u05FF]/.test(str); };
-    var writeSelectDialogToPrefs = function () {
-        var selFolder = Folder.selectDialog('Select Project Folder');
-        if (!selFolder)
-            return;
-        if (containsHebrew(selFolder.fsName)) {
-            alert("Sorry, can't choose this folder beacuse it contains Hebrew characters");
-            return;
-        }
-        writePrefsToMemory({ projectFolderPath: selFolder.fsName });
-    };
-    var keyState = ScriptUI.environment.keyboardState;
-    var modKey = getOS() === 'Win' ? keyState.ctrlKey : keyState.metaKey;
-    if (modKey) {
-        writeSelectDialogToPrefs();
+    if (!app.project.file) {
+        alert('Save The Project To Continue');
     }
     else {
-        var parsedPrefs = parsePrefs();
-        var path = parsedPrefs.projectFolderPath;
-        if (!path) {
-            var conf = confirm('No folder selected yet.\nWould you like to choose now?');
-            if (conf)
-                writeSelectDialogToPrefs();
-        }
-        else {
-            openFs(path);
-        }
+        var projParentDirPath = getProjParentDirPath();
+        openFs(projParentDirPath);
     }
 };
 var createTatzaPath = function () {
