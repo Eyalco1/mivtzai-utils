@@ -1,3 +1,7 @@
+const getProjParentDirPath = (): string => {
+    return app.project.file.toString().split('/').slice(0, -1).join('/');
+};
+
 const createPathGrp = (
     contents: PropertyGroup,
     name: string,
@@ -544,11 +548,7 @@ const specialImport = (assetPath: string, id: AssetID): AVItem => {
     }
 
     // open assets folder next to project
-    const parentDirPath = app.project.file
-        .toString()
-        .split('/')
-        .slice(0, -1)
-        .join('/');
+    const parentDirPath = getProjParentDirPath();
     const caspionAssetsDir = new Folder(parentDirPath + '/Caspion Assets/');
     if (!caspionAssetsDir.exists) caspionAssetsDir.create();
 

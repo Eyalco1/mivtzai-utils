@@ -810,6 +810,7 @@ const createAnimatedFrame = (): void => {
     app.endUndoGroup();
 };
 
+/*
 const openProjectInFinder = (): void => {
     const containsHebrew = (str: string) => /[\u0590-\u05FF]/.test(str);
 
@@ -841,6 +842,16 @@ const openProjectInFinder = (): void => {
         } else {
             openFs(path);
         }
+    }
+};
+*/
+
+const openProjectInFinder = (): void => {
+    if (!app.project.file) {
+        alert('Save The Project To Continue');
+    } else {
+        const projParentDirPath = getProjParentDirPath();
+        openFs(projParentDirPath);
     }
 };
 
