@@ -2252,7 +2252,7 @@ var createBanner = function () {
     var bgLayerPos = bannerBG
         .property('ADBE Transform Group')
         .property('ADBE Position');
-    bgLayerPos.setValue([960, comp.height / 4.5 / 2]);
+    bgLayerPos.setValue([comp.width / 2, comp.height / 4.5 / 2]);
     var textBoxLayer = comp.layers.addShape();
     textBoxLayer.name = 'Text_Box';
     var tbContents = textBoxLayer.property('ADBE Root Vectors Group');
@@ -2261,8 +2261,8 @@ var createBanner = function () {
     var tbRecGrp = tbGrp.property('ADBE Vectors Group');
     var tbRecShape = tbRecGrp.addProperty('ADBE Vector Shape - Rect');
     var tbRecSize = tbRecShape.property('ADBE Vector Rect Size');
-    tbRecSize.setValueAtTime(comp.time, [0, (comp.height / 4.5) * 0.65]);
-    tbRecSize.setValueAtTime(comp.time + (1 / comp.frameRate) * 19, [
+    tbRecSize.setValueAtTime(0, [0, (comp.height / 4.5) * 0.65]);
+    tbRecSize.setValueAtTime((1 / comp.frameRate) * 19, [
         comp.width * 0.75,
         (comp.height / 4.5) * 0.65
     ]);
@@ -2276,7 +2276,7 @@ var createBanner = function () {
     var tbLayerPos = textBoxLayer
         .property('ADBE Transform Group')
         .property('ADBE Position');
-    tbLayerPos.setValue([960, comp.height / 4.5 / 2]);
+    tbLayerPos.setValue([comp.width / 2, comp.height / 4.5 / 2]);
     var bannerTextLayer = comp.layers.addText();
     bannerTextLayer.inPoint = (1 / comp.frameRate) * 11;
     var origCompTime = comp.time;
@@ -2287,7 +2287,8 @@ var createBanner = function () {
     srcText.setValue('טקסט להמחשה בלבד');
     var textDoc = srcText.value;
     textDoc.font = getFontFromName('Almoni');
-    textDoc.fontSize = 115;
+    textDoc.fontSize =
+        ((Math.min(comp.width, comp.height) / 4.5) * 0.65) / 1.35;
     textDoc.applyFill = true;
     textDoc.fillColor = [1, 1, 1];
     textDoc.applyStroke = false;
@@ -2297,11 +2298,14 @@ var createBanner = function () {
     var textLayerAnchorProp = bannerTextLayer
         .property('ADBE Transform Group')
         .property('ADBE Anchor Point');
-    textLayerAnchorProp.setValue([0, -30.4012]);
+    textLayerAnchorProp.setValue([0, 0]);
     var textLayerPosProp = bannerTextLayer
         .property('ADBE Transform Group')
         .property('ADBE Position');
-    textLayerPosProp.setValue([959.8164, 121.1134]);
+    textLayerPosProp.setValue([
+        comp.width / 2,
+        comp.height / 4.5 / 2 + comp.height / 40
+    ]);
     for (var i = 1; i <= comp.numLayers; i++) {
         comp.layer(i).selected = false;
     }
