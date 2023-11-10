@@ -1795,7 +1795,7 @@ const createBanner = (): void => {
         .property('ADBE Transform Group')
         .property('ADBE Position') as Property<[number, number]>;
 
-    bgLayerPos.setValue([960, comp.height / 4.5 / 2]);
+    bgLayerPos.setValue([comp.width / 2, comp.height / 4.5 / 2]);
 
     /* Text Box */
     const textBoxLayer = comp.layers.addShape();
@@ -1812,8 +1812,8 @@ const createBanner = (): void => {
     const tbRecSize = tbRecShape.property('ADBE Vector Rect Size') as Property<
         [number, number]
     >;
-    tbRecSize.setValueAtTime(comp.time, [0, (comp.height / 4.5) * 0.65]);
-    tbRecSize.setValueAtTime(comp.time + (1 / comp.frameRate) * 19, [
+    tbRecSize.setValueAtTime(0, [0, (comp.height / 4.5) * 0.65]);
+    tbRecSize.setValueAtTime((1 / comp.frameRate) * 19, [
         comp.width * 0.75,
         (comp.height / 4.5) * 0.65
     ]);
@@ -1835,7 +1835,7 @@ const createBanner = (): void => {
         .property('ADBE Transform Group')
         .property('ADBE Position') as Property<[number, number]>;
 
-    tbLayerPos.setValue([960, comp.height / 4.5 / 2]);
+    tbLayerPos.setValue([comp.width / 2, comp.height / 4.5 / 2]);
 
     /* Banner Text */
     const bannerTextLayer = comp.layers.addText();
@@ -1850,7 +1850,8 @@ const createBanner = (): void => {
     srcText.setValue('טקסט להמחשה בלבד');
     const textDoc = srcText.value as TextDocument;
     textDoc.font = getFontFromName('Almoni');
-    textDoc.fontSize = 115;
+    textDoc.fontSize =
+        ((Math.min(comp.width, comp.height) / 4.5) * 0.65) / 1.35;
     textDoc.applyFill = true;
     textDoc.fillColor = [1, 1, 1];
     textDoc.applyStroke = false;
@@ -1862,13 +1863,16 @@ const createBanner = (): void => {
         .property('ADBE Transform Group')
         .property('ADBE Anchor Point') as Property<[number, number]>;
 
-    textLayerAnchorProp.setValue([0, -30.4012]);
+    textLayerAnchorProp.setValue([0, 0]);
 
     const textLayerPosProp = bannerTextLayer
         .property('ADBE Transform Group')
         .property('ADBE Position') as Property<[number, number]>;
 
-    textLayerPosProp.setValue([959.8164, 121.1134]);
+    textLayerPosProp.setValue([
+        comp.width / 2,
+        comp.height / 4.5 / 2 + comp.height / 40
+    ]);
 
     for (var i = 1; i <= comp.numLayers; i++) {
         comp.layer(i).selected = false;
