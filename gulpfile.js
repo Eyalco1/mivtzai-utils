@@ -155,7 +155,7 @@ task(
         'buildGuide',
         // 'jsxbin',
         'addToHost',
-        'zip',
+        // 'zip',
         'archive',
         'clean'
     )
@@ -173,7 +173,7 @@ task(
         'runScript',
         // 'jsxbin',
         'addToHost',
-        'zip',
+        // 'zip',
         'archive',
         'clean'
     )
