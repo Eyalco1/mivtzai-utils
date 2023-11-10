@@ -21035,7 +21035,10 @@ var createTexturesUI = function (tpanel) {
         'Grunge',
         'Smoke',
         'Noise',
-        'Dust'
+        'Dust',
+        'Ink',
+        'Sand',
+        'Stone'
     ];
     var texturesDD = texturesDDGrp.add('dropdownlist', undefined, texturesList);
     texturesDD.preferredSize[0] = 100;

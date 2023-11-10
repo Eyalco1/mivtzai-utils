@@ -25,7 +25,10 @@ const createTexturesUI = (
         'Grunge',
         'Smoke',
         'Noise',
-        'Dust'
+        'Dust',
+        'Ink',
+        'Sand',
+        'Stone'
     ];
     const texturesDD = texturesDDGrp.add(
         'dropdownlist',

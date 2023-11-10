@@ -96,7 +96,10 @@ type TextureID =
     | 'Smoke'
     | 'Noise'
     | 'Dust'
-    | 'Grunge';
+    | 'Grunge'
+    | 'Ink'
+    | 'Sand'
+    | 'Stone';
 
 interface LocationArgs {
     lang: Lingo;
