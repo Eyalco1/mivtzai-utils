@@ -21064,11 +21064,73 @@ var createTexturesUI = function (tpanel) {
 };
 var createTranslateUI = function (tpanel) {
     var tranTab = tpanel.add('tab', undefined, ['Translate']);
-    tranTab.alignment = tranTab.alignChildren = ['fill', 'fill'];
+    var tranTabGrp = tranTab.add('group');
+    tranTabGrp.orientation = 'column';
+    tranTabGrp.alignChildren = 'left';
+    tranTabGrp.alignment = 'left';
+    tranTabGrp.margins = 4;
+    tranTabGrp.margins.left = 10;
+    var editResGrp = tranTabGrp.add('group');
+    var optionsResGrp = tranTabGrp.add('group');
+    editResGrp.orientation = optionsResGrp.orientation = 'column';
+    editResGrp.alignChildren =
+        editResGrp.alignment =
+            optionsResGrp.alignChildren =
+                optionsResGrp.alignment =
+                    'left';
+    var fromToTextGrp = editResGrp.add('group');
+    fromToTextGrp.alignChildren = ['left', 'center'];
+    fromToTextGrp.spacing = 115;
+    fromToTextGrp.add('statictext', undefined, 'From:');
+    fromToTextGrp.add('statictext', undefined, 'To:');
+    var editGrp = editResGrp.add('group');
+    editGrp.alignChildren = ['fill', 'center'];
+    editGrp.spacing = 10;
+    var edit1Text = 'עזה\nישראל\nקיר בטון אינדקטיבי';
+    var edittext1 = editGrp.add('edittext', undefined, edit1Text, {
+        scrollable: true,
+        multiline: true
+    });
+    var edit2Text = 'Gaza\nIsrael\nWall';
+    var edittext2 = editGrp.add('edittext', undefined, edit2Text, {
+        scrollable: true,
+        multiline: true
+    });
+    edittext1.size = edittext2.size = [200, 240];
+    var fontMainGrp = optionsResGrp.add('group');
+    fontMainGrp.alignChildren = ['center', 'top'];
+    fontMainGrp.spacing = 70;
+    fontMainGrp.margins = [0, 10, 0, 10];
+    fontMainGrp.alignment = ['fill', 'top'];
+    var fontTextGrp = fontMainGrp.add('group');
+    fontTextGrp.orientation = 'column';
+    fontTextGrp.alignChildren = ['left', 'center'];
+    fontTextGrp.spacing = 10;
+    fontTextGrp.alignment = ['center', 'fill'];
+    var fontStatGrp = fontTextGrp.add('group');
+    fontStatGrp.alignChildren = ['left', 'center'];
+    fontStatGrp.spacing = 0;
+    fontStatGrp.add('statictext', undefined, 'Font:');
+    var fontNameStatGrp = fontTextGrp.add('group');
+    fontNameStatGrp.alignChildren = ['left', 'center'];
+    fontNameStatGrp.spacing = 0;
+    var fontName = 'FONTNAME';
+    var fontNameStat = fontNameStatGrp.add('statictext', undefined, fontName);
+    var fontFromBtn = fontMainGrp.add('button', undefined, 'Font From Selected Layer');
+    fontFromBtn.alignment = ['center', 'fill'];
+    var divider1 = optionsResGrp.add('panel');
+    divider1.alignment = 'fill';
+    var deepSearchGrp = optionsResGrp.add('group');
+    deepSearchGrp.alignChildren = ['left', 'center'];
+    deepSearchGrp.margins = [0, 0, 0, 10];
+    var deepSearchCheck = deepSearchGrp.add('checkbox', undefined, 'Deep Search');
+    var tranBtnGrp = optionsResGrp.add('group');
+    var tranBtn = optionsResGrp.add('button', undefined, 'Translate');
     var updateTranslateUI = function () {
     };
     return {
         tranTab: tranTab,
+        tranTabGrp: tranTabGrp,
         updateTranslateUI: updateTranslateUI
     };
 };
@@ -21135,7 +21197,7 @@ var init = function (thisObj) {
     var _c = createIconsUI(tpanel), iconsTab = _c.iconsTab, iconCircleGrp = _c.iconCircleGrp, colorChecksGrp = _c.colorChecksGrp, updateIconsUI = _c.updateIconsUI;
     var _d = createLocationsUI(tpanel), locTab = _d.locTab, dropdownsGrp = _d.dropdownsGrp, locLangDDGrp = _d.locLangDDGrp, mitugAnimDDGrp = _d.mitugAnimDDGrp, updateLocUI = _d.updateLocUI;
     var _e = createTexturesUI(tpanel), texTab = _e.texTab, dropdownChecksGrp = _e.dropdownChecksGrp, updateTexTab = _e.updateTexTab;
-    var _f = createTranslateUI(tpanel), tranTab = _f.tranTab, updateTranslateUI = _f.updateTranslateUI;
+    var _f = createTranslateUI(tpanel), tranTab = _f.tranTab, tranTabGrp = _f.tranTabGrp, updateTranslateUI = _f.updateTranslateUI;
     createSideBtns(qaTab, textTab, iconsTab, locTab, texTab, tranTab, function () {
         updateQAUI();
         updateTextUI();
@@ -21153,7 +21215,7 @@ var init = function (thisObj) {
                     bigRowThree.orientation =
                         w.size.width > 400 ? 'row' : 'column';
             QABtnsGrp.orientation =
-                w.size.width > 940 ? 'row' : 'column';
+                w.size.width > 980 ? 'row' : 'column';
             iconCircleGrp.orientation = colorChecksGrp.orientation =
                 w.size.width > 350 ? 'row' : 'column';
             dropdownsGrp.orientation =
@@ -21162,6 +21224,8 @@ var init = function (thisObj) {
                 w.size.width > 710 ? 'row' : 'column';
             dropdownChecksGrp.orientation =
                 w.size.width > 350 ? 'row' : 'column';
+            tranTabGrp.orientation =
+                w.size.width > 740 ? 'row' : 'column';
             w.layout.layout(true);
             w.layout.resize();
         };

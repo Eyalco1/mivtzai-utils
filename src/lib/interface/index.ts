@@ -94,7 +94,8 @@ const init = (thisObj: typeof globalThis) => {
         createLocationsUI(tpanel);
     const { texTab, dropdownChecksGrp, updateTexTab } =
         createTexturesUI(tpanel);
-    const { tranTab, updateTranslateUI } = createTranslateUI(tpanel);
+    const { tranTab, tranTabGrp, updateTranslateUI } =
+        createTranslateUI(tpanel);
 
     createSideBtns(qaTab, textTab, iconsTab, locTab, texTab, tranTab, () => {
         updateQAUI();
@@ -115,13 +116,7 @@ const init = (thisObj: typeof globalThis) => {
                 bigRowThree.orientation =
                     (<Dimension>w.size).width > 400 ? 'row' : 'column';
             QABtnsGrp.orientation =
-                (<Dimension>w.size).width > 940 ? 'row' : 'column';
-            // Text
-            // optionsGrp.orientation =
-            //     (<Dimension>w.size).width > 450 ? 'row' : 'column';
-            // textDropdownsGrp.orientation =
-            //     (<Dimension>w.size).width > 340 ? 'row' : 'column';
-            // mainTextEdit.size = [(<Dimension>w.size).width - 50, 60];
+                (<Dimension>w.size).width > 980 ? 'row' : 'column';
             // Icons
             iconCircleGrp.orientation = colorChecksGrp.orientation =
                 (<Dimension>w.size).width > 350 ? 'row' : 'column';
@@ -133,6 +128,9 @@ const init = (thisObj: typeof globalThis) => {
             // Textures
             dropdownChecksGrp.orientation =
                 (<Dimension>w.size).width > 350 ? 'row' : 'column';
+            // Translate
+            tranTabGrp.orientation =
+                (<Dimension>w.size).width > 740 ? 'row' : 'column';
             //
             w.layout.layout(true);
             w.layout.resize();
