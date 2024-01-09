@@ -30,6 +30,7 @@
         ".temp/lib/interface/icons.ts",
         ".temp/lib/interface/locations.ts",
         ".temp/lib/interface/textures.ts",
+        ".temp/lib/interface/translate.ts",
         ".temp/lib/interface/index.ts",
         ".temp/index.ts"
     ]

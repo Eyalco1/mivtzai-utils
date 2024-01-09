@@ -21062,7 +21062,17 @@ var createTexturesUI = function (tpanel) {
     };
     return { texTab: texTab, dropdownChecksGrp: dropdownChecksGrp, updateTexTab: updateTexTab };
 };
-var createSideBtns = function (qaTab, textTab, iconsTab, locTab, texTab, updateUIFn) {
+var createTranslateUI = function (tpanel) {
+    var tranTab = tpanel.add('tab', undefined, ['Translate']);
+    tranTab.alignment = tranTab.alignChildren = ['fill', 'fill'];
+    var updateTranslateUI = function () {
+    };
+    return {
+        tranTab: tranTab,
+        updateTranslateUI: updateTranslateUI
+    };
+};
+var createSideBtns = function (qaTab, textTab, iconsTab, locTab, texTab, tranTab, updateUIFn) {
     var createTheBtns = function (container, updateUIFn) {
         var helpBtn = createQABtn(container, helpBinary, 'Help', function () {
             createHelpWindow(updateUIFn);
@@ -21074,12 +21084,14 @@ var createSideBtns = function (qaTab, textTab, iconsTab, locTab, texTab, updateU
     var extraBtnsIcons = iconsTab.add('group');
     var extraBtnsLocations = locTab.add('group');
     var extraBtnsTextures = texTab.add('group');
+    var extraBtnsTranslate = tranTab.add('group');
     extraBtnsQA.spacing =
         extraBtnsText.spacing =
             extraBtnsIcons.spacing =
                 extraBtnsLocations.spacing =
                     extraBtnsTextures.spacing =
-                        2;
+                        extraBtnsTranslate.spacing =
+                            2;
     extraBtnsQA.alignment =
         extraBtnsQA.alignChildren =
             extraBtnsText.alignment =
@@ -21090,18 +21102,22 @@ var createSideBtns = function (qaTab, textTab, iconsTab, locTab, texTab, updateU
                                 extraBtnsLocations.alignChildren =
                                     extraBtnsTextures.alignment =
                                         extraBtnsTextures.alignChildren =
-                                            ['fill', 'fill'];
+                                            extraBtnsTranslate.alignment =
+                                                extraBtnsTranslate.alignChildren =
+                                                    ['fill', 'fill'];
     var helpBtnQA = createTheBtns(extraBtnsQA, updateUIFn).helpBtn;
     var helpBtnText = createTheBtns(extraBtnsText, updateUIFn).helpBtn;
     var helpBtnIcons = createTheBtns(extraBtnsIcons, updateUIFn).helpBtn;
     var helpBtnLocs = createTheBtns(extraBtnsLocations, updateUIFn).helpBtn;
     var helpBtnTexs = createTheBtns(extraBtnsTextures, updateUIFn).helpBtn;
+    var helpBtnTran = createTheBtns(extraBtnsTranslate, updateUIFn).helpBtn;
     helpBtnQA.alignment =
         helpBtnText.alignment =
             helpBtnIcons.alignment =
                 helpBtnLocs.alignment =
                     helpBtnTexs.alignment =
-                        ['right', 'bottom'];
+                        helpBtnTran.alignment =
+                            ['right', 'bottom'];
 };
 var init = function (thisObj) {
     var w = thisObj instanceof Panel
@@ -21119,12 +21135,14 @@ var init = function (thisObj) {
     var _c = createIconsUI(tpanel), iconsTab = _c.iconsTab, iconCircleGrp = _c.iconCircleGrp, colorChecksGrp = _c.colorChecksGrp, updateIconsUI = _c.updateIconsUI;
     var _d = createLocationsUI(tpanel), locTab = _d.locTab, dropdownsGrp = _d.dropdownsGrp, locLangDDGrp = _d.locLangDDGrp, mitugAnimDDGrp = _d.mitugAnimDDGrp, updateLocUI = _d.updateLocUI;
     var _e = createTexturesUI(tpanel), texTab = _e.texTab, dropdownChecksGrp = _e.dropdownChecksGrp, updateTexTab = _e.updateTexTab;
-    createSideBtns(qaTab, textTab, iconsTab, locTab, texTab, function () {
+    var _f = createTranslateUI(tpanel), tranTab = _f.tranTab, updateTranslateUI = _f.updateTranslateUI;
+    createSideBtns(qaTab, textTab, iconsTab, locTab, texTab, tranTab, function () {
         updateQAUI();
         updateTextUI();
         updateIconsUI();
         updateLocUI();
         updateTexTab();
+        updateTranslateUI();
     });
     w.layout.layout(true);
     w.layout.resize();

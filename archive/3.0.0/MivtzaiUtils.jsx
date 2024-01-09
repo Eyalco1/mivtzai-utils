@@ -1,11 +1,3 @@
-/**
- * @name Caspion
- * @description Utilites for operative projects
- * @version 3.0.0
- * @author Eyal Cohen
- * @license ISC
- */
-
 Array.prototype.map || (Array.prototype.map = function (callback) { var T, A, k; if (null == this)
     throw new TypeError("this is null or not defined"); var O = Object(this), len = O.length >>> 0; if ("function" != typeof callback)
     throw new TypeError(callback + " is not a function"); for (arguments.length > 1 && (T = arguments[1]), A = new Array(len), k = 0; k < len;) {
@@ -472,7 +464,7 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 var BOILERPLATE_PREFS = {
-    version: '3.0.0',
+    version: '@@version',
     iconsLabelIndex: 5,
     locsLabelIndex: 13,
     texLabelIndex: 2,
@@ -494,9 +486,9 @@ var getOS = function () {
     return 'Mac';
 };
 var getAssetsPath = function () {
-    var nameNoSpaces = 'Caspion'.replace(/\s+/g, '');
-    return ($.fileName.toString().replace("".concat(nameNoSpaces, "_v3.0.0.jsx"), '') +
-        "".concat(nameNoSpaces, "_v3.0.0 Assets"));
+    var nameNoSpaces = '@@name'.replace(/\s+/g, '');
+    return ($.fileName.toString().replace("".concat(nameNoSpaces, "_v@@version.jsx"), '') +
+        "".concat(nameNoSpaces, "_v@@version Assets"));
 };
 var openFs = function (path) {
     var folder = Folder(path);
@@ -513,7 +505,7 @@ var createFolder = function (folderObj) {
 };
 var readPrefs = function () {
     var docsFolder = File(Folder.myDocuments.toString()).toString();
-    var file = File(docsFolder + '/Caspion/Prefs/Prefs.json');
+    var file = File(docsFolder + '/@@name/Prefs/Prefs.json');
     file.open('r');
     var stringData = file.read();
     file.close();
@@ -526,12 +518,12 @@ var parsePrefs = function () {
 };
 var setUpPrefs = function () {
     var docsFolder = File(Folder.myDocuments.toString()).toString();
-    createFolder(Folder(docsFolder + '/Caspion'));
-    createFolder(Folder(docsFolder + '/Caspion/Prefs'));
-    var myJSON = File(docsFolder + '/Caspion/Prefs/Prefs.json');
+    createFolder(Folder(docsFolder + '/@@name'));
+    createFolder(Folder(docsFolder + '/@@name/Prefs'));
+    var myJSON = File(docsFolder + '/@@name/Prefs/Prefs.json');
     if (myJSON.exists) {
         var parsedPrefs = parsePrefs();
-        parsedPrefs.version = '3.0.0';
+        parsedPrefs.version = '@@version';
         myJSON.open('w');
         myJSON.write(JSON.stringify(__assign(__assign({}, BOILERPLATE_PREFS), parsedPrefs), null, 2));
         myJSON.close();
@@ -544,9 +536,9 @@ var setUpPrefs = function () {
 };
 var writePrefsToMemory = function (prefs) {
     var docsFolder = File(Folder.myDocuments.toString()).toString();
-    createFolder(Folder(docsFolder + '/Caspion'));
-    createFolder(Folder(docsFolder + '/Caspion/Prefs'));
-    var myJSON = File(docsFolder + '/Caspion/Prefs/Prefs.json');
+    createFolder(Folder(docsFolder + '/@@name'));
+    createFolder(Folder(docsFolder + '/@@name/Prefs'));
+    var myJSON = File(docsFolder + '/@@name/Prefs/Prefs.json');
     var parsedPrefs = parsePrefs();
     myJSON.open('w');
     myJSON.write(JSON.stringify(__assign(__assign({}, parsedPrefs), prefs), null, 2));
@@ -1044,7 +1036,7 @@ var introduceTextEvo = function () {
         app.executeCommand(2004);
         ttext.selected = true;
         var docsFolder = File(Folder.myDocuments.toString()).toString();
-        var tePreset = writePresetFile(textevo, docsFolder + '/Caspion/Temp/TextEvo.ffx');
+        var tePreset = writePresetFile(textevo, docsFolder + '/@@name/Temp/TextEvo.ffx');
         ttext.applyPreset(tePreset);
         var tteProp = ttext('ADBE Effect Parade')(ttext('ADBE Effect Parade').numProperties);
         setTextAnimProps(ttext, tteProp.name);
@@ -1112,7 +1104,7 @@ var detectLanguage = function (input) {
     }
 };
 var createTvaiStroke = function () {
-    app.beginUndoGroup('Caspion: Create Tunnel Stroke');
+    app.beginUndoGroup('@@name: Create Tunnel Stroke');
     var comp = app.project.activeItem;
     if (!comp || !(comp instanceof CompItem)) {
         alert('No Composition Selected');
@@ -1168,7 +1160,7 @@ var createTvaiStroke = function () {
     app.endUndoGroup();
 };
 var scaleWithOvershootQA = function () {
-    app.beginUndoGroup('Caspion: Pop Animation');
+    app.beginUndoGroup('@@name: Pop Animation');
     var comp = app.project.activeItem;
     if (!comp || !(comp instanceof CompItem)) {
         alert('No Composition Selected');
@@ -1263,12 +1255,12 @@ var importLogos = function (useKeyboard) {
 };
 var importLogosQA = function (useKeyboard) {
     if (useKeyboard === void 0) { useKeyboard = true; }
-    app.beginUndoGroup('Caspion: Import Logos');
+    app.beginUndoGroup('@@name: Import Logos');
     importLogos(useKeyboard);
     app.endUndoGroup();
 };
 var createIllusText = function () {
-    app.beginUndoGroup('Caspion: Create Illustration Text');
+    app.beginUndoGroup('@@name: Create Illustration Text');
     var comp = app.project.activeItem;
     if (!comp || !(comp instanceof CompItem)) {
         alert('No Composition Selected');
@@ -1304,7 +1296,7 @@ var createIllusText = function () {
     app.endUndoGroup();
 };
 var formatLayerNameQA = function () {
-    app.beginUndoGroup('Caspion: Format Layer Name');
+    app.beginUndoGroup('@@name: Format Layer Name');
     var comp = app.project.activeItem;
     if (!comp || !(comp instanceof CompItem)) {
         alert('No Composition Selected');
@@ -1327,7 +1319,7 @@ var formatLayerNameQA = function () {
     app.endUndoGroup();
 };
 var textReverse = function () {
-    app.beginUndoGroup('Caspion: Reverse Text');
+    app.beginUndoGroup('@@name: Reverse Text');
     var comp = app.project.activeItem;
     if (!comp || !(comp instanceof CompItem)) {
         alert('No Composition Selected');
@@ -1352,7 +1344,7 @@ var textReverse = function () {
     app.endUndoGroup();
 };
 var createBg = function () {
-    app.beginUndoGroup('Caspion: Create Background');
+    app.beginUndoGroup('@@name: Create Background');
     var comp = app.project.activeItem;
     if (!comp || !(comp instanceof CompItem)) {
         alert('No Composition Selected');
@@ -1383,7 +1375,7 @@ var createBg = function () {
     app.endUndoGroup();
 };
 var createIsraelMap = function () {
-    app.beginUndoGroup('Caspion: Create Israel Map');
+    app.beginUndoGroup('@@name: Create Israel Map');
     var vertices = [
         [163.25, -515.875],
         [150.375, -508.625],
@@ -1538,7 +1530,7 @@ var createIsraelMap = function () {
     app.endUndoGroup();
 };
 var createGazaMap = function () {
-    app.beginUndoGroup('Caspion: Create Gaza Map');
+    app.beginUndoGroup('@@name: Create Gaza Map');
     var vertices = [
         [209.749725341797, -480.25],
         [128.999969482422, -358],
@@ -1639,7 +1631,7 @@ var createGazaMap = function () {
     app.endUndoGroup();
 };
 var createCountingText = function () {
-    app.beginUndoGroup('Caspion: Counting Numbers');
+    app.beginUndoGroup('@@name: Counting Numbers');
     var comp = app.project.activeItem;
     if (!comp || !(comp instanceof CompItem)) {
         alert('No Composition Selected');
@@ -1664,17 +1656,17 @@ var createCountingText = function () {
     app.endUndoGroup();
 };
 var importIsraelGoogleMaps = function () {
-    app.beginUndoGroup('Caspion: Import Israel Map');
+    app.beginUndoGroup('@@name: Import Israel Map');
     importGoogleMaps('Israel');
     app.endUndoGroup();
 };
 var importGazaGoogleMaps = function () {
-    app.beginUndoGroup('Caspion: Import Gaza Map');
+    app.beginUndoGroup('@@name: Import Gaza Map');
     importGoogleMaps('Gaza');
     app.endUndoGroup();
 };
 var createAnimatedFrame = function () {
-    app.beginUndoGroup('Caspion: Animated Frame');
+    app.beginUndoGroup('@@name: Animated Frame');
     var comp = app.project.activeItem;
     if (!comp || !(comp instanceof CompItem)) {
         alert('No Composition Selected');
@@ -1730,7 +1722,7 @@ var openProjectInFinder = function () {
     }
 };
 var createTatzaPath = function () {
-    app.beginUndoGroup('Caspion: Location Mark');
+    app.beginUndoGroup('@@name: Location Mark');
     var comp = app.project.activeItem;
     if (!comp || !(comp instanceof CompItem)) {
         alert('No Composition Selected');
@@ -1788,7 +1780,7 @@ var createTatzaPath = function () {
     app.endUndoGroup();
 };
 var recScaleX = function () {
-    app.beginUndoGroup('Caspion: Create Background');
+    app.beginUndoGroup('@@name: Create Background');
     var comp = app.project.activeItem;
     if (!comp || !(comp instanceof CompItem)) {
         alert('No Composition Selected');
@@ -1834,7 +1826,7 @@ var createTextOnLocation = function () {
         return;
     }
     var promptVal = prompt('Write Text Here:', '');
-    app.beginUndoGroup('Caspion: Text On Location');
+    app.beginUndoGroup('@@name: Text On Location');
     var circleLayer = comp.layers.addShape();
     circleLayer.name = "".concat(promptVal, " - Circle");
     circleLayer.inPoint = comp.time;
@@ -1981,7 +1973,7 @@ var createTextOnLocation = function () {
     app.endUndoGroup();
 };
 var createArrow = function () {
-    app.beginUndoGroup('Caspion: Create Arrow');
+    app.beginUndoGroup('@@name: Create Arrow');
     var comp = app.project.activeItem;
     if (!comp || !(comp instanceof CompItem)) {
         alert('No Composition Selected');
@@ -2087,7 +2079,7 @@ var createArrow = function () {
     app.endUndoGroup();
 };
 var createMikra = function () {
-    app.beginUndoGroup('Caspion: Create Mikra');
+    app.beginUndoGroup('@@name: Create Mikra');
     var comp = app.project.activeItem;
     if (!comp || !(comp instanceof CompItem)) {
         alert('No Composition Selected');
@@ -2206,7 +2198,7 @@ var createMikra = function () {
     app.endUndoGroup();
 };
 var createCameraNull = function () {
-    app.beginUndoGroup('Caspion: Create Camera Null');
+    app.beginUndoGroup('@@name: Create Camera Null');
     var comp = app.project.activeItem;
     if (!comp || !(comp instanceof CompItem)) {
         alert('No Composition Selected');
@@ -2236,7 +2228,7 @@ var createBanner = function () {
         alert('No Composition Selected');
         return;
     }
-    app.beginUndoGroup('Caspion: Create Banner');
+    app.beginUndoGroup('@@name: Create Banner');
     var bannerBG = comp.layers.addShape();
     bannerBG.name = 'Banner_BG';
     var bgContents = bannerBG.property('ADBE Root Vectors Group');
@@ -2331,7 +2323,7 @@ var createText = function (yPosCheck, xPosCheck, scaleCheck, opacityCheck, group
         alert('Select Only 1 Text Layer');
         return;
     }
-    app.beginUndoGroup('Caspion: Apply Text Preset');
+    app.beginUndoGroup('@@name: Apply Text Preset');
     createTextAction(comp, yPosCheck, xPosCheck, scaleCheck, opacityCheck, grouping, maskCheck);
     app.endUndoGroup();
 };
@@ -11249,7 +11241,7 @@ var createM16Icon = function (circleColor, iconColor, hasCircle, scale) {
     iconAftermath(hasCircle, contents, circleColorRgb, scale, layer, 180);
 };
 var createIconFromId = function (id, circleColor, iconColor, hasCircle, scale) {
-    app.beginUndoGroup("Caspion: Create Icon - ".concat(id));
+    app.beginUndoGroup("@@name: Create Icon - ".concat(id));
     var comp = app.project.activeItem;
     if (!comp || !(comp instanceof CompItem)) {
         alert('No Composition Selected');
@@ -20146,7 +20138,7 @@ var createCollegeLocation = function (lang, mitug, animation) {
     createLocation(args, lang, mitug, animation);
 };
 var createLocationFromId = function (id, lang, mitug, animation) {
-    app.beginUndoGroup("Caspion: Create Location - ".concat(id));
+    app.beginUndoGroup("@@name: Create Location - ".concat(id));
     var comp = app.project.activeItem;
     if (!comp || !(comp instanceof CompItem)) {
         alert('No Composition Selected');
@@ -20281,7 +20273,7 @@ var getCommandId = function (_a, _b) {
     return 2732;
 };
 var createTexture = function (id, loop, fit) {
-    app.beginUndoGroup("Caspion: Import Texture - ".concat(id));
+    app.beginUndoGroup("@@name: Import Texture - ".concat(id));
     var path = getPathFromTextureID(id);
     var textureItem = specialImport(path, "caspion-".concat(id.replace(' ', '-').toLowerCase()));
     var comp = app.project.activeItem;
@@ -20319,7 +20311,7 @@ var createColoredButton = function (container, color, size) {
 var createAboutTab = function (tpanel) {
     var aboutTab = tpanel.add('tab', undefined, ['About']);
     aboutTab.add('image', [0, 0, 300, 110], logoBannerBinary);
-    var abtStr = '‹ Caspion - version 3.0.0 - Created By Eyal Cohen ›\n\n' +
+    var abtStr = '‹ @@name - version @@version - Created By Eyal Cohen ›\n\n' +
         'מבצעי... אין מה לעשות, זה חלק מהשירות, וזה לא תמיד כיף.\n' +
         'כספיון (על שם קצין ההפקה המבצעית שלנו, לא סיפור הילדים המפורסם מאת פאול קור) התחיל כרעיון מאוד שאפתני, שמנסה לפתור בעיה שכל אפטריסט מכיר: אנחנו מבזבזים הרבה זמן בעבודה מיותרת. משחזרים דברים שכבר עשינו, לא מוצאים קבצים בשרת, הולכים לאיבוד בתוך מאגרים של גרפיקאים...\n\n' +
         'המטרה של הפרוייקט הזה היא לייעל כמה שאפשר את העבודה המבצעית, ובתקווה להפוך את החיים שלנו לקצת יותר פשוטים.\n' +
@@ -21122,7 +21114,7 @@ var createSideBtns = function (qaTab, textTab, iconsTab, locTab, texTab, tranTab
 var init = function (thisObj) {
     var w = thisObj instanceof Panel
         ? thisObj
-        : new Window('palette', 'Caspion', undefined, {
+        : new Window('palette', '@@name', undefined, {
             resizeable: true
         });
     if (w == null)

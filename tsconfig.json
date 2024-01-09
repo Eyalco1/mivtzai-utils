@@ -31,6 +31,7 @@
         "src/lib/interface/icons.ts",
         "src/lib/interface/locations.ts",
         "src/lib/interface/textures.ts",
+        "src/lib/interface/translate.ts",
         "src/lib/interface/index.ts",
         "src/index.ts"
     ]
