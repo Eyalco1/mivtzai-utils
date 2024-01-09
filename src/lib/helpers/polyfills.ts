@@ -13,3 +13,5 @@ Array.prototype.find=Array.prototype.find||function(callback){if(null===this)thr
 Array.prototype.indexOf||(Array.prototype.indexOf=function(t){"use strict";if(this==null)throw TypeError();var r=Object(this),n=0|r.length;if(0===n)return -1;var e=0;for(arguments.length>1&&(e=Number(arguments[1]),e==e&&isFinite(e)?0!==e&&(e=Math.floor(e))<0&&(e=Math.max(n-Math.abs(e),0)):e=0);e<n;e++)if(e in r&&r[e]===t)return e;return -1});
 
 Array.prototype.includes||(Array.prototype.includes=function(t){return!!~this.indexOf(t)});
+// @ts-ignore
+String.prototype.replaceAll||(String.prototype.replaceAll=function(str,newStr){return"[object regexp]"===Object.prototype.toString.call(str).toLowerCase()?this.replace(str,newStr):this.replace(new RegExp(str,"g"),newStr)});

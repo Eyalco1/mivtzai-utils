@@ -33,7 +33,7 @@ const createTranslateUI = (
 
     const fromToTextGrp = editResGrp.add('group');
     fromToTextGrp.alignChildren = ['left', 'center'];
-    fromToTextGrp.spacing = 115;
+    fromToTextGrp.spacing = 174;
 
     fromToTextGrp.add('statictext', undefined, 'From:');
     fromToTextGrp.add('statictext', undefined, 'To:');
@@ -42,25 +42,23 @@ const createTranslateUI = (
     editGrp.alignChildren = ['fill', 'center'];
     editGrp.spacing = 10;
 
-    const edit1Text = 'עזה\nישראל\nקיר בטון אינדקטיבי';
     // TODO: justify right
-    const edittext1 = editGrp.add('edittext', undefined, edit1Text, {
+    const fromEditText = editGrp.add('edittext', undefined, '', {
         scrollable: true,
         multiline: true
     });
 
-    const edit2Text = 'Gaza\nIsrael\nWall';
     // TODO: justify left
-    const edittext2 = editGrp.add('edittext', undefined, edit2Text, {
+    const toEditText = editGrp.add('edittext', undefined, '', {
         scrollable: true,
         multiline: true
     });
 
-    edittext1.size = edittext2.size = [200, 240];
+    fromEditText.size = toEditText.size = [200, 240];
 
     const fontMainGrp = optionsResGrp.add('group');
     fontMainGrp.alignChildren = ['center', 'top'];
-    fontMainGrp.spacing = 70;
+    fontMainGrp.spacing = 0;
     // @ts-ignore
     fontMainGrp.margins = [0, 10, 0, 10];
     fontMainGrp.alignment = ['fill', 'top'];
@@ -81,8 +79,8 @@ const createTranslateUI = (
     fontNameStatGrp.alignChildren = ['left', 'center'];
     fontNameStatGrp.spacing = 0;
 
-    const fontName = 'FONTNAME';
-    const fontNameStat = fontNameStatGrp.add('statictext', undefined, fontName);
+    const fontNameStat = fontNameStatGrp.add('statictext', undefined, '');
+    fontNameStat.characters = 28;
 
     const fontFromBtn = fontMainGrp.add(
         'button',
@@ -91,24 +89,65 @@ const createTranslateUI = (
     );
     fontFromBtn.alignment = ['center', 'fill'];
 
+    fontFromBtn.onClick = () => {
+        const selFont = grabFontFromSelectedLayer();
+        if (selFont) {
+            fontNameStat.text = selFont;
+        }
+    };
+
     const divider1 = optionsResGrp.add('panel');
     divider1.alignment = 'fill';
 
-    const deepSearchGrp = optionsResGrp.add('group');
-    deepSearchGrp.alignChildren = ['left', 'center'];
+    const extraOptionsGrp = optionsResGrp.add('group');
+    extraOptionsGrp.alignChildren = ['left', 'center'];
     // @ts-ignore
-    deepSearchGrp.margins = [0, 0, 0, 10];
+    extraOptionsGrp.margins = [0, 0, 0, 10];
 
-    const deepSearchCheck = deepSearchGrp.add(
+    const deepSearchCheck = extraOptionsGrp.add(
         'checkbox',
         undefined,
         'Deep Search'
     );
 
-    const tranBtnGrp = optionsResGrp.add('group');
-    // tranBtnGrp.alignChildren = ['left', 'center'];
+    const importJsonBtn = extraOptionsGrp.add(
+        'button',
+        undefined,
+        'Import JSON'
+    );
+    const exportJsonBtn = extraOptionsGrp.add(
+        'button',
+        undefined,
+        'Export JSON'
+    );
+
+    exportJsonBtn.onClick = () => {
+        const fromTextArr = fromEditText.text.split('\n');
+        const toTextArr = toEditText.text.split('\n');
+
+        exportJson(fromTextArr, toTextArr);
+    };
 
     const tranBtn = optionsResGrp.add('button', undefined, 'Translate');
+
+    tranBtn.onClick = () => {
+        const fromTextArr = fromEditText.text.split('\n');
+        const toTextArr = toEditText.text.split('\n');
+
+        // alert(fromTextArr);
+        // alert(toTextArr);
+        // alert(fontNameStat.text);
+        // alert(deepSearchCheck.value);
+
+        app.beginUndoGroup('@@name: Translate');
+
+        findAndReplaceText(
+            fromTextArr,
+            toTextArr,
+            fontNameStat.text,
+            deepSearchCheck.value
+        );
+    };
 
     const updateTranslateUI = (): void => {
         // alert('QA Update');

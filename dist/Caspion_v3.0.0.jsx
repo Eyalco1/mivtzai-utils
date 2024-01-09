@@ -81,6 +81,7 @@ Array.prototype.indexOf || (Array.prototype.indexOf = function (t) {
     return -1;
 });
 Array.prototype.includes || (Array.prototype.includes = function (t) { return !!~this.indexOf(t); });
+String.prototype.replaceAll || (String.prototype.replaceAll = function (str, newStr) { return "[object regexp]" === Object.prototype.toString.call(str).toLowerCase() ? this.replace(str, newStr) : this.replace(new RegExp(str, "g"), newStr); });
 if (typeof JSON !== 'object') {
     JSON = {};
 }
@@ -20300,6 +20301,97 @@ var createTexture = function (id, loop, fit) {
     }
     app.endUndoGroup();
 };
+var grabFontFromSelectedLayer = function () {
+    var comp = app.project.activeItem;
+    if (!comp || !(comp instanceof CompItem)) {
+        alert('No Composition Selected');
+        return;
+    }
+    if (comp.selectedLayers.length !== 1 ||
+        !(comp.selectedLayers[0] instanceof TextLayer)) {
+        alert('Please Select a Text Layer');
+        return;
+    }
+    var srcText = comp.selectedLayers[0]
+        .property('ADBE Text Properties')
+        .property('ADBE Text Document');
+    var srcTextObj = srcText.value;
+    return srcTextObj.font.toString();
+};
+var findAndReplaceTextInComp = function (comp, fromTextArr, toTextArr, font) {
+    if (comp.numLayers > 0) {
+        for (var t = 0; t < fromTextArr.length; t++) {
+            var fromText = fromTextArr[t];
+            var toText = toTextArr[t];
+            for (var i = 1; i <= comp.numLayers; i++) {
+                var curLayer = comp.layer(i);
+                if (curLayer instanceof TextLayer) {
+                    var srcText = curLayer
+                        .property('ADBE Text Properties')
+                        .property('ADBE Text Document');
+                    var srcTextValue = srcText.value.toString();
+                    srcText.setValue(srcTextValue.replaceAll(fromText, toText));
+                    if (font) {
+                        var textDoc = srcText.value;
+                        textDoc.font = font;
+                        srcText.setValue(textDoc);
+                    }
+                }
+            }
+        }
+    }
+};
+var getAllPrecompsOfComp = function (comp) {
+    var allPrecomps = [];
+    var getPrecompsOnLevel = function (comp) {
+        for (var i = 1; i <= comp.numLayers; i++) {
+            var curLayer = comp.layer(i);
+            if (curLayer.source instanceof CompItem) {
+                allPrecomps.push(curLayer.source);
+                getPrecompsOnLevel(curLayer.source);
+            }
+        }
+    };
+    getPrecompsOnLevel(comp);
+    return allPrecomps;
+};
+var findAndReplaceText = function (fromTextArr, toTextArr, font, deepSearch) {
+    var comp = app.project.activeItem;
+    if (!comp || !(comp instanceof CompItem)) {
+        alert('No Composition Selected');
+        return;
+    }
+    findAndReplaceTextInComp(comp, fromTextArr, toTextArr, font);
+    if (deepSearch) {
+        var allPrecomps = getAllPrecompsOfComp(comp);
+        for (var i = 0; i < allPrecomps.length; i++) {
+            findAndReplaceTextInComp(allPrecomps[i], fromTextArr, toTextArr, font);
+        }
+    }
+};
+var readJSON = function (file) {
+    file.open('r');
+    var data = file.read();
+    file.close();
+    data = JSON.parse(data);
+    return data;
+};
+var exportJson = function (fromTextArr, toTextArr) {
+    var obj = {};
+    fromTextArr.forEach(function (element, index) {
+        obj[element] = toTextArr[index];
+    });
+    var stringified = JSON.stringify(obj);
+    alert(stringified);
+    return;
+    var savedFile = File.saveDialog('Save File...', '*.json');
+    if (!savedFile)
+        return;
+    var transJsonFile = new File(savedFile.fsName);
+    transJsonFile.open('w');
+    transJsonFile.write(stringified);
+    transJsonFile.close();
+};
 var createColoredButton = function (container, color, size) {
     if (color === void 0) { color = [1, 1, 0, 1]; }
     if (size === void 0) { size = [50, 50]; }
@@ -21080,26 +21172,24 @@ var createTranslateUI = function (tpanel) {
                     'left';
     var fromToTextGrp = editResGrp.add('group');
     fromToTextGrp.alignChildren = ['left', 'center'];
-    fromToTextGrp.spacing = 115;
+    fromToTextGrp.spacing = 174;
     fromToTextGrp.add('statictext', undefined, 'From:');
     fromToTextGrp.add('statictext', undefined, 'To:');
     var editGrp = editResGrp.add('group');
     editGrp.alignChildren = ['fill', 'center'];
     editGrp.spacing = 10;
-    var edit1Text = 'עזה\nישראל\nקיר בטון אינדקטיבי';
-    var edittext1 = editGrp.add('edittext', undefined, edit1Text, {
+    var fromEditText = editGrp.add('edittext', undefined, '', {
         scrollable: true,
         multiline: true
     });
-    var edit2Text = 'Gaza\nIsrael\nWall';
-    var edittext2 = editGrp.add('edittext', undefined, edit2Text, {
+    var toEditText = editGrp.add('edittext', undefined, '', {
         scrollable: true,
         multiline: true
     });
-    edittext1.size = edittext2.size = [200, 240];
+    fromEditText.size = toEditText.size = [200, 240];
     var fontMainGrp = optionsResGrp.add('group');
     fontMainGrp.alignChildren = ['center', 'top'];
-    fontMainGrp.spacing = 70;
+    fontMainGrp.spacing = 0;
     fontMainGrp.margins = [0, 10, 0, 10];
     fontMainGrp.alignment = ['fill', 'top'];
     var fontTextGrp = fontMainGrp.add('group');
@@ -21114,18 +21204,36 @@ var createTranslateUI = function (tpanel) {
     var fontNameStatGrp = fontTextGrp.add('group');
     fontNameStatGrp.alignChildren = ['left', 'center'];
     fontNameStatGrp.spacing = 0;
-    var fontName = 'FONTNAME';
-    var fontNameStat = fontNameStatGrp.add('statictext', undefined, fontName);
+    var fontNameStat = fontNameStatGrp.add('statictext', undefined, '');
+    fontNameStat.characters = 28;
     var fontFromBtn = fontMainGrp.add('button', undefined, 'Font From Selected Layer');
     fontFromBtn.alignment = ['center', 'fill'];
+    fontFromBtn.onClick = function () {
+        var selFont = grabFontFromSelectedLayer();
+        if (selFont) {
+            fontNameStat.text = selFont;
+        }
+    };
     var divider1 = optionsResGrp.add('panel');
     divider1.alignment = 'fill';
-    var deepSearchGrp = optionsResGrp.add('group');
-    deepSearchGrp.alignChildren = ['left', 'center'];
-    deepSearchGrp.margins = [0, 0, 0, 10];
-    var deepSearchCheck = deepSearchGrp.add('checkbox', undefined, 'Deep Search');
-    var tranBtnGrp = optionsResGrp.add('group');
+    var extraOptionsGrp = optionsResGrp.add('group');
+    extraOptionsGrp.alignChildren = ['left', 'center'];
+    extraOptionsGrp.margins = [0, 0, 0, 10];
+    var deepSearchCheck = extraOptionsGrp.add('checkbox', undefined, 'Deep Search');
+    var importJsonBtn = extraOptionsGrp.add('button', undefined, 'Import JSON');
+    var exportJsonBtn = extraOptionsGrp.add('button', undefined, 'Export JSON');
+    exportJsonBtn.onClick = function () {
+        var fromTextArr = fromEditText.text.split('\n');
+        var toTextArr = toEditText.text.split('\n');
+        exportJson(fromTextArr, toTextArr);
+    };
     var tranBtn = optionsResGrp.add('button', undefined, 'Translate');
+    tranBtn.onClick = function () {
+        var fromTextArr = fromEditText.text.split('\n');
+        var toTextArr = toEditText.text.split('\n');
+        app.beginUndoGroup('Caspion: Translate');
+        findAndReplaceText(fromTextArr, toTextArr, fontNameStat.text, deepSearchCheck.value);
+    };
     var updateTranslateUI = function () {
     };
     return {
