@@ -21230,16 +21230,22 @@ var createTranslateUI = function (tpanel) {
     divider1.alignment = 'fill';
     var extraOptionsGrp = optionsResGrp.add('group');
     extraOptionsGrp.alignChildren = ['fill', 'center'];
-    extraOptionsGrp.spacing = 158;
+    extraOptionsGrp.spacing = 60;
     extraOptionsGrp.margins = [0, 0, 0, 10];
     var deepSearchCheck = extraOptionsGrp.add('checkbox', undefined, 'Deep Search');
-    var importExportGrp = extraOptionsGrp.add('group');
-    var importJsonBtn = importExportGrp.add('button', undefined, 'Import');
-    var exportJsonBtn = importExportGrp.add('button', undefined, 'Export');
+    var extraBtnsGrp = extraOptionsGrp.add('group');
+    var readCompBtn = extraBtnsGrp.add('button', undefined, 'From Comp');
+    var importJsonBtn = extraBtnsGrp.add('button', undefined, 'Import');
+    var exportJsonBtn = extraBtnsGrp.add('button', undefined, 'Export');
     exportJsonBtn.onClick = function () {
         var fromTextArr = fromEditText.text.split('\n');
         var toTextArr = toEditText.text.split('\n');
         exportJson(fromTextArr, toTextArr);
+    };
+    importJsonBtn.onClick = function () {
+        var _a = importJson(), fromTextArr = _a.fromTextArr, toTextArr = _a.toTextArr;
+        fromEditText.text = fromTextArr.join('\n');
+        toEditText.text = toTextArr.join('\n');
     };
     var tranBtn = optionsResGrp.add('button', undefined, 'Translate');
     tranBtn.onClick = function () {
