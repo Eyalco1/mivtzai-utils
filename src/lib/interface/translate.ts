@@ -100,7 +100,8 @@ const createTranslateUI = (
     divider1.alignment = 'fill';
 
     const extraOptionsGrp = optionsResGrp.add('group');
-    extraOptionsGrp.alignChildren = ['left', 'center'];
+    extraOptionsGrp.alignChildren = ['fill', 'center'];
+    extraOptionsGrp.spacing = 158;
     // @ts-ignore
     extraOptionsGrp.margins = [0, 0, 0, 10];
 
@@ -110,16 +111,10 @@ const createTranslateUI = (
         'Deep Search'
     );
 
-    const importJsonBtn = extraOptionsGrp.add(
-        'button',
-        undefined,
-        'Import JSON'
-    );
-    const exportJsonBtn = extraOptionsGrp.add(
-        'button',
-        undefined,
-        'Export JSON'
-    );
+    const importExportGrp = extraOptionsGrp.add('group');
+
+    const importJsonBtn = importExportGrp.add('button', undefined, 'Import');
+    const exportJsonBtn = importExportGrp.add('button', undefined, 'Export');
 
     exportJsonBtn.onClick = () => {
         const fromTextArr = fromEditText.text.split('\n');

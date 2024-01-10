@@ -20381,16 +20381,28 @@ var exportJson = function (fromTextArr, toTextArr) {
     fromTextArr.forEach(function (element, index) {
         obj[element] = toTextArr[index];
     });
-    var stringified = JSON.stringify(obj);
-    alert(stringified);
-    return;
+    var stringified = JSON.stringify(obj, null, 2);
     var savedFile = File.saveDialog('Save File...', '*.json');
     if (!savedFile)
         return;
     var transJsonFile = new File(savedFile.fsName);
+    transJsonFile.encoding = 'UTF-8';
     transJsonFile.open('w');
     transJsonFile.write(stringified);
     transJsonFile.close();
+};
+var importJson = function () {
+    var openedFile = File.openDialog('Open File...', '*.json', false);
+    if (!openedFile)
+        return;
+    var read = readJSON(openedFile);
+    var fromTextArr = [];
+    var toTextArr = [];
+    for (var i in read) {
+        fromTextArr.push(i);
+        toTextArr.push(read[i]);
+    }
+    return { fromTextArr: fromTextArr, toTextArr: toTextArr };
 };
 var createColoredButton = function (container, color, size) {
     if (color === void 0) { color = [1, 1, 0, 1]; }
@@ -21217,11 +21229,13 @@ var createTranslateUI = function (tpanel) {
     var divider1 = optionsResGrp.add('panel');
     divider1.alignment = 'fill';
     var extraOptionsGrp = optionsResGrp.add('group');
-    extraOptionsGrp.alignChildren = ['left', 'center'];
+    extraOptionsGrp.alignChildren = ['fill', 'center'];
+    extraOptionsGrp.spacing = 158;
     extraOptionsGrp.margins = [0, 0, 0, 10];
     var deepSearchCheck = extraOptionsGrp.add('checkbox', undefined, 'Deep Search');
-    var importJsonBtn = extraOptionsGrp.add('button', undefined, 'Import JSON');
-    var exportJsonBtn = extraOptionsGrp.add('button', undefined, 'Export JSON');
+    var importExportGrp = extraOptionsGrp.add('group');
+    var importJsonBtn = importExportGrp.add('button', undefined, 'Import');
+    var exportJsonBtn = importExportGrp.add('button', undefined, 'Export');
     exportJsonBtn.onClick = function () {
         var fromTextArr = fromEditText.text.split('\n');
         var toTextArr = toEditText.text.split('\n');

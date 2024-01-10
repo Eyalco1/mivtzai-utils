@@ -101,12 +101,12 @@ const findAndReplaceText = (
     }
 };
 
-const readJSON = (file: File) => {
+const readJSON = (file: File): object => {
     file.open('r');
     let data = file.read();
     file.close();
     data = JSON.parse(data);
-    return data;
+    return data as any as object;
 };
 
 const exportJson = (fromTextArr: string[], toTextArr: string[]) => {
@@ -118,9 +118,7 @@ const exportJson = (fromTextArr: string[], toTextArr: string[]) => {
     });
 
     // stringify
-    const stringified = JSON.stringify(obj);
-    alert(stringified);
-    return;
+    const stringified = JSON.stringify(obj, null, 2);
 
     // open dialog
 
@@ -129,7 +127,29 @@ const exportJson = (fromTextArr: string[], toTextArr: string[]) => {
 
     // write to selected folder
     const transJsonFile = new File(savedFile.fsName);
+    transJsonFile.encoding = 'UTF-8';
     transJsonFile.open('w');
     transJsonFile.write(stringified);
     transJsonFile.close();
+};
+
+const importJson = (): {
+    fromTextArr: string[];
+    toTextArr: string[];
+} => {
+    // open dialog
+    const openedFile = File.openDialog('Open File...', '*.json', false);
+    if (!openedFile) return;
+
+    const read = readJSON(openedFile);
+
+    const fromTextArr = [];
+    const toTextArr = [];
+
+    for (let i in read) {
+        fromTextArr.push(i);
+        toTextArr.push(read[i]);
+    }
+
+    return { fromTextArr, toTextArr };
 };
