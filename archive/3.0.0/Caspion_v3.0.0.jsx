@@ -20404,6 +20404,40 @@ var importJson = function () {
     }
     return { fromTextArr: fromTextArr, toTextArr: toTextArr };
 };
+var readAllTextInComp = function (comp) {
+    var fromTextArr = [];
+    if (comp.numLayers > 0) {
+        for (var i = 1; i <= comp.numLayers; i++) {
+            var curLayer = comp.layer(i);
+            if (curLayer instanceof TextLayer) {
+                var srcText = curLayer
+                    .property('ADBE Text Properties')
+                    .property('ADBE Text Document');
+                var srcTextValue = srcText.value;
+                fromTextArr.push(srcTextValue.text.toString());
+            }
+        }
+    }
+    return fromTextArr;
+};
+var readAllTextInActiveComp = function (deepSearch) {
+    var comp = app.project.activeItem;
+    if (!comp || !(comp instanceof CompItem)) {
+        alert('No Composition Selected');
+        return;
+    }
+    var fromTextArr = [];
+    var read = readAllTextInComp(comp);
+    read.forEach(function (r) { return fromTextArr.push(r); });
+    if (deepSearch) {
+        var allPrecomps = getAllPrecompsOfComp(comp);
+        for (var i = 0; i < allPrecomps.length; i++) {
+            var read_1 = readAllTextInComp(allPrecomps[i]);
+            read_1.forEach(function (r) { return fromTextArr.push(r); });
+        }
+    }
+    return fromTextArr;
+};
 var createColoredButton = function (container, color, size) {
     if (color === void 0) { color = [1, 1, 0, 1]; }
     if (size === void 0) { size = [50, 50]; }
@@ -21237,6 +21271,10 @@ var createTranslateUI = function (tpanel) {
     var readCompBtn = extraBtnsGrp.add('button', undefined, 'From Comp');
     var importJsonBtn = extraBtnsGrp.add('button', undefined, 'Import');
     var exportJsonBtn = extraBtnsGrp.add('button', undefined, 'Export');
+    readCompBtn.onClick = function () {
+        var read = readAllTextInActiveComp(deepSearchCheck.value);
+        fromEditText.text = read.join('\n');
+    };
     exportJsonBtn.onClick = function () {
         var fromTextArr = fromEditText.text.split('\n');
         var toTextArr = toEditText.text.split('\n');

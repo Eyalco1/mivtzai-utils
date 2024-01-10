@@ -117,6 +117,11 @@ const createTranslateUI = (
     const importJsonBtn = extraBtnsGrp.add('button', undefined, 'Import');
     const exportJsonBtn = extraBtnsGrp.add('button', undefined, 'Export');
 
+    readCompBtn.onClick = () => {
+        const read = readAllTextInActiveComp(deepSearchCheck.value);
+        fromEditText.text = read.join('\n');
+    };
+
     exportJsonBtn.onClick = () => {
         const fromTextArr = fromEditText.text.split('\n');
         const toTextArr = toEditText.text.split('\n');

@@ -153,3 +153,46 @@ const importJson = (): {
 
     return { fromTextArr, toTextArr };
 };
+
+const readAllTextInComp = (comp: CompItem): string[] => {
+    const fromTextArr: string[] = [];
+
+    if (comp.numLayers > 0) {
+        for (let i = 1; i <= comp.numLayers; i++) {
+            const curLayer = comp.layer(i);
+            if (curLayer instanceof TextLayer) {
+                const srcText = curLayer
+                    .property('ADBE Text Properties')
+                    .property('ADBE Text Document') as Property<any>;
+                const srcTextValue = srcText.value as TextDocument;
+
+                fromTextArr.push(srcTextValue.text.toString());
+            }
+        }
+    }
+
+    return fromTextArr;
+};
+
+const readAllTextInActiveComp = (deepSearch: boolean): string[] => {
+    const comp = app.project.activeItem;
+    if (!comp || !(comp instanceof CompItem)) {
+        alert('No Composition Selected');
+        return;
+    }
+
+    const fromTextArr: string[] = [];
+
+    const read = readAllTextInComp(comp);
+    read.forEach(r => fromTextArr.push(r));
+
+    if (deepSearch) {
+        const allPrecomps = getAllPrecompsOfComp(comp);
+        for (let i = 0; i < allPrecomps.length; i++) {
+            const read = readAllTextInComp(allPrecomps[i]);
+            read.forEach(r => fromTextArr.push(r));
+        }
+    }
+
+    return fromTextArr;
+};
