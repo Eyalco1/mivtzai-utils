@@ -20404,6 +20404,9 @@ var importJson = function () {
     }
     return { fromTextArr: fromTextArr, toTextArr: toTextArr };
 };
+var removeDups = function (arr) {
+    return arr.filter(function (value, index) { return arr.indexOf(value) === index; });
+};
 var readAllTextInComp = function (comp) {
     var fromTextArr = [];
     if (comp.numLayers > 0) {
@@ -20436,7 +20439,8 @@ var readAllTextInActiveComp = function (deepSearch) {
             read_1.forEach(function (r) { return fromTextArr.push(r); });
         }
     }
-    return fromTextArr;
+    var noDups = removeDups(fromTextArr);
+    return noDups;
 };
 var createColoredButton = function (container, color, size) {
     if (color === void 0) { color = [1, 1, 0, 1]; }
@@ -21224,14 +21228,8 @@ var createTranslateUI = function (tpanel) {
     var editGrp = editResGrp.add('group');
     editGrp.alignChildren = ['fill', 'center'];
     editGrp.spacing = 10;
-    var fromEditText = editGrp.add('edittext', undefined, '', {
-        scrollable: true,
-        multiline: true
-    });
-    var toEditText = editGrp.add('edittext', undefined, '', {
-        scrollable: true,
-        multiline: true
-    });
+    var fromEditText = editGrp.add("EditText { properties:{multiline:true, scrollable:true}, text:'', justify:'right' }");
+    var toEditText = editGrp.add("EditText { properties:{multiline:true, scrollable:true}, text:'', justify:'left' }");
     fromEditText.size = toEditText.size = [200, 240];
     var fontMainGrp = optionsResGrp.add('group');
     fontMainGrp.alignChildren = ['center', 'top'];

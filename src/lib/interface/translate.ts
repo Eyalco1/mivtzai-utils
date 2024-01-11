@@ -42,17 +42,15 @@ const createTranslateUI = (
     editGrp.alignChildren = ['fill', 'center'];
     editGrp.spacing = 10;
 
-    // TODO: justify right
-    const fromEditText = editGrp.add('edittext', undefined, '', {
-        scrollable: true,
-        multiline: true
-    });
+    const fromEditText = editGrp.add(
+        // @ts-ignore
+        "EditText { properties:{multiline:true, scrollable:true}, text:'', justify:'right' }"
+    ) as EditText;
 
-    // TODO: justify left
-    const toEditText = editGrp.add('edittext', undefined, '', {
-        scrollable: true,
-        multiline: true
-    });
+    const toEditText = editGrp.add(
+        // @ts-ignore
+        "EditText { properties:{multiline:true, scrollable:true}, text:'', justify:'left' }"
+    ) as EditText;
 
     fromEditText.size = toEditText.size = [200, 240];
 

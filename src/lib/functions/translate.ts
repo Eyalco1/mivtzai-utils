@@ -84,8 +84,6 @@ const findAndReplaceText = (
         return;
     }
 
-    // TODO: check if arrs the same lengths
-
     findAndReplaceTextInComp(comp, fromTextArr, toTextArr, font);
 
     if (deepSearch) {
@@ -154,6 +152,9 @@ const importJson = (): {
     return { fromTextArr, toTextArr };
 };
 
+const removeDups = (arr: any[]) =>
+    arr.filter((value, index) => arr.indexOf(value) === index);
+
 const readAllTextInComp = (comp: CompItem): string[] => {
     const fromTextArr: string[] = [];
 
@@ -194,5 +195,6 @@ const readAllTextInActiveComp = (deepSearch: boolean): string[] => {
         }
     }
 
-    return fromTextArr;
+    const noDups = removeDups(fromTextArr);
+    return noDups;
 };
