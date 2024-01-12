@@ -337,6 +337,10 @@ var cameraNullBinary = '\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x18\x0
 var restartBinary = '\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x0E\x00\x00\x00\x0E\b\x06\x00\x00\x00\x1FH-\u00D1\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x00\u00D5IDAT(\u0091\u0095R\x0B\x11\u0082P\x10\\I@\u0084\u00D7@"\x10\u0081\b4\u0090\bD \u008260\x02\r\u00D4\x04\x12\x01\x13\u009C\u00B3o\u00F6\u0098\u00E7\u00C3\x0F\u00EE\u00CC\r\u00C7\u00B1\u00B7\u00F7cgf\x10\x06\x00\x15\u0080Z\u00CFR\u00F1I\u00F6\n&\u00CA\x1C\u0093\u00AD\u00C1X\u0093p\u00E1\x15\x03\u0080{\u00A2x\x03p\u0096\u00DF\x00\u00D8\u00CB?\x01h\u00A3\'\u0085*\u00AB\u00C1\neR\u00A16\u00B3Y\u00DF\u00FA\u00B4\u00A2+\u00FB|\u00B3\u0094\u00E7\u00A4\x0B\u00C6/\x00\x1E\u00B1\u00C3\u00B4\u00EF\r6\u00A8jW\u00AC\u00B6\u00F5\x1D>wU\u00A8\u0085\u00E1O\u0081\u00C0\u00C4\x1E\u00C0A\x02\u00BF\u00E0\u00B7\u00BD2q\u00D4K\u00B7!\u0091\x0B\u008C\u0089\x1C\u0098k\u00F7U\u00F3,\u009F\u0096\u00D4\u008AC\u00EEr\u00C74\u00D8e\t\x14\u00E6\u00ED\x1C\u00F1\x0Fz\u00A7\u00E8\x02\u00A3\u00CC\u00BB!\u00C8\u0089\u00FC\u00BC\x1D\u00B6z\u00CC\u00C8\u00F4\x19\x0B\x0B\u00CF\fO\u0092\u00C1h\u0085\x17\u0096M\u00DD\x00\x00\x00\x00IEND\u00AEB`\u0082';
 var updateUIBinary = '\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x10\x00\x00\x00\x10\b\x06\x00\x00\x00\x1F\u00F3\u00FFa\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x00\u00E1IDAT8\u008D\u008DS\u00C1\r\u00C20\f\u00BC"\u00FEd\u0084\u008C\u0090\x11\x18\u0085Q:BG\u0080\r\x18\u00A1#\u0094\r\u00CA\x06e\u0082C\u00A9.\u00D4\rITK\u00A9\u00E5(>\u00DBw5H\u00B6\u00CE\u008D\u00E4D\u00D2\u00D5\u00DE\u009C\u00D0\u00B6\t\u0080\x070\x02p\u00C5\u0097\x05\u00D4Xm 9so\u00C5N\u00CE\x19^P\u00B5\u008B\u00B9\u00FBdq\u00B5\u0083\u0088\u00BE\u00A8\u00E6H\u00D2\u008B\x03f\u00D5\u009D\u00ED\u00C4\x02\u00F4&9\u00DD\u00E5$:\u00C5}\t \u00CD\u00EC\x1B\u00AA\x04\u00D3\u00D1z\u00D7\u00AD(\u009AF\u00F3\u0096\u00D96S\u00CBw\u00F1\u0093\u00CBX\'kO\u00EA\u00CF,\u00C0K>4\u0092\u0083\u008A\u00BCK\x00O\u0081\u00CC\u008A\u009D$\u00B5\u0080\u0083\u00FC}\x1Bh/c\u00CE6\u00A5\u0084\u0097:\u0094\u00D4E\x19-PJN\u00FFE\u00B2\x18G%\x0E\u00EFB"5\x12\u00F7\u00D0^\u00C4\u00FD\u00D8\u00AC\u00A2w\u00EA\u00E2\u00AF\u00E2\u00D1m\\\x00\\Eh]\x15\x00_\u008D\u00B0\u00B7\u00C2]P\u009A5\x00\x00\x00\x00IEND\u00AEB`\u0082';
 var bannerBinary = '\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x19\x00\x00\x00\x19\b\x06\x00\x00\x00\u00C4\u00E9\u0085c\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x00\u00BBIDATH\u0089c\u00FC\u00FF\u00FF?\x03\u00AD\x01\x13\u00D4|\x03\x06\x06\u0086\u00FFT\u00C6\n0\u00B7\u00C3,\x11\u00A0\u0081g\u00E0f2\u00E1WG6\u00D8\u00C8\u00C0\u00C0p\u0081\u0096\u0096<d``H@\x16\u00A0\u0085%\x01\f\f\f\x1FhiI!r0\u00D1\u00C2\x12P<L\u00C0&A-K0\u00E2\u0081\x16\u0096\u00C8#\u00E7\x0BZY\x02\x02\x1Bp\u00E57jZ\x02\u00F2\u00CD\x02Z[\x02\x02\u00FE\u00D8\u00E2\u0086\x16\u00F9d\x02\u00B4,\u00A4\u00A9%\u00FC\u00D0`\u00A3y\u00D9\u00A5\u008F\x1Cl,h\u0092\x1F\u00B1\u00E5X2\x00\u00A8X9\u0080\u00CB\x12\u0090\x05\x0ET\u00F6\x15\u00CD\u0082k\u00D4\u0092!f\u00C9\x03\u009A\u00D8\x02jw\u00FD\u00FF\u00FF_\u00E0\u00FF\u00FF\u00FF\x1B\u00FE\u00FF\u00FFo\x00\u00E5S\x0F\u00FF\u00FF\u00CF\x00\x00\u00A3"t\u00D3)\u009B\u00D4\u0089\x00\x00\x00\x00IEND\u00AEB`\u0082';
+var fontFromSelectedBinary = "\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x19\x00\x00\x00\x19\b\x06\x00\x00\x00\u00C4\u00E9\u0085c\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x00\u009AIDATH\u0089c\u00FC\u00FF\u00FF?\x03\u00AD\x01\x13\u00D4\u00FC\x05\f\f\f \u00DB\x1A\u0090\u00EC\u00FB\u008F\u0084\u00F1\u0089\x11R\x1B\x00\u00B3D\u0081\u0081\u0081\u00E1!\x03\x03\u00C3\x01$E\u008CH\x18\u009F\x18.\u00B5\u008DP\u00DA\u0080\x05\u00C9'\fh\u0096P\n`\u00A1r\u0080\u00AEqB\x17K\u00B0E&5\u00C0\x7F\u00BA\u00FB\u0084\u00A6\x00\u0096\u00BA\u00D0\u0093$\u00B5\x00#\u00DD\u0083k4\u00E2\x07\u008F%\u00A3\u00A9\u008BX0Z\u00AC\u0090\x04\u00E8\x1F\u00F1\x13\u00A0\u0098\u00DA\x00T\u009D'\u00C0,1\x00q\u00A0\x18\x06(m\u00AD\u0080,\u00B0\x075R`q\u00B2\u0081\x06\u00BE\x00\u0081\u0083\f\f\f\x1B\x00\u00AAM1\x18\x03\u0090\u00C8\u00E7\x00\x00\x00\x00IEND\u00AEB`\u0082";
+var readFromCompBinary = "\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x19\x00\x00\x00\x19\b\x06\x00\x00\x00\u00C4\u00E9\u0085c\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x01wIDATH\u0089\u00B5V\u008Bm\u00830\x10}\u00ED\x04\u008C@7`\x04o\u00D0l\u00D0\u008C\u00C0\b\u008C@6 \x1B\u00B0A\u00C9\x04M7`\x042\u00C1U\u0087\u00CE\u00D2\u00E9t\x06\u009B4OBX\u00C6\u00F7\u00F1\u00F3\u00BD3oD\u0084B4\x00\u00EE%&\u00EF\x05kk\x00\x13\u0080\x1Fy7\u00D9\u0096\u00BC\u0093\u008C\u00A7#\x1F<_\u00ED\u00D9\u00EF\x05\bD4'\x02D\u00CC\u00B2\u00AE8\bg\u00D7\u00EF8\u00B7\x18S\u00BB\u00F2\x02\u009C\u0088h)\f\x10\u00C1v\u00EDV\u0090\u009A\u0088\u00A6\u0083\u00CE-\u00D8Oc\u0083tOd\u00BF\x05\u00F6\x0B\u00D6I\x00\u00F0]*\u0096\x02\\X'3\u0080\u00DF\x17\x05`\u00BF\u0083>\u0093\u00FF\u00A6\u00AC\u008B\u00BE\u00A3\u00E2\u0083R\u00F1\u00ED\u00C9\u00EC\u00D9\u00FEC\u00FC\u009D\u00D6\x19\x11R\u00C4(Uv\u00A4\u008Cy\u00FDY\u00B42\u00A8\u00F9\u009Ew\u00B2\x00xH\x16\u009F\u00D2\u00FCjy.\u0099\u00D9_e=\u00E4\u008C\u00BFd\u00FCXw\u00A4\x14>\u009A\u00CC\u00EER\u00EBA\u00C6\x1EbK\u00F146\u00C9<\u00B4\x10\u00EBD\u00AF\u00EA%\u0089VQ\u00B8\u00A8\u0083\u00B5\u00CDs\x11\u00BA+\x1D\u00A41\u0086\u0095c8\u008Ba\u00AD2\u00CFIh='\x1DD\u00D3\x14d\u00DER0\u00CA\u00B7\x14\u00B5\u008DCm\u00AB[\u00BA\u00FD884Y\u00C4\u0086\u0098\u00DA}\u00F0\u00BA\u00B0\x15\u00A4.K\u009B\u00BD.\u00F7\x14m\u00C9V\u00BFU)A\x12\u0089\u00E7\u0093\u00A2-\u00FBf<;4\u00C5\u008A\u00B2\x14\u00BA\u00F7H\u00EE\u00F5k\u00D5\u00EB!\u00D2v\u00F8\u008E\u00DF\u00BA\u00EBcY\u00EF\u00DA\u0097\u00FEwu\u00D2L\u00B9\u00F5\u00F0\u0098[\u00D26\x00\u00FC\x01k\u0080]F\u00E3P#(\x00\x00\x00\x00IEND\u00AEB`\u0082";
+var importBinary = '\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x19\x00\x00\x00\x19\b\x06\x00\x00\x00\u00C4\u00E9\u0085c\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x01\x02IDATH\u0089\u00EDV\u00D1\t\u00C20\x10}J\u00FF\u00DB\r\u00EC\x06v\x03;\u008A#\u00B8\u0081\x1D\u00C1Q\u00EA\x06\u008E\u0090\r\u00D4\r*\x0E\u00F0\u00E4\u00F0\x0ECi\u0092Z)\u0082\u00F8 $=\u009A{\\\u00EE\u00DDq\x0B\u0092\u0098\x1B\u00CB7\u00FD\u0097\x00.\x00\x1C\u0080b\u00EC\u00A5)$+\x00k\x00\u00D5\\$\u0093\u00F0\'\u00F9\u0093|\u008F\u00A4\x06\u00B0K\x14\u009E\u00D4N\x13\u00AD\x1Bi+\u0091u\u00E0\x13\u008EdA\u00B2\u00E6\x0Br\u00AEHvj\u00E9B~R\u0091\u0094\u00BAK\u0085\u009Fz\x11Uj\u00CB\u00F5\u00FB45\u0092B\u00A30\u00DC9\f\u008Bt\u00D0O\u008Ad\u0088\u00A8\u008F(\u0081O\u00B2%\u00B9\u009B@\x14#(I\u00B6\u00B2\u009B\u00C1\u0092\u00F7\x0EQ*\u0082\u00D6\x04\u0091ij,y1\u00A9v*i\u0093\u00AAS[\b\u00E6+\u00CF"?\u0085\u0088\u00C2*\n\u00E0w\x1Ad?\u00F1n\u0084\u00A4\u00C7\u00AC\u00AD/A\u009BV\u00A4\u00F7\u00EC\u0095\u00F7\u00AA\u00C3\u00C2\'\u00D8xw\u008FF"\u00ED\u00E3<\u00C3C\u00DDD\u0091\u00FE\u00DC%\u00D2\u0094\u0088F\u008F:\t\u00C8k4\x00.\x0FgX\x11\x07\u00F8\u0094LX\x00\x00\x00\x00IEND\u00AEB`\u0082';
+var exportBinary = "\u0089PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\x19\x00\x00\x00\x19\b\x06\x00\x00\x00\u00C4\u00E9\u0085c\x00\x00\x00\tpHYs\x00\x00\x0B\x12\x00\x00\x0B\x12\x01\u00D2\u00DD~\u00FC\x00\x00\x01\nIDATH\u0089\u00ED\u0096\u00D1\r\u00820\x10\u0086\x7F\t\u00EF2\x02\x1B\u00C8\x06\u00B2\u0081\u008E\u0080\x1B0\u0082+8\u0081\u008C\u00E0\x062\x02l\u00A0\x1B\u00D4\tj.\u00B9\u009A\u0093@\u00AFEy0\u00F1O\u009A\u00B4\u00F4\u00DA\u008F^{\u00D7\u00AE\u00AC\u00B5XZI\u00E4\u00FC\x15\u0080\u0096K\x11<\u008AV\x12X*\u00FB.c\u00AD-B\u00C6\u00CE\x058\x05\u0081>\x01\x04\u0083b\x01\u00DDD\u00DD\x0B\u00F2m|\x0E\u00E0,\u00DA\x07\x00\x17\u00D1.\x01\u00F4\\_s{T>\u0088\x01p\x17\u0080f\u00A4_\u0082\u00BA\u00A9\u0089R\x05\u0092{\u00FA\u009D\u008Dz\u0094c\u00E3d\u0096\u00FE\u0090E!\u0099\u00A8k\u0087b6\u00C4\u0088\u00FA-\x16r\x04\u00B0\u008F\x04j*9\u00B62p:p\u00AA\u00954S\x0B[-%\u00B5l\u00D7\u00A6\x03?g\u00CA\u00DF5l\x13\u00EC*(\x11?&\u00C3\u00AE\u008D\u00D2\u00CF\x07\u00E3\u00CB\u00F5\u00C9\u00C0\u00BF\u00E1\u00F7\u00B6_\u00B4w\x1Bg\u00E1^+tO\u00EC\u00F8[?\u0088\u00879\u00DA\u008A1'\x07\u00A13}\u00FD\u00D2*\u00A4\x1E\u0094\x19\u00E4\u00BB\u008B\u0082\u0091\u009E<\u00DA1\x0E\x15mC\r\u00C0<\x01\x05K\u00C5Nt\u00F3\t/\x00\x00\x00\x00IEND\u00AEB`\u0082";
 var table1252 = {
     "€": 128,
     "‚": 130,
@@ -20469,11 +20473,9 @@ var createAboutTab = function (tpanel) {
         'אוהב,\n' +
         'אייל';
     var aboutEditGrp = aboutTab.add('group');
-    aboutEditGrp.add('edittext', [0, 0, 380, 390], abtStr, {
-        multiline: true,
-        readonly: true,
-        scrollable: true
-    });
+    var aboutEditText = aboutEditGrp.add("EditText { properties:{multiline:true, readonly: true, scrollable:true}, text:'', justify:'right' }");
+    aboutEditText.text = abtStr;
+    aboutEditText.preferredSize = [380, 390];
     aboutEditGrp.margins.left = 10;
     return aboutTab;
 };
@@ -21192,6 +21194,10 @@ var createTexturesUI = function (tpanel) {
         textureFitCheck.enabled = !textureLoopCheck.value;
         textureFitCheck.value = false;
     };
+    textureFitCheck.onClick = function () {
+        textureLoopCheck.enabled = !textureFitCheck.value;
+        textureLoopCheck.value = false;
+    };
     var texturesCreateBtn = texturesGrp.add('button', undefined, 'Import Texture');
     texturesCreateBtn.preferredSize[0] = 100;
     texturesCreateBtn.onClick = function () {
@@ -21222,7 +21228,7 @@ var createTranslateUI = function (tpanel) {
                     'left';
     var fromToTextGrp = editResGrp.add('group');
     fromToTextGrp.alignChildren = ['left', 'center'];
-    fromToTextGrp.spacing = 174;
+    fromToTextGrp.spacing = 178;
     fromToTextGrp.add('statictext', undefined, 'From:');
     fromToTextGrp.add('statictext', undefined, 'To:');
     var editGrp = editResGrp.add('group');
@@ -21249,40 +21255,35 @@ var createTranslateUI = function (tpanel) {
     fontNameStatGrp.alignChildren = ['left', 'center'];
     fontNameStatGrp.spacing = 0;
     var fontNameStat = fontNameStatGrp.add('statictext', undefined, '');
-    fontNameStat.characters = 28;
-    var fontFromBtn = fontMainGrp.add('button', undefined, 'Font From Selected Layer');
-    fontFromBtn.alignment = ['center', 'fill'];
-    fontFromBtn.onClick = function () {
+    fontNameStat.characters = 41;
+    createQABtn(fontMainGrp, fontFromSelectedBinary, 'Grab Font From Selected Layer', function () {
         var selFont = grabFontFromSelectedLayer();
         if (selFont) {
             fontNameStat.text = selFont;
         }
-    };
+    });
     var divider1 = optionsResGrp.add('panel');
     divider1.alignment = 'fill';
     var extraOptionsGrp = optionsResGrp.add('group');
     extraOptionsGrp.alignChildren = ['fill', 'center'];
-    extraOptionsGrp.spacing = 60;
+    extraOptionsGrp.spacing = 196;
     extraOptionsGrp.margins = [0, 0, 0, 10];
     var deepSearchCheck = extraOptionsGrp.add('checkbox', undefined, 'Deep Search');
     var extraBtnsGrp = extraOptionsGrp.add('group');
-    var readCompBtn = extraBtnsGrp.add('button', undefined, 'From Comp');
-    var importJsonBtn = extraBtnsGrp.add('button', undefined, 'Import');
-    var exportJsonBtn = extraBtnsGrp.add('button', undefined, 'Export');
-    readCompBtn.onClick = function () {
+    createQABtn(extraBtnsGrp, readFromCompBinary, 'Read Text From Composition', function () {
         var read = readAllTextInActiveComp(deepSearchCheck.value);
         fromEditText.text = read.join('\n');
-    };
-    exportJsonBtn.onClick = function () {
-        var fromTextArr = fromEditText.text.split('\n');
-        var toTextArr = toEditText.text.split('\n');
-        exportJson(fromTextArr, toTextArr);
-    };
-    importJsonBtn.onClick = function () {
+    });
+    createQABtn(extraBtnsGrp, importBinary, 'Import Translation File', function () {
         var _a = importJson(), fromTextArr = _a.fromTextArr, toTextArr = _a.toTextArr;
         fromEditText.text = fromTextArr.join('\n');
         toEditText.text = toTextArr.join('\n');
-    };
+    });
+    createQABtn(extraBtnsGrp, exportBinary, 'Export Translation File', function () {
+        var fromTextArr = fromEditText.text.split('\n');
+        var toTextArr = toEditText.text.split('\n');
+        exportJson(fromTextArr, toTextArr);
+    });
     var tranBtn = optionsResGrp.add('button', undefined, 'Translate');
     tranBtn.onClick = function () {
         var fromTextArr = fromEditText.text.split('\n');

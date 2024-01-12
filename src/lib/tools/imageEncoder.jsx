@@ -15,10 +15,10 @@ function encodeImage(src, dest) {
     $.writeln(binary);
 
     f.close();
-    return binary
+    return binary;
 }
 
 encodeImage(
-    'W:/Personal Projects/Caspion/UI/Banner.png',
+    'W:/Personal Projects/Caspion/UI/Export.png',
     'C:/Users/eyalc/OneDrive/Desktop/Binary.txt'
 );

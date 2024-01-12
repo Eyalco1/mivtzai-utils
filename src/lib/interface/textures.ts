@@ -55,6 +55,11 @@ const createTexturesUI = (
         textureFitCheck.value = false;
     };
 
+    textureFitCheck.onClick = () => {
+        textureLoopCheck.enabled = !textureFitCheck.value;
+        textureLoopCheck.value = false;
+    };
+
     const texturesCreateBtn = texturesGrp.add(
         'button',
         undefined,

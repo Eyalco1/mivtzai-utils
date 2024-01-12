@@ -33,11 +33,17 @@ const createAboutTab = (tpanel: TabbedPanel): Tab => {
         'אוהב,\n' +
         'אייל';
     const aboutEditGrp = aboutTab.add('group');
-    aboutEditGrp.add('edittext', [0, 0, 380, 390], abtStr, {
-        multiline: true,
-        readonly: true,
-        scrollable: true
-    });
+    // aboutEditGrp.add('edittext', [0, 0, 380, 390], abtStr, {
+    //     multiline: true,
+    //     readonly: true,
+    //     scrollable: true
+    // });
+    const aboutEditText = aboutEditGrp.add(
+        // @ts-ignore
+        "EditText { properties:{multiline:true, readonly: true, scrollable:true}, text:'', justify:'right' }"
+    ) as EditText;
+    aboutEditText.text = abtStr;
+    aboutEditText.preferredSize = [380, 390];
     // @ts-ignore
     aboutEditGrp.margins.left = 10;
 
